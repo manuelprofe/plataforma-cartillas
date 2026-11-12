@@ -1,14 +1,15 @@
 import { useEffect, useRef, useState } from 'react';
 import type { Cartilla } from './tipos';
-import { Mundo } from './Mundo';
+import { Mundo, olvidarMundo } from './Mundo';
+import { ElegirHeroe } from './ElegirHeroe';
 import { EscuchaToca } from './juegos/EscuchaToca';
 import { activarAudio, sonar } from './audio';
-import { reiniciarProgreso, useProgreso } from './progreso';
+import { elegirHeroe, reiniciarProgreso, useProgreso } from './progreso';
 
 const BASE = `${import.meta.env.BASE_URL}cartillas/ingles-3/`;
 const MS_CORTINA = 420;
 
-type Pantalla = { tipo: 'inicio' } | { tipo: 'mapa' } | { tipo: 'mision'; indice: number };
+type Pantalla = { tipo: 'inicio' } | { tipo: 'elegir' } | { tipo: 'mapa' } | { tipo: 'mision'; indice: number };
 
 export function App() {
   const [cartilla, setCartilla] = useState<Cartilla | null>(null);
@@ -52,6 +53,7 @@ export function App() {
   if (!cartilla) return <div className="inicio" aria-busy="true" />;
 
   const territorio = cartilla.territorios[0];
+  const heroe = cartilla.heroes.find((h) => h.id === progreso.heroe);
 
   return (
     <>
@@ -67,21 +69,41 @@ export function App() {
             onClick={() => {
               activarAudio();
               sonar('fiesta');
-              irA({ tipo: 'mapa' });
+              irA({ tipo: heroe ? 'mapa' : 'elegir' });
             }}
           >
             ▶
           </button>
           {progreso.estrellas > 0 && (
-            <button type="button" className="enlace" onClick={reiniciarProgreso}>
+            <button
+              type="button"
+              className="enlace"
+              onClick={() => {
+                reiniciarProgreso();
+                olvidarMundo();
+              }}
+            >
               Empezar de nuevo
             </button>
           )}
         </div>
       )}
 
-      {pantalla.tipo === 'mapa' && (
-        <Mundo territorio={territorio} base={BASE} vozIngles={cartilla.idiomaVoz} vozEspanol={cartilla.idiomaHistoria} onEntrar={(indice) => irA({ tipo: 'mision', indice })} />
+      {pantalla.tipo === 'elegir' && (
+        <ElegirHeroe
+          heroes={cartilla.heroes}
+          base={BASE}
+          vozEspanol={cartilla.idiomaHistoria}
+          elegido={progreso.heroe}
+          onElegir={(id) => {
+            elegirHeroe(id);
+            irA({ tipo: 'mapa' });
+          }}
+        />
+      )}
+
+      {pantalla.tipo === 'mapa' && heroe && (
+        <Mundo territorio={territorio} heroe={heroe} estelas={cartilla.estelas} base={BASE} vozIngles={cartilla.idiomaVoz} vozEspanol={cartilla.idiomaHistoria} onEntrar={(indice) => irA({ tipo: 'mision', indice })} />
       )}
 
       {pantalla.tipo === 'mision' && (

@@ -48,6 +48,36 @@ export interface Mision {
 export interface Personaje {
   nombre: string;
   imagen: string;
+  /** Ancho con que se dibuja en el mundo. */
+  ancho?: number;
+}
+
+/** Personaje que el niño elige para recorrer el mundo. */
+export interface Heroe {
+  id: string;
+  nombre: string;
+  imagen: string;
+  ancho: number;
+  saludo: { es: string; en: string };
+}
+
+/** Estela que deja el personaje al caminar; se desbloquea con estrellas. */
+export interface Estela {
+  id: string;
+  estrellas: number;
+  colores: string[];
+}
+
+/** Un habitante perdió una palabra: el niño la busca entre varias y se la trae. */
+export interface Encargo {
+  pide: Palabra;
+  opciones: Palabra[];
+  x: number;
+  y: number;
+  escenaPide: string;
+  escenaOtra: string;
+  escenaGracias: string;
+  escenaListo: string;
 }
 
 export interface Territorio {
@@ -73,6 +103,8 @@ export interface Territorio {
       radio: number;
       movimiento: 'revolotea' | 'zumba' | 'planea' | 'salta';
       rapidez: number;
+      /** Palabra que regala al álbum cuando el niño se acerca. */
+      palabra?: Palabra;
     }[];
     /** Sonido de fondo del territorio. */
     ambiente?: Ambiente;
@@ -80,7 +112,16 @@ export interface Territorio {
     luces: { x: number; y: number; radio: number }[];
     radioLuzMision: number;
     inicio: { x: number; y: number };
-    habitantes: { id: string; personaje: string; x: number; y: number; escena: string }[];
+    habitantes: { id: string; personaje: string; x: number; y: number; escena: string; encargo?: Encargo }[];
+    /** Casas, faroles y demás cosas de la aldea; `choque` es el radio que no se puede pisar. */
+    objetos: { imagen: string; ancho: number; x: number; y: number; choque: number; luz?: boolean }[];
+    /** Copas en primer plano, por encima de todo. */
+    frente: { x: number; y: number; tipo: number }[];
+    /** Cuadrícula de agua ('1' = no se puede caminar) y tamaño de cada celda. */
+    agua: string[];
+    celda: number;
+    /** Color de la penumbra: cada territorio tiene su hora del día. */
+    colorPenumbra: string;
     luciernagas: { x: number; y: number }[];
   };
   puerta: {
@@ -103,5 +144,7 @@ export interface Cartilla {
   grado: string;
   idiomaVoz: string;
   idiomaHistoria: string;
+  heroes: Heroe[];
+  estelas: Estela[];
   territorios: Territorio[];
 }

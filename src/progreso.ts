@@ -1,6 +1,7 @@
 // Única capa que lee y escribe el progreso del estudiante. Hoy guarda en el
 // dispositivo; cuando exista el servidor, solo cambia este archivo.
 import { useSyncExternalStore } from 'react';
+import type { Palabra } from './tipos';
 
 export interface RegistroMision {
   veces: number;
@@ -15,6 +16,16 @@ export interface Progreso {
   /** Misión que eligió visitar. */
   destino?: string;
   misiones: Record<string, RegistroMision>;
+  /** Personaje elegido para recorrer el mundo. */
+  heroe?: string;
+  /** Estela elegida. */
+  estela?: string;
+  /** Palabras encontradas en el mundo. */
+  album: Palabra[];
+  /** Habitantes que ya recuperaron su palabra. */
+  ayudados: string[];
+  /** Habitante al que se le está buscando su palabra. */
+  encargo?: string;
 }
 
 // Criterios de Mission Stars (tabla 7 del trabajo de grado).
@@ -26,7 +37,7 @@ export interface Premio {
 }
 
 const CLAVE = 'pc_progreso_v2';
-const VACIO: Progreso = { estrellas: 0, vistas: [], misiones: {} };
+const VACIO: Progreso = { estrellas: 0, vistas: [], misiones: {}, album: [], ayudados: [] };
 
 function leer(): Progreso {
   try {
@@ -67,6 +78,29 @@ export function marcarVista(escena: string) {
 
 export function fijarDestino(mision: string | undefined) {
   guardar({ ...estado, destino: mision });
+}
+
+export function elegirHeroe(id: string) {
+  guardar({ ...estado, heroe: id });
+}
+
+export function elegirEstela(id: string) {
+  guardar({ ...estado, estela: id });
+}
+
+/** Guarda una palabra en el álbum. Devuelve si era nueva. */
+export function agregarAlAlbum(palabra: Palabra): boolean {
+  if (estado.album.some((p) => p.en === palabra.en)) return false;
+  guardar({ ...estado, album: [...estado.album, palabra] });
+  return true;
+}
+
+export function fijarEncargo(habitante: string | undefined) {
+  if (estado.encargo !== habitante) guardar({ ...estado, encargo: habitante });
+}
+
+export function marcarAyudado(habitante: string) {
+  if (!estado.ayudados.includes(habitante)) guardar({ ...estado, ayudados: [...estado.ayudados, habitante], encargo: undefined });
 }
 
 /** Premios por terminar una misión. Las estrellas nunca se quitan. */

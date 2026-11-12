@@ -1,9 +1,12 @@
 // Mundo explorable de un territorio, visto desde arriba. El niño mueve al guía con
 // el dedo en cualquier dirección, habla con los personajes, atrapa luciérnagas y
-// decide a qué misión entrar.
+// decide a qué misión entrar. Los habitantes le piden palabras perdidas, los animales
+// le regalan otras para su álbum, y el agua, los árboles y las casas no se atraviesan.
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
-import type { Linea, ModoIdioma, Palabra, Territorio } from './tipos';
-import { fijarDestino, marcarVista, useProgreso } from './progreso';
+import type { Estela, Heroe, Linea, ModoIdioma, Palabra, Territorio } from './tipos';
+import { agregarAlAlbum, fijarDestino, fijarEncargo, marcarAyudado, marcarVista, useProgreso } from './progreso';
+import { Album } from './Album';
+import { MiniMapa } from './MiniMapa';
 import { atenuarAmbiente, decir, iniciarAmbiente, pararAmbiente, sonar } from './audio';
 import { Dialogo } from './Dialogo';
 
@@ -26,7 +29,12 @@ const CHISPAS = 14;
 const MS_ENTRE_CHISPAS = 55;
 // Penumbra: se dibuja a baja resolución y se estira; solo cambia al encender una zona.
 const REDUCCION_PENUMBRA = 4;
-const COLOR_PENUMBRA = 'rgb(16 8 46 / 0.66)';
+// Animales: a qué distancia saludan y cada cuánto pueden repetir su palabra.
+const RADIO_SALUDO = 78;
+const MS_ENTRE_SALUDOS = 9000;
+// Copas de primer plano: se mueven más que el suelo.
+const PARALAJE_FRENTE = 1.25;
+const SEPARACION_TOMAS = 96;
 const MS_ENCENDER = 1600;
 const sinMovimiento = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -36,9 +44,23 @@ let luzAnterior = 0;
 // Cuánto ha crecido la luz de cada zona (0 a 1), para no repetir el encendido al volver.
 const brilloZona = new Map<string, number>();
 const atrapadas = new Set<number>();
+const saludadas = new Map<number, number>();
+let cargaGuardada: Palabra | null = null;
+
+/** Devuelve el mundo a su estado inicial cuando el niño empieza de nuevo. */
+export function olvidarMundo() {
+  ultimaPosicion = null;
+  luzAnterior = 0;
+  brilloZona.clear();
+  atrapadas.clear();
+  saludadas.clear();
+  cargaGuardada = null;
+}
 
 interface Props {
   territorio: Territorio;
+  heroe: Heroe;
+  estelas: Estela[];
   base: string;
   vozIngles: string;
   vozEspanol: string;
@@ -47,7 +69,7 @@ interface Props {
 
 interface Cosa {
   id: string;
-  tipo: 'habitante' | 'mision' | 'puente';
+  tipo: 'habitante' | 'mision' | 'puente' | 'toma';
   indice: number;
   x: number;
   y: number;
@@ -59,7 +81,7 @@ interface Charla {
   alCerrar?: () => void;
 }
 
-export function Mundo({ territorio, base, vozIngles, vozEspanol, onEntrar }: Props) {
+export function Mundo({ territorio, heroe, estelas, base, vozIngles, vozEspanol, onEntrar }: Props) {
   const progreso = useProgreso();
   const { misiones, puerta, mundo, personajes, escenas } = territorio;
 
@@ -73,12 +95,22 @@ export function Mundo({ territorio, base, vozIngles, vozEspanol, onEntrar }: Pro
   const arboles = useRef<(HTMLDivElement | null)[]>([]);
   const criaturas = useRef<(HTMLDivElement | null)[]>([]);
   const ondas = useRef<HTMLDivElement>(null);
+  const frente = useRef<HTMLDivElement>(null);
 
   const [tam, setTam] = useState({ ancho: 390, alto: 0 });
   const [cerca, setCerca] = useState<string | null>(null);
   const [charla, setCharla] = useState<Charla | null>(null);
   const [, repintar] = useState(0);
   const [destello, setDestello] = useState<{ palabra: Palabra; x: number; y: number; n: number } | null>(null);
+  const [panel, setPanel] = useState<'album' | 'mapa' | null>(null);
+  // Palabra que el niño lleva de vuelta a un habitante.
+  const [carga, setCarga] = useState<Palabra | null>(cargaGuardada);
+  const ponerCarga = (p: Palabra | null) => {
+    cargaGuardada = p;
+    setCarga(p);
+  };
+  const estela = estelas.find((e) => e.id === progreso.estela && progreso.estrellas >= e.estrellas) ?? estelas[0];
+  const vecinoActivo = mundo.habitantes.find((h) => h.id === progreso.encargo && h.encargo && !progreso.ayudados.includes(h.id));
 
   const hechas = misiones.filter((m) => progreso.misiones[m.id]).length;
   const luz = misiones.length ? hechas / misiones.length : 0;
@@ -101,9 +133,30 @@ export function Mundo({ territorio, base, vozIngles, vozEspanol, onEntrar }: Pro
       ...mundo.habitantes.map((h, i) => ({ id: h.id, tipo: 'habitante' as const, indice: i, x: h.x, y: h.y })),
       ...misiones.map((m, i) => ({ id: m.id, tipo: 'mision' as const, indice: i, x: m.x, y: m.y })),
       { id: 'puente', tipo: 'puente' as const, indice: 0, x: puerta.x, y: puerta.y },
+      // Las palabras entre las que hay que escoger la que pidió el habitante.
+      ...(vecinoActivo?.encargo?.opciones ?? []).map((_, i, todas) => ({
+        id: `toma-${i}`,
+        tipo: 'toma' as const,
+        indice: i,
+        x: vecinoActivo!.encargo!.x + (i - (todas.length - 1) / 2) * SEPARACION_TOMAS,
+        y: vecinoActivo!.encargo!.y,
+      })),
     ],
-    [mundo.habitantes, misiones, puerta],
+    [mundo.habitantes, misiones, puerta, vecinoActivo],
   );
+  // A dónde apunta la brújula: primero el encargo en curso, si no la misión elegida.
+  const rumbo = vecinoActivo
+    ? carga
+      ? { x: vecinoActivo.x, y: vecinoActivo.y }
+      : { x: vecinoActivo.encargo!.x, y: vecinoActivo.encargo!.y }
+    : (cosas.find((c) => c.id === progreso.destino) ?? null);
+  const palabrasDelMundo = useMemo(() => {
+    const todas = new Set<string>();
+    misiones.forEach((m) => m.palabras.forEach((p) => todas.add(p.en)));
+    mundo.criaturas.forEach((c) => c.palabra && todas.add(c.palabra.en));
+    mundo.habitantes.forEach((h) => h.encargo && todas.add(h.encargo.pide.en));
+    return todas.size;
+  }, [misiones, mundo]);
   const palabras = useMemo(() => misiones.flatMap((m) => m.palabras), [misiones]);
 
   // Estado del movimiento: vive fuera de React para no repintar en cada cuadro.
@@ -121,10 +174,10 @@ export function Mundo({ territorio, base, vozIngles, vozEspanol, onEntrar }: Pro
     teclas: new Set<string>(),
     pausa: false,
   });
-  const vivo = useRef({ cosas, cerca, tam, palabras, destino: progreso.destino });
-  vivo.current = { cosas, cerca, tam, palabras, destino: progreso.destino };
-  mov.current.pausa = charla !== null;
-  if (charla) mov.current.dedo = null;
+  const vivo = useRef({ cosas, cerca, tam, palabras, rumbo, colores: estela.colores });
+  vivo.current = { cosas, cerca, tam, palabras, rumbo, colores: estela.colores };
+  mov.current.pausa = charla !== null || panel !== null;
+  if (mov.current.pausa) mov.current.dedo = null;
 
   useLayoutEffect(() => {
     const el = marco.current;
@@ -140,9 +193,39 @@ export function Mundo({ territorio, base, vozIngles, vozEspanol, onEntrar }: Pro
     sonar('toque');
     mov.current.objetivo = null;
     mov.current.pendiente = null;
-    if (cosa.tipo === 'habitante') {
-      const escena = escenas[mundo.habitantes[cosa.indice].escena];
-      setCharla({ lineas: escena.lineas, luego: escena.luego });
+    if (cosa.tipo === 'toma') {
+      const palabra = vecinoActivo?.encargo?.opciones[cosa.indice];
+      if (!palabra) return;
+      sonar('acierto');
+      ponerCarga(palabra);
+      window.setTimeout(() => decir(palabra.en, vozIngles), 200);
+    } else if (cosa.tipo === 'habitante') {
+      const h = mundo.habitantes[cosa.indice];
+      const e = h.encargo;
+      const decirPedido = () => e && decir(e.pide.en, vozIngles);
+      const contar = (id: string, alCerrar?: () => void) => setCharla({ lineas: escenas[id].lineas, luego: escenas[id].luego, alCerrar });
+      if (!e) contar(h.escena);
+      else if (progreso.ayudados.includes(h.id)) contar(e.escenaListo);
+      else if (carga && progreso.encargo === h.id) {
+        if (carga.en === e.pide.en) {
+          // La palabra vuelve a su dueño: recupera el color y queda en el álbum.
+          sonar('fiesta');
+          marcarAyudado(h.id);
+          agregarAlAlbum(e.pide);
+          ponerCarga(null);
+          contar(e.escenaGracias, decirPedido);
+        } else {
+          sonar('intenta');
+          ponerCarga(null);
+          contar(e.escenaOtra, decirPedido);
+        }
+      } else {
+        contar(e.escenaPide, () => {
+          ponerCarga(null);
+          fijarEncargo(h.id);
+          decirPedido();
+        });
+      }
     } else if (cosa.tipo === 'mision') {
       const indice = cosa.indice;
       setCharla({
@@ -201,7 +284,7 @@ export function Mundo({ territorio, base, vozIngles, vozEspanol, onEntrar }: Pro
       let falta = false;
       tinta.globalCompositeOperation = 'source-over';
       tinta.clearRect(0, 0, lienzo.width, lienzo.height);
-      tinta.fillStyle = COLOR_PENUMBRA;
+      tinta.fillStyle = mundo.colorPenumbra;
       tinta.fillRect(0, 0, lienzo.width, lienzo.height);
       tinta.globalCompositeOperation = 'destination-out';
       for (const l of luces) {
@@ -223,7 +306,7 @@ export function Mundo({ territorio, base, vozIngles, vozEspanol, onEntrar }: Pro
     };
     cuadro = requestAnimationFrame(pintar);
     return () => cancelAnimationFrame(cuadro);
-  }, [luces, tam.alto]);
+  }, [luces, tam.alto, mundo.colorPenumbra]);
 
   // Bucle de movimiento.
   useEffect(() => {
@@ -236,7 +319,23 @@ export function Mundo({ territorio, base, vozIngles, vozEspanol, onEntrar }: Pro
     let inclinacion = 0;
     let esperaChispa = 0;
     let turnoChispa = 0;
+    let atascado = 0;
     const quieto = sinMovimiento();
+    const huida = mundo.criaturas.map(() => ({ x: 0, y: 0 }));
+
+    // Lo que no se puede pisar: agua, troncos y las cosas de la aldea.
+    const choques = [
+      ...mundo.arboles.map((a) => ({ x: a.x, y: a.y - 6, r: 14 * a.escala + 8 })),
+      ...mundo.objetos.filter((o) => o.choque > 0).map((o) => ({ x: o.x, y: o.y - o.choque * 0.45, r: o.choque })),
+    ];
+    const libre = (x: number, y: number) => {
+      const fila = mundo.agua[Math.floor(y / mundo.celda)];
+      if (fila && fila[Math.floor(x / mundo.celda)] === '1') return false;
+      for (const c of choques) if ((x - c.x) ** 2 + (y - c.y) ** 2 < c.r * c.r) return false;
+      return true;
+    };
+    const dentroX = (x: number) => Math.max(50, Math.min(mundo.ancho - 50, x));
+    const dentroY = (y: number) => Math.max(110, Math.min(mundo.alto - 20, y));
 
     const paso = (ahora: number) => {
       const dt = Math.min(0.05, (ahora - antes) / 1000);
@@ -275,10 +374,31 @@ export function Mundo({ territorio, base, vozIngles, vozEspanol, onEntrar }: Pro
         }
         const x0 = m.x;
         const y0 = m.y;
-        m.x = Math.max(50, Math.min(mundo.ancho - 50, m.x + dx));
-        m.y = Math.max(110, Math.min(mundo.alto - 20, m.y + dy));
+        let nx = dentroX(m.x + dx);
+        let ny = dentroY(m.y + dy);
+        if (!libre(nx, ny) && libre(m.x, m.y)) {
+          // Se desliza por el borde del obstáculo en vez de frenar en seco.
+          const paso = Math.hypot(dx, dy);
+          const lado = [
+            [nx, m.y],
+            [m.x, ny],
+            [m.x - (dy / (paso || 1)) * paso, m.y + (dx / (paso || 1)) * paso],
+            [m.x + (dy / (paso || 1)) * paso, m.y - (dx / (paso || 1)) * paso],
+          ].find(([x, y]) => libre(dentroX(x), dentroY(y)));
+          nx = lado ? dentroX(lado[0]) : m.x;
+          ny = lado ? dentroY(lado[1]) : m.y;
+        }
+        m.x = nx;
+        m.y = ny;
         dx = m.x - x0;
         dy = m.y - y0;
+        // Si un toque quedó detrás de algo que no se puede cruzar, se suelta.
+        atascado = m.objetivo && !m.dedo && Math.hypot(dx, dy) < 0.3 ? atascado + dt : 0;
+        if (atascado > 0.6) {
+          m.objetivo = null;
+          m.pendiente = null;
+          atascado = 0;
+        }
         if (Math.abs(dx) > 0.2) mirando = dx > 0 ? 1 : -1;
         ultimaPosicion = { x: m.x, y: m.y };
 
@@ -288,6 +408,7 @@ export function Mundo({ territorio, base, vozIngles, vozEspanol, onEntrar }: Pro
           if (Math.hypot(l.x - m.x, l.y - m.y) < RADIO_LUCIERNAGA) {
             atrapadas.add(i);
             const palabra = palabras[(i * 7 + 3) % palabras.length];
+            agregarAlAlbum(palabra);
             sonar('estrella');
             window.setTimeout(() => decir(palabra.en, vozIngles), 250);
             setDestello({ palabra, x: l.x, y: l.y, n: i });
@@ -306,10 +427,9 @@ export function Mundo({ territorio, base, vozIngles, vozEspanol, onEntrar }: Pro
           }
         }
         if (masCerca !== vivo.current.cerca) setCerca(masCerca);
-        if (m.pendiente && masCerca === m.pendiente && menor < 80) {
-          const cosa = cosas.find((c) => c.id === m.pendiente);
-          if (cosa) abrirRef.current(cosa);
-        }
+        // Lo que el niño tocó se abre al llegar, aunque haya otra cosa un poco más cerca.
+        const tocada = m.pendiente ? cosas.find((c) => c.id === m.pendiente) : undefined;
+        if (tocada && Math.hypot(tocada.x - m.x, tocada.y - m.y) < 85) abrirRef.current(tocada);
       }
 
       // Cámara con retraso y zona libre, en las dos direcciones.
@@ -370,7 +490,9 @@ export function Mundo({ territorio, base, vozIngles, vozEspanol, onEntrar }: Pro
           const chispa = chispas.current.children[turnoChispa++ % CHISPAS] as HTMLElement;
           const largo = Math.hypot(dx, dy) || 1;
           const cx = m.x - (dx / largo) * 30 + (Math.random() - 0.5) * 30;
-          const cy = m.y - 62 - (dy / largo) * 26 + (Math.random() - 0.5) * 40;
+          const cy = m.y - 46 - (dy / largo) * 26 + (Math.random() - 0.5) * 40;
+          const colores = vivo.current.colores;
+          chispa.style.background = colores[Math.floor(Math.random() * colores.length)];
           const giro = Math.random() * 180;
           chispa.animate(
             [
@@ -382,20 +504,45 @@ export function Mundo({ territorio, base, vozIngles, vozEspanol, onEntrar }: Pro
         }
       }
 
-      // Animales: cada uno da vueltas a su manera alrededor de su punto.
-      if (!quieto) {
-        const seg = ahora / 1000;
-        mundo.criaturas.forEach((c, i) => {
-          const el = criaturas.current[i];
-          if (!el || c.movimiento === 'salta') return;
+      // Animales: cada uno da vueltas a su manera alrededor de su punto. Si el niño se
+      // acerca, saludan con su palabra (que va al álbum) y se apartan un poco.
+      const seg = ahora / 1000;
+      mundo.criaturas.forEach((c, i) => {
+        const el = criaturas.current[i];
+        if (!el) return;
+        let cx = c.x;
+        let cy = c.y;
+        if (c.movimiento !== 'salta' && !quieto) {
           const t = seg * c.rapidez + i * 2.1;
           const temblor = c.movimiento === 'planea' ? 0 : c.movimiento === 'zumba' ? 7 : 14;
-          const cx = c.x + Math.sin(t * 0.61) * c.radio + Math.sin(t * 5.3) * temblor;
-          const cy = c.y + Math.sin(t * 0.83 + 1.3) * c.radio * 0.6 + Math.cos(t * 4.1) * temblor;
+          huida[i].x *= Math.exp(-1.2 * dt);
+          huida[i].y *= Math.exp(-1.2 * dt);
+          cx += Math.sin(t * 0.61) * c.radio + Math.sin(t * 5.3) * temblor + huida[i].x;
+          cy += Math.sin(t * 0.83 + 1.3) * c.radio * 0.6 + Math.cos(t * 4.1) * temblor + huida[i].y;
           el.style.transform = `translate3d(${cx}px, ${cy}px, 0)`;
           const mira = Math.cos(t * 0.61) >= 0 ? 'der' : 'izq';
           if (el.dataset.mira !== mira) el.dataset.mira = mira;
-        });
+        }
+        const lejos = Math.hypot(cx - m.x, cy - (m.y - 45));
+        if (c.palabra && !m.pausa && lejos < RADIO_SALUDO && ahora - (saludadas.get(i) ?? -Infinity) > MS_ENTRE_SALUDOS) {
+          saludadas.set(i, ahora);
+          const palabra = c.palabra;
+          agregarAlAlbum(palabra);
+          sonar('estrella');
+          window.setTimeout(() => decir(palabra.en, vozIngles), 250);
+          setDestello({ palabra, x: cx, y: cy, n: 1000 + i + Math.round(ahora) });
+          if (c.movimiento !== 'salta') {
+            huida[i].x = ((cx - m.x) / (lejos || 1)) * 150;
+            huida[i].y = ((cy - (m.y - 45)) / (lejos || 1)) * 150;
+          }
+        }
+      });
+
+      // Copas de primer plano: se desplazan más que el suelo.
+      if (frente.current) {
+        const fx = m.camara.x * PARALAJE_FRENTE + (vista.x * (PARALAJE_FRENTE - 1)) / 2;
+        const fy = m.camara.y * PARALAJE_FRENTE + (vista.y * (PARALAJE_FRENTE - 1)) / 2;
+        frente.current.style.transform = `scale(${escala}) translate3d(${-fx}px, ${-fy}px, 0)`;
       }
 
       // Marca del lugar al que va.
@@ -408,7 +555,7 @@ export function Mundo({ territorio, base, vozIngles, vozEspanol, onEntrar }: Pro
 
       // Brújula: apunta a la misión elegida cuando queda fuera de la pantalla.
       if (brujula.current) {
-        const elegida = cosas.find((c) => c.id === vivo.current.destino);
+        const elegida = vivo.current.rumbo;
         const px = elegida ? (elegida.x - m.camara.x) * escala : 0;
         const py = elegida ? (elegida.y - m.camara.y) * escala : 0;
         const fuera = elegida && (px < 20 || px > tam.ancho - 20 || py < 20 || py > tam.alto - 20);
@@ -485,7 +632,7 @@ export function Mundo({ territorio, base, vozIngles, vozEspanol, onEntrar }: Pro
       return;
     }
     sonar('salto');
-    m.objetivo = { x: cosa.x, y: cosa.y + 62 };
+    m.objetivo = { x: cosa.x, y: cosa.y + (cosa.tipo === 'toma' ? 40 : 62) };
     m.pendiente = cosa.id;
   };
 
@@ -540,6 +687,15 @@ export function Mundo({ territorio, base, vozIngles, vozEspanol, onEntrar }: Pro
               );
             })}
 
+            {mundo.objetos.map((o, i) => {
+              const encendido = conLuz(o.x, o.y);
+              return (
+                <div key={i} className={`objeto${encendido ? '' : ' arbol--apagado'}${o.luz && encendido ? ' objeto--luz' : ''}`} style={{ left: o.x, top: o.y, zIndex: Math.round(o.y) }} aria-hidden="true">
+                  <img src={base + o.imagen} alt="" width={o.ancho} loading="lazy" draggable={false} />
+                </div>
+              );
+            })}
+
             {mundo.criaturas.map((c, i) => (
               <div
                 key={i}
@@ -568,9 +724,16 @@ export function Mundo({ territorio, base, vozIngles, vozEspanol, onEntrar }: Pro
             {mundo.habitantes.map((h) => {
               const c = cosa(h.id);
               return (
-                <button key={h.id} type="button" className={`habitante${cerca === h.id ? ' es-cerca' : ''}`} style={{ left: c.x, top: c.y, zIndex: Math.round(c.y) }} onClick={() => tocarCosa(c)} aria-label={`Hablar con ${personajes[h.personaje].nombre}`}>
-                  <img src={base + personajes[h.personaje].imagen} alt="" width="104" height="92" draggable={false} />
-                  <span className="globito">💬</span>
+                <button
+                  key={h.id}
+                  type="button"
+                  className={`habitante${cerca === h.id ? ' es-cerca' : ''}${h.encargo && !progreso.ayudados.includes(h.id) ? ' habitante--sin-palabra' : ''}`}
+                  style={{ left: c.x, top: c.y, zIndex: Math.round(c.y) }}
+                  onClick={() => tocarCosa(c)}
+                  aria-label={`Hablar con ${personajes[h.personaje].nombre}`}
+                >
+                  <img src={base + personajes[h.personaje].imagen} alt="" width={personajes[h.personaje].ancho ?? 96} draggable={false} style={{ animationDelay: `${-c.indice * 0.6}s` }} />
+                  <span className="globito">{h.encargo && !progreso.ayudados.includes(h.id) ? '❗' : '💬'}</span>
                 </button>
               );
             })}
@@ -612,6 +775,15 @@ export function Mundo({ territorio, base, vozIngles, vozEspanol, onEntrar }: Pro
               <span className="globito">💬</span>
             </button>
 
+            {vecinoActivo?.encargo?.opciones.map((p, i) => {
+              const c = cosa(`toma-${i}`);
+              return carga?.en === p.en ? null : (
+                <button key={p.en} type="button" className="toma" style={{ left: c.x, top: c.y, zIndex: Math.round(c.y) }} onClick={() => tocarCosa(c)} aria-label={p.en}>
+                  <img src={base + p.icono} alt="" width="46" height="46" draggable={false} />
+                </button>
+              );
+            })}
+
             <span ref={meta} className="meta" data-ver="no" aria-hidden="true" />
             <div ref={ondas} aria-hidden="true">
               <span className="onda-toque" />
@@ -627,11 +799,22 @@ export function Mundo({ territorio, base, vozIngles, vozEspanol, onEntrar }: Pro
             <div ref={guia} className="guia" data-anda="no">
               <span className="guia__sombra" />
               <div className="guia__cuerpo">
-                <img src={base + personajes[territorio.guia].imagen} alt={personajes[territorio.guia].nombre} width="92" height="73" draggable={false} />
+                <img src={base + heroe.imagen} alt={heroe.nombre} width={heroe.ancho} draggable={false} />
               </div>
+              {carga && (
+                <span className="guia__carga" key={carga.en}>
+                  <img src={base + carga.icono} alt={carga.en} width="38" height="38" draggable={false} />
+                </span>
+              )}
             </div>
           </>
         )}
+      </div>
+
+      <div ref={frente} className="mundo__frente" aria-hidden="true">
+        {mundo.frente.map((f, i) => (
+          <img key={i} src={base + mundo.tiposArbol[f.tipo].imagen} alt="" width={mundo.tiposArbol[f.tipo].ancho * 2} loading="lazy" draggable={false} style={{ left: f.x * PARALAJE_FRENTE, top: f.y * PARALAJE_FRENTE }} />
+        ))}
       </div>
 
       <div className="marcador" aria-label={`${progreso.estrellas} estrellas`}>
@@ -648,7 +831,34 @@ export function Mundo({ territorio, base, vozIngles, vozEspanol, onEntrar }: Pro
         </span>
       </div>
 
-      {!charla && (
+      {!charla && !panel && (
+        <div className="utiles">
+          <button type="button" onClick={() => (sonar('toque'), setPanel('album'))} aria-label={`Álbum: ${progreso.album.length} palabras`}>
+            📖<small>{progreso.album.length}</small>
+          </button>
+          <button type="button" onClick={() => (sonar('toque'), setPanel('mapa'))} aria-label="Mapa">
+            🗺️
+          </button>
+        </div>
+      )}
+
+      {panel === 'album' && (
+        <Album palabras={progreso.album} total={palabrasDelMundo} estelas={estelas} estela={estela.id} estrellas={progreso.estrellas} base={base} vozIngles={vozIngles} onCerrar={() => setPanel(null)} />
+      )}
+      {panel === 'mapa' && (
+        <MiniMapa
+          imagen={base + mundo.mapa}
+          ancho={mundo.ancho}
+          alto={mundo.alto}
+          yo={{ x: mov.current.x, y: mov.current.y, imagen: base + heroe.imagen }}
+          misiones={misiones.map((m) => ({ id: m.id, x: m.x, y: m.y, icono: base + m.icono, hecha: Boolean(progreso.misiones[m.id]), elegida: progreso.destino === m.id }))}
+          vecinos={mundo.habitantes.filter((h) => h.encargo).map((h) => ({ id: h.id, x: h.x, y: h.y, imagen: base + personajes[h.personaje].imagen, ayudado: progreso.ayudados.includes(h.id) }))}
+          puente={{ x: puerta.x, y: puerta.y, abierto: puertaAbierta }}
+          onCerrar={() => setPanel(null)}
+        />
+      )}
+
+      {!charla && !panel && (
         <div ref={brujula} className="brujula" data-ver="no" aria-hidden="true">
           <span>➜</span>
         </div>

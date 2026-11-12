@@ -33,6 +33,11 @@ basada en el trabajo de grado de Manuel Vega en la I.E. Jorge Barco Mora (Los Pa
   Los personajes se conservan y sus animaciones se harán en otra herramienta (propuesta:
   Rive), porque Canva no produce personajes animados para juego.
 - La voz definitiva es lo último.
+- El niño no controla a Cosmo: elige entre tres personajes (Tavi, Mika, Bruno) antes de
+  empezar. Cosmo, Pixie y Lumi son personajes del bosque con los que se habla.
+- Englishland tiene habitantes: una aldea en el claro central con vecinos que perdieron
+  sus palabras. Referencia de juego que le gusta a Manuel: Teach Your Monster to Read.
+- Seguir añadiendo capas al mapa.
 - Orden de trabajo acordado: llevar el Bosque a calidad final, probarlo con niños y
   después replicar en los otros territorios.
 - La historia se narra en español al principio y en inglés hacia los niveles finales.
@@ -47,6 +52,8 @@ basada en el trabajo de grado de Manuel Vega en la I.E. Jorge Barco Mora (Los Pa
 | Mundo explorable del Bosque de los Sonidos, visto desde arriba | Funciona; falta que Manuel lo pruebe | `src/Mundo.tsx` |
 | Suelo del bosque generado en Canva (1800 × 1800) | Hecho | `public/cartillas/ingles-3/fondos/bosque-mapa.webp` |
 | Árboles (9) y animales (6) generados en Canva, recortados con transparencia | Hecho | `public/cartillas/ingles-3/mundo/` |
+| Tres personajes para elegir, seis habitantes y nueve objetos de aldea (Canva) | Hecho | `public/cartillas/ingles-3/personajes/`, `mundo/` |
+| Elegir personaje, álbum de palabras y mini mapa | Funciona | `src/ElegirHeroe.tsx`, `src/Album.tsx`, `src/MiniMapa.tsx` |
 | Sonido de ambiente del bosque (brisa, grillos, búho) | Sintetizado en el dispositivo, provisional | `src/audio.ts` |
 | Diálogos con personajes, opciones y cambio de idioma | Funciona | `src/Dialogo.tsx` |
 | Juego "escucha y toca" (plantilla que recibe contenido) | Funciona; es el único juego | `src/juegos/EscuchaToca.tsx` |
@@ -103,9 +110,35 @@ Mapa por capas (pedido por Manuel):
 - Los árboles se sembraron con un guion que evita claros, caminos y agua leyendo los
   colores del suelo; si cambia el mapa hay que volver a sembrar.
 
+Habitantes y mejoras de juego (pedido por Manuel):
+
+- **Elegir personaje** antes de empezar (`cartilla.heroes`); queda en el progreso.
+- **Aldea** en el claro central: casas, pozo, carreta, faroles (`mundo.objetos`).
+- **Habitantes** (`mundo.habitantes`): Tito, Abu y Caro perdieron una palabra y están sin
+  color. El niño la busca entre tres (`encargo`), se la lleva y el habitante recupera el
+  color. Si trae otra, se le anima a escuchar de nuevo. Púa, Nuez y Rayo solo conversan.
+- **Álbum**: las palabras de luciérnagas, animales y encargos se guardan y se pueden
+  volver a escuchar. Los animales saludan con su palabra al acercarse y se apartan.
+- **Estelas** del personaje que se abren con estrellas (`cartilla.estelas`).
+- **Obstáculos**: no se camina sobre agua, troncos ni casas (`mundo.agua`, `choque`).
+- **Mini mapa** con lo encendido, los vecinos y dónde está el niño.
+- **Más capas**: copas en primer plano con paralaje (`mundo.frente`), bordes oscurecidos,
+  faroles con halo. El color de la penumbra va por territorio (`mundo.colorPenumbra`).
+- "Empezar de nuevo" ya reinicia también el mundo.
+
+Guiones que generan parte del contenido, en `herramientas/`: `recortar.py` (hojas de
+figuras a imágenes sueltas), `poblar.py` (habitantes, encargos y aldea) y `sembrar.py`
+(árboles, agua y copas leyendo el suelo; necesita la imagen del suelo en PNG). Orden:
+poblar y después sembrar.
+
 Pendiente:
 
 - Que Manuel lo pruebe en su celular.
+- **Decisión del pedagogo y de Manuel:** los encargos no dan estrellas. Las reglas de
+  Mission Stars no tienen una conducta para "ayudar a un habitante"; hoy premian con
+  color, álbum y celebración.
+- Los textos de los habitantes son un primer borrador; falta revisión pedagógica.
+- Las frases de Cosmo en las misiones siguen hablando en primera persona como guía.
 - Medir en un celular de gama baja: son 138 árboles en pantalla más los animales.
 - No hay botón para silenciar el ambiente.
 - No hay obstáculos: el guía pasa por encima de árboles y agua. Decidir si se quedan así
@@ -119,7 +152,8 @@ Para el tamaño completo se inserta la imagen a página completa en un diseño
 (`read-design` con transacción, `edit-design` con `insert_fill`, guardar) y se exporta en
 PNG. El diseño contenedor es `DAHarW2Gyck` (se reemplaza su imagen con `update_fill`). Imágenes
 en Canva: mapa original `MAHarXMYl7M`, suelo `MAHarSCZ4iM`, árboles `MAHarYMJvlw`,
-animales `MAHarYhC0EU`. Las hojas de figuras se piden sobre fondo blanco y se recortan
+animales `MAHarYhC0EU`, personajes `MAHauU4SB-Y`, habitantes `MAHauWDSNKA`, objetos de aldea
+`MAHauWqQimo`. Las hojas de figuras se piden sobre fondo blanco y se recortan
 aquí; usar el mapa original como referencia mantiene el estilo.
 
 ### 2. Más juego dentro de las misiones
@@ -144,8 +178,6 @@ clave de ese servicio por el formulario seguro, nunca en el chat.
 
 ### 5. Pendientes menores
 
-- "Empezar de nuevo" borra las estrellas, pero la posición del guía y las luciérnagas
-  atrapadas solo se reinician al recargar la página.
 - Al recargar con misiones ya hechas, Cosmo repite la frase de "el bosque tiene más luz".
 - El cambio de español a inglés ocurre muy rápido (tras 2 misiones) para que se note en el
   prototipo. En la cartilla real debe repartirse entre los cuatro territorios; se ajusta en

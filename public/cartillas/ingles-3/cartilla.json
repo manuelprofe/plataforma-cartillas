@@ -298,19 +298,52 @@
       "personajes": {
         "cosmo": {
           "nombre": "Cosmo",
-          "imagen": "personajes/cosmo-wave.webp"
+          "imagen": "personajes/cosmo-wave.webp",
+          "ancho": 96
         },
         "pixie": {
           "nombre": "Pixie",
-          "imagen": "personajes/pixie-wave.webp"
+          "imagen": "personajes/pixie-wave.webp",
+          "ancho": 96
         },
         "lumi": {
           "nombre": "Lumi",
-          "imagen": "personajes/lumi-wave.webp"
+          "imagen": "personajes/lumi-wave.webp",
+          "ancho": 96
         },
         "nova": {
           "nombre": "Nova",
           "imagen": "personajes/nova-ready.webp"
+        },
+        "tito": {
+          "nombre": "Tito",
+          "imagen": "personajes/vecino-1.webp",
+          "ancho": 78
+        },
+        "pua": {
+          "nombre": "Púa",
+          "imagen": "personajes/vecino-2.webp",
+          "ancho": 78
+        },
+        "abu": {
+          "nombre": "Abu",
+          "imagen": "personajes/vecino-3.webp",
+          "ancho": 82
+        },
+        "nuez": {
+          "nombre": "Nuez",
+          "imagen": "personajes/vecino-4.webp",
+          "ancho": 82
+        },
+        "caro": {
+          "nombre": "Caro",
+          "imagen": "personajes/vecino-5.webp",
+          "ancho": 88
+        },
+        "rayo": {
+          "nombre": "Rayo",
+          "imagen": "personajes/vecino-6.webp",
+          "ancho": 84
         }
       },
       "idiomaPorAvance": [
@@ -325,15 +358,22 @@
         "ancho": 1800,
         "inicio": {
           "x": 882,
-          "y": 960
+          "y": 985
         },
         "habitantes": [
           {
             "id": "pixie",
             "personaje": "pixie",
-            "x": 770,
-            "y": 860,
+            "x": 835,
+            "y": 900,
             "escena": "intro"
+          },
+          {
+            "id": "cosmo",
+            "personaje": "cosmo",
+            "x": 955,
+            "y": 915,
+            "escena": "cosmo"
           },
           {
             "id": "lumi",
@@ -341,6 +381,138 @@
             "x": 1130,
             "y": 1190,
             "escena": "lumi"
+          },
+          {
+            "id": "tito",
+            "personaje": "tito",
+            "x": 770,
+            "y": 835,
+            "escena": "tito-listo",
+            "encargo": {
+              "pide": {
+                "en": "red",
+                "es": "rojo",
+                "icono": "iconos/1f534.svg"
+              },
+              "opciones": [
+                {
+                  "en": "blue",
+                  "es": "azul",
+                  "icono": "iconos/1f535.svg"
+                },
+                {
+                  "en": "red",
+                  "es": "rojo",
+                  "icono": "iconos/1f534.svg"
+                },
+                {
+                  "en": "yellow",
+                  "es": "amarillo",
+                  "icono": "iconos/1f7e1.svg"
+                }
+              ],
+              "x": 500,
+              "y": 885,
+              "escenaPide": "tito-pide",
+              "escenaOtra": "tito-otra",
+              "escenaGracias": "tito-gracias",
+              "escenaListo": "tito-listo"
+            }
+          },
+          {
+            "id": "abu",
+            "personaje": "abu",
+            "x": 1000,
+            "y": 815,
+            "escena": "abu-listo",
+            "encargo": {
+              "pide": {
+                "en": "three",
+                "es": "tres",
+                "icono": "iconos/0033_20e3.svg"
+              },
+              "opciones": [
+                {
+                  "en": "five",
+                  "es": "cinco",
+                  "icono": "iconos/0035_20e3.svg"
+                },
+                {
+                  "en": "three",
+                  "es": "tres",
+                  "icono": "iconos/0033_20e3.svg"
+                },
+                {
+                  "en": "eight",
+                  "es": "ocho",
+                  "icono": "iconos/0038_20e3.svg"
+                }
+              ],
+              "x": 1120,
+              "y": 610,
+              "escenaPide": "abu-pide",
+              "escenaOtra": "abu-otra",
+              "escenaGracias": "abu-gracias",
+              "escenaListo": "abu-listo"
+            }
+          },
+          {
+            "id": "caro",
+            "personaje": "caro",
+            "x": 640,
+            "y": 1195,
+            "escena": "caro-listo",
+            "encargo": {
+              "pide": {
+                "en": "pencil",
+                "es": "lápiz",
+                "icono": "iconos/270f.svg"
+              },
+              "opciones": [
+                {
+                  "en": "book",
+                  "es": "libro",
+                  "icono": "iconos/1f4d8.svg"
+                },
+                {
+                  "en": "ruler",
+                  "es": "regla",
+                  "icono": "iconos/1f4cf.svg"
+                },
+                {
+                  "en": "pencil",
+                  "es": "lápiz",
+                  "icono": "iconos/270f.svg"
+                }
+              ],
+              "x": 575,
+              "y": 1300,
+              "escenaPide": "caro-pide",
+              "escenaOtra": "caro-otra",
+              "escenaGracias": "caro-gracias",
+              "escenaListo": "caro-listo"
+            }
+          },
+          {
+            "id": "pua",
+            "personaje": "pua",
+            "x": 760,
+            "y": 1075,
+            "escena": "pua"
+          },
+          {
+            "id": "nuez",
+            "personaje": "nuez",
+            "x": 1020,
+            "y": 1105,
+            "escena": "nuez"
+          },
+          {
+            "id": "rayo",
+            "personaje": "rayo",
+            "x": 1330,
+            "y": 885,
+            "escena": "rayo"
           }
         ],
         "luciernagas": [
@@ -424,58 +596,58 @@
         ],
         "arboles": [
           {
-            "x": 636,
-            "y": 92,
-            "tipo": 6,
-            "escala": 0.63
-          },
-          {
-            "x": 317,
-            "y": 97,
-            "tipo": 2,
-            "escala": 0.65
-          },
-          {
-            "x": 143,
-            "y": 97,
-            "tipo": 3,
-            "escala": 0.65
-          },
-          {
-            "x": 1568,
-            "y": 102,
-            "tipo": 5,
-            "escala": 0.74
-          },
-          {
-            "x": 1173,
-            "y": 102,
-            "tipo": 7,
-            "escala": 0.71
-          },
-          {
-            "x": 1773,
-            "y": 107,
+            "x": 1504,
+            "y": 90,
             "tipo": 4,
-            "escala": 0.65
+            "escala": 0.78
           },
           {
-            "x": 766,
-            "y": 127,
-            "tipo": 6,
-            "escala": 0.82
+            "x": 165,
+            "y": 92,
+            "tipo": 3,
+            "escala": 0.88
           },
           {
-            "x": 454,
-            "y": 132,
+            "x": 1354,
+            "y": 97,
             "tipo": 2,
             "escala": 0.79
           },
           {
-            "x": 1351,
-            "y": 134,
+            "x": 1817,
+            "y": 100,
             "tipo": 8,
-            "escala": 0.84
+            "escala": 0.88
+          },
+          {
+            "x": 715,
+            "y": 114,
+            "tipo": 6,
+            "escala": 0.87
+          },
+          {
+            "x": 1620,
+            "y": 123,
+            "tipo": 1,
+            "escala": 0.87
+          },
+          {
+            "x": 352,
+            "y": 126,
+            "tipo": 6,
+            "escala": 0.71
+          },
+          {
+            "x": 1170,
+            "y": 127,
+            "tipo": 0,
+            "escala": 0.8
+          },
+          {
+            "x": 57,
+            "y": 131,
+            "tipo": 4,
+            "escala": 0.79
           },
           {
             "x": 997,
@@ -484,40 +656,28 @@
             "escala": 0.68
           },
           {
-            "x": 33,
-            "y": 141,
-            "tipo": 4,
-            "escala": 0.74
-          },
-          {
             "x": 880,
             "y": 161,
             "tipo": 1,
             "escala": 0.83
           },
           {
-            "x": 1691,
-            "y": 178,
+            "x": 1735,
+            "y": 169,
             "tipo": 5,
-            "escala": 0.87
+            "escala": 0.88
           },
           {
-            "x": 219,
+            "x": 241,
             "y": 184,
+            "tipo": 0,
+            "escala": 0.66
+          },
+          {
+            "x": 619,
+            "y": 188,
             "tipo": 2,
-            "escala": 0.79
-          },
-          {
-            "x": 602,
-            "y": 202,
-            "tipo": 4,
-            "escala": 0.77
-          },
-          {
-            "x": 1819,
-            "y": 209,
-            "tipo": 8,
-            "escala": 0.71
+            "escala": 0.6
           },
           {
             "x": 1555,
@@ -526,10 +686,10 @@
             "escala": 0.74
           },
           {
-            "x": 763,
-            "y": 221,
-            "tipo": 0,
-            "escala": 0.79
+            "x": -1,
+            "y": 214,
+            "tipo": 3,
+            "escala": 0.63
           },
           {
             "x": 1100,
@@ -538,16 +698,28 @@
             "escala": 0.73
           },
           {
+            "x": 766,
+            "y": 247,
+            "tipo": 7,
+            "escala": 0.75
+          },
+          {
             "x": 109,
             "y": 254,
             "tipo": 6,
             "escala": 0.62
           },
           {
-            "x": 904,
-            "y": 270,
-            "tipo": 3,
-            "escala": 0.82
+            "x": 1803,
+            "y": 275,
+            "tipo": 7,
+            "escala": 0.86
+          },
+          {
+            "x": 959,
+            "y": 280,
+            "tipo": 5,
+            "escala": 0.73
           },
           {
             "x": -17,
@@ -568,16 +740,22 @@
             "escala": 0.7
           },
           {
-            "x": 1792,
-            "y": 361,
-            "tipo": 2,
-            "escala": 0.61
+            "x": 858,
+            "y": 330,
+            "tipo": 3,
+            "escala": 0.69
           },
           {
-            "x": 152,
-            "y": 373,
-            "tipo": 2,
-            "escala": 0.76
+            "x": 202,
+            "y": 335,
+            "tipo": 1,
+            "escala": 0.79
+          },
+          {
+            "x": 1812,
+            "y": 381,
+            "tipo": 3,
+            "escala": 0.84
           },
           {
             "x": 1505,
@@ -586,34 +764,28 @@
             "escala": 0.66
           },
           {
-            "x": 907,
-            "y": 414,
-            "tipo": 0,
-            "escala": 0.79
-          },
-          {
-            "x": 1688,
+            "x": 1692,
             "y": 421,
-            "tipo": 4,
-            "escala": 0.85
+            "tipo": 5,
+            "escala": 0.83
           },
           {
-            "x": 1064,
-            "y": 432,
-            "tipo": 3,
-            "escala": 0.63
+            "x": 584,
+            "y": 433,
+            "tipo": 1,
+            "escala": 0.65
           },
           {
-            "x": 1179,
-            "y": 458,
+            "x": 849,
+            "y": 440,
+            "tipo": 5,
+            "escala": 0.73
+          },
+          {
+            "x": 1057,
+            "y": 454,
             "tipo": 0,
-            "escala": 0.85
-          },
-          {
-            "x": 614,
-            "y": 458,
-            "tipo": 7,
-            "escala": 0.84
+            "escala": 0.61
           },
           {
             "x": 90,
@@ -622,28 +794,22 @@
             "escala": 0.73
           },
           {
-            "x": 277,
-            "y": 466,
-            "tipo": 7,
-            "escala": 0.77
-          },
-          {
-            "x": 1440,
-            "y": 468,
-            "tipo": 8,
-            "escala": 0.81
-          },
-          {
-            "x": 1604,
-            "y": 508,
-            "tipo": 7,
-            "escala": 0.87
+            "x": 1424,
+            "y": 467,
+            "tipo": 6,
+            "escala": 0.84
           },
           {
             "x": 727,
             "y": 522,
             "tipo": 7,
             "escala": 0.77
+          },
+          {
+            "x": 1525,
+            "y": 529,
+            "tipo": 8,
+            "escala": 0.67
           },
           {
             "x": 926,
@@ -658,22 +824,16 @@
             "escala": 0.61
           },
           {
-            "x": 1059,
-            "y": 559,
-            "tipo": 6,
-            "escala": 0.85
-          },
-          {
             "x": 1355,
             "y": 564,
             "tipo": 5,
             "escala": 0.64
           },
           {
-            "x": 306,
-            "y": 569,
-            "tipo": 1,
-            "escala": 0.89
+            "x": 1627,
+            "y": 577,
+            "tipo": 0,
+            "escala": 0.79
           },
           {
             "x": 437,
@@ -682,46 +842,34 @@
             "escala": 0.75
           },
           {
-            "x": 1552,
-            "y": 598,
-            "tipo": 0,
-            "escala": 0.85
-          },
-          {
-            "x": 776,
-            "y": 630,
+            "x": 814,
+            "y": 594,
             "tipo": 8,
-            "escala": 0.8
+            "escala": 0.76
           },
           {
-            "x": 193,
-            "y": 632,
-            "tipo": 4,
-            "escala": 0.9
+            "x": 190,
+            "y": 615,
+            "tipo": 8,
+            "escala": 0.66
           },
           {
-            "x": 942,
-            "y": 637,
-            "tipo": 1,
-            "escala": 0.68
+            "x": 1277,
+            "y": 646,
+            "tipo": 0,
+            "escala": 0.66
           },
           {
-            "x": 1299,
-            "y": 663,
-            "tipo": 4,
+            "x": 1553,
+            "y": 660,
+            "tipo": 7,
             "escala": 0.69
           },
           {
-            "x": 48,
-            "y": 667,
-            "tipo": 5,
-            "escala": 0.82
-          },
-          {
-            "x": 1816,
-            "y": 671,
-            "tipo": 6,
-            "escala": 0.74
+            "x": -8,
+            "y": 675,
+            "tipo": 4,
+            "escala": 0.88
           },
           {
             "x": 590,
@@ -730,16 +878,22 @@
             "escala": 0.85
           },
           {
-            "x": 1437,
-            "y": 678,
-            "tipo": 7,
-            "escala": 0.63
+            "x": 1816,
+            "y": 698,
+            "tipo": 3,
+            "escala": 0.9
           },
           {
-            "x": 400,
-            "y": 691,
-            "tipo": 6,
-            "escala": 0.67
+            "x": 1410,
+            "y": 703,
+            "tipo": 3,
+            "escala": 0.85
+          },
+          {
+            "x": 420,
+            "y": 703,
+            "tipo": 0,
+            "escala": 0.62
           },
           {
             "x": 279,
@@ -748,22 +902,10 @@
             "escala": 0.63
           },
           {
-            "x": 1169,
-            "y": 721,
-            "tipo": 5,
-            "escala": 0.76
-          },
-          {
-            "x": 150,
-            "y": 747,
-            "tipo": 5,
-            "escala": 0.89
-          },
-          {
-            "x": -13,
-            "y": 749,
-            "tipo": 5,
-            "escala": 0.89
+            "x": 147,
+            "y": 709,
+            "tipo": 1,
+            "escala": 0.7
           },
           {
             "x": 513,
@@ -772,28 +914,22 @@
             "escala": 0.72
           },
           {
-            "x": 653,
-            "y": 768,
-            "tipo": 5,
-            "escala": 0.72
-          },
-          {
-            "x": 1527,
-            "y": 769,
-            "tipo": 6,
-            "escala": 0.9
-          },
-          {
             "x": 333,
             "y": 794,
             "tipo": 3,
             "escala": 0.71
           },
           {
-            "x": 1339,
-            "y": 810,
-            "tipo": 7,
-            "escala": 0.62
+            "x": 66,
+            "y": 800,
+            "tipo": 4,
+            "escala": 0.79
+          },
+          {
+            "x": 1290,
+            "y": 802,
+            "tipo": 8,
+            "escala": 0.68
           },
           {
             "x": 1809,
@@ -802,15 +938,9 @@
             "escala": 0.66
           },
           {
-            "x": 1131,
-            "y": 823,
-            "tipo": 6,
-            "escala": 0.61
-          },
-          {
-            "x": -12,
-            "y": 848,
-            "tipo": 5,
+            "x": 14,
+            "y": 887,
+            "tipo": 2,
             "escala": 0.78
           },
           {
@@ -820,46 +950,10 @@
             "escala": 0.72
           },
           {
-            "x": 1806,
-            "y": 1008,
-            "tipo": 3,
-            "escala": 0.79
-          },
-          {
-            "x": 1475,
-            "y": 1022,
-            "tipo": 1,
-            "escala": 0.66
-          },
-          {
-            "x": 501,
-            "y": 1033,
-            "tipo": 1,
-            "escala": 0.63
-          },
-          {
-            "x": 1235,
-            "y": 1051,
+            "x": 1786,
+            "y": 1014,
             "tipo": 7,
-            "escala": 0.84
-          },
-          {
-            "x": 1355,
-            "y": 1063,
-            "tipo": 8,
-            "escala": 0.71
-          },
-          {
-            "x": 390,
-            "y": 1070,
-            "tipo": 8,
-            "escala": 0.7
-          },
-          {
-            "x": 625,
-            "y": 1083,
-            "tipo": 2,
-            "escala": 0.61
+            "escala": 0.83
           },
           {
             "x": 16,
@@ -868,52 +962,46 @@
             "escala": 0.81
           },
           {
+            "x": 1547,
+            "y": 1096,
+            "tipo": 1,
+            "escala": 0.75
+          },
+          {
+            "x": 521,
+            "y": 1116,
+            "tipo": 5,
+            "escala": 0.68
+          },
+          {
             "x": 170,
             "y": 1124,
             "tipo": 3,
             "escala": 0.71
           },
           {
-            "x": 531,
-            "y": 1142,
-            "tipo": 1,
-            "escala": 0.64
-          },
-          {
-            "x": 1501,
-            "y": 1147,
-            "tipo": 3,
-            "escala": 0.63
-          },
-          {
-            "x": 1308,
-            "y": 1168,
-            "tipo": 1,
-            "escala": 0.61
-          },
-          {
-            "x": 336,
-            "y": 1185,
+            "x": 408,
+            "y": 1144,
             "tipo": 5,
-            "escala": 0.73
+            "escala": 0.81
           },
           {
-            "x": 872,
-            "y": 1218,
+            "x": 1422,
+            "y": 1168,
+            "tipo": 8,
+            "escala": 0.66
+          },
+          {
+            "x": 1298,
+            "y": 1179,
+            "tipo": 2,
+            "escala": 0.82
+          },
+          {
+            "x": 240,
+            "y": 1211,
             "tipo": 1,
-            "escala": 0.8
-          },
-          {
-            "x": 6,
-            "y": 1222,
-            "tipo": 4,
-            "escala": 0.73
-          },
-          {
-            "x": 1470,
-            "y": 1238,
-            "tipo": 7,
-            "escala": 0.79
+            "escala": 0.77
           },
           {
             "x": 443,
@@ -922,46 +1010,46 @@
             "escala": 0.63
           },
           {
-            "x": 757,
-            "y": 1259,
-            "tipo": 5,
-            "escala": 0.66
+            "x": 57,
+            "y": 1243,
+            "tipo": 1,
+            "escala": 0.71
           },
           {
-            "x": 258,
-            "y": 1282,
+            "x": 1608,
+            "y": 1261,
+            "tipo": 1,
+            "escala": 0.68
+          },
+          {
+            "x": 1327,
+            "y": 1281,
+            "tipo": 6,
+            "escala": 0.65
+          },
+          {
+            "x": 202,
+            "y": 1326,
             "tipo": 0,
+            "escala": 0.71
+          },
+          {
+            "x": -2,
+            "y": 1343,
+            "tipo": 8,
+            "escala": 0.72
+          },
+          {
+            "x": 922,
+            "y": 1344,
+            "tipo": 7,
             "escala": 0.75
           },
           {
-            "x": 136,
-            "y": 1286,
-            "tipo": 6,
-            "escala": 0.83
-          },
-          {
-            "x": 1632,
-            "y": 1289,
+            "x": 343,
+            "y": 1344,
             "tipo": 8,
-            "escala": 0.73
-          },
-          {
-            "x": 1316,
-            "y": 1297,
-            "tipo": 4,
-            "escala": 0.88
-          },
-          {
-            "x": 939,
-            "y": 1302,
-            "tipo": 4,
-            "escala": 0.64
-          },
-          {
-            "x": -11,
-            "y": 1328,
-            "tipo": 1,
-            "escala": 0.9
+            "escala": 0.62
           },
           {
             "x": 1442,
@@ -970,46 +1058,28 @@
             "escala": 0.62
           },
           {
-            "x": 1572,
+            "x": 807,
             "y": 1379,
-            "tipo": 2,
-            "escala": 0.76
-          },
-          {
-            "x": 264,
-            "y": 1386,
             "tipo": 5,
-            "escala": 0.64
+            "escala": 0.82
           },
           {
-            "x": 1029,
-            "y": 1387,
-            "tipo": 4,
-            "escala": 0.88
+            "x": 1709,
+            "y": 1394,
+            "tipo": 6,
+            "escala": 0.74
           },
           {
-            "x": 851,
-            "y": 1403,
-            "tipo": 8,
-            "escala": 0.62
+            "x": 1580,
+            "y": 1404,
+            "tipo": 0,
+            "escala": 0.85
           },
           {
-            "x": 1704,
-            "y": 1418,
-            "tipo": 3,
-            "escala": 0.65
-          },
-          {
-            "x": 1185,
-            "y": 1429,
-            "tipo": 7,
-            "escala": 0.87
-          },
-          {
-            "x": 684,
-            "y": 1440,
-            "tipo": 3,
-            "escala": 0.71
+            "x": 1148,
+            "y": 1413,
+            "tipo": 2,
+            "escala": 0.83
           },
           {
             "x": 169,
@@ -1018,34 +1088,34 @@
             "escala": 0.73
           },
           {
-            "x": 14,
-            "y": 1478,
-            "tipo": 5,
-            "escala": 0.79
+            "x": 1813,
+            "y": 1465,
+            "tipo": 2,
+            "escala": 0.83
           },
           {
-            "x": 1792,
-            "y": 1483,
+            "x": 762,
+            "y": 1472,
+            "tipo": 7,
+            "escala": 0.89
+          },
+          {
+            "x": 53,
+            "y": 1500,
             "tipo": 4,
-            "escala": 0.6
+            "escala": 0.83
           },
           {
-            "x": 592,
-            "y": 1539,
-            "tipo": 6,
-            "escala": 0.74
-          },
-          {
-            "x": 924,
-            "y": 1542,
-            "tipo": 0,
-            "escala": 0.68
-          },
-          {
-            "x": 727,
-            "y": 1545,
-            "tipo": 1,
+            "x": 879,
+            "y": 1522,
+            "tipo": 3,
             "escala": 0.81
+          },
+          {
+            "x": 1645,
+            "y": 1550,
+            "tipo": 2,
+            "escala": 0.78
           },
           {
             "x": 147,
@@ -1054,16 +1124,16 @@
             "escala": 0.72
           },
           {
-            "x": 1605,
-            "y": 1573,
-            "tipo": 8,
-            "escala": 0.68
-          },
-          {
             "x": 1807,
             "y": 1578,
             "tipo": 4,
             "escala": 0.81
+          },
+          {
+            "x": 611,
+            "y": 1596,
+            "tipo": 2,
+            "escala": 0.72
           },
           {
             "x": 819,
@@ -1072,28 +1142,34 @@
             "escala": 0.74
           },
           {
-            "x": 647,
-            "y": 1634,
-            "tipo": 3,
-            "escala": 0.71
+            "x": 3,
+            "y": 1636,
+            "tipo": 6,
+            "escala": 0.81
           },
           {
-            "x": 69,
-            "y": 1644,
+            "x": 966,
+            "y": 1640,
+            "tipo": 5,
+            "escala": 0.68
+          },
+          {
+            "x": 1604,
+            "y": 1649,
+            "tipo": 2,
+            "escala": 0.88
+          },
+          {
+            "x": 716,
+            "y": 1675,
+            "tipo": 8,
+            "escala": 0.76
+          },
+          {
+            "x": 1815,
+            "y": 1675,
             "tipo": 7,
-            "escala": 0.77
-          },
-          {
-            "x": 960,
-            "y": 1651,
-            "tipo": 3,
-            "escala": 0.69
-          },
-          {
-            "x": 1562,
-            "y": 1681,
-            "tipo": 7,
-            "escala": 0.86
+            "escala": 0.89
           },
           {
             "x": 198,
@@ -1102,10 +1178,10 @@
             "escala": 0.69
           },
           {
-            "x": 1816,
+            "x": 1087,
             "y": 1712,
-            "tipo": 1,
-            "escala": 0.75
+            "tipo": 7,
+            "escala": 0.68
           },
           {
             "x": 1696,
@@ -1114,28 +1190,22 @@
             "escala": 0.8
           },
           {
-            "x": 1111,
-            "y": 1722,
+            "x": 79,
+            "y": 1718,
+            "tipo": 8,
+            "escala": 0.72
+          },
+          {
+            "x": 498,
+            "y": 1733,
             "tipo": 3,
-            "escala": 0.9
+            "escala": 0.7
           },
           {
-            "x": 694,
-            "y": 1727,
-            "tipo": 2,
-            "escala": 0.79
-          },
-          {
-            "x": 480,
-            "y": 1730,
-            "tipo": 2,
-            "escala": 0.68
-          },
-          {
-            "x": -16,
-            "y": 1736,
-            "tipo": 5,
-            "escala": 0.84
+            "x": 910,
+            "y": 1737,
+            "tipo": 8,
+            "escala": 0.77
           },
           {
             "x": 1250,
@@ -1144,22 +1214,46 @@
             "escala": 0.69
           },
           {
-            "x": 1466,
-            "y": 1745,
-            "tipo": 0,
-            "escala": 0.74
-          },
-          {
-            "x": 904,
-            "y": 1755,
+            "x": 759,
+            "y": 1765,
             "tipo": 3,
-            "escala": 0.78
+            "escala": 0.82
           },
           {
-            "x": 77,
-            "y": 1798,
-            "tipo": 7,
+            "x": 1592,
+            "y": 1769,
+            "tipo": 8,
+            "escala": 0.87
+          },
+          {
+            "x": 626,
+            "y": 1773,
+            "tipo": 0,
+            "escala": 0.81
+          },
+          {
+            "x": 1815,
+            "y": 1776,
+            "tipo": 5,
+            "escala": 0.66
+          },
+          {
+            "x": -7,
+            "y": 1785,
+            "tipo": 4,
             "escala": 0.64
+          },
+          {
+            "x": 1410,
+            "y": 1791,
+            "tipo": 5,
+            "escala": 0.64
+          },
+          {
+            "x": 140,
+            "y": 1803,
+            "tipo": 6,
+            "escala": 0.74
           },
           {
             "x": 1020,
@@ -1174,34 +1268,10 @@
             "escala": 0.87
           },
           {
-            "x": 195,
-            "y": 1817,
-            "tipo": 2,
-            "escala": 0.79
-          },
-          {
-            "x": 1607,
-            "y": 1823,
-            "tipo": 2,
-            "escala": 0.62
-          },
-          {
             "x": 524,
             "y": 1829,
             "tipo": 1,
             "escala": 0.9
-          },
-          {
-            "x": 1809,
-            "y": 1829,
-            "tipo": 7,
-            "escala": 0.66
-          },
-          {
-            "x": 1431,
-            "y": 1849,
-            "tipo": 1,
-            "escala": 0.63
           },
           {
             "x": 710,
@@ -1216,16 +1286,16 @@
             "escala": 0.75
           },
           {
-            "x": 1118,
-            "y": 1860,
+            "x": 1156,
+            "y": 1871,
             "tipo": 5,
-            "escala": 0.62
+            "escala": 0.82
           },
           {
-            "x": 1245,
-            "y": 1868,
-            "tipo": 5,
-            "escala": 0.66
+            "x": 1280,
+            "y": 1876,
+            "tipo": 6,
+            "escala": 0.89
           },
           {
             "x": 1704,
@@ -1234,10 +1304,16 @@
             "escala": 0.62
           },
           {
-            "x": 0,
-            "y": 1886,
+            "x": 1566,
+            "y": 1882,
             "tipo": 7,
-            "escala": 0.63
+            "escala": 0.81
+          },
+          {
+            "x": 42,
+            "y": 1883,
+            "tipo": 7,
+            "escala": 0.78
           },
           {
             "x": 272,
@@ -1246,10 +1322,16 @@
             "escala": 0.65
           },
           {
-            "x": 1536,
-            "y": 1900,
+            "x": 1404,
+            "y": 1891,
+            "tipo": 2,
+            "escala": 0.68
+          },
+          {
+            "x": 988,
+            "y": 1899,
             "tipo": 6,
-            "escala": 0.7
+            "escala": 0.76
           }
         ],
         "luces": [
@@ -1269,7 +1351,12 @@
             "y": 760,
             "radio": 130,
             "movimiento": "revolotea",
-            "rapidez": 1.0
+            "rapidez": 1.0,
+            "palabra": {
+              "en": "butterfly",
+              "es": "mariposa",
+              "icono": "mundo/animal-1.webp"
+            }
           },
           {
             "imagen": "mundo/animal-2.webp",
@@ -1278,7 +1365,12 @@
             "y": 980,
             "radio": 150,
             "movimiento": "revolotea",
-            "rapidez": 0.8
+            "rapidez": 0.8,
+            "palabra": {
+              "en": "butterfly",
+              "es": "mariposa",
+              "icono": "mundo/animal-2.webp"
+            }
           },
           {
             "imagen": "mundo/animal-1.webp",
@@ -1287,7 +1379,12 @@
             "y": 1440,
             "radio": 120,
             "movimiento": "revolotea",
-            "rapidez": 0.9
+            "rapidez": 0.9,
+            "palabra": {
+              "en": "butterfly",
+              "es": "mariposa",
+              "icono": "mundo/animal-1.webp"
+            }
           },
           {
             "imagen": "mundo/animal-2.webp",
@@ -1296,7 +1393,12 @@
             "y": 330,
             "radio": 120,
             "movimiento": "revolotea",
-            "rapidez": 1.1
+            "rapidez": 1.1,
+            "palabra": {
+              "en": "butterfly",
+              "es": "mariposa",
+              "icono": "mundo/animal-2.webp"
+            }
           },
           {
             "imagen": "mundo/animal-3.webp",
@@ -1305,7 +1407,12 @@
             "y": 690,
             "radio": 90,
             "movimiento": "zumba",
-            "rapidez": 1.6
+            "rapidez": 1.6,
+            "palabra": {
+              "en": "bee",
+              "es": "abeja",
+              "icono": "mundo/animal-3.webp"
+            }
           },
           {
             "imagen": "mundo/animal-3.webp",
@@ -1314,7 +1421,12 @@
             "y": 1380,
             "radio": 100,
             "movimiento": "zumba",
-            "rapidez": 1.4
+            "rapidez": 1.4,
+            "palabra": {
+              "en": "bee",
+              "es": "abeja",
+              "icono": "mundo/animal-3.webp"
+            }
           },
           {
             "imagen": "mundo/animal-6.webp",
@@ -1323,7 +1435,12 @@
             "y": 520,
             "radio": 520,
             "movimiento": "planea",
-            "rapidez": 0.35
+            "rapidez": 0.35,
+            "palabra": {
+              "en": "bird",
+              "es": "pájaro",
+              "icono": "mundo/animal-6.webp"
+            }
           },
           {
             "imagen": "mundo/animal-4.webp",
@@ -1332,7 +1449,12 @@
             "y": 1120,
             "radio": 300,
             "movimiento": "planea",
-            "rapidez": 0.22
+            "rapidez": 0.22,
+            "palabra": {
+              "en": "owl",
+              "es": "búho",
+              "icono": "mundo/animal-4.webp"
+            }
           },
           {
             "imagen": "mundo/animal-5.webp",
@@ -1341,7 +1463,12 @@
             "y": 400,
             "radio": 0,
             "movimiento": "salta",
-            "rapidez": 1
+            "rapidez": 1,
+            "palabra": {
+              "en": "frog",
+              "es": "rana",
+              "icono": "mundo/animal-5.webp"
+            }
           },
           {
             "imagen": "mundo/animal-5.webp",
@@ -1350,7 +1477,309 @@
             "y": 1440,
             "radio": 0,
             "movimiento": "salta",
-            "rapidez": 1
+            "rapidez": 1,
+            "palabra": {
+              "en": "frog",
+              "es": "rana",
+              "icono": "mundo/animal-5.webp"
+            }
+          }
+        ],
+        "objetos": [
+          {
+            "imagen": "mundo/objeto-1.webp",
+            "ancho": 190,
+            "x": 690,
+            "y": 790,
+            "choque": 62
+          },
+          {
+            "imagen": "mundo/objeto-2.webp",
+            "ancho": 190,
+            "x": 1070,
+            "y": 770,
+            "choque": 62
+          },
+          {
+            "imagen": "mundo/objeto-3.webp",
+            "ancho": 170,
+            "x": 1100,
+            "y": 1090,
+            "choque": 56
+          },
+          {
+            "imagen": "mundo/objeto-6.webp",
+            "ancho": 105,
+            "x": 882,
+            "y": 800,
+            "choque": 38
+          },
+          {
+            "imagen": "mundo/objeto-9.webp",
+            "ancho": 150,
+            "x": 680,
+            "y": 1075,
+            "choque": 50
+          },
+          {
+            "imagen": "mundo/objeto-8.webp",
+            "ancho": 120,
+            "x": 930,
+            "y": 1120,
+            "choque": 26
+          },
+          {
+            "imagen": "mundo/objeto-5.webp",
+            "ancho": 78,
+            "x": 1135,
+            "y": 915,
+            "choque": 12
+          },
+          {
+            "imagen": "mundo/objeto-4.webp",
+            "ancho": 70,
+            "x": 770,
+            "y": 668,
+            "choque": 10,
+            "luz": true
+          },
+          {
+            "imagen": "mundo/objeto-4.webp",
+            "ancho": 70,
+            "x": 1000,
+            "y": 668,
+            "choque": 10,
+            "luz": true
+          },
+          {
+            "imagen": "mundo/objeto-4.webp",
+            "ancho": 70,
+            "x": 655,
+            "y": 935,
+            "choque": 10,
+            "luz": true
+          },
+          {
+            "imagen": "mundo/objeto-4.webp",
+            "ancho": 70,
+            "x": 830,
+            "y": 1130,
+            "choque": 10,
+            "luz": true
+          },
+          {
+            "imagen": "mundo/objeto-4.webp",
+            "ancho": 70,
+            "x": 470,
+            "y": 1400,
+            "choque": 10,
+            "luz": true
+          },
+          {
+            "imagen": "mundo/objeto-4.webp",
+            "ancho": 70,
+            "x": 1300,
+            "y": 1400,
+            "choque": 10,
+            "luz": true
+          },
+          {
+            "imagen": "mundo/objeto-4.webp",
+            "ancho": 70,
+            "x": 1500,
+            "y": 820,
+            "choque": 10,
+            "luz": true
+          },
+          {
+            "imagen": "mundo/objeto-4.webp",
+            "ancho": 70,
+            "x": 330,
+            "y": 380,
+            "choque": 10,
+            "luz": true
+          },
+          {
+            "imagen": "mundo/objeto-4.webp",
+            "ancho": 70,
+            "x": 1230,
+            "y": 380,
+            "choque": 10,
+            "luz": true
+          },
+          {
+            "imagen": "mundo/objeto-4.webp",
+            "ancho": 70,
+            "x": 300,
+            "y": 960,
+            "choque": 10,
+            "luz": true
+          },
+          {
+            "imagen": "mundo/objeto-7.webp",
+            "ancho": 84,
+            "x": 610,
+            "y": 850,
+            "choque": 0
+          },
+          {
+            "imagen": "mundo/objeto-7.webp",
+            "ancho": 84,
+            "x": 1165,
+            "y": 850,
+            "choque": 0
+          },
+          {
+            "imagen": "mundo/objeto-7.webp",
+            "ancho": 70,
+            "x": 960,
+            "y": 660,
+            "choque": 0
+          },
+          {
+            "imagen": "mundo/objeto-7.webp",
+            "ancho": 70,
+            "x": 800,
+            "y": 1150,
+            "choque": 0
+          },
+          {
+            "imagen": "mundo/objeto-7.webp",
+            "ancho": 84,
+            "x": 1180,
+            "y": 1010,
+            "choque": 0
+          }
+        ],
+        "colorPenumbra": "rgb(16 8 46 / 0.66)",
+        "celda": 20,
+        "agua": [
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "000000000000000000000000000000001100000000000000000000000000000000000000000000000000000000",
+          "000000000000000000000000000000000011000000000000000000000000000000000000000000000000000000",
+          "000000000000000000000000000000011111100000000000000000000000000000000000000000000000000000",
+          "000000000000000000000000000000011111111000000000000000000000000000000000000000000000000000",
+          "000000000000000000000000000000011111111100000000000000000000000000000000000000000000000000",
+          "000000000000000000000000000001001111111100000000000000000000000000000000000000000000000000",
+          "000000000000000000000000000000001111111100000000000000000000000000000000000000000000000000",
+          "000000000000000000000000000000000111111010000000000000000000000000000000000000000000000000",
+          "000000000000000000000000000000000101101100000000000000000000000000000000000000000000000000",
+          "000000000000000000000000000000000000100000000000000000000000000000000100000000000000000000",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000001111",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000011111",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000011111",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000111110",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000000011111100",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000001111111000",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000000111111000",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000010111110000",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000101111100000",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000111111100000",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000111111100000",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000111111100000",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000111111100000",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000000100000000",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000111111000000",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000111111100000",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000111111110000",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000011111100000",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000010111110000",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000000111110000",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000001011111000",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000000111111000",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000000111111110",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000000010111111",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000111111",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000011111",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000011111",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000001111",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000111",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000111",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000",
+          "000000000000000000000000000000000000000000000000001011100000000000000000000000000000000000",
+          "000000000000000000000000000000000000000000000000011111110000000000000000000000000000000000",
+          "000000000000000000000000000000000000000000000000001111111000000000000000000000000000000000",
+          "000000000000000000000000000000000000000000000000001111111100000000000000000000000000000000",
+          "000000000000000000000000000000000000000000000000100111111000000000000000000000000000000000",
+          "000000000000000000000000000000000000000000000000101111111100000000000000000000000000000000",
+          "000000000000000000000000000000000000000000000000000011110000000000000000000000000000000000",
+          "000000000000000000000000000000000000000000000000000100011100000000000000000000000000000000",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000100000000000000",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+        ],
+        "frente": [
+          {
+            "x": 887,
+            "y": 276,
+            "tipo": 1
+          },
+          {
+            "x": 1667,
+            "y": 301,
+            "tipo": 4
+          },
+          {
+            "x": 1685,
+            "y": 1186,
+            "tipo": 0
+          },
+          {
+            "x": 1014,
+            "y": 1662,
+            "tipo": 7
+          },
+          {
+            "x": 104,
+            "y": 1735,
+            "tipo": 6
+          },
+          {
+            "x": 1669,
+            "y": 1729,
+            "tipo": 7
+          },
+          {
+            "x": 147,
+            "y": 1277,
+            "tipo": 5
           }
         ]
       },
@@ -1395,13 +1824,18 @@
           "lineas": [
             {
               "quien": "cosmo",
-              "es": "Toca la pantalla y yo vuelo hasta tu dedo. ¡Puedes ir a donde quieras!",
-              "en": "Touch the screen and I fly to your finger. You can go anywhere!"
+              "es": "Toca la pantalla y caminas hasta tu dedo. ¡Puedes ir a donde quieras!",
+              "en": "Touch the screen and you walk to your finger. You can go anywhere!"
             },
             {
               "quien": "pixie",
-              "es": "Si ves una luciérnaga, atrápala. Guarda una palabra.",
-              "en": "If you see a firefly, catch it. It keeps a word."
+              "es": "Si ves una luciérnaga o un animal, acércate. Guardan palabras para tu álbum.",
+              "en": "If you see a firefly or an animal, go near. They keep words for your album."
+            },
+            {
+              "quien": "pixie",
+              "es": "Los vecinos del bosque perdieron sus palabras. ¡Ayúdalos a encontrarlas!",
+              "en": "The forest neighbors lost their words. Help them find them!"
             }
           ],
           "luego": "elegir"
@@ -1500,9 +1934,254 @@
               "en": "The Valley of Words opens very soon. I will wait for you!"
             }
           ]
+        },
+        "cosmo": {
+          "lineas": [
+            {
+              "quien": "cosmo",
+              "es": "¡Qué bueno verte! Los vecinos necesitan ayuda. Y los faroles también.",
+              "en": "Good to see you! The neighbors need help. And so do the lanterns."
+            }
+          ],
+          "luego": "elegir"
+        },
+        "pua": {
+          "lineas": [
+            {
+              "quien": "pua",
+              "es": "Vendo frutas en mi carreta... pero olvidé cómo se llaman. ¡Gracias por traer la luz!",
+              "en": "I sell fruit in my cart... but I forgot the names. Thank you for bringing the light!"
+            }
+          ]
+        },
+        "nuez": {
+          "lineas": [
+            {
+              "quien": "nuez",
+              "es": "Horneo pan para toda la aldea. Cuando vuelvan las palabras, haré una fiesta.",
+              "en": "I bake bread for the whole village. When the words come back, I will make a party."
+            }
+          ]
+        },
+        "rayo": {
+          "lineas": [
+            {
+              "quien": "rayo",
+              "es": "Llevo cartas al Valle de las Palabras, pero el puente está apagado. ¡Junta estrellas!",
+              "en": "I carry letters to the Valley of Words, but the bridge is dark. Collect stars!"
+            }
+          ]
+        },
+        "tito-pide": {
+          "lineas": [
+            {
+              "quien": "tito",
+              "es": "¡Ay! Perdí una palabra y me quedé sin color. Se cayó en el camino de los colores.",
+              "en": "Oh no! I lost a word and I lost my color. It fell on the colors path."
+            },
+            {
+              "quien": "tito",
+              "es": "¿Me la traes? Escucha bien cuál es.",
+              "en": "Can you bring it to me? Listen carefully."
+            }
+          ]
+        },
+        "tito-otra": {
+          "lineas": [
+            {
+              "quien": "tito",
+              "es": "Mmm, esa no es mi palabra. ¡No pasa nada! Escucha otra vez y prueba con otra.",
+              "en": "Hmm, that is not my word. That is okay! Listen again and try another one."
+            }
+          ]
+        },
+        "tito-gracias": {
+          "lineas": [
+            {
+              "quien": "tito",
+              "es": "¡Esa es! ¡Red! Mi palabra volvió y mi color también.",
+              "en": "That is it! Red! My word is back, and my color too."
+            },
+            {
+              "quien": "tito",
+              "es": "¡Gracias! La guardé en tu álbum para que no se pierda.",
+              "en": "Thank you! I put it in your album so it never gets lost."
+            }
+          ]
+        },
+        "tito-listo": {
+          "lineas": [
+            {
+              "quien": "tito",
+              "es": "¡Red! Ya no se me olvida. ¡Gracias, amigo!",
+              "en": "Red! I will never forget it. Thank you, friend!"
+            }
+          ]
+        },
+        "abu-pide": {
+          "lineas": [
+            {
+              "quien": "abu",
+              "es": "¡Ay! Perdí una palabra y me quedé sin color. Se cayó en el camino de los números.",
+              "en": "Oh no! I lost a word and I lost my color. It fell on the numbers path."
+            },
+            {
+              "quien": "abu",
+              "es": "¿Me la traes? Escucha bien cuál es.",
+              "en": "Can you bring it to me? Listen carefully."
+            }
+          ]
+        },
+        "abu-otra": {
+          "lineas": [
+            {
+              "quien": "abu",
+              "es": "Mmm, esa no es mi palabra. ¡No pasa nada! Escucha otra vez y prueba con otra.",
+              "en": "Hmm, that is not my word. That is okay! Listen again and try another one."
+            }
+          ]
+        },
+        "abu-gracias": {
+          "lineas": [
+            {
+              "quien": "abu",
+              "es": "¡Esa es! ¡Three! Mi palabra volvió y mi color también.",
+              "en": "That is it! Three! My word is back, and my color too."
+            },
+            {
+              "quien": "abu",
+              "es": "¡Gracias! La guardé en tu álbum para que no se pierda.",
+              "en": "Thank you! I put it in your album so it never gets lost."
+            }
+          ]
+        },
+        "abu-listo": {
+          "lineas": [
+            {
+              "quien": "abu",
+              "es": "¡Three! Ya no se me olvida. ¡Gracias, amigo!",
+              "en": "Three! I will never forget it. Thank you, friend!"
+            }
+          ]
+        },
+        "caro-pide": {
+          "lineas": [
+            {
+              "quien": "caro",
+              "es": "¡Ay! Perdí una palabra y me quedé sin color. Se cayó en el camino de abajo.",
+              "en": "Oh no! I lost a word and I lost my color. It fell on the path below."
+            },
+            {
+              "quien": "caro",
+              "es": "¿Me la traes? Escucha bien cuál es.",
+              "en": "Can you bring it to me? Listen carefully."
+            }
+          ]
+        },
+        "caro-otra": {
+          "lineas": [
+            {
+              "quien": "caro",
+              "es": "Mmm, esa no es mi palabra. ¡No pasa nada! Escucha otra vez y prueba con otra.",
+              "en": "Hmm, that is not my word. That is okay! Listen again and try another one."
+            }
+          ]
+        },
+        "caro-gracias": {
+          "lineas": [
+            {
+              "quien": "caro",
+              "es": "¡Esa es! ¡Pencil! Mi palabra volvió y mi color también.",
+              "en": "That is it! Pencil! My word is back, and my color too."
+            },
+            {
+              "quien": "caro",
+              "es": "¡Gracias! La guardé en tu álbum para que no se pierda.",
+              "en": "Thank you! I put it in your album so it never gets lost."
+            }
+          ]
+        },
+        "caro-listo": {
+          "lineas": [
+            {
+              "quien": "caro",
+              "es": "¡Pencil! Ya no se me olvida. ¡Gracias, amigo!",
+              "en": "Pencil! I will never forget it. Thank you, friend!"
+            }
+          ]
         }
       }
     }
   ],
-  "idiomaHistoria": "es-US"
+  "idiomaHistoria": "es-US",
+  "heroes": [
+    {
+      "id": "tavi",
+      "nombre": "Tavi",
+      "imagen": "personajes/heroe-1.webp",
+      "ancho": 64,
+      "saludo": {
+        "es": "¡Hola! Soy Tavi.",
+        "en": "Hello! I am Tavi."
+      }
+    },
+    {
+      "id": "mika",
+      "nombre": "Mika",
+      "imagen": "personajes/heroe-2.webp",
+      "ancho": 58,
+      "saludo": {
+        "es": "¡Hola! Soy Mika.",
+        "en": "Hello! I am Mika."
+      }
+    },
+    {
+      "id": "bruno",
+      "nombre": "Bruno",
+      "imagen": "personajes/heroe-3.webp",
+      "ancho": 64,
+      "saludo": {
+        "es": "¡Hola! Soy Bruno.",
+        "en": "Hello! I am Bruno."
+      }
+    }
+  ],
+  "estelas": [
+    {
+      "id": "oro",
+      "estrellas": 0,
+      "colores": [
+        "#fff3a6",
+        "#ffd95a"
+      ]
+    },
+    {
+      "id": "menta",
+      "estrellas": 25,
+      "colores": [
+        "#b6fff0",
+        "#19c6b1"
+      ]
+    },
+    {
+      "id": "rosa",
+      "estrellas": 50,
+      "colores": [
+        "#ffd0e6",
+        "#ff5fa2"
+      ]
+    },
+    {
+      "id": "arcoiris",
+      "estrellas": 90,
+      "colores": [
+        "#ff5f6d",
+        "#ffc371",
+        "#fff36b",
+        "#6bffb0",
+        "#6bc5ff",
+        "#c58bff"
+      ]
+    }
+  ]
 }

@@ -1,0 +1,105 @@
+{
+  "id": "ingles-3",
+  "titulo": "English Adventure Quest",
+  "materia": "Inglés",
+  "grado": "3",
+  "idiomaVoz": "en-US",
+  "territorios": [
+    {
+      "id": "bosque",
+      "nombre": "Bosque de los Sonidos",
+      "guia": { "nombre": "Cosmo", "imagen": "personajes/cosmo-wave.webp" },
+      "saludo": "Hello! I am Cosmo. Let's bring back the light!",
+      "fondos": {
+        "lejos": "fondos/bosque-far.webp",
+        "medio": "fondos/bosque-mid.webp",
+        "cerca": "fondos/bosque-near.webp"
+      },
+      "puerta": {
+        "estrellas": 50,
+        "destino": "Valle de las Palabras",
+        "imagen": "personajes/nova-ready.webp"
+      },
+      "misiones": [
+        {
+          "id": "bosque-school",
+          "titulo": "School objects",
+          "plantilla": "escucha-toca",
+          "icono": "iconos/1f392.svg",
+          "palabras": [
+            { "en": "pencil", "es": "lápiz", "icono": "iconos/270f.svg" },
+            { "en": "eraser", "es": "borrador", "icono": "iconos/1f9fd.svg" },
+            { "en": "notebook", "es": "cuaderno", "icono": "iconos/1f4d3.svg" },
+            { "en": "ruler", "es": "regla", "icono": "iconos/1f4cf.svg" },
+            { "en": "scissors", "es": "tijeras", "icono": "iconos/2702.svg" },
+            { "en": "backpack", "es": "morral", "icono": "iconos/1f392.svg" },
+            { "en": "book", "es": "libro", "icono": "iconos/1f4d8.svg" },
+            { "en": "marker", "es": "marcador", "icono": "iconos/1f58a.svg" }
+          ]
+        },
+        {
+          "id": "bosque-colors",
+          "titulo": "Colors",
+          "plantilla": "escucha-toca",
+          "icono": "iconos/1f7e3.svg",
+          "palabras": [
+            { "en": "red", "es": "rojo", "icono": "iconos/1f534.svg" },
+            { "en": "blue", "es": "azul", "icono": "iconos/1f535.svg" },
+            { "en": "green", "es": "verde", "icono": "iconos/1f7e2.svg" },
+            { "en": "yellow", "es": "amarillo", "icono": "iconos/1f7e1.svg" },
+            { "en": "orange", "es": "naranja", "icono": "iconos/1f7e0.svg" },
+            { "en": "purple", "es": "morado", "icono": "iconos/1f7e3.svg" }
+          ]
+        },
+        {
+          "id": "bosque-numbers",
+          "titulo": "Numbers",
+          "plantilla": "escucha-toca",
+          "icono": "iconos/0033_20e3.svg",
+          "palabras": [
+            { "en": "one", "es": "uno", "icono": "iconos/0031_20e3.svg" },
+            { "en": "two", "es": "dos", "icono": "iconos/0032_20e3.svg" },
+            { "en": "three", "es": "tres", "icono": "iconos/0033_20e3.svg" },
+            { "en": "four", "es": "cuatro", "icono": "iconos/0034_20e3.svg" },
+            { "en": "five", "es": "cinco", "icono": "iconos/0035_20e3.svg" },
+            { "en": "six", "es": "seis", "icono": "iconos/0036_20e3.svg" },
+            { "en": "seven", "es": "siete", "icono": "iconos/0037_20e3.svg" },
+            { "en": "eight", "es": "ocho", "icono": "iconos/0038_20e3.svg" },
+            { "en": "nine", "es": "nueve", "icono": "iconos/0039_20e3.svg" },
+            { "en": "ten", "es": "diez", "icono": "iconos/1f51f.svg" }
+          ]
+        },
+        {
+          "id": "bosque-body",
+          "titulo": "My body",
+          "plantilla": "escucha-toca",
+          "icono": "iconos/1f440.svg",
+          "palabras": [
+            { "en": "head", "es": "cabeza", "icono": "iconos/1f642.svg" },
+            { "en": "eyes", "es": "ojos", "icono": "iconos/1f440.svg" },
+            { "en": "ears", "es": "orejas", "icono": "iconos/1f442.svg" },
+            { "en": "nose", "es": "nariz", "icono": "iconos/1f443.svg" },
+            { "en": "mouth", "es": "boca", "icono": "iconos/1f444.svg" },
+            { "en": "hands", "es": "manos", "icono": "iconos/1f64c.svg" },
+            { "en": "feet", "es": "pies", "icono": "iconos/1f9b6.svg" }
+          ]
+        },
+        {
+          "id": "bosque-family",
+          "titulo": "Hello, family",
+          "plantilla": "escucha-toca",
+          "icono": "iconos/1f44b.svg",
+          "palabras": [
+            { "en": "hello", "es": "hola", "icono": "iconos/1f44b.svg" },
+            { "en": "good morning", "es": "buenos días", "icono": "iconos/1f305.svg" },
+            { "en": "thank you", "es": "gracias", "icono": "iconos/1f64f.svg" },
+            { "en": "mother", "es": "mamá", "icono": "iconos/1f469.svg" },
+            { "en": "father", "es": "papá", "icono": "iconos/1f468.svg" },
+            { "en": "sister", "es": "hermana", "icono": "iconos/1f467.svg" },
+            { "en": "brother", "es": "hermano", "icono": "iconos/1f466.svg" }
+          ]
+        }
+      ]
+    }
+  ]
+}

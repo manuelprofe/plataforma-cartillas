@@ -1,5 +1,6 @@
-// Mundo explorable de un territorio. El niño mueve al guía con el dedo, habla
-// con los personajes, atrapa luciérnagas y decide a qué misión entrar.
+// Mundo explorable de un territorio, visto desde arriba. El niño mueve al guía con
+// el dedo en cualquier dirección, habla con los personajes, atrapa luciérnagas y
+// decide a qué misión entrar.
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import type { Linea, ModoIdioma, Palabra, Territorio } from './tipos';
 import { fijarDestino, marcarVista, useProgreso } from './progreso';
@@ -14,8 +15,13 @@ const RADIO_LUCIERNAGA = 52;
 // (y no solo el fondo) lo que se ve moverse por la pantalla.
 const CAMARA_RAPIDEZ = 2.6; // rigidez del resorte: arranca despacio y alcanza al guía después
 const CAMARA_ZONA = 0.08; // fracción del ancho en que el guía se mueve sin que la cámara lo siga
-const CAMARA_ADELANTO = 0.12; // deja más pantalla hacia donde mira el guía
-const CAMARA_BORDE = 0.26; // el guía nunca queda más cerca que esto del borde
+const CAMARA_BORDE = 0.24; // el guía nunca queda más cerca que esto del borde
+const CAMARA_PIES = 0.58; // altura de la pantalla en que descansa el guía (su cuerpo queda encima)
+// El mundo se ajusta al tamaño de la pantalla: en celular se ve el claro con sus caminos
+// y en pantallas grandes sigue habiendo algo que explorar.
+const LADO_DE_REFERENCIA = 1000;
+const ESCALA_MINIMA = 0.75;
+const ESCALA_MAXIMA = 2;
 const CHISPAS = 14;
 const MS_ENTRE_CHISPAS = 55;
 const sinMovimiento = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -53,11 +59,10 @@ export function Mundo({ territorio, base, vozIngles, vozEspanol, onEntrar }: Pro
 
   const marco = useRef<HTMLDivElement>(null);
   const suelo = useRef<HTMLDivElement>(null);
-  const capaLejos = useRef<HTMLDivElement>(null);
-  const capaMedia = useRef<HTMLDivElement>(null);
   const guia = useRef<HTMLDivElement>(null);
   const meta = useRef<HTMLSpanElement>(null);
   const chispas = useRef<HTMLDivElement>(null);
+  const brujula = useRef<HTMLDivElement>(null);
   const ondas = useRef<HTMLDivElement>(null);
 
   const [tam, setTam] = useState({ ancho: 390, alto: 0 });
@@ -65,7 +70,6 @@ export function Mundo({ territorio, base, vozIngles, vozEspanol, onEntrar }: Pro
   const [charla, setCharla] = useState<Charla | null>(null);
   const [, repintar] = useState(0);
   const [destello, setDestello] = useState<{ palabra: Palabra; x: number; y: number; n: number } | null>(null);
-  const [flecha, setFlecha] = useState<'izq' | 'der' | null>(null);
 
   const hechas = misiones.filter((m) => progreso.misiones[m.id]).length;
   const luz = misiones.length ? hechas / misiones.length : 0;
@@ -75,24 +79,25 @@ export function Mundo({ territorio, base, vozIngles, vozEspanol, onEntrar }: Pro
 
   const cosas = useMemo<Cosa[]>(
     () => [
-      ...mundo.habitantes.map((h, i) => ({ id: h.id, tipo: 'habitante' as const, indice: i, x: h.x, y: h.y * tam.alto })),
-      ...misiones.map((m, i) => ({ id: m.id, tipo: 'mision' as const, indice: i, x: m.x, y: m.y * tam.alto })),
-      { id: 'puente', tipo: 'puente' as const, indice: 0, x: puerta.x, y: puerta.y * tam.alto },
+      ...mundo.habitantes.map((h, i) => ({ id: h.id, tipo: 'habitante' as const, indice: i, x: h.x, y: h.y })),
+      ...misiones.map((m, i) => ({ id: m.id, tipo: 'mision' as const, indice: i, x: m.x, y: m.y })),
+      { id: 'puente', tipo: 'puente' as const, indice: 0, x: puerta.x, y: puerta.y },
     ],
-    [mundo.habitantes, misiones, puerta, tam.alto],
+    [mundo.habitantes, misiones, puerta],
   );
   const palabras = useMemo(() => misiones.flatMap((m) => m.palabras), [misiones]);
 
   // Estado del movimiento: vive fuera de React para no repintar en cada cuadro.
   const mov = useRef({
     x: ultimaPosicion?.x ?? mundo.inicio.x,
-    y: ultimaPosicion?.y ?? -1,
+    y: ultimaPosicion?.y ?? mundo.inicio.y,
     objetivo: null as { x: number; y: number } | null,
     pendiente: null as string | null,
     // Dedo apoyado, en coordenadas de pantalla: mientras siga ahí, el guía lo persigue.
     dedo: null as { x: number; y: number } | null,
-    camara: 0,
-    camaraVel: 0,
+    camara: { x: 0, y: 0 },
+    camaraVel: { x: 0, y: 0 },
+    escala: 1,
     camaraLista: false,
     teclas: new Set<string>(),
     pausa: false,
@@ -160,7 +165,6 @@ export function Mundo({ territorio, base, vozIngles, vozEspanol, onEntrar }: Pro
   useEffect(() => {
     if (!tam.alto) return;
     const m = mov.current;
-    if (m.y < 0) m.y = mundo.inicio.y * tam.alto;
     let cuadro = 0;
     let antes = performance.now();
     let mirando = 1;
@@ -174,11 +178,14 @@ export function Mundo({ territorio, base, vozIngles, vozEspanol, onEntrar }: Pro
       const dt = Math.min(0.05, (ahora - antes) / 1000);
       antes = ahora;
       const { cosas, tam, palabras } = vivo.current;
+      const escala = Math.max(ESCALA_MINIMA, Math.min(ESCALA_MAXIMA, Math.max(tam.ancho, tam.alto) / LADO_DE_REFERENCIA));
+      const vista = { x: tam.ancho / escala, y: tam.alto / escala };
+      m.escala = escala;
 
       let dx = 0;
       let dy = 0;
       if (!m.pausa) {
-        if (m.dedo) m.objetivo = { x: m.dedo.x + m.camara, y: m.dedo.y - 24 };
+        if (m.dedo) m.objetivo = { x: m.dedo.x / escala + m.camara.x, y: m.dedo.y / escala + m.camara.y - 24 };
         const t = m.teclas;
         if (t.size) {
           dx = (t.has('arrowright') || t.has('d') ? 1 : 0) - (t.has('arrowleft') || t.has('a') ? 1 : 0);
@@ -205,7 +212,7 @@ export function Mundo({ territorio, base, vozIngles, vozEspanol, onEntrar }: Pro
         const x0 = m.x;
         const y0 = m.y;
         m.x = Math.max(50, Math.min(mundo.ancho - 50, m.x + dx));
-        m.y = Math.max(tam.alto * 0.16, Math.min(tam.alto * 0.82, m.y + dy));
+        m.y = Math.max(110, Math.min(mundo.alto - 20, m.y + dy));
         dx = m.x - x0;
         dy = m.y - y0;
         if (Math.abs(dx) > 0.2) mirando = dx > 0 ? 1 : -1;
@@ -214,12 +221,12 @@ export function Mundo({ territorio, base, vozIngles, vozEspanol, onEntrar }: Pro
         // Luciérnagas: al tocarlas dicen una palabra.
         mundo.luciernagas.forEach((l, i) => {
           if (atrapadas.has(i)) return;
-          if (Math.hypot(l.x - m.x, l.y * tam.alto - m.y) < RADIO_LUCIERNAGA) {
+          if (Math.hypot(l.x - m.x, l.y - m.y) < RADIO_LUCIERNAGA) {
             atrapadas.add(i);
             const palabra = palabras[(i * 7 + 3) % palabras.length];
             sonar('estrella');
             window.setTimeout(() => decir(palabra.en, vozIngles), 250);
-            setDestello({ palabra, x: l.x, y: l.y * tam.alto, n: i });
+            setDestello({ palabra, x: l.x, y: l.y, n: i });
             repintar((n) => n + 1);
           }
         });
@@ -241,30 +248,37 @@ export function Mundo({ territorio, base, vozIngles, vozEspanol, onEntrar }: Pro
         }
       }
 
-      // Cámara con retraso y zona libre.
-      const deseada = m.x - tam.ancho * (0.5 - CAMARA_ADELANTO * mirando);
-      if (!m.camaraLista) {
-        m.camara = deseada;
-        m.camaraLista = true;
-      } else {
-        // Resorte con amortiguación crítica: la cámara tarda en arrancar y no rebota.
-        const atraso = deseada - m.camara;
-        const zona = tam.ancho * CAMARA_ZONA;
-        const falta = Math.abs(atraso) > zona ? atraso - Math.sign(atraso) * zona : 0;
-        m.camaraVel += (CAMARA_RAPIDEZ * CAMARA_RAPIDEZ * falta - 2 * CAMARA_RAPIDEZ * m.camaraVel) * dt;
-        const libre = m.camara + m.camaraVel * dt;
-        m.camara = Math.max(m.x - tam.ancho * (1 - CAMARA_BORDE), Math.min(m.x - tam.ancho * CAMARA_BORDE, libre));
-        m.camara = Math.max(0, Math.min(mundo.ancho - tam.ancho, m.camara));
-        // Si el guía la empuja desde el borde, o llega al final del mundo, toma esa velocidad.
-        if (m.camara !== libre && dt > 0) m.camaraVel = (m.camara - (libre - m.camaraVel * dt)) / dt;
+      // Cámara con retraso y zona libre, en las dos direcciones.
+      const pies = { x: 0.5, y: CAMARA_PIES };
+      for (const eje of ['x', 'y'] as const) {
+        const largoMundo = eje === 'x' ? mundo.ancho : mundo.alto;
+        const tope = largoMundo - vista[eje];
+        const deseada = m[eje] - vista[eje] * pies[eje];
+        if (!m.camaraLista) {
+          m.camara[eje] = deseada;
+        } else {
+          // Resorte con amortiguación crítica: la cámara tarda en arrancar y no rebota.
+          const atraso = deseada - m.camara[eje];
+          const zona = vista[eje] * CAMARA_ZONA;
+          const falta = Math.abs(atraso) > zona ? atraso - Math.sign(atraso) * zona : 0;
+          m.camaraVel[eje] += (CAMARA_RAPIDEZ * CAMARA_RAPIDEZ * falta - 2 * CAMARA_RAPIDEZ * m.camaraVel[eje]) * dt;
+          m.camara[eje] += m.camaraVel[eje] * dt;
+        }
+        const previa = m.camara[eje];
+        m.camara[eje] = Math.max(m[eje] - vista[eje] * (1 - CAMARA_BORDE), Math.min(m[eje] - vista[eje] * CAMARA_BORDE, m.camara[eje]));
+        // Si el mundo cabe entero en la pantalla, se centra.
+        m.camara[eje] = tope <= 0 ? tope / 2 : Math.max(0, Math.min(tope, m.camara[eje]));
+        // Si el guía la empuja desde el borde, o llega al final del mundo, pierde el impulso.
+        if (m.camara[eje] !== previa && dt > 0) m.camaraVel[eje] = eje === 'x' ? dx / dt : dy / dt;
+        if (m.camara[eje] === 0 || m.camara[eje] === tope) m.camaraVel[eje] = 0;
       }
-      m.camara = Math.max(0, Math.min(mundo.ancho - tam.ancho, m.camara));
-      if (suelo.current) suelo.current.style.transform = `translate3d(${-m.camara}px,0,0)`;
-      if (capaLejos.current) capaLejos.current.style.transform = `translate3d(${-m.camara * 0.18}px,0,0)`;
-      if (capaMedia.current) capaMedia.current.style.transform = `translate3d(${-m.camara * 0.5}px,0,0)`;
+      m.camaraLista = true;
+      if (suelo.current) suelo.current.style.transform = `scale(${escala}) translate3d(${-m.camara.x}px, ${-m.camara.y}px, 0)`;
       if (guia.current) {
         guia.current.style.transform = `translate3d(${m.x}px, ${m.y}px, 0)`;
         guia.current.dataset.mira = mirando > 0 ? 'der' : 'izq';
+        // Lo que está más abajo en el mapa queda por delante.
+        guia.current.style.zIndex = String(Math.round(m.y));
         // Se inclina hacia donde va y trota mientras avanza.
         const anda = Math.hypot(dx, dy) > 0.3;
         if (anda !== andaba) {
@@ -304,10 +318,21 @@ export function Mundo({ territorio, base, vozIngles, vozEspanol, onEntrar }: Pro
         if (meta.current.dataset.ver !== ver) meta.current.dataset.ver = ver;
       }
 
-      // Flecha hacia la misión elegida cuando queda fuera de la pantalla.
-      const elegida = cosas.find((c) => c.id === vivo.current.destino);
-      const lado = !elegida ? null : elegida.x < m.camara + 20 ? 'izq' : elegida.x > m.camara + tam.ancho - 20 ? 'der' : null;
-      setFlecha((f) => (f === lado ? f : lado));
+      // Brújula: apunta a la misión elegida cuando queda fuera de la pantalla.
+      if (brujula.current) {
+        const elegida = cosas.find((c) => c.id === vivo.current.destino);
+        const px = elegida ? (elegida.x - m.camara.x) * escala : 0;
+        const py = elegida ? (elegida.y - m.camara.y) * escala : 0;
+        const fuera = elegida && (px < 20 || px > tam.ancho - 20 || py < 20 || py > tam.alto - 20);
+        if (fuera) {
+          const bx = Math.max(42, Math.min(tam.ancho - 42, px));
+          const by = Math.max(110, Math.min(tam.alto - 60, py));
+          const giro = Math.atan2(py - by, px - bx);
+          brujula.current.style.transform = `translate3d(${bx}px, ${by}px, 0) rotate(${giro}rad)`;
+        }
+        const ver = fuera ? 'si' : 'no';
+        if (brujula.current.dataset.ver !== ver) brujula.current.dataset.ver = ver;
+      }
 
       cuadro = requestAnimationFrame(paso);
     };
@@ -324,6 +349,12 @@ export function Mundo({ territorio, base, vozIngles, vozEspanol, onEntrar }: Pro
     };
   }, [tam.alto, mundo, vozIngles]);
 
+  // Pasa un punto de la pantalla a coordenadas del mundo.
+  const alMundo = (x: number, y: number) => ({
+    x: x / mov.current.escala + mov.current.camara.x,
+    y: y / mov.current.escala + mov.current.camara.y,
+  });
+
   // El dedo: tocar o arrastrar en cualquier parte lleva al guía hasta ahí.
   const apuntar = (e: React.PointerEvent) => {
     if (mov.current.pausa || (e.target as HTMLElement).closest('button')) return;
@@ -331,12 +362,13 @@ export function Mundo({ territorio, base, vozIngles, vozEspanol, onEntrar }: Pro
     const caja = marco.current!.getBoundingClientRect();
     const x = e.clientX - caja.left;
     const y = e.clientY - caja.top;
+    const punto = alMundo(x, y);
     mov.current.dedo = { x, y };
-    mov.current.objetivo = { x: x + mov.current.camara, y: y - 24 };
+    mov.current.objetivo = { x: punto.x, y: punto.y - 24 };
     mov.current.pendiente = null;
     if (e.type === 'pointerdown') {
       sonar('toque');
-      ondear(x + mov.current.camara, y);
+      ondear(punto.x, punto.y);
     }
   };
   const soltar = () => {
@@ -365,12 +397,11 @@ export function Mundo({ territorio, base, vozIngles, vozEspanol, onEntrar }: Pro
       return;
     }
     sonar('salto');
-    m.objetivo = { x: cosa.x - 60, y: cosa.y - 10 };
+    m.objetivo = { x: cosa.x, y: cosa.y + 62 };
     m.pendiente = cosa.id;
   };
 
-  const filtro = { filter: `grayscale(${(1 - luzVista) * 0.9}) brightness(${0.62 + luzVista * 0.38})` };
-  const url = (ruta: string) => `url(${base}${ruta})`;
+  const filtro = { filter: `grayscale(${(1 - luzVista) * 0.6}) brightness(${0.78 + luzVista * 0.22})` };
   const cosa = (id: string) => cosas.find((c) => c.id === id)!;
   const restantes = mundo.luciernagas.length - atrapadas.size;
 
@@ -389,18 +420,13 @@ export function Mundo({ territorio, base, vozIngles, vozEspanol, onEntrar }: Pro
       onPointerCancel={soltar}
       onLostPointerCapture={soltar}
     >
-      <div className="mundo__fondo" style={filtro} aria-hidden="true">
-        <div ref={capaLejos} className="mundo__capa" style={{ backgroundImage: url(territorio.fondos.lejos), width: mundo.ancho }} />
-        <div ref={capaMedia} className="mundo__capa" style={{ backgroundImage: url(territorio.fondos.medio), width: mundo.ancho }} />
-      </div>
-
-      <div ref={suelo} className="mundo__suelo" style={{ width: mundo.ancho }}>
-        <div className="mundo__capa mundo__capa--cerca" style={{ backgroundImage: url(territorio.fondos.cerca), ...filtro }} aria-hidden="true" />
+      <div ref={suelo} className="mundo__suelo" style={{ width: mundo.ancho, height: mundo.alto }}>
+        <img className="mundo__mapa" src={base + mundo.mapa} alt="" style={filtro} draggable={false} />
 
         {tam.alto > 0 && (
           <>
             {mundo.luciernagas.map((l, i) =>
-              atrapadas.has(i) ? null : <span key={i} className="luciernaga" style={{ left: l.x, top: l.y * tam.alto, animationDelay: `${-i * 0.7}s` }} aria-hidden="true" />,
+              atrapadas.has(i) ? null : <span key={i} className="luciernaga" style={{ left: l.x, top: l.y, animationDelay: `${-i * 0.7}s` }} aria-hidden="true" />,
             )}
 
             {destello && (
@@ -413,7 +439,7 @@ export function Mundo({ territorio, base, vozIngles, vozEspanol, onEntrar }: Pro
             {mundo.habitantes.map((h) => {
               const c = cosa(h.id);
               return (
-                <button key={h.id} type="button" className={`habitante${cerca === h.id ? ' es-cerca' : ''}`} style={{ left: c.x, top: c.y }} onClick={() => tocarCosa(c)} aria-label={`Hablar con ${personajes[h.personaje].nombre}`}>
+                <button key={h.id} type="button" className={`habitante${cerca === h.id ? ' es-cerca' : ''}`} style={{ left: c.x, top: c.y, zIndex: Math.round(c.y) }} onClick={() => tocarCosa(c)} aria-label={`Hablar con ${personajes[h.personaje].nombre}`}>
                   <img src={base + personajes[h.personaje].imagen} alt="" width="104" height="92" draggable={false} />
                   <span className="globito">💬</span>
                 </button>
@@ -429,7 +455,7 @@ export function Mundo({ territorio, base, vozIngles, vozEspanol, onEntrar }: Pro
                   key={m.id}
                   type="button"
                   className={`nodo nodo--${hecha ? 'hecha' : 'abierta'}${elegida ? ' nodo--siguiente' : ''}${cerca === m.id ? ' es-cerca' : ''}`}
-                  style={{ left: c.x, top: c.y }}
+                  style={{ left: c.x, top: c.y, zIndex: Math.round(c.y) }}
                   onClick={() => tocarCosa(c)}
                   aria-label={m.titulo}
                 >
@@ -446,7 +472,7 @@ export function Mundo({ territorio, base, vozIngles, vozEspanol, onEntrar }: Pro
             <button
               type="button"
               className={`puerta${puertaAbierta ? ' puerta--abierta' : ''}${cerca === 'puente' ? ' es-cerca' : ''}`}
-              style={{ left: puerta.x, top: puerta.y * tam.alto }}
+              style={{ left: puerta.x, top: puerta.y, zIndex: Math.round(puerta.y) }}
               onClick={() => tocarCosa(cosa('puente'))}
               aria-label={`Puente a ${puerta.destino}: ${progreso.estrellas} de ${puerta.estrellas} estrellas`}
             >
@@ -493,7 +519,11 @@ export function Mundo({ territorio, base, vozIngles, vozEspanol, onEntrar }: Pro
         </span>
       </div>
 
-      {flecha && !charla && <div className={`brujula brujula--${flecha}`} aria-hidden="true">{flecha === 'der' ? '➜' : '⬅'}</div>}
+      {!charla && (
+        <div ref={brujula} className="brujula" data-ver="no" aria-hidden="true">
+          <span>➜</span>
+        </div>
+      )}
 
       {charla && (
         <Dialogo

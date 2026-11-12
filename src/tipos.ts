@@ -54,9 +54,11 @@ export interface Territorio {
   guia: string;
   personajes: Record<string, Personaje>;
   idiomaPorAvance: ModoIdioma[];
-  fondos: { lejos: string; medio: string; cerca: string };
+  /** Mundo visto desde arriba. Todas las posiciones van en píxeles del mapa. */
   mundo: {
+    mapa: string;
     ancho: number;
+    alto: number;
     inicio: { x: number; y: number };
     habitantes: { id: string; personaje: string; x: number; y: number; escena: string }[];
     luciernagas: { x: number; y: number }[];

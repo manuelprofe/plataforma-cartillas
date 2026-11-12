@@ -159,33 +159,23 @@ img {
   background: var(--noche);
 }
 
-.mundo__fondo {
-  position: absolute;
-  inset: 0;
-  transition: filter 1.8s ease;
-}
-
-.mundo__capa {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  background-repeat: repeat-x;
-  background-size: auto 100%;
-  will-change: transform;
-}
-
-.mundo__capa--cerca {
-  width: 100%;
-  transition: filter 1.8s ease;
-}
-
 .mundo__suelo {
   position: absolute;
   top: 0;
   left: 0;
-  height: 100%;
+  transform-origin: 0 0;
   will-change: transform;
+}
+
+.mundo__mapa {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  transition: filter 1.8s ease;
+  pointer-events: none;
+  user-select: none;
 }
 
 .nodo {
@@ -799,8 +789,24 @@ img {
 
 .brujula {
   position: absolute;
-  top: 46%;
+  top: 0;
+  left: 0;
   z-index: 10;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+
+.brujula[data-ver='si'] {
+  opacity: 1;
+}
+
+.brujula span {
+  position: absolute;
+  left: -27px;
+  top: -27px;
   width: 54px;
   height: 54px;
   display: grid;
@@ -809,13 +815,9 @@ img {
   background: var(--oro);
   color: var(--tinta);
   font-size: 1.6rem;
-  box-shadow: 0 5px 0 var(--oro-hondo);
-  pointer-events: none;
+  box-shadow: 0 0 0 4px rgb(255 255 255 / 0.85), 0 6px 14px rgb(0 0 0 / 0.35);
   animation: latir 1s ease-in-out infinite;
 }
-
-.brujula--der { right: 10px; }
-.brujula--izq { left: 10px; }
 
 /* ---------- Diálogos ---------- */
 

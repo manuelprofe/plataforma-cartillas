@@ -27,6 +27,14 @@ basada en el trabajo de grado de Manuel Vega en la I.E. Jorge Barco Mora (Los Pa
   tiene los juegos individuales; el coordinador ve el seguimiento por grupo.
 - El mundo del estudiante no debe ser lineal: movimiento libre, historia narrada con
   personajes que hablan, botón "Continuar" y menús donde el niño decide.
+- **Vista desde arriba** (aprobada): el mundo se recorre en todas las direcciones, no de
+  lado hacia la derecha. Se descartó la primera persona.
+- **El material gráfico lo genera Claude en Canva** (aprobado): mapas, fondos y objetos.
+  Los personajes se conservan y sus animaciones se harán en otra herramienta (propuesta:
+  Rive), porque Canva no produce personajes animados para juego.
+- La voz definitiva es lo último.
+- Orden de trabajo acordado: llevar el Bosque a calidad final, probarlo con niños y
+  después replicar en los otros territorios.
 - La historia se narra en español al principio y en inglés hacia los niveles finales.
 
 ## Qué hay construido
@@ -36,7 +44,8 @@ basada en el trabajo de grado de Manuel Vega en la I.E. Jorge Barco Mora (Los Pa
 | Equipo de agentes (líder, diseñador, pedagogo, desarrollador, revisor, auditor) | Escritos, aún sin usar | `.claude/agents/` |
 | Skills (2 oficiales de Anthropic revisadas + `diseno-infantil` y `auditoria`) | Instaladas | `.claude/skills/` |
 | Aplicación (Vite + React + TypeScript) | Prototipo del modo estudiante | `src/` |
-| Mundo explorable del Bosque de los Sonidos | Funciona, con el problema descrito abajo | `src/Mundo.tsx` |
+| Mundo explorable del Bosque de los Sonidos, visto desde arriba | Funciona; falta que Manuel lo pruebe | `src/Mundo.tsx` |
+| Mapa del bosque generado en Canva (1800 × 1800, 233 KB) | Primera versión | `public/cartillas/ingles-3/fondos/bosque-mapa.webp` |
 | Diálogos con personajes, opciones y cambio de idioma | Funciona | `src/Dialogo.tsx` |
 | Juego "escucha y toca" (plantilla que recibe contenido) | Funciona; es el único juego | `src/juegos/EscuchaToca.tsx` |
 | Mission Stars en el dispositivo | Funciona con `localStorage` | `src/progreso.ts` |
@@ -65,25 +74,35 @@ participar, pronunciar y colaborar solo las da el docente (`dar_estrellas`).
 
 ## Lo que hay que mejorar, en orden
 
-### 1. El personaje no se ve moverse — hecho, falta que Manuel lo confirme
+### 1. Mundo visto desde arriba — primera versión hecha, falta que Manuel la pruebe
 
-Causa confirmada: la cámara estaba amarrada al guía, que quedaba fijo al 42 % del ancho.
-Ahora (`src/Mundo.tsx`, constantes `CAMARA_*`):
+Hecho en `src/Mundo.tsx` (constantes `CAMARA_*` y `ESCALA_*`):
 
-- La cámara es un resorte amortiguado con zona libre: el guía cruza la pantalla y la cámara
-  lo alcanza después. En carrera sostenida el guía queda al 74 % del ancho.
-- El guía se inclina hacia donde va, trota y deja una estela de chispas; tiene sombra.
-- Cada toque deja una onda en el punto y un aro dorado marca el destino hasta llegar.
-- Con el dedo apoyado, el guía lo persigue aunque la cámara se mueva.
-- Comprobado a 390 px con capturas seguidas; el prototipo publicado ya tiene el cambio.
+- El guía cruza la pantalla y la cámara lo alcanza después (resorte amortiguado con zona
+  libre, en las dos direcciones). Se inclina, trota, deja chispas y tiene sombra. Cada toque
+  deja una onda y un aro dorado marca el destino. Manuel ya aprobó este movimiento.
+- El bosque es un mapa de 1800 × 1800: claro central, cinco claros con una misión cada uno,
+  puente hacia el Valle a la derecha y luciérnagas fuera de los caminos.
+- Todas las posiciones de `cartilla.json` van en píxeles del mapa (`mundo.mapa`, `ancho`,
+  `alto`); ya no existe `fondos`.
+- El mundo se escala según la pantalla y la brújula apunta en cualquier dirección.
+- Comprobado a 390 px y a 1366 px con capturas seguidas; el prototipo publicado lo tiene.
 
 Pendiente:
 
-- Que Manuel lo pruebe en su celular y diga si ya se percibe bien.
-- Manuel mencionó "la estrella que aparece al inicio": confirmar con él a qué personaje
-  espera controlar. Hoy el guía del Bosque es Cosmo (el planeta morado); la estrella es
-  Lumi y solo aparece en la portada y a mitad del bosque. Cambiarlo es un dato de
-  `cartilla.json` (`guia`), pero Lumi dejaría de ser habitante del bosque.
+- Que Manuel lo pruebe en su celular.
+- No hay obstáculos: el guía pasa por encima de árboles y agua. Decidir si se quedan así
+  (vuela) o si los caminos mandan.
+- El mapa se oscurece con un filtro hasta que se completan misiones; revisar si conviene
+  iluminar por zonas en vez de todo a la vez, y medir el filtro en gama baja.
+- Personajes animados: partir cada personaje en piezas y animarlo (Rive).
+- Manuel mencionó "la estrella que aparece al inicio": confirmar a qué personaje espera
+  controlar. Hoy es Cosmo; la estrella es Lumi.
+
+Cómo se trae una imagen de Canva: `generate-image` solo devuelve una miniatura de 200 px.
+Para el tamaño completo se inserta la imagen a página completa en un diseño
+(`read-design` con transacción, `edit-design` con `insert_fill`, guardar) y se exporta en
+PNG. El diseño contenedor es `DAHarW2Gyck`; la imagen del mapa es `MAHarXMYl7M`.
 
 ### 2. Más juego dentro de las misiones
 

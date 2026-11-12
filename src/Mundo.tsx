@@ -35,6 +35,9 @@ const MS_ENTRE_SALUDOS = 9000;
 // Copas de primer plano: se mueven más que el suelo.
 const PARALAJE_FRENTE = 1.25;
 const SEPARACION_TOMAS = 96;
+// Solo se dibuja lo que está cerca de la pantalla: el mundo es grande y los celulares, modestos.
+const CUADRO_VISTA = 300;
+const MARGEN_VISTA = 420;
 const MS_ENCENDER = 1600;
 const sinMovimiento = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -103,6 +106,13 @@ export function Mundo({ territorio, heroe, estelas, base, vozIngles, vozEspanol,
   const [, repintar] = useState(0);
   const [destello, setDestello] = useState<{ palabra: Palabra; x: number; y: number; n: number } | null>(null);
   const [panel, setPanel] = useState<'album' | 'mapa' | null>(null);
+  const [ventana, setVentana] = useState(() => {
+    const x = ultimaPosicion?.x ?? mundo.inicio.x;
+    const y = ultimaPosicion?.y ?? mundo.inicio.y;
+    return { x0: x - 1500, y0: y - 1500, x1: x + 1500, y1: y + 1500 };
+  });
+  const enVista = (x: number, y: number) => x > ventana.x0 && x < ventana.x1 && y > ventana.y0 && y < ventana.y1;
+  const despierta = (m: { requiere?: string }) => !m.requiere || Boolean(progreso.misiones[m.requiere]);
   // Palabra que el niño lleva de vuelta a un habitante.
   const [carga, setCarga] = useState<Palabra | null>(cargaGuardada);
   const ponerCarga = (p: Palabra | null) => {
@@ -226,6 +236,8 @@ export function Mundo({ territorio, heroe, estelas, base, vozIngles, vozEspanol,
           decirPedido();
         });
       }
+    } else if (cosa.tipo === 'mision' && !despierta(misiones[cosa.indice])) {
+      setCharla({ lineas: escenas.dormida.lineas });
     } else if (cosa.tipo === 'mision') {
       const indice = cosa.indice;
       setCharla({
@@ -320,6 +332,7 @@ export function Mundo({ territorio, heroe, estelas, base, vozIngles, vozEspanol,
     let esperaChispa = 0;
     let turnoChispa = 0;
     let atascado = 0;
+    let cuadroVista = '';
     const quieto = sinMovimiento();
     const huida = mundo.criaturas.map(() => ({ x: 0, y: 0 }));
 
@@ -457,6 +470,18 @@ export function Mundo({ territorio, heroe, estelas, base, vozIngles, vozEspanol,
         if (m.camara[eje] === 0 || m.camara[eje] === tope) m.camaraVel[eje] = 0;
       }
       m.camaraLista = true;
+      // Avisa qué parte del mundo hay que dibujar cuando la cámara cambia de cuadro.
+      const v = {
+        x0: Math.floor((m.camara.x - MARGEN_VISTA) / CUADRO_VISTA) * CUADRO_VISTA,
+        y0: Math.floor((m.camara.y - MARGEN_VISTA) / CUADRO_VISTA) * CUADRO_VISTA,
+        x1: Math.ceil((m.camara.x + vista.x + MARGEN_VISTA) / CUADRO_VISTA) * CUADRO_VISTA,
+        y1: Math.ceil((m.camara.y + vista.y + MARGEN_VISTA + 200) / CUADRO_VISTA) * CUADRO_VISTA,
+      };
+      const clave = `${v.x0},${v.y0},${v.x1},${v.y1}`;
+      if (clave !== cuadroVista) {
+        cuadroVista = clave;
+        setVentana(v);
+      }
       if (suelo.current) suelo.current.style.transform = `scale(${escala}) translate3d(${-m.camara.x}px, ${-m.camara.y}px, 0)`;
       if (guia.current) {
         guia.current.style.transform = `translate3d(${m.x}px, ${m.y}px, 0)`;
@@ -661,7 +686,16 @@ export function Mundo({ territorio, heroe, estelas, base, vozIngles, vozEspanol,
 
         {tam.alto > 0 && (
           <>
+            {mundo.huellas.map((h, i) =>
+              enVista(h.x, h.y) ? (
+                <span key={i} className={`huella${!h.mision || progreso.misiones[h.mision] ? ' es-hecha' : ''}`} style={{ left: h.x, top: h.y }} aria-hidden="true">
+                  {h.icono ? <img src={base + h.icono} alt="" width="40" height="40" loading="lazy" draggable={false} /> : '★'}
+                </span>
+              ) : null,
+            )}
+
             {mundo.arboles.map((a, i) => {
+              if (!enVista(a.x, a.y)) return null;
               const tipo = mundo.tiposArbol[a.tipo];
               return (
                 <div
@@ -688,6 +722,7 @@ export function Mundo({ territorio, heroe, estelas, base, vozIngles, vozEspanol,
             })}
 
             {mundo.objetos.map((o, i) => {
+              if (!enVista(o.x, o.y)) return null;
               const encendido = conLuz(o.x, o.y);
               return (
                 <div key={i} className={`objeto${encendido ? '' : ' arbol--apagado'}${o.luz && encendido ? ' objeto--luz' : ''}`} style={{ left: o.x, top: o.y, zIndex: Math.round(o.y) }} aria-hidden="true">
@@ -711,11 +746,11 @@ export function Mundo({ territorio, heroe, estelas, base, vozIngles, vozEspanol,
             ))}
 
             {mundo.luciernagas.map((l, i) =>
-              atrapadas.has(i) ? null : <span key={i} className="luciernaga" style={{ left: l.x, top: l.y, animationDelay: `${-i * 0.7}s` }} aria-hidden="true" />,
+              atrapadas.has(i) ? null : <span key={i} className="luciernaga" style={{ left: l.x, top: l.y, zIndex: mundo.alto + 15, animationDelay: `${-i * 0.7}s` }} aria-hidden="true" />,
             )}
 
             {destello && (
-              <span key={destello.n} className="destello" style={{ left: destello.x, top: destello.y }}>
+              <span key={destello.n} className="destello" style={{ left: destello.x, top: destello.y, zIndex: mundo.alto + 30 }}>
                 <img src={base + destello.palabra.icono} alt="" width="52" height="52" draggable={false} />
                 {destello.palabra.en}
               </span>
@@ -723,17 +758,20 @@ export function Mundo({ territorio, heroe, estelas, base, vozIngles, vozEspanol,
 
             {mundo.habitantes.map((h) => {
               const c = cosa(h.id);
+              const ayudado = progreso.ayudados.includes(h.id);
+              // Recupera el color cuando vuelve su palabra o cuando su claro se enciende.
+              const gris = Boolean(h.encargo) && !ayudado && !(h.zona && encendidas.includes(h.zona));
               return (
                 <button
                   key={h.id}
                   type="button"
-                  className={`habitante${cerca === h.id ? ' es-cerca' : ''}${h.encargo && !progreso.ayudados.includes(h.id) ? ' habitante--sin-palabra' : ''}`}
+                  className={`habitante${cerca === h.id ? ' es-cerca' : ''}${gris ? ' habitante--gris' : ''}${h.encargo && !ayudado ? ' habitante--pide' : ''}${ayudado ? ' habitante--brilla' : ''}`}
                   style={{ left: c.x, top: c.y, zIndex: Math.round(c.y) }}
                   onClick={() => tocarCosa(c)}
                   aria-label={`Hablar con ${personajes[h.personaje].nombre}`}
                 >
                   <img src={base + personajes[h.personaje].imagen} alt="" width={personajes[h.personaje].ancho ?? 96} draggable={false} style={{ animationDelay: `${-c.indice * 0.6}s` }} />
-                  <span className="globito">{h.encargo && !progreso.ayudados.includes(h.id) ? '❗' : '💬'}</span>
+                  <span className="globito">{h.encargo && !ayudado ? '❗' : '💬'}</span>
                 </button>
               );
             })}
@@ -742,11 +780,12 @@ export function Mundo({ territorio, heroe, estelas, base, vozIngles, vozEspanol,
               const c = cosa(m.id);
               const hecha = Boolean(progreso.misiones[m.id]);
               const elegida = progreso.destino === m.id;
+              const dormida = !despierta(m);
               return (
                 <button
                   key={m.id}
                   type="button"
-                  className={`nodo nodo--${hecha ? 'hecha' : 'abierta'}${elegida ? ' nodo--siguiente' : ''}${cerca === m.id ? ' es-cerca' : ''}`}
+                  className={`nodo nodo--${hecha ? 'hecha' : dormida ? 'cerrada' : 'abierta'}${elegida ? ' nodo--siguiente' : ''}${cerca === m.id ? ' es-cerca' : ''}`}
                   style={{ left: c.x, top: c.y, zIndex: Math.round(c.y) }}
                   onClick={() => tocarCosa(c)}
                   aria-label={m.titulo}
@@ -756,7 +795,8 @@ export function Mundo({ territorio, heroe, estelas, base, vozIngles, vozEspanol,
                     <img src={base + m.icono} alt="" width="44" height="44" draggable={false} />
                   </span>
                   {hecha && <span className="nodo__sello">★</span>}
-                  <span className="globito">▶</span>
+                  {dormida && <span className="nodo__sello nodo__sello--dormida">💤</span>}
+                  <span className="globito">{dormida ? '💤' : '▶'}</span>
                 </button>
               );
             })}
@@ -851,7 +891,7 @@ export function Mundo({ territorio, heroe, estelas, base, vozIngles, vozEspanol,
           ancho={mundo.ancho}
           alto={mundo.alto}
           yo={{ x: mov.current.x, y: mov.current.y, imagen: base + heroe.imagen }}
-          misiones={misiones.map((m) => ({ id: m.id, x: m.x, y: m.y, icono: base + m.icono, hecha: Boolean(progreso.misiones[m.id]), elegida: progreso.destino === m.id }))}
+          misiones={misiones.map((m) => ({ id: m.id, x: m.x, y: m.y, icono: base + m.icono, hecha: Boolean(progreso.misiones[m.id]), elegida: progreso.destino === m.id, dormida: !despierta(m) }))}
           vecinos={mundo.habitantes.filter((h) => h.encargo).map((h) => ({ id: h.id, x: h.x, y: h.y, imagen: base + personajes[h.personaje].imagen, ayudado: progreso.ayudados.includes(h.id) }))}
           puente={{ x: puerta.x, y: puerta.y, abierto: puertaAbierta }}
           onCerrar={() => setPanel(null)}

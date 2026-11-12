@@ -43,6 +43,8 @@ export interface Mision {
   y: number;
   antes: Linea[];
   palabras: Palabra[];
+  /** Misión que hay que completar antes para que esta despierte. */
+  requiere?: string;
 }
 
 export interface Personaje {
@@ -112,7 +114,9 @@ export interface Territorio {
     luces: { x: number; y: number; radio: number }[];
     radioLuzMision: number;
     inicio: { x: number; y: number };
-    habitantes: { id: string; personaje: string; x: number; y: number; escena: string; encargo?: Encargo }[];
+    habitantes: { id: string; personaje: string; x: number; y: number; escena: string; encargo?: Encargo; zona?: string }[];
+    /** Pistas dibujadas en el piso de los caminos; sin icono es una estrella. */
+    huellas: { x: number; y: number; icono: string; mision: string }[];
     /** Casas, faroles y demás cosas de la aldea; `choque` es el radio que no se puede pisar. */
     objetos: { imagen: string; ancho: number; x: number; y: number; choque: number; luz?: boolean }[];
     /** Copas en primer plano, por encima de todo. */

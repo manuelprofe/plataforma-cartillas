@@ -882,11 +882,70 @@ img {
 }
 
 /* Perdió su palabra: está sin color hasta que el niño se la devuelve. */
-.habitante--sin-palabra img {
+.habitante--gris img {
   filter: grayscale(1) brightness(0.8) drop-shadow(0 8px 6px rgb(0 0 0 / 0.35));
 }
 
-.habitante--sin-palabra .globito {
+/* Ya recuperó su palabra: brilla. */
+.habitante--brilla img {
+  filter: drop-shadow(0 0 10px rgb(255 226 120 / 0.95)) drop-shadow(0 0 22px rgb(255 207 58 / 0.6));
+}
+
+.habitante--brilla::before {
+  content: '';
+  position: absolute;
+  inset: -18px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgb(255 226 120 / 0.45), transparent 68%);
+  animation: titilar 2.4s ease-in-out infinite;
+}
+
+/* Pistas en el piso: dicen a dónde lleva cada camino. */
+.huella {
+  position: absolute;
+  width: 46px;
+  height: 46px;
+  margin: -23px 0 0 -23px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgb(255 248 236 / 0.3);
+  border: 2px dashed rgb(255 248 236 / 0.75);
+  color: var(--oro);
+  font-size: 1.4rem;
+  transform: scale(1, 0.72);
+  pointer-events: none;
+  transition: background 1.2s, border-color 1.2s;
+}
+
+.huella img {
+  width: 32px;
+  height: 32px;
+  opacity: 0.95;
+  transition: opacity 1.2s;
+}
+
+.huella.es-hecha {
+  background: rgb(255 226 120 / 0.42);
+  border-color: var(--oro);
+  box-shadow: 0 0 14px 4px rgb(255 207 58 / 0.5);
+}
+
+.huella.es-hecha img {
+  opacity: 1;
+}
+
+.nodo__sello--dormida {
+  background: #d6d1e2;
+  font-size: 1rem;
+}
+
+.minimapa__punto.es-dormida {
+  opacity: 0.55;
+  scale: 0.8;
+}
+
+.habitante--pide .globito {
   opacity: 1;
   transform: scale(1);
   animation: brincar 1.4s ease-in-out infinite;
@@ -957,7 +1016,7 @@ img {
   height: auto;
   translate: -50% -60%;
   filter: brightness(0.28) saturate(0.7);
-  opacity: 0.8;
+  opacity: 0.55;
 }
 
 /* Bordes de la pantalla un poco más oscuros: centra la mirada en el personaje. */
@@ -1163,8 +1222,8 @@ img {
 
 .minimapa__punto,
 .minimapa__puente {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   background: #cfc8dc;
   border: 3px solid #fff;

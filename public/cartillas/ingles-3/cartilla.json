@@ -1,2187 +1,3466 @@
 {
-  "id": "ingles-3",
-  "titulo": "English Adventure Quest",
-  "materia": "Inglés",
-  "grado": "3",
-  "idiomaVoz": "en-US",
-  "territorios": [
+ "id": "ingles-3",
+ "titulo": "English Adventure Quest",
+ "materia": "Inglés",
+ "grado": "3",
+ "idiomaVoz": "en-US",
+ "territorios": [
+  {
+   "id": "bosque",
+   "nombre": "Bosque de los Sonidos",
+   "guia": "cosmo",
+   "puerta": {
+    "estrellas": 50,
+    "destino": "Valle de las Palabras",
+    "x": 2527,
+    "y": 1340,
+    "personaje": "nova",
+    "escenaCerrada": "puente-cerrado",
+    "escenaAbierta": "puente-abierto"
+   },
+   "misiones": [
     {
-      "id": "bosque",
-      "nombre": "Bosque de los Sonidos",
-      "guia": "cosmo",
-      "puerta": {
-        "estrellas": 50,
-        "destino": "Valle de las Palabras",
-        "x": 1611,
-        "y": 850,
-        "personaje": "nova",
-        "escenaCerrada": "puente-cerrado",
-        "escenaAbierta": "puente-abierto"
+     "id": "bosque-school",
+     "titulo": "School objects",
+     "plantilla": "escucha-toca",
+     "icono": "iconos/1f392.svg",
+     "palabras": [
+      {
+       "en": "pencil",
+       "es": "lápiz",
+       "icono": "iconos/270f.svg"
       },
-      "misiones": [
-        {
-          "id": "bosque-school",
-          "titulo": "School objects",
-          "plantilla": "escucha-toca",
-          "icono": "iconos/1f392.svg",
-          "palabras": [
-            {
-              "en": "pencil",
-              "es": "lápiz",
-              "icono": "iconos/270f.svg"
-            },
-            {
-              "en": "eraser",
-              "es": "borrador",
-              "icono": "iconos/1f9fd.svg"
-            },
-            {
-              "en": "notebook",
-              "es": "cuaderno",
-              "icono": "iconos/1f4d3.svg"
-            },
-            {
-              "en": "ruler",
-              "es": "regla",
-              "icono": "iconos/1f4cf.svg"
-            },
-            {
-              "en": "scissors",
-              "es": "tijeras",
-              "icono": "iconos/2702.svg"
-            },
-            {
-              "en": "backpack",
-              "es": "morral",
-              "icono": "iconos/1f392.svg"
-            },
-            {
-              "en": "book",
-              "es": "libro",
-              "icono": "iconos/1f4d8.svg"
-            },
-            {
-              "en": "marker",
-              "es": "marcador",
-              "icono": "iconos/1f58a.svg"
-            }
-          ],
-          "x": 396,
-          "y": 290,
-          "antes": [
-            {
-              "quien": "cosmo",
-              "es": "Aquí se apagaron los útiles de la escuela. Escucha y toca el correcto.",
-              "en": "The school objects lost their light here. Listen and tap the right one."
-            }
-          ]
-        },
-        {
-          "id": "bosque-colors",
-          "titulo": "Colors",
-          "plantilla": "escucha-toca",
-          "icono": "iconos/1f7e3.svg",
-          "palabras": [
-            {
-              "en": "red",
-              "es": "rojo",
-              "icono": "iconos/1f534.svg"
-            },
-            {
-              "en": "blue",
-              "es": "azul",
-              "icono": "iconos/1f535.svg"
-            },
-            {
-              "en": "green",
-              "es": "verde",
-              "icono": "iconos/1f7e2.svg"
-            },
-            {
-              "en": "yellow",
-              "es": "amarillo",
-              "icono": "iconos/1f7e1.svg"
-            },
-            {
-              "en": "orange",
-              "es": "naranja",
-              "icono": "iconos/1f7e0.svg"
-            },
-            {
-              "en": "purple",
-              "es": "morado",
-              "icono": "iconos/1f7e3.svg"
-            }
-          ],
-          "x": 225,
-          "y": 900,
-          "antes": [
-            {
-              "quien": "cosmo",
-              "es": "Los colores del bosque se volvieron grises. ¡Vamos a encenderlos!",
-              "en": "The colors of the forest turned gray. Let's light them up!"
-            }
-          ]
-        },
-        {
-          "id": "bosque-numbers",
-          "titulo": "Numbers",
-          "plantilla": "escucha-toca",
-          "icono": "iconos/0033_20e3.svg",
-          "palabras": [
-            {
-              "en": "one",
-              "es": "uno",
-              "icono": "iconos/0031_20e3.svg"
-            },
-            {
-              "en": "two",
-              "es": "dos",
-              "icono": "iconos/0032_20e3.svg"
-            },
-            {
-              "en": "three",
-              "es": "tres",
-              "icono": "iconos/0033_20e3.svg"
-            },
-            {
-              "en": "four",
-              "es": "cuatro",
-              "icono": "iconos/0034_20e3.svg"
-            },
-            {
-              "en": "five",
-              "es": "cinco",
-              "icono": "iconos/0035_20e3.svg"
-            },
-            {
-              "en": "six",
-              "es": "seis",
-              "icono": "iconos/0036_20e3.svg"
-            },
-            {
-              "en": "seven",
-              "es": "siete",
-              "icono": "iconos/0037_20e3.svg"
-            },
-            {
-              "en": "eight",
-              "es": "ocho",
-              "icono": "iconos/0038_20e3.svg"
-            },
-            {
-              "en": "nine",
-              "es": "nueve",
-              "icono": "iconos/0039_20e3.svg"
-            },
-            {
-              "en": "ten",
-              "es": "diez",
-              "icono": "iconos/1f51f.svg"
-            }
-          ],
-          "x": 1296,
-          "y": 290,
-          "antes": [
-            {
-              "quien": "cosmo",
-              "es": "Los números se escondieron entre los árboles. Escucha con atención.",
-              "en": "The numbers are hiding in the trees. Listen carefully."
-            }
-          ]
-        },
-        {
-          "id": "bosque-body",
-          "titulo": "My body",
-          "plantilla": "escucha-toca",
-          "icono": "iconos/1f440.svg",
-          "palabras": [
-            {
-              "en": "head",
-              "es": "cabeza",
-              "icono": "iconos/1f642.svg"
-            },
-            {
-              "en": "eyes",
-              "es": "ojos",
-              "icono": "iconos/1f440.svg"
-            },
-            {
-              "en": "ears",
-              "es": "orejas",
-              "icono": "iconos/1f442.svg"
-            },
-            {
-              "en": "nose",
-              "es": "nariz",
-              "icono": "iconos/1f443.svg"
-            },
-            {
-              "en": "mouth",
-              "es": "boca",
-              "icono": "iconos/1f444.svg"
-            },
-            {
-              "en": "hands",
-              "es": "manos",
-              "icono": "iconos/1f64c.svg"
-            },
-            {
-              "en": "feet",
-              "es": "pies",
-              "icono": "iconos/1f9b6.svg"
-            }
-          ],
-          "x": 414,
-          "y": 1490,
-          "antes": [
-            {
-              "quien": "cosmo",
-              "es": "Cabeza, ojos, manos... ¿los conoces en inglés? ¡Vamos a ver!",
-              "en": "Head, eyes, hands... do you know them in English? Let's see!"
-            }
-          ]
-        },
-        {
-          "id": "bosque-family",
-          "titulo": "Hello, family",
-          "plantilla": "escucha-toca",
-          "icono": "iconos/1f44b.svg",
-          "palabras": [
-            {
-              "en": "hello",
-              "es": "hola",
-              "icono": "iconos/1f44b.svg"
-            },
-            {
-              "en": "good morning",
-              "es": "buenos días",
-              "icono": "iconos/1f305.svg"
-            },
-            {
-              "en": "thank you",
-              "es": "gracias",
-              "icono": "iconos/1f64f.svg"
-            },
-            {
-              "en": "mother",
-              "es": "mamá",
-              "icono": "iconos/1f469.svg"
-            },
-            {
-              "en": "father",
-              "es": "papá",
-              "icono": "iconos/1f468.svg"
-            },
-            {
-              "en": "sister",
-              "es": "hermana",
-              "icono": "iconos/1f467.svg"
-            },
-            {
-              "en": "brother",
-              "es": "hermano",
-              "icono": "iconos/1f466.svg"
-            }
-          ],
-          "x": 1377,
-          "y": 1500,
-          "antes": [
-            {
-              "quien": "cosmo",
-              "es": "Aquí aprendemos a saludar y a nombrar a la familia.",
-              "en": "Here we learn to say hello and to name the family."
-            }
-          ]
-        }
-      ],
-      "personajes": {
-        "cosmo": {
-          "nombre": "Cosmo",
-          "imagen": "personajes/cosmo-wave.webp",
-          "ancho": 96
-        },
-        "pixie": {
-          "nombre": "Pixie",
-          "imagen": "personajes/pixie-wave.webp",
-          "ancho": 96
-        },
-        "lumi": {
-          "nombre": "Lumi",
-          "imagen": "personajes/lumi-wave.webp",
-          "ancho": 96
-        },
-        "nova": {
-          "nombre": "Nova",
-          "imagen": "personajes/nova-ready.webp"
-        },
-        "tito": {
-          "nombre": "Tito",
-          "imagen": "personajes/vecino-1.webp",
-          "ancho": 78
-        },
-        "pua": {
-          "nombre": "Púa",
-          "imagen": "personajes/vecino-2.webp",
-          "ancho": 78
-        },
-        "abu": {
-          "nombre": "Abu",
-          "imagen": "personajes/vecino-3.webp",
-          "ancho": 82
-        },
-        "nuez": {
-          "nombre": "Nuez",
-          "imagen": "personajes/vecino-4.webp",
-          "ancho": 82
-        },
-        "caro": {
-          "nombre": "Caro",
-          "imagen": "personajes/vecino-5.webp",
-          "ancho": 88
-        },
-        "rayo": {
-          "nombre": "Rayo",
-          "imagen": "personajes/vecino-6.webp",
-          "ancho": 84
-        }
+      {
+       "en": "eraser",
+       "es": "borrador",
+       "icono": "iconos/1f9fd.svg"
       },
-      "idiomaPorAvance": [
-        "es",
-        "es",
-        "mixto",
-        "mixto",
-        "en",
-        "en"
-      ],
-      "mundo": {
-        "ancho": 1800,
-        "inicio": {
-          "x": 882,
-          "y": 985
-        },
-        "habitantes": [
-          {
-            "id": "pixie",
-            "personaje": "pixie",
-            "x": 835,
-            "y": 900,
-            "escena": "intro"
-          },
-          {
-            "id": "cosmo",
-            "personaje": "cosmo",
-            "x": 955,
-            "y": 915,
-            "escena": "cosmo"
-          },
-          {
-            "id": "lumi",
-            "personaje": "lumi",
-            "x": 1130,
-            "y": 1190,
-            "escena": "lumi"
-          },
-          {
-            "id": "tito",
-            "personaje": "tito",
-            "x": 770,
-            "y": 835,
-            "escena": "tito-listo",
-            "encargo": {
-              "pide": {
-                "en": "red",
-                "es": "rojo",
-                "icono": "iconos/1f534.svg"
-              },
-              "opciones": [
-                {
-                  "en": "blue",
-                  "es": "azul",
-                  "icono": "iconos/1f535.svg"
-                },
-                {
-                  "en": "red",
-                  "es": "rojo",
-                  "icono": "iconos/1f534.svg"
-                },
-                {
-                  "en": "yellow",
-                  "es": "amarillo",
-                  "icono": "iconos/1f7e1.svg"
-                }
-              ],
-              "x": 500,
-              "y": 885,
-              "escenaPide": "tito-pide",
-              "escenaOtra": "tito-otra",
-              "escenaGracias": "tito-gracias",
-              "escenaListo": "tito-listo"
-            }
-          },
-          {
-            "id": "abu",
-            "personaje": "abu",
-            "x": 1000,
-            "y": 815,
-            "escena": "abu-listo",
-            "encargo": {
-              "pide": {
-                "en": "three",
-                "es": "tres",
-                "icono": "iconos/0033_20e3.svg"
-              },
-              "opciones": [
-                {
-                  "en": "five",
-                  "es": "cinco",
-                  "icono": "iconos/0035_20e3.svg"
-                },
-                {
-                  "en": "three",
-                  "es": "tres",
-                  "icono": "iconos/0033_20e3.svg"
-                },
-                {
-                  "en": "eight",
-                  "es": "ocho",
-                  "icono": "iconos/0038_20e3.svg"
-                }
-              ],
-              "x": 1120,
-              "y": 610,
-              "escenaPide": "abu-pide",
-              "escenaOtra": "abu-otra",
-              "escenaGracias": "abu-gracias",
-              "escenaListo": "abu-listo"
-            }
-          },
-          {
-            "id": "caro",
-            "personaje": "caro",
-            "x": 640,
-            "y": 1195,
-            "escena": "caro-listo",
-            "encargo": {
-              "pide": {
-                "en": "pencil",
-                "es": "lápiz",
-                "icono": "iconos/270f.svg"
-              },
-              "opciones": [
-                {
-                  "en": "book",
-                  "es": "libro",
-                  "icono": "iconos/1f4d8.svg"
-                },
-                {
-                  "en": "ruler",
-                  "es": "regla",
-                  "icono": "iconos/1f4cf.svg"
-                },
-                {
-                  "en": "pencil",
-                  "es": "lápiz",
-                  "icono": "iconos/270f.svg"
-                }
-              ],
-              "x": 575,
-              "y": 1300,
-              "escenaPide": "caro-pide",
-              "escenaOtra": "caro-otra",
-              "escenaGracias": "caro-gracias",
-              "escenaListo": "caro-listo"
-            }
-          },
-          {
-            "id": "pua",
-            "personaje": "pua",
-            "x": 760,
-            "y": 1075,
-            "escena": "pua"
-          },
-          {
-            "id": "nuez",
-            "personaje": "nuez",
-            "x": 1020,
-            "y": 1105,
-            "escena": "nuez"
-          },
-          {
-            "id": "rayo",
-            "personaje": "rayo",
-            "x": 1330,
-            "y": 885,
-            "escena": "rayo"
-          }
-        ],
-        "luciernagas": [
-          {
-            "x": 720,
-            "y": 330
-          },
-          {
-            "x": 1062,
-            "y": 1500
-          },
-          {
-            "x": 270,
-            "y": 560
-          },
-          {
-            "x": 1584,
-            "y": 330
-          },
-          {
-            "x": 120,
-            "y": 1260
-          },
-          {
-            "x": 900,
-            "y": 130
-          },
-          {
-            "x": 1620,
-            "y": 1300
-          }
-        ],
-        "mapa": "fondos/bosque-mapa.webp",
-        "alto": 1800,
-        "tiposArbol": [
-          {
-            "imagen": "mundo/arbol-1.webp",
-            "ancho": 240,
-            "alto": 246
-          },
-          {
-            "imagen": "mundo/arbol-2.webp",
-            "ancho": 240,
-            "alto": 248
-          },
-          {
-            "imagen": "mundo/arbol-3.webp",
-            "ancho": 240,
-            "alto": 304
-          },
-          {
-            "imagen": "mundo/arbol-4.webp",
-            "ancho": 240,
-            "alto": 251
-          },
-          {
-            "imagen": "mundo/arbol-5.webp",
-            "ancho": 240,
-            "alto": 259
-          },
-          {
-            "imagen": "mundo/arbol-6.webp",
-            "ancho": 240,
-            "alto": 244
-          },
-          {
-            "imagen": "mundo/arbol-7.webp",
-            "ancho": 240,
-            "alto": 306
-          },
-          {
-            "imagen": "mundo/arbol-8.webp",
-            "ancho": 240,
-            "alto": 250
-          },
-          {
-            "imagen": "mundo/arbol-9.webp",
-            "ancho": 240,
-            "alto": 247
-          }
-        ],
-        "arboles": [
-          {
-            "x": 1504,
-            "y": 90,
-            "tipo": 4,
-            "escala": 0.78
-          },
-          {
-            "x": 165,
-            "y": 92,
-            "tipo": 3,
-            "escala": 0.88
-          },
-          {
-            "x": 1354,
-            "y": 97,
-            "tipo": 2,
-            "escala": 0.79
-          },
-          {
-            "x": 1817,
-            "y": 100,
-            "tipo": 8,
-            "escala": 0.88
-          },
-          {
-            "x": 715,
-            "y": 114,
-            "tipo": 6,
-            "escala": 0.87
-          },
-          {
-            "x": 1620,
-            "y": 123,
-            "tipo": 1,
-            "escala": 0.87
-          },
-          {
-            "x": 352,
-            "y": 126,
-            "tipo": 6,
-            "escala": 0.71
-          },
-          {
-            "x": 1170,
-            "y": 127,
-            "tipo": 0,
-            "escala": 0.8
-          },
-          {
-            "x": 57,
-            "y": 131,
-            "tipo": 4,
-            "escala": 0.79
-          },
-          {
-            "x": 997,
-            "y": 140,
-            "tipo": 0,
-            "escala": 0.68
-          },
-          {
-            "x": 880,
-            "y": 161,
-            "tipo": 1,
-            "escala": 0.83
-          },
-          {
-            "x": 1735,
-            "y": 169,
-            "tipo": 5,
-            "escala": 0.88
-          },
-          {
-            "x": 241,
-            "y": 184,
-            "tipo": 0,
-            "escala": 0.66
-          },
-          {
-            "x": 619,
-            "y": 188,
-            "tipo": 2,
-            "escala": 0.6
-          },
-          {
-            "x": 1555,
-            "y": 211,
-            "tipo": 1,
-            "escala": 0.74
-          },
-          {
-            "x": -1,
-            "y": 214,
-            "tipo": 3,
-            "escala": 0.63
-          },
-          {
-            "x": 1100,
-            "y": 222,
-            "tipo": 8,
-            "escala": 0.73
-          },
-          {
-            "x": 766,
-            "y": 247,
-            "tipo": 7,
-            "escala": 0.75
-          },
-          {
-            "x": 109,
-            "y": 254,
-            "tipo": 6,
-            "escala": 0.62
-          },
-          {
-            "x": 1803,
-            "y": 275,
-            "tipo": 7,
-            "escala": 0.86
-          },
-          {
-            "x": 959,
-            "y": 280,
-            "tipo": 5,
-            "escala": 0.73
-          },
-          {
-            "x": -17,
-            "y": 317,
-            "tipo": 0,
-            "escala": 0.79
-          },
-          {
-            "x": 1685,
-            "y": 320,
-            "tipo": 7,
-            "escala": 0.72
-          },
-          {
-            "x": 1100,
-            "y": 327,
-            "tipo": 0,
-            "escala": 0.7
-          },
-          {
-            "x": 858,
-            "y": 330,
-            "tipo": 3,
-            "escala": 0.69
-          },
-          {
-            "x": 202,
-            "y": 335,
-            "tipo": 1,
-            "escala": 0.79
-          },
-          {
-            "x": 1812,
-            "y": 381,
-            "tipo": 3,
-            "escala": 0.84
-          },
-          {
-            "x": 1505,
-            "y": 382,
-            "tipo": 0,
-            "escala": 0.66
-          },
-          {
-            "x": 1692,
-            "y": 421,
-            "tipo": 5,
-            "escala": 0.83
-          },
-          {
-            "x": 584,
-            "y": 433,
-            "tipo": 1,
-            "escala": 0.65
-          },
-          {
-            "x": 849,
-            "y": 440,
-            "tipo": 5,
-            "escala": 0.73
-          },
-          {
-            "x": 1057,
-            "y": 454,
-            "tipo": 0,
-            "escala": 0.61
-          },
-          {
-            "x": 90,
-            "y": 463,
-            "tipo": 8,
-            "escala": 0.73
-          },
-          {
-            "x": 1424,
-            "y": 467,
-            "tipo": 6,
-            "escala": 0.84
-          },
-          {
-            "x": 727,
-            "y": 522,
-            "tipo": 7,
-            "escala": 0.77
-          },
-          {
-            "x": 1525,
-            "y": 529,
-            "tipo": 8,
-            "escala": 0.67
-          },
-          {
-            "x": 926,
-            "y": 535,
-            "tipo": 7,
-            "escala": 0.63
-          },
-          {
-            "x": 13,
-            "y": 543,
-            "tipo": 0,
-            "escala": 0.61
-          },
-          {
-            "x": 1355,
-            "y": 564,
-            "tipo": 5,
-            "escala": 0.64
-          },
-          {
-            "x": 1627,
-            "y": 577,
-            "tipo": 0,
-            "escala": 0.79
-          },
-          {
-            "x": 437,
-            "y": 591,
-            "tipo": 1,
-            "escala": 0.75
-          },
-          {
-            "x": 814,
-            "y": 594,
-            "tipo": 8,
-            "escala": 0.76
-          },
-          {
-            "x": 190,
-            "y": 615,
-            "tipo": 8,
-            "escala": 0.66
-          },
-          {
-            "x": 1277,
-            "y": 646,
-            "tipo": 0,
-            "escala": 0.66
-          },
-          {
-            "x": 1553,
-            "y": 660,
-            "tipo": 7,
-            "escala": 0.69
-          },
-          {
-            "x": -8,
-            "y": 675,
-            "tipo": 4,
-            "escala": 0.88
-          },
-          {
-            "x": 590,
-            "y": 677,
-            "tipo": 5,
-            "escala": 0.85
-          },
-          {
-            "x": 1816,
-            "y": 698,
-            "tipo": 3,
-            "escala": 0.9
-          },
-          {
-            "x": 1410,
-            "y": 703,
-            "tipo": 3,
-            "escala": 0.85
-          },
-          {
-            "x": 420,
-            "y": 703,
-            "tipo": 0,
-            "escala": 0.62
-          },
-          {
-            "x": 279,
-            "y": 705,
-            "tipo": 0,
-            "escala": 0.63
-          },
-          {
-            "x": 147,
-            "y": 709,
-            "tipo": 1,
-            "escala": 0.7
-          },
-          {
-            "x": 513,
-            "y": 764,
-            "tipo": 6,
-            "escala": 0.72
-          },
-          {
-            "x": 333,
-            "y": 794,
-            "tipo": 3,
-            "escala": 0.71
-          },
-          {
-            "x": 66,
-            "y": 800,
-            "tipo": 4,
-            "escala": 0.79
-          },
-          {
-            "x": 1290,
-            "y": 802,
-            "tipo": 8,
-            "escala": 0.68
-          },
-          {
-            "x": 1809,
-            "y": 821,
-            "tipo": 6,
-            "escala": 0.66
-          },
-          {
-            "x": 14,
-            "y": 887,
-            "tipo": 2,
-            "escala": 0.78
-          },
-          {
-            "x": -13,
-            "y": 980,
-            "tipo": 7,
-            "escala": 0.72
-          },
-          {
-            "x": 1786,
-            "y": 1014,
-            "tipo": 7,
-            "escala": 0.83
-          },
-          {
-            "x": 16,
-            "y": 1093,
-            "tipo": 7,
-            "escala": 0.81
-          },
-          {
-            "x": 1547,
-            "y": 1096,
-            "tipo": 1,
-            "escala": 0.75
-          },
-          {
-            "x": 521,
-            "y": 1116,
-            "tipo": 5,
-            "escala": 0.68
-          },
-          {
-            "x": 170,
-            "y": 1124,
-            "tipo": 3,
-            "escala": 0.71
-          },
-          {
-            "x": 408,
-            "y": 1144,
-            "tipo": 5,
-            "escala": 0.81
-          },
-          {
-            "x": 1422,
-            "y": 1168,
-            "tipo": 8,
-            "escala": 0.66
-          },
-          {
-            "x": 1298,
-            "y": 1179,
-            "tipo": 2,
-            "escala": 0.82
-          },
-          {
-            "x": 240,
-            "y": 1211,
-            "tipo": 1,
-            "escala": 0.77
-          },
-          {
-            "x": 443,
-            "y": 1242,
-            "tipo": 1,
-            "escala": 0.63
-          },
-          {
-            "x": 57,
-            "y": 1243,
-            "tipo": 1,
-            "escala": 0.71
-          },
-          {
-            "x": 1608,
-            "y": 1261,
-            "tipo": 1,
-            "escala": 0.68
-          },
-          {
-            "x": 1327,
-            "y": 1281,
-            "tipo": 6,
-            "escala": 0.65
-          },
-          {
-            "x": 202,
-            "y": 1326,
-            "tipo": 0,
-            "escala": 0.71
-          },
-          {
-            "x": -2,
-            "y": 1343,
-            "tipo": 8,
-            "escala": 0.72
-          },
-          {
-            "x": 922,
-            "y": 1344,
-            "tipo": 7,
-            "escala": 0.75
-          },
-          {
-            "x": 343,
-            "y": 1344,
-            "tipo": 8,
-            "escala": 0.62
-          },
-          {
-            "x": 1442,
-            "y": 1355,
-            "tipo": 3,
-            "escala": 0.62
-          },
-          {
-            "x": 807,
-            "y": 1379,
-            "tipo": 5,
-            "escala": 0.82
-          },
-          {
-            "x": 1709,
-            "y": 1394,
-            "tipo": 6,
-            "escala": 0.74
-          },
-          {
-            "x": 1580,
-            "y": 1404,
-            "tipo": 0,
-            "escala": 0.85
-          },
-          {
-            "x": 1148,
-            "y": 1413,
-            "tipo": 2,
-            "escala": 0.83
-          },
-          {
-            "x": 169,
-            "y": 1447,
-            "tipo": 2,
-            "escala": 0.73
-          },
-          {
-            "x": 1813,
-            "y": 1465,
-            "tipo": 2,
-            "escala": 0.83
-          },
-          {
-            "x": 762,
-            "y": 1472,
-            "tipo": 7,
-            "escala": 0.89
-          },
-          {
-            "x": 53,
-            "y": 1500,
-            "tipo": 4,
-            "escala": 0.83
-          },
-          {
-            "x": 879,
-            "y": 1522,
-            "tipo": 3,
-            "escala": 0.81
-          },
-          {
-            "x": 1645,
-            "y": 1550,
-            "tipo": 2,
-            "escala": 0.78
-          },
-          {
-            "x": 147,
-            "y": 1569,
-            "tipo": 2,
-            "escala": 0.72
-          },
-          {
-            "x": 1807,
-            "y": 1578,
-            "tipo": 4,
-            "escala": 0.81
-          },
-          {
-            "x": 611,
-            "y": 1596,
-            "tipo": 2,
-            "escala": 0.72
-          },
-          {
-            "x": 819,
-            "y": 1610,
-            "tipo": 4,
-            "escala": 0.74
-          },
-          {
-            "x": 3,
-            "y": 1636,
-            "tipo": 6,
-            "escala": 0.81
-          },
-          {
-            "x": 966,
-            "y": 1640,
-            "tipo": 5,
-            "escala": 0.68
-          },
-          {
-            "x": 1604,
-            "y": 1649,
-            "tipo": 2,
-            "escala": 0.88
-          },
-          {
-            "x": 716,
-            "y": 1675,
-            "tipo": 8,
-            "escala": 0.76
-          },
-          {
-            "x": 1815,
-            "y": 1675,
-            "tipo": 7,
-            "escala": 0.89
-          },
-          {
-            "x": 198,
-            "y": 1708,
-            "tipo": 3,
-            "escala": 0.69
-          },
-          {
-            "x": 1087,
-            "y": 1712,
-            "tipo": 7,
-            "escala": 0.68
-          },
-          {
-            "x": 1696,
-            "y": 1715,
-            "tipo": 1,
-            "escala": 0.8
-          },
-          {
-            "x": 79,
-            "y": 1718,
-            "tipo": 8,
-            "escala": 0.72
-          },
-          {
-            "x": 498,
-            "y": 1733,
-            "tipo": 3,
-            "escala": 0.7
-          },
-          {
-            "x": 910,
-            "y": 1737,
-            "tipo": 8,
-            "escala": 0.77
-          },
-          {
-            "x": 1250,
-            "y": 1745,
-            "tipo": 8,
-            "escala": 0.69
-          },
-          {
-            "x": 759,
-            "y": 1765,
-            "tipo": 3,
-            "escala": 0.82
-          },
-          {
-            "x": 1592,
-            "y": 1769,
-            "tipo": 8,
-            "escala": 0.87
-          },
-          {
-            "x": 626,
-            "y": 1773,
-            "tipo": 0,
-            "escala": 0.81
-          },
-          {
-            "x": 1815,
-            "y": 1776,
-            "tipo": 5,
-            "escala": 0.66
-          },
-          {
-            "x": -7,
-            "y": 1785,
-            "tipo": 4,
-            "escala": 0.64
-          },
-          {
-            "x": 1410,
-            "y": 1791,
-            "tipo": 5,
-            "escala": 0.64
-          },
-          {
-            "x": 140,
-            "y": 1803,
-            "tipo": 6,
-            "escala": 0.74
-          },
-          {
-            "x": 1020,
-            "y": 1805,
-            "tipo": 0,
-            "escala": 0.77
-          },
-          {
-            "x": 384,
-            "y": 1814,
-            "tipo": 6,
-            "escala": 0.87
-          },
-          {
-            "x": 524,
-            "y": 1829,
-            "tipo": 1,
-            "escala": 0.9
-          },
-          {
-            "x": 710,
-            "y": 1857,
-            "tipo": 0,
-            "escala": 0.77
-          },
-          {
-            "x": 878,
-            "y": 1860,
-            "tipo": 7,
-            "escala": 0.75
-          },
-          {
-            "x": 1156,
-            "y": 1871,
-            "tipo": 5,
-            "escala": 0.82
-          },
-          {
-            "x": 1280,
-            "y": 1876,
-            "tipo": 6,
-            "escala": 0.89
-          },
-          {
-            "x": 1704,
-            "y": 1878,
-            "tipo": 5,
-            "escala": 0.62
-          },
-          {
-            "x": 1566,
-            "y": 1882,
-            "tipo": 7,
-            "escala": 0.81
-          },
-          {
-            "x": 42,
-            "y": 1883,
-            "tipo": 7,
-            "escala": 0.78
-          },
-          {
-            "x": 272,
-            "y": 1888,
-            "tipo": 0,
-            "escala": 0.65
-          },
-          {
-            "x": 1404,
-            "y": 1891,
-            "tipo": 2,
-            "escala": 0.68
-          },
-          {
-            "x": 988,
-            "y": 1899,
-            "tipo": 6,
-            "escala": 0.76
-          }
-        ],
-        "luces": [
-          {
-            "x": 882,
-            "y": 882,
-            "radio": 430
-          }
-        ],
-        "radioLuzMision": 380,
-        "ambiente": "bosque-noche",
-        "criaturas": [
-          {
-            "imagen": "mundo/animal-1.webp",
-            "ancho": 46,
-            "x": 700,
-            "y": 760,
-            "radio": 130,
-            "movimiento": "revolotea",
-            "rapidez": 1.0,
-            "palabra": {
-              "en": "butterfly",
-              "es": "mariposa",
-              "icono": "mundo/animal-1.webp"
-            }
-          },
-          {
-            "imagen": "mundo/animal-2.webp",
-            "ancho": 46,
-            "x": 1060,
-            "y": 980,
-            "radio": 150,
-            "movimiento": "revolotea",
-            "rapidez": 0.8,
-            "palabra": {
-              "en": "butterfly",
-              "es": "mariposa",
-              "icono": "mundo/animal-2.webp"
-            }
-          },
-          {
-            "imagen": "mundo/animal-1.webp",
-            "ancho": 42,
-            "x": 1377,
-            "y": 1440,
-            "radio": 120,
-            "movimiento": "revolotea",
-            "rapidez": 0.9,
-            "palabra": {
-              "en": "butterfly",
-              "es": "mariposa",
-              "icono": "mundo/animal-1.webp"
-            }
-          },
-          {
-            "imagen": "mundo/animal-2.webp",
-            "ancho": 42,
-            "x": 396,
-            "y": 330,
-            "radio": 120,
-            "movimiento": "revolotea",
-            "rapidez": 1.1,
-            "palabra": {
-              "en": "butterfly",
-              "es": "mariposa",
-              "icono": "mundo/animal-2.webp"
-            }
-          },
-          {
-            "imagen": "mundo/animal-3.webp",
-            "ancho": 44,
-            "x": 990,
-            "y": 690,
-            "radio": 90,
-            "movimiento": "zumba",
-            "rapidez": 1.6,
-            "palabra": {
-              "en": "bee",
-              "es": "abeja",
-              "icono": "mundo/animal-3.webp"
-            }
-          },
-          {
-            "imagen": "mundo/animal-3.webp",
-            "ancho": 40,
-            "x": 330,
-            "y": 1380,
-            "radio": 100,
-            "movimiento": "zumba",
-            "rapidez": 1.4,
-            "palabra": {
-              "en": "bee",
-              "es": "abeja",
-              "icono": "mundo/animal-3.webp"
-            }
-          },
-          {
-            "imagen": "mundo/animal-6.webp",
-            "ancho": 58,
-            "x": 900,
-            "y": 520,
-            "radio": 520,
-            "movimiento": "planea",
-            "rapidez": 0.35,
-            "palabra": {
-              "en": "bird",
-              "es": "pájaro",
-              "icono": "mundo/animal-6.webp"
-            }
-          },
-          {
-            "imagen": "mundo/animal-4.webp",
-            "ancho": 84,
-            "x": 1420,
-            "y": 1120,
-            "radio": 300,
-            "movimiento": "planea",
-            "rapidez": 0.22,
-            "palabra": {
-              "en": "owl",
-              "es": "búho",
-              "icono": "mundo/animal-4.webp"
-            }
-          },
-          {
-            "imagen": "mundo/animal-5.webp",
-            "ancho": 50,
-            "x": 640,
-            "y": 400,
-            "radio": 0,
-            "movimiento": "salta",
-            "rapidez": 1,
-            "palabra": {
-              "en": "frog",
-              "es": "rana",
-              "icono": "mundo/animal-5.webp"
-            }
-          },
-          {
-            "imagen": "mundo/animal-5.webp",
-            "ancho": 50,
-            "x": 1150,
-            "y": 1440,
-            "radio": 0,
-            "movimiento": "salta",
-            "rapidez": 1,
-            "palabra": {
-              "en": "frog",
-              "es": "rana",
-              "icono": "mundo/animal-5.webp"
-            }
-          }
-        ],
-        "objetos": [
-          {
-            "imagen": "mundo/objeto-1.webp",
-            "ancho": 190,
-            "x": 690,
-            "y": 790,
-            "choque": 62
-          },
-          {
-            "imagen": "mundo/objeto-2.webp",
-            "ancho": 190,
-            "x": 1070,
-            "y": 770,
-            "choque": 62
-          },
-          {
-            "imagen": "mundo/objeto-3.webp",
-            "ancho": 170,
-            "x": 1100,
-            "y": 1090,
-            "choque": 56
-          },
-          {
-            "imagen": "mundo/objeto-6.webp",
-            "ancho": 105,
-            "x": 882,
-            "y": 800,
-            "choque": 38
-          },
-          {
-            "imagen": "mundo/objeto-9.webp",
-            "ancho": 150,
-            "x": 680,
-            "y": 1075,
-            "choque": 50
-          },
-          {
-            "imagen": "mundo/objeto-8.webp",
-            "ancho": 120,
-            "x": 930,
-            "y": 1120,
-            "choque": 26
-          },
-          {
-            "imagen": "mundo/objeto-5.webp",
-            "ancho": 78,
-            "x": 1135,
-            "y": 915,
-            "choque": 12
-          },
-          {
-            "imagen": "mundo/objeto-4.webp",
-            "ancho": 70,
-            "x": 770,
-            "y": 668,
-            "choque": 10,
-            "luz": true
-          },
-          {
-            "imagen": "mundo/objeto-4.webp",
-            "ancho": 70,
-            "x": 1000,
-            "y": 668,
-            "choque": 10,
-            "luz": true
-          },
-          {
-            "imagen": "mundo/objeto-4.webp",
-            "ancho": 70,
-            "x": 655,
-            "y": 935,
-            "choque": 10,
-            "luz": true
-          },
-          {
-            "imagen": "mundo/objeto-4.webp",
-            "ancho": 70,
-            "x": 830,
-            "y": 1130,
-            "choque": 10,
-            "luz": true
-          },
-          {
-            "imagen": "mundo/objeto-4.webp",
-            "ancho": 70,
-            "x": 470,
-            "y": 1400,
-            "choque": 10,
-            "luz": true
-          },
-          {
-            "imagen": "mundo/objeto-4.webp",
-            "ancho": 70,
-            "x": 1300,
-            "y": 1400,
-            "choque": 10,
-            "luz": true
-          },
-          {
-            "imagen": "mundo/objeto-4.webp",
-            "ancho": 70,
-            "x": 1500,
-            "y": 820,
-            "choque": 10,
-            "luz": true
-          },
-          {
-            "imagen": "mundo/objeto-4.webp",
-            "ancho": 70,
-            "x": 330,
-            "y": 380,
-            "choque": 10,
-            "luz": true
-          },
-          {
-            "imagen": "mundo/objeto-4.webp",
-            "ancho": 70,
-            "x": 1230,
-            "y": 380,
-            "choque": 10,
-            "luz": true
-          },
-          {
-            "imagen": "mundo/objeto-4.webp",
-            "ancho": 70,
-            "x": 300,
-            "y": 960,
-            "choque": 10,
-            "luz": true
-          },
-          {
-            "imagen": "mundo/objeto-7.webp",
-            "ancho": 84,
-            "x": 610,
-            "y": 850,
-            "choque": 0
-          },
-          {
-            "imagen": "mundo/objeto-7.webp",
-            "ancho": 84,
-            "x": 1165,
-            "y": 850,
-            "choque": 0
-          },
-          {
-            "imagen": "mundo/objeto-7.webp",
-            "ancho": 70,
-            "x": 960,
-            "y": 660,
-            "choque": 0
-          },
-          {
-            "imagen": "mundo/objeto-7.webp",
-            "ancho": 70,
-            "x": 800,
-            "y": 1150,
-            "choque": 0
-          },
-          {
-            "imagen": "mundo/objeto-7.webp",
-            "ancho": 84,
-            "x": 1180,
-            "y": 1010,
-            "choque": 0
-          }
-        ],
-        "colorPenumbra": "rgb(16 8 46 / 0.66)",
-        "celda": 20,
-        "agua": [
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-          "000000000000000000000000000000001100000000000000000000000000000000000000000000000000000000",
-          "000000000000000000000000000000000011000000000000000000000000000000000000000000000000000000",
-          "000000000000000000000000000000011111100000000000000000000000000000000000000000000000000000",
-          "000000000000000000000000000000011111111000000000000000000000000000000000000000000000000000",
-          "000000000000000000000000000000011111111100000000000000000000000000000000000000000000000000",
-          "000000000000000000000000000001001111111100000000000000000000000000000000000000000000000000",
-          "000000000000000000000000000000001111111100000000000000000000000000000000000000000000000000",
-          "000000000000000000000000000000000111111010000000000000000000000000000000000000000000000000",
-          "000000000000000000000000000000000101101100000000000000000000000000000000000000000000000000",
-          "000000000000000000000000000000000000100000000000000000000000000000000100000000000000000000",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000001111",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000011111",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000011111",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000111110",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000000011111100",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000001111111000",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000000111111000",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000010111110000",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000101111100000",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000111111100000",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000111111100000",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000111111100000",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000111111100000",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000000100000000",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000111111000000",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000111111100000",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000111111110000",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000011111100000",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000010111110000",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000000111110000",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000001011111000",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000000111111000",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000000111111110",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000000010111111",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000111111",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000011111",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000011111",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000001111",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000111",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000111",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-          "000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000",
-          "000000000000000000000000000000000000000000000000001011100000000000000000000000000000000000",
-          "000000000000000000000000000000000000000000000000011111110000000000000000000000000000000000",
-          "000000000000000000000000000000000000000000000000001111111000000000000000000000000000000000",
-          "000000000000000000000000000000000000000000000000001111111100000000000000000000000000000000",
-          "000000000000000000000000000000000000000000000000100111111000000000000000000000000000000000",
-          "000000000000000000000000000000000000000000000000101111111100000000000000000000000000000000",
-          "000000000000000000000000000000000000000000000000000011110000000000000000000000000000000000",
-          "000000000000000000000000000000000000000000000000000100011100000000000000000000000000000000",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000100000000000000",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-          "000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
-        ],
-        "frente": [
-          {
-            "x": 887,
-            "y": 276,
-            "tipo": 1
-          },
-          {
-            "x": 1667,
-            "y": 301,
-            "tipo": 4
-          },
-          {
-            "x": 1685,
-            "y": 1186,
-            "tipo": 0
-          },
-          {
-            "x": 1014,
-            "y": 1662,
-            "tipo": 7
-          },
-          {
-            "x": 104,
-            "y": 1735,
-            "tipo": 6
-          },
-          {
-            "x": 1669,
-            "y": 1729,
-            "tipo": 7
-          },
-          {
-            "x": 147,
-            "y": 1277,
-            "tipo": 5
-          }
-        ]
+      {
+       "en": "notebook",
+       "es": "cuaderno",
+       "icono": "iconos/1f4d3.svg"
       },
-      "escenas": {
-        "intro": {
-          "lineas": [
-            {
-              "quien": "pixie",
-              "es": "¡Hola! Soy Pixie. ¡Qué bueno que llegaste!",
-              "en": "Hello! I am Pixie. I am so happy you are here!"
-            },
-            {
-              "quien": "pixie",
-              "es": "Englishland se está apagando. Las palabras perdieron su luz.",
-              "en": "Englishland is fading. The words lost their light."
-            },
-            {
-              "quien": "cosmo",
-              "es": "Yo soy Cosmo. Este es mi hogar: el Bosque de los Sonidos.",
-              "en": "I am Cosmo. This is my home: the Forest of Sounds."
-            },
-            {
-              "quien": "cosmo",
-              "es": "Cada palabra que aprendes enciende un farol. ¿Me ayudas?",
-              "en": "Every word you learn lights a lantern. Will you help me?",
-              "opciones": [
-                {
-                  "es": "¡Sí, vamos!",
-                  "en": "Yes, let's go!",
-                  "ir": "elegir"
-                },
-                {
-                  "es": "¿Cómo me muevo?",
-                  "en": "How do I move?",
-                  "ir": "ayuda"
-                }
-              ]
-            }
-          ]
-        },
-        "ayuda": {
-          "lineas": [
-            {
-              "quien": "cosmo",
-              "es": "Toca la pantalla y caminas hasta tu dedo. ¡Puedes ir a donde quieras!",
-              "en": "Touch the screen and you walk to your finger. You can go anywhere!"
-            },
-            {
-              "quien": "pixie",
-              "es": "Si ves una luciérnaga o un animal, acércate. Guardan palabras para tu álbum.",
-              "en": "If you see a firefly or an animal, go near. They keep words for your album."
-            },
-            {
-              "quien": "pixie",
-              "es": "Los vecinos del bosque perdieron sus palabras. ¡Ayúdalos a encontrarlas!",
-              "en": "The forest neighbors lost their words. Help them find them!"
-            }
-          ],
-          "luego": "elegir"
-        },
-        "elegir": {
-          "lineas": [
-            {
-              "quien": "cosmo",
-              "es": "¿A dónde vamos primero? Tú decides.",
-              "en": "Where do we go first? You decide.",
-              "opciones": [
-                {
-                  "es": "A los útiles de la escuela",
-                  "en": "To the school objects",
-                  "icono": "iconos/1f392.svg",
-                  "destino": "bosque-school"
-                },
-                {
-                  "es": "A los colores",
-                  "en": "To the colors",
-                  "icono": "iconos/1f7e3.svg",
-                  "destino": "bosque-colors"
-                },
-                {
-                  "es": "A los números",
-                  "en": "To the numbers",
-                  "icono": "iconos/0033_20e3.svg",
-                  "destino": "bosque-numbers"
-                }
-              ]
-            }
-          ]
-        },
-        "lumi": {
-          "lineas": [
-            {
-              "quien": "lumi",
-              "es": "¡Hola! Soy Lumi. ¿Te equivocaste alguna vez? ¡No pasa nada!",
-              "en": "Hello! I am Lumi. Did you make a mistake? That is okay!"
-            },
-            {
-              "quien": "lumi",
-              "es": "Equivocarse es parte de aprender. Dilo conmigo.",
-              "en": "Mistakes help us learn. Say it with me.",
-              "opciones": [
-                {
-                  "es": "I can do it!",
-                  "en": "I can do it!"
-                },
-                {
-                  "es": "I try again!",
-                  "en": "I try again!"
-                }
-              ]
-            },
-            {
-              "quien": "lumi",
-              "es": "¡Así se dice! Sigue explorando.",
-              "en": "That is right! Keep exploring."
-            }
-          ]
-        },
-        "despues": {
-          "lineas": [
-            {
-              "quien": "cosmo",
-              "es": "¡Mira! El bosque tiene más luz. ¿A dónde vamos ahora?",
-              "en": "Look! The forest has more light. Where do we go now?"
-            }
-          ]
-        },
-        "puente-cerrado": {
-          "lineas": [
-            {
-              "quien": "nova",
-              "es": "Soy Nova. Este puente lleva al Valle de las Palabras.",
-              "en": "I am Nova. This bridge goes to the Valley of Words."
-            },
-            {
-              "quien": "nova",
-              "es": "Necesitamos 50 estrellas para encenderlo. ¡Sigue jugando!",
-              "en": "We need 50 stars to light it. Keep playing!"
-            }
-          ]
-        },
-        "puente-abierto": {
-          "lineas": [
-            {
-              "quien": "nova",
-              "es": "¡Lo lograste! El puente brilla con tus estrellas.",
-              "en": "You did it! The bridge shines with your stars."
-            },
-            {
-              "quien": "nova",
-              "es": "El Valle de las Palabras abrirá muy pronto. ¡Te espero!",
-              "en": "The Valley of Words opens very soon. I will wait for you!"
-            }
-          ]
-        },
-        "cosmo": {
-          "lineas": [
-            {
-              "quien": "cosmo",
-              "es": "¡Qué bueno verte! Los vecinos necesitan ayuda. Y los faroles también.",
-              "en": "Good to see you! The neighbors need help. And so do the lanterns."
-            }
-          ],
-          "luego": "elegir"
-        },
-        "pua": {
-          "lineas": [
-            {
-              "quien": "pua",
-              "es": "Vendo frutas en mi carreta... pero olvidé cómo se llaman. ¡Gracias por traer la luz!",
-              "en": "I sell fruit in my cart... but I forgot the names. Thank you for bringing the light!"
-            }
-          ]
-        },
-        "nuez": {
-          "lineas": [
-            {
-              "quien": "nuez",
-              "es": "Horneo pan para toda la aldea. Cuando vuelvan las palabras, haré una fiesta.",
-              "en": "I bake bread for the whole village. When the words come back, I will make a party."
-            }
-          ]
-        },
-        "rayo": {
-          "lineas": [
-            {
-              "quien": "rayo",
-              "es": "Llevo cartas al Valle de las Palabras, pero el puente está apagado. ¡Junta estrellas!",
-              "en": "I carry letters to the Valley of Words, but the bridge is dark. Collect stars!"
-            }
-          ]
-        },
-        "tito-pide": {
-          "lineas": [
-            {
-              "quien": "tito",
-              "es": "¡Ay! Perdí una palabra y me quedé sin color. Se cayó en el camino de los colores.",
-              "en": "Oh no! I lost a word and I lost my color. It fell on the colors path."
-            },
-            {
-              "quien": "tito",
-              "es": "¿Me la traes? Escucha bien cuál es.",
-              "en": "Can you bring it to me? Listen carefully."
-            }
-          ]
-        },
-        "tito-otra": {
-          "lineas": [
-            {
-              "quien": "tito",
-              "es": "Mmm, esa no es mi palabra. ¡No pasa nada! Escucha otra vez y prueba con otra.",
-              "en": "Hmm, that is not my word. That is okay! Listen again and try another one."
-            }
-          ]
-        },
-        "tito-gracias": {
-          "lineas": [
-            {
-              "quien": "tito",
-              "es": "¡Esa es! ¡Red! Mi palabra volvió y mi color también.",
-              "en": "That is it! Red! My word is back, and my color too."
-            },
-            {
-              "quien": "tito",
-              "es": "¡Gracias! La guardé en tu álbum para que no se pierda.",
-              "en": "Thank you! I put it in your album so it never gets lost."
-            }
-          ]
-        },
-        "tito-listo": {
-          "lineas": [
-            {
-              "quien": "tito",
-              "es": "¡Red! Ya no se me olvida. ¡Gracias, amigo!",
-              "en": "Red! I will never forget it. Thank you, friend!"
-            }
-          ]
-        },
-        "abu-pide": {
-          "lineas": [
-            {
-              "quien": "abu",
-              "es": "¡Ay! Perdí una palabra y me quedé sin color. Se cayó en el camino de los números.",
-              "en": "Oh no! I lost a word and I lost my color. It fell on the numbers path."
-            },
-            {
-              "quien": "abu",
-              "es": "¿Me la traes? Escucha bien cuál es.",
-              "en": "Can you bring it to me? Listen carefully."
-            }
-          ]
-        },
-        "abu-otra": {
-          "lineas": [
-            {
-              "quien": "abu",
-              "es": "Mmm, esa no es mi palabra. ¡No pasa nada! Escucha otra vez y prueba con otra.",
-              "en": "Hmm, that is not my word. That is okay! Listen again and try another one."
-            }
-          ]
-        },
-        "abu-gracias": {
-          "lineas": [
-            {
-              "quien": "abu",
-              "es": "¡Esa es! ¡Three! Mi palabra volvió y mi color también.",
-              "en": "That is it! Three! My word is back, and my color too."
-            },
-            {
-              "quien": "abu",
-              "es": "¡Gracias! La guardé en tu álbum para que no se pierda.",
-              "en": "Thank you! I put it in your album so it never gets lost."
-            }
-          ]
-        },
-        "abu-listo": {
-          "lineas": [
-            {
-              "quien": "abu",
-              "es": "¡Three! Ya no se me olvida. ¡Gracias, amigo!",
-              "en": "Three! I will never forget it. Thank you, friend!"
-            }
-          ]
-        },
-        "caro-pide": {
-          "lineas": [
-            {
-              "quien": "caro",
-              "es": "¡Ay! Perdí una palabra y me quedé sin color. Se cayó en el camino de abajo.",
-              "en": "Oh no! I lost a word and I lost my color. It fell on the path below."
-            },
-            {
-              "quien": "caro",
-              "es": "¿Me la traes? Escucha bien cuál es.",
-              "en": "Can you bring it to me? Listen carefully."
-            }
-          ]
-        },
-        "caro-otra": {
-          "lineas": [
-            {
-              "quien": "caro",
-              "es": "Mmm, esa no es mi palabra. ¡No pasa nada! Escucha otra vez y prueba con otra.",
-              "en": "Hmm, that is not my word. That is okay! Listen again and try another one."
-            }
-          ]
-        },
-        "caro-gracias": {
-          "lineas": [
-            {
-              "quien": "caro",
-              "es": "¡Esa es! ¡Pencil! Mi palabra volvió y mi color también.",
-              "en": "That is it! Pencil! My word is back, and my color too."
-            },
-            {
-              "quien": "caro",
-              "es": "¡Gracias! La guardé en tu álbum para que no se pierda.",
-              "en": "Thank you! I put it in your album so it never gets lost."
-            }
-          ]
-        },
-        "caro-listo": {
-          "lineas": [
-            {
-              "quien": "caro",
-              "es": "¡Pencil! Ya no se me olvida. ¡Gracias, amigo!",
-              "en": "Pencil! I will never forget it. Thank you, friend!"
-            }
-          ]
-        }
+      {
+       "en": "ruler",
+       "es": "regla",
+       "icono": "iconos/1f4cf.svg"
+      },
+      {
+       "en": "scissors",
+       "es": "tijeras",
+       "icono": "iconos/2702.svg"
       }
-    }
-  ],
-  "idiomaHistoria": "es-US",
-  "heroes": [
-    {
-      "id": "tavi",
-      "nombre": "Tavi",
-      "imagen": "personajes/heroe-1.webp",
-      "ancho": 64,
-      "saludo": {
-        "es": "¡Hola! Soy Tavi.",
-        "en": "Hello! I am Tavi."
+     ],
+     "x": 829,
+     "y": 671,
+     "antes": [
+      {
+       "quien": "cosmo",
+       "es": "Aquí se apagaron los útiles de la escuela. Escucha y toca el correcto.",
+       "en": "The school objects lost their light here. Listen and tap the right one."
       }
+     ]
     },
     {
-      "id": "mika",
-      "nombre": "Mika",
-      "imagen": "personajes/heroe-2.webp",
+     "id": "bosque-school-2",
+     "titulo": "More school objects",
+     "plantilla": "escucha-toca",
+     "icono": "iconos/1f4d8.svg",
+     "palabras": [
+      {
+       "en": "backpack",
+       "es": "mochila",
+       "icono": "iconos/1f392.svg"
+      },
+      {
+       "en": "book",
+       "es": "libro",
+       "icono": "iconos/1f4d8.svg"
+      },
+      {
+       "en": "marker",
+       "es": "marcador",
+       "icono": "iconos/1f58a.svg"
+      },
+      {
+       "en": "crayon",
+       "es": "crayón",
+       "icono": "iconos/1f58d.svg"
+      },
+      {
+       "en": "chair",
+       "es": "silla",
+       "icono": "iconos/1fa91.svg"
+      }
+     ],
+     "x": 411,
+     "y": 202,
+     "antes": [
+      {
+       "quien": "cosmo",
+       "es": "¡Quedan más útiles por encender! Escucha con atención.",
+       "en": "There are more school objects to light up! Listen carefully."
+      }
+     ],
+     "requiere": "bosque-school"
+    },
+    {
+     "id": "bosque-colors",
+     "titulo": "Colors",
+     "plantilla": "escucha-toca",
+     "icono": "iconos/1f7e3.svg",
+     "palabras": [
+      {
+       "en": "red",
+       "es": "rojo",
+       "icono": "iconos/1f534.svg"
+      },
+      {
+       "en": "blue",
+       "es": "azul",
+       "icono": "iconos/1f535.svg"
+      },
+      {
+       "en": "green",
+       "es": "verde",
+       "icono": "iconos/1f7e2.svg"
+      },
+      {
+       "en": "yellow",
+       "es": "amarillo",
+       "icono": "iconos/1f7e1.svg"
+      },
+      {
+       "en": "orange",
+       "es": "naranja",
+       "icono": "iconos/1f7e0.svg"
+      }
+     ],
+     "x": 681,
+     "y": 1355,
+     "antes": [
+      {
+       "quien": "cosmo",
+       "es": "Los colores del bosque se volvieron grises. ¡Vamos a encenderlos!",
+       "en": "The colors of the forest turned gray. Let's light them up!"
+      }
+     ]
+    },
+    {
+     "id": "bosque-colors-2",
+     "titulo": "More colors",
+     "plantilla": "escucha-toca",
+     "icono": "iconos/color-pink.svg",
+     "palabras": [
+      {
+       "en": "purple",
+       "es": "morado",
+       "icono": "iconos/1f7e3.svg"
+      },
+      {
+       "en": "pink",
+       "es": "rosado",
+       "icono": "iconos/color-pink.svg"
+      },
+      {
+       "en": "brown",
+       "es": "café",
+       "icono": "iconos/color-brown.svg"
+      },
+      {
+       "en": "black",
+       "es": "negro",
+       "icono": "iconos/color-black.svg"
+      },
+      {
+       "en": "white",
+       "es": "blanco",
+       "icono": "iconos/color-white.svg"
+      }
+     ],
+     "x": 188,
+     "y": 1337,
+     "antes": [
+      {
+       "quien": "cosmo",
+       "es": "Faltan cinco colores para que el bosque brille completo.",
+       "en": "Five more colors and the forest will shine again."
+      }
+     ],
+     "requiere": "bosque-colors"
+    },
+    {
+     "id": "bosque-numbers",
+     "titulo": "Numbers 1 to 5",
+     "plantilla": "escucha-toca",
+     "icono": "iconos/0033_20e3.svg",
+     "palabras": [
+      {
+       "en": "one",
+       "es": "uno",
+       "icono": "iconos/0031_20e3.svg"
+      },
+      {
+       "en": "two",
+       "es": "dos",
+       "icono": "iconos/0032_20e3.svg"
+      },
+      {
+       "en": "three",
+       "es": "tres",
+       "icono": "iconos/0033_20e3.svg"
+      },
+      {
+       "en": "four",
+       "es": "cuatro",
+       "icono": "iconos/0034_20e3.svg"
+      },
+      {
+       "en": "five",
+       "es": "cinco",
+       "icono": "iconos/0035_20e3.svg"
+      }
+     ],
+     "x": 1911,
+     "y": 642,
+     "antes": [
+      {
+       "quien": "cosmo",
+       "es": "Los números se escondieron entre los árboles. Empecemos del uno al cinco.",
+       "en": "The numbers are hiding in the trees. Let us start from one to five."
+      }
+     ]
+    },
+    {
+     "id": "bosque-numbers-2",
+     "titulo": "Numbers 6 to 10",
+     "plantilla": "escucha-toca",
+     "icono": "iconos/0038_20e3.svg",
+     "palabras": [
+      {
+       "en": "six",
+       "es": "seis",
+       "icono": "iconos/0036_20e3.svg"
+      },
+      {
+       "en": "seven",
+       "es": "siete",
+       "icono": "iconos/0037_20e3.svg"
+      },
+      {
+       "en": "eight",
+       "es": "ocho",
+       "icono": "iconos/0038_20e3.svg"
+      },
+      {
+       "en": "nine",
+       "es": "nueve",
+       "icono": "iconos/0039_20e3.svg"
+      },
+      {
+       "en": "ten",
+       "es": "diez",
+       "icono": "iconos/1f51f.svg"
+      }
+     ],
+     "x": 2339,
+     "y": 202,
+     "antes": [
+      {
+       "quien": "cosmo",
+       "es": "¡Ya sabes hasta el cinco! Ahora del seis al diez.",
+       "en": "You know up to five! Now from six to ten."
+      }
+     ],
+     "requiere": "bosque-numbers"
+    },
+    {
+     "id": "bosque-body",
+     "titulo": "My face",
+     "plantilla": "escucha-toca",
+     "icono": "iconos/1f440.svg",
+     "palabras": [
+      {
+       "en": "head",
+       "es": "cabeza",
+       "icono": "iconos/1f642.svg"
+      },
+      {
+       "en": "eyes",
+       "es": "ojos",
+       "icono": "iconos/1f440.svg"
+      },
+      {
+       "en": "ears",
+       "es": "orejas",
+       "icono": "iconos/1f442.svg"
+      },
+      {
+       "en": "nose",
+       "es": "nariz",
+       "icono": "iconos/1f443.svg"
+      }
+     ],
+     "x": 943,
+     "y": 1933,
+     "antes": [
+      {
+       "quien": "cosmo",
+       "es": "Cabeza, ojos, orejas, nariz... ¿los conoces en inglés?",
+       "en": "Head, eyes, ears, nose... do you know them in English?"
+      }
+     ]
+    },
+    {
+     "id": "bosque-body-2",
+     "titulo": "My body",
+     "plantilla": "escucha-toca",
+     "icono": "iconos/1f64c.svg",
+     "palabras": [
+      {
+       "en": "mouth",
+       "es": "boca",
+       "icono": "iconos/1f444.svg"
+      },
+      {
+       "en": "hands",
+       "es": "manos",
+       "icono": "iconos/1f64c.svg"
+      },
+      {
+       "en": "arms",
+       "es": "brazos",
+       "icono": "iconos/1f4aa.svg"
+      },
+      {
+       "en": "legs",
+       "es": "piernas",
+       "icono": "iconos/1f9b5.svg"
+      },
+      {
+       "en": "feet",
+       "es": "pies",
+       "icono": "iconos/1f9b6.svg"
+      }
+     ],
+     "x": 421,
+     "y": 2471,
+     "antes": [
+      {
+       "quien": "cosmo",
+       "es": "Ahora el resto del cuerpo: manos, brazos, piernas y pies.",
+       "en": "Now the rest of the body: hands, arms, legs and feet."
+      }
+     ],
+     "requiere": "bosque-body"
+    },
+    {
+     "id": "bosque-family",
+     "titulo": "Hello!",
+     "plantilla": "escucha-toca",
+     "icono": "iconos/1f44b.svg",
+     "palabras": [
+      {
+       "en": "hello",
+       "es": "hola",
+       "icono": "iconos/1f44b.svg"
+      },
+      {
+       "en": "good morning",
+       "es": "buenos días",
+       "icono": "iconos/1f305.svg"
+      },
+      {
+       "en": "good night",
+       "es": "buenas noches",
+       "icono": "iconos/1f319.svg"
+      },
+      {
+       "en": "thank you",
+       "es": "gracias",
+       "icono": "iconos/1f64f.svg"
+      }
+     ],
+     "x": 1907,
+     "y": 1932,
+     "antes": [
+      {
+       "quien": "cosmo",
+       "es": "Aquí aprendemos a saludar y a dar las gracias.",
+       "en": "Here we learn to say hello and thank you."
+      }
+     ]
+    },
+    {
+     "id": "bosque-family-2",
+     "titulo": "My family",
+     "plantilla": "escucha-toca",
+     "icono": "iconos/1f469.svg",
+     "palabras": [
+      {
+       "en": "mother",
+       "es": "mamá",
+       "icono": "iconos/1f469.svg"
+      },
+      {
+       "en": "father",
+       "es": "papá",
+       "icono": "iconos/1f468.svg"
+      },
+      {
+       "en": "sister",
+       "es": "hermana",
+       "icono": "iconos/1f467.svg"
+      },
+      {
+       "en": "brother",
+       "es": "hermano",
+       "icono": "iconos/1f466.svg"
+      },
+      {
+       "en": "grandmother",
+       "es": "abuela",
+       "icono": "iconos/1f475.svg"
+      },
+      {
+       "en": "grandfather",
+       "es": "abuelo",
+       "icono": "iconos/1f474.svg"
+      },
+      {
+       "en": "baby",
+       "es": "bebé",
+       "icono": "iconos/1f476.svg"
+      }
+     ],
+     "x": 2380,
+     "y": 2480,
+     "antes": [
+      {
+       "quien": "cosmo",
+       "es": "¿Quién vive en tu casa? Vamos a nombrar a la familia.",
+       "en": "Who lives in your house? Let us name the family."
+      }
+     ],
+     "requiere": "bosque-family"
+    }
+   ],
+   "personajes": {
+    "cosmo": {
+     "nombre": "Cosmo",
+     "imagen": "personajes/cosmo-wave.webp",
+     "ancho": 96
+    },
+    "pixie": {
+     "nombre": "Pixie",
+     "imagen": "personajes/pixie-wave.webp",
+     "ancho": 96
+    },
+    "lumi": {
+     "nombre": "Lumi",
+     "imagen": "personajes/lumi-wave.webp",
+     "ancho": 96
+    },
+    "nova": {
+     "nombre": "Nova",
+     "imagen": "personajes/nova-ready.webp"
+    },
+    "tito": {
+     "nombre": "Tito",
+     "imagen": "personajes/vecino-1.webp",
+     "ancho": 78
+    },
+    "pua": {
+     "nombre": "Púa",
+     "imagen": "personajes/vecino-2.webp",
+     "ancho": 78
+    },
+    "abu": {
+     "nombre": "Abu",
+     "imagen": "personajes/vecino-3.webp",
+     "ancho": 82
+    },
+    "nuez": {
+     "nombre": "Nuez",
+     "imagen": "personajes/vecino-4.webp",
+     "ancho": 82
+    },
+    "caro": {
+     "nombre": "Caro",
+     "imagen": "personajes/vecino-5.webp",
+     "ancho": 88
+    },
+    "rayo": {
+     "nombre": "Rayo",
+     "imagen": "personajes/vecino-6.webp",
+     "ancho": 84
+    }
+   },
+   "idiomaPorAvance": [
+    "es",
+    "es",
+    "es",
+    "es",
+    "mixto",
+    "mixto",
+    "mixto",
+    "mixto",
+    "mixto",
+    "en",
+    "en"
+   ],
+   "mundo": {
+    "ancho": 2800,
+    "inicio": {
+     "x": 1388,
+     "y": 1480
+    },
+    "habitantes": [
+     {
+      "id": "pixie",
+      "personaje": "pixie",
+      "x": 1308,
+      "y": 1370,
+      "escena": "intro"
+     },
+     {
+      "id": "cosmo",
+      "personaje": "cosmo",
+      "x": 1473,
+      "y": 1385,
+      "escena": "cosmo"
+     },
+     {
+      "id": "caro",
+      "personaje": "caro",
+      "x": 937,
+      "y": 733,
+      "escena": "caro-listo",
+      "zona": "bosque-school",
+      "encargo": {
+       "pide": {
+        "en": "eraser",
+        "es": "borrador",
+        "icono": "iconos/1f9fd.svg"
+       },
+       "opciones": [
+        {
+         "en": "pencil",
+         "es": "lápiz",
+         "icono": "iconos/270f.svg"
+        },
+        {
+         "en": "eraser",
+         "es": "borrador",
+         "icono": "iconos/1f9fd.svg"
+        },
+        {
+         "en": "ruler",
+         "es": "regla",
+         "icono": "iconos/1f4cf.svg"
+        }
+       ],
+       "x": 570,
+       "y": 390,
+       "escenaPide": "caro-pide",
+       "escenaOtra": "caro-otra",
+       "escenaGracias": "caro-gracias",
+       "escenaListo": "caro-listo"
+      }
+     },
+     {
+      "id": "tito",
+      "personaje": "tito",
+      "x": 787,
+      "y": 1417,
+      "escena": "tito-listo",
+      "zona": "bosque-colors",
+      "encargo": {
+       "pide": {
+        "en": "red",
+        "es": "rojo",
+        "icono": "iconos/1f534.svg"
+       },
+       "opciones": [
+        {
+         "en": "blue",
+         "es": "azul",
+         "icono": "iconos/1f535.svg"
+        },
+        {
+         "en": "red",
+         "es": "rojo",
+         "icono": "iconos/1f534.svg"
+        },
+        {
+         "en": "yellow",
+         "es": "amarillo",
+         "icono": "iconos/1f7e1.svg"
+        }
+       ],
+       "x": 418,
+       "y": 1370,
+       "escenaPide": "tito-pide",
+       "escenaOtra": "tito-otra",
+       "escenaGracias": "tito-gracias",
+       "escenaListo": "tito-listo"
+      }
+     },
+     {
+      "id": "abu",
+      "personaje": "abu",
+      "x": 1801,
+      "y": 706,
+      "escena": "abu-listo",
+      "zona": "bosque-numbers",
+      "encargo": {
+       "pide": {
+        "en": "three",
+        "es": "tres",
+        "icono": "iconos/0033_20e3.svg"
+       },
+       "opciones": [
+        {
+         "en": "five",
+         "es": "cinco",
+         "icono": "iconos/0035_20e3.svg"
+        },
+        {
+         "en": "three",
+         "es": "tres",
+         "icono": "iconos/0033_20e3.svg"
+        },
+        {
+         "en": "one",
+         "es": "uno",
+         "icono": "iconos/0031_20e3.svg"
+        }
+       ],
+       "x": 2118,
+       "y": 418,
+       "escenaPide": "abu-pide",
+       "escenaOtra": "abu-otra",
+       "escenaGracias": "abu-gracias",
+       "escenaListo": "abu-listo"
+      }
+     },
+     {
+      "id": "pua",
+      "personaje": "pua",
+      "x": 1054,
+      "y": 1997,
+      "escena": "pua-listo",
+      "zona": "bosque-body",
+      "encargo": {
+       "pide": {
+        "en": "nose",
+        "es": "nariz",
+        "icono": "iconos/1f443.svg"
+       },
+       "opciones": [
+        {
+         "en": "eyes",
+         "es": "ojos",
+         "icono": "iconos/1f440.svg"
+        },
+        {
+         "en": "nose",
+         "es": "nariz",
+         "icono": "iconos/1f443.svg"
+        },
+        {
+         "en": "ears",
+         "es": "orejas",
+         "icono": "iconos/1f442.svg"
+        }
+       ],
+       "x": 650,
+       "y": 2262,
+       "escenaPide": "pua-pide",
+       "escenaOtra": "pua-otra",
+       "escenaGracias": "pua-gracias",
+       "escenaListo": "pua-listo"
+      }
+     },
+     {
+      "id": "nuez",
+      "personaje": "nuez",
+      "x": 1794,
+      "y": 1997,
+      "escena": "nuez-listo",
+      "zona": "bosque-family",
+      "encargo": {
+       "pide": {
+        "en": "hello",
+        "es": "hola",
+        "icono": "iconos/1f44b.svg"
+       },
+       "opciones": [
+        {
+         "en": "thank you",
+         "es": "gracias",
+         "icono": "iconos/1f64f.svg"
+        },
+        {
+         "en": "hello",
+         "es": "hola",
+         "icono": "iconos/1f44b.svg"
+        },
+        {
+         "en": "good night",
+         "es": "buenas noches",
+         "icono": "iconos/1f319.svg"
+        }
+       ],
+       "x": 2118,
+       "y": 2226,
+       "escenaPide": "nuez-pide",
+       "escenaOtra": "nuez-otra",
+       "escenaGracias": "nuez-gracias",
+       "escenaListo": "nuez-listo"
+      }
+     },
+     {
+      "id": "rayo",
+      "personaje": "rayo",
+      "x": 2062,
+      "y": 1295,
+      "escena": "rayo"
+     },
+     {
+      "id": "lumi",
+      "personaje": "lumi",
+      "x": 1725,
+      "y": 1642,
+      "escena": "lumi"
+     }
+    ],
+    "luciernagas": [
+     {
+      "x": 1246,
+      "y": 991
+     },
+     {
+      "x": 2208,
+      "y": 1402
+     },
+     {
+      "x": 1148,
+      "y": 1848
+     },
+     {
+      "x": 1689,
+      "y": 1453
+     },
+     {
+      "x": 1747,
+      "y": 2312
+     },
+     {
+      "x": 2220,
+      "y": 1121
+     },
+     {
+      "x": 1098,
+      "y": 825
+     },
+     {
+      "x": 1642,
+      "y": 2522
+     },
+     {
+      "x": 1439,
+      "y": 475
+     },
+     {
+      "x": 935,
+      "y": 2143
+     }
+    ],
+    "mapa": "fondos/bosque-mapa.webp",
+    "alto": 2800,
+    "tiposArbol": [
+     {
+      "imagen": "mundo/arbol-1.webp",
+      "ancho": 240,
+      "alto": 246
+     },
+     {
+      "imagen": "mundo/arbol-2.webp",
+      "ancho": 240,
+      "alto": 248
+     },
+     {
+      "imagen": "mundo/arbol-3.webp",
+      "ancho": 240,
+      "alto": 304
+     },
+     {
+      "imagen": "mundo/arbol-4.webp",
+      "ancho": 240,
+      "alto": 251
+     },
+     {
+      "imagen": "mundo/arbol-5.webp",
+      "ancho": 240,
+      "alto": 259
+     },
+     {
+      "imagen": "mundo/arbol-6.webp",
+      "ancho": 240,
+      "alto": 244
+     },
+     {
+      "imagen": "mundo/arbol-7.webp",
+      "ancho": 240,
+      "alto": 306
+     },
+     {
+      "imagen": "mundo/arbol-8.webp",
+      "ancho": 240,
+      "alto": 250
+     },
+     {
+      "imagen": "mundo/arbol-9.webp",
+      "ancho": 240,
+      "alto": 247
+     }
+    ],
+    "arboles": [
+     {
+      "x": 674,
+      "y": 91,
+      "tipo": 1,
+      "escala": 0.86
+     },
+     {
+      "x": 839,
+      "y": 98,
+      "tipo": 1,
+      "escala": 0.66
+     },
+     {
+      "x": 1884,
+      "y": 101,
+      "tipo": 5,
+      "escala": 0.75
+     },
+     {
+      "x": 2455,
+      "y": 102,
+      "tipo": 7,
+      "escala": 0.7
+     },
+     {
+      "x": 2024,
+      "y": 116,
+      "tipo": 2,
+      "escala": 0.81
+     },
+     {
+      "x": 1172,
+      "y": 124,
+      "tipo": 1,
+      "escala": 0.66
+     },
+     {
+      "x": 965,
+      "y": 132,
+      "tipo": 3,
+      "escala": 0.68
+     },
+     {
+      "x": 1693,
+      "y": 133,
+      "tipo": 7,
+      "escala": 0.74
+     },
+     {
+      "x": 1482,
+      "y": 143,
+      "tipo": 1,
+      "escala": 0.86
+     },
+     {
+      "x": 2143,
+      "y": 148,
+      "tipo": 2,
+      "escala": 0.7
+     },
+     {
+      "x": 2563,
+      "y": 156,
+      "tipo": 2,
+      "escala": 0.67
+     },
+     {
+      "x": 580,
+      "y": 156,
+      "tipo": 4,
+      "escala": 0.79
+     },
+     {
+      "x": 2698,
+      "y": 158,
+      "tipo": 0,
+      "escala": 0.64
+     },
+     {
+      "x": 29,
+      "y": 167,
+      "tipo": 5,
+      "escala": 0.65
+     },
+     {
+      "x": 197,
+      "y": 180,
+      "tipo": 2,
+      "escala": 0.83
+     },
+     {
+      "x": 1353,
+      "y": 180,
+      "tipo": 4,
+      "escala": 0.75
+     },
+     {
+      "x": 1802,
+      "y": 196,
+      "tipo": 2,
+      "escala": 0.72
+     },
+     {
+      "x": 1103,
+      "y": 229,
+      "tipo": 2,
+      "escala": 0.69
+     },
+     {
+      "x": 776,
+      "y": 232,
+      "tipo": 6,
+      "escala": 0.84
+     },
+     {
+      "x": 2079,
+      "y": 234,
+      "tipo": 7,
+      "escala": 0.73
+     },
+     {
+      "x": 1455,
+      "y": 244,
+      "tipo": 6,
+      "escala": 0.78
+     },
+     {
+      "x": 2652,
+      "y": 251,
+      "tipo": 0,
+      "escala": 0.74
+     },
+     {
+      "x": 983,
+      "y": 253,
+      "tipo": 1,
+      "escala": 0.75
+     },
+     {
+      "x": 1947,
+      "y": 256,
+      "tipo": 5,
+      "escala": 0.85
+     },
+     {
+      "x": 1310,
+      "y": 273,
+      "tipo": 0,
+      "escala": 0.81
+     },
+     {
+      "x": 1582,
+      "y": 280,
+      "tipo": 3,
+      "escala": 0.64
+     },
+     {
+      "x": 3,
+      "y": 284,
+      "tipo": 3,
+      "escala": 0.82
+     },
+     {
+      "x": 1756,
+      "y": 292,
+      "tipo": 1,
+      "escala": 0.62
+     },
+     {
+      "x": 1185,
+      "y": 305,
+      "tipo": 0,
+      "escala": 0.8
+     },
+     {
+      "x": 2778,
+      "y": 318,
+      "tipo": 5,
+      "escala": 0.7
+     },
+     {
+      "x": 927,
+      "y": 348,
+      "tipo": 5,
+      "escala": 0.68
+     },
+     {
+      "x": 128,
+      "y": 356,
+      "tipo": 8,
+      "escala": 0.85
+     },
+     {
+      "x": 1393,
+      "y": 378,
+      "tipo": 5,
+      "escala": 0.72
+     },
+     {
+      "x": 2688,
+      "y": 387,
+      "tipo": 8,
+      "escala": 0.67
+     },
+     {
+      "x": 1828,
+      "y": 389,
+      "tipo": 6,
+      "escala": 0.66
+     },
+     {
+      "x": 1592,
+      "y": 411,
+      "tipo": 7,
+      "escala": 0.73
+     },
+     {
+      "x": 2543,
+      "y": 428,
+      "tipo": 1,
+      "escala": 0.87
+     },
+     {
+      "x": 2802,
+      "y": 428,
+      "tipo": 5,
+      "escala": 0.87
+     },
+     {
+      "x": 2385,
+      "y": 458,
+      "tipo": 4,
+      "escala": 0.65
+     },
+     {
+      "x": -1,
+      "y": 479,
+      "tipo": 7,
+      "escala": 0.69
+     },
+     {
+      "x": 281,
+      "y": 492,
+      "tipo": 5,
+      "escala": 0.65
+     },
+     {
+      "x": 2671,
+      "y": 526,
+      "tipo": 4,
+      "escala": 0.74
+     },
+     {
+      "x": 172,
+      "y": 539,
+      "tipo": 7,
+      "escala": 0.89
+     },
+     {
+      "x": 2793,
+      "y": 539,
+      "tipo": 5,
+      "escala": 0.7
+     },
+     {
+      "x": 2462,
+      "y": 540,
+      "tipo": 8,
+      "escala": 0.86
+     },
+     {
+      "x": 48,
+      "y": 573,
+      "tipo": 7,
+      "escala": 0.87
+     },
+     {
+      "x": 314,
+      "y": 613,
+      "tipo": 1,
+      "escala": 0.8
+     },
+     {
+      "x": 2472,
+      "y": 644,
+      "tipo": 8,
+      "escala": 0.71
+     },
+     {
+      "x": 2316,
+      "y": 652,
+      "tipo": 2,
+      "escala": 0.84
+     },
+     {
+      "x": 152,
+      "y": 656,
+      "tipo": 0,
+      "escala": 0.65
+     },
+     {
+      "x": 36,
+      "y": 707,
+      "tipo": 7,
+      "escala": 0.78
+     },
+     {
+      "x": 236,
+      "y": 727,
+      "tipo": 2,
+      "escala": 0.9
+     },
+     {
+      "x": 447,
+      "y": 740,
+      "tipo": 1,
+      "escala": 0.87
+     },
+     {
+      "x": 2259,
+      "y": 743,
+      "tipo": 2,
+      "escala": 0.68
+     },
+     {
+      "x": 1135,
+      "y": 751,
+      "tipo": 7,
+      "escala": 0.87
+     },
+     {
+      "x": 1497,
+      "y": 756,
+      "tipo": 3,
+      "escala": 0.71
+     },
+     {
+      "x": 2378,
+      "y": 771,
+      "tipo": 6,
+      "escala": 0.89
+     },
+     {
+      "x": 1258,
+      "y": 783,
+      "tipo": 6,
+      "escala": 0.78
+     },
+     {
+      "x": 1647,
+      "y": 810,
+      "tipo": 7,
+      "escala": 0.67
+     },
+     {
+      "x": 2182,
+      "y": 820,
+      "tipo": 0,
+      "escala": 0.73
+     },
+     {
+      "x": -13,
+      "y": 833,
+      "tipo": 7,
+      "escala": 0.79
+     },
+     {
+      "x": 182,
+      "y": 847,
+      "tipo": 7,
+      "escala": 0.86
+     },
+     {
+      "x": 321,
+      "y": 857,
+      "tipo": 1,
+      "escala": 0.9
+     },
+     {
+      "x": 485,
+      "y": 858,
+      "tipo": 6,
+      "escala": 0.88
+     },
+     {
+      "x": 2304,
+      "y": 864,
+      "tipo": 0,
+      "escala": 0.84
+     },
+     {
+      "x": 2074,
+      "y": 881,
+      "tipo": 6,
+      "escala": 0.78
+     },
+     {
+      "x": 2181,
+      "y": 954,
+      "tipo": 4,
+      "escala": 0.76
+     },
+     {
+      "x": 625,
+      "y": 958,
+      "tipo": 3,
+      "escala": 0.61
+     },
+     {
+      "x": 19,
+      "y": 958,
+      "tipo": 5,
+      "escala": 0.89
+     },
+     {
+      "x": 395,
+      "y": 964,
+      "tipo": 0,
+      "escala": 0.81
+     },
+     {
+      "x": 799,
+      "y": 979,
+      "tipo": 0,
+      "escala": 0.71
+     },
+     {
+      "x": 140,
+      "y": 988,
+      "tipo": 7,
+      "escala": 0.62
+     },
+     {
+      "x": 924,
+      "y": 999,
+      "tipo": 0,
+      "escala": 0.76
+     },
+     {
+      "x": 2791,
+      "y": 1008,
+      "tipo": 1,
+      "escala": 0.83
+     },
+     {
+      "x": 2342,
+      "y": 1012,
+      "tipo": 5,
+      "escala": 0.64
+     },
+     {
+      "x": 2057,
+      "y": 1016,
+      "tipo": 4,
+      "escala": 0.77
+     },
+     {
+      "x": 450,
+      "y": 1056,
+      "tipo": 2,
+      "escala": 0.84
+     },
+     {
+      "x": 714,
+      "y": 1057,
+      "tipo": 5,
+      "escala": 0.69
+     },
+     {
+      "x": 47,
+      "y": 1065,
+      "tipo": 5,
+      "escala": 0.77
+     },
+     {
+      "x": 2162,
+      "y": 1076,
+      "tipo": 3,
+      "escala": 0.76
+     },
+     {
+      "x": 565,
+      "y": 1090,
+      "tipo": 1,
+      "escala": 0.79
+     },
+     {
+      "x": 1415,
+      "y": 1099,
+      "tipo": 8,
+      "escala": 0.67
+     },
+     {
+      "x": 931,
+      "y": 1107,
+      "tipo": 2,
+      "escala": 0.65
+     },
+     {
+      "x": 1083,
+      "y": 1128,
+      "tipo": 4,
+      "escala": 0.84
+     },
+     {
+      "x": 752,
+      "y": 1150,
+      "tipo": 4,
+      "escala": 0.74
+     },
+     {
+      "x": 2804,
+      "y": 1153,
+      "tipo": 5,
+      "escala": 0.81
+     },
+     {
+      "x": 2407,
+      "y": 1162,
+      "tipo": 4,
+      "escala": 0.83
+     },
+     {
+      "x": 151,
+      "y": 1167,
+      "tipo": 5,
+      "escala": 0.69
+     },
+     {
+      "x": 2112,
+      "y": 1171,
+      "tipo": 7,
+      "escala": 0.62
+     },
+     {
+      "x": 2681,
+      "y": 1174,
+      "tipo": 2,
+      "escala": 0.73
+     },
+     {
+      "x": 1938,
+      "y": 1180,
+      "tipo": 7,
+      "escala": 0.63
+     },
+     {
+      "x": -10,
+      "y": 1242,
+      "tipo": 8,
+      "escala": 0.64
+     },
+     {
+      "x": 927,
+      "y": 1243,
+      "tipo": 7,
+      "escala": 0.76
+     },
+     {
+      "x": 1745,
+      "y": 1250,
+      "tipo": 7,
+      "escala": 0.62
+     },
+     {
+      "x": 2811,
+      "y": 1269,
+      "tipo": 8,
+      "escala": 0.83
+     },
+     {
+      "x": 1090,
+      "y": 1293,
+      "tipo": 1,
+      "escala": 0.66
+     },
+     {
+      "x": -13,
+      "y": 1348,
+      "tipo": 8,
+      "escala": 0.65
+     },
+     {
+      "x": -15,
+      "y": 1485,
+      "tipo": 4,
+      "escala": 0.75
+     },
+     {
+      "x": 2358,
+      "y": 1504,
+      "tipo": 3,
+      "escala": 0.78
+     },
+     {
+      "x": 2782,
+      "y": 1540,
+      "tipo": 3,
+      "escala": 0.77
+     },
+     {
+      "x": 1021,
+      "y": 1573,
+      "tipo": 3,
+      "escala": 0.66
+     },
+     {
+      "x": 902,
+      "y": 1599,
+      "tipo": 5,
+      "escala": 0.9
+     },
+     {
+      "x": 633,
+      "y": 1611,
+      "tipo": 1,
+      "escala": 0.9
+     },
+     {
+      "x": 1865,
+      "y": 1614,
+      "tipo": 3,
+      "escala": 0.76
+     },
+     {
+      "x": 232,
+      "y": 1614,
+      "tipo": 1,
+      "escala": 0.65
+     },
+     {
+      "x": 2091,
+      "y": 1625,
+      "tipo": 3,
+      "escala": 0.65
+     },
+     {
+      "x": -10,
+      "y": 1627,
+      "tipo": 8,
+      "escala": 0.62
+     },
+     {
+      "x": 2210,
+      "y": 1654,
+      "tipo": 7,
+      "escala": 0.63
+     },
+     {
+      "x": 2801,
+      "y": 1664,
+      "tipo": 2,
+      "escala": 0.77
+     },
+     {
+      "x": 794,
+      "y": 1666,
+      "tipo": 4,
+      "escala": 0.75
+     },
+     {
+      "x": 510,
+      "y": 1686,
+      "tipo": 0,
+      "escala": 0.9
+     },
+     {
+      "x": 130,
+      "y": 1697,
+      "tipo": 2,
+      "escala": 0.6
+     },
+     {
+      "x": 1964,
+      "y": 1702,
+      "tipo": 4,
+      "escala": 0.81
+     },
+     {
+      "x": 388,
+      "y": 1718,
+      "tipo": 6,
+      "escala": 0.73
+     },
+     {
+      "x": -17,
+      "y": 1728,
+      "tipo": 7,
+      "escala": 0.74
+     },
+     {
+      "x": 992,
+      "y": 1735,
+      "tipo": 0,
+      "escala": 0.69
+     },
+     {
+      "x": 266,
+      "y": 1737,
+      "tipo": 1,
+      "escala": 0.65
+     },
+     {
+      "x": 2282,
+      "y": 1751,
+      "tipo": 0,
+      "escala": 0.79
+     },
+     {
+      "x": 1434,
+      "y": 1792,
+      "tipo": 3,
+      "escala": 0.71
+     },
+     {
+      "x": 93,
+      "y": 1818,
+      "tipo": 3,
+      "escala": 0.84
+     },
+     {
+      "x": 412,
+      "y": 1854,
+      "tipo": 8,
+      "escala": 0.82
+     },
+     {
+      "x": -19,
+      "y": 1858,
+      "tipo": 3,
+      "escala": 0.6
+     },
+     {
+      "x": 1395,
+      "y": 1917,
+      "tipo": 8,
+      "escala": 0.65
+     },
+     {
+      "x": 248,
+      "y": 1919,
+      "tipo": 6,
+      "escala": 0.83
+     },
+     {
+      "x": 56,
+      "y": 1943,
+      "tipo": 1,
+      "escala": 0.64
+     },
+     {
+      "x": 379,
+      "y": 1966,
+      "tipo": 7,
+      "escala": 0.82
+     },
+     {
+      "x": 510,
+      "y": 1971,
+      "tipo": 6,
+      "escala": 0.86
+     },
+     {
+      "x": 669,
+      "y": 1985,
+      "tipo": 3,
+      "escala": 0.74
+     },
+     {
+      "x": 1511,
+      "y": 1986,
+      "tipo": 4,
+      "escala": 0.71
+     },
+     {
+      "x": 2633,
+      "y": 1993,
+      "tipo": 2,
+      "escala": 0.65
+     },
+     {
+      "x": 2507,
+      "y": 2003,
+      "tipo": 4,
+      "escala": 0.64
+     },
+     {
+      "x": 2263,
+      "y": 2010,
+      "tipo": 4,
+      "escala": 0.69
+     },
+     {
+      "x": 1339,
+      "y": 2040,
+      "tipo": 8,
+      "escala": 0.81
+     },
+     {
+      "x": 59,
+      "y": 2042,
+      "tipo": 4,
+      "escala": 0.84
+     },
+     {
+      "x": 1461,
+      "y": 2076,
+      "tipo": 8,
+      "escala": 0.78
+     },
+     {
+      "x": 484,
+      "y": 2080,
+      "tipo": 0,
+      "escala": 0.9
+     },
+     {
+      "x": 624,
+      "y": 2083,
+      "tipo": 0,
+      "escala": 0.74
+     },
+     {
+      "x": 2451,
+      "y": 2090,
+      "tipo": 4,
+      "escala": 0.76
+     },
+     {
+      "x": 2757,
+      "y": 2092,
+      "tipo": 5,
+      "escala": 0.82
+     },
+     {
+      "x": 272,
+      "y": 2095,
+      "tipo": 4,
+      "escala": 0.83
+     },
+     {
+      "x": 2603,
+      "y": 2100,
+      "tipo": 4,
+      "escala": 0.63
+     },
+     {
+      "x": 2316,
+      "y": 2107,
+      "tipo": 7,
+      "escala": 0.81
+     },
+     {
+      "x": 1643,
+      "y": 2126,
+      "tipo": 1,
+      "escala": 0.86
+     },
+     {
+      "x": 143,
+      "y": 2136,
+      "tipo": 5,
+      "escala": 0.64
+     },
+     {
+      "x": 387,
+      "y": 2171,
+      "tipo": 4,
+      "escala": 0.78
+     },
+     {
+      "x": 2509,
+      "y": 2195,
+      "tipo": 1,
+      "escala": 0.77
+     },
+     {
+      "x": 1885,
+      "y": 2202,
+      "tipo": 3,
+      "escala": 0.78
+     },
+     {
+      "x": 2690,
+      "y": 2211,
+      "tipo": 8,
+      "escala": 0.8
+     },
+     {
+      "x": 1747,
+      "y": 2217,
+      "tipo": 1,
+      "escala": 0.64
+     },
+     {
+      "x": 1116,
+      "y": 2224,
+      "tipo": 8,
+      "escala": 0.66
+     },
+     {
+      "x": 12,
+      "y": 2230,
+      "tipo": 4,
+      "escala": 0.8
+     },
+     {
+      "x": 2384,
+      "y": 2244,
+      "tipo": 1,
+      "escala": 0.6
+     },
+     {
+      "x": 2790,
+      "y": 2268,
+      "tipo": 2,
+      "escala": 0.85
+     },
+     {
+      "x": 380,
+      "y": 2308,
+      "tipo": 4,
+      "escala": 0.73
+     },
+     {
+      "x": 2600,
+      "y": 2319,
+      "tipo": 7,
+      "escala": 0.8
+     },
+     {
+      "x": 1177,
+      "y": 2353,
+      "tipo": 3,
+      "escala": 0.79
+     },
+     {
+      "x": 35,
+      "y": 2354,
+      "tipo": 3,
+      "escala": 0.81
+     },
+     {
+      "x": 2798,
+      "y": 2387,
+      "tipo": 2,
+      "escala": 0.64
+     },
+     {
+      "x": 950,
+      "y": 2403,
+      "tipo": 8,
+      "escala": 0.64
+     },
+     {
+      "x": 2643,
+      "y": 2420,
+      "tipo": 1,
+      "escala": 0.75
+     },
+     {
+      "x": 1349,
+      "y": 2450,
+      "tipo": 6,
+      "escala": 0.68
+     },
+     {
+      "x": 1895,
+      "y": 2464,
+      "tipo": 8,
+      "escala": 0.61
+     },
+     {
+      "x": 1488,
+      "y": 2470,
+      "tipo": 7,
+      "escala": 0.7
+     },
+     {
+      "x": 170,
+      "y": 2487,
+      "tipo": 8,
+      "escala": 0.81
+     },
+     {
+      "x": 25,
+      "y": 2506,
+      "tipo": 0,
+      "escala": 0.63
+     },
+     {
+      "x": 860,
+      "y": 2512,
+      "tipo": 8,
+      "escala": 0.71
+     },
+     {
+      "x": 1245,
+      "y": 2517,
+      "tipo": 7,
+      "escala": 0.67
+     },
+     {
+      "x": 2646,
+      "y": 2520,
+      "tipo": 7,
+      "escala": 0.77
+     },
+     {
+      "x": 1078,
+      "y": 2523,
+      "tipo": 3,
+      "escala": 0.63
+     },
+     {
+      "x": 2055,
+      "y": 2539,
+      "tipo": 5,
+      "escala": 0.86
+     },
+     {
+      "x": 2782,
+      "y": 2545,
+      "tipo": 1,
+      "escala": 0.7
+     },
+     {
+      "x": 1860,
+      "y": 2575,
+      "tipo": 8,
+      "escala": 0.67
+     },
+     {
+      "x": 64,
+      "y": 2599,
+      "tipo": 7,
+      "escala": 0.7
+     },
+     {
+      "x": 2588,
+      "y": 2609,
+      "tipo": 3,
+      "escala": 0.87
+     },
+     {
+      "x": 1271,
+      "y": 2613,
+      "tipo": 2,
+      "escala": 0.82
+     },
+     {
+      "x": 869,
+      "y": 2620,
+      "tipo": 6,
+      "escala": 0.81
+     },
+     {
+      "x": 703,
+      "y": 2627,
+      "tipo": 8,
+      "escala": 0.63
+     },
+     {
+      "x": 1403,
+      "y": 2630,
+      "tipo": 6,
+      "escala": 0.79
+     },
+     {
+      "x": 2089,
+      "y": 2640,
+      "tipo": 2,
+      "escala": 0.74
+     },
+     {
+      "x": 2751,
+      "y": 2646,
+      "tipo": 7,
+      "escala": 0.72
+     },
+     {
+      "x": 992,
+      "y": 2650,
+      "tipo": 6,
+      "escala": 0.9
+     },
+     {
+      "x": 161,
+      "y": 2661,
+      "tipo": 2,
+      "escala": 0.87
+     },
+     {
+      "x": 1941,
+      "y": 2672,
+      "tipo": 8,
+      "escala": 0.74
+     },
+     {
+      "x": 1121,
+      "y": 2676,
+      "tipo": 3,
+      "escala": 0.85
+     },
+     {
+      "x": 598,
+      "y": 2686,
+      "tipo": 0,
+      "escala": 0.78
+     },
+     {
+      "x": 2567,
+      "y": 2710,
+      "tipo": 1,
+      "escala": 0.89
+     },
+     {
+      "x": 282,
+      "y": 2722,
+      "tipo": 0,
+      "escala": 0.77
+     },
+     {
+      "x": 64,
+      "y": 2731,
+      "tipo": 8,
+      "escala": 0.63
+     },
+     {
+      "x": 1845,
+      "y": 2732,
+      "tipo": 1,
+      "escala": 0.9
+     },
+     {
+      "x": 2042,
+      "y": 2737,
+      "tipo": 3,
+      "escala": 0.9
+     },
+     {
+      "x": 2274,
+      "y": 2742,
+      "tipo": 5,
+      "escala": 0.72
+     },
+     {
+      "x": 711,
+      "y": 2762,
+      "tipo": 2,
+      "escala": 0.67
+     },
+     {
+      "x": 1458,
+      "y": 2764,
+      "tipo": 2,
+      "escala": 0.78
+     },
+     {
+      "x": 2793,
+      "y": 2764,
+      "tipo": 0,
+      "escala": 0.8
+     },
+     {
+      "x": 2410,
+      "y": 2767,
+      "tipo": 1,
+      "escala": 0.62
+     },
+     {
+      "x": 1597,
+      "y": 2769,
+      "tipo": 5,
+      "escala": 0.73
+     },
+     {
+      "x": 1727,
+      "y": 2773,
+      "tipo": 5,
+      "escala": 0.61
+     },
+     {
+      "x": 1311,
+      "y": 2775,
+      "tipo": 8,
+      "escala": 0.86
+     },
+     {
+      "x": 879,
+      "y": 2779,
+      "tipo": 3,
+      "escala": 0.77
+     },
+     {
+      "x": 577,
+      "y": 2786,
+      "tipo": 0,
+      "escala": 0.83
+     },
+     {
+      "x": 1135,
+      "y": 2791,
+      "tipo": 2,
+      "escala": 0.75
+     },
+     {
+      "x": 2663,
+      "y": 2798,
+      "tipo": 8,
+      "escala": 0.83
+     },
+     {
+      "x": 420,
+      "y": 2817,
+      "tipo": 8,
+      "escala": 0.65
+     },
+     {
+      "x": 174,
+      "y": 2828,
+      "tipo": 0,
+      "escala": 0.62
+     },
+     {
+      "x": 2016,
+      "y": 2833,
+      "tipo": 3,
+      "escala": 0.69
+     },
+     {
+      "x": 1004,
+      "y": 2835,
+      "tipo": 2,
+      "escala": 0.78
+     },
+     {
+      "x": 2262,
+      "y": 2840,
+      "tipo": 2,
+      "escala": 0.81
+     },
+     {
+      "x": 676,
+      "y": 2859,
+      "tipo": 8,
+      "escala": 0.61
+     },
+     {
+      "x": 2142,
+      "y": 2861,
+      "tipo": 2,
+      "escala": 0.82
+     },
+     {
+      "x": 1526,
+      "y": 2864,
+      "tipo": 2,
+      "escala": 0.83
+     },
+     {
+      "x": 1657,
+      "y": 2865,
+      "tipo": 2,
+      "escala": 0.89
+     },
+     {
+      "x": 10,
+      "y": 2876,
+      "tipo": 3,
+      "escala": 0.87
+     },
+     {
+      "x": 2753,
+      "y": 2879,
+      "tipo": 6,
+      "escala": 0.73
+     },
+     {
+      "x": 1789,
+      "y": 2881,
+      "tipo": 4,
+      "escala": 0.75
+     },
+     {
+      "x": 1360,
+      "y": 2885,
+      "tipo": 6,
+      "escala": 0.85
+     },
+     {
+      "x": 1235,
+      "y": 2885,
+      "tipo": 0,
+      "escala": 0.69
+     },
+     {
+      "x": 1915,
+      "y": 2889,
+      "tipo": 4,
+      "escala": 0.76
+     },
+     {
+      "x": 896,
+      "y": 2892,
+      "tipo": 7,
+      "escala": 0.89
+     },
+     {
+      "x": 319,
+      "y": 2894,
+      "tipo": 6,
+      "escala": 0.73
+     },
+     {
+      "x": 2621,
+      "y": 2897,
+      "tipo": 2,
+      "escala": 0.69
+     },
+     {
+      "x": 2476,
+      "y": 2898,
+      "tipo": 3,
+      "escala": 0.82
+     },
+     {
+      "x": 551,
+      "y": 2899,
+      "tipo": 5,
+      "escala": 0.8
+     }
+    ],
+    "luces": [
+     {
+      "x": 1388,
+      "y": 1360,
+      "radio": 480
+     }
+    ],
+    "radioLuzMision": 420,
+    "ambiente": "bosque-noche",
+    "criaturas": [
+     {
+      "imagen": "mundo/animal-1.webp",
+      "ancho": 46,
+      "x": 973,
+      "y": 1301,
+      "radio": 90,
+      "movimiento": "revolotea",
+      "rapidez": 0.8,
+      "palabra": {
+       "en": "butterfly",
+       "es": "mariposa",
+       "icono": "mundo/animal-1.webp"
+      }
+     },
+     {
+      "imagen": "mundo/animal-2.webp",
+      "ancho": 46,
+      "x": 1123,
+      "y": 1631,
+      "radio": 90,
+      "movimiento": "revolotea",
+      "rapidez": 0.9,
+      "palabra": {
+       "en": "butterfly",
+       "es": "mariposa",
+       "icono": "mundo/animal-2.webp"
+      }
+     },
+     {
+      "imagen": "mundo/animal-1.webp",
+      "ancho": 46,
+      "x": 797,
+      "y": 297,
+      "radio": 90,
+      "movimiento": "revolotea",
+      "rapidez": 1.0,
+      "palabra": {
+       "en": "butterfly",
+       "es": "mariposa",
+       "icono": "mundo/animal-1.webp"
+      }
+     },
+     {
+      "imagen": "mundo/animal-2.webp",
+      "ancho": 46,
+      "x": 1906,
+      "y": 1255,
+      "radio": 90,
+      "movimiento": "revolotea",
+      "rapidez": 1.1,
+      "palabra": {
+       "en": "butterfly",
+       "es": "mariposa",
+       "icono": "mundo/animal-2.webp"
+      }
+     },
+     {
+      "imagen": "mundo/animal-1.webp",
+      "ancho": 46,
+      "x": 1569,
+      "y": 1084,
+      "radio": 90,
+      "movimiento": "revolotea",
+      "rapidez": 1.2000000000000002,
+      "palabra": {
+       "en": "butterfly",
+       "es": "mariposa",
+       "icono": "mundo/animal-1.webp"
+      }
+     },
+     {
+      "imagen": "mundo/animal-3.webp",
+      "ancho": 44,
+      "x": 1824,
+      "y": 1036,
+      "radio": 70,
+      "movimiento": "zumba",
+      "rapidez": 1.4,
+      "palabra": {
+       "en": "bee",
+       "es": "abeja",
+       "icono": "mundo/animal-3.webp"
+      }
+     },
+     {
+      "imagen": "mundo/animal-3.webp",
+      "ancho": 44,
+      "x": 761,
+      "y": 1184,
+      "radio": 70,
+      "movimiento": "zumba",
+      "rapidez": 1.5,
+      "palabra": {
+       "en": "bee",
+       "es": "abeja",
+       "icono": "mundo/animal-3.webp"
+      }
+     },
+     {
+      "imagen": "mundo/animal-3.webp",
+      "ancho": 44,
+      "x": 2560,
+      "y": 765,
+      "radio": 70,
+      "movimiento": "zumba",
+      "rapidez": 1.5999999999999999,
+      "palabra": {
+       "en": "bee",
+       "es": "abeja",
+       "icono": "mundo/animal-3.webp"
+      }
+     },
+     {
+      "imagen": "mundo/animal-5.webp",
+      "ancho": 50,
+      "x": 2496,
+      "y": 1625,
+      "radio": 0,
+      "movimiento": "salta",
+      "rapidez": 1,
+      "palabra": {
+       "en": "frog",
+       "es": "rana",
+       "icono": "mundo/animal-5.webp"
+      }
+     },
+     {
+      "imagen": "mundo/animal-5.webp",
+      "ancho": 50,
+      "x": 1057,
+      "y": 314,
+      "radio": 0,
+      "movimiento": "salta",
+      "rapidez": 1,
+      "palabra": {
+       "en": "frog",
+       "es": "rana",
+       "icono": "mundo/animal-5.webp"
+      }
+     },
+     {
+      "imagen": "mundo/animal-5.webp",
+      "ancho": 50,
+      "x": 1481,
+      "y": 793,
+      "radio": 0,
+      "movimiento": "salta",
+      "rapidez": 1,
+      "palabra": {
+       "en": "frog",
+       "es": "rana",
+       "icono": "mundo/animal-5.webp"
+      }
+     },
+     {
+      "imagen": "mundo/animal-6.webp",
       "ancho": 58,
-      "saludo": {
-        "es": "¡Hola! Soy Mika.",
-        "en": "Hello! I am Mika."
+      "x": 888,
+      "y": 940,
+      "radio": 260,
+      "movimiento": "planea",
+      "rapidez": 0.3,
+      "palabra": {
+       "en": "bird",
+       "es": "pájaro",
+       "icono": "mundo/animal-6.webp"
       }
-    },
-    {
-      "id": "bruno",
-      "nombre": "Bruno",
-      "imagen": "personajes/heroe-3.webp",
-      "ancho": 64,
-      "saludo": {
-        "es": "¡Hola! Soy Bruno.",
-        "en": "Hello! I am Bruno."
+     },
+     {
+      "imagen": "mundo/animal-6.webp",
+      "ancho": 58,
+      "x": 1838,
+      "y": 1880,
+      "radio": 260,
+      "movimiento": "planea",
+      "rapidez": 0.26,
+      "palabra": {
+       "en": "bird",
+       "es": "pájaro",
+       "icono": "mundo/animal-6.webp"
       }
+     },
+     {
+      "imagen": "mundo/animal-4.webp",
+      "ancho": 84,
+      "x": 2008,
+      "y": 840,
+      "radio": 240,
+      "movimiento": "planea",
+      "rapidez": 0.2,
+      "palabra": {
+       "en": "owl",
+       "es": "búho",
+       "icono": "mundo/animal-4.webp"
+      }
+     },
+     {
+      "imagen": "mundo/animal-4.webp",
+      "ancho": 84,
+      "x": 748,
+      "y": 1920,
+      "radio": 220,
+      "movimiento": "planea",
+      "rapidez": 0.18,
+      "palabra": {
+       "en": "owl",
+       "es": "búho",
+       "icono": "mundo/animal-4.webp"
+      }
+     }
+    ],
+    "objetos": [
+     {
+      "imagen": "mundo/objeto-6.webp",
+      "ancho": 105,
+      "x": 1388,
+      "y": 1255,
+      "choque": 38
+     },
+     {
+      "imagen": "mundo/objeto-8.webp",
+      "ancho": 120,
+      "x": 1538,
+      "y": 1535,
+      "choque": 26
+     },
+     {
+      "imagen": "mundo/objeto-5.webp",
+      "ancho": 78,
+      "x": 966,
+      "y": 613,
+      "choque": 12
+     },
+     {
+      "imagen": "mundo/objeto-4.webp",
+      "ancho": 70,
+      "x": 690,
+      "y": 712,
+      "choque": 10,
+      "luz": true
+     },
+     {
+      "imagen": "mundo/objeto-4.webp",
+      "ancho": 70,
+      "x": 270,
+      "y": 244,
+      "choque": 10,
+      "luz": true
+     },
+     {
+      "imagen": "mundo/objeto-1.webp",
+      "ancho": 190,
+      "x": 506,
+      "y": 1279,
+      "choque": 62
+     },
+     {
+      "imagen": "mundo/objeto-4.webp",
+      "ancho": 70,
+      "x": 803,
+      "y": 1305,
+      "choque": 10,
+      "luz": true
+     },
+     {
+      "imagen": "mundo/objeto-4.webp",
+      "ancho": 70,
+      "x": 268,
+      "y": 1230,
+      "choque": 10,
+      "luz": true
+     },
+     {
+      "imagen": "mundo/objeto-3.webp",
+      "ancho": 170,
+      "x": 1738,
+      "y": 567,
+      "choque": 56
+     },
+     {
+      "imagen": "mundo/objeto-4.webp",
+      "ancho": 70,
+      "x": 2057,
+      "y": 652,
+      "choque": 10,
+      "luz": true
+     },
+     {
+      "imagen": "mundo/objeto-4.webp",
+      "ancho": 70,
+      "x": 2486,
+      "y": 212,
+      "choque": 10,
+      "luz": true
+     },
+     {
+      "imagen": "mundo/objeto-9.webp",
+      "ancho": 150,
+      "x": 807,
+      "y": 1827,
+      "choque": 50
+     },
+     {
+      "imagen": "mundo/objeto-4.webp",
+      "ancho": 70,
+      "x": 800,
+      "y": 1975,
+      "choque": 10,
+      "luz": true
+     },
+     {
+      "imagen": "mundo/objeto-4.webp",
+      "ancho": 70,
+      "x": 584,
+      "y": 2481,
+      "choque": 10,
+      "luz": true
+     },
+     {
+      "imagen": "mundo/objeto-2.webp",
+      "ancho": 190,
+      "x": 2089,
+      "y": 1853,
+      "choque": 62
+     },
+     {
+      "imagen": "mundo/objeto-4.webp",
+      "ancho": 70,
+      "x": 2056,
+      "y": 1942,
+      "choque": 10,
+      "luz": true
+     },
+     {
+      "imagen": "mundo/objeto-4.webp",
+      "ancho": 70,
+      "x": 2460,
+      "y": 2371,
+      "choque": 10,
+      "luz": true
+     },
+     {
+      "imagen": "mundo/objeto-4.webp",
+      "ancho": 70,
+      "x": 1265,
+      "y": 1201,
+      "choque": 10,
+      "luz": true
+     },
+     {
+      "imagen": "mundo/objeto-4.webp",
+      "ancho": 70,
+      "x": 1512,
+      "y": 1201,
+      "choque": 10,
+      "luz": true
+     },
+     {
+      "imagen": "mundo/objeto-4.webp",
+      "ancho": 70,
+      "x": 1202,
+      "y": 1457,
+      "choque": 10,
+      "luz": true
+     },
+     {
+      "imagen": "mundo/objeto-5.webp",
+      "ancho": 78,
+      "x": 1562,
+      "y": 1300,
+      "choque": 12
+     },
+     {
+      "imagen": "mundo/objeto-7.webp",
+      "ancho": 84,
+      "x": 1281,
+      "y": 1621,
+      "choque": 0
+     },
+     {
+      "imagen": "mundo/objeto-7.webp",
+      "ancho": 84,
+      "x": 2376,
+      "y": 1804,
+      "choque": 0
+     },
+     {
+      "imagen": "mundo/objeto-7.webp",
+      "ancho": 84,
+      "x": 1911,
+      "y": 880,
+      "choque": 0
+     },
+     {
+      "imagen": "mundo/objeto-7.webp",
+      "ancho": 70,
+      "x": 2328,
+      "y": 1272,
+      "choque": 0
+     },
+     {
+      "imagen": "mundo/objeto-7.webp",
+      "ancho": 70,
+      "x": 1607,
+      "y": 1742,
+      "choque": 0
+     },
+     {
+      "imagen": "mundo/objeto-7.webp",
+      "ancho": 70,
+      "x": 2642,
+      "y": 640,
+      "choque": 0
+     },
+     {
+      "imagen": "mundo/objeto-7.webp",
+      "ancho": 70,
+      "x": 221,
+      "y": 2232,
+      "choque": 0
+     },
+     {
+      "imagen": "mundo/objeto-7.webp",
+      "ancho": 70,
+      "x": 1674,
+      "y": 996,
+      "choque": 0
+     },
+     {
+      "imagen": "mundo/objeto-7.webp",
+      "ancho": 84,
+      "x": 629,
+      "y": 1764,
+      "choque": 0
+     },
+     {
+      "imagen": "mundo/objeto-7.webp",
+      "ancho": 70,
+      "x": 1728,
+      "y": 1814,
+      "choque": 0
+     },
+     {
+      "imagen": "mundo/objeto-7.webp",
+      "ancho": 84,
+      "x": 1305,
+      "y": 2124,
+      "choque": 0
+     },
+     {
+      "imagen": "mundo/objeto-7.webp",
+      "ancho": 84,
+      "x": 282,
+      "y": 1022,
+      "choque": 0
+     },
+     {
+      "imagen": "mundo/objeto-7.webp",
+      "ancho": 84,
+      "x": 746,
+      "y": 529,
+      "choque": 0
+     },
+     {
+      "imagen": "mundo/objeto-7.webp",
+      "ancho": 70,
+      "x": 1794,
+      "y": 832,
+      "choque": 0
+     }
+    ],
+    "colorPenumbra": "rgb(16 8 46 / 0.62)",
+    "celda": 20,
+    "agua": [
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011111",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001111",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001111",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001111",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001111",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001111",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000111",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000111",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000011",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "00000000000000000000000000000000000000000000000000001111001000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "00000000000000000000000000000000000000000000000000000001100000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "00000000000000000000000000000000000000000000000000000011111011000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "00000000000000000000000000000000000000000000000000001111111110000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "00000000000000000000000000000000000000000000000000011111111111110000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "00000000000000000000000000000000000000000000000010011111111111000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "00000000000000000000000000000000000000000000000010011111111111010000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "00000000000000000000000000000000000000000000000010001111111111110000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "00000000000000000000000000000000000000000000000001100111111111110000000000000000000000000000000000000000000000000001000000000000000000000000",
+     "00000000000000000000000000000000000000000000000000000111111111000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "00000000000000000000000000000000000000000000000000000111111111000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "00000000000000000000000000000000000000000000000000000101111001000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "00000000000000000000000000000000000000000000000000000110111011000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "00000000000000000000000000000000000000000000000000000001011000000000000000000000000000000000000000000000000000000000000000000000000000000011",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000111",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000111",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001111",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011111",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001111",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000111",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011111",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000111111",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000111111",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000111111",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000001100000000000000000000000000000000000000000000000000000000111111",
+     "00000000000000000000000000000000000000000000000000000000000000000000000011111110000000000000000000000000000000000000000000000000000010111110",
+     "00000000000000000000000000000000000000000000000000000000000000000000010111111110000000000000000000000000000000000000000000000000000011111111",
+     "00000000000000000000000000000000000000000000000000000000000000000000100111111111000000000000000000000000000000000000000000000000000111111111",
+     "00000000000000000000000000000000000000000000000000000000000000000000000111111111000000000000000000000000000000000000000000000000000111111000",
+     "00000000000000000000000000000000000000000000000000000000000000000000111111111110000000000000000000000000000000000000000000000000010111111000",
+     "00000000000000000000000000000000000000000000000000000000000000000000001111111111000000000000000000000000000000000000000000000000011111110000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000011110110000000000000000000000000000000000000000000000011111111100000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000111011110000000000000000000000000000000000000000000000111111111100000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000111111111000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001011111110000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001111111110000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001111111110000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000111111100000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011111111100000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011111111000000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011111111000000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001111111000000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001111111000000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011111111000000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011111111100000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001110000000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001111110000000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001111111000000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001111111100000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001111111100000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011111111100000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000111111110000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001011111110000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001101111111000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000101111110000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100111110000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011111111000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001111111100000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001111111110000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001111111111000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000101111111100",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011111111111",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001111111111",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000111111111",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011111111",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001111111",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001111111",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000111111",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011111",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011111",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001101",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001101",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000111",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000001000000000000000000000000000000000000000000000000000000000000000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000001100000000000000000000000000000000000000000000000000000000000000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000001110000000000000000000000000000000000000000000000000000000000000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000001111111110000000000000000000000000000000000000000000000000000000000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000010111111111110000000000000000000000000000000000000000000000000000000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000111111111000000000000000000000000000000000000000000000000000000000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000100111111111100000000000000000000000000000000000000000000000000000000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000111111111110000000000000000000000000000000000000000000000000000000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000100011111111110000000000000000000000000000000000000000000000000000000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000111111111111100000000000000000000000000000000000000000000000000000000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000101111111110000000000000000000000000000000000000000000000000000000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000010111110010000000000000000000000000000000000000000000000000000000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000011011110110000000000000000000000000000000000000000000000000000000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000001010010000000000000000000000000000000000000000000000000000000000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
+    ],
+    "frente": [
+     {
+      "x": 172,
+      "y": 1794,
+      "tipo": 8
+     },
+     {
+      "x": 1093,
+      "y": 2622,
+      "tipo": 7
+     }
+    ],
+    "huellas": [
+     {
+      "x": 1194,
+      "y": 1042,
+      "icono": "iconos/270f.svg",
+      "mision": "bosque-school"
+     },
+     {
+      "x": 1194,
+      "y": 1042,
+      "icono": "iconos/1f9fd.svg",
+      "mision": "bosque-school"
+     },
+     {
+      "x": 1146,
+      "y": 962,
+      "icono": "iconos/1f4d3.svg",
+      "mision": "bosque-school"
+     },
+     {
+      "x": 1014,
+      "y": 882,
+      "icono": "iconos/1f4cf.svg",
+      "mision": "bosque-school"
+     },
+     {
+      "x": 958,
+      "y": 834,
+      "icono": "iconos/2702.svg",
+      "mision": "bosque-school"
+     },
+     {
+      "x": 1022,
+      "y": 1338,
+      "icono": "iconos/1f534.svg",
+      "mision": "bosque-colors"
+     },
+     {
+      "x": 962,
+      "y": 1338,
+      "icono": "iconos/1f535.svg",
+      "mision": "bosque-colors"
+     },
+     {
+      "x": 874,
+      "y": 1354,
+      "icono": "iconos/1f7e2.svg",
+      "mision": "bosque-colors"
+     },
+     {
+      "x": 1598,
+      "y": 1106,
+      "icono": "iconos/0031_20e3.svg",
+      "mision": "bosque-numbers"
+     },
+     {
+      "x": 1654,
+      "y": 1066,
+      "icono": "iconos/0032_20e3.svg",
+      "mision": "bosque-numbers"
+     },
+     {
+      "x": 1758,
+      "y": 994,
+      "icono": "iconos/0033_20e3.svg",
+      "mision": "bosque-numbers"
+     },
+     {
+      "x": 1766,
+      "y": 986,
+      "icono": "iconos/0034_20e3.svg",
+      "mision": "bosque-numbers"
+     },
+     {
+      "x": 1850,
+      "y": 862,
+      "icono": "iconos/0035_20e3.svg",
+      "mision": "bosque-numbers"
+     },
+     {
+      "x": 1858,
+      "y": 838,
+      "icono": "iconos/0031_20e3.svg",
+      "mision": "bosque-numbers"
+     },
+     {
+      "x": 1202,
+      "y": 1650,
+      "icono": "iconos/1f642.svg",
+      "mision": "bosque-body"
+     },
+     {
+      "x": 1138,
+      "y": 1738,
+      "icono": "iconos/1f440.svg",
+      "mision": "bosque-body"
+     },
+     {
+      "x": 1106,
+      "y": 1778,
+      "icono": "iconos/1f442.svg",
+      "mision": "bosque-body"
+     },
+     {
+      "x": 1106,
+      "y": 1778,
+      "icono": "iconos/1f443.svg",
+      "mision": "bosque-body"
+     },
+     {
+      "x": 790,
+      "y": 2142,
+      "icono": "iconos/1f444.svg",
+      "mision": "bosque-body-2"
+     },
+     {
+      "x": 1546,
+      "y": 1606,
+      "icono": "iconos/1f44b.svg",
+      "mision": "bosque-family"
+     },
+     {
+      "x": 1602,
+      "y": 1670,
+      "icono": "iconos/1f305.svg",
+      "mision": "bosque-family"
+     },
+     {
+      "x": 1666,
+      "y": 1718,
+      "icono": "iconos/1f319.svg",
+      "mision": "bosque-family"
+     },
+     {
+      "x": 1762,
+      "y": 1774,
+      "icono": "iconos/1f64f.svg",
+      "mision": "bosque-family"
+     },
+     {
+      "x": 1794,
+      "y": 1350,
+      "icono": "",
+      "mision": ""
+     },
+     {
+      "x": 1898,
+      "y": 1350,
+      "icono": "",
+      "mision": ""
+     },
+     {
+      "x": 2002,
+      "y": 1350,
+      "icono": "",
+      "mision": ""
+     },
+     {
+      "x": 2106,
+      "y": 1350,
+      "icono": "",
+      "mision": ""
+     },
+     {
+      "x": 2210,
+      "y": 1350,
+      "icono": "",
+      "mision": ""
+     },
+     {
+      "x": 2314,
+      "y": 1350,
+      "icono": "",
+      "mision": ""
+     }
+    ]
+   },
+   "escenas": {
+    "intro": {
+     "lineas": [
+      {
+       "quien": "pixie",
+       "es": "¡Hola! Soy Pixie. ¡Qué bueno que llegaste!",
+       "en": "Hello! I am Pixie. I am so happy you are here!"
+      },
+      {
+       "quien": "pixie",
+       "es": "Englishland se está apagando. Las palabras perdieron su luz.",
+       "en": "Englishland is fading. The words lost their light."
+      },
+      {
+       "quien": "cosmo",
+       "es": "Yo soy Cosmo. Este es mi hogar: el Bosque de los Sonidos.",
+       "en": "I am Cosmo. This is my home: the Forest of Sounds."
+      },
+      {
+       "quien": "cosmo",
+       "es": "Cada palabra que aprendes enciende un farol. ¿Me ayudas?",
+       "en": "Every word you learn lights a lantern. Will you help me?",
+       "opciones": [
+        {
+         "es": "¡Sí, vamos!",
+         "en": "Yes, let's go!",
+         "ir": "elegir"
+        },
+        {
+         "es": "¿Cómo me muevo?",
+         "en": "How do I move?",
+         "ir": "ayuda"
+        }
+       ]
+      }
+     ]
+    },
+    "ayuda": {
+     "lineas": [
+      {
+       "quien": "cosmo",
+       "es": "Toca la pantalla y caminas hasta tu dedo. ¡Puedes ir a donde quieras!",
+       "en": "Touch the screen and you walk to your finger. You can go anywhere!"
+      },
+      {
+       "quien": "pixie",
+       "es": "Sigue los dibujos del piso: cada camino te cuenta a dónde lleva.",
+       "en": "Follow the pictures on the ground: each path tells you where it goes."
+      },
+      {
+       "quien": "pixie",
+       "es": "Los vecinos del bosque perdieron sus palabras. ¡Ayúdalos a encontrarlas!",
+       "en": "The forest neighbors lost their words. Help them find them!"
+      }
+     ],
+     "luego": "elegir"
+    },
+    "elegir": {
+     "lineas": [
+      {
+       "quien": "cosmo",
+       "es": "¿A dónde vamos primero? Tú decides.",
+       "en": "Where do we go first? You decide.",
+       "opciones": [
+        {
+         "es": "A los útiles de la escuela",
+         "en": "To the school objects",
+         "icono": "iconos/1f392.svg",
+         "destino": "bosque-school"
+        },
+        {
+         "es": "A los colores",
+         "en": "To the colors",
+         "icono": "iconos/1f7e3.svg",
+         "destino": "bosque-colors"
+        },
+        {
+         "es": "A los números",
+         "en": "To the numbers",
+         "icono": "iconos/0033_20e3.svg",
+         "destino": "bosque-numbers"
+        }
+       ]
+      }
+     ]
+    },
+    "lumi": {
+     "lineas": [
+      {
+       "quien": "lumi",
+       "es": "¡Hola! Soy Lumi. ¿Te equivocaste alguna vez? ¡No pasa nada!",
+       "en": "Hello! I am Lumi. Did you make a mistake? That is okay!"
+      },
+      {
+       "quien": "lumi",
+       "es": "Equivocarse es parte de aprender. Dilo conmigo.",
+       "en": "Mistakes help us learn. Say it with me.",
+       "opciones": [
+        {
+         "es": "I can do it!",
+         "en": "I can do it!"
+        },
+        {
+         "es": "I try again!",
+         "en": "I try again!"
+        }
+       ]
+      },
+      {
+       "quien": "lumi",
+       "es": "¡Así se dice! Sigue explorando.",
+       "en": "That is right! Keep exploring."
+      }
+     ]
+    },
+    "despues": {
+     "lineas": [
+      {
+       "quien": "cosmo",
+       "es": "¡Mira! El bosque tiene más luz. ¿A dónde vamos ahora?",
+       "en": "Look! The forest has more light. Where do we go now?"
+      }
+     ]
+    },
+    "puente-cerrado": {
+     "lineas": [
+      {
+       "quien": "nova",
+       "es": "Soy Nova. Este puente lleva al Valle de las Palabras.",
+       "en": "I am Nova. This bridge goes to the Valley of Words."
+      },
+      {
+       "quien": "nova",
+       "es": "Necesitamos 50 estrellas para encenderlo. ¡Sigue jugando!",
+       "en": "We need 50 stars to light it. Keep playing!"
+      }
+     ]
+    },
+    "puente-abierto": {
+     "lineas": [
+      {
+       "quien": "nova",
+       "es": "¡Lo lograste! El puente brilla con tus estrellas.",
+       "en": "You did it! The bridge shines with your stars."
+      },
+      {
+       "quien": "nova",
+       "es": "El Valle de las Palabras abrirá muy pronto. ¡Te espero!",
+       "en": "The Valley of Words opens very soon. I will wait for you!"
+      }
+     ]
+    },
+    "cosmo": {
+     "lineas": [
+      {
+       "quien": "cosmo",
+       "es": "¡Qué bueno verte! Hay faroles por encender y vecinos que necesitan ayuda.",
+       "en": "Good to see you! There are lanterns to light and neighbors who need help."
+      }
+     ],
+     "luego": "elegir"
+    },
+    "dormida": {
+     "lineas": [
+      {
+       "quien": "cosmo",
+       "es": "Este farol todavía duerme. Despierta cuando enciendas el que está antes en este camino.",
+       "en": "This lantern is still asleep. It wakes up when you light the one before it on this path."
+      }
+     ]
+    },
+    "rayo": {
+     "lineas": [
+      {
+       "quien": "rayo",
+       "es": "¡Correo, correo! Soy Rayo. Llevo cartas al Valle de las Palabras...",
+       "en": "Mail, mail! I am Rayo. I carry letters to the Valley of Words..."
+      },
+      {
+       "quien": "rayo",
+       "es": "...pero el puente está apagado. ¡Junta estrellas para encenderlo!",
+       "en": "...but the bridge is dark. Collect stars to light it up!"
+      }
+     ]
+    },
+    "caro-pide": {
+     "lineas": [
+      {
+       "quien": "caro",
+       "es": "Hooola... Soy Caro. Voy despacito, despacito... y se me cayó una palabra de la mochila.",
+       "en": "Hellooo... I am Caro. I go slowly, slowly... and a word fell out of my backpack."
+      },
+      {
+       "quien": "caro",
+       "es": "Está más adelante, en este camino. Escucha cuál es y tráemela, ¿sí?",
+       "en": "It is up ahead, on this path. Listen to the word and bring it to me, okay?"
+      }
+     ]
+    },
+    "caro-otra": {
+     "lineas": [
+      {
+       "quien": "caro",
+       "es": "Mmm... esa no es. ¡No pasa nada! Yo también me equivoco. Escucha otra vez.",
+       "en": "Hmm... not that one. That is okay! I make mistakes too. Listen again."
+      }
+     ]
+    },
+    "caro-gracias": {
+     "lineas": [
+      {
+       "quien": "caro",
+       "es": "¡Esa es! ¡Eraser! Ya puedo borrar y volver a intentar.",
+       "en": "That is it! Eraser! Now I can erase and try again."
+      },
+      {
+       "quien": "caro",
+       "es": "La guardé en tu álbum. ¡Gracias por no ir tan rápido como los demás!",
+       "en": "I put it in your album. Thank you for not rushing like everybody else!"
+      }
+     ]
+    },
+    "caro-listo": {
+     "lineas": [
+      {
+       "quien": "caro",
+       "es": "Eraser, eraser... la repito despacito para que no se me vuelva a caer.",
+       "en": "Eraser, eraser... I say it slowly so it never falls again."
+      }
+     ]
+    },
+    "tito-pide": {
+     "lineas": [
+      {
+       "quien": "tito",
+       "es": "¡Hola! Soy Tito. Mi sombrero tenía un color muy bonito... ¡y olvidé cómo se llama!",
+       "en": "Hello! I am Tito. My hat had a beautiful color... and I forgot its name!"
+      },
+      {
+       "quien": "tito",
+       "es": "La palabra rodó por este camino. Escúchala y tráemela, por favor.",
+       "en": "The word rolled down this path. Listen to it and bring it to me, please."
+      }
+     ]
+    },
+    "tito-otra": {
+     "lineas": [
+      {
+       "quien": "tito",
+       "es": "¡Uy! Ese no es el color de mi sombrero. ¡Tranquilo! Escucha otra vez y prueba otro.",
+       "en": "Oops! That is not the color of my hat. No worries! Listen again and try another one."
+      }
+     ]
+    },
+    "tito-gracias": {
+     "lineas": [
+      {
+       "quien": "tito",
+       "es": "¡Red! ¡Mi sombrero es red! ¡Mira cómo brilla!",
+       "en": "Red! My hat is red! Look how it shines!"
+      },
+      {
+       "quien": "tito",
+       "es": "Ya está en tu álbum. ¡Eres el mejor explorador del bosque!",
+       "en": "It is in your album now. You are the best explorer in the forest!"
+      }
+     ]
+    },
+    "tito-listo": {
+     "lineas": [
+      {
+       "quien": "tito",
+       "es": "¡Red como mi sombrero! Cuando lo veas, acuérdate de mí.",
+       "en": "Red like my hat! When you see it, think of me."
+      }
+     ]
+    },
+    "abu-pide": {
+     "lineas": [
+      {
+       "quien": "abu",
+       "es": "Buenas, pequeño explorador. Soy Abu. Llevo cien años contando las piedras del camino...",
+       "en": "Good day, little explorer. I am Abu. I have counted the stones on this path for a hundred years..."
+      },
+      {
+       "quien": "abu",
+       "es": "...y hoy se me perdió un número. Está más adelante. Escucha bien cuál es.",
+       "en": "...and today I lost a number. It is up ahead. Listen carefully."
+      }
+     ]
+    },
+    "abu-otra": {
+     "lineas": [
+      {
+       "quien": "abu",
+       "es": "Mmm, ese es otro número. Los sabios también se equivocan. Escucha de nuevo, con calma.",
+       "en": "Hmm, that is a different number. Wise ones make mistakes too. Listen again, calmly."
+      }
+     ]
+    },
+    "abu-gracias": {
+     "lineas": [
+      {
+       "quien": "abu",
+       "es": "¡Three! One, two, three... ¡ya puedo seguir contando!",
+       "en": "Three! One, two, three... now I can keep counting!"
+      },
+      {
+       "quien": "abu",
+       "es": "Guárdalo en tu álbum. Un número nunca sobra.",
+       "en": "Keep it in your album. A number is always useful."
+      }
+     ]
+    },
+    "abu-listo": {
+     "lineas": [
+      {
+       "quien": "abu",
+       "es": "One, two, three... ¿cuentas conmigo?",
+       "en": "One, two, three... will you count with me?"
+      }
+     ]
+    },
+    "pua-pide": {
+     "lineas": [
+      {
+       "quien": "pua",
+       "es": "¡Frutas, frutas frescas! Soy Púa... pero hoy no huelo nada. ¡Nada de nada!",
+       "en": "Fruit, fresh fruit! I am Púa... but today I cannot smell a thing. Nothing at all!"
+      },
+      {
+       "quien": "pua",
+       "es": "Se me perdió la palabra de lo que uso para oler. ¿Me la buscas en este camino?",
+       "en": "I lost the word for what I smell with. Can you find it on this path?"
+      }
+     ]
+    },
+    "pua-otra": {
+     "lineas": [
+      {
+       "quien": "pua",
+       "es": "¡Ja, ja! Con eso no se huele. ¡No importa! Escucha otra vez y prueba con otra.",
+       "en": "Ha ha! You cannot smell with that. Never mind! Listen again and try another one."
+      }
+     ]
+    },
+    "pua-gracias": {
+     "lineas": [
+      {
+       "quien": "pua",
+       "es": "¡Nose! ¡Esa es! Mmm... ¡qué rico huelen mis frutas!",
+       "en": "Nose! That is it! Mmm... my fruit smells so good!"
+      },
+      {
+       "quien": "pua",
+       "es": "Toma, va para tu álbum. ¡Y gracias por ayudarme!",
+       "en": "Here, it goes in your album. And thank you for helping me!"
+      }
+     ]
+    },
+    "pua-listo": {
+     "lineas": [
+      {
+       "quien": "pua",
+       "es": "Con mi nose huelo las frutas. ¿Y tú, qué hueles?",
+       "en": "With my nose I smell the fruit. And you, what can you smell?"
+      }
+     ]
+    },
+    "nuez-pide": {
+     "lineas": [
+      {
+       "quien": "nuez",
+       "es": "¡Pan calientito! Soy Nuez, la panadera. Quiero saludar a todos los que pasan...",
+       "en": "Warm bread! I am Nuez, the baker. I want to greet everyone who walks by..."
+      },
+      {
+       "quien": "nuez",
+       "es": "...pero olvidé cómo se saluda. La palabra se fue por este camino. ¿Me la traes?",
+       "en": "...but I forgot how to say it. The word went down this path. Can you bring it?"
+      }
+     ]
+    },
+    "nuez-otra": {
+     "lineas": [
+      {
+       "quien": "nuez",
+       "es": "¡Casi! Esa es bonita, pero no es para saludar. Escucha otra vez. ¡Tú puedes!",
+       "en": "Almost! That is a nice one, but it is not for greeting. Listen again. You can do it!"
+      }
+     ]
+    },
+    "nuez-gracias": {
+     "lineas": [
+      {
+       "quien": "nuez",
+       "es": "¡Hello! ¡Hello, hello! ¡Ya puedo saludar a todo el bosque!",
+       "en": "Hello! Hello, hello! Now I can greet the whole forest!"
+      },
+      {
+       "quien": "nuez",
+       "es": "Queda en tu álbum. Y cuando vuelvan todas las palabras, haré una fiesta con pan.",
+       "en": "It is in your album. And when all the words come back, I will make a bread party."
+      }
+     ]
+    },
+    "nuez-listo": {
+     "lineas": [
+      {
+       "quien": "nuez",
+       "es": "¡Hello, explorador! ¿Ves? Ya no se me olvida.",
+       "en": "Hello, explorer! See? I never forget it now."
+      }
+     ]
     }
-  ],
-  "estelas": [
-    {
-      "id": "oro",
-      "estrellas": 0,
-      "colores": [
-        "#fff3a6",
-        "#ffd95a"
-      ]
-    },
-    {
-      "id": "menta",
-      "estrellas": 25,
-      "colores": [
-        "#b6fff0",
-        "#19c6b1"
-      ]
-    },
-    {
-      "id": "rosa",
-      "estrellas": 50,
-      "colores": [
-        "#ffd0e6",
-        "#ff5fa2"
-      ]
-    },
-    {
-      "id": "arcoiris",
-      "estrellas": 90,
-      "colores": [
-        "#ff5f6d",
-        "#ffc371",
-        "#fff36b",
-        "#6bffb0",
-        "#6bc5ff",
-        "#c58bff"
-      ]
-    }
-  ]
+   }
+  }
+ ],
+ "idiomaHistoria": "es-US",
+ "heroes": [
+  {
+   "id": "tavi",
+   "nombre": "Tavi",
+   "imagen": "personajes/heroe-1.webp",
+   "ancho": 64,
+   "saludo": {
+    "es": "¡Hola! Soy Tavi.",
+    "en": "Hello! I am Tavi."
+   }
+  },
+  {
+   "id": "mika",
+   "nombre": "Mika",
+   "imagen": "personajes/heroe-2.webp",
+   "ancho": 58,
+   "saludo": {
+    "es": "¡Hola! Soy Mika.",
+    "en": "Hello! I am Mika."
+   }
+  },
+  {
+   "id": "bruno",
+   "nombre": "Bruno",
+   "imagen": "personajes/heroe-3.webp",
+   "ancho": 64,
+   "saludo": {
+    "es": "¡Hola! Soy Bruno.",
+    "en": "Hello! I am Bruno."
+   }
+  }
+ ],
+ "estelas": [
+  {
+   "id": "oro",
+   "estrellas": 0,
+   "colores": [
+    "#fff3a6",
+    "#ffd95a"
+   ]
+  },
+  {
+   "id": "menta",
+   "estrellas": 25,
+   "colores": [
+    "#b6fff0",
+    "#19c6b1"
+   ]
+  },
+  {
+   "id": "rosa",
+   "estrellas": 50,
+   "colores": [
+    "#ffd0e6",
+    "#ff5fa2"
+   ]
+  },
+  {
+   "id": "arcoiris",
+   "estrellas": 90,
+   "colores": [
+    "#ff5f6d",
+    "#ffc371",
+    "#fff36b",
+    "#6bffb0",
+    "#6bc5ff",
+    "#c58bff"
+   ]
+  }
+ ]
 }

@@ -10,7 +10,7 @@ interface Props {
   ancho: number;
   alto: number;
   yo: Punto & { imagen: string };
-  misiones: (Punto & { id: string; icono: string; hecha: boolean; elegida: boolean })[];
+  misiones: (Punto & { id: string; icono: string; hecha: boolean; elegida: boolean; dormida: boolean })[];
   vecinos: (Punto & { id: string; imagen: string; ayudado: boolean })[];
   puente: Punto & { abierto: boolean };
   onCerrar: () => void;
@@ -23,20 +23,20 @@ export function MiniMapa({ imagen, ancho, alto, yo, misiones, vecinos, puente, o
       <div className="minimapa">
         <img className="minimapa__fondo" src={imagen} alt="" draggable={false} />
         {misiones.map((m) => (
-          <span key={m.id} className={`minimapa__punto${m.hecha ? ' es-hecha' : ''}${m.elegida ? ' es-elegida' : ''}`} style={lugar(m)}>
-            <img src={m.icono} alt="" width="26" height="26" draggable={false} />
+          <span key={m.id} className={`minimapa__punto${m.hecha ? ' es-hecha' : ''}${m.elegida ? ' es-elegida' : ''}${m.dormida ? ' es-dormida' : ''}`} style={lugar(m)}>
+            <img src={m.icono} alt="" width="18" height="18" draggable={false} />
           </span>
         ))}
         {vecinos.map((v) => (
           <span key={v.id} className={`minimapa__vecino${v.ayudado ? '' : ' es-apagado'}`} style={lugar(v)}>
-            <img src={v.imagen} alt="" width="30" draggable={false} />
+            <img src={v.imagen} alt="" width="22" draggable={false} />
           </span>
         ))}
         <span className={`minimapa__puente${puente.abierto ? ' es-hecha' : ''}`} style={lugar(puente)}>
           ★
         </span>
         <span className="minimapa__yo" style={lugar(yo)}>
-          <img src={yo.imagen} alt="" width="34" draggable={false} />
+          <img src={yo.imagen} alt="" width="26" draggable={false} />
         </span>
         <button type="button" className="panel__cerrar minimapa__cerrar" onClick={onCerrar} aria-label="Cerrar">
           ✕

@@ -126,10 +126,27 @@ Habitantes y mejoras de juego (pedido por Manuel):
   faroles con halo. El color de la penumbra va por territorio (`mundo.colorPenumbra`).
 - "Empezar de nuevo" ya reinicia también el mundo.
 
-Guiones que generan parte del contenido, en `herramientas/`: `recortar.py` (hojas de
-figuras a imágenes sueltas), `poblar.py` (habitantes, encargos y aldea) y `sembrar.py`
-(árboles, agua y copas leyendo el suelo; necesita la imagen del suelo en PNG). Orden:
-poblar y después sembrar.
+Bosque grande (pedido por Manuel tras probar):
+
+- Mapa de 2800 × 2800 generado en Canva: plaza central y cinco caminos con **dos claros
+  cada uno**. Cada camino es un tema con dos misiones; la segunda duerme hasta completar
+  la primera (`requiere`). Así se repasan todas las palabras: 10 números, familia completa,
+  10 colores, 10 útiles, 9 partes del cuerpo y 4 saludos. Se añadieron palabras e iconos.
+- Un habitante por camino, en el primer claro, con su casa al borde (`zona` = su misión).
+  Recupera el color cuando vuelve su palabra **o** cuando se enciende su claro, y brilla
+  cuando el niño le devuelve la palabra.
+- **Pistas en el piso** (`mundo.huellas`): los iconos de las palabras de cada misión
+  marcan su camino y se encienden al completarla.
+- Nada que suene queda escondido: luciérnagas y tarjetas de palabra van por encima de los
+  árboles, y se quitan los árboles que taparían luciérnagas o ranas.
+- Solo se dibuja lo que está cerca de la pantalla (`CUADRO_VISTA`, `MARGEN_VISTA`).
+- Textos de los habitantes reescritos, cada uno con su manera de hablar.
+
+Todo el bosque lo arma `herramientas/construir_bosque.py` a partir de la imagen del suelo
+(detecta claros, caminos y agua por color) y lo escribe en `cartilla.json`. **Los textos,
+las palabras y la distribución se editan en ese guion, no a mano en el JSON**, porque al
+volver a ejecutarlo se sobrescriben. Necesita el suelo en PNG (Canva: `MAHau81HHYQ`).
+`herramientas/recortar.py` convierte hojas de figuras en imágenes sueltas.
 
 Pendiente:
 
@@ -137,7 +154,10 @@ Pendiente:
 - **Decisión del pedagogo y de Manuel:** los encargos no dan estrellas. Las reglas de
   Mission Stars no tienen una conducta para "ayudar a un habitante"; hoy premian con
   color, álbum y celebración.
-- Los textos de los habitantes son un primer borrador; falta revisión pedagógica.
+- Las palabras añadidas (crayon, chair, pink, brown, black, white, arms, legs, good night,
+  grandmother, grandfather, baby) y los textos necesitan revisión pedagógica.
+- CLAUDE.md nombra "time" como contenido del nivel 1 y no hay misión de eso todavía.
+- Iconos nuevos: Noto Emoji (Apache 2.0), tomados del paquete `@svgmoji/noto`.
 - Las frases de Cosmo en las misiones siguen hablando en primera persona como guía.
 - Medir en un celular de gama baja: son 138 árboles en pantalla más los animales.
 - No hay botón para silenciar el ambiente.

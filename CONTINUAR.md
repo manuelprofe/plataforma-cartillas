@@ -65,24 +65,25 @@ participar, pronunciar y colaborar solo las da el docente (`dar_estrellas`).
 
 ## Lo que hay que mejorar, en orden
 
-### 1. El personaje no se ve moverse (reportado por Manuel al probar)
+### 1. El personaje no se ve moverse — hecho, falta que Manuel lo confirme
 
-Al tocar la pantalla, Manuel ve que se desplaza el fondo pero el personaje parece quieto.
-Causa probable, sin confirmar: la cámara está amarrada al personaje, así que este queda
-siempre en el mismo punto de la pantalla (42 % del ancho) y solo se mueve el mundo. La
-prueba automática confirmó que su posición en el mundo cambia, pero no cómo se percibe.
+Causa confirmada: la cámara estaba amarrada al guía, que quedaba fijo al 42 % del ancho.
+Ahora (`src/Mundo.tsx`, constantes `CAMARA_*`):
 
-Qué hacer:
+- La cámara es un resorte amortiguado con zona libre: el guía cruza la pantalla y la cámara
+  lo alcanza después. En carrera sostenida el guía queda al 74 % del ancho.
+- El guía se inclina hacia donde va, trota y deja una estela de chispas; tiene sombra.
+- Cada toque deja una onda en el punto y un aro dorado marca el destino hasta llegar.
+- Con el dedo apoyado, el guía lo persigue aunque la cámara se mueva.
+- Comprobado a 390 px con capturas seguidas; el prototipo publicado ya tiene el cambio.
 
-- Cámara con retraso y zona libre: el personaje se mueve por la pantalla y la cámara lo
-  alcanza después.
-- Animación de movimiento visible: inclinarse hacia donde va, rebote, estela de chispas.
-- Mostrar dónde se tocó (una onda en el punto) para que se entienda la causa y el efecto.
-- Probarlo en un celular real o a 390 px mirando un video o varias capturas seguidas,
-  no solo midiendo coordenadas.
+Pendiente:
+
+- Que Manuel lo pruebe en su celular y diga si ya se percibe bien.
 - Manuel mencionó "la estrella que aparece al inicio": confirmar con él a qué personaje
   espera controlar. Hoy el guía del Bosque es Cosmo (el planeta morado); la estrella es
-  Lumi y solo aparece en la portada y a mitad del bosque.
+  Lumi y solo aparece en la portada y a mitad del bosque. Cambiarlo es un dato de
+  `cartilla.json` (`guia`), pero Lumi dejaría de ser habitante del bosque.
 
 ### 2. Más juego dentro de las misiones
 
@@ -124,3 +125,5 @@ clave de ese servicio por el formulario seguro, nunca en el chat.
 - No hay acceso al computador de Manuel; todo se hace en el contenedor de la sesión.
 - Canva está conectado y disponible, aún sin usar.
 - En las pruebas con Playwright, los botones animados necesitan `force: true` al hacer clic.
+- El prototipo publicado es el contenido de `dist/` con un `index.html` sin `<head>` que
+  apunta a `assets/index-*.js` y `.css`; al republicar se quitan los dos archivos viejos.

@@ -311,12 +311,87 @@ img {
   will-change: transform;
 }
 
-.guia img {
+.guia__cuerpo {
   position: absolute;
   left: -46px;
   bottom: 30px;
-  filter: drop-shadow(0 8px 6px rgb(0 0 0 / 0.35));
+  width: 92px;
+  height: 73px;
+  transform: rotate(var(--inclina, 0deg));
+  transform-origin: 50% 90%;
+  transition: transform 0.18s ease-out;
+}
+
+.guia img {
+  display: block;
+  filter: drop-shadow(0 0 10px rgb(255 240 170 / 0.55));
   animation: flotar 2.4s ease-in-out infinite;
+}
+
+.guia[data-anda='si'] img {
+  animation: trotar 0.34s ease-in-out infinite alternate;
+}
+
+.guia__sombra {
+  position: absolute;
+  left: -30px;
+  top: -26px;
+  width: 60px;
+  height: 14px;
+  border-radius: 50%;
+  background: rgb(0 0 0 / 0.38);
+  filter: blur(3px);
+}
+
+/* Lugar al que va el guía, la onda del toque y la estela de chispas. */
+.meta,
+.onda-toque,
+.chispa {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.meta {
+  width: 0;
+  height: 0;
+  transition: opacity 0.2s;
+}
+
+.meta[data-ver='si'] {
+  opacity: 1;
+}
+
+.meta::before {
+  content: '';
+  position: absolute;
+  left: -22px;
+  top: -9px;
+  width: 44px;
+  height: 18px;
+  border-radius: 50%;
+  border: 3px solid var(--oro);
+  box-shadow: 0 0 10px rgb(255 207 58 / 0.7);
+  animation: latir 0.7s ease-in-out infinite;
+}
+
+.onda-toque {
+  width: 84px;
+  height: 84px;
+  margin: -42px 0 0 -42px;
+  border-radius: 50%;
+  border: 4px solid #fff;
+  box-shadow: 0 0 14px 2px rgb(255 232 110 / 0.8), inset 0 0 12px rgb(255 232 110 / 0.5);
+}
+
+.chispa {
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  background: #fff3a6;
+  clip-path: polygon(50% 0, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0 50%, 38% 38%);
 }
 
 .marcador {
@@ -580,6 +655,11 @@ img {
 @keyframes flotar {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-8px); }
+}
+
+@keyframes trotar {
+  from { transform: translateY(2px) scale(1.07, 0.92); }
+  to { transform: translateY(-14px) scale(0.95, 1.06); }
 }
 
 @keyframes latir {

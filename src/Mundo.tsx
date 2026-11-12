@@ -10,6 +10,16 @@ const VELOCIDAD = 430; // px por segundo
 const RADIO_CERCA = 110;
 const RADIO_LUCIERNAGA = 52;
 
+// Cámara: sigue al guía con retraso y con una zona libre, para que sea el guía
+// (y no solo el fondo) lo que se ve moverse por la pantalla.
+const CAMARA_RAPIDEZ = 2.6; // rigidez del resorte: arranca despacio y alcanza al guía después
+const CAMARA_ZONA = 0.08; // fracción del ancho en que el guía se mueve sin que la cámara lo siga
+const CAMARA_ADELANTO = 0.12; // deja más pantalla hacia donde mira el guía
+const CAMARA_BORDE = 0.26; // el guía nunca queda más cerca que esto del borde
+const CHISPAS = 14;
+const MS_ENTRE_CHISPAS = 55;
+const sinMovimiento = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 // Se conservan mientras la app está abierta para volver al mismo punto tras una misión.
 let ultimaPosicion: { x: number; y: number } | null = null;
 let luzAnterior = 0;
@@ -46,6 +56,9 @@ export function Mundo({ territorio, base, vozIngles, vozEspanol, onEntrar }: Pro
   const capaLejos = useRef<HTMLDivElement>(null);
   const capaMedia = useRef<HTMLDivElement>(null);
   const guia = useRef<HTMLDivElement>(null);
+  const meta = useRef<HTMLSpanElement>(null);
+  const chispas = useRef<HTMLDivElement>(null);
+  const ondas = useRef<HTMLDivElement>(null);
 
   const [tam, setTam] = useState({ ancho: 390, alto: 0 });
   const [cerca, setCerca] = useState<string | null>(null);
@@ -76,13 +89,18 @@ export function Mundo({ territorio, base, vozIngles, vozEspanol, onEntrar }: Pro
     y: ultimaPosicion?.y ?? -1,
     objetivo: null as { x: number; y: number } | null,
     pendiente: null as string | null,
+    // Dedo apoyado, en coordenadas de pantalla: mientras siga ahí, el guía lo persigue.
+    dedo: null as { x: number; y: number } | null,
     camara: 0,
+    camaraVel: 0,
+    camaraLista: false,
     teclas: new Set<string>(),
     pausa: false,
   });
   const vivo = useRef({ cosas, cerca, tam, palabras, destino: progreso.destino });
   vivo.current = { cosas, cerca, tam, palabras, destino: progreso.destino };
   mov.current.pausa = charla !== null;
+  if (charla) mov.current.dedo = null;
 
   useLayoutEffect(() => {
     const el = marco.current;
@@ -146,15 +164,21 @@ export function Mundo({ territorio, base, vozIngles, vozEspanol, onEntrar }: Pro
     let cuadro = 0;
     let antes = performance.now();
     let mirando = 1;
+    let andaba = false;
+    let inclinacion = 0;
+    let esperaChispa = 0;
+    let turnoChispa = 0;
+    const quieto = sinMovimiento();
 
     const paso = (ahora: number) => {
       const dt = Math.min(0.05, (ahora - antes) / 1000);
       antes = ahora;
       const { cosas, tam, palabras } = vivo.current;
 
+      let dx = 0;
+      let dy = 0;
       if (!m.pausa) {
-        let dx = 0;
-        let dy = 0;
+        if (m.dedo) m.objetivo = { x: m.dedo.x + m.camara, y: m.dedo.y - 24 };
         const t = m.teclas;
         if (t.size) {
           dx = (t.has('arrowright') || t.has('d') ? 1 : 0) - (t.has('arrowleft') || t.has('a') ? 1 : 0);
@@ -178,8 +202,12 @@ export function Mundo({ territorio, base, vozIngles, vozEspanol, onEntrar }: Pro
             dy = (oy / dist) * avance;
           }
         }
+        const x0 = m.x;
+        const y0 = m.y;
         m.x = Math.max(50, Math.min(mundo.ancho - 50, m.x + dx));
         m.y = Math.max(tam.alto * 0.16, Math.min(tam.alto * 0.82, m.y + dy));
+        dx = m.x - x0;
+        dy = m.y - y0;
         if (Math.abs(dx) > 0.2) mirando = dx > 0 ? 1 : -1;
         ultimaPosicion = { x: m.x, y: m.y };
 
@@ -213,18 +241,72 @@ export function Mundo({ territorio, base, vozIngles, vozEspanol, onEntrar }: Pro
         }
       }
 
-      m.camara = Math.max(0, Math.min(mundo.ancho - tam.ancho, m.x - tam.ancho * 0.42));
+      // Cámara con retraso y zona libre.
+      const deseada = m.x - tam.ancho * (0.5 - CAMARA_ADELANTO * mirando);
+      if (!m.camaraLista) {
+        m.camara = deseada;
+        m.camaraLista = true;
+      } else {
+        // Resorte con amortiguación crítica: la cámara tarda en arrancar y no rebota.
+        const atraso = deseada - m.camara;
+        const zona = tam.ancho * CAMARA_ZONA;
+        const falta = Math.abs(atraso) > zona ? atraso - Math.sign(atraso) * zona : 0;
+        m.camaraVel += (CAMARA_RAPIDEZ * CAMARA_RAPIDEZ * falta - 2 * CAMARA_RAPIDEZ * m.camaraVel) * dt;
+        const libre = m.camara + m.camaraVel * dt;
+        m.camara = Math.max(m.x - tam.ancho * (1 - CAMARA_BORDE), Math.min(m.x - tam.ancho * CAMARA_BORDE, libre));
+        m.camara = Math.max(0, Math.min(mundo.ancho - tam.ancho, m.camara));
+        // Si el guía la empuja desde el borde, o llega al final del mundo, toma esa velocidad.
+        if (m.camara !== libre && dt > 0) m.camaraVel = (m.camara - (libre - m.camaraVel * dt)) / dt;
+      }
+      m.camara = Math.max(0, Math.min(mundo.ancho - tam.ancho, m.camara));
       if (suelo.current) suelo.current.style.transform = `translate3d(${-m.camara}px,0,0)`;
       if (capaLejos.current) capaLejos.current.style.transform = `translate3d(${-m.camara * 0.18}px,0,0)`;
       if (capaMedia.current) capaMedia.current.style.transform = `translate3d(${-m.camara * 0.5}px,0,0)`;
       if (guia.current) {
         guia.current.style.transform = `translate3d(${m.x}px, ${m.y}px, 0)`;
         guia.current.dataset.mira = mirando > 0 ? 'der' : 'izq';
+        // Se inclina hacia donde va y trota mientras avanza.
+        const anda = Math.hypot(dx, dy) > 0.3;
+        if (anda !== andaba) {
+          andaba = anda;
+          guia.current.dataset.anda = anda ? 'si' : 'no';
+        }
+        const inclina = Math.round(Math.max(-1, Math.min(1, dx / (VELOCIDAD * dt || 1))) * 13);
+        if (inclina !== inclinacion) {
+          inclinacion = inclina;
+          guia.current.style.setProperty('--inclina', `${inclina}deg`);
+        }
+
+        // Estela de chispas detrás del guía.
+        esperaChispa -= dt * 1000;
+        if (anda && !quieto && esperaChispa <= 0 && chispas.current) {
+          esperaChispa = MS_ENTRE_CHISPAS;
+          const chispa = chispas.current.children[turnoChispa++ % CHISPAS] as HTMLElement;
+          const largo = Math.hypot(dx, dy) || 1;
+          const cx = m.x - (dx / largo) * 30 + (Math.random() - 0.5) * 30;
+          const cy = m.y - 62 - (dy / largo) * 26 + (Math.random() - 0.5) * 40;
+          const giro = Math.random() * 180;
+          chispa.animate(
+            [
+              { transform: `translate3d(${cx}px, ${cy}px, 0) scale(1) rotate(${giro}deg)`, opacity: 1 },
+              { transform: `translate3d(${cx - (dx / largo) * 36}px, ${cy - (dy / largo) * 36 + 22}px, 0) scale(0.15) rotate(${giro + 160}deg)`, opacity: 0 },
+            ],
+            { duration: 620, easing: 'ease-out' },
+          );
+        }
+      }
+
+      // Marca del lugar al que va.
+      if (meta.current) {
+        const o = m.pausa || m.pendiente ? null : m.objetivo;
+        if (o) meta.current.style.transform = `translate3d(${o.x}px, ${o.y + 24}px, 0)`;
+        const ver = o ? 'si' : 'no';
+        if (meta.current.dataset.ver !== ver) meta.current.dataset.ver = ver;
       }
 
       // Flecha hacia la misión elegida cuando queda fuera de la pantalla.
-      const meta = cosas.find((c) => c.id === vivo.current.destino);
-      const lado = !meta ? null : meta.x < m.camara + 20 ? 'izq' : meta.x > m.camara + tam.ancho - 20 ? 'der' : null;
+      const elegida = cosas.find((c) => c.id === vivo.current.destino);
+      const lado = !elegida ? null : elegida.x < m.camara + 20 ? 'izq' : elegida.x > m.camara + tam.ancho - 20 ? 'der' : null;
       setFlecha((f) => (f === lado ? f : lado));
 
       cuadro = requestAnimationFrame(paso);
@@ -247,8 +329,33 @@ export function Mundo({ territorio, base, vozIngles, vozEspanol, onEntrar }: Pro
     if (mov.current.pausa || (e.target as HTMLElement).closest('button')) return;
     if (e.type === 'pointermove' && e.buttons === 0 && e.pointerType === 'mouse') return;
     const caja = marco.current!.getBoundingClientRect();
-    mov.current.objetivo = { x: e.clientX - caja.left + mov.current.camara, y: e.clientY - caja.top - 24 };
+    const x = e.clientX - caja.left;
+    const y = e.clientY - caja.top;
+    mov.current.dedo = { x, y };
+    mov.current.objetivo = { x: x + mov.current.camara, y: y - 24 };
     mov.current.pendiente = null;
+    if (e.type === 'pointerdown') {
+      sonar('toque');
+      ondear(x + mov.current.camara, y);
+    }
+  };
+  const soltar = () => {
+    mov.current.dedo = null;
+  };
+
+  // Onda en el punto tocado: muestra la causa de que el guía se mueva.
+  const turnoOnda = useRef(0);
+  const ondear = (x: number, y: number) => {
+    const caja = ondas.current;
+    if (!caja) return;
+    const onda = caja.children[turnoOnda.current++ % caja.children.length] as HTMLElement;
+    const lugar = `translate3d(${x}px, ${y}px, 0)`;
+    onda.animate(
+      sinMovimiento()
+        ? [{ transform: `${lugar} scale(1)`, opacity: 0.9 }, { transform: `${lugar} scale(1)`, opacity: 0 }]
+        : [{ transform: `${lugar} scale(0.25)`, opacity: 1 }, { transform: `${lugar} scale(1.5)`, opacity: 0 }],
+      { duration: 560, easing: 'ease-out' },
+    );
   };
 
   const tocarCosa = (cosa: Cosa) => {
@@ -278,6 +385,9 @@ export function Mundo({ territorio, base, vozIngles, vozEspanol, onEntrar }: Pro
       onPointerMove={(e) => {
         if (e.currentTarget.hasPointerCapture(e.pointerId)) apuntar(e);
       }}
+      onPointerUp={soltar}
+      onPointerCancel={soltar}
+      onLostPointerCapture={soltar}
     >
       <div className="mundo__fondo" style={filtro} aria-hidden="true">
         <div ref={capaLejos} className="mundo__capa" style={{ backgroundImage: url(territorio.fondos.lejos), width: mundo.ancho }} />
@@ -347,8 +457,23 @@ export function Mundo({ territorio, base, vozIngles, vozEspanol, onEntrar }: Pro
               <span className="globito">💬</span>
             </button>
 
-            <div ref={guia} className="guia">
-              <img src={base + personajes[territorio.guia].imagen} alt={personajes[territorio.guia].nombre} width="92" height="73" draggable={false} />
+            <span ref={meta} className="meta" data-ver="no" aria-hidden="true" />
+            <div ref={ondas} aria-hidden="true">
+              <span className="onda-toque" />
+              <span className="onda-toque" />
+              <span className="onda-toque" />
+            </div>
+            <div ref={chispas} aria-hidden="true">
+              {Array.from({ length: CHISPAS }, (_, i) => (
+                <span key={i} className="chispa" />
+              ))}
+            </div>
+
+            <div ref={guia} className="guia" data-anda="no">
+              <span className="guia__sombra" />
+              <div className="guia__cuerpo">
+                <img src={base + personajes[territorio.guia].imagen} alt={personajes[territorio.guia].nombre} width="92" height="73" draggable={false} />
+              </div>
             </div>
           </>
         )}

@@ -7,6 +7,8 @@ export interface RegistroMision {
   veces: number;
   mejorErrores: number;
   autoeval?: number;
+  /** Veces que volvió a jugarla y lo hizo con menos errores. */
+  mejoras?: number;
 }
 
 export interface Progreso {
@@ -28,15 +30,15 @@ export interface Progreso {
   encargo?: string;
 }
 
-// Criterios de Mission Stars (tabla 7 del trabajo de grado).
-export const ESTRELLAS = { completar: 15, mejorar: 15, autoevaluar: 10 } as const;
-
+// Las estrellas se ganan al completar una misión entera, no por cada acierto. Cada misión
+// trae en el contenido cuántas da, y la suma de un territorio es lo que pide su puente.
+// Volver a jugar y hacerlo mejor se reconoce con una medalla, no con más estrellas.
 export interface Premio {
-  clave: keyof typeof ESTRELLAS;
+  clave: 'completar' | 'mejorar';
   estrellas: number;
 }
 
-const CLAVE = 'pc_progreso_v2';
+const CLAVE = 'pc_progreso_v3';
 const VACIO: Progreso = { estrellas: 0, vistas: [], misiones: {}, album: [], ayudados: [] };
 
 function leer(): Progreso {
@@ -103,20 +105,17 @@ export function marcarAyudado(habitante: string) {
   if (!estado.ayudados.includes(habitante)) guardar({ ...estado, ayudados: [...estado.ayudados, habitante], encargo: undefined });
 }
 
-/** Premios por terminar una misión. Las estrellas nunca se quitan. */
-export function premiosDeMision(id: string, errores: number): Premio[] {
+/** Lo que se gana al terminar una misión. Las estrellas nunca se quitan. */
+export function premiosDeMision(id: string, errores: number, estrellasDeLaMision: number): Premio[] {
   const previo = estado.misiones[id];
-  if (!previo) return [{ clave: 'completar', estrellas: ESTRELLAS.completar }];
-  if (errores < previo.mejorErrores) return [{ clave: 'mejorar', estrellas: ESTRELLAS.mejorar }];
+  if (!previo) return [{ clave: 'completar', estrellas: estrellasDeLaMision }];
+  if (errores < previo.mejorErrores) return [{ clave: 'mejorar', estrellas: 0 }];
   return [];
 }
 
-export function registrarMision(id: string, errores: number, autoeval: number | undefined): Premio[] {
+export function registrarMision(id: string, errores: number, autoeval: number | undefined, estrellasDeLaMision: number): Premio[] {
   const previo = estado.misiones[id];
-  const premios = premiosDeMision(id, errores);
-  if (autoeval !== undefined && previo?.autoeval === undefined) {
-    premios.push({ clave: 'autoevaluar', estrellas: ESTRELLAS.autoevaluar });
-  }
+  const premios = premiosDeMision(id, errores, estrellasDeLaMision);
   const suma = premios.reduce((a, p) => a + p.estrellas, 0);
   guardar({
     ...estado,
@@ -126,7 +125,8 @@ export function registrarMision(id: string, errores: number, autoeval: number | 
       [id]: {
         veces: (previo?.veces ?? 0) + 1,
         mejorErrores: Math.min(errores, previo?.mejorErrores ?? Infinity),
-        autoeval: previo?.autoeval ?? autoeval,
+        autoeval: autoeval ?? previo?.autoeval,
+        mejoras: (previo?.mejoras ?? 0) + (premios.some((p) => p.clave === 'mejorar') ? 1 : 0),
       },
     },
   });

@@ -104,7 +104,7 @@ export function EscuchaToca({ mision, base, idiomaVoz, imagenGuia, imagenFiesta,
 
   const autoevaluar = (valor: number) => {
     sonar('estrella');
-    setPremios(registrarMision(mision.id, errores, valor));
+    setPremios(registrarMision(mision.id, errores, valor, mision.estrellas));
   };
 
   const puntos = fase === 'mirar' ? seleccion : orden;
@@ -171,9 +171,9 @@ export function EscuchaToca({ mision, base, idiomaVoz, imagenGuia, imagenFiesta,
           <img className="cierre__guia" src={base + imagenFiesta} alt="" width="170" height="152" draggable={false} />
           {premios === null ? (
             <>
-              {premiosDeMision(mision.id, errores).map((p) => (
+              {premiosDeMision(mision.id, errores, mision.estrellas).map((p) => (
                 <div className="premio" key={p.clave}>
-                  ★ +{p.estrellas}
+                  {p.clave === 'completar' ? `★ +${p.estrellas}` : '🏅'}
                 </div>
               ))}
               <div className="caritas" role="group" aria-label="¿Cómo te sentiste?">
@@ -190,7 +190,9 @@ export function EscuchaToca({ mision, base, idiomaVoz, imagenGuia, imagenFiesta,
             </>
           ) : (
             <>
-              <div className="premio premio--total">★ +{premios.reduce((a, p) => a + p.estrellas, 0)}</div>
+              <div className="premio premio--total">
+                {premios.some((p) => p.clave === 'completar') ? `★ +${premios.reduce((a, p) => a + p.estrellas, 0)}` : premios.length ? '🏅' : '👍'}
+              </div>
               <button type="button" className="boton-seguir" onClick={onTerminar} aria-label="Volver al mapa">
                 ➜
               </button>

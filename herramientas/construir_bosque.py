@@ -230,6 +230,13 @@ ANTES = {
     ),
 }
 
+# Las estrellas se dan al completar cada misión y entre todas suman lo que pide el puente:
+# cinco primeras de 4, cinco segundas de 5 y la de la hora de 5 son 50.
+ESTRELLAS_POR_MISION = (4, 5)
+ESTRELLAS_HORA = 5
+RELOJES = [W("one o'clock", 'la una', '1f550'), W("three o'clock", 'las tres', '1f552'), W("six o'clock", 'las seis', '1f555'),
+           W("nine o'clock", 'las nueve', '1f558'), W("ten o'clock", 'las diez', '1f559'), W("twelve o'clock", 'las doce', '1f55b')]
+
 misiones = []
 for tema in ('school', 'colors', 'numbers', 'body', 'family'):
     a, b = CAMINO[tema]
@@ -243,9 +250,16 @@ for tema in ('school', 'colors', 'numbers', 'body', 'family'):
             'x': round(claro['x']),
             'y': round(claro['y'] - 10),
             'antes': [ANTES[tema][parte]],
+            'estrellas': ESTRELLAS_POR_MISION[parte],
             **({'requiere': f'bosque-{tema}'} if parte else {}),
         })
 t['misiones'] = misiones
+c['estelas'] = [
+    {'id': 'oro', 'estrellas': 0, 'colores': ['#fff3a6', '#ffd95a']},
+    {'id': 'menta', 'estrellas': 12, 'colores': ['#b6fff0', '#19c6b1']},
+    {'id': 'rosa', 'estrellas': 26, 'colores': ['#ffd0e6', '#ff5fa2']},
+    {'id': 'arcoiris', 'estrellas': 40, 'colores': ['#ff5f6d', '#ffc371', '#fff36b', '#6bffb0', '#6bc5ff', '#c58bff']},
+]
 t['idiomaPorAvance'] = ['es', 'es', 'es', 'es', 'mixto', 'mixto', 'mixto', 'mixto', 'mixto', 'en', 'en']
 
 # ---------- Habitantes: uno por camino, en el primer claro, con su palabra perdida ----------
@@ -338,7 +352,12 @@ E_['cosmo'] = {'lineas': [L('cosmo', '¡Qué bueno verte! Hay faroles por encend
 E_['dormida'] = {'lineas': [L('cosmo', 'Este farol todavía duerme. Despierta cuando enciendas el que está antes en este camino.', 'This lantern is still asleep. It wakes up when you light the one before it on this path.')]}
 E_['rayo'] = {'lineas': [
     L('rayo', '¡Correo, correo! Soy Rayo. Llevo cartas al Valle de las Palabras...', 'Mail, mail! I am Rayo. I carry letters to the Valley of Words...'),
-    L('rayo', '...pero el puente está apagado. ¡Junta estrellas para encenderlo!', '...but the bridge is dark. Collect stars to light it up!'),
+    L('rayo', '...pero siempre llego tarde: el reloj del bosque se apagó y el puente también.', '...but I am always late: the forest clock went dark, and so did the bridge.'),
+    L('rayo', 'Completa todas las misiones. Con las 50 estrellas, el puente se enciende.', 'Complete all the missions. With all 50 stars, the bridge lights up.'),
+]}
+E_['puente-cerrado'] = {'lineas': [
+    L('nova', 'Soy Nova. Este puente lleva al Valle de las Palabras.', 'I am Nova. This bridge goes to the Valley of Words.'),
+    L('nova', 'Cada misión que completas me da estrellas. Cuando las completes todas, tendré 50 y el puente se encenderá.', 'Every mission you complete gives me stars. When you complete them all, I will have 50 and the bridge will light up.'),
 ]}
 
 
@@ -432,11 +451,23 @@ PUENTE = (2557, 1330)
 t['puerta'].update({'x': PUENTE[0] - 30, 'y': PUENTE[1] + 10})
 ocupar(PUENTE[0], PUENTE[1], 120)
 tramo_puente = [pt for pt in ruta_entre(centro, {'x': PUENTE[0] - 190, 'y': PUENTE[1]}) if math.hypot(pt[0] - CX, pt[1] - CY) > centro['r'] + 60]
-rx, ry = tramo_puente[int(len(tramo_puente) * 0.55)]
+# La misión de la hora, a un lado del camino del puente, con Rayo el cartero más adelante.
+hx, hy = tramo_puente[int(len(tramo_puente) * 0.3)]
+misiones.append({
+    'id': 'bosque-time', 'titulo': 'What time is it?', 'plantilla': 'escucha-toca', 'icono': I('1f552'), 'palabras': RELOJES,
+    'x': round(hx), 'y': round(hy - 135),
+    'antes': [L('cosmo', 'El reloj del bosque se detuvo. Escucha la hora y toca el reloj correcto.', 'The forest clock stopped. Listen to the time and tap the right clock.')],
+    'estrellas': ESTRELLAS_HORA,
+})
+ocupar(hx, hy - 135, 120)
+assert sum(mi['estrellas'] for mi in misiones) == t['puerta']['estrellas'], 'las estrellas de las misiones deben sumar lo que pide el puente'
+rx, ry = tramo_puente[int(len(tramo_puente) * 0.72)]
 habitantes.append({'id': 'rayo', 'personaje': 'rayo', 'x': round(rx), 'y': round(ry - 55), 'escena': 'rayo'})
 ocupar(rx, ry - 55, 70)
-for k, (x, y) in enumerate(tramo_puente[::26][1:]):
-    huellas.append({'x': round(x), 'y': round(y), 'icono': '', 'mision': ''})
+pasos = tramo_puente[::20][1:]
+for k, (x, y) in enumerate(pasos):
+    antes_del_reloj = x < hx + 40
+    huellas.append({'x': round(x), 'y': round(y), 'icono': RELOJES[k % len(RELOJES)]['icono'] if antes_del_reloj else '', 'mision': 'bosque-time' if antes_del_reloj else ''})
 # Lumi, junto al camino de la familia.
 tramo_lumi = puntos_del_camino(centro, CAMINO['family'][0], 60)
 lx, ly = tramo_lumi[len(tramo_lumi) // 2]

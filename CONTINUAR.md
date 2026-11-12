@@ -38,6 +38,15 @@ basada en el trabajo de grado de Manuel Vega en la I.E. Jorge Barco Mora (Los Pa
 - Englishland tiene habitantes: una aldea en el claro central con vecinos que perdieron
   sus palabras. Referencia de juego que le gusta a Manuel: Teach Your Monster to Read.
 - Seguir añadiendo capas al mapa.
+- **Estrellas:** se ganan al completar una misión entera, no por acierto, y la suma de
+  todas las misiones del bosque es exactamente lo que pide el puente (50). Cada misión
+  trae sus estrellas en el contenido (`estrellas`): 4 las primeras, 5 las segundas y 5 la
+  de la hora. Volver a jugar y mejorar da una medalla, no estrellas. Autoevaluarse sigue
+  al final de la misión pero ya no suma aparte.
+  **Esto contradice la regla 5 de `CLAUDE.md`** (completar 15, mejorar 15, autoevaluarse
+  10): Manuel lo pidió así el 12 de noviembre; falta que decida si se actualiza la regla.
+  Cuando el docente pueda dar estrellas (participar, pronunciar, colaborar), hay que
+  decidir si cuentan para el puente.
 - Orden de trabajo acordado: llevar el Bosque a calidad final, probarlo con niños y
   después replicar en los otros territorios.
 - La historia se narra en español al principio y en inglés hacia los niveles finales.
@@ -156,7 +165,8 @@ Pendiente:
   color, álbum y celebración.
 - Las palabras añadidas (crayon, chair, pink, brown, black, white, arms, legs, good night,
   grandmother, grandfather, baby) y los textos necesitan revisión pedagógica.
-- CLAUDE.md nombra "time" como contenido del nivel 1 y no hay misión de eso todavía.
+- La misión de la hora ("What time is it?", seis relojes en punto) está junto al camino
+  del puente; es una sola misión y no tiene habitante con encargo.
 - Iconos nuevos: Noto Emoji (Apache 2.0), tomados del paquete `@svgmoji/noto`.
 - Las frases de Cosmo en las misiones siguen hablando en primera persona como guía.
 - Medir en un celular de gama baja: son 138 árboles en pantalla más los animales.

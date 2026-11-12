@@ -935,6 +935,12 @@ img {
   opacity: 1;
 }
 
+.marcador small {
+  font-size: 0.7em;
+  font-weight: 600;
+  opacity: 0.7;
+}
+
 .nodo__sello--dormida {
   background: #d6d1e2;
   font-size: 1rem;

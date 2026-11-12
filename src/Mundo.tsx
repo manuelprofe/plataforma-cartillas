@@ -794,7 +794,7 @@ export function Mundo({ territorio, heroe, estelas, base, vozIngles, vozEspanol,
                   <span className="nodo__farol">
                     <img src={base + m.icono} alt="" width="44" height="44" draggable={false} />
                   </span>
-                  {hecha && <span className="nodo__sello">★</span>}
+                  {hecha && <span className="nodo__sello">{progreso.misiones[m.id].mejoras ? '🏅' : '★'}</span>}
                   {dormida && <span className="nodo__sello nodo__sello--dormida">💤</span>}
                   <span className="globito">{dormida ? '💤' : '▶'}</span>
                 </button>
@@ -861,7 +861,10 @@ export function Mundo({ territorio, heroe, estelas, base, vozIngles, vozEspanol,
         <span className="marcador__estrella" key={progreso.estrellas}>
           ★
         </span>
-        <span>{progreso.estrellas}</span>
+        <span>
+          {progreso.estrellas}
+          <small>/{puerta.estrellas}</small>
+        </span>
       </div>
       <div className="lugar">
         {territorio.nombre}

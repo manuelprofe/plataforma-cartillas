@@ -43,6 +43,8 @@ export interface Mision {
   y: number;
   antes: Linea[];
   palabras: Palabra[];
+  /** Estrellas que da al completarla; la suma del territorio es lo que pide el puente. */
+  estrellas: number;
   /** Misión que hay que completar antes para que esta despierte. */
   requiere?: string;
 }

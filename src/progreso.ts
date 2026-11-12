@@ -10,8 +10,10 @@ export interface RegistroMision {
 
 export interface Progreso {
   estrellas: number;
-  posicion: number;
-  introVista: boolean;
+  /** Escenas de la historia que el niño ya vio. */
+  vistas: string[];
+  /** Misión que eligió visitar. */
+  destino?: string;
   misiones: Record<string, RegistroMision>;
 }
 
@@ -23,8 +25,8 @@ export interface Premio {
   estrellas: number;
 }
 
-const CLAVE = 'pc_progreso_v1';
-const VACIO: Progreso = { estrellas: 0, posicion: 0, introVista: false, misiones: {} };
+const CLAVE = 'pc_progreso_v2';
+const VACIO: Progreso = { estrellas: 0, vistas: [], misiones: {} };
 
 function leer(): Progreso {
   try {
@@ -59,12 +61,12 @@ export function useProgreso(): Progreso {
   );
 }
 
-export function moverA(posicion: number) {
-  guardar({ ...estado, posicion });
+export function marcarVista(escena: string) {
+  if (!estado.vistas.includes(escena)) guardar({ ...estado, vistas: [...estado.vistas, escena] });
 }
 
-export function marcarIntroVista() {
-  guardar({ ...estado, introVista: true });
+export function fijarDestino(mision: string | undefined) {
+  guardar({ ...estado, destino: mision });
 }
 
 /** Premios por terminar una misión. Las estrellas nunca se quitan. */

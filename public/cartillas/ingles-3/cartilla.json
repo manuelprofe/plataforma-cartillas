@@ -8,8 +8,7 @@
     {
       "id": "bosque",
       "nombre": "Bosque de los Sonidos",
-      "guia": { "nombre": "Cosmo", "imagen": "personajes/cosmo-wave.webp" },
-      "saludo": "Hello! I am Cosmo. Let's bring back the light!",
+      "guia": "cosmo",
       "fondos": {
         "lejos": "fondos/bosque-far.webp",
         "medio": "fondos/bosque-mid.webp",
@@ -18,7 +17,11 @@
       "puerta": {
         "estrellas": 50,
         "destino": "Valle de las Palabras",
-        "imagen": "personajes/nova-ready.webp"
+        "x": 3080,
+        "y": 0.52,
+        "personaje": "nova",
+        "escenaCerrada": "puente-cerrado",
+        "escenaAbierta": "puente-abierto"
       },
       "misiones": [
         {
@@ -27,14 +30,55 @@
           "plantilla": "escucha-toca",
           "icono": "iconos/1f392.svg",
           "palabras": [
-            { "en": "pencil", "es": "lápiz", "icono": "iconos/270f.svg" },
-            { "en": "eraser", "es": "borrador", "icono": "iconos/1f9fd.svg" },
-            { "en": "notebook", "es": "cuaderno", "icono": "iconos/1f4d3.svg" },
-            { "en": "ruler", "es": "regla", "icono": "iconos/1f4cf.svg" },
-            { "en": "scissors", "es": "tijeras", "icono": "iconos/2702.svg" },
-            { "en": "backpack", "es": "morral", "icono": "iconos/1f392.svg" },
-            { "en": "book", "es": "libro", "icono": "iconos/1f4d8.svg" },
-            { "en": "marker", "es": "marcador", "icono": "iconos/1f58a.svg" }
+            {
+              "en": "pencil",
+              "es": "lápiz",
+              "icono": "iconos/270f.svg"
+            },
+            {
+              "en": "eraser",
+              "es": "borrador",
+              "icono": "iconos/1f9fd.svg"
+            },
+            {
+              "en": "notebook",
+              "es": "cuaderno",
+              "icono": "iconos/1f4d3.svg"
+            },
+            {
+              "en": "ruler",
+              "es": "regla",
+              "icono": "iconos/1f4cf.svg"
+            },
+            {
+              "en": "scissors",
+              "es": "tijeras",
+              "icono": "iconos/2702.svg"
+            },
+            {
+              "en": "backpack",
+              "es": "morral",
+              "icono": "iconos/1f392.svg"
+            },
+            {
+              "en": "book",
+              "es": "libro",
+              "icono": "iconos/1f4d8.svg"
+            },
+            {
+              "en": "marker",
+              "es": "marcador",
+              "icono": "iconos/1f58a.svg"
+            }
+          ],
+          "x": 720,
+          "y": 0.42,
+          "antes": [
+            {
+              "quien": "cosmo",
+              "es": "Aquí se apagaron los útiles de la escuela. Escucha y toca el correcto.",
+              "en": "The school objects lost their light here. Listen and tap the right one."
+            }
           ]
         },
         {
@@ -43,12 +87,45 @@
           "plantilla": "escucha-toca",
           "icono": "iconos/1f7e3.svg",
           "palabras": [
-            { "en": "red", "es": "rojo", "icono": "iconos/1f534.svg" },
-            { "en": "blue", "es": "azul", "icono": "iconos/1f535.svg" },
-            { "en": "green", "es": "verde", "icono": "iconos/1f7e2.svg" },
-            { "en": "yellow", "es": "amarillo", "icono": "iconos/1f7e1.svg" },
-            { "en": "orange", "es": "naranja", "icono": "iconos/1f7e0.svg" },
-            { "en": "purple", "es": "morado", "icono": "iconos/1f7e3.svg" }
+            {
+              "en": "red",
+              "es": "rojo",
+              "icono": "iconos/1f534.svg"
+            },
+            {
+              "en": "blue",
+              "es": "azul",
+              "icono": "iconos/1f535.svg"
+            },
+            {
+              "en": "green",
+              "es": "verde",
+              "icono": "iconos/1f7e2.svg"
+            },
+            {
+              "en": "yellow",
+              "es": "amarillo",
+              "icono": "iconos/1f7e1.svg"
+            },
+            {
+              "en": "orange",
+              "es": "naranja",
+              "icono": "iconos/1f7e0.svg"
+            },
+            {
+              "en": "purple",
+              "es": "morado",
+              "icono": "iconos/1f7e3.svg"
+            }
+          ],
+          "x": 1120,
+          "y": 0.66,
+          "antes": [
+            {
+              "quien": "cosmo",
+              "es": "Los colores del bosque se volvieron grises. ¡Vamos a encenderlos!",
+              "en": "The colors of the forest turned gray. Let's light them up!"
+            }
           ]
         },
         {
@@ -57,16 +134,65 @@
           "plantilla": "escucha-toca",
           "icono": "iconos/0033_20e3.svg",
           "palabras": [
-            { "en": "one", "es": "uno", "icono": "iconos/0031_20e3.svg" },
-            { "en": "two", "es": "dos", "icono": "iconos/0032_20e3.svg" },
-            { "en": "three", "es": "tres", "icono": "iconos/0033_20e3.svg" },
-            { "en": "four", "es": "cuatro", "icono": "iconos/0034_20e3.svg" },
-            { "en": "five", "es": "cinco", "icono": "iconos/0035_20e3.svg" },
-            { "en": "six", "es": "seis", "icono": "iconos/0036_20e3.svg" },
-            { "en": "seven", "es": "siete", "icono": "iconos/0037_20e3.svg" },
-            { "en": "eight", "es": "ocho", "icono": "iconos/0038_20e3.svg" },
-            { "en": "nine", "es": "nueve", "icono": "iconos/0039_20e3.svg" },
-            { "en": "ten", "es": "diez", "icono": "iconos/1f51f.svg" }
+            {
+              "en": "one",
+              "es": "uno",
+              "icono": "iconos/0031_20e3.svg"
+            },
+            {
+              "en": "two",
+              "es": "dos",
+              "icono": "iconos/0032_20e3.svg"
+            },
+            {
+              "en": "three",
+              "es": "tres",
+              "icono": "iconos/0033_20e3.svg"
+            },
+            {
+              "en": "four",
+              "es": "cuatro",
+              "icono": "iconos/0034_20e3.svg"
+            },
+            {
+              "en": "five",
+              "es": "cinco",
+              "icono": "iconos/0035_20e3.svg"
+            },
+            {
+              "en": "six",
+              "es": "seis",
+              "icono": "iconos/0036_20e3.svg"
+            },
+            {
+              "en": "seven",
+              "es": "siete",
+              "icono": "iconos/0037_20e3.svg"
+            },
+            {
+              "en": "eight",
+              "es": "ocho",
+              "icono": "iconos/0038_20e3.svg"
+            },
+            {
+              "en": "nine",
+              "es": "nueve",
+              "icono": "iconos/0039_20e3.svg"
+            },
+            {
+              "en": "ten",
+              "es": "diez",
+              "icono": "iconos/1f51f.svg"
+            }
+          ],
+          "x": 1520,
+          "y": 0.36,
+          "antes": [
+            {
+              "quien": "cosmo",
+              "es": "Los números se escondieron entre los árboles. Escucha con atención.",
+              "en": "The numbers are hiding in the trees. Listen carefully."
+            }
           ]
         },
         {
@@ -75,13 +201,50 @@
           "plantilla": "escucha-toca",
           "icono": "iconos/1f440.svg",
           "palabras": [
-            { "en": "head", "es": "cabeza", "icono": "iconos/1f642.svg" },
-            { "en": "eyes", "es": "ojos", "icono": "iconos/1f440.svg" },
-            { "en": "ears", "es": "orejas", "icono": "iconos/1f442.svg" },
-            { "en": "nose", "es": "nariz", "icono": "iconos/1f443.svg" },
-            { "en": "mouth", "es": "boca", "icono": "iconos/1f444.svg" },
-            { "en": "hands", "es": "manos", "icono": "iconos/1f64c.svg" },
-            { "en": "feet", "es": "pies", "icono": "iconos/1f9b6.svg" }
+            {
+              "en": "head",
+              "es": "cabeza",
+              "icono": "iconos/1f642.svg"
+            },
+            {
+              "en": "eyes",
+              "es": "ojos",
+              "icono": "iconos/1f440.svg"
+            },
+            {
+              "en": "ears",
+              "es": "orejas",
+              "icono": "iconos/1f442.svg"
+            },
+            {
+              "en": "nose",
+              "es": "nariz",
+              "icono": "iconos/1f443.svg"
+            },
+            {
+              "en": "mouth",
+              "es": "boca",
+              "icono": "iconos/1f444.svg"
+            },
+            {
+              "en": "hands",
+              "es": "manos",
+              "icono": "iconos/1f64c.svg"
+            },
+            {
+              "en": "feet",
+              "es": "pies",
+              "icono": "iconos/1f9b6.svg"
+            }
+          ],
+          "x": 2280,
+          "y": 0.44,
+          "antes": [
+            {
+              "quien": "cosmo",
+              "es": "Cabeza, ojos, manos... ¿los conoces en inglés? ¡Vamos a ver!",
+              "en": "Head, eyes, hands... do you know them in English? Let's see!"
+            }
           ]
         },
         {
@@ -90,16 +253,281 @@
           "plantilla": "escucha-toca",
           "icono": "iconos/1f44b.svg",
           "palabras": [
-            { "en": "hello", "es": "hola", "icono": "iconos/1f44b.svg" },
-            { "en": "good morning", "es": "buenos días", "icono": "iconos/1f305.svg" },
-            { "en": "thank you", "es": "gracias", "icono": "iconos/1f64f.svg" },
-            { "en": "mother", "es": "mamá", "icono": "iconos/1f469.svg" },
-            { "en": "father", "es": "papá", "icono": "iconos/1f468.svg" },
-            { "en": "sister", "es": "hermana", "icono": "iconos/1f467.svg" },
-            { "en": "brother", "es": "hermano", "icono": "iconos/1f466.svg" }
+            {
+              "en": "hello",
+              "es": "hola",
+              "icono": "iconos/1f44b.svg"
+            },
+            {
+              "en": "good morning",
+              "es": "buenos días",
+              "icono": "iconos/1f305.svg"
+            },
+            {
+              "en": "thank you",
+              "es": "gracias",
+              "icono": "iconos/1f64f.svg"
+            },
+            {
+              "en": "mother",
+              "es": "mamá",
+              "icono": "iconos/1f469.svg"
+            },
+            {
+              "en": "father",
+              "es": "papá",
+              "icono": "iconos/1f468.svg"
+            },
+            {
+              "en": "sister",
+              "es": "hermana",
+              "icono": "iconos/1f467.svg"
+            },
+            {
+              "en": "brother",
+              "es": "hermano",
+              "icono": "iconos/1f466.svg"
+            }
+          ],
+          "x": 2680,
+          "y": 0.64,
+          "antes": [
+            {
+              "quien": "cosmo",
+              "es": "Aquí aprendemos a saludar y a nombrar a la familia.",
+              "en": "Here we learn to say hello and to name the family."
+            }
           ]
         }
-      ]
+      ],
+      "personajes": {
+        "cosmo": {
+          "nombre": "Cosmo",
+          "imagen": "personajes/cosmo-wave.webp"
+        },
+        "pixie": {
+          "nombre": "Pixie",
+          "imagen": "personajes/pixie-wave.webp"
+        },
+        "lumi": {
+          "nombre": "Lumi",
+          "imagen": "personajes/lumi-wave.webp"
+        },
+        "nova": {
+          "nombre": "Nova",
+          "imagen": "personajes/nova-ready.webp"
+        }
+      },
+      "idiomaPorAvance": [
+        "es",
+        "es",
+        "mixto",
+        "mixto",
+        "en",
+        "en"
+      ],
+      "mundo": {
+        "ancho": 3300,
+        "inicio": {
+          "x": 150,
+          "y": 0.6
+        },
+        "habitantes": [
+          {
+            "id": "pixie",
+            "personaje": "pixie",
+            "x": 360,
+            "y": 0.5,
+            "escena": "intro"
+          },
+          {
+            "id": "lumi",
+            "personaje": "lumi",
+            "x": 1900,
+            "y": 0.62,
+            "escena": "lumi"
+          }
+        ],
+        "luciernagas": [
+          {
+            "x": 540,
+            "y": 0.3
+          },
+          {
+            "x": 900,
+            "y": 0.62
+          },
+          {
+            "x": 1300,
+            "y": 0.28
+          },
+          {
+            "x": 1700,
+            "y": 0.7
+          },
+          {
+            "x": 2050,
+            "y": 0.3
+          },
+          {
+            "x": 2400,
+            "y": 0.68
+          },
+          {
+            "x": 2800,
+            "y": 0.3
+          }
+        ]
+      },
+      "escenas": {
+        "intro": {
+          "lineas": [
+            {
+              "quien": "pixie",
+              "es": "¡Hola! Soy Pixie. ¡Qué bueno que llegaste!",
+              "en": "Hello! I am Pixie. I am so happy you are here!"
+            },
+            {
+              "quien": "pixie",
+              "es": "Englishland se está apagando. Las palabras perdieron su luz.",
+              "en": "Englishland is fading. The words lost their light."
+            },
+            {
+              "quien": "cosmo",
+              "es": "Yo soy Cosmo. Este es mi hogar: el Bosque de los Sonidos.",
+              "en": "I am Cosmo. This is my home: the Forest of Sounds."
+            },
+            {
+              "quien": "cosmo",
+              "es": "Cada palabra que aprendes enciende un farol. ¿Me ayudas?",
+              "en": "Every word you learn lights a lantern. Will you help me?",
+              "opciones": [
+                {
+                  "es": "¡Sí, vamos!",
+                  "en": "Yes, let's go!",
+                  "ir": "elegir"
+                },
+                {
+                  "es": "¿Cómo me muevo?",
+                  "en": "How do I move?",
+                  "ir": "ayuda"
+                }
+              ]
+            }
+          ]
+        },
+        "ayuda": {
+          "lineas": [
+            {
+              "quien": "cosmo",
+              "es": "Toca la pantalla y yo vuelo hasta tu dedo. ¡Puedes ir a donde quieras!",
+              "en": "Touch the screen and I fly to your finger. You can go anywhere!"
+            },
+            {
+              "quien": "pixie",
+              "es": "Si ves una luciérnaga, atrápala. Guarda una palabra.",
+              "en": "If you see a firefly, catch it. It keeps a word."
+            }
+          ],
+          "luego": "elegir"
+        },
+        "elegir": {
+          "lineas": [
+            {
+              "quien": "cosmo",
+              "es": "¿A dónde vamos primero? Tú decides.",
+              "en": "Where do we go first? You decide.",
+              "opciones": [
+                {
+                  "es": "A los útiles de la escuela",
+                  "en": "To the school objects",
+                  "icono": "iconos/1f392.svg",
+                  "destino": "bosque-school"
+                },
+                {
+                  "es": "A los colores",
+                  "en": "To the colors",
+                  "icono": "iconos/1f7e3.svg",
+                  "destino": "bosque-colors"
+                },
+                {
+                  "es": "A los números",
+                  "en": "To the numbers",
+                  "icono": "iconos/0033_20e3.svg",
+                  "destino": "bosque-numbers"
+                }
+              ]
+            }
+          ]
+        },
+        "lumi": {
+          "lineas": [
+            {
+              "quien": "lumi",
+              "es": "¡Hola! Soy Lumi. ¿Te equivocaste alguna vez? ¡No pasa nada!",
+              "en": "Hello! I am Lumi. Did you make a mistake? That is okay!"
+            },
+            {
+              "quien": "lumi",
+              "es": "Equivocarse es parte de aprender. Dilo conmigo.",
+              "en": "Mistakes help us learn. Say it with me.",
+              "opciones": [
+                {
+                  "es": "I can do it!",
+                  "en": "I can do it!"
+                },
+                {
+                  "es": "I try again!",
+                  "en": "I try again!"
+                }
+              ]
+            },
+            {
+              "quien": "lumi",
+              "es": "¡Así se dice! Sigue explorando.",
+              "en": "That is right! Keep exploring."
+            }
+          ]
+        },
+        "despues": {
+          "lineas": [
+            {
+              "quien": "cosmo",
+              "es": "¡Mira! El bosque tiene más luz. ¿A dónde vamos ahora?",
+              "en": "Look! The forest has more light. Where do we go now?"
+            }
+          ]
+        },
+        "puente-cerrado": {
+          "lineas": [
+            {
+              "quien": "nova",
+              "es": "Soy Nova. Este puente lleva al Valle de las Palabras.",
+              "en": "I am Nova. This bridge goes to the Valley of Words."
+            },
+            {
+              "quien": "nova",
+              "es": "Necesitamos 50 estrellas para encenderlo. ¡Sigue jugando!",
+              "en": "We need 50 stars to light it. Keep playing!"
+            }
+          ]
+        },
+        "puente-abierto": {
+          "lineas": [
+            {
+              "quien": "nova",
+              "es": "¡Lo lograste! El puente brilla con tus estrellas.",
+              "en": "You did it! The bridge shines with your stars."
+            },
+            {
+              "quien": "nova",
+              "es": "El Valle de las Palabras abrirá muy pronto. ¡Te espero!",
+              "en": "The Valley of Words opens very soon. I will wait for you!"
+            }
+          ]
+        }
+      }
     }
-  ]
+  ],
+  "idiomaHistoria": "es-US"
 }

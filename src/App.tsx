@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import type { Cartilla } from './tipos';
-import { Mapa } from './Mapa';
+import { Mundo } from './Mundo';
 import { EscuchaToca } from './juegos/EscuchaToca';
 import { activarAudio, sonar } from './audio';
 import { reiniciarProgreso, useProgreso } from './progreso';
@@ -81,7 +81,7 @@ export function App() {
       )}
 
       {pantalla.tipo === 'mapa' && (
-        <Mapa territorio={territorio} base={BASE} idiomaVoz={cartilla.idiomaVoz} onEntrar={(indice) => irA({ tipo: 'mision', indice })} />
+        <Mundo territorio={territorio} base={BASE} vozIngles={cartilla.idiomaVoz} vozEspanol={cartilla.idiomaHistoria} onEntrar={(indice) => irA({ tipo: 'mision', indice })} />
       )}
 
       {pantalla.tipo === 'mision' && (
@@ -90,7 +90,7 @@ export function App() {
           mision={territorio.misiones[pantalla.indice]}
           base={BASE}
           idiomaVoz={cartilla.idiomaVoz}
-          imagenGuia={territorio.guia.imagen}
+          imagenGuia={territorio.personajes[territorio.guia].imagen}
           imagenFiesta="personajes/lumi-celebrate.webp"
           onTerminar={() => irA({ tipo: 'mapa' })}
           onSalir={() => irA({ tipo: 'mapa' })}

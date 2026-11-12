@@ -150,20 +150,22 @@ img {
 
 /* ---------- Mapa ---------- */
 
-.mapa {
+.mundo {
   position: relative;
+  touch-action: none;
+  cursor: pointer;
   height: 100dvh;
   overflow: hidden;
   background: var(--noche);
 }
 
-.mapa__fondo {
+.mundo__fondo {
   position: absolute;
   inset: 0;
   transition: filter 1.8s ease;
 }
 
-.mapa__capa {
+.mundo__capa {
   position: absolute;
   top: 0;
   left: 0;
@@ -173,58 +175,17 @@ img {
   will-change: transform;
 }
 
-.mapa__capa--cerca {
+.mundo__capa--cerca {
   width: 100%;
   transition: filter 1.8s ease;
 }
 
-.mapa__visor {
+.mundo__suelo {
   position: absolute;
-  inset: 0;
-  overflow-x: auto;
-  overflow-y: hidden;
-  scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
-}
-
-.mapa__visor::-webkit-scrollbar {
-  display: none;
-}
-
-.mapa__mundo {
-  position: relative;
+  top: 0;
+  left: 0;
   height: 100%;
-}
-
-.mapa__sendero {
-  position: absolute;
-  inset: 0;
-  overflow: visible;
-}
-
-.tramo {
-  fill: none;
-  stroke: rgb(255 255 255 / 0.5);
-  stroke-width: 7;
-  stroke-linecap: round;
-  stroke-dasharray: 2 18;
-  transition: stroke 1s;
-}
-
-.tramo--luz {
-  stroke: var(--oro);
-  stroke-dasharray: 2 14;
-  filter: drop-shadow(0 0 6px rgb(255 207 58 / 0.9));
-}
-
-.campamento {
-  position: absolute;
-  width: 26px;
-  height: 26px;
-  margin: -13px 0 0 -13px;
-  border-radius: 50%;
-  background: var(--crema);
-  box-shadow: 0 0 0 6px rgb(255 248 236 / 0.3);
+  will-change: transform;
 }
 
 .nodo {
@@ -315,7 +276,7 @@ img {
 .puerta {
   position: absolute;
   width: 150px;
-  margin: -70px 0 0 -10px;
+  margin: -70px 0 0 -60px;
   display: grid;
   justify-items: center;
   gap: 6px;
@@ -328,10 +289,6 @@ img {
   animation: flotar 2.6s ease-in-out infinite;
 }
 
-.puerta--tiembla {
-  animation: temblar 0.4s;
-}
-
 .puerta__cuenta {
   min-height: 40px;
   padding: 2px 16px;
@@ -341,26 +298,6 @@ img {
   font-size: 1.35rem;
   font-weight: 800;
   border: 3px solid var(--oro);
-}
-
-.puerta__globo,
-.guia__globo {
-  position: absolute;
-  bottom: calc(100% + 10px);
-  left: 50%;
-  width: max-content;
-  max-width: 230px;
-  transform: translateX(-50%);
-  padding: 10px 16px;
-  border-radius: 18px;
-  background: var(--crema);
-  color: var(--tinta);
-  font-size: 1.1rem;
-  font-weight: 700;
-  line-height: 1.2;
-  text-align: center;
-  box-shadow: var(--sombra);
-  animation: aparecer 0.35s ease-out;
 }
 
 .guia {
@@ -380,14 +317,6 @@ img {
   bottom: 30px;
   filter: drop-shadow(0 8px 6px rgb(0 0 0 / 0.35));
   animation: flotar 2.4s ease-in-out infinite;
-}
-
-.guia--camina img {
-  animation: bambolear 0.31s ease-in-out infinite alternate;
-}
-
-.guia__globo {
-  bottom: 118px;
 }
 
 .marcador {
@@ -699,6 +628,259 @@ img {
   0% { transform: scale(1); }
   40% { transform: scale(1.7) rotate(20deg); }
   100% { transform: scale(1); }
+}
+
+
+/* ---------- Mundo explorable ---------- */
+
+.guia[data-mira='izq'] img {
+  scale: -1 1;
+}
+
+.habitante {
+  position: absolute;
+  width: 110px;
+  height: 100px;
+  margin: -50px 0 0 -55px;
+  display: grid;
+  place-items: center;
+  animation: flotar 3s ease-in-out infinite;
+}
+
+.habitante img {
+  filter: drop-shadow(0 8px 6px rgb(0 0 0 / 0.35));
+}
+
+.globito {
+  position: absolute;
+  top: -34px;
+  left: 50%;
+  width: 48px;
+  height: 48px;
+  margin-left: -24px;
+  display: grid;
+  place-items: center;
+  border-radius: 50% 50% 50% 8px;
+  background: var(--crema);
+  color: var(--tinta);
+  font-size: 1.3rem;
+  box-shadow: var(--sombra);
+  opacity: 0;
+  transform: scale(0.4);
+  transition: opacity 0.2s, transform 0.25s cubic-bezier(0.2, 1.6, 0.4, 1);
+  pointer-events: none;
+}
+
+.es-cerca .globito {
+  opacity: 1;
+  transform: scale(1);
+  background: var(--oro);
+}
+
+.es-cerca .nodo__farol {
+  transform: scale(1.1);
+}
+
+.luciernaga {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  margin: -8px 0 0 -8px;
+  border-radius: 50%;
+  background: #fff7b0;
+  box-shadow: 0 0 14px 7px rgb(255 232 110 / 0.85), 0 0 34px 16px rgb(255 207 58 / 0.35);
+  animation: revolotear 4.2s ease-in-out infinite;
+}
+
+.destello {
+  position: absolute;
+  width: 130px;
+  margin: -60px 0 0 -65px;
+  display: grid;
+  justify-items: center;
+  padding: 10px 8px 6px;
+  border-radius: 22px;
+  background: var(--crema);
+  color: var(--tinta);
+  font-size: 1.35rem;
+  font-weight: 800;
+  line-height: 1.1;
+  box-shadow: var(--sombra);
+  pointer-events: none;
+  animation: subir-y-salir 2.4s ease-out forwards;
+}
+
+.lugar__luciernagas {
+  display: block;
+  margin-top: 2px;
+  color: var(--oro);
+  font-size: 1rem;
+}
+
+.brujula {
+  position: absolute;
+  top: 46%;
+  z-index: 10;
+  width: 54px;
+  height: 54px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--oro);
+  color: var(--tinta);
+  font-size: 1.6rem;
+  box-shadow: 0 5px 0 var(--oro-hondo);
+  pointer-events: none;
+  animation: latir 1s ease-in-out infinite;
+}
+
+.brujula--der { right: 10px; }
+.brujula--izq { left: 10px; }
+
+/* ---------- Diálogos ---------- */
+
+.dialogo {
+  position: absolute;
+  inset: auto 0 0;
+  z-index: 20;
+  display: grid;
+  justify-items: start;
+  padding: 0 12px max(12px, env(safe-area-inset-bottom));
+  background: linear-gradient(to top, rgb(23 10 54 / 0.75) 40%, transparent);
+  cursor: default;
+}
+
+.dialogo__retrato {
+  margin: 0 0 -18px 10px;
+  filter: drop-shadow(0 8px 8px rgb(0 0 0 / 0.4));
+  animation: entrar-carta 0.35s cubic-bezier(0.2, 1.4, 0.4, 1);
+}
+
+.dialogo__caja {
+  position: relative;
+  width: 100%;
+  max-width: 640px;
+  justify-self: center;
+  display: grid;
+  gap: 8px;
+  padding: 14px 16px 16px;
+  border-radius: 26px;
+  background: var(--crema);
+  border: 4px solid #fff;
+  box-shadow: 0 8px 0 rgb(23 10 54 / 0.4);
+  animation: subir 0.25s ease-out;
+}
+
+.dialogo__cabeza {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.dialogo__cabeza strong {
+  padding: 0 14px;
+  border-radius: 999px;
+  background: var(--noche);
+  color: var(--oro);
+  font-size: 1.1rem;
+}
+
+.dialogo__utiles {
+  display: flex;
+  gap: 8px;
+}
+
+.chip {
+  min-width: 48px;
+  height: 48px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: #fff;
+  font-weight: 800;
+  box-shadow: 0 3px 0 rgb(36 18 63 / 0.18);
+}
+
+.chip[aria-pressed='true'] {
+  background: var(--menta);
+}
+
+.dialogo__texto {
+  margin: 0;
+  font-size: clamp(1.3rem, 5vw, 1.6rem);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.dialogo__apoyo {
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.25;
+  color: #6b5a8a;
+}
+
+.boton-continuar {
+  justify-self: end;
+  min-height: 56px;
+  padding: 0 26px;
+  border-radius: 999px;
+  background: var(--oro);
+  font-size: 1.35rem;
+  font-weight: 800;
+  box-shadow: 0 6px 0 var(--oro-hondo);
+  transition: transform 0.12s;
+}
+
+.boton-continuar:active,
+.opcion-historia:active {
+  transform: translateY(4px);
+}
+
+.dialogo__opciones {
+  display: grid;
+  gap: 10px;
+}
+
+.opcion-historia {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 60px;
+  padding: 8px 18px;
+  border-radius: 20px;
+  background: #fff;
+  border: 3px solid var(--menta);
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.15;
+  text-align: left;
+  box-shadow: 0 5px 0 #129c8b;
+  transition: transform 0.12s;
+}
+
+.opcion-historia small {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #6b5a8a;
+}
+
+@keyframes revolotear {
+  0%, 100% { transform: translate(0, 0); opacity: 1; }
+  25% { transform: translate(14px, -18px); opacity: 0.7; }
+  50% { transform: translate(-10px, -8px); opacity: 1; }
+  75% { transform: translate(8px, 12px); opacity: 0.8; }
+}
+
+@keyframes subir-y-salir {
+  0% { transform: scale(0.5); opacity: 0; }
+  15% { transform: scale(1.1); opacity: 1; }
+  75% { transform: translateY(-40px); opacity: 1; }
+  100% { transform: translateY(-70px); opacity: 0; }
+}
+
+@keyframes subir {
+  from { transform: translateY(24px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
 }
 
 @media (min-width: 720px) {

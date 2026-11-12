@@ -178,6 +178,107 @@ img {
   user-select: none;
 }
 
+.mundo__penumbra {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+/* Sombras de nubes que cruzan despacio: dan vida al suelo sin costar casi nada. */
+.mundo__nubes {
+  position: absolute;
+  inset: 0 0 0 -900px;
+  pointer-events: none;
+  opacity: 0.16;
+  background:
+    radial-gradient(ellipse 260px 150px at 220px 240px, #0b0524 40%, transparent 70%),
+    radial-gradient(ellipse 320px 170px at 640px 620px, #0b0524 40%, transparent 70%);
+  background-size: 900px 900px;
+  animation: pasar-nubes 70s linear infinite;
+  will-change: transform;
+}
+
+.arbol {
+  position: absolute;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  transition: opacity 0.25s, filter 1.6s ease;
+}
+
+.arbol img {
+  position: absolute;
+  left: 0;
+  bottom: -14px;
+  max-width: none;
+  translate: -50% 0;
+  transform-origin: 50% 96%;
+}
+
+.arbol::before {
+  content: '';
+  position: absolute;
+  left: -70px;
+  top: -18px;
+  width: 140px;
+  height: 44px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, rgb(8 4 30 / 0.45), transparent 70%);
+}
+
+.arbol__mece {
+  animation: mecer 6.3s ease-in-out infinite alternate;
+}
+
+.criatura {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.criatura img {
+  position: absolute;
+  max-width: none;
+  height: auto;
+  translate: -50% -50%;
+}
+
+.criatura[data-mira='izq'] img {
+  scale: -1 1;
+}
+
+.criatura--revolotea img {
+  animation: aletear 0.32s ease-in-out infinite alternate;
+}
+
+.criatura--zumba img {
+  animation: bambolear 0.22s ease-in-out infinite alternate;
+}
+
+.criatura--planea img {
+  animation: flotar 1.4s ease-in-out infinite;
+  filter: drop-shadow(0 26px 5px rgb(8 4 30 / 0.3));
+}
+
+.criatura--salta img {
+  transform-origin: 50% 100%;
+  animation: saltito 3.6s ease-in-out infinite;
+}
+
+.arbol--apagado {
+  filter: brightness(0.5) saturate(0.55);
+}
+
+.arbol[data-tapa='si'] {
+  opacity: 0.4;
+}
+
 .nodo {
   position: absolute;
   width: 96px;
@@ -645,6 +746,27 @@ img {
 @keyframes flotar {
   0%, 100% { transform: translateY(0); }
   50% { transform: translateY(-8px); }
+}
+
+@keyframes pasar-nubes {
+  to { transform: translate3d(900px, 0, 0); }
+}
+
+@keyframes aletear {
+  from { transform: scaleX(1); }
+  to { transform: scaleX(0.35); }
+}
+
+@keyframes saltito {
+  0%, 78%, 100% { transform: translateY(0) scale(1); }
+  82% { transform: translateY(0) scale(1.12, 0.84); }
+  90% { transform: translateY(-22px) scale(0.94, 1.08); }
+  96% { transform: translateY(0) scale(1.08, 0.9); }
+}
+
+@keyframes mecer {
+  from { transform: rotate(-1.4deg); }
+  to { transform: rotate(1.4deg); }
 }
 
 @keyframes trotar {

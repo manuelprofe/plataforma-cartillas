@@ -59,6 +59,101 @@ export function sonar(efecto: Efecto) {
   }
 }
 
+// ---------- Sonido de ambiente ----------
+// Por ahora se sintetiza en el dispositivo (no pesa nada). Cuando haya audio
+// definitivo, cada ambiente pasará a ser un archivo del paquete de la cartilla.
+
+let ambiente: { nivel: GainNode; parar: () => void } | null = null;
+const NIVEL_AMBIENTE = 0.9;
+
+function nota(salida: AudioNode, frec: number, inicio: number, dur: number, vol: number, hasta = frec) {
+  if (!ctx) return;
+  const osc = ctx.createOscillator();
+  const gan = ctx.createGain();
+  const t = ctx.currentTime + inicio;
+  osc.frequency.setValueAtTime(frec, t);
+  osc.frequency.linearRampToValueAtTime(hasta, t + dur);
+  gan.gain.setValueAtTime(0.0001, t);
+  gan.gain.exponentialRampToValueAtTime(vol, t + Math.min(0.03, dur / 3));
+  gan.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+  osc.connect(gan).connect(salida);
+  osc.start(t);
+  osc.stop(t + dur + 0.02);
+}
+
+/** Enciende el sonido de fondo de un territorio. Requiere que el audio ya esté activado. */
+export function iniciarAmbiente(tipo: 'bosque-noche') {
+  pararAmbiente();
+  if (!ctx || tipo !== 'bosque-noche') return;
+  const c = ctx;
+  const nivel = c.createGain();
+  nivel.gain.value = 0.0001;
+  nivel.gain.exponentialRampToValueAtTime(NIVEL_AMBIENTE, c.currentTime + 2);
+  nivel.connect(c.destination);
+
+  // Brisa: ruido filtrado que sube y baja despacio.
+  const muestras = c.sampleRate * 2;
+  const bufer = c.createBuffer(1, muestras, c.sampleRate);
+  const datos = bufer.getChannelData(0);
+  for (let i = 0; i < muestras; i++) datos[i] = Math.random() * 2 - 1;
+  const ruido = c.createBufferSource();
+  ruido.buffer = bufer;
+  ruido.loop = true;
+  const filtro = c.createBiquadFilter();
+  filtro.type = 'lowpass';
+  filtro.frequency.value = 420;
+  const brisa = c.createGain();
+  brisa.gain.value = 0.05;
+  const vaiven = c.createOscillator();
+  vaiven.frequency.value = 0.07;
+  const cuanto = c.createGain();
+  cuanto.gain.value = 0.03;
+  vaiven.connect(cuanto).connect(brisa.gain);
+  ruido.connect(filtro).connect(brisa).connect(nivel);
+  ruido.start();
+  vaiven.start();
+
+  // Grillos: ráfagas cortas y agudas. Búho: dos notas graves de vez en cuando.
+  const grillos = window.setInterval(() => {
+    if (c.state !== 'running' || Math.random() < 0.35) return;
+    const tono = 3900 + Math.random() * 700;
+    const pulsos = 3 + Math.floor(Math.random() * 3);
+    for (let i = 0; i < pulsos; i++) nota(nivel, tono, i * 0.075, 0.05, 0.012);
+  }, 900);
+  const buho = window.setInterval(() => {
+    if (c.state !== 'running' || Math.random() < 0.4) return;
+    nota(nivel, 392, 0, 0.32, 0.03, 370);
+    nota(nivel, 392, 0.45, 0.6, 0.035, 330);
+  }, 13000);
+
+  ambiente = {
+    nivel,
+    parar: () => {
+      clearInterval(grillos);
+      clearInterval(buho);
+      nivel.gain.cancelScheduledValues(c.currentTime);
+      nivel.gain.setTargetAtTime(0.0001, c.currentTime, 0.2);
+      window.setTimeout(() => {
+        ruido.stop();
+        vaiven.stop();
+        nivel.disconnect();
+      }, 900);
+    },
+  };
+}
+
+export function pararAmbiente() {
+  ambiente?.parar();
+  ambiente = null;
+}
+
+/** Baja el ambiente mientras un personaje habla, para que se entienda la voz. */
+export function atenuarAmbiente(bajo: boolean) {
+  if (!ambiente || !ctx) return;
+  ambiente.nivel.gain.cancelScheduledValues(ctx.currentTime);
+  ambiente.nivel.gain.setTargetAtTime(bajo ? NIVEL_AMBIENTE * 0.3 : NIVEL_AMBIENTE, ctx.currentTime, 0.3);
+}
+
 export function decir(texto: string, idioma: string) {
   if (!('speechSynthesis' in window)) return;
   const sint = window.speechSynthesis;

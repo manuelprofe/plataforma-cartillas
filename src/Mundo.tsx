@@ -4,7 +4,7 @@
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import type { Linea, ModoIdioma, Palabra, Territorio } from './tipos';
 import { fijarDestino, marcarVista, useProgreso } from './progreso';
-import { decir, sonar } from './audio';
+import { atenuarAmbiente, decir, iniciarAmbiente, pararAmbiente, sonar } from './audio';
 import { Dialogo } from './Dialogo';
 
 const VELOCIDAD = 430; // px por segundo
@@ -24,11 +24,17 @@ const ESCALA_MINIMA = 0.75;
 const ESCALA_MAXIMA = 2;
 const CHISPAS = 14;
 const MS_ENTRE_CHISPAS = 55;
+// Penumbra: se dibuja a baja resolución y se estira; solo cambia al encender una zona.
+const REDUCCION_PENUMBRA = 4;
+const COLOR_PENUMBRA = 'rgb(16 8 46 / 0.66)';
+const MS_ENCENDER = 1600;
 const sinMovimiento = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 // Se conservan mientras la app está abierta para volver al mismo punto tras una misión.
 let ultimaPosicion: { x: number; y: number } | null = null;
 let luzAnterior = 0;
+// Cuánto ha crecido la luz de cada zona (0 a 1), para no repetir el encendido al volver.
+const brilloZona = new Map<string, number>();
 const atrapadas = new Set<number>();
 
 interface Props {
@@ -63,6 +69,9 @@ export function Mundo({ territorio, base, vozIngles, vozEspanol, onEntrar }: Pro
   const meta = useRef<HTMLSpanElement>(null);
   const chispas = useRef<HTMLDivElement>(null);
   const brujula = useRef<HTMLDivElement>(null);
+  const penumbra = useRef<HTMLCanvasElement>(null);
+  const arboles = useRef<(HTMLDivElement | null)[]>([]);
+  const criaturas = useRef<(HTMLDivElement | null)[]>([]);
   const ondas = useRef<HTMLDivElement>(null);
 
   const [tam, setTam] = useState({ ancho: 390, alto: 0 });
@@ -75,7 +84,17 @@ export function Mundo({ territorio, base, vozIngles, vozEspanol, onEntrar }: Pro
   const luz = misiones.length ? hechas / misiones.length : 0;
   const modo: ModoIdioma = territorio.idiomaPorAvance[Math.min(hechas, territorio.idiomaPorAvance.length - 1)];
   const puertaAbierta = progreso.estrellas >= puerta.estrellas;
-  const [luzVista, setLuzVista] = useState(() => Math.min(luzAnterior, luz));
+  // Zonas que ya se ven iluminadas: las fijas del mapa y las misiones cuya luz ya se mostró.
+  const [encendidas, setEncendidas] = useState<string[]>(() => misiones.filter((m) => brilloZona.has(m.id)).map((m) => m.id));
+  const luces = useMemo(
+    () => [
+      ...mundo.luces.map((l, i) => ({ id: `fija-${i}`, ...l })),
+      ...misiones.filter((m) => encendidas.includes(m.id)).map((m) => ({ id: m.id, x: m.x, y: m.y, radio: mundo.radioLuzMision })),
+      ...(puertaAbierta ? [{ id: 'puente', x: puerta.x, y: puerta.y, radio: mundo.radioLuzMision }] : []),
+    ],
+    [mundo, misiones, encendidas, puertaAbierta, puerta],
+  );
+  const conLuz = (x: number, y: number) => luces.some((l) => Math.hypot(l.x - x, l.y - y) < l.radio * 0.9);
 
   const cosas = useMemo<Cosa[]>(
     () => [
@@ -153,13 +172,58 @@ export function Mundo({ territorio, base, vozIngles, vozEspanol, onEntrar }: Pro
     const t = window.setTimeout(() => {
       sonar('estrella');
       luzAnterior = luz;
-      setLuzVista(luz);
+      setEncendidas(misiones.filter((m) => progreso.misiones[m.id]).map((m) => m.id));
       if (hechas < misiones.length) setCharla({ lineas: escenas.despues.lineas });
     }, 800);
     return () => clearTimeout(t);
     // Solo al montar: decide con qué recibe el mundo al niño.
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // Sonido de ambiente del territorio; se atenúa mientras alguien habla.
+  useEffect(() => {
+    if (mundo.ambiente) iniciarAmbiente(mundo.ambiente);
+    return pararAmbiente;
+  }, [mundo.ambiente]);
+  useEffect(() => atenuarAmbiente(charla !== null), [charla]);
+
+  // Penumbra con un hueco de luz por zona encendida; las nuevas crecen poco a poco.
+  useEffect(() => {
+    const lienzo = penumbra.current;
+    const tinta = lienzo?.getContext('2d');
+    if (!lienzo || !tinta) return;
+    const quieto = sinMovimiento();
+    let cuadro = 0;
+    let antes = performance.now();
+    const pintar = (ahora: number) => {
+      const avance = (ahora - antes) / MS_ENCENDER;
+      antes = ahora;
+      let falta = false;
+      tinta.globalCompositeOperation = 'source-over';
+      tinta.clearRect(0, 0, lienzo.width, lienzo.height);
+      tinta.fillStyle = COLOR_PENUMBRA;
+      tinta.fillRect(0, 0, lienzo.width, lienzo.height);
+      tinta.globalCompositeOperation = 'destination-out';
+      for (const l of luces) {
+        const fija = l.id.startsWith('fija-');
+        const brillo = fija || quieto ? 1 : Math.min(1, (brilloZona.get(l.id) ?? 0) + avance);
+        if (!fija) brilloZona.set(l.id, brillo);
+        if (brillo < 1) falta = true;
+        const suave = 1 - (1 - brillo) ** 3;
+        const x = l.x / REDUCCION_PENUMBRA;
+        const y = l.y / REDUCCION_PENUMBRA;
+        const r = (l.radio * (0.25 + 0.75 * suave)) / REDUCCION_PENUMBRA;
+        const luzZona = tinta.createRadialGradient(x, y, r * 0.45, x, y, r);
+        luzZona.addColorStop(0, `rgb(0 0 0 / ${suave})`);
+        luzZona.addColorStop(1, 'rgb(0 0 0 / 0)');
+        tinta.fillStyle = luzZona;
+        tinta.fillRect(x - r, y - r, r * 2, r * 2);
+      }
+      if (falta) cuadro = requestAnimationFrame(pintar);
+    };
+    cuadro = requestAnimationFrame(pintar);
+    return () => cancelAnimationFrame(cuadro);
+  }, [luces, tam.alto]);
 
   // Bucle de movimiento.
   useEffect(() => {
@@ -279,6 +343,14 @@ export function Mundo({ territorio, base, vozIngles, vozEspanol, onEntrar }: Pro
         guia.current.dataset.mira = mirando > 0 ? 'der' : 'izq';
         // Lo que está más abajo en el mapa queda por delante.
         guia.current.style.zIndex = String(Math.round(m.y));
+        // Si el guía queda detrás de una copa, el árbol se vuelve translúcido para no perderlo.
+        mundo.arboles.forEach((a, i) => {
+          const el = arboles.current[i];
+          if (!el) return;
+          const tipo = mundo.tiposArbol[a.tipo];
+          const tapa = m.y < a.y && m.y > a.y - tipo.alto * a.escala * 0.8 && Math.abs(m.x - a.x) < tipo.ancho * a.escala * 0.36 ? 'si' : 'no';
+          if (el.dataset.tapa !== tapa) el.dataset.tapa = tapa;
+        });
         // Se inclina hacia donde va y trota mientras avanza.
         const anda = Math.hypot(dx, dy) > 0.3;
         if (anda !== andaba) {
@@ -308,6 +380,22 @@ export function Mundo({ territorio, base, vozIngles, vozEspanol, onEntrar }: Pro
             { duration: 620, easing: 'ease-out' },
           );
         }
+      }
+
+      // Animales: cada uno da vueltas a su manera alrededor de su punto.
+      if (!quieto) {
+        const seg = ahora / 1000;
+        mundo.criaturas.forEach((c, i) => {
+          const el = criaturas.current[i];
+          if (!el || c.movimiento === 'salta') return;
+          const t = seg * c.rapidez + i * 2.1;
+          const temblor = c.movimiento === 'planea' ? 0 : c.movimiento === 'zumba' ? 7 : 14;
+          const cx = c.x + Math.sin(t * 0.61) * c.radio + Math.sin(t * 5.3) * temblor;
+          const cy = c.y + Math.sin(t * 0.83 + 1.3) * c.radio * 0.6 + Math.cos(t * 4.1) * temblor;
+          el.style.transform = `translate3d(${cx}px, ${cy}px, 0)`;
+          const mira = Math.cos(t * 0.61) >= 0 ? 'der' : 'izq';
+          if (el.dataset.mira !== mira) el.dataset.mira = mira;
+        });
       }
 
       // Marca del lugar al que va.
@@ -401,7 +489,6 @@ export function Mundo({ territorio, base, vozIngles, vozEspanol, onEntrar }: Pro
     m.pendiente = cosa.id;
   };
 
-  const filtro = { filter: `grayscale(${(1 - luzVista) * 0.6}) brightness(${0.78 + luzVista * 0.22})` };
   const cosa = (id: string) => cosas.find((c) => c.id === id)!;
   const restantes = mundo.luciernagas.length - atrapadas.size;
 
@@ -421,10 +508,52 @@ export function Mundo({ territorio, base, vozIngles, vozEspanol, onEntrar }: Pro
       onLostPointerCapture={soltar}
     >
       <div ref={suelo} className="mundo__suelo" style={{ width: mundo.ancho, height: mundo.alto }}>
-        <img className="mundo__mapa" src={base + mundo.mapa} alt="" style={filtro} draggable={false} />
+        <img className="mundo__mapa" src={base + mundo.mapa} alt="" draggable={false} />
+        <canvas ref={penumbra} className="mundo__penumbra" width={Math.ceil(mundo.ancho / REDUCCION_PENUMBRA)} height={Math.ceil(mundo.alto / REDUCCION_PENUMBRA)} aria-hidden="true" />
+        <div className="mundo__nubes" aria-hidden="true" />
 
         {tam.alto > 0 && (
           <>
+            {mundo.arboles.map((a, i) => {
+              const tipo = mundo.tiposArbol[a.tipo];
+              return (
+                <div
+                  key={i}
+                  ref={(el) => {
+                    arboles.current[i] = el;
+                  }}
+                  className={`arbol${conLuz(a.x, a.y) ? '' : ' arbol--apagado'}`}
+                  style={{ left: a.x, top: a.y, zIndex: Math.round(a.y) }}
+                  aria-hidden="true"
+                >
+                  <img
+                    src={base + tipo.imagen}
+                    alt=""
+                    width={Math.round(tipo.ancho * a.escala)}
+                    height={Math.round(tipo.alto * a.escala)}
+                    loading="lazy"
+                    draggable={false}
+                    className={i % 3 === 0 ? 'arbol__mece' : undefined}
+                    style={{ animationDelay: `${-(i % 7) * 0.9}s` }}
+                  />
+                </div>
+              );
+            })}
+
+            {mundo.criaturas.map((c, i) => (
+              <div
+                key={i}
+                ref={(el) => {
+                  criaturas.current[i] = el;
+                }}
+                className={`criatura criatura--${c.movimiento}`}
+                style={{ transform: `translate3d(${c.x}px, ${c.y}px, 0)`, zIndex: c.movimiento === 'salta' ? Math.round(c.y) : mundo.alto + 10 }}
+                aria-hidden="true"
+              >
+                <img src={base + c.imagen} alt="" width={c.ancho} draggable={false} style={{ animationDelay: `${-i * 0.37}s` }} />
+              </div>
+            ))}
+
             {mundo.luciernagas.map((l, i) =>
               atrapadas.has(i) ? null : <span key={i} className="luciernaga" style={{ left: l.x, top: l.y, animationDelay: `${-i * 0.7}s` }} aria-hidden="true" />,
             )}

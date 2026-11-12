@@ -374,7 +374,985 @@
           }
         ],
         "mapa": "fondos/bosque-mapa.webp",
-        "alto": 1800
+        "alto": 1800,
+        "tiposArbol": [
+          {
+            "imagen": "mundo/arbol-1.webp",
+            "ancho": 240,
+            "alto": 246
+          },
+          {
+            "imagen": "mundo/arbol-2.webp",
+            "ancho": 240,
+            "alto": 248
+          },
+          {
+            "imagen": "mundo/arbol-3.webp",
+            "ancho": 240,
+            "alto": 304
+          },
+          {
+            "imagen": "mundo/arbol-4.webp",
+            "ancho": 240,
+            "alto": 251
+          },
+          {
+            "imagen": "mundo/arbol-5.webp",
+            "ancho": 240,
+            "alto": 259
+          },
+          {
+            "imagen": "mundo/arbol-6.webp",
+            "ancho": 240,
+            "alto": 244
+          },
+          {
+            "imagen": "mundo/arbol-7.webp",
+            "ancho": 240,
+            "alto": 306
+          },
+          {
+            "imagen": "mundo/arbol-8.webp",
+            "ancho": 240,
+            "alto": 250
+          },
+          {
+            "imagen": "mundo/arbol-9.webp",
+            "ancho": 240,
+            "alto": 247
+          }
+        ],
+        "arboles": [
+          {
+            "x": 636,
+            "y": 92,
+            "tipo": 6,
+            "escala": 0.63
+          },
+          {
+            "x": 317,
+            "y": 97,
+            "tipo": 2,
+            "escala": 0.65
+          },
+          {
+            "x": 143,
+            "y": 97,
+            "tipo": 3,
+            "escala": 0.65
+          },
+          {
+            "x": 1568,
+            "y": 102,
+            "tipo": 5,
+            "escala": 0.74
+          },
+          {
+            "x": 1173,
+            "y": 102,
+            "tipo": 7,
+            "escala": 0.71
+          },
+          {
+            "x": 1773,
+            "y": 107,
+            "tipo": 4,
+            "escala": 0.65
+          },
+          {
+            "x": 766,
+            "y": 127,
+            "tipo": 6,
+            "escala": 0.82
+          },
+          {
+            "x": 454,
+            "y": 132,
+            "tipo": 2,
+            "escala": 0.79
+          },
+          {
+            "x": 1351,
+            "y": 134,
+            "tipo": 8,
+            "escala": 0.84
+          },
+          {
+            "x": 997,
+            "y": 140,
+            "tipo": 0,
+            "escala": 0.68
+          },
+          {
+            "x": 33,
+            "y": 141,
+            "tipo": 4,
+            "escala": 0.74
+          },
+          {
+            "x": 880,
+            "y": 161,
+            "tipo": 1,
+            "escala": 0.83
+          },
+          {
+            "x": 1691,
+            "y": 178,
+            "tipo": 5,
+            "escala": 0.87
+          },
+          {
+            "x": 219,
+            "y": 184,
+            "tipo": 2,
+            "escala": 0.79
+          },
+          {
+            "x": 602,
+            "y": 202,
+            "tipo": 4,
+            "escala": 0.77
+          },
+          {
+            "x": 1819,
+            "y": 209,
+            "tipo": 8,
+            "escala": 0.71
+          },
+          {
+            "x": 1555,
+            "y": 211,
+            "tipo": 1,
+            "escala": 0.74
+          },
+          {
+            "x": 763,
+            "y": 221,
+            "tipo": 0,
+            "escala": 0.79
+          },
+          {
+            "x": 1100,
+            "y": 222,
+            "tipo": 8,
+            "escala": 0.73
+          },
+          {
+            "x": 109,
+            "y": 254,
+            "tipo": 6,
+            "escala": 0.62
+          },
+          {
+            "x": 904,
+            "y": 270,
+            "tipo": 3,
+            "escala": 0.82
+          },
+          {
+            "x": -17,
+            "y": 317,
+            "tipo": 0,
+            "escala": 0.79
+          },
+          {
+            "x": 1685,
+            "y": 320,
+            "tipo": 7,
+            "escala": 0.72
+          },
+          {
+            "x": 1100,
+            "y": 327,
+            "tipo": 0,
+            "escala": 0.7
+          },
+          {
+            "x": 1792,
+            "y": 361,
+            "tipo": 2,
+            "escala": 0.61
+          },
+          {
+            "x": 152,
+            "y": 373,
+            "tipo": 2,
+            "escala": 0.76
+          },
+          {
+            "x": 1505,
+            "y": 382,
+            "tipo": 0,
+            "escala": 0.66
+          },
+          {
+            "x": 907,
+            "y": 414,
+            "tipo": 0,
+            "escala": 0.79
+          },
+          {
+            "x": 1688,
+            "y": 421,
+            "tipo": 4,
+            "escala": 0.85
+          },
+          {
+            "x": 1064,
+            "y": 432,
+            "tipo": 3,
+            "escala": 0.63
+          },
+          {
+            "x": 1179,
+            "y": 458,
+            "tipo": 0,
+            "escala": 0.85
+          },
+          {
+            "x": 614,
+            "y": 458,
+            "tipo": 7,
+            "escala": 0.84
+          },
+          {
+            "x": 90,
+            "y": 463,
+            "tipo": 8,
+            "escala": 0.73
+          },
+          {
+            "x": 277,
+            "y": 466,
+            "tipo": 7,
+            "escala": 0.77
+          },
+          {
+            "x": 1440,
+            "y": 468,
+            "tipo": 8,
+            "escala": 0.81
+          },
+          {
+            "x": 1604,
+            "y": 508,
+            "tipo": 7,
+            "escala": 0.87
+          },
+          {
+            "x": 727,
+            "y": 522,
+            "tipo": 7,
+            "escala": 0.77
+          },
+          {
+            "x": 926,
+            "y": 535,
+            "tipo": 7,
+            "escala": 0.63
+          },
+          {
+            "x": 13,
+            "y": 543,
+            "tipo": 0,
+            "escala": 0.61
+          },
+          {
+            "x": 1059,
+            "y": 559,
+            "tipo": 6,
+            "escala": 0.85
+          },
+          {
+            "x": 1355,
+            "y": 564,
+            "tipo": 5,
+            "escala": 0.64
+          },
+          {
+            "x": 306,
+            "y": 569,
+            "tipo": 1,
+            "escala": 0.89
+          },
+          {
+            "x": 437,
+            "y": 591,
+            "tipo": 1,
+            "escala": 0.75
+          },
+          {
+            "x": 1552,
+            "y": 598,
+            "tipo": 0,
+            "escala": 0.85
+          },
+          {
+            "x": 776,
+            "y": 630,
+            "tipo": 8,
+            "escala": 0.8
+          },
+          {
+            "x": 193,
+            "y": 632,
+            "tipo": 4,
+            "escala": 0.9
+          },
+          {
+            "x": 942,
+            "y": 637,
+            "tipo": 1,
+            "escala": 0.68
+          },
+          {
+            "x": 1299,
+            "y": 663,
+            "tipo": 4,
+            "escala": 0.69
+          },
+          {
+            "x": 48,
+            "y": 667,
+            "tipo": 5,
+            "escala": 0.82
+          },
+          {
+            "x": 1816,
+            "y": 671,
+            "tipo": 6,
+            "escala": 0.74
+          },
+          {
+            "x": 590,
+            "y": 677,
+            "tipo": 5,
+            "escala": 0.85
+          },
+          {
+            "x": 1437,
+            "y": 678,
+            "tipo": 7,
+            "escala": 0.63
+          },
+          {
+            "x": 400,
+            "y": 691,
+            "tipo": 6,
+            "escala": 0.67
+          },
+          {
+            "x": 279,
+            "y": 705,
+            "tipo": 0,
+            "escala": 0.63
+          },
+          {
+            "x": 1169,
+            "y": 721,
+            "tipo": 5,
+            "escala": 0.76
+          },
+          {
+            "x": 150,
+            "y": 747,
+            "tipo": 5,
+            "escala": 0.89
+          },
+          {
+            "x": -13,
+            "y": 749,
+            "tipo": 5,
+            "escala": 0.89
+          },
+          {
+            "x": 513,
+            "y": 764,
+            "tipo": 6,
+            "escala": 0.72
+          },
+          {
+            "x": 653,
+            "y": 768,
+            "tipo": 5,
+            "escala": 0.72
+          },
+          {
+            "x": 1527,
+            "y": 769,
+            "tipo": 6,
+            "escala": 0.9
+          },
+          {
+            "x": 333,
+            "y": 794,
+            "tipo": 3,
+            "escala": 0.71
+          },
+          {
+            "x": 1339,
+            "y": 810,
+            "tipo": 7,
+            "escala": 0.62
+          },
+          {
+            "x": 1809,
+            "y": 821,
+            "tipo": 6,
+            "escala": 0.66
+          },
+          {
+            "x": 1131,
+            "y": 823,
+            "tipo": 6,
+            "escala": 0.61
+          },
+          {
+            "x": -12,
+            "y": 848,
+            "tipo": 5,
+            "escala": 0.78
+          },
+          {
+            "x": -13,
+            "y": 980,
+            "tipo": 7,
+            "escala": 0.72
+          },
+          {
+            "x": 1806,
+            "y": 1008,
+            "tipo": 3,
+            "escala": 0.79
+          },
+          {
+            "x": 1475,
+            "y": 1022,
+            "tipo": 1,
+            "escala": 0.66
+          },
+          {
+            "x": 501,
+            "y": 1033,
+            "tipo": 1,
+            "escala": 0.63
+          },
+          {
+            "x": 1235,
+            "y": 1051,
+            "tipo": 7,
+            "escala": 0.84
+          },
+          {
+            "x": 1355,
+            "y": 1063,
+            "tipo": 8,
+            "escala": 0.71
+          },
+          {
+            "x": 390,
+            "y": 1070,
+            "tipo": 8,
+            "escala": 0.7
+          },
+          {
+            "x": 625,
+            "y": 1083,
+            "tipo": 2,
+            "escala": 0.61
+          },
+          {
+            "x": 16,
+            "y": 1093,
+            "tipo": 7,
+            "escala": 0.81
+          },
+          {
+            "x": 170,
+            "y": 1124,
+            "tipo": 3,
+            "escala": 0.71
+          },
+          {
+            "x": 531,
+            "y": 1142,
+            "tipo": 1,
+            "escala": 0.64
+          },
+          {
+            "x": 1501,
+            "y": 1147,
+            "tipo": 3,
+            "escala": 0.63
+          },
+          {
+            "x": 1308,
+            "y": 1168,
+            "tipo": 1,
+            "escala": 0.61
+          },
+          {
+            "x": 336,
+            "y": 1185,
+            "tipo": 5,
+            "escala": 0.73
+          },
+          {
+            "x": 872,
+            "y": 1218,
+            "tipo": 1,
+            "escala": 0.8
+          },
+          {
+            "x": 6,
+            "y": 1222,
+            "tipo": 4,
+            "escala": 0.73
+          },
+          {
+            "x": 1470,
+            "y": 1238,
+            "tipo": 7,
+            "escala": 0.79
+          },
+          {
+            "x": 443,
+            "y": 1242,
+            "tipo": 1,
+            "escala": 0.63
+          },
+          {
+            "x": 757,
+            "y": 1259,
+            "tipo": 5,
+            "escala": 0.66
+          },
+          {
+            "x": 258,
+            "y": 1282,
+            "tipo": 0,
+            "escala": 0.75
+          },
+          {
+            "x": 136,
+            "y": 1286,
+            "tipo": 6,
+            "escala": 0.83
+          },
+          {
+            "x": 1632,
+            "y": 1289,
+            "tipo": 8,
+            "escala": 0.73
+          },
+          {
+            "x": 1316,
+            "y": 1297,
+            "tipo": 4,
+            "escala": 0.88
+          },
+          {
+            "x": 939,
+            "y": 1302,
+            "tipo": 4,
+            "escala": 0.64
+          },
+          {
+            "x": -11,
+            "y": 1328,
+            "tipo": 1,
+            "escala": 0.9
+          },
+          {
+            "x": 1442,
+            "y": 1355,
+            "tipo": 3,
+            "escala": 0.62
+          },
+          {
+            "x": 1572,
+            "y": 1379,
+            "tipo": 2,
+            "escala": 0.76
+          },
+          {
+            "x": 264,
+            "y": 1386,
+            "tipo": 5,
+            "escala": 0.64
+          },
+          {
+            "x": 1029,
+            "y": 1387,
+            "tipo": 4,
+            "escala": 0.88
+          },
+          {
+            "x": 851,
+            "y": 1403,
+            "tipo": 8,
+            "escala": 0.62
+          },
+          {
+            "x": 1704,
+            "y": 1418,
+            "tipo": 3,
+            "escala": 0.65
+          },
+          {
+            "x": 1185,
+            "y": 1429,
+            "tipo": 7,
+            "escala": 0.87
+          },
+          {
+            "x": 684,
+            "y": 1440,
+            "tipo": 3,
+            "escala": 0.71
+          },
+          {
+            "x": 169,
+            "y": 1447,
+            "tipo": 2,
+            "escala": 0.73
+          },
+          {
+            "x": 14,
+            "y": 1478,
+            "tipo": 5,
+            "escala": 0.79
+          },
+          {
+            "x": 1792,
+            "y": 1483,
+            "tipo": 4,
+            "escala": 0.6
+          },
+          {
+            "x": 592,
+            "y": 1539,
+            "tipo": 6,
+            "escala": 0.74
+          },
+          {
+            "x": 924,
+            "y": 1542,
+            "tipo": 0,
+            "escala": 0.68
+          },
+          {
+            "x": 727,
+            "y": 1545,
+            "tipo": 1,
+            "escala": 0.81
+          },
+          {
+            "x": 147,
+            "y": 1569,
+            "tipo": 2,
+            "escala": 0.72
+          },
+          {
+            "x": 1605,
+            "y": 1573,
+            "tipo": 8,
+            "escala": 0.68
+          },
+          {
+            "x": 1807,
+            "y": 1578,
+            "tipo": 4,
+            "escala": 0.81
+          },
+          {
+            "x": 819,
+            "y": 1610,
+            "tipo": 4,
+            "escala": 0.74
+          },
+          {
+            "x": 647,
+            "y": 1634,
+            "tipo": 3,
+            "escala": 0.71
+          },
+          {
+            "x": 69,
+            "y": 1644,
+            "tipo": 7,
+            "escala": 0.77
+          },
+          {
+            "x": 960,
+            "y": 1651,
+            "tipo": 3,
+            "escala": 0.69
+          },
+          {
+            "x": 1562,
+            "y": 1681,
+            "tipo": 7,
+            "escala": 0.86
+          },
+          {
+            "x": 198,
+            "y": 1708,
+            "tipo": 3,
+            "escala": 0.69
+          },
+          {
+            "x": 1816,
+            "y": 1712,
+            "tipo": 1,
+            "escala": 0.75
+          },
+          {
+            "x": 1696,
+            "y": 1715,
+            "tipo": 1,
+            "escala": 0.8
+          },
+          {
+            "x": 1111,
+            "y": 1722,
+            "tipo": 3,
+            "escala": 0.9
+          },
+          {
+            "x": 694,
+            "y": 1727,
+            "tipo": 2,
+            "escala": 0.79
+          },
+          {
+            "x": 480,
+            "y": 1730,
+            "tipo": 2,
+            "escala": 0.68
+          },
+          {
+            "x": -16,
+            "y": 1736,
+            "tipo": 5,
+            "escala": 0.84
+          },
+          {
+            "x": 1250,
+            "y": 1745,
+            "tipo": 8,
+            "escala": 0.69
+          },
+          {
+            "x": 1466,
+            "y": 1745,
+            "tipo": 0,
+            "escala": 0.74
+          },
+          {
+            "x": 904,
+            "y": 1755,
+            "tipo": 3,
+            "escala": 0.78
+          },
+          {
+            "x": 77,
+            "y": 1798,
+            "tipo": 7,
+            "escala": 0.64
+          },
+          {
+            "x": 1020,
+            "y": 1805,
+            "tipo": 0,
+            "escala": 0.77
+          },
+          {
+            "x": 384,
+            "y": 1814,
+            "tipo": 6,
+            "escala": 0.87
+          },
+          {
+            "x": 195,
+            "y": 1817,
+            "tipo": 2,
+            "escala": 0.79
+          },
+          {
+            "x": 1607,
+            "y": 1823,
+            "tipo": 2,
+            "escala": 0.62
+          },
+          {
+            "x": 524,
+            "y": 1829,
+            "tipo": 1,
+            "escala": 0.9
+          },
+          {
+            "x": 1809,
+            "y": 1829,
+            "tipo": 7,
+            "escala": 0.66
+          },
+          {
+            "x": 1431,
+            "y": 1849,
+            "tipo": 1,
+            "escala": 0.63
+          },
+          {
+            "x": 710,
+            "y": 1857,
+            "tipo": 0,
+            "escala": 0.77
+          },
+          {
+            "x": 878,
+            "y": 1860,
+            "tipo": 7,
+            "escala": 0.75
+          },
+          {
+            "x": 1118,
+            "y": 1860,
+            "tipo": 5,
+            "escala": 0.62
+          },
+          {
+            "x": 1245,
+            "y": 1868,
+            "tipo": 5,
+            "escala": 0.66
+          },
+          {
+            "x": 1704,
+            "y": 1878,
+            "tipo": 5,
+            "escala": 0.62
+          },
+          {
+            "x": 0,
+            "y": 1886,
+            "tipo": 7,
+            "escala": 0.63
+          },
+          {
+            "x": 272,
+            "y": 1888,
+            "tipo": 0,
+            "escala": 0.65
+          },
+          {
+            "x": 1536,
+            "y": 1900,
+            "tipo": 6,
+            "escala": 0.7
+          }
+        ],
+        "luces": [
+          {
+            "x": 882,
+            "y": 882,
+            "radio": 430
+          }
+        ],
+        "radioLuzMision": 380,
+        "ambiente": "bosque-noche",
+        "criaturas": [
+          {
+            "imagen": "mundo/animal-1.webp",
+            "ancho": 46,
+            "x": 700,
+            "y": 760,
+            "radio": 130,
+            "movimiento": "revolotea",
+            "rapidez": 1.0
+          },
+          {
+            "imagen": "mundo/animal-2.webp",
+            "ancho": 46,
+            "x": 1060,
+            "y": 980,
+            "radio": 150,
+            "movimiento": "revolotea",
+            "rapidez": 0.8
+          },
+          {
+            "imagen": "mundo/animal-1.webp",
+            "ancho": 42,
+            "x": 1377,
+            "y": 1440,
+            "radio": 120,
+            "movimiento": "revolotea",
+            "rapidez": 0.9
+          },
+          {
+            "imagen": "mundo/animal-2.webp",
+            "ancho": 42,
+            "x": 396,
+            "y": 330,
+            "radio": 120,
+            "movimiento": "revolotea",
+            "rapidez": 1.1
+          },
+          {
+            "imagen": "mundo/animal-3.webp",
+            "ancho": 44,
+            "x": 990,
+            "y": 690,
+            "radio": 90,
+            "movimiento": "zumba",
+            "rapidez": 1.6
+          },
+          {
+            "imagen": "mundo/animal-3.webp",
+            "ancho": 40,
+            "x": 330,
+            "y": 1380,
+            "radio": 100,
+            "movimiento": "zumba",
+            "rapidez": 1.4
+          },
+          {
+            "imagen": "mundo/animal-6.webp",
+            "ancho": 58,
+            "x": 900,
+            "y": 520,
+            "radio": 520,
+            "movimiento": "planea",
+            "rapidez": 0.35
+          },
+          {
+            "imagen": "mundo/animal-4.webp",
+            "ancho": 84,
+            "x": 1420,
+            "y": 1120,
+            "radio": 300,
+            "movimiento": "planea",
+            "rapidez": 0.22
+          },
+          {
+            "imagen": "mundo/animal-5.webp",
+            "ancho": 50,
+            "x": 640,
+            "y": 400,
+            "radio": 0,
+            "movimiento": "salta",
+            "rapidez": 1
+          },
+          {
+            "imagen": "mundo/animal-5.webp",
+            "ancho": 50,
+            "x": 1150,
+            "y": 1440,
+            "radio": 0,
+            "movimiento": "salta",
+            "rapidez": 1
+          }
+        ]
       },
       "escenas": {
         "intro": {

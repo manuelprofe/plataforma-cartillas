@@ -45,7 +45,9 @@ basada en el trabajo de grado de Manuel Vega en la I.E. Jorge Barco Mora (Los Pa
 | Skills (2 oficiales de Anthropic revisadas + `diseno-infantil` y `auditoria`) | Instaladas | `.claude/skills/` |
 | Aplicación (Vite + React + TypeScript) | Prototipo del modo estudiante | `src/` |
 | Mundo explorable del Bosque de los Sonidos, visto desde arriba | Funciona; falta que Manuel lo pruebe | `src/Mundo.tsx` |
-| Mapa del bosque generado en Canva (1800 × 1800, 233 KB) | Primera versión | `public/cartillas/ingles-3/fondos/bosque-mapa.webp` |
+| Suelo del bosque generado en Canva (1800 × 1800) | Hecho | `public/cartillas/ingles-3/fondos/bosque-mapa.webp` |
+| Árboles (9) y animales (6) generados en Canva, recortados con transparencia | Hecho | `public/cartillas/ingles-3/mundo/` |
+| Sonido de ambiente del bosque (brisa, grillos, búho) | Sintetizado en el dispositivo, provisional | `src/audio.ts` |
 | Diálogos con personajes, opciones y cambio de idioma | Funciona | `src/Dialogo.tsx` |
 | Juego "escucha y toca" (plantilla que recibe contenido) | Funciona; es el único juego | `src/juegos/EscuchaToca.tsx` |
 | Mission Stars en el dispositivo | Funciona con `localStorage` | `src/progreso.ts` |
@@ -88,13 +90,26 @@ Hecho en `src/Mundo.tsx` (constantes `CAMARA_*` y `ESCALA_*`):
 - El mundo se escala según la pantalla y la brújula apunta en cualquier dirección.
 - Comprobado a 390 px y a 1366 px con capturas seguidas; el prototipo publicado lo tiene.
 
+Mapa por capas (pedido por Manuel):
+
+- Suelo sin árboles + 138 árboles sueltos ordenados por profundidad: el guía pasa por detrás
+  y el árbol se vuelve translúcido. Las posiciones están en `mundo.arboles`.
+- Penumbra por zonas: un lienzo oscuro con huecos de luz (`mundo.luces` y cada misión
+  completada, `radioLuzMision`). Los árboles sin luz se ven apagados. Reemplaza al filtro
+  de color sobre todo el mapa.
+- Animales que se mueven solos (`mundo.criaturas`): mariposas, abejas, pájaro, búho, ranas.
+- Sombras de nubes que cruzan y sonido de ambiente (`mundo.ambiente`), que baja cuando
+  alguien habla.
+- Los árboles se sembraron con un guion que evita claros, caminos y agua leyendo los
+  colores del suelo; si cambia el mapa hay que volver a sembrar.
+
 Pendiente:
 
 - Que Manuel lo pruebe en su celular.
+- Medir en un celular de gama baja: son 138 árboles en pantalla más los animales.
+- No hay botón para silenciar el ambiente.
 - No hay obstáculos: el guía pasa por encima de árboles y agua. Decidir si se quedan así
   (vuela) o si los caminos mandan.
-- El mapa se oscurece con un filtro hasta que se completan misiones; revisar si conviene
-  iluminar por zonas en vez de todo a la vez, y medir el filtro en gama baja.
 - Personajes animados: partir cada personaje en piezas y animarlo (Rive).
 - Manuel mencionó "la estrella que aparece al inicio": confirmar a qué personaje espera
   controlar. Hoy es Cosmo; la estrella es Lumi.
@@ -102,7 +117,10 @@ Pendiente:
 Cómo se trae una imagen de Canva: `generate-image` solo devuelve una miniatura de 200 px.
 Para el tamaño completo se inserta la imagen a página completa en un diseño
 (`read-design` con transacción, `edit-design` con `insert_fill`, guardar) y se exporta en
-PNG. El diseño contenedor es `DAHarW2Gyck`; la imagen del mapa es `MAHarXMYl7M`.
+PNG. El diseño contenedor es `DAHarW2Gyck` (se reemplaza su imagen con `update_fill`). Imágenes
+en Canva: mapa original `MAHarXMYl7M`, suelo `MAHarSCZ4iM`, árboles `MAHarYMJvlw`,
+animales `MAHarYhC0EU`. Las hojas de figuras se piden sobre fondo blanco y se recortan
+aquí; usar el mapa original como referencia mantiene el estilo.
 
 ### 2. Más juego dentro de las misiones
 

@@ -1,6 +1,8 @@
 // Forma del paquete de datos de una cartilla. El motor solo conoce estos tipos:
 // todo el contenido llega desde public/cartillas/<id>/cartilla.json.
 
+export type Ambiente = 'bosque-noche';
+
 export interface Palabra {
   en: string;
   es: string;
@@ -59,6 +61,24 @@ export interface Territorio {
     mapa: string;
     ancho: number;
     alto: number;
+    /** Árboles sueltos sobre el suelo: el guía pasa por detrás de los que están más abajo. */
+    tiposArbol: { imagen: string; ancho: number; alto: number }[];
+    arboles: { x: number; y: number; tipo: number; escala: number }[];
+    /** Animales que se mueven solos alrededor de un punto. */
+    criaturas: {
+      imagen: string;
+      ancho: number;
+      x: number;
+      y: number;
+      radio: number;
+      movimiento: 'revolotea' | 'zumba' | 'planea' | 'salta';
+      rapidez: number;
+    }[];
+    /** Sonido de fondo del territorio. */
+    ambiente?: Ambiente;
+    /** Zonas iluminadas desde el principio; cada misión completada enciende la suya. */
+    luces: { x: number; y: number; radio: number }[];
+    radioLuzMision: number;
     inicio: { x: number; y: number };
     habitantes: { id: string; personaje: string; x: number; y: number; escena: string }[];
     luciernagas: { x: number; y: number }[];

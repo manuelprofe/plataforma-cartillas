@@ -5,10 +5,18 @@
 /** Tiempo de cortesía tras la carga antes de bajar el paquete, para no competir con la app. */
 const ESPERA_PAQUETE_MS = 3000;
 
+/** Se vuelve verdadero con el primer toque o tecla: desde ahí no se recarga la página. */
+let tocado = false;
+
 export function registrarSinConexion() {
   if (import.meta.env.DEV) return;
   try {
     if (!('serviceWorker' in navigator)) return;
+    const marcar = () => {
+      tocado = true;
+    };
+    window.addEventListener('pointerdown', marcar, { once: true, capture: true });
+    window.addEventListener('keydown', marcar, { once: true, capture: true });
     if (document.readyState === 'complete') void registrar();
     else window.addEventListener('load', () => void registrar(), { once: true });
   } catch {
@@ -19,14 +27,28 @@ export function registrarSinConexion() {
 async function registrar() {
   try {
     const sw = navigator.serviceWorker;
+    // Pide que el navegador no borre el caché por falta de espacio, si lo permite.
+    void navigator.storage?.persist?.().catch(() => {});
+
+    // Una versión nueva solo entra si el niño aún no ha tocado nada: se activa y la página
+    // se recarga sola una vez. Si ya está jugando, entra la próxima vez que abra la app.
+    const habiaControl = Boolean(sw.controller);
+    let recargada = false;
+    sw.addEventListener('controllerchange', () => {
+      if (habiaControl && !tocado && !recargada) {
+        recargada = true;
+        location.reload();
+      }
+    });
+    const pedirActivacion = (trabajador: ServiceWorker | null) => {
+      if (trabajador && habiaControl && !tocado) trabajador.postMessage({ tipo: 'activar' });
+    };
+
     // Ruta relativa: funciona igual en la raíz del dominio o en una subruta.
     const registro = await sw.register('./sw.js');
-
-    // Si hay un service worker nuevo esperando y es de la misma versión que esta página,
-    // se activa ya; si es de otra versión, espera a que se cierre la app.
-    const pedirActivacion = (trabajador: ServiceWorker | null) =>
-      trabajador?.postMessage({ tipo: 'activar-si-es-mi-version', modulo: import.meta.url });
     pedirActivacion(registro.waiting);
+    // Como el index sale del caché, se pregunta en cada apertura si hay versión nueva.
+    if (habiaControl) void registro.update().catch(() => {});
     registro.addEventListener('updatefound', () => {
       const nuevo = registro.installing;
       nuevo?.addEventListener('statechange', () => {

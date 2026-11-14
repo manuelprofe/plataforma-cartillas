@@ -391,8 +391,16 @@ clave de ese servicio por el formulario seguro, nunca en el chat.
 - Sin conexión: hecho con un service worker propio (`sw/sw.js`; `vite.config.ts` genera
   `dist/sw.js`). Guarda el armazón al instalar y, después, todo archivo que nombre
   `cartilla.json`. Toda imagen que use la app debe figurar en `cartilla.json`; si solo
-  está en el código, no se guarda hasta que se muestre una vez. Falta probarlo en un
+  está en el código, no se guarda hasta que se muestre una vez. Todo se sirve desde el
+  caché de la versión activa (también index y `cartilla.json`), así que una versión
+  publicada llega la próxima vez que se abre la app: se instala en segundo plano y entra
+  sola si el niño aún no ha tocado nada; si ya está jugando, espera. Falta probarlo en un
   celular Android real (instalar y jugar en modo avión).
+- Límites conocidos del modo sin conexión: `/sub` sin barra final queda fuera del alcance
+  del service worker (sin red no abre; con red el servidor redirige a `/sub/`). Con dos
+  pestañas abiertas, la vieja pasa a ser atendida por la versión nueva: sus archivos con
+  hash siguen disponibles (los cachés viejos no se borran mientras haya otra pestaña),
+  pero si volviera a pedir `cartilla.json` recibiría el nuevo.
 - **Pendiente sin resolver:** dentro de un iframe con `sandbox` sin `allow-same-origin` la
   app no carga, con o sin service worker: el origen queda `null` y el navegador bloquea
   el JS y el CSS por CORS (`Access to script ... from origin 'null' has been blocked`).

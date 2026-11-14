@@ -1,0 +1,40 @@
+{
+ "_nota": "Propuesta para el paquete de la cartilla (sección 4 de docs/diseno/ronda-1.md). Las imágenes son 128 x 128 con la pieza centrada. Anclas del héroe: x, y en fracción del ancho y alto de la imagen del héroe; escala multiplica el ancho de la pieza para ese héroe. Cada pieza trae su punto de agarre (punto: fracción de su propia imagen que va sobre el ancla) y su ancho (fracción del ancho del héroe). Colocación: anchoPieza = pieza.ancho * ancla.escala * anchoHeroe; left = ancla.x * anchoHeroe - pieza.punto[0] * anchoPieza; top = ancla.y * altoHeroe - pieza.punto[1] * anchoPieza (la imagen es cuadrada). Capas: espalda 0 (detrás), héroe 1, cuello 2, cara 3, cabeza 4. Canva: hoja MAHa3l8jvMs (exportada desde el contenedor DAHarW2Gyck).",
+ "accesorios": [
+  { "id": "bufanda", "ranura": "cuello", "estrellas": 4, "imagen": "accesorios/bufanda.webp", "punto": [0.5, 0.2], "ancho": 0.6 },
+  { "id": "gafas-estrella", "ranura": "cara", "estrellas": 9, "imagen": "accesorios/gafas-estrella.webp", "punto": [0.43, 0.5], "ancho": 0.66 },
+  { "id": "antena-luciernaga", "ranura": "cabeza", "estrellas": 18, "imagen": "accesorios/antena-luciernaga.webp", "punto": [0.37, 0.4], "ancho": 1.05 },
+  { "id": "capa-hojas", "ranura": "espalda", "estrellas": 27, "imagen": "accesorios/capa-hojas.webp", "punto": [0.5, 0.2], "ancho": 1.1 },
+  { "id": "corona-flores", "ranura": "cabeza", "estrellas": 36, "imagen": "accesorios/corona-flores.webp", "punto": [0.5, 0.5], "ancho": 0.8 },
+  { "id": "mochila-cohete", "ranura": "espalda", "estrellas": 45, "imagen": "accesorios/mochila-cohete.webp", "punto": [0.5, 0.45], "ancho": 1.05 }
+ ],
+ "heroes": [
+  {
+   "id": "tavi",
+   "anclas": {
+    "cabeza": { "x": 0.49, "y": 0.035, "escala": 1 },
+    "cara": { "x": 0.54, "y": 0.40, "escala": 1 },
+    "cuello": { "x": 0.52, "y": 0.535, "escala": 1 },
+    "espalda": { "x": 0.50, "y": 0.57, "escala": 1 }
+   }
+  },
+  {
+   "id": "mika",
+   "anclas": {
+    "cabeza": { "x": 0.51, "y": 0.205, "escala": 1 },
+    "cara": { "x": 0.49, "y": 0.44, "escala": 1.05 },
+    "cuello": { "x": 0.50, "y": 0.585, "escala": 1 },
+    "espalda": { "x": 0.52, "y": 0.61, "escala": 1 }
+   }
+  },
+  {
+   "id": "bruno",
+   "anclas": {
+    "cabeza": { "x": 0.50, "y": 0.035, "escala": 1 },
+    "cara": { "x": 0.44, "y": 0.34, "escala": 1 },
+    "cuello": { "x": 0.45, "y": 0.505, "escala": 1 },
+    "espalda": { "x": 0.45, "y": 0.53, "escala": 1 }
+   }
+  }
+ ]
+}

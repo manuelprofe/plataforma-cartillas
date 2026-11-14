@@ -120,6 +120,14 @@ hace el seguimiento y para el niño que completa las misiones:
 - **Guía de pronunciación:** la `z` marca el sonido "th" (lengua entre los dientes); la
   docente lo enseña una vez.
 
+## Trabajo sin integrar
+
+El 14 de noviembre Manuel pidió detener a los agentes para ahorrar. Lo que hicieron y no se
+integró está en `pendiente/` (ver `pendiente/LEEME.md`): juegos nuevos y 3 misiones por
+camino, funcionamiento sin conexión, movimiento por caminos y suelo nuevo del Bosque.
+Pendiente además: opción B de estrellas, vestidor de accesorios (umbrales a recalibrar),
+resumen para la familia y reproductor de cinemáticas.
+
 ## Qué hay construido
 
 | Pieza | Estado | Dónde |

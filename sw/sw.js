@@ -17,12 +17,14 @@
 // - El paquete de la cartilla se baja la primera vez en segundo plano, cuando la página lo
 //   pide, después de que la app ya se puede usar.
 
-/** @type {{ version: string, armazon: Record<string, string>, cartillas: Record<string, { version: string, archivos: Record<string, string> }> }} */
+/** @type {{ version: string, entrada: string, armazon: Record<string, string>, cartillas: Record<string, { version: string, archivos: Record<string, string>, instalar: string[] }> }} */
 const CONFIG = __CONFIG__;
 
 const PREFIJO = 'cartillas-';
 const CACHE_ARMAZON = `${PREFIJO}armazon-${CONFIG.version}`;
 const HUELLA = 'x-huella-cartillas';
+/** Huella real cuando difiere de la esperada (index con algo inyectado, imagen recomprimida). */
+const HUELLA_REAL = 'x-huella-real';
 /** Un caché por cartilla; su nombre cambia solo si cambia algún archivo del paquete. */
 const nombrePaquete = (dir) => `${PREFIJO}paquete-${dir.replace(/\W+/g, '_')}-${CONFIG.cartillas[dir].version}`;
 const prefijoPaquete = (dir) => `${PREFIJO}paquete-${dir.replace(/\W+/g, '_')}-`;
@@ -79,9 +81,10 @@ async function sePuedeGuardar(respuesta, href) {
 }
 
 /** Copia de una respuesta con la huella anotada en una cabecera propia. */
-function conHuella(bytes, respuesta, huella) {
+function conHuella(bytes, respuesta, huella, real = huella) {
   const cabeceras = new Headers(respuesta.headers);
   cabeceras.set(HUELLA, huella);
+  if (real !== huella) cabeceras.set(HUELLA_REAL, real);
   return new Response(bytes, { status: 200, statusText: 'OK', headers: cabeceras });
 }
 
@@ -94,16 +97,32 @@ async function guardar(cache, clave, respuesta) {
   }
 }
 
-/** Baja un archivo de la lista y lo guarda solo si su huella coincide. */
+/**
+ * Un filtro o CDN puede inyectar algo en el HTML: el index vale si es HTML y carga el JS de
+ * entrada de esta versión, aunque su huella no coincida.
+ */
+const esIndexDeEstaVersion = (href, bytes) => href === URL_APP && new TextDecoder().decode(bytes).includes(CONFIG.entrada);
+
+/** Baja un archivo de la lista y lo guarda solo si es el que se espera. */
 async function bajarVerificado(cache, href, huella) {
   // Lo que lleva hash en el nombre puede salir de la caché HTTP; lo demás se revalida.
   const conHash = href.startsWith(url('assets/'));
+  let medio = null;
   for (const modo of conHash ? ['default', 'reload'] : ['no-cache', 'reload']) {
     const respuesta = await fetch(href, { cache: modo, credentials: 'same-origin' });
     if (!(await sePuedeGuardar(respuesta, href))) continue;
     const bytes = await respuesta.arrayBuffer();
-    if ((await huellaDeBytes(bytes)) !== huella) continue;
-    await guardar(cache, href, conHuella(bytes, respuesta, huella));
+    const real = await huellaDeBytes(bytes);
+    if (real === huella || esIndexDeEstaVersion(href, bytes)) {
+      await guardar(cache, href, conHuella(bytes, respuesta, huella, real));
+      return;
+    }
+    if (/^(image|audio|video)\//.test(respuesta.headers.get('content-type') || '')) medio = { bytes, respuesta, real };
+  }
+  // Un proxy que recomprime imágenes cambia los bytes: si dos veces llegó un medio válido
+  // con otra huella, se guarda anotando las dos huellas para no pedirlo en cada visita.
+  if (medio) {
+    await guardar(cache, href, conHuella(medio.bytes, medio.respuesta, huella, medio.real));
     return;
   }
   throw new Error(`No se pudo bajar ${href}`);
@@ -165,10 +184,16 @@ async function instalar() {
   for (const dir of Object.keys(CONFIG.cartillas)) {
     const nombre = nombrePaquete(dir);
     const anteriores = await cachesAnteriores(prefijoPaquete(dir), nombre);
-    // Primera instalación: el paquete se baja después, cuando la página ya se puede usar.
+    const { archivos, instalar: primeros } = CONFIG.cartillas[dir];
+    // Primera instalación: solo cartilla.json y la portada; el resto se baja después,
+    // cuando la página ya se puede usar.
     // Actualización: se copia lo que no cambió y se baja lo nuevo antes de activar.
-    if (!anteriores.length) continue;
-    await llenar(await caches.open(nombre), CONFIG.cartillas[dir].archivos, dir, anteriores, { exigir: true });
+    if (!anteriores.length) {
+      const lista = Object.fromEntries(primeros.filter((r) => archivos[r]).map((r) => [r, archivos[r]]));
+      await llenar(await caches.open(nombre), lista, dir, [], {}).catch(() => {});
+      continue;
+    }
+    await llenar(await caches.open(nombre), archivos, dir, anteriores, { exigir: true });
   }
 }
 
@@ -220,10 +245,29 @@ self.addEventListener('message', (evento) => {
   }
 });
 
+/** Ruta relativa al alcance, sin codificar (los nombres pueden llevar tildes o ñ). */
+function relativaDe(href) {
+  const cruda = href.slice(alcance.href.length);
+  try {
+    return decodeURIComponent(cruda);
+  } catch {
+    return cruda;
+  }
+}
+
 /** Carpeta de cartilla (p. ej. "cartillas/ingles-3/") a la que pertenece una URL. */
 function carpetaDe(href) {
-  const relativa = href.slice(alcance.href.length);
+  const relativa = relativaDe(href);
   return Object.keys(CONFIG.cartillas).find((dir) => relativa.startsWith(dir)) ?? null;
+}
+
+/** Huella que CONFIG espera para una URL, o null si el archivo no está en la lista. */
+function huellaEsperada(href) {
+  if (href === URL_APP) return CONFIG.armazon['./'];
+  const relativa = relativaDe(href);
+  if (CONFIG.armazon[relativa]) return CONFIG.armazon[relativa];
+  const dir = carpetaDe(href);
+  return (dir && CONFIG.cartillas[dir].archivos[relativa.slice(dir.length)]) || null;
 }
 
 /** Busca primero en el caché indicado y después en cualquiera de esta app. */
@@ -251,7 +295,12 @@ async function cachePrimero(evento, nombreCache, clave) {
     (async () => {
       if (!(await sePuedeGuardar(copia, clave))) return;
       const bytes = await copia.arrayBuffer();
-      await (await caches.open(nombreCache)).put(clave, conHuella(bytes, copia, await huellaDeBytes(bytes)));
+      const real = await huellaDeBytes(bytes);
+      // Si el archivo está en la lista de esta versión, solo se guarda el que corresponde:
+      // así un cartilla.json o una imagen de otra publicación nunca entra a este caché.
+      const esperada = huellaEsperada(clave);
+      if (esperada && real !== esperada && !esIndexDeEstaVersion(clave, bytes)) return;
+      await (await caches.open(nombreCache)).put(clave, conHuella(bytes, copia, esperada ?? real, real));
     })().catch(() => {}),
   );
   return respuesta;
@@ -277,10 +326,12 @@ self.addEventListener('fetch', (evento) => {
   const href = destino.origin + destino.pathname;
 
   // La app: siempre el index de esta versión, aunque la red esté colgada o redirija.
-  if (peticion.mode === 'navigate' || href === URL_APP || href === url('index.html')) {
+  // Solo en la raíz del alcance; otras páginas futuras (p. ej. docente/) van a la red.
+  if (href === URL_APP || href === url('index.html')) {
     evento.respondWith(cachePrimero(evento, CACHE_ARMAZON, URL_APP));
     return;
   }
+  if (peticion.mode === 'navigate') return;
 
   const carpeta = carpetaDe(href);
   if (carpeta) {

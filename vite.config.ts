@@ -19,14 +19,18 @@ function archivos(carpeta: string, raiz: string): string[] {
 /** SHA-256 del contenido, en hexadecimal, recortado. El service worker calcula la misma. */
 const huellaDe = (contenido: Buffer | string) => createHash('sha256').update(contenido).digest('hex').slice(0, 16);
 
-/** Recorre todo el JSON y junta cualquier cadena que nombre un medio, sin importar el campo. */
-function mediosDelJson(nodo: unknown, salida = new Set<string>()): Set<string> {
+/**
+ * Recorre todo el JSON y junta cualquier cadena que nombre un medio, sin importar el campo.
+ * Devuelve ruta → campo donde apareció (para los mensajes de error). Una frase que termina
+ * en ".png" no es una ruta: se ignoran las cadenas con espacios o con ":".
+ */
+function mediosDelJson(nodo: unknown, campo = '', salida = new Map<string, string>()): Map<string, string> {
   if (typeof nodo === 'string') {
-    if (MEDIOS.test(nodo) && !/^[a-z]+:/i.test(nodo) && !nodo.startsWith('/')) salida.add(nodo);
+    if (MEDIOS.test(nodo) && !/[\s:]/.test(nodo) && !nodo.startsWith('/') && !salida.has(nodo)) salida.set(nodo, campo);
   } else if (Array.isArray(nodo)) {
-    nodo.forEach((n) => mediosDelJson(n, salida));
+    nodo.forEach((n, i) => mediosDelJson(n, `${campo}[${i}]`, salida));
   } else if (nodo && typeof nodo === 'object') {
-    Object.values(nodo).forEach((n) => mediosDelJson(n, salida));
+    Object.entries(nodo).forEach(([k, n]) => mediosDelJson(n, campo ? `${campo}.${k}` : k, salida));
   }
   return salida;
 }
@@ -60,23 +64,32 @@ function sinConexion(): Plugin {
         if (entra) armazon[ruta] = huellaDe(leer(ruta));
       }
 
-      const cartillas: Record<string, { version: string; archivos: Record<string, string> }> = {};
+      // Nombre con hash del JS de entrada: el service worker acepta un index con algo
+      // inyectado (filtro, CDN) si todavía carga este archivo.
+      const entrada = /<script[^>]+src="\.?\/?(assets\/[^"]+\.js)"/.exec(leer('index.html').toString('utf8'))?.[1];
+      if (!entrada) throw new Error('No se encontró el script de entrada en dist/index.html.');
+
+      const cartillas: Record<string, { version: string; archivos: Record<string, string>; instalar: string[] }> = {};
       for (const json of todos.filter((r) => /^cartillas\/[^/]+\/cartilla\.json$/.test(r))) {
         const dir = json.replace(/cartilla\.json$/, '');
+        const datos = JSON.parse(leer(json).toString('utf8'));
         const lista: Record<string, string> = { 'cartilla.json': huellaDe(leer(json)) };
         const faltan: string[] = [];
-        for (const medio of mediosDelJson(JSON.parse(leer(json).toString('utf8')))) {
-          const ruta = new URL(medio, `http://x/${dir}`).pathname.slice(1);
-          if (!existsSync(join(salida, ruta))) faltan.push(ruta);
+        for (const [medio, campo] of mediosDelJson(datos)) {
+          // La URL resuelve "../" y codifica tildes y eñes; se decodifica para leer el disco.
+          const ruta = decodeURIComponent(new URL(medio, `http://x/${dir}`).pathname.slice(1));
+          if (!ruta.startsWith(dir) || !existsSync(join(salida, ruta))) faltan.push(`"${medio}" (campo ${campo})`);
           else lista[ruta.slice(dir.length)] = huellaDe(leer(ruta));
         }
-        if (faltan.length) throw new Error(`${json} nombra archivos que no existen: ${faltan.join(', ')}`);
-        cartillas[dir] = { version: huellaDe(JSON.stringify(lista)), archivos: lista };
+        if (faltan.length) throw new Error(`${json} nombra archivos que no están en el paquete: ${faltan.join('; ')}`);
+        // Lo mínimo para abrir la portada sin red desde la primera instalación.
+        const portada = typeof datos.imagenes?.portada === 'string' ? [datos.imagenes.portada] : [];
+        cartillas[dir] = { version: huellaDe(JSON.stringify(lista)), archivos: lista, instalar: ['cartilla.json', ...portada] };
       }
 
       const plantilla = readFileSync(resolve(config.root, 'sw/sw.js'), 'utf8');
       const version = huellaDe(plantilla + JSON.stringify(armazon) + JSON.stringify(cartillas));
-      const codigo = plantilla.replace('__CONFIG__', JSON.stringify({ version, armazon, cartillas }));
+      const codigo = plantilla.replace('__CONFIG__', JSON.stringify({ version, entrada, armazon, cartillas }));
       writeFileSync(join(salida, 'sw.js'), codigo);
     },
   };

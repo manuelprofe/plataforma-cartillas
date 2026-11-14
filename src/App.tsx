@@ -8,6 +8,7 @@ import { Memoria } from './juegos/Memoria';
 import { ElegirHeroe } from './ElegirHeroe';
 import { activarAudio, sonar } from './audio';
 import { elegirHeroe, reiniciarProgreso, useProgreso } from './progreso';
+import { fijarMomentoSeguro } from './sinConexion';
 
 const BASE = `${import.meta.env.BASE_URL}cartillas/ingles-3/`;
 const MS_CORTINA = 420;
@@ -64,6 +65,9 @@ export function App() {
       .catch(() => setFallo(true));
     return () => esperas.current.forEach(clearTimeout);
   }, []);
+
+  // Solo en la portada, sin cortina, puede entrar una versión nueva de la app (recarga).
+  useEffect(() => fijarMomentoSeguro(pantalla.tipo === 'inicio' && !cortina), [pantalla.tipo, cortina]);
 
   // Cambia de pantalla detrás de una cortina circular.
   const irA = (destino: Pantalla) => {

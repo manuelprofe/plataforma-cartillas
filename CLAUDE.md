@@ -42,12 +42,16 @@ Jerarquía de datos: colegio → docentes → grupos → estudiantes.
 
 Englishland es un mundo donde las palabras perdieron su luz; los estudiantes la recuperan.
 
-| Nivel | Territorio | Guía | Contenido | Puerta |
-| --- | --- | --- | --- | --- |
-| 1 English Explorer | Bosque de los Sonidos | Cosmo | School objects, colors, numbers, body parts, time | 50 estrellas |
-| 2 Word Builder | Valle de las Palabras | Nova | Emotions, food, clothes, animals | 80 |
-| 3 Sentence Hero | Ciudad de las Frases | Astro | Daily routine, action verbs, present simple | 110 |
-| 4 English Communicator | Plaza del Encuentro | Nebu | Places in town, there is/are, dialogues | 140 |
+| Nivel | Territorio | Guía | Contenido |
+| --- | --- | --- | --- |
+| 1 English Explorer | Bosque de los Sonidos | Cosmo | School objects, colors, numbers, body parts, time |
+| 2 Word Builder | Valle de las Palabras | Nova | Emotions, food, clothes, animals |
+| 3 Sentence Hero | Ciudad de las Frases | Astro | Daily routine, action verbs, present simple |
+| 4 English Communicator | Plaza del Encuentro | Nebu | Places in town, there is/are, dialogues |
+
+La puerta de cada territorio se abre cuando todos sus faroles brillan (cada misión completada
+enciende el suyo). Las Mission Stars no abren puertas: abren estelas y accesorios y las ve el
+docente; las que da el docente (participar, colaborar) nunca bloquean el avance del niño.
 
 Pixie introduce la aventura. Lumi acompaña todo el recorrido y normaliza el error.
 

@@ -99,6 +99,27 @@ Decisiones de Manuel del 14 de noviembre (segunda tanda):
   Se ven solas la primera vez (con botón de saltar) y quedan en "Recuerdos" en el álbum para
   volver a verlas (decisión de Claude, delegada por Manuel).
 
+Decisiones de Manuel del 14 de noviembre (tercera tanda): **lo que recomienda el pedagogo
+queda como decisión** (`docs/pedagogia/ronda-1.md`), pensando en lo mejor para el docente que
+hace el seguimiento y para el niño que completa las misiones:
+
+- **Estrellas, opción B.** El puente se abre cuando todos los faroles del territorio brillan.
+  Mission Stars vuelve a la escala de la tesis (regla 5): la app da completar 15, pronunciar
+  10, corregir y mejorar 15 y autoevaluarse 10 (una vez por misión; autoevaluarse una vez por
+  misión y día); el docente da participar 10 y colaborar 15, que no cuentan para el puente.
+  Ayudar a un vecino del bosque puede reconocerse como "colaborar" si el docente lo decide.
+  Hay que quitar el `assert` de suma 50 del guion, cambiar los textos del puente
+  (`puente-cerrado`, `rayo`) y recalibrar estelas y accesorios. `CLAUDE.md` ya está ajustado.
+  **Esto reemplaza la decisión del 12 de noviembre** (estrellas por misión que suman 50).
+- **Sesión del día:** 3 misiones; al terminarla, las misiones nuevas se apagan hasta mañana
+  y el álbum y el mapa siguen abiertos.
+- **Prueba del viernes:** el niño ve "¡Terminaste!" y lo que encendió, nunca una nota; la
+  calificación la ve solo el docente.
+- **Misión de la hora con voz** (`bosque-time-2`), con las mismas salidas si no hay micrófono
+  (decirla en voz alta o escribirla).
+- **Guía de pronunciación:** la `z` marca el sonido "th" (lengua entre los dientes); la
+  docente lo enseña una vez.
+
 ## Qué hay construido
 
 | Pieza | Estado | Dónde |

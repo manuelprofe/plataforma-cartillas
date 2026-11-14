@@ -218,6 +218,23 @@ clave de ese servicio por el formulario seguro, nunca en el chat.
   baja; medirlo.
 - Vista para la familia y medición antes/después del piloto: propuestas, sin empezar.
 
+## Ideas anotadas por Manuel (sin desarrollar todavía)
+
+- **Plan por semanas.** El juego se actualiza día a día según el tema que se vea en clase
+  (por ejemplo, una semana de colores). Cada día refuerza el tema con un tipo de misión
+  distinto (escucha y toca, completa la palabra, sopa de letras, memoria, voz) y el viernes
+  hay una prueba de la que se pueda obtener una calificación. Así no es repetitivo y el uso
+  diario queda limitado. Los juegos tienen su propio sistema de puntos, separado de Mission
+  Stars (que es el reconocimiento de las actividades del salón).
+- **El docente elige la sesión y cuántas.** Una sesión es un tema. El docente escoge cuál
+  ven los niños y responde cuántas sesiones habrá; ese número es la cantidad de días, para
+  ajustarlo a festivos o días sin clase. Lo ideal sigue siendo que los niños repasen todos
+  los días.
+- Preguntas abiertas que dejé a Manuel: quién decide el tema de la semana, si la prueba del
+  viernes es solo en el salón, y qué pasa con los festivos (la idea anterior responde la
+  primera y la tercera). La calificación necesita la base de datos conectada, cuentas de
+  estudiante y la escala de evaluación del colegio.
+
 ## Límites del entorno que conviene saber
 
 - La sesión en la nube no puede crear repositorios de GitHub; los crea Manuel y se conectan.

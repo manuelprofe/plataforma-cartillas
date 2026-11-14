@@ -120,13 +120,13 @@ hace el seguimiento y para el niño que completa las misiones:
 - **Guía de pronunciación:** la `z` marca el sonido "th" (lengua entre los dientes); la
   docente lo enseña una vez.
 
-## Trabajo sin integrar
+## Estado al cierre del 14 de noviembre
 
-El 14 de noviembre Manuel pidió detener a los agentes para ahorrar. Lo que hicieron y no se
-integró está en `pendiente/` (ver `pendiente/LEEME.md`): juegos nuevos y 3 misiones por
-camino, funcionamiento sin conexión, movimiento por caminos y suelo nuevo del Bosque.
-Pendiente además: opción B de estrellas, vestidor de accesorios (umbrales a recalibrar),
-resumen para la familia y reproductor de cinemáticas.
+Integrado y verificado a 390 px: juegos Memory y Listen & Catch, 3 misiones por camino (18 en
+el Bosque), suelo nuevo de calidad de estudio, movimiento por caminos con búsqueda de rutas y
+funcionamiento sin conexión (primera carga ~150 KB; sin red el mapa abre con 0 imágenes rotas).
+Siguiente: opción B de estrellas, vestidor de accesorios (recalibrar umbrales), resumen para la
+familia con "Empezar de nuevo", reproductor de cinemáticas, y probar en un celular Android real.
 
 ## Qué hay construido
 

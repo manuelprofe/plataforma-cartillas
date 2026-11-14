@@ -388,7 +388,15 @@ clave de ese servicio por el formulario seguro, nunca en el chat.
 - El cambio de español a inglés ocurre muy rápido (tras 2 misiones) para que se note en el
   prototipo. En la cartilla real debe repartirse entre los cuatro territorios; se ajusta en
   `idiomaPorAvance` dentro de `cartilla.json`.
-- No hay funcionamiento sin conexión todavía.
+- Sin conexión: hecho con un service worker propio (`sw/sw.js`; `vite.config.ts` genera
+  `dist/sw.js`). Guarda el armazón al instalar y, después, todo archivo que nombre
+  `cartilla.json`. Toda imagen que use la app debe figurar en `cartilla.json`; si solo
+  está en el código, no se guarda hasta que se muestre una vez. Falta probarlo en un
+  celular Android real (instalar y jugar en modo avión).
+- **Pendiente sin resolver:** dentro de un iframe con `sandbox` sin `allow-same-origin` la
+  app no carga, con o sin service worker: el origen queda `null` y el navegador bloquea
+  el JS y el CSS por CORS (`Access to script ... from origin 'null' has been blocked`).
+  Además `localStorage` no está disponible ahí. Hay que decidir cómo se va a incrustar.
 - Faltan los territorios 2, 3 y 4 y su contenido.
 - El filtro que apaga y enciende el color del bosque puede ser pesado en celulares de gama
   baja; medirlo.

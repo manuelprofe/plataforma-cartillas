@@ -203,6 +203,8 @@ export interface Cartilla {
   idiomaHistoria: string;
   heroes: Heroe[];
   estelas: Estela[];
+  /** Imágenes de la portada y de la celebración al terminar una misión. */
+  imagenes?: { portada?: string; fiesta?: string };
   territorios: Territorio[];
   /** Frases de ayuda que dicen los juegos ('memoria-pista1'...). */
   ayudas?: Record<string, Frase>;

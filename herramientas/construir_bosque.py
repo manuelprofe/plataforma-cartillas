@@ -576,6 +576,8 @@ c['estelas'] = [
     {'id': 'rosa', 'estrellas': 26, 'colores': ['#ffd0e6', '#ff5fa2']},
     {'id': 'arcoiris', 'estrellas': 40, 'colores': ['#ff5f6d', '#ffc371', '#fff36b', '#6bffb0', '#6bc5ff', '#c58bff']},
 ]
+# Imágenes que usa la app fuera del mundo; van aquí para que el service worker las guarde.
+c['imagenes'] = {'portada': 'personajes/lumi-wave.webp', 'fiesta': 'personajes/lumi-celebrate.webp'}
 t['idiomaPorAvance'] = ['es', 'es', 'es', 'es', 'mixto', 'mixto', 'mixto', 'mixto', 'mixto', 'en', 'en']
 
 # ---------- Habitantes: uno por camino, en el primer claro, con su palabra perdida ----------

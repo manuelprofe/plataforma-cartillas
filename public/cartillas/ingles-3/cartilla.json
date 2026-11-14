@@ -4252,5 +4252,9 @@
    "es": "Atrapa la luz que te digo.",
    "en": "Catch the light I say."
   }
+ },
+ "imagenes": {
+  "portada": "personajes/lumi-wave.webp",
+  "fiesta": "personajes/lumi-celebrate.webp"
  }
 }

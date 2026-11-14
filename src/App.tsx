@@ -98,7 +98,7 @@ export function App() {
     <>
       {pantalla.tipo === 'inicio' && (
         <div className="inicio">
-          <img src={`${BASE}personajes/lumi-wave.webp`} alt="" width="200" height="188" className="inicio__lumi" />
+          <img src={BASE + (cartilla.imagenes?.portada ?? 'personajes/lumi-wave.webp')} alt="" width="200" height="188" className="inicio__lumi" />
           <h1>{cartilla.titulo}</h1>
           <p>{territorio.nombre}</p>
           <button
@@ -152,7 +152,7 @@ export function App() {
           base={BASE}
           idiomaVoz={cartilla.idiomaVoz}
           imagenGuia={territorio.personajes[territorio.guia].imagen}
-          imagenFiesta={IMAGEN_FIESTA}
+          imagenFiesta={cartilla.imagenes?.fiesta ?? IMAGEN_FIESTA}
           ayudas={cartilla.ayudas ?? {}}
           modo={modo}
           vozHistoria={cartilla.idiomaHistoria}

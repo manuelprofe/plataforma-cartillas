@@ -168,6 +168,7 @@ export function Mundo({ territorio, heroe, estelas, base, vozIngles, vozEspanol,
   const ondas = useRef<HTMLDivElement>(null);
   const frente = useRef<HTMLDivElement>(null);
   const rastro = useRef<HTMLDivElement>(null);
+  const imagenGuia = useRef<HTMLImageElement>(null);
 
   const [tam, setTam] = useState({ ancho: 390, alto: 0 });
   const [cerca, setCerca] = useState<string | null>(null);
@@ -253,6 +254,7 @@ export function Mundo({ territorio, heroe, estelas, base, vozIngles, vozEspanol,
     // Segundos que lleva andando sin parar: en viajes largos, pasado un segundo, trota.
     andando: 0,
     rumbo: { x: 1, y: 0 },
+    mira: 1, // 1 a la derecha, -1 a la izquierda
     // Distancia recorrida en la ruta a la que se apaga cada puntito, y el siguiente por apagar.
     marcas: [] as number[],
     marca: 0,
@@ -263,6 +265,8 @@ export function Mundo({ territorio, heroe, estelas, base, vozIngles, vozEspanol,
     destinoDedo: null as Punto | null,
     dedoEn: 0,
     arrastra: false,
+    // Si el dedo apoyado puede volverse "sígueme": no cuando tocó una luciérnaga o el guía dudó.
+    sigue: false,
     camara: { x: 0, y: 0 },
     camaraVel: { x: 0, y: 0 },
     escala: 1,
@@ -272,8 +276,11 @@ export function Mundo({ territorio, heroe, estelas, base, vozIngles, vozEspanol,
   });
   const vivo = useRef({ cosas, cerca, tam, palabras, rumbo, colores: estela.colores });
   vivo.current = { cosas, cerca, tam, palabras, rumbo, colores: estela.colores };
-  mov.current.pausa = charla !== null || panel !== null;
-  if (mov.current.pausa) mov.current.dedo = null;
+  const enPausa = charla !== null || panel !== null;
+  useEffect(() => {
+    mov.current.pausa = enPausa;
+    if (enPausa) mov.current.dedo = null;
+  }, [enPausa]);
 
   useLayoutEffect(() => {
     const el = marco.current;
@@ -289,6 +296,15 @@ export function Mundo({ territorio, heroe, estelas, base, vozIngles, vozEspanol,
   const caminos = useMemo(() => caminosDe(mundo), [mundo]);
   const caminosRef = useRef(caminos);
   caminosRef.current = caminos;
+  // Búsquedas de ensayo cuando el navegador queda libre, fuera del render.
+  useEffect(() => {
+    if ('requestIdleCallback' in window) {
+      const id = window.requestIdleCallback(() => caminos.calentar(), { timeout: 2000 });
+      return () => window.cancelIdleCallback(id);
+    }
+    const id = setTimeout(() => caminos.calentar(), 400);
+    return () => clearTimeout(id);
+  }, [caminos]);
 
   const apagarRastro = () => {
     const m = mov.current;
@@ -308,28 +324,31 @@ export function Mundo({ territorio, heroe, estelas, base, vozIngles, vozEspanol,
   };
 
   /** Busca la ruta hasta un punto (o hasta lo caminable más cercano) y empieza a recorrerla. */
-  const irA = (destino: Punto, pendiente: string | null) => {
+  // `arrastre`: la ruta se recalcula porque el dedo se mueve; ni rebote del aro ni puntitos,
+  // que parpadearían en cada recálculo.
+  const irA = (destino: Punto, pendiente: string | null, arrastre = false) => {
     const m = mov.current;
     m.rutaEn = performance.now();
     const ruta = caminos.ruta({ x: m.x, y: m.y }, destino);
     apagarRastro();
-    m.pendiente = pendiente;
     if (!ruta || ruta.length < 2) {
       m.ruta = null;
+      m.pendiente = null;
       return;
     }
+    m.pendiente = pendiente;
     m.ruta = ruta;
     m.tramo = 1;
     m.resto = largosHastaElFinal(ruta);
     m.avance = 0;
     if (m.rapidez < 30) m.andando = 0;
     // Desde quieto, se agacha un instante antes de salir (anticipación).
-    const cuerpo = guia.current?.querySelector<HTMLElement>('.guia__cuerpo img');
     if (m.rapidez < 30 && !sinMovimiento() && m.resto[0] > 60) {
       m.arranque = ANTICIPACION;
-      cuerpo?.animate([{ transform: 'none' }, { transform: 'translateY(3px) scale(1.09, 0.88)' }, { transform: 'none' }], { duration: 170, easing: 'ease-out' });
+      imagenGuia.current?.animate([{ transform: 'none' }, { transform: 'translateY(3px) scale(1.09, 0.88)' }, { transform: 'none' }], { duration: 170, easing: 'ease-out' });
     }
     // El aro aparece con un rebote en el destino nuevo.
+    if (arrastre) return;
     if (!pendiente && !sinMovimiento() && meta.current) {
       meta.current.animate([{ scale: '0.3' }, { scale: '1.2' }, { scale: '1' }], { duration: 280, easing: 'ease-out' });
     }
@@ -486,7 +505,6 @@ export function Mundo({ territorio, heroe, estelas, base, vozIngles, vozEspanol,
     const m = mov.current;
     let cuadro = 0;
     let antes = performance.now();
-    let mirando = 1;
     let andaba = false;
     let inclinacion = 0;
     let esperaChispa = 0;
@@ -495,7 +513,6 @@ export function Mundo({ territorio, heroe, estelas, base, vozIngles, vozEspanol,
     let fase = 0;
     const quieto = sinMovimiento();
     const huida = mundo.criaturas.map(() => ({ x: 0, y: 0 }));
-    const cuerpo = () => guia.current?.querySelector<HTMLElement>('.guia__cuerpo img') ?? null;
     const dentroX = (x: number) => Math.max(50, Math.min(mundo.ancho - 50, x));
     const dentroY = (y: number) => Math.max(110, Math.min(mundo.alto - 20, y));
     const libre = (x: number, y: number) => caminosRef.current.libre(x, y);
@@ -520,7 +537,7 @@ export function Mundo({ territorio, heroe, estelas, base, vozIngles, vozEspanol,
       m.rapidez = 0;
       m.pendiente = null;
       if (!quieto) {
-        cuerpo()?.animate(
+        imagenGuia.current?.animate(
           [{ transform: 'translateY(2px) scale(1.1, 0.88)' }, { transform: 'translateY(-2px) scale(0.97, 1.04)' }, { transform: 'none' }],
           { duration: 300, easing: 'ease-out' },
         );
@@ -566,12 +583,14 @@ export function Mundo({ territorio, heroe, estelas, base, vozIngles, vozEspanol,
         const y0 = m.y;
         // Dedo apoyado que se mueve (o que queda quieto mientras la cámara avanza): nueva ruta,
         // pero no en cada cuadro.
-        if (m.dedo && (m.arrastra || ahora - m.dedoEn > MS_DEDO_QUIETO) && ahora - m.rutaEn > MS_ENTRE_RUTAS) {
+        // Una ruta hacia algo tocado (con `pendiente`) solo la reemplaza un arrastre de verdad.
+        const sigueDedo = m.dedo && (m.arrastra || (m.sigue && !m.pendiente && ahora - m.dedoEn > MS_DEDO_QUIETO));
+        if (sigueDedo && m.dedo && ahora - m.rutaEn > MS_ENTRE_RUTAS) {
           const bajo = { x: m.dedo.x / escala + m.camara.x, y: m.dedo.y / escala + m.camara.y };
           const d = m.destinoDedo;
           if (!d || Math.hypot(bajo.x - d.x, bajo.y - d.y) > caminosRef.current.celda * 1.5) {
             m.destinoDedo = bajo;
-            irARef.current(bajo, null);
+            irARef.current(bajo, null, m.arrastra);
           }
         }
         const t = m.teclas;
@@ -637,8 +656,8 @@ export function Mundo({ territorio, heroe, estelas, base, vozIngles, vozEspanol,
           const ry = m.rumbo.y + (dy / mueve - m.rumbo.y) * k;
           const lr = Math.hypot(rx, ry) || 1;
           m.rumbo = { x: rx / lr, y: ry / lr };
-          if (m.rumbo.x > 0.25) mirando = 1;
-          else if (m.rumbo.x < -0.25) mirando = -1;
+          if (m.rumbo.x > 0.25) m.mira = 1;
+          else if (m.rumbo.x < -0.25) m.mira = -1;
         }
         ultimaPosicion = { x: m.x, y: m.y };
 
@@ -705,7 +724,7 @@ export function Mundo({ territorio, heroe, estelas, base, vozIngles, vozEspanol,
       if (suelo.current) suelo.current.style.transform = `scale(${escala}) translate3d(${-m.camara.x}px, ${-m.camara.y}px, 0)`;
       if (guia.current) {
         guia.current.style.transform = `translate3d(${m.x}px, ${m.y}px, 0)`;
-        guia.current.dataset.mira = mirando > 0 ? 'der' : 'izq';
+        guia.current.dataset.mira = m.mira > 0 ? 'der' : 'izq';
         // Lo que está más abajo en el mapa queda por delante.
         guia.current.style.zIndex = String(Math.round(m.y));
         // Si el guía queda detrás de una copa, el árbol se vuelve translúcido para no perderlo.
@@ -729,7 +748,7 @@ export function Mundo({ territorio, heroe, estelas, base, vozIngles, vozEspanol,
         }
         // Trote atado a lo que avanza: un saltito por zancada, más alto cuanto más rápido va,
         // para que los pies no patinen al arrancar ni al frenar.
-        const img = cuerpo();
+        const img = imagenGuia.current;
         if (img && !quieto) {
           if (anda) {
             const recorre = Math.hypot(dx, dy);
@@ -870,6 +889,7 @@ export function Mundo({ territorio, heroe, estelas, base, vozIngles, vozEspanol,
     const punto = alMundo(x, y);
     m.dedo = { x, y };
     m.arrastra = false;
+    m.sigue = false;
     m.dedoEn = performance.now();
     m.destinoDedo = punto;
     sonar('toque');
@@ -890,16 +910,18 @@ export function Mundo({ territorio, heroe, estelas, base, vozIngles, vozEspanol,
     }
     ondear(punto.x, punto.y);
     irA(punto, null);
+    m.sigue = true;
   };
-  const soltar = () => {
-    mov.current.dedo = null;
+  const soltar = (e: React.PointerEvent) => {
+    if (e.isPrimary) mov.current.dedo = null;
   };
 
   // "Hmm": se voltea hacia el punto y mueve la cabeza; sin rojo ni sonido de error.
   const dudar = (x: number) => {
     const g = guia.current;
     if (!g) return;
-    g.dataset.mira = x >= mov.current.x ? 'der' : 'izq';
+    mov.current.mira = x >= mov.current.x ? 1 : -1;
+    g.dataset.mira = mov.current.mira > 0 ? 'der' : 'izq';
     if (sinMovimiento()) return;
     g.querySelector('.guia__cuerpo')?.animate(
       [{ rotate: '0deg' }, { rotate: '-9deg' }, { rotate: '8deg' }, { rotate: '-5deg' }, { rotate: '0deg' }],
@@ -942,7 +964,7 @@ export function Mundo({ territorio, heroe, estelas, base, vozIngles, vozEspanol,
       ref={marco}
       className="mundo"
       onPointerDown={(e) => {
-        if (!(e.target as HTMLElement).closest('button')) e.currentTarget.setPointerCapture(e.pointerId);
+        if (e.isPrimary && !(e.target as HTMLElement).closest('button')) e.currentTarget.setPointerCapture(e.pointerId);
         apuntar(e);
       }}
       onPointerMove={(e) => {
@@ -1117,7 +1139,7 @@ export function Mundo({ territorio, heroe, estelas, base, vozIngles, vozEspanol,
             <div ref={guia} className="guia" data-anda="no">
               <span className="guia__sombra" />
               <div className="guia__cuerpo">
-                <img src={base + heroe.imagen} alt={heroe.nombre} width={heroe.ancho} draggable={false} />
+                <img ref={imagenGuia} src={base + heroe.imagen} alt={heroe.nombre} width={heroe.ancho} draggable={false} />
               </div>
               {carga && (
                 <span className="guia__carga" key={carga.en}>

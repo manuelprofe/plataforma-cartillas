@@ -172,7 +172,43 @@ def rejilla_caminable(inicio):
         filas.append(','.join(map(str, tramos)))
     sueltas = sum(pisa[j][i] and not unida[j][i] for j in range(lado) for i in range(lado))
     print('caminable:', sum(map(sum, unida)), 'celdas de', lado * lado, f'({sueltas} sueltas descartadas)')
-    return {'celda': CELDA_CAMINABLE, 'ancho': lado, 'alto': lado, 'filas': filas}
+    return {'celda': CELDA_CAMINABLE, 'ancho': lado, 'alto': lado, 'filas': filas, '_unida': unida}
+
+
+# Hasta dónde puede quedar de lo caminable lo que el niño tiene que alcanzar.
+LUCIERNAGA_MAX = 100  # tocándola, el guía va al punto caminable más cercano y la atrapa al llegar
+LLEGADA_MAX = 60  # el punto frente a una misión, un habitante, el puente o una palabra por recoger
+
+
+def revisar_alcance(t, rejilla, estricto=True):
+    """Comprueba que las luciérnagas y los puntos de llegada queden junto a lo caminable."""
+    unida, cel = rejilla['_unida'], rejilla['celda']
+    celdas = [((i + 0.5) * cel, (j + 0.5) * cel) for j, fila in enumerate(unida) for i, si in enumerate(fila) if si]
+
+    def distancia(x, y):
+        # Al borde de la celda caminable más cercana.
+        return min(math.hypot(max(abs(x - cx) - cel / 2, 0), max(abs(y - cy) - cel / 2, 0)) for cx, cy in celdas)
+
+    m = t['mundo']
+    lejos = []
+    for k, l in enumerate(m['luciernagas']):
+        d = distancia(l['x'], l['y'])
+        if d > LUCIERNAGA_MAX:
+            lejos.append(f'luciérnaga {k} a {d:.0f} px')
+    llegadas = [(h['id'], h['x'], h['y'] + 62) for h in m['habitantes']] + [(mi['id'], mi['x'], mi['y'] + 62) for mi in t['misiones']]
+    llegadas.append(('puente', t['puerta']['x'], t['puerta']['y'] + 62))
+    for h in m['habitantes']:
+        if h.get('encargo'):
+            e, n = h['encargo'], len(h['encargo']['opciones'])
+            llegadas += [(f"{h['id']}/palabra-{i}", e['x'] + (i - (n - 1) / 2) * 96, e['y'] + 40) for i in range(n)]
+    for nombre, x, y in llegadas:
+        d = distancia(x, y)
+        if d > LLEGADA_MAX:
+            lejos.append(f'llegada de {nombre} a {d:.0f} px')
+    if lejos:
+        aviso = 'quedan lejos de lo caminable: ' + '; '.join(lejos)
+        assert not estricto, aviso
+        print('AVISO:', aviso)
 
 
 def guardar(c):
@@ -185,7 +221,10 @@ def guardar(c):
 if SOLO_REJILLA:
     c = json.load(open(ruta))
     m = c['territorios'][0]['mundo']
-    m['caminable'] = rejilla_caminable(m['inicio'])
+    rejilla = rejilla_caminable(m['inicio'])
+    # Aquí solo avisa: las posiciones las pone el guion completo, que sí lo exige.
+    revisar_alcance(c['territorios'][0], rejilla, estricto=False)
+    m['caminable'] = {k: v for k, v in rejilla.items() if not k.startswith('_')}
     guardar(c)
     sys.exit(0)
 
@@ -907,7 +946,8 @@ for j in range(MUNDO // CELDA):
     filas.append(fila)
 m['celda'] = CELDA
 m['agua'] = filas
-m['caminable'] = rejilla_caminable(m['inicio'])
+rejilla = rejilla_caminable(m['inicio'])
+m['caminable'] = {k: v for k, v in rejilla.items() if not k.startswith('_')}
 
 # ---------- Copas en primer plano: pocas, lejos de todo lo que hay que ver ----------
 frente = []
@@ -921,6 +961,7 @@ for _ in range(6000):
 m['frente'] = [{'x': round(x), 'y': round(y), 'tipo': tp} for x, y, tp in frente]
 
 m.update({'ancho': MUNDO, 'alto': MUNDO, 'luces': [{'x': round(CX), 'y': round(CY), 'radio': 480}], 'radioLuzMision': 420, 'colorPenumbra': 'rgb(16 8 46 / 0.62)'})
+revisar_alcance(t, rejilla)
 guardar(c)
 
 print('centro', round(CX), round(CY), round(centro['r']))

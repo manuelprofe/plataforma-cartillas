@@ -34,6 +34,11 @@ export class Caminos {
   private vuelta = 0;
   private montonId: Int32Array;
   private montonF: Float32Array;
+  private tam = 0;
+  private caliente = false;
+  private fi = 0;
+  private fj = 0;
+  private readonly inicio: Punto;
 
   constructor(datos: RejillaCaminable, bloqueos: Circulo[], inicio: Punto) {
     this.celda = datos.celda;
@@ -74,10 +79,23 @@ export class Caminos {
     // Lo que un obstáculo dejó aislado ya no cuenta como caminable: todo destino es alcanzable.
     const desde = this.celdaCercana(inicio.x, inicio.y);
     if (desde >= 0) this.dejarSoloLoUnido(desde);
-    // Una búsqueda de ensayo al cargar: el primer toque del niño ya no paga el arranque
-    // del compilador de JavaScript (en gama baja eran unos 15 ms).
-    this.ruta(inicio, { x: 0, y: 0 });
-    this.ruta(inicio, { x: this.ancho * this.celda, y: this.alto * this.celda });
+    this.inicio = inicio;
+  }
+
+  /**
+   * Búsquedas de ensayo para que el primer toque del niño no pague el arranque del compilador
+   * de JavaScript (en gama baja eran unos 15 ms). Se llama cuando el navegador está libre.
+   */
+  calentar() {
+    if (this.caliente) return;
+    this.caliente = true;
+    const lejos = [
+      { x: 0, y: 0 },
+      { x: this.ancho * this.celda, y: this.alto * this.celda },
+      { x: this.ancho * this.celda, y: 0 },
+      { x: 0, y: this.alto * this.celda },
+    ];
+    for (const p of lejos) this.ruta(this.inicio, p);
   }
 
   /** ¿Se puede pisar este punto del mundo? */
@@ -112,8 +130,11 @@ export class Caminos {
     if (!inicio || !fin) return null;
     const celdas = this.aEstrella(this.indice(inicio), this.indice(fin));
     if (!celdas) return null;
+    // Solo las celdas donde la ruta cambia de dirección: en los tramos rectos sobran.
     const puntos: Punto[] = [inicio];
-    for (let k = 1; k < celdas.length - 1; k++) puntos.push(this.centro(celdas[k]));
+    for (let k = 1; k < celdas.length - 1; k++) {
+      if (celdas[k] - celdas[k - 1] !== celdas[k + 1] - celdas[k]) puntos.push(this.centro(celdas[k]));
+    }
     puntos.push(fin);
     const recta = this.tensar(puntos);
     // Si el guía estaba fuera de lo caminable (no debería), primero vuelve en línea recta.
@@ -183,68 +204,72 @@ export class Caminos {
     this.pisa.set(unida);
   }
 
+  /** Distancia octil a la meta, apenas inflada para desempatar a favor de lo que va más adelante. */
+  private h(c: number) {
+    const i = c % this.ancho;
+    const dx = Math.abs(i - this.fi);
+    const dy = Math.abs((c - i) / this.ancho - this.fj);
+    return (dx + dy + (RAIZ2 - 2) * Math.min(dx, dy)) * 1.001;
+  }
+
+  private meter(c: number, f: number) {
+    if (this.tam === this.montonId.length) {
+      const id = new Int32Array(this.tam * 2);
+      const ff = new Float32Array(this.tam * 2);
+      id.set(this.montonId);
+      ff.set(this.montonF);
+      this.montonId = id;
+      this.montonF = ff;
+    }
+    const ids = this.montonId;
+    const fs = this.montonF;
+    let k = this.tam++;
+    while (k > 0) {
+      const p = (k - 1) >> 1;
+      if (fs[p] <= f) break;
+      ids[k] = ids[p];
+      fs[k] = fs[p];
+      k = p;
+    }
+    ids[k] = c;
+    fs[k] = f;
+  }
+
+  private sacar() {
+    const ids = this.montonId;
+    const fs = this.montonF;
+    const arriba = ids[0];
+    const tam = --this.tam;
+    const c = ids[tam];
+    const f = fs[tam];
+    let k = 0;
+    for (;;) {
+      let hijo = 2 * k + 1;
+      if (hijo >= tam) break;
+      if (hijo + 1 < tam && fs[hijo + 1] < fs[hijo]) hijo++;
+      if (fs[hijo] >= f) break;
+      ids[k] = ids[hijo];
+      fs[k] = fs[hijo];
+      k = hijo;
+    }
+    ids[k] = c;
+    fs[k] = f;
+    return arriba;
+  }
+
   private aEstrella(ini: number, fin: number): number[] | null {
     if (ini === fin) return [ini, fin];
-    const { ancho, pisa, g, padre, abierta, cerrada } = this;
+    const { ancho, alto, pisa, g, padre, abierta, cerrada } = this;
     const v = ++this.vuelta;
-    const fi = fin % ancho;
-    const fj = (fin - fi) / ancho;
-    const h = (c: number) => {
-      const i = c % ancho;
-      const dx = Math.abs(i - fi);
-      const dy = Math.abs((c - i) / ancho - fj);
-      return dx + dy + (RAIZ2 - 2) * Math.min(dx, dy);
-    };
-    let tam = 0;
-    const meter = (c: number, f: number) => {
-      if (tam === this.montonId.length) {
-        const id = new Int32Array(tam * 2);
-        const ff = new Float32Array(tam * 2);
-        id.set(this.montonId);
-        ff.set(this.montonF);
-        this.montonId = id;
-        this.montonF = ff;
-      }
-      const ids = this.montonId;
-      const fs = this.montonF;
-      let k = tam++;
-      while (k > 0) {
-        const p = (k - 1) >> 1;
-        if (fs[p] <= f) break;
-        ids[k] = ids[p];
-        fs[k] = fs[p];
-        k = p;
-      }
-      ids[k] = c;
-      fs[k] = f;
-    };
-    const sacar = () => {
-      const ids = this.montonId;
-      const fs = this.montonF;
-      const arriba = ids[0];
-      const c = ids[--tam];
-      const f = fs[tam];
-      let k = 0;
-      for (;;) {
-        let hijo = 2 * k + 1;
-        if (hijo >= tam) break;
-        if (hijo + 1 < tam && fs[hijo + 1] < fs[hijo]) hijo++;
-        if (fs[hijo] >= f) break;
-        ids[k] = ids[hijo];
-        fs[k] = fs[hijo];
-        k = hijo;
-      }
-      ids[k] = c;
-      fs[k] = f;
-      return arriba;
-    };
-
+    this.fi = fin % ancho;
+    this.fj = (fin - this.fi) / ancho;
+    this.tam = 0;
     g[ini] = 0;
     padre[ini] = -1;
     abierta[ini] = v;
-    meter(ini, h(ini));
-    while (tam > 0) {
-      const c = sacar();
+    this.meter(ini, this.h(ini));
+    while (this.tam > 0) {
+      const c = this.sacar();
       if (cerrada[c] === v) continue;
       cerrada[c] = v;
       if (c === fin) {
@@ -259,7 +284,7 @@ export class Caminos {
           if (!di && !dj) continue;
           const ni = i + di;
           const nj = j + dj;
-          if (ni < 0 || nj < 0 || ni >= ancho || nj >= this.alto) continue;
+          if (ni < 0 || nj < 0 || ni >= ancho || nj >= alto) continue;
           const n = nj * ancho + ni;
           if (!pisa[n] || cerrada[n] === v) continue;
           // En diagonal solo si no corta la esquina del bosque.
@@ -269,7 +294,7 @@ export class Caminos {
           abierta[n] = v;
           g[n] = ng;
           padre[n] = c;
-          meter(n, ng + h(n));
+          this.meter(n, ng + this.h(n));
         }
       }
     }

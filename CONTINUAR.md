@@ -136,7 +136,7 @@ resumen para la familia y reproductor de cinemáticas.
 | Skills (2 oficiales de Anthropic revisadas + `diseno-infantil` y `auditoria`) | Instaladas | `.claude/skills/` |
 | Aplicación (Vite + React + TypeScript) | Prototipo del modo estudiante | `src/` |
 | Mundo explorable del Bosque de los Sonidos, visto desde arriba | Funciona; falta que Manuel lo pruebe | `src/Mundo.tsx` |
-| Suelo del bosque generado en Canva (1800 × 1800) | Hecho | `public/cartillas/ingles-3/fondos/bosque-mapa.webp` |
+| Suelo del bosque pintado por capas con texturas de Canva (2800 × 2800, WebP de 2000 px, 464 KB) | Hecho | `public/cartillas/ingles-3/fondos/bosque-mapa.webp` |
 | Árboles (9) y animales (6) generados en Canva, recortados con transparencia | Hecho | `public/cartillas/ingles-3/mundo/` |
 | Tres personajes para elegir, seis habitantes y nueve objetos de aldea (Canva) | Hecho | `public/cartillas/ingles-3/personajes/`, `mundo/` |
 | Elegir personaje, álbum de palabras y mini mapa | Funciona | `src/ElegirHeroe.tsx`, `src/Album.tsx`, `src/MiniMapa.tsx` |
@@ -236,8 +236,28 @@ Bosque grande (pedido por Manuel tras probar):
 Todo el bosque lo arma `herramientas/construir_bosque.py` a partir de la imagen del suelo
 (detecta claros, caminos y agua por color) y lo escribe en `cartilla.json`. **Los textos,
 las palabras y la distribución se editan en ese guion, no a mano en el JSON**, porque al
-volver a ejecutarlo se sobrescriben. Necesita el suelo en PNG (Canva: `MAHau81HHYQ`).
-`herramientas/recortar.py` convierte hojas de figuras en imágenes sueltas.
+volver a ejecutarlo se sobrescriben. Necesita el suelo en PNG de 2800 px (Canva:
+`MAHa545H3F0`; el anterior, `MAHau81HHYQ`). `herramientas/recortar.py` convierte hojas de
+figuras en imágenes sueltas.
+
+Suelo de calidad de estudio (pedido de Manuel, 14 nov):
+
+- Se probaron tres direcciones. A y C: repintar el mapa entero en Canva con el suelo
+  anterior como referencia (`MAHa3rnq9hM`, `MAHa3ngm1N8`, este con el estilo del mapa
+  original). Se ven bien de lejos, pero Canva las entrega a 1264 px: a 390 px quedan
+  borrosas, y los claros con corona de flores confundían la detección. B (elegida): el suelo
+  se compone con `herramientas/pintar_suelo.py` a partir de texturas de Canva de 2048 px
+  (bosque, prado, tierra, agua, empedrado), una hoja de detalles (flores, piedras, hongos,
+  raíces, charcos, helechos) y un puente, sobre la topología exacta del suelo anterior. Así
+  queda nítido, con la misma plaza, los mismos diez claros, caminos más anchos, anillo de
+  piedra en la plaza y orillas con arena. Las fuentes y sus ID están en ese guion.
+- `construir_bosque.py` ahora aplica una mediana de 5 × 5 celdas antes de clasificar los
+  colores (borra flores, piedras y brillos) y busca sitio para luciérnagas y animales junto
+  a caminos o bordes de claros en 130 px (antes 90 px y solo caminos: el suelo anterior tenía
+  manchas sueltas que contaban como camino). Los arbustos se intentan 2000 veces (antes 400).
+- Los charcos del bosque van un poco verdosos a propósito, para que no cuenten como agua.
+- El diseño de Canva compartido `DAHarW2Gyck` lo están usando otras sesiones; para exportar
+  sin pisarse se usa una copia propia (`DAHa3hWc7ik`, una página por imagen).
 
 Pendiente:
 

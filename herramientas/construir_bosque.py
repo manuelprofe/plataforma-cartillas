@@ -14,7 +14,7 @@ import random
 import sys
 from collections import deque
 
-from PIL import Image
+from PIL import Image, ImageFilter
 
 suelo, ruta = sys.argv[1], sys.argv[2]
 random.seed(11)
@@ -22,7 +22,10 @@ random.seed(11)
 MUNDO = 2800
 N = 700  # cuadrícula de análisis
 E = MUNDO / N
-im = Image.open(suelo).convert('RGB').resize((N, N))
+# El suelo pintado tiene detalle fino (flores, piedras, hongos, brillos del agua). La mediana
+# de 5 × 5 celdas (20 px del mapa) lo borra para que la clasificación vea las zonas grandes:
+# plaza, claros, caminos y agua. Con el suelo de noviembre de 2026 ya es necesaria.
+im = Image.open(suelo).convert('RGB').resize((N, N)).filter(ImageFilter.MedianFilter(5))
 px = im.load()
 
 
@@ -688,7 +691,7 @@ for ang in (-125, -55, 30, 150):
 sx, sy = CX + centro['r'] * 0.72, CY - centro['r'] * 0.25
 objetos.append(O(5, 78, sx, sy, 12))
 ocupar(sx, sy, 50)
-for _ in range(400):
+for _ in range(2000):
     if sum(1 for o in objetos if 'objeto-7' in o['imagen']) >= 14:
         break
     x, y = random.uniform(150, MUNDO - 150), random.uniform(250, MUNDO - 100)
@@ -740,7 +743,10 @@ def sitio_visible(filtro, intentos=80000):
 
 
 def junto_al_camino(x, y):
-    return clase(x, y) == 'bosque' and 0.05 < cuenta(x, y, 90)['camino'] < 0.5 and cuenta(x, y, 60)['agua'] == 0
+    # Junto a un camino o al borde de un claro (sin manchas sueltas que cuenten como camino,
+    # la franja se mide en 130 px y los bordes de los claros también sirven).
+    zona = cuenta(x, y, 130)
+    return clase(x, y) == 'bosque' and 0.05 < zona['camino'] + zona['claro'] < 0.5 and cuenta(x, y, 60)['agua'] == 0
 def junto_al_agua(x, y):
     return clase(x, y) == 'bosque' and 0.06 < cuenta(x, y, 80)['agua'] < 0.6
 

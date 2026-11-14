@@ -32,7 +32,8 @@ const RUTA_LARGA = 380; // px: desde aquí se dibujan los puntitos
 // Idea anotada, pendiente de Manuel: si el destino queda muy lejos, viaje rápido con Lumi desde
 // el mini mapa, solo a lugares ya encendidos (docs/referencias/juegos.md, M7). Por ahora se camina.
 const RADIO_CERCA = 110;
-const RADIO_LUCIERNAGA = 52;
+// Cubre las luciérnagas que quedan hasta ~97 px del camino: se atrapan al pasar caminando.
+const RADIO_LUCIERNAGA = 100;
 
 // Cámara: sigue al guía con retraso y con una zona libre, para que sea el guía
 // (y no solo el fondo) lo que se ve moverse por la pantalla.

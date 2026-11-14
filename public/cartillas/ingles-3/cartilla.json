@@ -981,6 +981,7 @@
       "bosque-body",
       "bosque-family"
      ],
+     "escenaDormida": "pozo-dormido",
      "formas": [
       "imagen-sonido",
       "imagen-palabra"
@@ -3736,6 +3737,15 @@
        "quien": "cosmo",
        "es": "Este farol todavía duerme. Despierta cuando enciendas el que está antes en este camino.",
        "en": "This lantern is still asleep. It wakes up when you light the one before it on this path."
+      }
+     ]
+    },
+    "pozo-dormido": {
+     "lineas": [
+      {
+       "quien": "lumi",
+       "es": "Enciende cualquier farol de un camino y el pozo despertará.",
+       "en": "Light any lantern on a path and the well will wake up."
       }
      ]
     },

@@ -238,7 +238,7 @@ export function Mundo({ territorio, heroe, estelas, base, vozIngles, vozEspanol,
         });
       }
     } else if (cosa.tipo === 'mision' && !despierta(misiones[cosa.indice])) {
-      setCharla({ lineas: escenas.dormida.lineas });
+      setCharla({ lineas: (escenas[misiones[cosa.indice].escenaDormida ?? 'dormida'] ?? escenas.dormida).lineas });
     } else if (cosa.tipo === 'mision') {
       const indice = cosa.indice;
       setCharla({

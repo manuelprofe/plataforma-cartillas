@@ -175,8 +175,18 @@ export function atenuarAmbiente(bajo: boolean) {
   ambiente.nivel.gain.setTargetAtTime(bajo ? NIVEL_AMBIENTE * 0.3 : NIVEL_AMBIENTE, ctx.currentTime, 0.3);
 }
 
-export function decir(texto: string, idioma: string) {
-  if (!('speechSynthesis' in window)) return;
+let turnoVoz = 0;
+
+/**
+ * Dice un texto. `alTerminar` se llama cuando termina de sonar, solo si nada lo interrumpió
+ * (si no hay voz en el navegador, se llama enseguida para no trancar el juego).
+ */
+export function decir(texto: string, idioma: string, alTerminar?: () => void) {
+  const turno = ++turnoVoz;
+  if (!('speechSynthesis' in window)) {
+    alTerminar?.();
+    return;
+  }
   const sint = window.speechSynthesis;
   sint.cancel();
   const frase = new SpeechSynthesisUtterance(texto);
@@ -185,9 +195,15 @@ export function decir(texto: string, idioma: string) {
   frase.lang = idioma;
   frase.rate = 0.82;
   frase.pitch = 1.1;
+  if (alTerminar) {
+    frase.onend = () => turno === turnoVoz && alTerminar();
+    // Sin voz disponible el navegador avisa con error: se sigue igual para no trancar el juego.
+    frase.onerror = (e) => e.error !== 'interrupted' && e.error !== 'canceled' && turno === turnoVoz && alTerminar();
+  }
   sint.speak(frase);
 }
 
 export function callar() {
+  turnoVoz++;
   if ('speechSynthesis' in window) window.speechSynthesis.cancel();
 }

@@ -2002,6 +2002,20 @@ img {
   contain: layout paint;
 }
 
+/* Pantalla apaisada y baja: Cosmo a la izquierda, el cielo al centro y el frasco a la derecha. */
+@media (orientation: landscape) and (max-height: 560px) {
+  .escucha-atrapa {
+    grid-template-columns: auto 1fr auto;
+    grid-template-rows: minmax(0, 1fr);
+    align-items: center;
+    max-width: 820px;
+  }
+
+  .escucha-atrapa__cielo {
+    height: 100%;
+  }
+}
+
 .oir.oir--chico {
   width: 96px;
   height: 96px;

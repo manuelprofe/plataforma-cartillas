@@ -369,6 +369,7 @@ POZO = {
     'id': 'bosque-pozo', 'titulo': 'Memory well', 'plantilla': 'memoria', 'icono': 'mundo/objeto-6.webp', 'palabras': [],
     'palabrasDe': [f'bosque-{tema}{s}' for tema in TEMAS for s in SUFIJO[:2]] + ['bosque-time'],
     'requiereAlguna': [f'bosque-{tema}' for tema in TEMAS],
+    'escenaDormida': 'pozo-dormido',
     'formas': ['imagen-sonido', 'imagen-palabra'], 'parejas': 4,
     'antes': [L('lumi', 'Este es el pozo de los recuerdos. Gira dos cartas y busca las que van juntas.', 'This is the memory well. Flip two cards and find the ones that go together.')],
     'estrellas': 0,
@@ -501,6 +502,7 @@ ESCENAS = {
     ], 'luego': 'elegir'},
     'cosmo': {'lineas': [L('cosmo', '¡Qué bueno verte! Hay faroles por encender y vecinos que necesitan ayuda.', 'Good to see you! There are lanterns to light and neighbors who need help.')], 'luego': 'elegir'},
     'dormida': {'lineas': [L('cosmo', 'Este farol todavía duerme. Despierta cuando enciendas el que está antes en este camino.', 'This lantern is still asleep. It wakes up when you light the one before it on this path.')]},
+    'pozo-dormido': {'lineas': [L('lumi', 'Enciende cualquier farol de un camino y el pozo despertará.', 'Light any lantern on a path and the well will wake up.')]},
     'rayo': {'lineas': [
         L('rayo', '¡Correo, correo! Soy Rayo. Llevo cartas al Valle de las Palabras...', "Mail, mail! I'm Rayo. I carry letters to the Valley of Words..."),
         L('rayo', '...pero siempre llego tarde: el reloj del bosque se apagó y el puente también.', "...but I'm always late: the forest clock went dark, and so did the bridge."),

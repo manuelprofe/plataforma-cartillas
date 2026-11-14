@@ -319,6 +319,10 @@ aquí; usar el mapa original como referencia mantiene el estilo.
 - **Pozo de los recuerdos** (`bosque-pozo`): Memory junto al pozo de la plaza. Despierta al
   completar la primera misión de cualquier camino (`requiereAlguna`) y usa las palabras de
   las misiones ya completadas (`palabrasDe`; las resuelve `App.tsx`). Da 0 estrellas.
+  Dormido cuenta su propia escena (`escenaDormida: 'pozo-dormido'`).
+- Los cuatro juegos van en la carga inicial (unos 10 kB comprimidos): sin conexión, abrir un
+  juego nunca deja la pantalla en blanco. Con la pestaña oculta los juegos se pausan y al
+  volver repiten la palabra. Las ayudas en modo `mixto` se dicen en inglés y luego en español.
 - Misión de la hora con voz (`bosque-time-2`, Rayo pregunta) con three, six y twelve
   o'clock. Las horas traen `frase` ("It's three o'clock."), que se dice al presentarlas.
 - Frases de ayuda de los juegos en el contenido (`cartilla.ayudas`); se dicen en español o
@@ -338,8 +342,7 @@ aquí; usar el mapa original como referencia mantiene el estilo.
   guion pueden moverse unos píxeles. Se quitaron 4 árboles que tapaban las misiones nuevas.
 
 Pendiente de esta ronda: chispa que viaja de la carta a Lumi; onda al tocar el fondo en
-Listen & Catch; la escena `dormida` dice "el que está antes en este camino" también para el
-pozo; la fase *mirar* de la hora no muestra "3:00"; probar en un celular real (la medición de
+Listen & Catch; la fase *mirar* de la hora no muestra "3:00"; probar en un celular real (la medición de
 fps es en Chromium de escritorio con la CPU frenada, no en gama baja real).
 
 Faltan los demás juegos propuestos en el informe: Sentence Builder con arrastre, Paint the

@@ -57,6 +57,8 @@ export interface Mision {
   estrellas: number;
   /** Misión que hay que completar antes para que esta despierte. */
   requiere?: string;
+  /** Escena que se cuenta si el niño toca la misión mientras duerme (por defecto 'dormida'). */
+  escenaDormida?: string;
   /** Despierta cuando se completa cualquiera de estas misiones. */
   requiereAlguna?: string[];
   /** Repaso: usa las palabras de estas misiones, solo de las ya completadas. */

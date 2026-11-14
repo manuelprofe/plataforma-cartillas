@@ -77,13 +77,26 @@ function Atrapa(props: PropsJuego) {
   const frasco = useRef<HTMLDivElement>(null);
   const medida = useRef({ ancho: 358, alto: 500, lado: 84 });
   const esperas = useRef<number[]>([]);
+  // Lo que iba a pasar mientras la pestaña estaba oculta: se hace al volver.
+  const enPausa = useRef<(() => void)[]>([]);
+  // Correcciones tras tocar otro (su nombre, luego el objetivo): se cancelan al acertar.
+  const correccion = useRef<number[]>([]);
+  const fantasmas = useRef(new Set<HTMLElement>());
+  const primeraDicha = useRef(false);
 
   const luego = (f: () => void, ms: number) => {
-    esperas.current.push(window.setTimeout(f, ms));
+    const t = window.setTimeout(() => (document.hidden ? enPausa.current.push(f) : f()), ms);
+    esperas.current.push(t);
+    return t;
+  };
+  const cancelarCorreccion = () => {
+    correccion.current.forEach(clearTimeout);
+    correccion.current = [];
   };
   useEffect(
     () => () => {
       esperas.current.forEach(clearTimeout);
+      fantasmas.current.forEach((f) => f.remove());
       callar();
     },
     [],
@@ -91,6 +104,24 @@ function Atrapa(props: PropsJuego) {
 
   const objetivo = fase === 'jugar' ? rondas[indice] : seleccion[indice];
   vivos.current = farolitos;
+  const objetivoVivo = useRef(objetivo);
+  objetivoVivo.current = objetivo;
+
+  // Pestaña oculta: se calla; al volver sigue lo pendiente y se repite la palabra.
+  useEffect(() => {
+    const cambio = () => {
+      if (document.hidden) {
+        callar();
+        return;
+      }
+      const pendientes = enPausa.current;
+      enPausa.current = [];
+      pendientes.forEach((f) => f());
+      if (objetivoVivo.current) decir(objetivoVivo.current.en, idiomaVoz);
+    };
+    document.addEventListener('visibilitychange', cambio);
+    return () => document.removeEventListener('visibilitychange', cambio);
+  }, [idiomaVoz]);
 
   // ---------- Mirar: cada palabra se ve y se oye una vez ----------
   useEffect(() => {
@@ -105,7 +136,15 @@ function Atrapa(props: PropsJuego) {
     else {
       setIndice(0);
       setFase('jugar');
-      luego(() => decirAyuda(props, 'atrapa-inicio'), 300);
+      // La primera palabra se dice cuando termina la instrucción (o a los 5 s si el navegador no avisa).
+      const primera = () => {
+        // Solo si sigue en la primera ronda: si ya la atrapó, no se dice tarde.
+        if (primeraDicha.current || objetivoVivo.current !== rondas[0]) return;
+        primeraDicha.current = true;
+        decir(rondas[0].en, idiomaVoz);
+      };
+      luego(() => decirAyuda(props, 'atrapa-inicio', primera), 300);
+      luego(primera, 5000);
     }
   };
 
@@ -129,26 +168,30 @@ function Atrapa(props: PropsJuego) {
     mov.current = new Map(lista.map((f) => [f.clave, { p: -f.turno * SEPARACION, lento: 1, pasadas: 0 }]));
     malSeguidos.current = 0;
     lentoRonda.current = 1;
+    cancelarCorreccion();
     setFarolitos(lista);
-    const t = window.setTimeout(() => decir(objetivo.en, idiomaVoz), indice === 0 ? 1900 : 350);
+    // La primera ronda la anuncia la instrucción de Cosmo (ver siguienteCarta).
+    if (indice === 0) return;
+    const t = luego(() => decir(objetivo.en, idiomaVoz), 350);
     return () => clearTimeout(t);
   }, [fase, indice, objetivo, mision.palabras, ajustes, idiomaVoz]);
 
   // Segundos de caída de esta ronda: del inicio al final, nunca por debajo del final.
   const cruce = (() => {
-    const total = Math.max(1, rondas.length - 1);
+    const total = Math.max(1, seleccion.length - 1);
     const s = ajustes.cruceInicio + (ajustes.cruceFinal - ajustes.cruceInicio) * Math.min(1, indice / total);
     return Math.max(ajustes.cruceFinal, s);
   })();
 
   // Posición de un farolito en pantalla (solo transform).
-  const colocar = (f: Farol, p: number) => {
+  const colocar = (f: Farol, p: number, adentro = false) => {
     const el = nodos.current.get(f.clave);
     if (!el) return;
     const { ancho, alto, lado } = medida.current;
     const n = vivos.current.length || 3;
     const x = ((f.carril + 0.5) * ancho) / n - lado / 2;
-    const y = -lado + p * (alto + lado);
+    // Quietos: siempre dentro del cielo. Cayendo: entran por arriba y salen por abajo.
+    const y = adentro ? p * Math.max(0, alto - lado) : -lado + p * (alto + lado);
     el.style.transform = `translate3d(${x.toFixed(1)}px, ${y.toFixed(1)}px, 0)`;
   };
 
@@ -165,13 +208,14 @@ function Atrapa(props: PropsJuego) {
       const lado = Math.min(88, Math.floor(ancho / farolitos.length) - 6);
       medida.current = { ancho, alto: c.clientHeight, lado };
       c.style.setProperty('--lado', `${lado}px`);
+      // Quietos: al girar la pantalla se vuelven a colocar.
+      if (quieto) vivos.current.forEach((f) => f.estado !== 'atrapado' && colocar(f, QUIETOS[f.turno % QUIETOS.length], true));
     };
     medir();
-    window.addEventListener('resize', medir);
-    if (quieto) {
-      farolitos.forEach((f) => colocar(f, QUIETOS[f.turno % QUIETOS.length]));
-      return () => window.removeEventListener('resize', medir);
-    }
+    // Se mide el cielo mismo (al girar la pantalla, el evento de la ventana llega antes del nuevo diseño).
+    const vigia = new ResizeObserver(medir);
+    if (cielo.current) vigia.observe(cielo.current);
+    if (quieto) return () => vigia.disconnect();
     let cuadro = 0;
     let antes = performance.now();
     const paso = (ahora: number) => {
@@ -203,7 +247,7 @@ function Atrapa(props: PropsJuego) {
     return () => {
       cancelAnimationFrame(cuadro);
       document.removeEventListener('visibilitychange', visible);
-      window.removeEventListener('resize', medir);
+      vigia.disconnect();
     };
     // El bucle se arma por ronda; lee el estado vivo por refs.
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -240,23 +284,42 @@ function Atrapa(props: PropsJuego) {
   const tocar = (f: Farol) => {
     if (f.estado !== 'cae' || !objetivo) return;
     if (f.correcto) {
+      cancelarCorreccion();
       sonar('atrapar');
       decir(f.palabra.en, idiomaVoz);
-      setFarolitos((fs) => fs.map((o) => (o.clave === f.clave ? { ...o, estado: 'atrapado' } : { ...o, estado: 'se-va' })));
-      // Vuela al frasco: del lugar donde está al centro del frasco, con escala y opacidad.
       const el = nodos.current.get(f.clave);
-      const c = cielo.current?.getBoundingClientRect();
       const fr = frasco.current?.getBoundingClientRect();
-      if (el && c && fr) {
-        const { lado } = medida.current;
-        const x = fr.left + fr.width / 2 - c.left - lado / 2;
-        const y = fr.top + fr.height / 2 - c.top - lado / 2;
-        luego(() => {
-          el.style.transition = `transform ${MS_FRASCO}ms cubic-bezier(0.2, 1.4, 0.4, 1), opacity ${MS_FRASCO}ms`;
-          el.style.transform = `translate3d(${x}px, ${y}px, 0) scale(0.4)`;
-          el.style.opacity = '0';
-        }, quieto ? 0 : 280);
+      if (el && fr && !quieto) {
+        // Vuela al frasco una copia fija en la pantalla: el cielo recorta lo que sale de él.
+        const r = el.getBoundingClientRect();
+        const copia = el.cloneNode(true) as HTMLElement;
+        copia.classList.add('farolito--atrapado');
+        copia.removeAttribute('aria-label');
+        copia.setAttribute('aria-hidden', 'true');
+        Object.assign(copia.style, {
+          position: 'fixed', left: `${r.left}px`, top: `${r.top}px`, width: `${r.width}px`, height: `${r.height}px`,
+          transform: 'none', zIndex: '30', pointerEvents: 'none',
+        });
+        document.body.append(copia);
+        fantasmas.current.add(copia);
+        el.style.visibility = 'hidden';
+        const dx = fr.left + fr.width / 2 - (r.left + r.width / 2);
+        const dy = fr.top + fr.height / 2 - (r.top + r.height / 2);
+        window.setTimeout(() => {
+          copia.style.transition = `transform ${MS_FRASCO}ms cubic-bezier(0.2, 1.4, 0.4, 1), opacity ${MS_FRASCO}ms`;
+          copia.style.transform = `translate3d(${dx}px, ${dy}px, 0) scale(0.4)`;
+          copia.style.opacity = '0';
+        }, 280);
+        window.setTimeout(() => {
+          copia.remove();
+          fantasmas.current.delete(copia);
+        }, 280 + MS_FRASCO + 80);
+      } else if (el) {
+        // Movimiento reducido: el acierto es solo un cambio de opacidad.
+        el.style.transition = 'opacity 0.3s';
+        el.style.opacity = '0';
       }
+      setFarolitos((fs) => fs.map((o) => (o.clave === f.clave ? { ...o, estado: 'atrapado' } : { ...o, estado: 'se-va' })));
       luego(() => {
         sonar('frasco');
         setLlenas((n) => n + 1);
@@ -271,8 +334,8 @@ function Atrapa(props: PropsJuego) {
     costaron.current.add(objetivo.en);
     malSeguidos.current += 1;
     if (malSeguidos.current >= 2) lentoRonda.current = MAS_LENTO;
-    luego(() => decir(f.palabra.en, idiomaVoz), 250);
-    luego(() => decir(objetivo.en, idiomaVoz), 1300);
+    cancelarCorreccion();
+    correccion.current.push(luego(() => decir(f.palabra.en, idiomaVoz), 250), luego(() => decir(objetivo.en, idiomaVoz), 1300));
   };
 
   const repetir = () => {
@@ -280,7 +343,8 @@ function Atrapa(props: PropsJuego) {
     if (objetivo) decir(objetivo.en, idiomaVoz);
   };
 
-  const puntos = fase === 'mirar' ? seleccion : rondas;
+  // La ronda extra (una palabra que costó) no suma puntos ni luz: el frasco ya está lleno.
+  const puntos = fase === 'mirar' ? seleccion : rondas.slice(0, seleccion.length);
 
   return (
     <div className={`mision${fase === 'jugar' ? ' mision--noche' : ''}`}>
@@ -350,7 +414,7 @@ function Atrapa(props: PropsJuego) {
             ))}
           </div>
           <div className={`frasco${lleno ? ' es-lleno' : ''}`} ref={frasco} aria-hidden="true">
-            <span className="frasco__luz" style={{ transform: `translateY(${(1 - llenas / rondas.length) * 100}%)` }} />
+            <span className="frasco__luz" style={{ transform: `translateY(${(1 - Math.min(llenas, seleccion.length) / seleccion.length) * 100}%)` }} />
             <span className="frasco__tapa" />
             {lleno && <img className="frasco__lumi" src={base + imagenFiesta} alt="" width="112" height="100" draggable={false} />}
           </div>

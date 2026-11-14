@@ -1,6 +1,10 @@
-import { lazy, Suspense, useEffect, useMemo, useRef, useState, type ComponentType } from 'react';
+import { useEffect, useMemo, useRef, useState, type ComponentType } from 'react';
 import type { Cartilla, Mision, Palabra, PropsJuego } from './tipos';
 import { Mundo, olvidarMundo } from './Mundo';
+import { EscuchaToca } from './juegos/EscuchaToca';
+import { EscuchaAtrapa } from './juegos/EscuchaAtrapa';
+import { DiBrilla } from './juegos/DiBrilla';
+import { Memoria } from './juegos/Memoria';
 import { ElegirHeroe } from './ElegirHeroe';
 import { activarAudio, sonar } from './audio';
 import { elegirHeroe, reiniciarProgreso, useProgreso } from './progreso';
@@ -9,12 +13,15 @@ const BASE = `${import.meta.env.BASE_URL}cartillas/ingles-3/`;
 const MS_CORTINA = 420;
 const IMAGEN_FIESTA = 'personajes/lumi-celebrate.webp';
 
-/** Qué componente juega cada plantilla del contenido. Cada juego se descarga al abrirlo. */
+/**
+ * Qué componente juega cada plantilla del contenido. Van en la carga inicial (unos 10 kB
+ * comprimidos entre los cuatro): así abrir un juego sin conexión nunca deja la pantalla en blanco.
+ */
 const JUEGOS: Record<Mision['plantilla'], ComponentType<PropsJuego>> = {
-  'escucha-toca': lazy(() => import('./juegos/EscuchaToca').then((m) => ({ default: m.EscuchaToca }))),
-  'escucha-atrapa': lazy(() => import('./juegos/EscuchaAtrapa').then((m) => ({ default: m.EscuchaAtrapa }))),
-  'di-brilla': lazy(() => import('./juegos/DiBrilla').then((m) => ({ default: m.DiBrilla }))),
-  memoria: lazy(() => import('./juegos/Memoria').then((m) => ({ default: m.Memoria }))),
+  'escucha-toca': EscuchaToca,
+  'escucha-atrapa': EscuchaAtrapa,
+  'di-brilla': DiBrilla,
+  memoria: Memoria,
 };
 
 type Pantalla = { tipo: 'inicio' } | { tipo: 'elegir' } | { tipo: 'mapa' } | { tipo: 'mision'; indice: number };
@@ -139,7 +146,6 @@ export function App() {
       )}
 
       {mision && Juego && (
-        <Suspense fallback={<div className="mision" aria-busy="true" />}>
         <Juego
           key={mision.id}
           mision={mision}
@@ -153,7 +159,6 @@ export function App() {
           onTerminar={() => irA({ tipo: 'mapa' })}
           onSalir={() => irA({ tipo: 'mapa' })}
         />
-        </Suspense>
       )}
 
       {cortina && <div className={`cortina cortina--${cortina}`} aria-hidden="true" />}

@@ -95,6 +95,16 @@ function Tableros(props: PropsJuego) {
     cartas.forEach((c) => jugadas.current.set(c.palabra.en, c.palabra));
   }, [cartas]);
 
+  // Pestaña oculta: se calla y, al volver, la inactividad empieza de cero.
+  useEffect(() => {
+    const cambio = () => {
+      if (document.hidden) callar();
+      quieto.current = 0;
+    };
+    document.addEventListener('visibilitychange', cambio);
+    return () => document.removeEventListener('visibilitychange', cambio);
+  }, []);
+
   // Primera vez en la vida: Lumi gira sola una pareja, despacio, y luego aparece la manita.
   useEffect(() => {
     if (!demo) return;
@@ -119,6 +129,8 @@ function Tableros(props: PropsJuego) {
   useEffect(() => {
     if (fin || demo) return;
     const reloj = window.setInterval(() => {
+      // Con la pestaña oculta no cuenta como quieto.
+      if (document.hidden) return;
       quieto.current += 1;
       if (quieto.current === S_QUIETO_1) ayudar(1);
       if (quieto.current === S_QUIETO_2) ayudar(2);
@@ -196,6 +208,8 @@ function Tableros(props: PropsJuego) {
     if (otra.palabra.en === c.palabra.en) {
       // Pareja.
       const nuevas = [...hechas, c.palabra.en];
+      // Al formar pareja siempre suena la palabra (si cerró con el dibujo, aún no había sonado).
+      if (!suena(c)) luego(() => decir(c.palabra.en, idiomaVoz), MS_MEDIO_GIRO);
       luego(() => sonar('pareja'), 300);
       setHechas(nuevas);
       setArriba([]);

@@ -28,3 +28,12 @@ Mides en un navegador real, con la skill `webapp-testing`, y entregas números, 
 Una tabla con cada área: resultado medido, cumple o no cumple, y evidencia (captura, cifra o
 comando). Después, la lista de lo que hay que corregir antes de publicar, de más grave a
 menos grave. Lo que no pudiste medir se dice como no medido, no como aprobado.
+
+## Eficiencia (obligatorio)
+
+- Lee solo lo que tu tarea necesita: los documentos de `docs/` y las secciones citadas, no todo
+  el repositorio.
+- Una sola entrega por tarea, sin borradores intermedios. Si algo bloquea, pregunta al
+  coordinador en vez de explorar alternativas largas.
+- Documento al grano: tablas y textos listos para usar; la teoría, en una línea por punto.
+- Informe final de 10 líneas como máximo, con las decisiones que necesitan a Manuel.

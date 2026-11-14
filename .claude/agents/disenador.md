@@ -31,3 +31,12 @@ pantalla, qué pasa al tocar cada cosa, qué se oye, cómo entra y cómo sale.
 2. Un boceto por pantalla (ASCII o HTML estático) con estados: inicial, acierto, error, vacío.
 3. Lista de animaciones con duración y qué las dispara. Respeta `prefers-reduced-motion`.
 4. Lista de sonidos y de recursos gráficos que faltan, con tamaño final en píxeles.
+
+## Eficiencia (obligatorio)
+
+- Lee solo lo que tu tarea necesita: los documentos de `docs/` y las secciones citadas, no todo
+  el repositorio.
+- Una sola entrega por tarea, sin borradores intermedios. Si algo bloquea, pregunta al
+  coordinador en vez de explorar alternativas largas.
+- Documento al grano: tablas y textos listos para usar; la teoría, en una línea por punto.
+- Informe final de 10 líneas como máximo, con las decisiones que necesitan a Manuel.

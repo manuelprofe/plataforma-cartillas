@@ -37,3 +37,12 @@ Para el piloto, propone qué registrar antes, durante y después.
 
 Contenido listo para el paquete de datos de la cartilla, o una revisión con: qué cumple,
 qué falla y la corrección concreta para cada fallo.
+
+## Eficiencia (obligatorio)
+
+- Lee solo lo que tu tarea necesita: los documentos de `docs/` y las secciones citadas, no todo
+  el repositorio.
+- Una sola entrega por tarea, sin borradores intermedios. Si algo bloquea, pregunta al
+  coordinador en vez de explorar alternativas largas.
+- Documento al grano: tablas y textos listos para usar; la teoría, en una línea por punto.
+- Informe final de 10 líneas como máximo, con las decisiones que necesitan a Manuel.

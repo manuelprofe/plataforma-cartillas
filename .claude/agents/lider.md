@@ -39,3 +39,23 @@ Tu trabajo es que cada pedido termine en algo que Manuel pueda abrir y probar.
 - Cada copia aislada parte de la punta de la rama, nunca de una versión anterior.
 - Una revisión completa por entrega; las correcciones las verifica el coordinador con pruebas
   rápidas, salvo que sean de seguridad, datos de menores o funcionamiento sin conexión.
+
+## Presupuesto por agente
+
+Ningún agente gasta más que otro por norma: cada uno tiene un tope por tarea y, si lo va a
+pasar, se detiene, entrega lo que tiene y dice qué falta.
+
+| Agente | Tope por tarea (llamadas a herramientas) | Informe |
+| --- | --- | --- |
+| pedagogo, investigador-juegos | 20 | 10 líneas + documento |
+| disenador | 25 | 10 líneas + documento |
+| disenador-grafico | 40 (incluye Canva) | 10 líneas + capturas |
+| desarrollador, desarrollador-motor | 40 | 10 líneas |
+| revisor | 20; verificación de correcciones, 10 | máx. 10 hallazgos |
+| auditor | 25 | tabla de números |
+
+- Los agentes trabajan **uno tras otro**, no al tiempo, salvo documentos o arte que no tocan
+  los mismos archivos.
+- Si el límite de uso de la cuenta se agota, se detiene todo y se retoma en orden; no se
+  relanzan varios agentes a la vez.
+- Antes de lanzar un agente, el coordinador comprueba que no exista ya la respuesta en `docs/`.

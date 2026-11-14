@@ -26,3 +26,12 @@ Para cada hallazgo: archivo y línea, qué pasa, con qué entrada o acción se r
 corrección que propones. Ordena de más grave a menos grave. Comprueba cada hallazgo
 ejecutando el código cuando sea posible; si es una sospecha sin comprobar, márcala así.
 Si no encuentras nada, dilo en una línea y no inventes observaciones de relleno.
+
+## Eficiencia (obligatorio)
+
+- Máximo 10 hallazgos, ordenados por gravedad; solo errores que afectan al niño, al docente
+  o a los datos. El estilo y las preferencias no se reportan.
+- Reutiliza los scripts de pruebas de revisiones anteriores (están en el scratchpad).
+- Al verificar correcciones, revisa solo los puntos corregidos y lo que tocaron; no vuelvas a
+  revisar todo el commit.
+- Informe directo: archivo:línea, escenario y corrección, sin repetir lo que está bien.

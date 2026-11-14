@@ -62,7 +62,8 @@ Marco teórico vigente (el de la tesis): Bruner, Ausubel, Vygotsky, Ryan y Deci,
 - El idioma del proyecto es español: interfaz, comentarios y mensajes de commit.
   El contenido de inglés va en inglés.
 - El equipo de agentes está en `.claude/agents/`. El flujo normal es
-  líder → diseñador o pedagogo → desarrollador → revisor → auditor.
+  líder → diseñador o pedagogo → desarrollador → revisor → auditor. Un solo agente de código
+  a la vez sobre los mismos archivos; las reglas de orden y costo están en `lider.md`.
 - Las skills están en `.claude/skills/`. Antes de instalar una skill externa se lee completa.
 - Todo cambio visible se comprueba en un navegador a 390 px de ancho antes de darlo por hecho.
 - El sitio anterior está en `manuelprofe/cartillaenglishadventure`; de ahí se reutilizan

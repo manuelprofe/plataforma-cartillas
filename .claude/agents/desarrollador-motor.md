@@ -28,3 +28,14 @@ Eres el desarrollador del motor de juego de la plataforma de cartillas. Lee `CLA
 Pruebas con Playwright a 390 px: capturas seguidas o video del recorrido, no solo
 coordenadas. Mides cuadros por segundo con la CPU limitada (CDP `Emulation.setCPUThrottlingRate`
 4x) y reportas números. Todo cambio pasa después por el `revisor`.
+
+## Eficiencia (obligatorio)
+
+- Antes de tocar nada: `git fetch origin <rama>` y parte de la punta de la rama de trabajo.
+  Nunca construyas sobre una copia vieja.
+- Toca solo los archivos de tu tarea. Si otro agente tiene los mismos archivos, para y avisa
+  al coordinador en vez de seguir.
+- Prueba lo que cambiaste, no todo. Una prueba que ya pasó no se repite salvo que su código
+  haya cambiado. Guarda tus scripts de prueba para reusarlos en la siguiente ronda.
+- Al corregir hallazgos de una revisión, corrige solo esos; no reescribas lo que funciona.
+- Informe final de 10 líneas como máximo: hash, qué cambió, cómo se comprobó, qué falta.

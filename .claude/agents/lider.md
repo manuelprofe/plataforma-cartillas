@@ -29,3 +29,13 @@ Tu trabajo es que cada pedido termine en algo que Manuel pueda abrir y probar.
 - Las decisiones de negocio, de costo mensual o sobre datos de los niños son de Manuel:
   preséntalas con una recomendación y espera su respuesta.
 - Informa en español claro, sin jerga: Manuel es docente, no programador.
+
+## Orden y costo (obligatorio)
+
+- Un solo agente de código a la vez sobre los mismos archivos. En paralelo solo trabajo que
+  no se cruza (documentos, arte en carpetas propias, investigación).
+- Orden por dependencias: contenido y juegos → arte → motor → sin conexión (este último guarda
+  todo lo anterior, por eso va al final).
+- Cada copia aislada parte de la punta de la rama, nunca de una versión anterior.
+- Una revisión completa por entrega; las correcciones las verifica el coordinador con pruebas
+  rápidas, salvo que sean de seguridad, datos de menores o funcionamiento sin conexión.

@@ -47,7 +47,9 @@ export function EscuchaToca({ mision, base, idiomaVoz, imagenGuia, imagenFiesta,
       setFalladas([]);
       setResuelta(false);
     }
-    const t = window.setTimeout(() => decir(objetivo.en, idiomaVoz), 350);
+    // Al mirar se dice la frase completa si el contenido la trae; al jugar, la palabra sola.
+    const texto = fase === 'mirar' && objetivo.frase ? objetivo.frase : objetivo.en;
+    const t = window.setTimeout(() => decir(texto, idiomaVoz), 350);
     return () => clearTimeout(t);
   }, [fase, indice, objetivo, mision.palabras, idiomaVoz]);
 

@@ -49,7 +49,7 @@ export function CierreMision({ mision, errores, base, imagenFiesta, alRegistrar,
         <>
           {premios.map((p) => (
             <div className="premio" key={p.clave}>
-              {p.clave === 'completar' ? `★ +${p.estrellas}` : '🏅'}
+              {p.clave === 'completar' ? (p.estrellas ? `★ +${p.estrellas}` : '✨') : '🏅'}
             </div>
           ))}
           <div className="caritas" role="group" aria-label="¿Cómo te sentiste?">
@@ -64,7 +64,7 @@ export function CierreMision({ mision, errores, base, imagenFiesta, alRegistrar,
       {premios !== null && sentir !== null && (
         <>
           <div className="premio premio--total">
-            {premios.some((p) => p.clave === 'completar') ? `★ +${premios.reduce((a, p) => a + p.estrellas, 0)}` : premios.length ? '🏅' : '👍'}
+            {premios.some((p) => p.clave === 'completar' && p.estrellas) ? `★ +${premios.reduce((a, p) => a + p.estrellas, 0)}` : premios.some((p) => p.clave === 'mejorar') ? '🏅' : '👍'}
           </div>
           <button type="button" className="boton-seguir" onClick={onTerminar} aria-label="Volver al mapa">
             ➜

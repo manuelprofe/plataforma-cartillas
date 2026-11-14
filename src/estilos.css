@@ -1790,6 +1790,342 @@ img {
   to { transform: rotate(360deg); }
 }
 
+/* ---------- Memory (diseño, ronda 1, sección 1) ---------- */
+
+.memoria__juego {
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 16px;
+  padding: 8px 16px max(24px, env(safe-area-inset-bottom));
+  min-height: 0;
+}
+
+.memoria__tablero {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  width: min(100%, 420px, calc((100dvh - 120px) * 0.56));
+  perspective: 900px;
+}
+
+.memoria__tablero:not(.memoria__tablero--centro) {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.carta {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  min-height: 64px;
+  transition: transform 0.12s;
+  animation: entrar-carta 0.35s cubic-bezier(0.2, 1.4, 0.4, 1) backwards;
+}
+
+.carta:active {
+  transform: translateY(4px);
+}
+
+.carta__giro {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  transition: transform 0.42s cubic-bezier(0.2, 1.2, 0.4, 1);
+}
+
+.carta.es-boca-arriba .carta__giro {
+  transform: rotateY(180deg);
+}
+
+.carta__cara {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 4px;
+  border-radius: 22px;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  box-shadow: 0 8px 0 rgb(36 18 63 / 0.16);
+}
+
+.carta__dorso {
+  background: radial-gradient(circle, #5b2fa6 0 27%, transparent 28%), radial-gradient(120% 90% at 50% 0%, #4a2394, var(--noche));
+  border: 4px solid rgb(255 207 58 / 0.35);
+  color: var(--oro);
+  font-size: 2.2rem;
+}
+
+.carta__frente {
+  background: #fff;
+  transform: rotateY(180deg);
+  padding: 6px;
+}
+
+.carta__frente img {
+  width: 64%;
+  height: auto;
+}
+
+.carta__frente strong {
+  font-size: clamp(1.05rem, 6vw, 1.45rem);
+  font-weight: 800;
+  line-height: 1.05;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+.carta__frente strong.es-larga {
+  font-size: clamp(0.95rem, 4.4vw, 1.15rem);
+}
+
+.carta__frente small {
+  font-size: 1rem;
+  opacity: 0.5;
+}
+
+.carta__sonido {
+  display: grid;
+  place-items: center;
+  width: 70%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, #fff3a6 0 30%, #ffcf3a 31% 52%, #19c6b1 53% 72%, transparent 73%);
+  font-size: 1.8rem;
+}
+
+.carta.es-pareja .carta__frente {
+  background: #fffbe0;
+  box-shadow: 0 8px 0 var(--oro-hondo), 0 0 0 4px var(--oro);
+}
+
+.carta.es-pareja {
+  animation: celebrar 0.6s ease-out;
+}
+
+.carta.es-pista .carta__dorso {
+  box-shadow: 0 8px 0 rgb(36 18 63 / 0.16), 0 0 0 5px var(--oro);
+}
+
+.carta.es-pista {
+  animation: brincar 0.9s ease-in-out infinite;
+}
+
+.carta.es-late {
+  animation: latir 0.3s ease-in-out;
+}
+
+.memoria__manita {
+  position: absolute;
+  right: -6px;
+  bottom: -10px;
+  font-size: 48px;
+  line-height: 1;
+  pointer-events: none;
+  animation: brincar 0.9s ease-in-out infinite;
+}
+
+.memoria__lumi {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 3 / 4;
+  min-height: 64px;
+}
+
+.memoria__juego > .memoria__lumi {
+  width: 110px;
+  aspect-ratio: 1;
+}
+
+/* La luz que vuelve: solo cambia su opacidad. */
+.memoria__lumi::before {
+  content: '';
+  position: absolute;
+  inset: -6%;
+  border-radius: 50%;
+  background: radial-gradient(var(--oro) 0 30%, transparent 70%);
+  opacity: var(--halo, 0.15);
+  transition: opacity 0.4s;
+}
+
+.memoria__lumi img {
+  position: relative;
+  width: 92%;
+  height: auto;
+  animation: flotar 2.6s ease-in-out infinite;
+}
+
+.memoria__lumi img.es-inclina {
+  animation: inclinar 0.4s ease-in-out 2 alternate;
+}
+
+.memoria__lumi img.es-habla {
+  animation: brincar 0.9s ease-in-out 2;
+}
+
+@keyframes inclinar {
+  to { transform: rotate(-6deg); }
+}
+
+/* ---------- Listen & Catch (diseño, ronda 1, sección 2) ---------- */
+
+.mision--noche {
+  background: radial-gradient(130% 70% at 50% 110%, #3d6b4f 0 18%, transparent 40%),
+    linear-gradient(180deg, var(--noche-honda) 0%, var(--noche) 60%, #2f3f5e 100%);
+  color: var(--crema);
+}
+
+.mision--noche .punto {
+  background: rgb(255 248 236 / 0.25);
+}
+
+.mision--noche .punto--hecho {
+  background: var(--oro);
+}
+
+.mision--noche .punto--ahora {
+  background: #fff;
+  box-shadow: 0 0 0 3px var(--oro);
+}
+
+.escucha-atrapa {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  justify-items: center;
+  gap: 8px;
+  width: 100%;
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 0 16px max(16px, env(safe-area-inset-bottom));
+  min-height: 0;
+  contain: layout paint;
+}
+
+.oir.oir--chico {
+  width: 96px;
+  height: 96px;
+}
+
+.oir.oir--chico .oir__onda {
+  width: 40px;
+  height: 40px;
+  font-size: 1.1rem;
+}
+
+.escucha-atrapa__cielo {
+  position: relative;
+  width: 100%;
+  min-height: 0;
+  overflow: hidden;
+  /* La niebla de abajo: el farolito se desvanece al llegar. */
+  mask-image: linear-gradient(180deg, transparent 0, #000 6%, #000 88%, transparent 100%);
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 6%, #000 88%, transparent 100%);
+}
+
+.farolito {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--lado, 84px);
+  height: var(--lado, 84px);
+  border-radius: 50%;
+  transform: translate3d(0, -200px, 0);
+  will-change: transform;
+  transition: opacity 0.3s;
+}
+
+/* Zona de toque más grande que el dibujo. */
+.farolito::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+}
+
+.farolito__luz {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 45%, #fffbe8 0 52%, rgb(255 226 122 / 0.75) 53% 62%, transparent 72%);
+}
+
+.farolito__luz img {
+  width: 60%;
+  height: auto;
+}
+
+.farolito--no {
+  opacity: 0.35;
+}
+
+.farolito--no .farolito__luz {
+  animation: temblar 0.4s;
+}
+
+.farolito--atrapado .farolito__luz {
+  animation: celebrar 0.3s ease-out;
+}
+
+.farolito--se-va {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.farolito.es-pista .farolito__luz {
+  box-shadow: 0 0 0 5px var(--oro);
+  animation: latir 1.2s ease-in-out infinite;
+}
+
+.escucha-atrapa--quieto .farolito {
+  animation: aclarar 0.3s;
+}
+
+.frasco {
+  position: relative;
+  width: 104px;
+  height: 120px;
+  border: 5px solid rgb(255 255 255 / 0.7);
+  border-radius: 22px 22px 30px 30px;
+  background: rgb(255 255 255 / 0.08);
+  overflow: hidden;
+}
+
+.frasco__luz {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, #fff3a6, var(--oro) 40%, var(--oro-hondo));
+  transform: translateY(100%);
+  transition: transform 0.4s;
+}
+
+.frasco__tapa {
+  position: absolute;
+  top: -5px;
+  left: 18px;
+  right: 18px;
+  height: 14px;
+  border-radius: 0 0 8px 8px;
+  background: #b07a45;
+}
+
+.frasco.es-lleno {
+  overflow: visible;
+  animation: celebrar 0.6s ease-out;
+}
+
+.frasco__lumi {
+  position: absolute;
+  left: 50%;
+  bottom: 70%;
+  width: 112px;
+  height: auto;
+  margin-left: -56px;
+  animation: entrar-carta 0.5s cubic-bezier(0.2, 1.4, 0.4, 1);
+}
+
 @media (min-width: 720px) {
   .opciones { gap: 20px; }
   .oir { width: 180px; height: 180px; }

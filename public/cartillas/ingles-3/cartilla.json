@@ -34,7 +34,7 @@
       {
        "en": "eraser",
        "es": "borrador",
-       "icono": "iconos/1f9fd.svg",
+       "icono": "iconos/eraser.webp",
        "pronuncia": "i-réi-ser"
       },
       {
@@ -53,7 +53,7 @@
        "en": "scissors",
        "es": "tijeras",
        "icono": "iconos/2702.svg",
-       "pronuncia": "sí-sors"
+       "pronuncia": "sí-sers"
       }
      ],
      "x": 829,
@@ -62,15 +62,15 @@
       {
        "quien": "cosmo",
        "es": "Aquí se apagaron los útiles de la escuela. Escucha y toca el correcto.",
-       "en": "The school objects lost their light here. Listen and tap the right one."
+       "en": "The school things lost their light here. Listen and tap the right one."
       }
      ],
-     "estrellas": 4
+     "estrellas": 3
     },
     {
      "id": "bosque-school-2",
      "titulo": "More school objects",
-     "plantilla": "di-brilla",
+     "plantilla": "escucha-atrapa",
      "icono": "iconos/1f4d8.svg",
      "palabras": [
       {
@@ -86,14 +86,14 @@
        "pronuncia": "buk"
       },
       {
-       "en": "marker",
-       "es": "marcador",
-       "icono": "iconos/1f58a.svg",
-       "pronuncia": "már-ker"
+       "en": "pen",
+       "es": "lapicero",
+       "icono": "iconos/pen.webp",
+       "pronuncia": "pen"
       },
       {
        "en": "crayon",
-       "es": "crayón",
+       "es": "crayola",
        "icono": "iconos/1f58d.svg",
        "pronuncia": "kréi-on"
       },
@@ -109,12 +109,70 @@
      "antes": [
       {
        "quien": "cosmo",
-       "es": "¡Quedan más útiles por encender! Escucha con atención.",
-       "en": "There are more school objects to light up! Listen carefully."
+       "es": "¡Mira! Hay más cosas del salón flotando. Atrapa la que escuches.",
+       "en": "Look! More classroom things are floating. Catch the one you hear."
       }
      ],
-     "estrellas": 5,
+     "estrellas": 3,
+     "atrapa": {
+      "cruceInicio": 6,
+      "cruceFinal": 4.5,
+      "distractores": [
+       2,
+       2,
+       3
+      ]
+     },
      "requiere": "bosque-school"
+    },
+    {
+     "id": "bosque-school-3",
+     "titulo": "Say the school objects",
+     "plantilla": "di-brilla",
+     "icono": "iconos/eraser.webp",
+     "palabras": [
+      {
+       "en": "pencil",
+       "es": "lápiz",
+       "icono": "iconos/270f.svg",
+       "pronuncia": "pén-sil"
+      },
+      {
+       "en": "eraser",
+       "es": "borrador",
+       "icono": "iconos/eraser.webp",
+       "pronuncia": "i-réi-ser"
+      },
+      {
+       "en": "notebook",
+       "es": "cuaderno",
+       "icono": "iconos/1f4d3.svg",
+       "pronuncia": "nóut-buk"
+      },
+      {
+       "en": "book",
+       "es": "libro",
+       "icono": "iconos/1f4d8.svg",
+       "pronuncia": "buk"
+      },
+      {
+       "en": "chair",
+       "es": "silla",
+       "icono": "iconos/1fa91.svg",
+       "pronuncia": "cher"
+      }
+     ],
+     "x": 873,
+     "y": 797,
+     "antes": [
+      {
+       "quien": "cosmo",
+       "es": "Ahora tú le das voz a las palabras. Escucha, y cuando quieras, dila. ¡Cada intento cuenta!",
+       "en": "Now you give the words a voice. Listen, and when you're ready, say it. Every try counts!"
+      }
+     ],
+     "estrellas": 3,
+     "requiere": "bosque-school-2"
     },
     {
      "id": "bosque-colors",
@@ -138,7 +196,7 @@
        "en": "green",
        "es": "verde",
        "icono": "iconos/1f7e2.svg",
-       "pronuncia": "griin"
+       "pronuncia": "grin"
       },
       {
        "en": "yellow",
@@ -162,19 +220,19 @@
        "en": "The colors of the forest turned gray. Let's light them up!"
       }
      ],
-     "estrellas": 4
+     "estrellas": 3
     },
     {
      "id": "bosque-colors-2",
      "titulo": "More colors",
-     "plantilla": "di-brilla",
+     "plantilla": "escucha-atrapa",
      "icono": "iconos/color-pink.svg",
      "palabras": [
       {
        "en": "purple",
        "es": "morado",
        "icono": "iconos/1f7e3.svg",
-       "pronuncia": "pér-pol"
+       "pronuncia": "pér-pel"
       },
       {
        "en": "pink",
@@ -186,19 +244,19 @@
        "en": "brown",
        "es": "café",
        "icono": "iconos/color-brown.svg",
-       "pronuncia": "bráun"
+       "pronuncia": "braun"
       },
       {
        "en": "black",
        "es": "negro",
-       "icono": "iconos/color-black.svg",
+       "icono": "iconos/color-black-borde.svg",
        "pronuncia": "blak"
       },
       {
        "en": "white",
        "es": "blanco",
-       "icono": "iconos/color-white.svg",
-       "pronuncia": "uáit"
+       "icono": "iconos/color-white-borde.svg",
+       "pronuncia": "uait"
       }
      ],
      "x": 188,
@@ -206,12 +264,70 @@
      "antes": [
       {
        "quien": "cosmo",
-       "es": "Faltan cinco colores para que el bosque brille completo.",
-       "en": "Five more colors and the forest will shine again."
+       "es": "Cinco colores más vuelan por el aire. Escucha y atrapa el que te digo.",
+       "en": "Five more colors are flying. Listen and catch the one I say."
       }
      ],
-     "estrellas": 5,
+     "estrellas": 3,
+     "atrapa": {
+      "cruceInicio": 6,
+      "cruceFinal": 4.5,
+      "distractores": [
+       2,
+       2,
+       3
+      ]
+     },
      "requiere": "bosque-colors"
+    },
+    {
+     "id": "bosque-colors-3",
+     "titulo": "Say the colors",
+     "plantilla": "di-brilla",
+     "icono": "iconos/1f534.svg",
+     "palabras": [
+      {
+       "en": "red",
+       "es": "rojo",
+       "icono": "iconos/1f534.svg",
+       "pronuncia": "red"
+      },
+      {
+       "en": "blue",
+       "es": "azul",
+       "icono": "iconos/1f535.svg",
+       "pronuncia": "blu"
+      },
+      {
+       "en": "green",
+       "es": "verde",
+       "icono": "iconos/1f7e2.svg",
+       "pronuncia": "grin"
+      },
+      {
+       "en": "pink",
+       "es": "rosado",
+       "icono": "iconos/color-pink.svg",
+       "pronuncia": "pink"
+      },
+      {
+       "en": "black",
+       "es": "negro",
+       "icono": "iconos/color-black-borde.svg",
+       "pronuncia": "blak"
+      }
+     ],
+     "x": 723,
+     "y": 1481,
+     "antes": [
+      {
+       "quien": "cosmo",
+       "es": "¡Tu voz enciende los colores! Escucha cada uno y dilo como te salga.",
+       "en": "Your voice lights up the colors! Listen to each one and say it your way."
+      }
+     ],
+     "estrellas": 3,
+     "requiere": "bosque-colors-2"
     },
     {
      "id": "bosque-numbers",
@@ -223,31 +339,44 @@
        "en": "one",
        "es": "uno",
        "icono": "iconos/0031_20e3.svg",
-       "pronuncia": "uán"
+       "pronuncia": "uan",
+       "aceptar": [
+        "1",
+        "won"
+       ]
       },
       {
        "en": "two",
        "es": "dos",
        "icono": "iconos/0032_20e3.svg",
-       "pronuncia": "tu"
+       "pronuncia": "tu",
+       "aceptar": [
+        "2",
+        "to",
+        "too"
+       ]
       },
       {
        "en": "three",
        "es": "tres",
        "icono": "iconos/0033_20e3.svg",
-       "pronuncia": "zrii"
+       "pronuncia": "zri"
       },
       {
        "en": "four",
        "es": "cuatro",
        "icono": "iconos/0034_20e3.svg",
-       "pronuncia": "for"
+       "pronuncia": "for",
+       "aceptar": [
+        "4",
+        "for"
+       ]
       },
       {
        "en": "five",
        "es": "cinco",
        "icono": "iconos/0035_20e3.svg",
-       "pronuncia": "fáiv"
+       "pronuncia": "faiv"
       }
      ],
      "x": 1911,
@@ -256,15 +385,15 @@
       {
        "quien": "cosmo",
        "es": "Los números se escondieron entre los árboles. Empecemos del uno al cinco.",
-       "en": "The numbers are hiding in the trees. Let us start from one to five."
+       "en": "The numbers are hiding in the trees. Let's count from one to five."
       }
      ],
-     "estrellas": 4
+     "estrellas": 3
     },
     {
      "id": "bosque-numbers-2",
      "titulo": "Numbers 6 to 10",
-     "plantilla": "di-brilla",
+     "plantilla": "escucha-atrapa",
      "icono": "iconos/0038_20e3.svg",
      "palabras": [
       {
@@ -283,13 +412,17 @@
        "en": "eight",
        "es": "ocho",
        "icono": "iconos/0038_20e3.svg",
-       "pronuncia": "éit"
+       "pronuncia": "eit",
+       "aceptar": [
+        "8",
+        "ate"
+       ]
       },
       {
        "en": "nine",
        "es": "nueve",
        "icono": "iconos/0039_20e3.svg",
-       "pronuncia": "náin"
+       "pronuncia": "nain"
       },
       {
        "en": "ten",
@@ -303,12 +436,78 @@
      "antes": [
       {
        "quien": "cosmo",
-       "es": "¡Ya sabes hasta el cinco! Ahora del seis al diez.",
-       "en": "You know up to five! Now from six to ten."
+       "es": "¡Ya llegas al cinco! Ahora atrapa del seis al diez.",
+       "en": "You can count to five! Now catch six to ten."
       }
      ],
-     "estrellas": 5,
+     "estrellas": 3,
+     "atrapa": {
+      "cruceInicio": 6,
+      "cruceFinal": 4.5,
+      "distractores": [
+       2,
+       2,
+       3
+      ]
+     },
      "requiere": "bosque-numbers"
+    },
+    {
+     "id": "bosque-numbers-3",
+     "titulo": "Count out loud",
+     "plantilla": "di-brilla",
+     "icono": "iconos/0035_20e3.svg",
+     "palabras": [
+      {
+       "en": "one",
+       "es": "uno",
+       "icono": "iconos/0031_20e3.svg",
+       "pronuncia": "uan",
+       "aceptar": [
+        "1",
+        "won"
+       ]
+      },
+      {
+       "en": "three",
+       "es": "tres",
+       "icono": "iconos/0033_20e3.svg",
+       "pronuncia": "zri"
+      },
+      {
+       "en": "five",
+       "es": "cinco",
+       "icono": "iconos/0035_20e3.svg",
+       "pronuncia": "faiv"
+      },
+      {
+       "en": "eight",
+       "es": "ocho",
+       "icono": "iconos/0038_20e3.svg",
+       "pronuncia": "eit",
+       "aceptar": [
+        "8",
+        "ate"
+       ]
+      },
+      {
+       "en": "ten",
+       "es": "diez",
+       "icono": "iconos/1f51f.svg",
+       "pronuncia": "ten"
+      }
+     ],
+     "x": 1865,
+     "y": 770,
+     "antes": [
+      {
+       "quien": "cosmo",
+       "es": "Abu quiere oírte contar. Escucha el número y dilo tú.",
+       "en": "Abu wants to hear you count. Listen to the number and say it."
+      }
+     ],
+     "estrellas": 3,
+     "requiere": "bosque-numbers-2"
     },
     {
      "id": "bosque-body",
@@ -317,28 +516,28 @@
      "icono": "iconos/1f440.svg",
      "palabras": [
       {
-       "en": "head",
-       "es": "cabeza",
-       "icono": "iconos/1f642.svg",
-       "pronuncia": "jed"
-      },
-      {
        "en": "eyes",
        "es": "ojos",
        "icono": "iconos/1f440.svg",
-       "pronuncia": "áis"
+       "pronuncia": "ais"
       },
       {
        "en": "ears",
        "es": "orejas",
        "icono": "iconos/1f442.svg",
-       "pronuncia": "írs"
+       "pronuncia": "irs"
       },
       {
        "en": "nose",
        "es": "nariz",
        "icono": "iconos/1f443.svg",
-       "pronuncia": "nóus"
+       "pronuncia": "nous"
+      },
+      {
+       "en": "mouth",
+       "es": "boca",
+       "icono": "iconos/1f444.svg",
+       "pronuncia": "mauz"
       }
      ],
      "x": 943,
@@ -346,23 +545,29 @@
      "antes": [
       {
        "quien": "cosmo",
-       "es": "Cabeza, ojos, orejas, nariz... ¿los conoces en inglés?",
-       "en": "Head, eyes, ears, nose... do you know them in English?"
+       "es": "Mira tu cara: ojos, orejas, nariz y boca. Cuando oigas una, tócatela tú también.",
+       "en": "Look at your face: eyes, ears, nose and mouth. When you hear one, touch it too!"
       }
      ],
-     "estrellas": 4
+     "estrellas": 3
     },
     {
      "id": "bosque-body-2",
      "titulo": "My body",
-     "plantilla": "di-brilla",
+     "plantilla": "escucha-atrapa",
      "icono": "iconos/1f64c.svg",
      "palabras": [
       {
-       "en": "mouth",
-       "es": "boca",
-       "icono": "iconos/1f444.svg",
-       "pronuncia": "máuz"
+       "en": "head",
+       "es": "cabeza",
+       "icono": "iconos/head.webp",
+       "pronuncia": "jed"
+      },
+      {
+       "en": "arms",
+       "es": "brazos",
+       "icono": "iconos/arms.webp",
+       "pronuncia": "arms"
       },
       {
        "en": "hands",
@@ -371,22 +576,19 @@
        "pronuncia": "jands"
       },
       {
-       "en": "arms",
-       "es": "brazos",
-       "icono": "iconos/1f4aa.svg",
-       "pronuncia": "arms"
-      },
-      {
        "en": "legs",
        "es": "piernas",
-       "icono": "iconos/1f9b5.svg",
+       "icono": "iconos/legs.webp",
        "pronuncia": "legs"
       },
       {
        "en": "feet",
        "es": "pies",
        "icono": "iconos/1f9b6.svg",
-       "pronuncia": "fiit"
+       "pronuncia": "fit",
+       "aceptar": [
+        "feat"
+       ]
       }
      ],
      "x": 421,
@@ -394,12 +596,70 @@
      "antes": [
       {
        "quien": "cosmo",
-       "es": "Ahora el resto del cuerpo: manos, brazos, piernas y pies.",
-       "en": "Now the rest of the body: hands, arms, legs and feet."
+       "es": "Ahora el resto del cuerpo: cabeza, brazos, manos, piernas y pies. ¡Atrápalos!",
+       "en": "Now the rest of the body: head, arms, hands, legs and feet. Catch them!"
       }
      ],
-     "estrellas": 5,
+     "estrellas": 3,
+     "atrapa": {
+      "cruceInicio": 6,
+      "cruceFinal": 4.5,
+      "distractores": [
+       2,
+       2,
+       3
+      ]
+     },
      "requiere": "bosque-body"
+    },
+    {
+     "id": "bosque-body-3",
+     "titulo": "Say your body",
+     "plantilla": "di-brilla",
+     "icono": "iconos/1f443.svg",
+     "palabras": [
+      {
+       "en": "nose",
+       "es": "nariz",
+       "icono": "iconos/1f443.svg",
+       "pronuncia": "nous"
+      },
+      {
+       "en": "eyes",
+       "es": "ojos",
+       "icono": "iconos/1f440.svg",
+       "pronuncia": "ais"
+      },
+      {
+       "en": "mouth",
+       "es": "boca",
+       "icono": "iconos/1f444.svg",
+       "pronuncia": "mauz"
+      },
+      {
+       "en": "hands",
+       "es": "manos",
+       "icono": "iconos/1f64c.svg",
+       "pronuncia": "jands"
+      },
+      {
+       "en": "legs",
+       "es": "piernas",
+       "icono": "iconos/legs.webp",
+       "pronuncia": "legs"
+      }
+     ],
+     "x": 967,
+     "y": 2047,
+     "antes": [
+      {
+       "quien": "cosmo",
+       "es": "Púa quiere oírte nombrar el cuerpo. Escucha y dilo en voz alta.",
+       "en": "Púa wants to hear you name the body. Listen and say it out loud."
+      }
+     ],
+     "estrellas": 3,
+     "requiere": "bosque-body-2"
     },
     {
      "id": "bosque-family",
@@ -423,13 +683,16 @@
        "en": "good night",
        "es": "buenas noches",
        "icono": "iconos/1f319.svg",
-       "pronuncia": "gud náit"
+       "pronuncia": "gud nait"
       },
       {
        "en": "thank you",
        "es": "gracias",
        "icono": "iconos/1f64f.svg",
-       "pronuncia": "zénk-iu"
+       "pronuncia": "zénk-iu",
+       "aceptar": [
+        "thanks"
+       ]
       }
      ],
      "x": 1907,
@@ -441,12 +704,12 @@
        "en": "Here we learn to say hello and thank you."
       }
      ],
-     "estrellas": 4
+     "estrellas": 3
     },
     {
      "id": "bosque-family-2",
      "titulo": "My family",
-     "plantilla": "di-brilla",
+     "plantilla": "escucha-atrapa",
      "icono": "iconos/1f469.svg",
      "palabras": [
       {
@@ -497,54 +760,139 @@
      "antes": [
       {
        "quien": "cosmo",
-       "es": "¿Quién vive en tu casa? Vamos a nombrar a la familia.",
-       "en": "Who lives in your house? Let us name the family."
+       "es": "En cada casa vive una familia distinta. Escucha y atrapa a cada persona.",
+       "en": "Every home has a different family. Listen and catch each person."
       }
      ],
-     "estrellas": 5,
+     "estrellas": 3,
+     "atrapa": {
+      "cruceInicio": 6,
+      "cruceFinal": 4.5,
+      "distractores": [
+       2,
+       2,
+       3
+      ]
+     },
      "requiere": "bosque-family"
+    },
+    {
+     "id": "bosque-family-3",
+     "titulo": "Say hello to the family",
+     "plantilla": "di-brilla",
+     "icono": "iconos/1f44b.svg",
+     "palabras": [
+      {
+       "en": "hello",
+       "es": "hola",
+       "icono": "iconos/1f44b.svg",
+       "pronuncia": "je-lóu"
+      },
+      {
+       "en": "thank you",
+       "es": "gracias",
+       "icono": "iconos/1f64f.svg",
+       "pronuncia": "zénk-iu",
+       "aceptar": [
+        "thanks"
+       ]
+      },
+      {
+       "en": "mother",
+       "es": "mamá",
+       "icono": "iconos/1f469.svg",
+       "pronuncia": "mó-der"
+      },
+      {
+       "en": "father",
+       "es": "papá",
+       "icono": "iconos/1f468.svg",
+       "pronuncia": "fá-der"
+      },
+      {
+       "en": "grandmother",
+       "es": "abuela",
+       "icono": "iconos/1f475.svg",
+       "pronuncia": "gránd-mo-der"
+      }
+     ],
+     "x": 1794,
+     "y": 1907,
+     "antes": [
+      {
+       "quien": "cosmo",
+       "es": "Vamos a saludar a la familia del bosque. Escucha y dilo tú.",
+       "en": "Let's say hello to the forest family. Listen and say it."
+      }
+     ],
+     "estrellas": 3,
+     "requiere": "bosque-family-2"
     },
     {
      "id": "bosque-time",
      "titulo": "What time is it?",
      "plantilla": "escucha-toca",
-     "icono": "iconos/1f552.svg",
+     "icono": "iconos/reloj-3.webp",
      "palabras": [
       {
        "en": "one o'clock",
        "es": "la una",
-       "icono": "iconos/1f550.svg",
-       "pronuncia": "uán o-klók"
+       "icono": "iconos/reloj-1.webp",
+       "pronuncia": "uan o-klók",
+       "aceptar": [
+        "1:00"
+       ],
+       "frase": "It's one o'clock."
       },
       {
        "en": "three o'clock",
        "es": "las tres",
-       "icono": "iconos/1f552.svg",
-       "pronuncia": "zrii o-klók"
+       "icono": "iconos/reloj-3.webp",
+       "pronuncia": "zri o-klók",
+       "aceptar": [
+        "3:00"
+       ],
+       "frase": "It's three o'clock."
       },
       {
        "en": "six o'clock",
        "es": "las seis",
-       "icono": "iconos/1f555.svg",
-       "pronuncia": "siks o-klók"
+       "icono": "iconos/reloj-6.webp",
+       "pronuncia": "siks o-klók",
+       "aceptar": [
+        "6:00"
+       ],
+       "frase": "It's six o'clock."
       },
       {
        "en": "nine o'clock",
        "es": "las nueve",
-       "icono": "iconos/1f558.svg",
-       "pronuncia": "náin o-klók"
+       "icono": "iconos/reloj-9.webp",
+       "pronuncia": "nain o-klók",
+       "aceptar": [
+        "9:00"
+       ],
+       "frase": "It's nine o'clock."
       },
       {
        "en": "ten o'clock",
        "es": "las diez",
-       "icono": "iconos/1f559.svg",
-       "pronuncia": "ten o-klók"
+       "icono": "iconos/reloj-10.webp",
+       "pronuncia": "ten o-klók",
+       "aceptar": [
+        "10:00"
+       ],
+       "frase": "It's ten o'clock."
       },
       {
        "en": "twelve o'clock",
        "es": "las doce",
-       "icono": "iconos/1f55b.svg",
-       "pronuncia": "tuelv o-klók"
+       "icono": "iconos/reloj-12.webp",
+       "pronuncia": "tuelv o-klók",
+       "aceptar": [
+        "12:00"
+       ],
+       "frase": "It's twelve o'clock."
       }
      ],
      "x": 1894,
@@ -556,7 +904,98 @@
        "en": "The forest clock stopped. Listen to the time and tap the right clock."
       }
      ],
-     "estrellas": 5
+     "estrellas": 3
+    },
+    {
+     "id": "bosque-time-2",
+     "titulo": "Tell Rayo the time",
+     "plantilla": "di-brilla",
+     "icono": "iconos/reloj-12.webp",
+     "palabras": [
+      {
+       "en": "three o'clock",
+       "es": "las tres",
+       "icono": "iconos/reloj-3.webp",
+       "pronuncia": "zri o-klók",
+       "aceptar": [
+        "3:00"
+       ],
+       "frase": "It's three o'clock."
+      },
+      {
+       "en": "six o'clock",
+       "es": "las seis",
+       "icono": "iconos/reloj-6.webp",
+       "pronuncia": "siks o-klók",
+       "aceptar": [
+        "6:00"
+       ],
+       "frase": "It's six o'clock."
+      },
+      {
+       "en": "twelve o'clock",
+       "es": "las doce",
+       "icono": "iconos/reloj-12.webp",
+       "pronuncia": "tuelv o-klók",
+       "aceptar": [
+        "12:00"
+       ],
+       "frase": "It's twelve o'clock."
+      }
+     ],
+     "x": 2036,
+     "y": 1215,
+     "antes": [
+      {
+       "quien": "rayo",
+       "es": "¡Rayo necesita saber la hora! Él pregunta \"What time is it?\" y tú le dices la hora.",
+       "en": "Rayo needs to know the time! He asks \"What time is it?\" and you tell him."
+      }
+     ],
+     "estrellas": 2,
+     "requiere": "bosque-time"
+    },
+    {
+     "id": "bosque-pozo",
+     "titulo": "Memory well",
+     "plantilla": "memoria",
+     "icono": "mundo/objeto-6.webp",
+     "palabras": [],
+     "palabrasDe": [
+      "bosque-school",
+      "bosque-school-2",
+      "bosque-colors",
+      "bosque-colors-2",
+      "bosque-numbers",
+      "bosque-numbers-2",
+      "bosque-body",
+      "bosque-body-2",
+      "bosque-family",
+      "bosque-family-2",
+      "bosque-time"
+     ],
+     "requiereAlguna": [
+      "bosque-school",
+      "bosque-colors",
+      "bosque-numbers",
+      "bosque-body",
+      "bosque-family"
+     ],
+     "formas": [
+      "imagen-sonido",
+      "imagen-palabra"
+     ],
+     "parejas": 4,
+     "antes": [
+      {
+       "quien": "lumi",
+       "es": "Este es el pozo de los recuerdos. Gira dos cartas y busca las que van juntas.",
+       "en": "This is the memory well. Flip two cards and find the ones that go together."
+      }
+     ],
+     "estrellas": 0,
+     "x": 1475,
+     "y": 1278
     }
    ],
    "personajes": {
@@ -655,7 +1094,7 @@
        "pide": {
         "en": "eraser",
         "es": "borrador",
-        "icono": "iconos/1f9fd.svg",
+        "icono": "iconos/eraser.webp",
         "pronuncia": "i-réi-ser"
        },
        "opciones": [
@@ -668,7 +1107,7 @@
         {
          "en": "eraser",
          "es": "borrador",
-         "icono": "iconos/1f9fd.svg",
+         "icono": "iconos/eraser.webp",
          "pronuncia": "i-réi-ser"
         },
         {
@@ -740,26 +1179,30 @@
         "en": "three",
         "es": "tres",
         "icono": "iconos/0033_20e3.svg",
-        "pronuncia": "zrii"
+        "pronuncia": "zri"
        },
        "opciones": [
         {
          "en": "five",
          "es": "cinco",
          "icono": "iconos/0035_20e3.svg",
-         "pronuncia": "fáiv"
+         "pronuncia": "faiv"
         },
         {
          "en": "three",
          "es": "tres",
          "icono": "iconos/0033_20e3.svg",
-         "pronuncia": "zrii"
+         "pronuncia": "zri"
         },
         {
          "en": "one",
          "es": "uno",
          "icono": "iconos/0031_20e3.svg",
-         "pronuncia": "uán"
+         "pronuncia": "uan",
+         "aceptar": [
+          "1",
+          "won"
+         ]
         }
        ],
        "x": 2118,
@@ -782,26 +1225,26 @@
         "en": "nose",
         "es": "nariz",
         "icono": "iconos/1f443.svg",
-        "pronuncia": "nóus"
+        "pronuncia": "nous"
        },
        "opciones": [
         {
          "en": "eyes",
          "es": "ojos",
          "icono": "iconos/1f440.svg",
-         "pronuncia": "áis"
+         "pronuncia": "ais"
         },
         {
          "en": "nose",
          "es": "nariz",
          "icono": "iconos/1f443.svg",
-         "pronuncia": "nóus"
+         "pronuncia": "nous"
         },
         {
          "en": "ears",
          "es": "orejas",
          "icono": "iconos/1f442.svg",
-         "pronuncia": "írs"
+         "pronuncia": "irs"
         }
        ],
        "x": 650,
@@ -831,7 +1274,10 @@
          "en": "thank you",
          "es": "gracias",
          "icono": "iconos/1f64f.svg",
-         "pronuncia": "zénk-iu"
+         "pronuncia": "zénk-iu",
+         "aceptar": [
+          "thanks"
+         ]
         },
         {
          "en": "hello",
@@ -843,7 +1289,7 @@
          "en": "good night",
          "es": "buenas noches",
          "icono": "iconos/1f319.svg",
-         "pronuncia": "gud náit"
+         "pronuncia": "gud nait"
         }
        ],
        "x": 2118,
@@ -1496,12 +1942,6 @@
       "escala": 0.69
      },
      {
-      "x": 2112,
-      "y": 1171,
-      "tipo": 7,
-      "escala": 0.62
-     },
-     {
       "x": 2681,
       "y": 1174,
       "tipo": 8,
@@ -1562,12 +2002,6 @@
       "escala": 0.7
      },
      {
-      "x": 633,
-      "y": 1611,
-      "tipo": 1,
-      "escala": 0.9
-     },
-     {
       "x": 215,
       "y": 1617,
       "tipo": 3,
@@ -1602,12 +2036,6 @@
       "y": 1664,
       "tipo": 2,
       "escala": 0.77
-     },
-     {
-      "x": 794,
-      "y": 1666,
-      "tipo": 4,
-      "escala": 0.75
      },
      {
       "x": 2388,
@@ -1734,12 +2162,6 @@
       "y": 2003,
       "tipo": 4,
       "escala": 0.64
-     },
-     {
-      "x": 1646,
-      "y": 2010,
-      "tipo": 4,
-      "escala": 0.63
      },
      {
       "x": 640,
@@ -2321,7 +2743,8 @@
       "palabra": {
        "en": "butterfly",
        "es": "mariposa",
-       "icono": "mundo/animal-1.webp"
+       "icono": "mundo/animal-1.webp",
+       "pronuncia": "bá-ter-flai"
       }
      },
      {
@@ -2335,7 +2758,8 @@
       "palabra": {
        "en": "butterfly",
        "es": "mariposa",
-       "icono": "mundo/animal-2.webp"
+       "icono": "mundo/animal-2.webp",
+       "pronuncia": "bá-ter-flai"
       }
      },
      {
@@ -2349,7 +2773,8 @@
       "palabra": {
        "en": "butterfly",
        "es": "mariposa",
-       "icono": "mundo/animal-1.webp"
+       "icono": "mundo/animal-1.webp",
+       "pronuncia": "bá-ter-flai"
       }
      },
      {
@@ -2363,7 +2788,8 @@
       "palabra": {
        "en": "butterfly",
        "es": "mariposa",
-       "icono": "mundo/animal-2.webp"
+       "icono": "mundo/animal-2.webp",
+       "pronuncia": "bá-ter-flai"
       }
      },
      {
@@ -2377,7 +2803,8 @@
       "palabra": {
        "en": "butterfly",
        "es": "mariposa",
-       "icono": "mundo/animal-1.webp"
+       "icono": "mundo/animal-1.webp",
+       "pronuncia": "bá-ter-flai"
       }
      },
      {
@@ -2391,7 +2818,8 @@
       "palabra": {
        "en": "bee",
        "es": "abeja",
-       "icono": "mundo/animal-3.webp"
+       "icono": "mundo/animal-3.webp",
+       "pronuncia": "bi"
       }
      },
      {
@@ -2405,7 +2833,8 @@
       "palabra": {
        "en": "bee",
        "es": "abeja",
-       "icono": "mundo/animal-3.webp"
+       "icono": "mundo/animal-3.webp",
+       "pronuncia": "bi"
       }
      },
      {
@@ -2419,7 +2848,8 @@
       "palabra": {
        "en": "bee",
        "es": "abeja",
-       "icono": "mundo/animal-3.webp"
+       "icono": "mundo/animal-3.webp",
+       "pronuncia": "bi"
       }
      },
      {
@@ -2433,7 +2863,8 @@
       "palabra": {
        "en": "frog",
        "es": "rana",
-       "icono": "mundo/animal-5.webp"
+       "icono": "mundo/animal-5.webp",
+       "pronuncia": "frog"
       }
      },
      {
@@ -2447,7 +2878,8 @@
       "palabra": {
        "en": "frog",
        "es": "rana",
-       "icono": "mundo/animal-5.webp"
+       "icono": "mundo/animal-5.webp",
+       "pronuncia": "frog"
       }
      },
      {
@@ -2461,7 +2893,8 @@
       "palabra": {
        "en": "frog",
        "es": "rana",
-       "icono": "mundo/animal-5.webp"
+       "icono": "mundo/animal-5.webp",
+       "pronuncia": "frog"
       }
      },
      {
@@ -2475,7 +2908,8 @@
       "palabra": {
        "en": "bird",
        "es": "pájaro",
-       "icono": "mundo/animal-6.webp"
+       "icono": "mundo/animal-6.webp",
+       "pronuncia": "berd"
       }
      },
      {
@@ -2489,7 +2923,8 @@
       "palabra": {
        "en": "bird",
        "es": "pájaro",
-       "icono": "mundo/animal-6.webp"
+       "icono": "mundo/animal-6.webp",
+       "pronuncia": "berd"
       }
      },
      {
@@ -2503,7 +2938,8 @@
       "palabra": {
        "en": "owl",
        "es": "búho",
-       "icono": "mundo/animal-4.webp"
+       "icono": "mundo/animal-4.webp",
+       "pronuncia": "aul"
       }
      },
      {
@@ -2517,7 +2953,8 @@
       "palabra": {
        "en": "owl",
        "es": "búho",
-       "icono": "mundo/animal-4.webp"
+       "icono": "mundo/animal-4.webp",
+       "pronuncia": "aul"
       }
      }
     ],
@@ -2952,7 +3389,7 @@
      {
       "x": 1194,
       "y": 1042,
-      "icono": "iconos/1f9fd.svg",
+      "icono": "iconos/eraser.webp",
       "mision": "bosque-school"
      },
      {
@@ -3030,18 +3467,12 @@
      {
       "x": 1202,
       "y": 1650,
-      "icono": "iconos/1f642.svg",
+      "icono": "iconos/1f440.svg",
       "mision": "bosque-body"
      },
      {
       "x": 1138,
       "y": 1738,
-      "icono": "iconos/1f440.svg",
-      "mision": "bosque-body"
-     },
-     {
-      "x": 1106,
-      "y": 1778,
       "icono": "iconos/1f442.svg",
       "mision": "bosque-body"
      },
@@ -3052,9 +3483,15 @@
       "mision": "bosque-body"
      },
      {
+      "x": 1106,
+      "y": 1778,
+      "icono": "iconos/1f444.svg",
+      "mision": "bosque-body"
+     },
+     {
       "x": 790,
       "y": 2142,
-      "icono": "iconos/1f444.svg",
+      "icono": "iconos/head.webp",
       "mision": "bosque-body-2"
      },
      {
@@ -3084,19 +3521,19 @@
      {
       "x": 1770,
       "y": 1350,
-      "icono": "iconos/1f550.svg",
+      "icono": "iconos/reloj-1.webp",
       "mision": "bosque-time"
      },
      {
       "x": 1850,
       "y": 1350,
-      "icono": "iconos/1f552.svg",
+      "icono": "iconos/reloj-3.webp",
       "mision": "bosque-time"
      },
      {
       "x": 1930,
       "y": 1350,
-      "icono": "iconos/1f555.svg",
+      "icono": "iconos/reloj-6.webp",
       "mision": "bosque-time"
      },
      {
@@ -3137,7 +3574,7 @@
       {
        "quien": "pixie",
        "es": "¡Hola! Soy Pixie. ¡Qué bueno que llegaste!",
-       "en": "Hello! I am Pixie. I am so happy you are here!"
+       "en": "Hello! I'm Pixie. I'm so happy you're here!"
       },
       {
        "quien": "pixie",
@@ -3147,7 +3584,7 @@
       {
        "quien": "cosmo",
        "es": "Yo soy Cosmo. Este es mi hogar: el Bosque de los Sonidos.",
-       "en": "I am Cosmo. This is my home: the Forest of Sounds."
+       "en": "I'm Cosmo. This is my home: the Forest of Sounds."
       },
       {
        "quien": "cosmo",
@@ -3222,7 +3659,7 @@
       {
        "quien": "lumi",
        "es": "¡Hola! Soy Lumi. ¿Te equivocaste alguna vez? ¡No pasa nada!",
-       "en": "Hello! I am Lumi. Did you make a mistake? That is okay!"
+       "en": "Hello! I'm Lumi. Did you make a mistake? That's okay!"
       },
       {
        "quien": "lumi",
@@ -3242,7 +3679,7 @@
       {
        "quien": "lumi",
        "es": "¡Así se dice! Sigue explorando.",
-       "en": "That is right! Keep exploring."
+       "en": "That's right! Keep exploring."
       }
      ]
     },
@@ -3260,12 +3697,12 @@
       {
        "quien": "nova",
        "es": "Soy Nova. Este puente lleva al Valle de las Palabras.",
-       "en": "I am Nova. This bridge goes to the Valley of Words."
+       "en": "I'm Nova. This bridge goes to the Valley of Words."
       },
       {
        "quien": "nova",
-       "es": "Cada misión que completas me da estrellas. Cuando las completes todas, tendré 50 y el puente se encenderá.",
-       "en": "Every mission you complete gives me stars. When you complete them all, I will have 50 and the bridge will light up."
+       "es": "Cada misión que completas te da estrellas. Cuando tengas 50, el puente se encenderá.",
+       "en": "Every mission you complete gives you stars. When you have 50, the bridge will light up."
       }
      ]
     },
@@ -3279,7 +3716,7 @@
       {
        "quien": "nova",
        "es": "El Valle de las Palabras abrirá muy pronto. ¡Te espero!",
-       "en": "The Valley of Words opens very soon. I will wait for you!"
+       "en": "The Valley of Words opens very soon. I'll wait for you!"
       }
      ]
     },
@@ -3307,12 +3744,12 @@
       {
        "quien": "rayo",
        "es": "¡Correo, correo! Soy Rayo. Llevo cartas al Valle de las Palabras...",
-       "en": "Mail, mail! I am Rayo. I carry letters to the Valley of Words..."
+       "en": "Mail, mail! I'm Rayo. I carry letters to the Valley of Words..."
       },
       {
        "quien": "rayo",
        "es": "...pero siempre llego tarde: el reloj del bosque se apagó y el puente también.",
-       "en": "...but I am always late: the forest clock went dark, and so did the bridge."
+       "en": "...but I'm always late: the forest clock went dark, and so did the bridge."
       },
       {
        "quien": "rayo",
@@ -3326,12 +3763,12 @@
       {
        "quien": "caro",
        "es": "Hooola... Soy Caro. Voy despacito, despacito... y se me cayó una palabra de la mochila.",
-       "en": "Hellooo... I am Caro. I go slowly, slowly... and a word fell out of my backpack."
+       "en": "Hellooo... I'm Caro. I go slowly, slowly... and a word fell out of my backpack."
       },
       {
        "quien": "caro",
        "es": "Está más adelante, en este camino. Escucha cuál es y tráemela, ¿sí?",
-       "en": "It is up ahead, on this path. Listen to the word and bring it to me, okay?"
+       "en": "It's up ahead, on this path. Listen to the word and bring it to me, okay?"
       }
      ]
     },
@@ -3340,7 +3777,7 @@
       {
        "quien": "caro",
        "es": "Mmm... esa no es. ¡No pasa nada! Yo también me equivoco. Escucha otra vez.",
-       "en": "Hmm... not that one. That is okay! I make mistakes too. Listen again."
+       "en": "Hmm... not that one. That's okay! I make mistakes too. Listen again."
       }
      ]
     },
@@ -3349,12 +3786,12 @@
       {
        "quien": "caro",
        "es": "¡Esa es! ¡Eraser! Ya puedo borrar y volver a intentar.",
-       "en": "That is it! Eraser! Now I can erase and try again."
+       "en": "That's it! Eraser! Now I can erase and try again."
       },
       {
        "quien": "caro",
-       "es": "La guardé en tu álbum. ¡Gracias por no ir tan rápido como los demás!",
-       "en": "I put it in your album. Thank you for not rushing like everybody else!"
+       "es": "La guardé en tu álbum. ¡Gracias por tomarte tu tiempo conmigo!",
+       "en": "I put it in your album. Thank you for taking your time with me!"
       }
      ]
     },
@@ -3372,7 +3809,7 @@
       {
        "quien": "tito",
        "es": "¡Hola! Soy Tito. Mi sombrero tenía un color muy bonito... ¡y olvidé cómo se llama!",
-       "en": "Hello! I am Tito. My hat had a beautiful color... and I forgot its name!"
+       "en": "Hello! I'm Tito. My hat had a beautiful color... and I forgot its name!"
       },
       {
        "quien": "tito",
@@ -3385,8 +3822,8 @@
      "lineas": [
       {
        "quien": "tito",
-       "es": "¡Uy! Ese no es el color de mi sombrero. ¡Tranquilo! Escucha otra vez y prueba otro.",
-       "en": "Oops! That is not the color of my hat. No worries! Listen again and try another one."
+       "es": "¡Uy! Ese no es el color de mi sombrero. ¡No pasa nada! Escucha otra vez y prueba otro.",
+       "en": "Oops! That's not the color of my hat. That's okay! Listen again and try another one."
       }
      ]
     },
@@ -3399,8 +3836,8 @@
       },
       {
        "quien": "tito",
-       "es": "Ya está en tu álbum. ¡Eres el mejor explorador del bosque!",
-       "en": "It is in your album now. You are the best explorer in the forest!"
+       "es": "Ya está en tu álbum. ¡Escuchaste con mucha atención!",
+       "en": "It's in your album now. You listened very carefully!"
       }
      ]
     },
@@ -3417,13 +3854,13 @@
      "lineas": [
       {
        "quien": "abu",
-       "es": "Buenas, pequeño explorador. Soy Abu. Llevo cien años contando las piedras del camino...",
-       "en": "Good day, little explorer. I am Abu. I have counted the stones on this path for a hundred years..."
+       "es": "Buenas, Explorer. Soy Abu. Llevo cien años contando las piedras del camino...",
+       "en": "Good day, Explorer. I'm Abu. I've counted the stones on this path for a hundred years..."
       },
       {
        "quien": "abu",
        "es": "...y hoy se me perdió un número. Está más adelante. Escucha bien cuál es.",
-       "en": "...and today I lost a number. It is up ahead. Listen carefully."
+       "en": "...and today I lost a number. It's up ahead. Listen carefully."
       }
      ]
     },
@@ -3432,7 +3869,7 @@
       {
        "quien": "abu",
        "es": "Mmm, ese es otro número. Los sabios también se equivocan. Escucha de nuevo, con calma.",
-       "en": "Hmm, that is a different number. Wise ones make mistakes too. Listen again, calmly."
+       "en": "Hmm, that's a different number. Wise ones make mistakes too. Listen again, calmly."
       }
      ]
     },
@@ -3464,7 +3901,7 @@
       {
        "quien": "pua",
        "es": "¡Frutas, frutas frescas! Soy Púa... pero hoy no huelo nada. ¡Nada de nada!",
-       "en": "Fruit, fresh fruit! I am Púa... but today I cannot smell a thing. Nothing at all!"
+       "en": "Fruit, fresh fruit! I'm Púa... but today I can't smell a thing. Nothing at all!"
       },
       {
        "quien": "pua",
@@ -3477,8 +3914,8 @@
      "lineas": [
       {
        "quien": "pua",
-       "es": "¡Ja, ja! Con eso no se huele. ¡No importa! Escucha otra vez y prueba con otra.",
-       "en": "Ha ha! You cannot smell with that. Never mind! Listen again and try another one."
+       "es": "¡Uy, con eso no huelo! No importa: escucha otra vez y prueba con otra.",
+       "en": "Oops, I can't smell with that! Never mind. Listen again and try another one."
       }
      ]
     },
@@ -3487,7 +3924,7 @@
       {
        "quien": "pua",
        "es": "¡Nose! ¡Esa es! Mmm... ¡qué rico huelen mis frutas!",
-       "en": "Nose! That is it! Mmm... my fruit smells so good!"
+       "en": "Nose! That's it! Mmm... my fruit smells so good!"
       },
       {
        "quien": "pua",
@@ -3510,7 +3947,7 @@
       {
        "quien": "nuez",
        "es": "¡Pan calientito! Soy Nuez, la panadera. Quiero saludar a todos los que pasan...",
-       "en": "Warm bread! I am Nuez, the baker. I want to greet everyone who walks by..."
+       "en": "Warm bread! I'm Nuez, the baker. I want to greet everyone who walks by..."
       },
       {
        "quien": "nuez",
@@ -3523,8 +3960,8 @@
      "lineas": [
       {
        "quien": "nuez",
-       "es": "¡Casi! Esa es bonita, pero no es para saludar. Escucha otra vez. ¡Tú puedes!",
-       "en": "Almost! That is a nice one, but it is not for greeting. Listen again. You can do it!"
+       "es": "¡Buen intento! Esa palabra es bonita, pero no es para saludar. Escucha otra vez. ¡Tú puedes!",
+       "en": "Good try! That's a nice word, but it's not for saying hello. Listen again. You can do it!"
       }
      ]
     },
@@ -3538,7 +3975,7 @@
       {
        "quien": "nuez",
        "es": "Queda en tu álbum. Y cuando vuelvan todas las palabras, haré una fiesta con pan.",
-       "en": "It is in your album. And when all the words come back, I will make a bread party."
+       "en": "It's in your album. And when all the words come back, I'll bake bread for a party!"
       }
      ]
     },
@@ -3546,8 +3983,8 @@
      "lineas": [
       {
        "quien": "nuez",
-       "es": "¡Hello, explorador! ¿Ves? Ya no se me olvida.",
-       "en": "Hello, explorer! See? I never forget it now."
+       "es": "¡Hello, Explorer! ¿Ves? Ya no se me olvida.",
+       "en": "Hello, Explorer! See? I never forget it now."
       }
      ]
     }
@@ -3563,7 +4000,7 @@
    "ancho": 64,
    "saludo": {
     "es": "¡Hola! Soy Tavi.",
-    "en": "Hello! I am Tavi."
+    "en": "Hello! I'm Tavi."
    }
   },
   {
@@ -3573,7 +4010,7 @@
    "ancho": 58,
    "saludo": {
     "es": "¡Hola! Soy Mika.",
-    "en": "Hello! I am Mika."
+    "en": "Hello! I'm Mika."
    }
   },
   {
@@ -3583,7 +4020,7 @@
    "ancho": 64,
    "saludo": {
     "es": "¡Hola! Soy Bruno.",
-    "en": "Hello! I am Bruno."
+    "en": "Hello! I'm Bruno."
    }
   }
  ],
@@ -3624,5 +4061,23 @@
     "#c58bff"
    ]
   }
- ]
+ ],
+ "ayudas": {
+  "memoria-tutorial": {
+   "es": "¡Iguales! Ahora tú.",
+   "en": "They match! Your turn."
+  },
+  "memoria-pista1": {
+   "es": "Escucha bien: cada dibujo tiene su palabra.",
+   "en": "Listen: every picture has its word."
+  },
+  "memoria-pista2": {
+   "es": "Mira, por aquí.",
+   "en": "Look, over here."
+  },
+  "atrapa-inicio": {
+   "es": "Atrapa la luz que te digo.",
+   "en": "Catch the light I say."
+  }
+ }
 }

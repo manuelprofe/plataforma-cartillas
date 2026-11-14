@@ -1,7 +1,7 @@
 """Arma el Bosque de los Sonidos sobre la imagen del suelo y lo escribe en cartilla.json.
 
 Lee los colores del suelo para encontrar los claros, los caminos y el agua, y con eso:
-reparte las misiones (dos por camino), los habitantes y sus casas sin que se encimen,
+reparte las misiones (tres por camino, la hora y el pozo), los habitantes y sus casas sin que se encimen,
 pone pistas en el piso de cada camino, siembra los árboles y marca dónde no se camina.
 
 Uso: python3 -I herramientas/construir_bosque.py suelo.png public/cartillas/ingles-3/cartilla.json
@@ -174,52 +174,55 @@ def puntos_del_camino(p, q, separacion):
 c = json.load(open(ruta))
 t = c['territorios'][0]
 m = t['mundo']
-I = lambda n: f'iconos/{n}.svg'
-# Guía de pronunciación escrita como se lee en español. El juego de voz la muestra en lugar de
-# la palabra escrita, para que escribirla siga siendo un reto. Revisión pendiente del pedagogo.
+# Los iconos propios (Canva) son WebP; los de Noto Emoji, SVG.
+I = lambda n: f'iconos/{n}' if '.' in n else f'iconos/{n}.svg'
+# Guía de pronunciación escrita como se lee en español (pedagogía, ronda 1, sección 6). El juego
+# de voz la muestra en lugar de la palabra escrita, para que escribirla siga siendo un reto.
+# Reglas: una sílaba sin tilde; dos o más con guion y tilde en la fuerte; sin vocales dobles;
+# la z marca el sonido "th" (lengua entre los dientes) y la j, la h inglesa.
 PRONUNCIA = {
     'pencil': 'pén-sil',
     'eraser': 'i-réi-ser',
     'notebook': 'nóut-buk',
     'ruler': 'rú-ler',
-    'scissors': 'sí-sors',
+    'scissors': 'sí-sers',
     'backpack': 'bák-pak',
     'book': 'buk',
-    'marker': 'már-ker',
+    'pen': 'pen',
     'crayon': 'kréi-on',
     'chair': 'cher',
     'red': 'red',
     'blue': 'blu',
-    'green': 'griin',
+    'green': 'grin',
     'yellow': 'yé-lou',
     'orange': 'ó-rinch',
-    'purple': 'pér-pol',
+    'purple': 'pér-pel',
     'pink': 'pink',
-    'brown': 'bráun',
+    'brown': 'braun',
     'black': 'blak',
-    'white': 'uáit',
-    'one': 'uán',
+    'white': 'uait',
+    'one': 'uan',
     'two': 'tu',
-    'three': 'zrii',
+    'three': 'zri',
     'four': 'for',
-    'five': 'fáiv',
+    'five': 'faiv',
     'six': 'siks',
     'seven': 'sé-ven',
-    'eight': 'éit',
-    'nine': 'náin',
+    'eight': 'eit',
+    'nine': 'nain',
     'ten': 'ten',
     'head': 'jed',
-    'eyes': 'áis',
-    'ears': 'írs',
-    'nose': 'nóus',
-    'mouth': 'máuz',
+    'eyes': 'ais',
+    'ears': 'irs',
+    'nose': 'nous',
+    'mouth': 'mauz',
     'hands': 'jands',
     'arms': 'arms',
     'legs': 'legs',
-    'feet': 'fiit',
+    'feet': 'fit',
     'hello': 'je-lóu',
     'good morning': 'gud mór-ning',
-    'good night': 'gud náit',
+    'good night': 'gud nait',
     'thank you': 'zénk-iu',
     'mother': 'mó-der',
     'father': 'fá-der',
@@ -228,92 +231,173 @@ PRONUNCIA = {
     'grandmother': 'gránd-mo-der',
     'grandfather': 'gránd-fa-der',
     'baby': 'béi-bi',
-    "one o'clock": 'uán o-klók',
-    "three o'clock": 'zrii o-klók',
+    "one o'clock": 'uan o-klók',
+    "three o'clock": 'zri o-klók',
     "six o'clock": 'siks o-klók',
-    "nine o'clock": 'náin o-klók',
+    "nine o'clock": 'nain o-klók',
     "ten o'clock": 'ten o-klók',
     "twelve o'clock": 'tuelv o-klók',
+    # Animales del álbum: no pasan por W, se toman de aquí en criatura().
+    'bee': 'bi',
+    'bird': 'berd',
+    'butterfly': 'bá-ter-flai',
+    'frog': 'frog',
+    'owl': 'aul',
 }
-W = lambda en, es, icono: {'en': en, 'es': es, 'icono': I(icono), **({'pronuncia': PRONUNCIA[en]} if en in PRONUNCIA else {})}
+# Lo que el reconocedor de voz puede escribir cuando el niño dijo bien la palabra: solo
+# cifras y homófonos reales. Las horas aceptan "3:00".
+ACEPTAR = {
+    'one': ['1', 'won'],
+    'two': ['2', 'to', 'too'],
+    'four': ['4', 'for'],
+    'eight': ['8', 'ate'],
+    'feet': ['feat'],
+    'thank you': ['thanks'],
+    "one o'clock": ['1:00'],
+    "three o'clock": ['3:00'],
+    "six o'clock": ['6:00'],
+    "nine o'clock": ['9:00'],
+    "ten o'clock": ['10:00'],
+    "twelve o'clock": ['12:00'],
+}
+# Frase completa que se dice al presentar la palabra: la pregunta de la hora tiene respuesta.
+FRASE = {
+    "one o'clock": "It's one o'clock.",
+    "three o'clock": "It's three o'clock.",
+    "six o'clock": "It's six o'clock.",
+    "nine o'clock": "It's nine o'clock.",
+    "ten o'clock": "It's ten o'clock.",
+    "twelve o'clock": "It's twelve o'clock.",
+}
+
+
+def W(en, es, icono):
+    p = {'en': en, 'es': es, 'icono': I(icono)}
+    for campo, tabla in (('pronuncia', PRONUNCIA), ('aceptar', ACEPTAR), ('frase', FRASE)):
+        if en in tabla:
+            p[campo] = tabla[en]
+    return p
+
+
 L = lambda quien, es, en, **mas: {'quien': quien, 'es': es, 'en': en, **mas}
 
+# Por camino: grupo A (Escucha y toca), grupo B (Listen & Catch) y las cinco que se dicen
+# en Di y brilla, tomadas de A y B y siempre con la palabra del vecino.
 PALABRAS = {
     'school': (
-        [W('pencil', 'lápiz', '270f'), W('eraser', 'borrador', '1f9fd'), W('notebook', 'cuaderno', '1f4d3'), W('ruler', 'regla', '1f4cf'), W('scissors', 'tijeras', '2702')],
-        [W('backpack', 'mochila', '1f392'), W('book', 'libro', '1f4d8'), W('marker', 'marcador', '1f58a'), W('crayon', 'crayón', '1f58d'), W('chair', 'silla', '1fa91')],
+        [W('pencil', 'lápiz', '270f'), W('eraser', 'borrador', 'eraser.webp'), W('notebook', 'cuaderno', '1f4d3'), W('ruler', 'regla', '1f4cf'), W('scissors', 'tijeras', '2702')],
+        [W('backpack', 'mochila', '1f392'), W('book', 'libro', '1f4d8'), W('pen', 'lapicero', 'pen.webp'), W('crayon', 'crayola', '1f58d'), W('chair', 'silla', '1fa91')],
     ),
     'colors': (
         [W('red', 'rojo', '1f534'), W('blue', 'azul', '1f535'), W('green', 'verde', '1f7e2'), W('yellow', 'amarillo', '1f7e1'), W('orange', 'naranja', '1f7e0')],
-        [W('purple', 'morado', '1f7e3'), W('pink', 'rosado', 'color-pink'), W('brown', 'café', 'color-brown'), W('black', 'negro', 'color-black'), W('white', 'blanco', 'color-white')],
+        [W('purple', 'morado', '1f7e3'), W('pink', 'rosado', 'color-pink'), W('brown', 'café', 'color-brown'), W('black', 'negro', 'color-black-borde'), W('white', 'blanco', 'color-white-borde')],
     ),
     'numbers': (
         [W('one', 'uno', '0031_20e3'), W('two', 'dos', '0032_20e3'), W('three', 'tres', '0033_20e3'), W('four', 'cuatro', '0034_20e3'), W('five', 'cinco', '0035_20e3')],
         [W('six', 'seis', '0036_20e3'), W('seven', 'siete', '0037_20e3'), W('eight', 'ocho', '0038_20e3'), W('nine', 'nueve', '0039_20e3'), W('ten', 'diez', '1f51f')],
     ),
     'body': (
-        [W('head', 'cabeza', '1f642'), W('eyes', 'ojos', '1f440'), W('ears', 'orejas', '1f442'), W('nose', 'nariz', '1f443')],
-        [W('mouth', 'boca', '1f444'), W('hands', 'manos', '1f64c'), W('arms', 'brazos', '1f4aa'), W('legs', 'piernas', '1f9b5'), W('feet', 'pies', '1f9b6')],
+        [W('eyes', 'ojos', '1f440'), W('ears', 'orejas', '1f442'), W('nose', 'nariz', '1f443'), W('mouth', 'boca', '1f444')],
+        [W('head', 'cabeza', 'head.webp'), W('arms', 'brazos', 'arms.webp'), W('hands', 'manos', '1f64c'), W('legs', 'piernas', 'legs.webp'), W('feet', 'pies', '1f9b6')],
     ),
     'family': (
         [W('hello', 'hola', '1f44b'), W('good morning', 'buenos días', '1f305'), W('good night', 'buenas noches', '1f319'), W('thank you', 'gracias', '1f64f')],
         [W('mother', 'mamá', '1f469'), W('father', 'papá', '1f468'), W('sister', 'hermana', '1f467'), W('brother', 'hermano', '1f466'), W('grandmother', 'abuela', '1f475'), W('grandfather', 'abuelo', '1f474'), W('baby', 'bebé', '1f476')],
     ),
 }
-TITULOS = {
-    'school': ('School objects', 'More school objects', '1f392', '1f4d8'),
-    'colors': ('Colors', 'More colors', '1f7e3', 'color-pink'),
-    'numbers': ('Numbers 1 to 5', 'Numbers 6 to 10', '0033_20e3', '0038_20e3'),
-    'body': ('My face', 'My body', '1f440', '1f64c'),
-    'family': ('Hello!', 'My family', '1f44b', '1f469'),
+DECIR = {
+    'school': ['pencil', 'eraser', 'notebook', 'book', 'chair'],
+    'colors': ['red', 'blue', 'green', 'pink', 'black'],
+    'numbers': ['one', 'three', 'five', 'eight', 'ten'],
+    'body': ['nose', 'eyes', 'mouth', 'hands', 'legs'],
+    'family': ['hello', 'thank you', 'mother', 'father', 'grandmother'],
 }
+# Títulos e iconos de las tres misiones de cada camino. La tercera lleva la palabra del vecino.
+TITULOS = {
+    'school': ('School objects', 'More school objects', 'Say the school objects', '1f392', '1f4d8', 'eraser.webp'),
+    'colors': ('Colors', 'More colors', 'Say the colors', '1f7e3', 'color-pink', '1f534'),
+    'numbers': ('Numbers 1 to 5', 'Numbers 6 to 10', 'Count out loud', '0033_20e3', '0038_20e3', '0035_20e3'),
+    'body': ('My face', 'My body', 'Say your body', '1f440', '1f64c', '1f443'),
+    'family': ('Hello!', 'My family', 'Say hello to the family', '1f44b', '1f469', '1f44b'),
+}
+# En inglés se usan contracciones (Let's, It's, I'm, That's): así las oirá el niño.
 ANTES = {
     'school': (
-        L('cosmo', 'Aquí se apagaron los útiles de la escuela. Escucha y toca el correcto.', 'The school objects lost their light here. Listen and tap the right one.'),
-        L('cosmo', '¡Quedan más útiles por encender! Escucha con atención.', 'There are more school objects to light up! Listen carefully.'),
+        L('cosmo', 'Aquí se apagaron los útiles de la escuela. Escucha y toca el correcto.', 'The school things lost their light here. Listen and tap the right one.'),
+        L('cosmo', '¡Mira! Hay más cosas del salón flotando. Atrapa la que escuches.', 'Look! More classroom things are floating. Catch the one you hear.'),
+        L('cosmo', 'Ahora tú le das voz a las palabras. Escucha, y cuando quieras, dila. ¡Cada intento cuenta!', "Now you give the words a voice. Listen, and when you're ready, say it. Every try counts!"),
     ),
     'colors': (
         L('cosmo', 'Los colores del bosque se volvieron grises. ¡Vamos a encenderlos!', "The colors of the forest turned gray. Let's light them up!"),
-        L('cosmo', 'Faltan cinco colores para que el bosque brille completo.', 'Five more colors and the forest will shine again.'),
+        L('cosmo', 'Cinco colores más vuelan por el aire. Escucha y atrapa el que te digo.', 'Five more colors are flying. Listen and catch the one I say.'),
+        L('cosmo', '¡Tu voz enciende los colores! Escucha cada uno y dilo como te salga.', 'Your voice lights up the colors! Listen to each one and say it your way.'),
     ),
     'numbers': (
-        L('cosmo', 'Los números se escondieron entre los árboles. Empecemos del uno al cinco.', 'The numbers are hiding in the trees. Let us start from one to five.'),
-        L('cosmo', '¡Ya sabes hasta el cinco! Ahora del seis al diez.', 'You know up to five! Now from six to ten.'),
+        L('cosmo', 'Los números se escondieron entre los árboles. Empecemos del uno al cinco.', "The numbers are hiding in the trees. Let's count from one to five."),
+        L('cosmo', '¡Ya llegas al cinco! Ahora atrapa del seis al diez.', 'You can count to five! Now catch six to ten.'),
+        L('cosmo', 'Abu quiere oírte contar. Escucha el número y dilo tú.', 'Abu wants to hear you count. Listen to the number and say it.'),
     ),
     'body': (
-        L('cosmo', 'Cabeza, ojos, orejas, nariz... ¿los conoces en inglés?', 'Head, eyes, ears, nose... do you know them in English?'),
-        L('cosmo', 'Ahora el resto del cuerpo: manos, brazos, piernas y pies.', 'Now the rest of the body: hands, arms, legs and feet.'),
+        L('cosmo', 'Mira tu cara: ojos, orejas, nariz y boca. Cuando oigas una, tócatela tú también.', 'Look at your face: eyes, ears, nose and mouth. When you hear one, touch it too!'),
+        L('cosmo', 'Ahora el resto del cuerpo: cabeza, brazos, manos, piernas y pies. ¡Atrápalos!', 'Now the rest of the body: head, arms, hands, legs and feet. Catch them!'),
+        L('cosmo', 'Púa quiere oírte nombrar el cuerpo. Escucha y dilo en voz alta.', 'Púa wants to hear you name the body. Listen and say it out loud.'),
     ),
     'family': (
         L('cosmo', 'Aquí aprendemos a saludar y a dar las gracias.', 'Here we learn to say hello and thank you.'),
-        L('cosmo', '¿Quién vive en tu casa? Vamos a nombrar a la familia.', 'Who lives in your house? Let us name the family.'),
+        L('cosmo', 'En cada casa vive una familia distinta. Escucha y atrapa a cada persona.', 'Every home has a different family. Listen and catch each person.'),
+        L('cosmo', 'Vamos a saludar a la familia del bosque. Escucha y dilo tú.', "Let's say hello to the forest family. Listen and say it."),
     ),
 }
+PLANTILLAS = ('escucha-toca', 'escucha-atrapa', 'di-brilla')
+SUFIJO = ('', '-2', '-3')
+# Listen & Catch: segundos que tarda un farolito en cruzar (al principio y al final; nunca
+# más rápido que el final) y distractores por ronda (la última cifra vale para el resto).
+ATRAPA = {'cruceInicio': 6, 'cruceFinal': 4.5, 'distractores': [2, 2, 3]}
 
-# Las estrellas se dan al completar cada misión y entre todas suman lo que pide el puente:
-# cinco primeras de 4, cinco segundas de 5 y la de la hora de 5 son 50.
-ESTRELLAS_POR_MISION = (4, 5)
-ESTRELLAS_HORA = 5
-RELOJES = [W("one o'clock", 'la una', '1f550'), W("three o'clock", 'las tres', '1f552'), W("six o'clock", 'las seis', '1f555'),
-           W("nine o'clock", 'las nueve', '1f558'), W("ten o'clock", 'las diez', '1f559'), W("twelve o'clock", 'las doce', '1f55b')]
+# Estrellas PROVISIONALES: 3 por misión de camino (45) y 5 en la hora (3 + 2) suman los 50 del
+# puente. La opción B de Manuel (el puente abre con todos los faroles y Mission Stars vuelve a
+# la escala de la tesis) está pendiente; ya no se exige que la suma cuadre.
+ESTRELLAS_POR_MISION = (3, 3, 3)
+ESTRELLAS_HORA = (3, 2)
+RELOJES = [W("one o'clock", 'la una', 'reloj-1.webp'), W("three o'clock", 'las tres', 'reloj-3.webp'), W("six o'clock", 'las seis', 'reloj-6.webp'),
+           W("nine o'clock", 'las nueve', 'reloj-9.webp'), W("ten o'clock", 'las diez', 'reloj-10.webp'), W("twelve o'clock", 'las doce', 'reloj-12.webp')]
+RELOJES_DECIR = ["three o'clock", "six o'clock", "twelve o'clock"]
+# Memory de repaso en el pozo de la plaza: usa las palabras de las misiones ya completadas y
+# despierta al completar la primera misión de cualquier camino.
+TEMAS = ('school', 'colors', 'numbers', 'body', 'family')
+POZO = {
+    'id': 'bosque-pozo', 'titulo': 'Memory well', 'plantilla': 'memoria', 'icono': 'mundo/objeto-6.webp', 'palabras': [],
+    'palabrasDe': [f'bosque-{tema}{s}' for tema in TEMAS for s in SUFIJO[:2]] + ['bosque-time'],
+    'requiereAlguna': [f'bosque-{tema}' for tema in TEMAS],
+    'formas': ['imagen-sonido', 'imagen-palabra'], 'parejas': 4,
+    'antes': [L('lumi', 'Este es el pozo de los recuerdos. Gira dos cartas y busca las que van juntas.', 'This is the memory well. Flip two cards and find the ones that go together.')],
+    'estrellas': 0,
+}
+
+
+def de_tema(tema, en):
+    return next(p for p in PALABRAS[tema][0] + PALABRAS[tema][1] if p['en'] == en)
+
 
 misiones = []
-for tema in ('school', 'colors', 'numbers', 'body', 'family'):
+for tema in TEMAS:
     a, b = CAMINO[tema]
-    for parte, claro in enumerate((a, b)):
+    for parte in range(3):
+        # 1: mirar y jugar con A en el claro A. 2: jugar con B en el claro B.
+        # 3: decir A y B de vuelta en el claro A, junto al vecino (el lugar se fija más abajo).
+        claro = (a, b, None)[parte]
         misiones.append({
-            'id': f'bosque-{tema}' + ('' if parte == 0 else '-2'),
+            'id': f'bosque-{tema}{SUFIJO[parte]}',
             'titulo': TITULOS[tema][parte],
-            # La primera misión del camino presenta las palabras escuchando; la segunda las
-            # practica con la voz (o escribiéndolas si no hay micrófono).
-            'plantilla': ('escucha-toca', 'di-brilla')[parte],
-            'icono': I(TITULOS[tema][2 + parte]),
-            'palabras': PALABRAS[tema][parte],
-            'x': round(claro['x']),
-            'y': round(claro['y'] - 10),
+            'plantilla': PLANTILLAS[parte],
+            'icono': I(TITULOS[tema][3 + parte]),
+            'palabras': [de_tema(tema, en) for en in DECIR[tema]] if parte == 2 else PALABRAS[tema][parte],
+            'x': round(claro['x']) if claro else None,
+            'y': round(claro['y'] - 10) if claro else None,
             'antes': [ANTES[tema][parte]],
             'estrellas': ESTRELLAS_POR_MISION[parte],
-            **({'requiere': f'bosque-{tema}'} if parte else {}),
+            **({'atrapa': ATRAPA} if parte == 1 else {}),
+            **({'requiere': f'bosque-{tema}{SUFIJO[parte - 1]}'} if parte else {}),
         })
 t['misiones'] = misiones
 c['estelas'] = [
@@ -342,37 +426,39 @@ for clave in list(E_):
     if clave.split('-')[0] in ('tito', 'abu', 'caro', 'pua', 'nuez', 'rayo'):
         del E_[clave]
 
+# Nada de comparar con otros niños ni de reírse del error, y nada en masculino genérico
+# (dos de los tres personajes pueden ser niñas): se usa "Explorer", el título del nivel.
 TEXTOS = {
     'caro': {
         'pide': [
-            L('caro', 'Hooola... Soy Caro. Voy despacito, despacito... y se me cayó una palabra de la mochila.', 'Hellooo... I am Caro. I go slowly, slowly... and a word fell out of my backpack.'),
-            L('caro', 'Está más adelante, en este camino. Escucha cuál es y tráemela, ¿sí?', 'It is up ahead, on this path. Listen to the word and bring it to me, okay?'),
+            L('caro', 'Hooola... Soy Caro. Voy despacito, despacito... y se me cayó una palabra de la mochila.', "Hellooo... I'm Caro. I go slowly, slowly... and a word fell out of my backpack."),
+            L('caro', 'Está más adelante, en este camino. Escucha cuál es y tráemela, ¿sí?', "It's up ahead, on this path. Listen to the word and bring it to me, okay?"),
         ],
-        'otra': [L('caro', 'Mmm... esa no es. ¡No pasa nada! Yo también me equivoco. Escucha otra vez.', 'Hmm... not that one. That is okay! I make mistakes too. Listen again.')],
+        'otra': [L('caro', 'Mmm... esa no es. ¡No pasa nada! Yo también me equivoco. Escucha otra vez.', "Hmm... not that one. That's okay! I make mistakes too. Listen again.")],
         'gracias': [
-            L('caro', '¡Esa es! ¡Eraser! Ya puedo borrar y volver a intentar.', 'That is it! Eraser! Now I can erase and try again.'),
-            L('caro', 'La guardé en tu álbum. ¡Gracias por no ir tan rápido como los demás!', 'I put it in your album. Thank you for not rushing like everybody else!'),
+            L('caro', '¡Esa es! ¡Eraser! Ya puedo borrar y volver a intentar.', "That's it! Eraser! Now I can erase and try again."),
+            L('caro', 'La guardé en tu álbum. ¡Gracias por tomarte tu tiempo conmigo!', 'I put it in your album. Thank you for taking your time with me!'),
         ],
         'listo': [L('caro', 'Eraser, eraser... la repito despacito para que no se me vuelva a caer.', 'Eraser, eraser... I say it slowly so it never falls again.')],
     },
     'tito': {
         'pide': [
-            L('tito', '¡Hola! Soy Tito. Mi sombrero tenía un color muy bonito... ¡y olvidé cómo se llama!', 'Hello! I am Tito. My hat had a beautiful color... and I forgot its name!'),
+            L('tito', '¡Hola! Soy Tito. Mi sombrero tenía un color muy bonito... ¡y olvidé cómo se llama!', "Hello! I'm Tito. My hat had a beautiful color... and I forgot its name!"),
             L('tito', 'La palabra rodó por este camino. Escúchala y tráemela, por favor.', 'The word rolled down this path. Listen to it and bring it to me, please.'),
         ],
-        'otra': [L('tito', '¡Uy! Ese no es el color de mi sombrero. ¡Tranquilo! Escucha otra vez y prueba otro.', 'Oops! That is not the color of my hat. No worries! Listen again and try another one.')],
+        'otra': [L('tito', '¡Uy! Ese no es el color de mi sombrero. ¡No pasa nada! Escucha otra vez y prueba otro.', "Oops! That's not the color of my hat. That's okay! Listen again and try another one.")],
         'gracias': [
             L('tito', '¡Red! ¡Mi sombrero es red! ¡Mira cómo brilla!', 'Red! My hat is red! Look how it shines!'),
-            L('tito', 'Ya está en tu álbum. ¡Eres el mejor explorador del bosque!', 'It is in your album now. You are the best explorer in the forest!'),
+            L('tito', 'Ya está en tu álbum. ¡Escuchaste con mucha atención!', "It's in your album now. You listened very carefully!"),
         ],
         'listo': [L('tito', '¡Red como mi sombrero! Cuando lo veas, acuérdate de mí.', 'Red like my hat! When you see it, think of me.')],
     },
     'abu': {
         'pide': [
-            L('abu', 'Buenas, pequeño explorador. Soy Abu. Llevo cien años contando las piedras del camino...', 'Good day, little explorer. I am Abu. I have counted the stones on this path for a hundred years...'),
-            L('abu', '...y hoy se me perdió un número. Está más adelante. Escucha bien cuál es.', '...and today I lost a number. It is up ahead. Listen carefully.'),
+            L('abu', 'Buenas, Explorer. Soy Abu. Llevo cien años contando las piedras del camino...', "Good day, Explorer. I'm Abu. I've counted the stones on this path for a hundred years..."),
+            L('abu', '...y hoy se me perdió un número. Está más adelante. Escucha bien cuál es.', "...and today I lost a number. It's up ahead. Listen carefully."),
         ],
-        'otra': [L('abu', 'Mmm, ese es otro número. Los sabios también se equivocan. Escucha de nuevo, con calma.', 'Hmm, that is a different number. Wise ones make mistakes too. Listen again, calmly.')],
+        'otra': [L('abu', 'Mmm, ese es otro número. Los sabios también se equivocan. Escucha de nuevo, con calma.', "Hmm, that's a different number. Wise ones make mistakes too. Listen again, calmly.")],
         'gracias': [
             L('abu', '¡Three! One, two, three... ¡ya puedo seguir contando!', 'Three! One, two, three... now I can keep counting!'),
             L('abu', 'Guárdalo en tu álbum. Un número nunca sobra.', 'Keep it in your album. A number is always useful.'),
@@ -381,46 +467,59 @@ TEXTOS = {
     },
     'pua': {
         'pide': [
-            L('pua', '¡Frutas, frutas frescas! Soy Púa... pero hoy no huelo nada. ¡Nada de nada!', 'Fruit, fresh fruit! I am Púa... but today I cannot smell a thing. Nothing at all!'),
+            L('pua', '¡Frutas, frutas frescas! Soy Púa... pero hoy no huelo nada. ¡Nada de nada!', "Fruit, fresh fruit! I'm Púa... but today I can't smell a thing. Nothing at all!"),
             L('pua', 'Se me perdió la palabra de lo que uso para oler. ¿Me la buscas en este camino?', 'I lost the word for what I smell with. Can you find it on this path?'),
         ],
-        'otra': [L('pua', '¡Ja, ja! Con eso no se huele. ¡No importa! Escucha otra vez y prueba con otra.', 'Ha ha! You cannot smell with that. Never mind! Listen again and try another one.')],
+        'otra': [L('pua', '¡Uy, con eso no huelo! No importa: escucha otra vez y prueba con otra.', "Oops, I can't smell with that! Never mind. Listen again and try another one.")],
         'gracias': [
-            L('pua', '¡Nose! ¡Esa es! Mmm... ¡qué rico huelen mis frutas!', 'Nose! That is it! Mmm... my fruit smells so good!'),
+            L('pua', '¡Nose! ¡Esa es! Mmm... ¡qué rico huelen mis frutas!', "Nose! That's it! Mmm... my fruit smells so good!"),
             L('pua', 'Toma, va para tu álbum. ¡Y gracias por ayudarme!', 'Here, it goes in your album. And thank you for helping me!'),
         ],
         'listo': [L('pua', 'Con mi nose huelo las frutas. ¿Y tú, qué hueles?', 'With my nose I smell the fruit. And you, what can you smell?')],
     },
     'nuez': {
         'pide': [
-            L('nuez', '¡Pan calientito! Soy Nuez, la panadera. Quiero saludar a todos los que pasan...', 'Warm bread! I am Nuez, the baker. I want to greet everyone who walks by...'),
+            L('nuez', '¡Pan calientito! Soy Nuez, la panadera. Quiero saludar a todos los que pasan...', "Warm bread! I'm Nuez, the baker. I want to greet everyone who walks by..."),
             L('nuez', '...pero olvidé cómo se saluda. La palabra se fue por este camino. ¿Me la traes?', '...but I forgot how to say it. The word went down this path. Can you bring it?'),
         ],
-        'otra': [L('nuez', '¡Casi! Esa es bonita, pero no es para saludar. Escucha otra vez. ¡Tú puedes!', 'Almost! That is a nice one, but it is not for greeting. Listen again. You can do it!')],
+        'otra': [L('nuez', '¡Buen intento! Esa palabra es bonita, pero no es para saludar. Escucha otra vez. ¡Tú puedes!', "Good try! That's a nice word, but it's not for saying hello. Listen again. You can do it!")],
         'gracias': [
             L('nuez', '¡Hello! ¡Hello, hello! ¡Ya puedo saludar a todo el bosque!', 'Hello! Hello, hello! Now I can greet the whole forest!'),
-            L('nuez', 'Queda en tu álbum. Y cuando vuelvan todas las palabras, haré una fiesta con pan.', 'It is in your album. And when all the words come back, I will make a bread party.'),
+            L('nuez', 'Queda en tu álbum. Y cuando vuelvan todas las palabras, haré una fiesta con pan.', "It's in your album. And when all the words come back, I'll bake bread for a party!"),
         ],
-        'listo': [L('nuez', '¡Hello, explorador! ¿Ves? Ya no se me olvida.', 'Hello, explorer! See? I never forget it now.')],
+        'listo': [L('nuez', '¡Hello, Explorer! ¿Ves? Ya no se me olvida.', 'Hello, Explorer! See? I never forget it now.')],
     },
 }
 
-E_['ayuda'] = {'lineas': [
-    L('cosmo', 'Toca la pantalla y caminas hasta tu dedo. ¡Puedes ir a donde quieras!', 'Touch the screen and you walk to your finger. You can go anywhere!'),
-    L('pixie', 'Sigue los dibujos del piso: cada camino te cuenta a dónde lleva.', 'Follow the pictures on the ground: each path tells you where it goes.'),
-    L('pixie', 'Los vecinos del bosque perdieron sus palabras. ¡Ayúdalos a encontrarlas!', 'The forest neighbors lost their words. Help them find them!'),
-], 'luego': 'elegir'}
-E_['cosmo'] = {'lineas': [L('cosmo', '¡Qué bueno verte! Hay faroles por encender y vecinos que necesitan ayuda.', 'Good to see you! There are lanterns to light and neighbors who need help.')], 'luego': 'elegir'}
-E_['dormida'] = {'lineas': [L('cosmo', 'Este farol todavía duerme. Despierta cuando enciendas el que está antes en este camino.', 'This lantern is still asleep. It wakes up when you light the one before it on this path.')]}
-E_['rayo'] = {'lineas': [
-    L('rayo', '¡Correo, correo! Soy Rayo. Llevo cartas al Valle de las Palabras...', 'Mail, mail! I am Rayo. I carry letters to the Valley of Words...'),
-    L('rayo', '...pero siempre llego tarde: el reloj del bosque se apagó y el puente también.', '...but I am always late: the forest clock went dark, and so did the bridge.'),
-    L('rayo', 'Completa todas las misiones. Con las 50 estrellas, el puente se enciende.', 'Complete all the missions. With all 50 stars, the bridge lights up.'),
-]}
-E_['puente-cerrado'] = {'lineas': [
-    L('nova', 'Soy Nova. Este puente lleva al Valle de las Palabras.', 'I am Nova. This bridge goes to the Valley of Words.'),
-    L('nova', 'Cada misión que completas me da estrellas. Cuando las completes todas, tendré 50 y el puente se encenderá.', 'Every mission you complete gives me stars. When you complete them all, I will have 50 and the bridge will light up.'),
-]}
+# Escenas fijas que arma este guion (las demás, como 'intro' o 'lumi', viven solo en el JSON).
+# 'rayo' y 'puente-cerrado' siguen hablando de 50 estrellas hasta que se aplique la opción B.
+ESCENAS = {
+    'ayuda': {'lineas': [
+        L('cosmo', 'Toca la pantalla y caminas hasta tu dedo. ¡Puedes ir a donde quieras!', 'Touch the screen and you walk to your finger. You can go anywhere!'),
+        L('pixie', 'Sigue los dibujos del piso: cada camino te cuenta a dónde lleva.', 'Follow the pictures on the ground: each path tells you where it goes.'),
+        L('pixie', 'Los vecinos del bosque perdieron sus palabras. ¡Ayúdalos a encontrarlas!', 'The forest neighbors lost their words. Help them find them!'),
+    ], 'luego': 'elegir'},
+    'cosmo': {'lineas': [L('cosmo', '¡Qué bueno verte! Hay faroles por encender y vecinos que necesitan ayuda.', 'Good to see you! There are lanterns to light and neighbors who need help.')], 'luego': 'elegir'},
+    'dormida': {'lineas': [L('cosmo', 'Este farol todavía duerme. Despierta cuando enciendas el que está antes en este camino.', 'This lantern is still asleep. It wakes up when you light the one before it on this path.')]},
+    'rayo': {'lineas': [
+        L('rayo', '¡Correo, correo! Soy Rayo. Llevo cartas al Valle de las Palabras...', "Mail, mail! I'm Rayo. I carry letters to the Valley of Words..."),
+        L('rayo', '...pero siempre llego tarde: el reloj del bosque se apagó y el puente también.', "...but I'm always late: the forest clock went dark, and so did the bridge."),
+        L('rayo', 'Completa todas las misiones. Con las 50 estrellas, el puente se enciende.', 'Complete all the missions. With all 50 stars, the bridge lights up.'),
+    ]},
+    'puente-cerrado': {'lineas': [
+        L('nova', 'Soy Nova. Este puente lleva al Valle de las Palabras.', "I'm Nova. This bridge goes to the Valley of Words."),
+        L('nova', 'Cada misión que completas te da estrellas. Cuando tengas 50, el puente se encenderá.', 'Every mission you complete gives you stars. When you have 50, the bridge will light up.'),
+    ]},
+}
+E_.update(ESCENAS)
+# Frases que dicen los juegos para ayudar (diseño, ronda 1, sección 7). Las revisa el pedagogo.
+AYUDAS = {
+    'memoria-tutorial': {'es': '¡Iguales! Ahora tú.', 'en': 'They match! Your turn.'},
+    'memoria-pista1': {'es': 'Escucha bien: cada dibujo tiene su palabra.', 'en': 'Listen: every picture has its word.'},
+    'memoria-pista2': {'es': 'Mira, por aquí.', 'en': 'Look, over here.'},
+    'atrapa-inicio': {'es': 'Atrapa la luz que te digo.', 'en': 'Catch the light I say.'},
+}
+c['ayudas'] = AYUDAS
 
 
 def palabra(tema, en):
@@ -467,10 +566,32 @@ objetos.append(O(8, 120, CX + 150, CY + 175, 26))  # banca
 for hx, hy in ((CX - 80, CY + 10), (CX + 85, CY + 25), (CX, CY - 105), (CX + 150, CY + 175), (CX, CY + 120)):
     ocupar(hx, hy, 70)
 for tm in misiones:
-    ocupar(tm['x'], tm['y'], 95)
+    if tm['x'] is not None:
+        ocupar(tm['x'], tm['y'], 95)
+
+
+def sitio_cerca(x0, y0, evitar, claro=None):
+    """El punto más cercano a (x0, y0) que no se encima con nada de `evitar` [(x, y, distancia)]
+    ni pisa agua; si se da un claro, mejor dentro de él. Lo usan la tercera misión de cada
+    camino (junto al vecino) y el Memory del pozo."""
+    mejor, menor = None, 1e9
+    for paso in range(24):
+        ang = math.radians(paso * 15)
+        for dist in range(90, 171, 10):
+            x, y = x0 + math.cos(ang) * dist, y0 + math.sin(ang) * dist
+            if not (120 < x < MUNDO - 120 and 200 < y < MUNDO - 60) or clase(x, y) == 'agua':
+                continue
+            if any(math.hypot(x - ex, y - ey) < d for ex, ey, d in evitar):
+                continue
+            costo = dist + (2 * max(0, math.hypot(x - claro['x'], y - claro['y']) - claro['r']) if claro else 0)
+            if costo < menor:
+                mejor, menor = (x, y), costo
+    assert mejor, 'no hay sitio cerca'
+    return round(mejor[0]), round(mejor[1])
+
 
 CASA = {'tito': (1, 190, 62), 'nuez': (2, 190, 62), 'abu': (3, 170, 56), 'pua': (9, 150, 50), 'caro': (5, 78, 12)}
-for tema in ('school', 'colors', 'numbers', 'body', 'family'):
+for tema in TEMAS:
     a, b = CAMINO[tema]
     clave, nombre, n, ancho, pide, opciones = VECINOS[tema]
     P[clave] = {'nombre': nombre, 'imagen': f'personajes/vecino-{n}.webp', 'ancho': ancho}
@@ -499,6 +620,13 @@ for tema in ('school', 'colors', 'numbers', 'body', 'family'):
         fx, fy = mejor_borde(claro, claro['r'] + 18, 34, prohibido=('camino', 'agua'))
         objetos.append(O(4, 70, fx, fy, 10, True))
         ocupar(fx, fy, 40)
+    # La tercera misión (Di y brilla), junto al vecino y sin encimarse con el primer farol,
+    # con su casa ni con los faroles: el vecino quiere oír al niño.
+    tercera = next(mi for mi in misiones if mi['id'] == f'bosque-{tema}-3')
+    primera = next(mi for mi in misiones if mi['id'] == f'bosque-{tema}')
+    evitar = [(primera['x'], primera['y'], 115), (hx, hy, 90)] + [(o['x'], o['y'], 80) for o in objetos]
+    tercera['x'], tercera['y'] = sitio_cerca(hx, hy, evitar, a)
+    ocupar(tercera['x'], tercera['y'], 60)
     # Pistas en el piso: del centro al primer claro, las palabras de la primera misión;
     # de ahí al segundo, las de la segunda.
     for parte, (p, q) in enumerate(((centro, a), (a, b))):
@@ -514,16 +642,25 @@ t['puerta'].update({'x': PUENTE[0] - 30, 'y': PUENTE[1] + 10})
 ocupar(PUENTE[0], PUENTE[1], 120)
 tramo_puente = [pt for pt in ruta_entre(centro, {'x': PUENTE[0] - 190, 'y': PUENTE[1]}) if math.hypot(pt[0] - CX, pt[1] - CY) > centro['r'] + 60]
 # La misión de la hora, a un lado del camino del puente, con Rayo el cartero más adelante.
+# La segunda (decir la hora) va entre las dos, del mismo lado: Rayo pregunta.
 hx, hy = tramo_puente[int(len(tramo_puente) * 0.3)]
+rx, ry = tramo_puente[int(len(tramo_puente) * 0.72)]
 misiones.append({
-    'id': 'bosque-time', 'titulo': 'What time is it?', 'plantilla': 'escucha-toca', 'icono': I('1f552'), 'palabras': RELOJES,
+    'id': 'bosque-time', 'titulo': 'What time is it?', 'plantilla': 'escucha-toca', 'icono': I('reloj-3.webp'), 'palabras': RELOJES,
     'x': round(hx), 'y': round(hy - 135),
     'antes': [L('cosmo', 'El reloj del bosque se detuvo. Escucha la hora y toca el reloj correcto.', 'The forest clock stopped. Listen to the time and tap the right clock.')],
-    'estrellas': ESTRELLAS_HORA,
+    'estrellas': ESTRELLAS_HORA[0],
 })
 ocupar(hx, hy - 135, 120)
-assert sum(mi['estrellas'] for mi in misiones) == t['puerta']['estrellas'], 'las estrellas de las misiones deben sumar lo que pide el puente'
-rx, ry = tramo_puente[int(len(tramo_puente) * 0.72)]
+misiones.append({
+    'id': 'bosque-time-2', 'titulo': 'Tell Rayo the time', 'plantilla': 'di-brilla', 'icono': I('reloj-12.webp'),
+    'palabras': [p for p in RELOJES if p['en'] in RELOJES_DECIR],
+    'x': round((hx + rx) / 2), 'y': round((hy + ry) / 2 - 135),
+    'antes': [L('rayo', '¡Rayo necesita saber la hora! Él pregunta "What time is it?" y tú le dices la hora.', 'Rayo needs to know the time! He asks "What time is it?" and you tell him.')],
+    'estrellas': ESTRELLAS_HORA[1],
+    'requiere': 'bosque-time',
+})
+ocupar((hx + rx) / 2, (hy + ry) / 2 - 135, 70)
 habitantes.append({'id': 'rayo', 'personaje': 'rayo', 'x': round(rx), 'y': round(ry - 55), 'escena': 'rayo'})
 ocupar(rx, ry - 55, 70)
 pasos = tramo_puente[::20][1:]
@@ -535,6 +672,10 @@ tramo_lumi = puntos_del_camino(centro, CAMINO['family'][0], 60)
 lx, ly = tramo_lumi[len(tramo_lumi) // 2]
 habitantes.append({'id': 'lumi', 'personaje': 'lumi', 'x': round(lx + 95), 'y': round(ly - 40), 'escena': 'lumi'})
 ocupar(lx + 95, ly - 40, 70)
+# Memory de repaso junto al pozo de la plaza.
+POZO['x'], POZO['y'] = sitio_cerca(CX, CY - 105, [(h['x'], h['y'], 90) for h in habitantes] + [(o['x'], o['y'], 80) for o in objetos] + [(CX, CY + 120, 80)])
+misiones.append(POZO)
+ocupar(POZO['x'], POZO['y'], 60)
 
 # Faroles, señal y arbustos de la plaza.
 for ang in (-125, -55, 30, 150):
@@ -608,7 +749,7 @@ PAL = {1: ('butterfly', 'mariposa'), 2: ('butterfly', 'mariposa'), 3: ('bee', 'a
 
 def criatura(n, ancho, movimiento, radio, rapidez, lugar):
     return {'imagen': A(n), 'ancho': ancho, 'x': lugar[0], 'y': lugar[1], 'radio': radio, 'movimiento': movimiento, 'rapidez': rapidez,
-            'palabra': {'en': PAL[n][0], 'es': PAL[n][1], 'icono': A(n)}}
+            'palabra': {'en': PAL[n][0], 'es': PAL[n][1], 'icono': A(n), 'pronuncia': PRONUNCIA[PAL[n][0]]}}
 
 
 m['criaturas'] = (

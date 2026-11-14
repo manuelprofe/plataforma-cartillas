@@ -63,7 +63,8 @@ export function DiBrilla({ mision, base, idiomaVoz, imagenFiesta, onTerminar, on
 
   useEffect(() => {
     if (fin || !palabra) return;
-    const t = luego(() => decir(palabra.en, idiomaVoz), 400);
+    // Si el contenido trae la frase completa ("It's three o'clock."), se dice como modelo.
+    const t = luego(() => decir(palabra.frase ?? palabra.en, idiomaVoz), 400);
     return () => clearTimeout(t);
   }, [indice, fin, palabra, idiomaVoz]);
 

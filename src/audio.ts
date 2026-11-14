@@ -30,7 +30,7 @@ function tono(frec: number, inicio: number, dur: number, tipo: OscillatorType = 
   osc.stop(t + dur + 0.02);
 }
 
-export type Efecto = 'toque' | 'acierto' | 'intenta' | 'salto' | 'estrella' | 'fiesta';
+export type Efecto = 'toque' | 'acierto' | 'intenta' | 'salto' | 'estrella' | 'fiesta' | 'girar' | 'volver' | 'pareja' | 'atrapar' | 'frasco';
 
 export function sonar(efecto: Efecto) {
   switch (efecto) {
@@ -55,6 +55,27 @@ export function sonar(efecto: Efecto) {
       break;
     case 'fiesta':
       [523, 659, 784, 1047].forEach((f, i) => tono(f, i * 0.11, 0.22, 'triangle'));
+      break;
+    case 'girar':
+      tono(740, 0, 0.06, 'triangle', 0.06);
+      tono(980, 0.04, 0.06, 'triangle', 0.05);
+      break;
+    case 'volver':
+      // Muy bajo: las cartas que vuelven no suenan a error.
+      tono(500, 0, 0.06, 'sine', 0.04);
+      break;
+    case 'pareja':
+      tono(660, 0, 0.1, 'triangle');
+      tono(880, 0.08, 0.1, 'triangle');
+      tono(1175, 0.16, 0.18, 'triangle', 0.09);
+      break;
+    case 'atrapar':
+      tono(880, 0, 0.08, 'triangle');
+      tono(1320, 0.06, 0.12, 'triangle', 0.08);
+      break;
+    case 'frasco':
+      tono(523, 0, 0.25, 'sine', 0.08);
+      tono(784, 0.05, 0.3, 'sine', 0.06);
       break;
   }
 }

@@ -1,9 +1,7 @@
-import { useEffect, useRef, useState, type ComponentType } from 'react';
-import type { Cartilla, Mision, PropsJuego } from './tipos';
+import { lazy, Suspense, useEffect, useMemo, useRef, useState, type ComponentType } from 'react';
+import type { Cartilla, Mision, Palabra, PropsJuego } from './tipos';
 import { Mundo, olvidarMundo } from './Mundo';
 import { ElegirHeroe } from './ElegirHeroe';
-import { EscuchaToca } from './juegos/EscuchaToca';
-import { DiBrilla } from './juegos/DiBrilla';
 import { activarAudio, sonar } from './audio';
 import { elegirHeroe, reiniciarProgreso, useProgreso } from './progreso';
 
@@ -11,10 +9,12 @@ const BASE = `${import.meta.env.BASE_URL}cartillas/ingles-3/`;
 const MS_CORTINA = 420;
 const IMAGEN_FIESTA = 'personajes/lumi-celebrate.webp';
 
-/** Qué componente juega cada plantilla del contenido. */
+/** Qué componente juega cada plantilla del contenido. Cada juego se descarga al abrirlo. */
 const JUEGOS: Record<Mision['plantilla'], ComponentType<PropsJuego>> = {
-  'escucha-toca': EscuchaToca,
-  'di-brilla': DiBrilla,
+  'escucha-toca': lazy(() => import('./juegos/EscuchaToca').then((m) => ({ default: m.EscuchaToca }))),
+  'escucha-atrapa': lazy(() => import('./juegos/EscuchaAtrapa').then((m) => ({ default: m.EscuchaAtrapa }))),
+  'di-brilla': lazy(() => import('./juegos/DiBrilla').then((m) => ({ default: m.DiBrilla }))),
+  memoria: lazy(() => import('./juegos/Memoria').then((m) => ({ default: m.Memoria }))),
 };
 
 type Pantalla = { tipo: 'inicio' } | { tipo: 'elegir' } | { tipo: 'mapa' } | { tipo: 'mision'; indice: number };
@@ -28,7 +28,18 @@ export function App() {
   const esperas = useRef<number[]>([]);
 
   const territorio = cartilla?.territorios[0];
-  const mision = pantalla.tipo === 'mision' ? territorio?.misiones[pantalla.indice] : undefined;
+  const misionDelContenido = pantalla.tipo === 'mision' ? territorio?.misiones[pantalla.indice] : undefined;
+  // Las misiones de repaso traen sus palabras de las misiones que el niño ya completó.
+  const mision = useMemo(() => {
+    if (!misionDelContenido?.palabrasDe || !territorio) return misionDelContenido;
+    const vistas = new Map<string, Palabra>();
+    territorio.misiones
+      .filter((m) => misionDelContenido.palabrasDe?.includes(m.id) && progreso.misiones[m.id])
+      .forEach((m) => m.palabras.forEach((p) => vistas.set(p.en, p)));
+    return { ...misionDelContenido, palabras: [...misionDelContenido.palabras, ...vistas.values()] };
+    // Se calcula al entrar: si el progreso cambia al terminar, el juego no debe rearmarse.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [misionDelContenido, territorio]);
   const Juego = mision ? (JUEGOS as Partial<Record<string, ComponentType<PropsJuego>>>)[mision.plantilla] : undefined;
 
   // Una plantilla que este motor no conoce no se cambia por otro juego: se vuelve al mapa.
@@ -73,6 +84,8 @@ export function App() {
   if (!cartilla || !territorio) return <div className="inicio" aria-busy="true" />;
 
   const heroe = cartilla.heroes.find((h) => h.id === progreso.heroe);
+  const hechas = territorio.misiones.filter((m) => progreso.misiones[m.id]).length;
+  const modo = territorio.idiomaPorAvance[Math.min(hechas, territorio.idiomaPorAvance.length - 1)];
 
   return (
     <>
@@ -126,6 +139,7 @@ export function App() {
       )}
 
       {mision && Juego && (
+        <Suspense fallback={<div className="mision" aria-busy="true" />}>
         <Juego
           key={mision.id}
           mision={mision}
@@ -133,9 +147,13 @@ export function App() {
           idiomaVoz={cartilla.idiomaVoz}
           imagenGuia={territorio.personajes[territorio.guia].imagen}
           imagenFiesta={IMAGEN_FIESTA}
+          ayudas={cartilla.ayudas ?? {}}
+          modo={modo}
+          vozHistoria={cartilla.idiomaHistoria}
           onTerminar={() => irA({ tipo: 'mapa' })}
           onSalir={() => irA({ tipo: 'mapa' })}
         />
+        </Suspense>
       )}
 
       {cortina && <div className={`cortina cortina--${cortina}`} aria-hidden="true" />}

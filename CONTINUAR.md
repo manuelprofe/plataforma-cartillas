@@ -143,11 +143,13 @@ resumen para la familia y reproductor de cinemáticas.
 | Sonido de ambiente del bosque (brisa, grillos, búho) | Sintetizado en el dispositivo, provisional | `src/audio.ts` |
 | Diálogos con personajes, opciones y cambio de idioma | Funciona | `src/Dialogo.tsx` |
 | Juego "escucha y toca" (plantilla que recibe contenido) | Funciona; primera misión de cada camino | `src/juegos/EscuchaToca.tsx` |
-| Juego "Di y brilla" (voz, o escribir, o decirlo sin micrófono) | Funciona; segunda misión de cada camino | `src/juegos/DiBrilla.tsx`, `src/escuchar.ts` |
+| Juego "Listen & Catch" (farolitos que bajan, frasco que se llena) | Funciona; segunda misión de cada camino | `src/juegos/EscuchaAtrapa.tsx` |
+| Juego "Di y brilla" (voz, o escribir, o decirlo sin micrófono) | Funciona; tercera misión de cada camino y la hora con voz | `src/juegos/DiBrilla.tsx`, `src/escuchar.ts` |
+| Juego "Memory" (cartas que giran, dos tableros) | Funciona; repaso en el pozo de la plaza | `src/juegos/Memoria.tsx` |
 | Final de misión compartido (premios y caritas) | Funciona | `src/juegos/CierreMision.tsx` |
 | Palabras para repasar | Se anotan al terminar cada misión y se ven en el álbum | `src/progreso.ts` (`anotarPractica`), `src/Album.tsx` |
 | Mission Stars en el dispositivo | Funciona con `localStorage` | `src/progreso.ts` |
-| Contenido de la cartilla (5 misiones del nivel 1, historia, personajes) | Solo el territorio 1 | `public/cartillas/ingles-3/cartilla.json` |
+| Contenido de la cartilla (18 misiones del nivel 1: 3 por camino, 2 de la hora y el pozo; historia, personajes) | Solo el territorio 1 | `public/cartillas/ingles-3/cartilla.json` |
 | Base de datos con seguridad por filas | Creada en Supabase; la app aún no la usa | `supabase/esquema.sql` |
 
 Comandos: `npm install`, `npm run dev`, `npm run build`. Hay `netlify.toml` listo, pero el
@@ -290,12 +292,59 @@ aquí; usar el mapa original como referencia mantiene el estilo.
   defecto y lo activa el docente.
 - Se probó a 390 px con un reconocedor simulado (acierta, dice otra cosa) y sin
   micrófono. Falta probar la voz real en un celular.
-- El guion `construir_bosque.py` ya asigna `di-brilla` a la segunda misión de cada camino;
-  el mismo cambio se hizo a mano en `cartilla.json` porque el suelo en PNG está en Canva.
+- Desde la ronda 1, `di-brilla` es la tercera misión de cada camino (ver abajo).
 
-Faltan los demás juegos propuestos en el informe: Listen & Catch, Memory con cartas que giran, Sentence Builder con
-arrastre, Paint the World, Story Theater, Town Builder y Star Duel. Cada uno debe ser una
-plantilla que reciba su contenido del paquete de la cartilla.
+**Hecho (ronda 1): tres misiones por camino, Listen & Catch y Memory.** Según
+`docs/pedagogia/ronda-1.md` (secciones 1, 2 y 6) y `docs/diseno/ronda-1.md` (1, 2, 6, 7, 9):
+
+- Cada camino: *Escucha y toca* con el grupo A en el claro A → *Listen & Catch* con el grupo
+  B en el claro B → *Di y brilla* con 5 palabras de A y B (siempre la del vecino) de vuelta en
+  el claro A, junto al vecino (`bosque-<tema>-3`). `requiere` las encadena.
+- **Listen & Catch** (`escucha-atrapa`): mirar cada palabra y luego farolitos que bajan por
+  3 o 4 carriles (objetivo + 2 distractores en las dos primeras rondas, luego 3). El ritmo lo
+  trae el contenido (`mision.atrapa`: cruce de 6 s al principio a 4,5 s al final, nunca más
+  rápido). Lo que no se atrapa vuelve a pasar; el objetivo que pasa sin tocarse vuelve 30 %
+  más lento y brillando, y se repite la palabra. Tocar otro: tiembla, queda translúcido, se
+  dice su nombre y luego el objetivo. Una ronda más al final con una palabra que costó. Un
+  solo bucle de `requestAnimationFrame` que solo cambia `transform`; se pausa si la pestaña
+  se oculta. Con movimiento reducido (decidido en JS) los farolitos quedan quietos.
+  Medido en Chromium sin cabeza a 390 px con la CPU 4 veces más lenta: 60 fps.
+- **Memory** (`memoria`): 4 parejas por tablero en 3 × 3 con Lumi al centro; un tablero por
+  forma de `mision.formas` (`imagen-sonido` y luego `imagen-palabra`). La carta de dibujo no
+  suena al girar; la otra sí. Sin reloj ni sonido de error; si no son pareja se voltean a
+  los 1,1 s. Ayuda de Lumi por niveles (3 fallos o 15 s quieto: habla; 5 fallos o 25 s:
+  marca una carta; 3 fallos más: marca una pareja) y tocar a Lumi pide ayuda. La primera vez
+  en la vida Lumi juega una pareja de ejemplo (`vistas: 'tutorial-memoria'`). Las palabras
+  que están en `repasar` entran primero.
+- **Pozo de los recuerdos** (`bosque-pozo`): Memory junto al pozo de la plaza. Despierta al
+  completar la primera misión de cualquier camino (`requiereAlguna`) y usa las palabras de
+  las misiones ya completadas (`palabrasDe`; las resuelve `App.tsx`). Da 0 estrellas.
+- Misión de la hora con voz (`bosque-time-2`, Rayo pregunta) con three, six y twelve
+  o'clock. Las horas traen `frase` ("It's three o'clock."), que se dice al presentarlas.
+- Frases de ayuda de los juegos en el contenido (`cartilla.ayudas`); se dicen en español o
+  inglés según el avance.
+- Textos corregidos (pedagogía 1.4 y 1.5), contracciones en todas las líneas en inglés,
+  pen "lapicero", crayon "crayola", partes del cuerpo reordenadas, iconos nuevos de Canva,
+  guía de pronunciación de la sección 6 (también los animales del álbum) y `aceptar` con
+  cifras y homófonos (one: 1, won; two: 2, to, too; four: 4, for; eight: 8, ate; feet: feat;
+  thank you: thanks; horas: "3:00").
+- **Estrellas provisionales:** 3 por misión de camino y 3 + 2 en la hora (suman los 50 del
+  puente); se quitó el `assert` de suma 50. **Pendiente: la opción B** (puente con todos los
+  faroles, Mission Stars con la escala de la tesis, textos de `puente-cerrado` y `rayo`,
+  estelas recalibradas). `Mundo.tsx` solo cambió para entender `requiereAlguna`.
+- Los cambios se hicieron en el guion y, con un script aparte, en `cartilla.json` (el suelo
+  PNG está en Canva). La tercera misión de cada camino y la de la hora se ubicaron en el JSON
+  con el mismo cálculo que el guion, pero sobre los datos ya escritos: al volver a correr el
+  guion pueden moverse unos píxeles. Se quitaron 4 árboles que tapaban las misiones nuevas.
+
+Pendiente de esta ronda: chispa que viaja de la carta a Lumi; onda al tocar el fondo en
+Listen & Catch; la escena `dormida` dice "el que está antes en este camino" también para el
+pozo; la fase *mirar* de la hora no muestra "3:00"; probar en un celular real (la medición de
+fps es en Chromium de escritorio con la CPU frenada, no en gama baja real).
+
+Faltan los demás juegos propuestos en el informe: Sentence Builder con arrastre, Paint the
+World, Story Theater, Town Builder y Star Duel. Cada uno debe ser una plantilla que reciba su
+contenido del paquete de la cartilla.
 
 ### 3. Conectar la aplicación a Supabase
 

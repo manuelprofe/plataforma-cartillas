@@ -14,6 +14,8 @@ export interface Palabra {
    * ("grandma" para "grandmother"). Las pone el contenido; el juego no sabe de palabras.
    */
   aceptar?: string[];
+  /** Frase completa con que se presenta la palabra ("It's three o'clock."). Opcional. */
+  frase?: string;
 }
 
 /** Cómo se narra la historia: en español, en inglés con apoyo, o solo en inglés. */
@@ -44,8 +46,8 @@ export interface Escena {
 export interface Mision {
   id: string;
   titulo: string;
-  /** Juego con que se practica: escuchar y tocar, o decir la palabra (con opción de escribirla). */
-  plantilla: 'escucha-toca' | 'di-brilla';
+  /** Juego con que se practica: escuchar y tocar, atrapar lo que se oye, decir la palabra o Memory. */
+  plantilla: 'escucha-toca' | 'escucha-atrapa' | 'di-brilla' | 'memoria';
   icono: string;
   x: number;
   y: number;
@@ -55,6 +57,27 @@ export interface Mision {
   estrellas: number;
   /** Misión que hay que completar antes para que esta despierte. */
   requiere?: string;
+  /** Despierta cuando se completa cualquiera de estas misiones. */
+  requiereAlguna?: string[];
+  /** Repaso: usa las palabras de estas misiones, solo de las ya completadas. */
+  palabrasDe?: string[];
+  /** Memory: un tablero por forma, en orden, y cuántas parejas tiene cada uno. */
+  formas?: FormaMemoria[];
+  parejas?: number;
+  /** Listen & Catch: ritmo de la caída (lo fija el contenido, no la plantilla). */
+  atrapa?: AjustesAtrapa;
+}
+
+/** Memory: la segunda carta de cada pareja es un sonido (sin texto) o la palabra escrita. */
+export type FormaMemoria = 'imagen-sonido' | 'imagen-palabra';
+
+export interface AjustesAtrapa {
+  /** Segundos que tarda un farolito en cruzar en la primera ronda. */
+  cruceInicio: number;
+  /** Segundos en la última ronda: nunca se baja más rápido que esto. */
+  cruceFinal: number;
+  /** Distractores por ronda; la última cifra vale para las rondas que siguen. */
+  distractores: number[];
 }
 
 /** Lo que recibe toda plantilla de juego. */
@@ -65,6 +88,10 @@ export interface PropsJuego {
   /** Guía del territorio, para los juegos que lo muestran. */
   imagenGuia: string;
   imagenFiesta: string;
+  /** Frases de ayuda de los juegos (Lumi, Cosmo); se dicen en el idioma que toca según el avance. */
+  ayudas: Record<string, Frase>;
+  modo: ModoIdioma;
+  vozHistoria: string;
   onTerminar: () => void;
   onSalir: () => void;
 }
@@ -173,4 +200,11 @@ export interface Cartilla {
   heroes: Heroe[];
   estelas: Estela[];
   territorios: Territorio[];
+  /** Frases de ayuda que dicen los juegos ('memoria-pista1'...). */
+  ayudas?: Record<string, Frase>;
+}
+
+export interface Frase {
+  es: string;
+  en: string;
 }

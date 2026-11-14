@@ -112,7 +112,8 @@ export function Mundo({ territorio, heroe, estelas, base, vozIngles, vozEspanol,
     return { x0: x - 1500, y0: y - 1500, x1: x + 1500, y1: y + 1500 };
   });
   const enVista = (x: number, y: number) => x > ventana.x0 && x < ventana.x1 && y > ventana.y0 && y < ventana.y1;
-  const despierta = (m: { requiere?: string }) => !m.requiere || Boolean(progreso.misiones[m.requiere]);
+  const despierta = (m: { requiere?: string; requiereAlguna?: string[] }) =>
+    (!m.requiere || Boolean(progreso.misiones[m.requiere])) && (!m.requiereAlguna || m.requiereAlguna.some((id) => progreso.misiones[id]));
   // Palabra que el niño lleva de vuelta a un habitante.
   const [carga, setCarga] = useState<Palabra | null>(cargaGuardada);
   const ponerCarga = (p: Palabra | null) => {

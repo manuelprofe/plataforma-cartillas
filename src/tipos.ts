@@ -37,7 +37,8 @@ export interface Escena {
 export interface Mision {
   id: string;
   titulo: string;
-  plantilla: 'escucha-toca';
+  /** Juego con que se practica: escuchar y tocar, o decir la palabra (con opción de escribirla). */
+  plantilla: 'escucha-toca' | 'di-brilla';
   icono: string;
   x: number;
   y: number;

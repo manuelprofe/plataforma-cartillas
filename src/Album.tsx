@@ -1,11 +1,14 @@
 // Álbum del explorador: las palabras que el niño encontró en el mundo, para
-// volver a escucharlas, y las estelas que ha ganado con sus estrellas.
+// volver a escucharlas, las estelas que ha ganado con sus estrellas y las palabras de
+// las misiones que conviene repasar porque costaron un poco.
 import type { Estela, Palabra } from './tipos';
 import { decir, sonar } from './audio';
 import { elegirEstela } from './progreso';
 
 interface Props {
   palabras: Palabra[];
+  /** Palabras de misión que costaron; se muestran primero para volver a oírlas. */
+  repasar: Palabra[];
   total: number;
   estelas: Estela[];
   estela: string;
@@ -15,10 +18,10 @@ interface Props {
   onCerrar: () => void;
 }
 
-export function Album({ palabras, total, estelas, estela, estrellas, base, vozIngles, onCerrar }: Props) {
+export function Album({ palabras, repasar, total, estelas, estela, estrellas, base, vozIngles, onCerrar }: Props) {
   return (
     <div className="panel" role="dialog" aria-label="Álbum de palabras">
-      <div className="panel__caja">
+      <div className={`panel__caja${repasar.length ? ' panel__caja--repasar' : ''}`}>
         <div className="panel__cabeza">
           <strong>
             📖 {palabras.length}/{total}
@@ -50,6 +53,29 @@ export function Album({ palabras, total, estelas, estela, estrellas, base, vozIn
             );
           })}
         </div>
+
+        {repasar.length > 0 && (
+          <div className="repasar" aria-label="Para repasar">
+            <span className="repasar__marca" aria-hidden="true">
+              🔁
+            </span>
+            {repasar.map((p) => (
+              <button
+                key={p.en}
+                type="button"
+                className="repasar__una"
+                onClick={() => {
+                  sonar('toque');
+                  decir(p.en, vozIngles);
+                }}
+                aria-label={`Repasar ${p.en}`}
+              >
+                <img src={base + p.icono} alt="" width="44" height="44" draggable={false} />
+                <span lang="en">{p.en}</span>
+              </button>
+            ))}
+          </div>
+        )}
 
         {palabras.length === 0 ? (
           <p className="panel__vacio">✦ 🦋 🐸 → 📖</p>

@@ -65,7 +65,7 @@
     {
      "id": "bosque-school-2",
      "titulo": "More school objects",
-     "plantilla": "escucha-toca",
+     "plantilla": "di-brilla",
      "icono": "iconos/1f4d8.svg",
      "palabras": [
       {
@@ -152,7 +152,7 @@
     {
      "id": "bosque-colors-2",
      "titulo": "More colors",
-     "plantilla": "escucha-toca",
+     "plantilla": "di-brilla",
      "icono": "iconos/color-pink.svg",
      "palabras": [
       {
@@ -239,7 +239,7 @@
     {
      "id": "bosque-numbers-2",
      "titulo": "Numbers 6 to 10",
-     "plantilla": "escucha-toca",
+     "plantilla": "di-brilla",
      "icono": "iconos/0038_20e3.svg",
      "palabras": [
       {
@@ -321,7 +321,7 @@
     {
      "id": "bosque-body-2",
      "titulo": "My body",
-     "plantilla": "escucha-toca",
+     "plantilla": "di-brilla",
      "icono": "iconos/1f64c.svg",
      "palabras": [
       {
@@ -403,7 +403,7 @@
     {
      "id": "bosque-family-2",
      "titulo": "My family",
-     "plantilla": "escucha-toca",
+     "plantilla": "di-brilla",
      "icono": "iconos/1f469.svg",
      "palabras": [
       {

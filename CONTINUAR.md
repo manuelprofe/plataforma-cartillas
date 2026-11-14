@@ -51,6 +51,36 @@ basada en el trabajo de grado de Manuel Vega en la I.E. Jorge Barco Mora (Los Pa
   después replicar en los otros territorios.
 - La historia se narra en español al principio y en inglés hacia los niveles finales.
 
+Respuestas de Manuel del 14 de noviembre a las preguntas "como niño" y "como padre":
+
+- **Varios juegos**, no uno solo repetido (ver punto 2).
+- **Voz con micrófono, pero nunca solo con micrófono.** Si el computador o el celular no
+  tiene micrófono o no funciona, el niño debe poder escribir la palabra. Hecho en
+  "Di y brilla"; además hay un botón para decirla en voz alta sin micrófono (para los que
+  aún no escriben, regla 2).
+- **Cinemáticas en video.** Manuel usa una página que convierte un guion en video
+  ("viani pro", nombre por confirmar: dijo que pasaría el enlace). Idea: escribir guiones
+  cortos para la llegada a cada territorio y el cierre de cada camino, generarlos allá y
+  traerlos como archivos del paquete de la cartilla. Ojo con el peso (regla 4): video corto,
+  baja resolución, cargado solo cuando se va a ver y siempre con botón para saltarlo.
+- **"¿Por qué volver mañana?"**: ya resuelto con el plan por semanas: la docente pone las
+  clases y las misiones cambian cada día según el tema de la semana.
+- **Personificar al personaje** (vestirlo, cambiarle cosas): viable si Claude lo ve viable.
+  Propuesta: accesorios que se abren con estrellas, igual que las estelas.
+- **Personajes con movimiento**: sigue pendiente, como estaba acordado (Rive).
+- **Resumen para la familia**: al final, qué se aprendió, qué se repasó y qué tema hay que
+  reforzar porque costó. Primer paso hecho: el progreso anota las palabras que costaron
+  (`repasar`) y el álbum las muestra arriba con 🔁 para volver a oírlas. Falta la vista
+  de resumen para el adulto.
+- **Voz de los personajes**: se corrige más adelante (servicio de voz con IA o grabaciones).
+- **Tiempo diario: unos 15 minutos.** Hay que estimar la duración de cada actividad para
+  que la sesión del día quepa ahí.
+- **Sin datos móviles** sería ideal; si es muy difícil, basta con que funcione con internet.
+  Recomendación: sí se puede con una aplicación instalable que guarda la cartilla en el
+  celular (service worker) y sube el progreso cuando vuelve la conexión.
+- **Algo para hacer juntos en casa**: no como obligación (muchos padres trabajan); queda
+  como recomendación que la docente da a las familias.
+
 ## Qué hay construido
 
 | Pieza | Estado | Dónde |
@@ -65,7 +95,10 @@ basada en el trabajo de grado de Manuel Vega en la I.E. Jorge Barco Mora (Los Pa
 | Elegir personaje, álbum de palabras y mini mapa | Funciona | `src/ElegirHeroe.tsx`, `src/Album.tsx`, `src/MiniMapa.tsx` |
 | Sonido de ambiente del bosque (brisa, grillos, búho) | Sintetizado en el dispositivo, provisional | `src/audio.ts` |
 | Diálogos con personajes, opciones y cambio de idioma | Funciona | `src/Dialogo.tsx` |
-| Juego "escucha y toca" (plantilla que recibe contenido) | Funciona; es el único juego | `src/juegos/EscuchaToca.tsx` |
+| Juego "escucha y toca" (plantilla que recibe contenido) | Funciona; primera misión de cada camino | `src/juegos/EscuchaToca.tsx` |
+| Juego "Di y brilla" (voz, o escribir, o decirlo sin micrófono) | Funciona; segunda misión de cada camino | `src/juegos/DiBrilla.tsx`, `src/escuchar.ts` |
+| Final de misión compartido (premios y caritas) | Funciona | `src/juegos/CierreMision.tsx` |
+| Palabras para repasar | Se anotan al terminar cada misión y se ven en el álbum | `src/progreso.ts` (`anotarPractica`), `src/Album.tsx` |
 | Mission Stars en el dispositivo | Funciona con `localStorage` | `src/progreso.ts` |
 | Contenido de la cartilla (5 misiones del nivel 1, historia, personajes) | Solo el territorio 1 | `public/cartillas/ingles-3/cartilla.json` |
 | Base de datos con seguridad por filas | Creada en Supabase; la app aún no la usa | `supabase/esquema.sql` |
@@ -188,8 +221,27 @@ aquí; usar el mapa original como referencia mantiene el estilo.
 
 ### 2. Más juego dentro de las misiones
 
-Las cinco misiones usan la misma plantilla. Faltan los juegos propuestos en el informe:
-Speak & Shine (voz), Listen & Catch, Memory con cartas que giran, Sentence Builder con
+**Hecho: "Di y brilla" (Speak & Shine).** La segunda misión de cada camino ya no repite
+"escucha y toca": el niño ve y oye la palabra, toca 🎤 y la dice. Cómo funciona:
+
+- Si se reconoce la palabra, la carta brilla. Si dice otra cosa, se aplaude el intento y
+  se le vuelve a decir la palabra; nunca hay error en pantalla. Si no habló, 👂 y repite.
+- ⌨️ abre un campo para escribirla. Igual o con una letra de diferencia cuenta como
+  intento bueno; si no, se le muestra cómo se escribe y puede seguir igual.
+- Sin micrófono (no existe, permiso negado, sin conexión) el 🎤 se cambia solo por 🗣️
+  "ya la dije en voz alta" y queda el ⌨️. Al niño no se le muestra nada técnico.
+- Nada se graba ni se guarda (regla 7). **Para revisar con el auditor y con Manuel:** en
+  Chrome y Edge el reconocimiento de voz suele enviar el audio a los servidores de Google
+  o Microsoft para convertirlo en texto. Donde el navegador ofrece reconocerlo dentro del
+  dispositivo, el código lo prefiere (`processLocally`). Antes del piloto hay que decidir
+  si esto se informa en el consentimiento de las familias o si el micrófono se apaga por
+  defecto y lo activa el docente.
+- Se probó a 390 px con un reconocedor simulado (acierta, dice otra cosa) y sin
+  micrófono. Falta probar la voz real en un celular.
+- El guion `construir_bosque.py` ya asigna `di-brilla` a la segunda misión de cada camino;
+  el mismo cambio se hizo a mano en `cartilla.json` porque el suelo en PNG está en Canva.
+
+Faltan los demás juegos propuestos en el informe: Listen & Catch, Memory con cartas que giran, Sentence Builder con
 arrastre, Paint the World, Story Theater, Town Builder y Star Duel. Cada uno debe ser una
 plantilla que reciba su contenido del paquete de la cartilla.
 
@@ -216,7 +268,9 @@ clave de ese servicio por el formulario seguro, nunca en el chat.
 - Faltan los territorios 2, 3 y 4 y su contenido.
 - El filtro que apaga y enciende el color del bosque puede ser pesado en celulares de gama
   baja; medirlo.
-- Vista para la familia y medición antes/después del piloto: propuestas, sin empezar.
+- Vista para la familia (resumen de lo aprendido y lo que hay que reforzar) y medición
+  antes/después del piloto: los datos de "qué costó" ya se guardan; falta la pantalla.
+- Sesión diaria de unos 15 minutos: medir cuánto dura cada misión y armar la del día.
 
 ## Ideas anotadas por Manuel (sin desarrollar todavía)
 

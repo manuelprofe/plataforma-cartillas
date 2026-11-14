@@ -244,7 +244,9 @@ for tema in ('school', 'colors', 'numbers', 'body', 'family'):
         misiones.append({
             'id': f'bosque-{tema}' + ('' if parte == 0 else '-2'),
             'titulo': TITULOS[tema][parte],
-            'plantilla': 'escucha-toca',
+            # La primera misión del camino presenta las palabras escuchando; la segunda las
+            # practica con la voz (o escribiéndolas si no hay micrófono).
+            'plantilla': ('escucha-toca', 'di-brilla')[parte],
             'icono': I(TITULOS[tema][2 + parte]),
             'palabras': PALABRAS[tema][parte],
             'x': round(claro['x']),

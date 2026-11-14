@@ -3,6 +3,7 @@ import type { Cartilla } from './tipos';
 import { Mundo, olvidarMundo } from './Mundo';
 import { ElegirHeroe } from './ElegirHeroe';
 import { EscuchaToca } from './juegos/EscuchaToca';
+import { DiBrilla } from './juegos/DiBrilla';
 import { activarAudio, sonar } from './audio';
 import { elegirHeroe, reiniciarProgreso, useProgreso } from './progreso';
 
@@ -106,7 +107,19 @@ export function App() {
         <Mundo territorio={territorio} heroe={heroe} estelas={cartilla.estelas} base={BASE} vozIngles={cartilla.idiomaVoz} vozEspanol={cartilla.idiomaHistoria} onEntrar={(indice) => irA({ tipo: 'mision', indice })} />
       )}
 
-      {pantalla.tipo === 'mision' && (
+      {pantalla.tipo === 'mision' && territorio.misiones[pantalla.indice].plantilla === 'di-brilla' && (
+        <DiBrilla
+          key={territorio.misiones[pantalla.indice].id}
+          mision={territorio.misiones[pantalla.indice]}
+          base={BASE}
+          idiomaVoz={cartilla.idiomaVoz}
+          imagenFiesta="personajes/lumi-celebrate.webp"
+          onTerminar={() => irA({ tipo: 'mapa' })}
+          onSalir={() => irA({ tipo: 'mapa' })}
+        />
+      )}
+
+      {pantalla.tipo === 'mision' && territorio.misiones[pantalla.indice].plantilla !== 'di-brilla' && (
         <EscuchaToca
           key={territorio.misiones[pantalla.indice].id}
           mision={territorio.misiones[pantalla.indice]}

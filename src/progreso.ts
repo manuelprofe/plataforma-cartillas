@@ -28,6 +28,8 @@ export interface Progreso {
   ayudados: string[];
   /** Habitante al que se le está buscando su palabra. */
   encargo?: string;
+  /** Palabras de misión que le costaron: salen de aquí cuando las vuelve a hacer sin tropiezo. */
+  repasar: Palabra[];
 }
 
 // Las estrellas se ganan al completar una misión entera, no por cada acierto. Cada misión
@@ -39,7 +41,7 @@ export interface Premio {
 }
 
 const CLAVE = 'pc_progreso_v3';
-const VACIO: Progreso = { estrellas: 0, vistas: [], misiones: {}, album: [], ayudados: [] };
+const VACIO: Progreso = { estrellas: 0, vistas: [], misiones: {}, album: [], ayudados: [], repasar: [] };
 
 function leer(): Progreso {
   try {
@@ -103,6 +105,18 @@ export function fijarEncargo(habitante: string | undefined) {
 
 export function marcarAyudado(habitante: string) {
   if (!estado.ayudados.includes(habitante)) guardar({ ...estado, ayudados: [...estado.ayudados, habitante], encargo: undefined });
+}
+
+/**
+ * Anota cómo le fue con cada palabra de una misión: las que le costaron quedan para repasar
+ * y las que salieron sin tropiezo se quitan de esa lista. Es para el resumen de la familia
+ * y del docente; nunca quita estrellas.
+ */
+export function anotarPractica(bien: Palabra[], costaron: Palabra[]) {
+  const fuera = new Set(bien.map((p) => p.en));
+  const quedan = estado.repasar.filter((p) => !fuera.has(p.en));
+  const nuevas = costaron.filter((p) => !quedan.some((q) => q.en === p.en));
+  guardar({ ...estado, repasar: [...quedan, ...nuevas] });
 }
 
 /** Lo que se gana al terminar una misión. Las estrellas nunca se quitan. */

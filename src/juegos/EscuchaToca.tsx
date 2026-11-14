@@ -2,20 +2,13 @@
 // palabras de la misión y sirve igual para cualquier cartilla.
 import { useEffect, useRef, useState } from 'react';
 import type { Mision, Palabra } from '../tipos';
-import { premiosDeMision, registrarMision, type Premio } from '../progreso';
+import { anotarPractica } from '../progreso';
+import { CierreMision } from './CierreMision';
+import { mezclar } from './mezclar';
 import { callar, decir, sonar } from '../audio';
 
 const RONDAS = 6;
 const OPCIONES = 3;
-
-function mezclar<T>(lista: T[]): T[] {
-  const copia = [...lista];
-  for (let i = copia.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [copia[i], copia[j]] = [copia[j], copia[i]];
-  }
-  return copia;
-}
 
 interface Props {
   mision: Mision;
@@ -38,7 +31,7 @@ export function EscuchaToca({ mision, base, idiomaVoz, imagenGuia, imagenFiesta,
   const [falladas, setFalladas] = useState<string[]>([]);
   const [resuelta, setResuelta] = useState(false);
   const [errores, setErrores] = useState(0);
-  const [premios, setPremios] = useState<Premio[] | null>(null);
+  const [costaron, setCostaron] = useState<string[]>([]);
   const esperas = useRef<number[]>([]);
 
   const luego = (f: () => void, ms: number) => {
@@ -98,13 +91,9 @@ export function EscuchaToca({ mision, base, idiomaVoz, imagenGuia, imagenFiesta,
       sonar('intenta');
       setFalladas([...falladas, p.en]);
       setErrores(errores + 1);
+      if (!costaron.includes(objetivo.en)) setCostaron([...costaron, objetivo.en]);
       luego(() => decir(objetivo.en, idiomaVoz), 500);
     }
-  };
-
-  const autoevaluar = (valor: number) => {
-    sonar('estrella');
-    setPremios(registrarMision(mision.id, errores, valor, mision.estrellas));
   };
 
   const puntos = fase === 'mirar' ? seleccion : orden;
@@ -167,38 +156,19 @@ export function EscuchaToca({ mision, base, idiomaVoz, imagenGuia, imagenFiesta,
       )}
 
       {fase === 'cierre' && (
-        <main className="cierre">
-          <img className="cierre__guia" src={base + imagenFiesta} alt="" width="170" height="152" draggable={false} />
-          {premios === null ? (
-            <>
-              {premiosDeMision(mision.id, errores, mision.estrellas).map((p) => (
-                <div className="premio" key={p.clave}>
-                  {p.clave === 'completar' ? `★ +${p.estrellas}` : '🏅'}
-                </div>
-              ))}
-              <div className="caritas" role="group" aria-label="¿Cómo te sentiste?">
-                {[
-                  ['😄', 3],
-                  ['🙂', 2],
-                  ['🤔', 1],
-                ].map(([cara, valor]) => (
-                  <button key={valor} type="button" className="carita" onClick={() => autoevaluar(valor as number)} aria-label={`Me sentí ${cara}`}>
-                    {cara}
-                  </button>
-                ))}
-              </div>
-            </>
-          ) : (
-            <>
-              <div className="premio premio--total">
-                {premios.some((p) => p.clave === 'completar') ? `★ +${premios.reduce((a, p) => a + p.estrellas, 0)}` : premios.length ? '🏅' : '👍'}
-              </div>
-              <button type="button" className="boton-seguir" onClick={onTerminar} aria-label="Volver al mapa">
-                ➜
-              </button>
-            </>
-          )}
-        </main>
+        <CierreMision
+          mision={mision}
+          errores={errores}
+          base={base}
+          imagenFiesta={imagenFiesta}
+          alRegistrar={() =>
+            anotarPractica(
+              seleccion.filter((p) => !costaron.includes(p.en)),
+              seleccion.filter((p) => costaron.includes(p.en)),
+            )
+          }
+          onTerminar={onTerminar}
+        />
       )}
     </div>
   );

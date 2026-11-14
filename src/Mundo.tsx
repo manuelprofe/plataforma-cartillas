@@ -886,7 +886,7 @@ export function Mundo({ territorio, heroe, estelas, base, vozIngles, vozEspanol,
       )}
 
       {panel === 'album' && (
-        <Album palabras={progreso.album} total={palabrasDelMundo} estelas={estelas} estela={estela.id} estrellas={progreso.estrellas} base={base} vozIngles={vozIngles} onCerrar={() => setPanel(null)} />
+        <Album palabras={progreso.album} repasar={progreso.repasar} total={palabrasDelMundo} estelas={estelas} estela={estela.id} estrellas={progreso.estrellas} base={base} vozIngles={vozIngles} onCerrar={() => setPanel(null)} />
       )}
       {panel === 'mapa' && (
         <MiniMapa

@@ -81,6 +81,24 @@ Respuestas de Manuel del 14 de noviembre a las preguntas "como niño" y "como pa
 - **Algo para hacer juntos en casa**: no como obligación (muchos padres trabajan); queda
   como recomendación que la docente da a las familias.
 
+Decisiones de Manuel del 14 de noviembre (segunda tanda):
+
+- **Tres misiones por camino** (las misiones son muy cortas): escuchar y tocar, Listen &
+  Catch, y Di y brilla con palabras de las dos primeras (propuesta del pedagogo en
+  `docs/pedagogia/ronda-1.md`).
+- **"Marker" se cambia por "pen"; en Los Patios le dicen "lapicero".** El icono de eraser
+  parece una esponja: se rehace.
+- **Iconos y accesorios se diseñan en Canva.** Accesorios aprobados tal como están en
+  `docs/diseno/ronda-1.md`.
+- **Arte del mapa de nivel profesional**, con un equipo de diseñadores gráficos
+  (agente `disenador-grafico`).
+- **"Empezar de nuevo" pasa a la zona de la familia**, con confirmación.
+- **Cinemáticas con Gemini (Veo) u otra herramienta similar, no con Canva.** Claude entrega
+  guiones y prompts; Manuel genera los videos. Forma adaptativa: versión vertical 9:16 para
+  celular y horizontal 16:9 para computador o proyector; el reproductor elige.
+  Se ven solas la primera vez (con botón de saltar) y quedan en "Recuerdos" en el álbum para
+  volver a verlas (decisión de Claude, delegada por Manuel).
+
 ## Qué hay construido
 
 | Pieza | Estado | Dónde |

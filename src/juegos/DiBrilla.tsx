@@ -101,6 +101,7 @@ export function DiBrilla({ mision, base, idiomaVoz, imagenFiesta, onTerminar, on
       cancelar.current = () => {};
       if (r.tipo === 'sin-micro') {
         // Sin micrófono en esta ronda: se ofrece la mano o escribir, sin decirle nada técnico.
+        sonar('salto');
         setSinMicroAhora(true);
         setEstado('listo');
       } else if (r.tipo === 'silencio') {
@@ -150,7 +151,7 @@ export function DiBrilla({ mision, base, idiomaVoz, imagenFiesta, onTerminar, on
   return (
     <div className="mision">
       <header className="mision__barra">
-        <button type="button" className="boton-salir" onClick={onSalir} aria-label="Volver al mapa">
+        <button type="button" className="boton-salir" onClick={() => { detener(); onSalir(); }} aria-label="Volver al mapa">
           ✕
         </button>
         {!fin && (
@@ -164,7 +165,7 @@ export function DiBrilla({ mision, base, idiomaVoz, imagenFiesta, onTerminar, on
 
       {!fin && palabra && (
         <main className={`decir decir--${estado}`}>
-          <button type="button" className="carta-grande decir__carta" key={palabra.en} onClick={oir} aria-label={`Escuchar ${palabra.en}`}>
+          <button type="button" className="carta-grande decir__carta" key={palabra.en} onClick={oir} aria-label={mostrarEscrita ? `Escuchar ${palabra.en}` : 'Escuchar la palabra'}>
             <img src={base + palabra.icono} alt="" width="150" height="150" draggable={false} />
             {/* Antes de intentarlo solo se ve cómo suena: si estuviera escrita, escribirla no sería reto. */}
             {mostrarEscrita || !palabra.pronuncia ? (

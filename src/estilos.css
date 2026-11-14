@@ -1725,6 +1725,7 @@ img {
 .microfono--mano {
   background: var(--menta);
   box-shadow: 0 8px 0 #0f8f80, 0 0 0 10px rgb(25 198 177 / 0.2);
+  animation: entrar-carta 0.4s cubic-bezier(0.2, 1.4, 0.4, 1);
 }
 
 .boton-redondo {

@@ -1,7 +1,7 @@
 // Plantilla de juego "escucha y toca". No contiene vocabulario: recibe las
 // palabras de la misión y sirve igual para cualquier cartilla.
 import { useEffect, useRef, useState } from 'react';
-import type { Mision, Palabra } from '../tipos';
+import type { Palabra, PropsJuego } from '../tipos';
 import { anotarPractica } from '../progreso';
 import { CierreMision } from './CierreMision';
 import { mezclar } from './mezclar';
@@ -10,19 +10,9 @@ import { callar, decir, sonar } from '../audio';
 const RONDAS = 6;
 const OPCIONES = 3;
 
-interface Props {
-  mision: Mision;
-  base: string;
-  idiomaVoz: string;
-  imagenGuia: string;
-  imagenFiesta: string;
-  onTerminar: () => void;
-  onSalir: () => void;
-}
-
 type Fase = 'mirar' | 'jugar' | 'cierre';
 
-export function EscuchaToca({ mision, base, idiomaVoz, imagenGuia, imagenFiesta, onTerminar, onSalir }: Props) {
+export function EscuchaToca({ mision, base, idiomaVoz, imagenGuia, imagenFiesta, onTerminar, onSalir }: PropsJuego) {
   const [seleccion] = useState(() => mezclar(mision.palabras).slice(0, RONDAS));
   const [orden] = useState(() => mezclar(seleccion));
   const [fase, setFase] = useState<Fase>('mirar');

@@ -147,6 +147,13 @@ export function registrarMision(id: string, errores: number, autoeval: number | 
   return premios;
 }
 
+/** Guarda cómo se sintió con una misión ya registrada. No suma estrellas. */
+export function fijarAutoevaluacion(id: string, autoeval: number) {
+  const previo = estado.misiones[id];
+  if (!previo || previo.autoeval === autoeval) return;
+  guardar({ ...estado, misiones: { ...estado.misiones, [id]: { ...previo, autoeval } } });
+}
+
 export function reiniciarProgreso() {
   guardar(VACIO);
 }

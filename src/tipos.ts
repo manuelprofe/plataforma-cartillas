@@ -9,6 +9,11 @@ export interface Palabra {
   icono: string;
   /** Cómo suena, escrito como se lee en español ("pén-sil"). El juego de voz la muestra en vez de la palabra. */
   pronuncia?: string;
+  /**
+   * Otras formas en que el reconocedor de voz puede escribir lo que el niño dijo bien
+   * ("grandma" para "grandmother"). Las pone el contenido; el juego no sabe de palabras.
+   */
+  aceptar?: string[];
 }
 
 /** Cómo se narra la historia: en español, en inglés con apoyo, o solo en inglés. */
@@ -50,6 +55,18 @@ export interface Mision {
   estrellas: number;
   /** Misión que hay que completar antes para que esta despierte. */
   requiere?: string;
+}
+
+/** Lo que recibe toda plantilla de juego. */
+export interface PropsJuego {
+  mision: Mision;
+  base: string;
+  idiomaVoz: string;
+  /** Guía del territorio, para los juegos que lo muestran. */
+  imagenGuia: string;
+  imagenFiesta: string;
+  onTerminar: () => void;
+  onSalir: () => void;
 }
 
 export interface Personaje {

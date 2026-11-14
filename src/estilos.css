@@ -1703,6 +1703,7 @@ img {
   line-height: 1;
   box-shadow: 0 8px 0 #c93d7b, 0 0 0 10px rgb(255 95 162 / 0.2);
   transition: transform 0.12s;
+  position: relative;
 }
 
 .microfono:active {
@@ -1710,8 +1711,15 @@ img {
   box-shadow: 0 2px 0 #c93d7b;
 }
 
-.microfono.es-escuchando {
-  animation: escuchando 1s ease-in-out infinite;
+/* Mientras escucha, un anillo sale del micrófono. Solo se anima transform y opacity. */
+.microfono.es-escuchando::after {
+  content: '';
+  position: absolute;
+  inset: -10px;
+  border-radius: 50%;
+  border: 6px solid rgb(255 95 162 / 0.6);
+  pointer-events: none;
+  animation: escuchando 1.2s ease-out infinite;
 }
 
 .microfono--mano {
@@ -1773,8 +1781,8 @@ img {
 }
 
 @keyframes escuchando {
-  0%, 100% { box-shadow: 0 8px 0 #c93d7b, 0 0 0 10px rgb(255 95 162 / 0.25); }
-  50% { box-shadow: 0 8px 0 #c93d7b, 0 0 0 26px rgb(255 95 162 / 0.08); }
+  from { transform: scale(1); opacity: 1; }
+  to { transform: scale(1.35); opacity: 0; }
 }
 
 @keyframes girar-brillo {
@@ -1793,5 +1801,12 @@ img {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+
+  /* Sin movimiento, el anillo queda quieto y visible para que se sepa que está escuchando. */
+  .microfono.es-escuchando::after {
+    animation: none !important;
+    transform: scale(1.12);
+    opacity: 1;
   }
 }

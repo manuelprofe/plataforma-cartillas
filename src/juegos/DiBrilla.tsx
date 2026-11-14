@@ -1,9 +1,11 @@
 // Plantilla "Di y brilla" (Speak & Shine): el niño escucha la palabra y la dice.
 // No contiene vocabulario: recibe las palabras de la misión.
 // Se premia el intento (regla 6): cualquier cosa que diga cuenta y nunca se marca un error.
+// Lo que oye el reconocedor no cuenta como tropiezo (falla con voces de niños y con ruido):
+// solo lo que escribe y no le sale queda para repasar.
 // Si no hay micrófono, puede escribirla o decirla en voz alta y tocar la mano.
 import { useEffect, useRef, useState, type FormEvent } from 'react';
-import type { Mision } from '../tipos';
+import type { PropsJuego } from '../tipos';
 import { anotarPractica } from '../progreso';
 import { callar, decir, sonar } from '../audio';
 import { comparaEscrito, escuchar, hayMicrofono, seOyo } from '../escuchar';
@@ -12,28 +14,44 @@ import { mezclar } from './mezclar';
 
 const RONDAS = 5;
 
-interface Props {
-  mision: Mision;
-  base: string;
-  idiomaVoz: string;
-  imagenFiesta: string;
-  onTerminar: () => void;
-  onSalir: () => void;
-}
-
 /** Qué pasa con la palabra de esta ronda. */
 type Estado = 'listo' | 'escuchando' | 'brilla' | 'intento' | 'silencio' | 'escribir' | 'casi' | 'otra';
 
-export function DiBrilla({ mision, base, idiomaVoz, imagenFiesta, onTerminar, onSalir }: Props) {
+export function DiBrilla({ mision, base, idiomaVoz, imagenFiesta, onTerminar, onSalir }: PropsJuego) {
   const [rondas] = useState(() => mezclar(mision.palabras).slice(0, RONDAS));
   const [indice, setIndice] = useState(0);
   const [estado, setEstado] = useState<Estado>('listo');
-  const [micro, setMicro] = useState(hayMicrofono);
+  // El micrófono falló solo en esta ronda (red, otro programa usándolo...): la siguiente lo ofrece de nuevo.
+  const [sinMicroAhora, setSinMicroAhora] = useState(false);
   const [escrito, setEscrito] = useState('');
+  // Palabras que le costaron al escribirlas ('casi' u 'otra'). La voz nunca entra aquí.
   const [costaron, setCostaron] = useState<string[]>([]);
+  // Palabras que brillaron: solo estas pueden salir de la lista de repaso.
+  const [salieron, setSalieron] = useState<string[]>([]);
   const [fin, setFin] = useState(false);
   const cancelar = useRef<() => void>(() => {});
   const campo = useRef<HTMLInputElement>(null);
+  const esperas = useRef<number[]>([]);
+
+  const luego = (f: () => void, ms: number) => {
+    const t = window.setTimeout(f, ms);
+    esperas.current.push(t);
+    return t;
+  };
+  const limpiarEsperas = () => {
+    esperas.current.forEach(clearTimeout);
+    esperas.current = [];
+  };
+  // Calla todo lo pendiente: voz que iba a sonar, voz sonando y micrófono abierto.
+  const detener = () => {
+    limpiarEsperas();
+    cancelar.current();
+    cancelar.current = () => {};
+    callar();
+  };
+
+  // hayMicrofono() se consulta en cada render: si el permiso se negó, deja de ofrecerse.
+  const micro = hayMicrofono() && !sinMicroAhora;
 
   const palabra = rondas[indice];
   // Después de intentarlo una vez, ya puede seguir.
@@ -41,17 +59,11 @@ export function DiBrilla({ mision, base, idiomaVoz, imagenFiesta, onTerminar, on
   // Después del intento se revela cómo se escribe, como modelo.
   const mostrarEscrita = intento;
 
-  useEffect(
-    () => () => {
-      cancelar.current();
-      callar();
-    },
-    [],
-  );
+  useEffect(() => detener, []);
 
   useEffect(() => {
     if (fin || !palabra) return;
-    const t = window.setTimeout(() => decir(palabra.en, idiomaVoz), 400);
+    const t = luego(() => decir(palabra.en, idiomaVoz), 400);
     return () => clearTimeout(t);
   }, [indice, fin, palabra, idiomaVoz]);
 
@@ -63,58 +75,71 @@ export function DiBrilla({ mision, base, idiomaVoz, imagenFiesta, onTerminar, on
     if (!costaron.includes(palabra.en)) setCostaron([...costaron, palabra.en]);
   };
 
+  const brillar = () => {
+    sonar('acierto');
+    setEstado('brilla');
+    setSalieron((s) => (s.includes(palabra.en) ? s : [...s, palabra.en]));
+  };
+
   const oir = () => {
+    // Si el micrófono está abierto, se cierra antes de hablar: así no se oye a sí mismo.
+    if (estado === 'escuchando') {
+      detener();
+      setEstado('listo');
+    }
     sonar('toque');
     decir(palabra.en, idiomaVoz);
   };
 
   const hablar = () => {
     if (estado === 'escuchando') return;
-    callar();
+    // Nada de voz sintética mientras escucha: ni la palabra pendiente ni la que está sonando.
+    detener();
     sonar('toque');
     setEstado('escuchando');
     cancelar.current = escuchar(idiomaVoz, (r) => {
+      cancelar.current = () => {};
       if (r.tipo === 'sin-micro') {
-        // Sin micrófono: se pasa a escribir sin decirle nada técnico al niño.
-        setMicro(false);
+        // Sin micrófono en esta ronda: se ofrece la mano o escribir, sin decirle nada técnico.
+        setSinMicroAhora(true);
         setEstado('listo');
       } else if (r.tipo === 'silencio') {
         sonar('salto');
         setEstado('silencio');
-      } else if (seOyo(r.frases, palabra.en)) {
-        sonar('acierto');
-        setEstado('brilla');
+      } else if (seOyo(r.frases, palabra)) {
+        brillar();
       } else {
         // Dijo algo: se celebra el intento y se le vuelve a modelar la palabra.
+        // No cuenta como tropiezo: el reconocedor se equivoca con niños y con ruido.
         sonar('salto');
-        costo();
         setEstado('intento');
-        window.setTimeout(() => decir(palabra.en, idiomaVoz), 600);
+        luego(() => decir(palabra.en, idiomaVoz), 600);
       }
     });
   };
 
-  const loDije = () => {
-    sonar('acierto');
-    setEstado('brilla');
-  };
+  const loDije = () => brillar();
 
   const revisarEscrito = (e: FormEvent) => {
     e.preventDefault();
     const r = comparaEscrito(escrito, palabra.en);
     if (r === 'otra' && !escrito.trim()) return;
-    if (r === 'bien') sonar('acierto');
-    else sonar('salto');
-    if (r !== 'bien') costo();
-    setEstado(r === 'bien' ? 'brilla' : r);
+    detener();
+    if (r === 'bien') brillar();
+    else {
+      sonar('salto');
+      costo();
+      setEstado(r);
+    }
     decir(palabra.en, idiomaVoz);
   };
 
   const seguir = () => {
-    cancelar.current();
+    detener();
     sonar('toque');
     setEscrito('');
     setEstado('listo');
+    setSinMicroAhora(false);
     if (indice + 1 < rondas.length) setIndice(indice + 1);
     else {
       sonar('fiesta');
@@ -194,7 +219,7 @@ export function DiBrilla({ mision, base, idiomaVoz, imagenFiesta, onTerminar, on
                 type="button"
                 className="boton-redondo"
                 onClick={() => {
-                  cancelar.current();
+                  detener();
                   sonar('toque');
                   setEstado('escribir');
                 }}
@@ -221,7 +246,7 @@ export function DiBrilla({ mision, base, idiomaVoz, imagenFiesta, onTerminar, on
           imagenFiesta={imagenFiesta}
           alRegistrar={() =>
             anotarPractica(
-              rondas.filter((p) => !costaron.includes(p.en)),
+              rondas.filter((p) => salieron.includes(p.en) && !costaron.includes(p.en)),
               rondas.filter((p) => costaron.includes(p.en)),
             )
           }

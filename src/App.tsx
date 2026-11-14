@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from 'react';
-import type { Cartilla } from './tipos';
+import { useEffect, useRef, useState, type ComponentType } from 'react';
+import type { Cartilla, Mision, PropsJuego } from './tipos';
 import { Mundo, olvidarMundo } from './Mundo';
 import { ElegirHeroe } from './ElegirHeroe';
 import { EscuchaToca } from './juegos/EscuchaToca';
@@ -9,6 +9,13 @@ import { elegirHeroe, reiniciarProgreso, useProgreso } from './progreso';
 
 const BASE = `${import.meta.env.BASE_URL}cartillas/ingles-3/`;
 const MS_CORTINA = 420;
+const IMAGEN_FIESTA = 'personajes/lumi-celebrate.webp';
+
+/** Qué componente juega cada plantilla del contenido. */
+const JUEGOS: Record<Mision['plantilla'], ComponentType<PropsJuego>> = {
+  'escucha-toca': EscuchaToca,
+  'di-brilla': DiBrilla,
+};
 
 type Pantalla = { tipo: 'inicio' } | { tipo: 'elegir' } | { tipo: 'mapa' } | { tipo: 'mision'; indice: number };
 
@@ -19,6 +26,18 @@ export function App() {
   const [cortina, setCortina] = useState<'cierra' | 'abre' | null>(null);
   const progreso = useProgreso();
   const esperas = useRef<number[]>([]);
+
+  const territorio = cartilla?.territorios[0];
+  const mision = pantalla.tipo === 'mision' ? territorio?.misiones[pantalla.indice] : undefined;
+  const Juego = mision ? (JUEGOS as Partial<Record<string, ComponentType<PropsJuego>>>)[mision.plantilla] : undefined;
+
+  // Una plantilla que este motor no conoce no se cambia por otro juego: se vuelve al mapa.
+  useEffect(() => {
+    if (pantalla.tipo === 'mision' && cartilla && !Juego) {
+      console.warn(`Misión sin juego disponible (plantilla "${mision?.plantilla}"): se vuelve al mapa.`);
+      setPantalla({ tipo: 'mapa' });
+    }
+  }, [pantalla, cartilla, Juego, mision]);
 
   useEffect(() => {
     fetch(`${BASE}cartilla.json`)
@@ -51,9 +70,8 @@ export function App() {
       </div>
     );
   }
-  if (!cartilla) return <div className="inicio" aria-busy="true" />;
+  if (!cartilla || !territorio) return <div className="inicio" aria-busy="true" />;
 
-  const territorio = cartilla.territorios[0];
   const heroe = cartilla.heroes.find((h) => h.id === progreso.heroe);
 
   return (
@@ -107,26 +125,14 @@ export function App() {
         <Mundo territorio={territorio} heroe={heroe} estelas={cartilla.estelas} base={BASE} vozIngles={cartilla.idiomaVoz} vozEspanol={cartilla.idiomaHistoria} onEntrar={(indice) => irA({ tipo: 'mision', indice })} />
       )}
 
-      {pantalla.tipo === 'mision' && territorio.misiones[pantalla.indice].plantilla === 'di-brilla' && (
-        <DiBrilla
-          key={territorio.misiones[pantalla.indice].id}
-          mision={territorio.misiones[pantalla.indice]}
-          base={BASE}
-          idiomaVoz={cartilla.idiomaVoz}
-          imagenFiesta="personajes/lumi-celebrate.webp"
-          onTerminar={() => irA({ tipo: 'mapa' })}
-          onSalir={() => irA({ tipo: 'mapa' })}
-        />
-      )}
-
-      {pantalla.tipo === 'mision' && territorio.misiones[pantalla.indice].plantilla !== 'di-brilla' && (
-        <EscuchaToca
-          key={territorio.misiones[pantalla.indice].id}
-          mision={territorio.misiones[pantalla.indice]}
+      {mision && Juego && (
+        <Juego
+          key={mision.id}
+          mision={mision}
           base={BASE}
           idiomaVoz={cartilla.idiomaVoz}
           imagenGuia={territorio.personajes[territorio.guia].imagen}
-          imagenFiesta="personajes/lumi-celebrate.webp"
+          imagenFiesta={IMAGEN_FIESTA}
           onTerminar={() => irA({ tipo: 'mapa' })}
           onSalir={() => irA({ tipo: 'mapa' })}
         />

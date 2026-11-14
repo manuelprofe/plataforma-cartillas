@@ -1,8 +1,10 @@
-// Final de cualquier misión: muestra lo ganado, pide la autoevaluación con caritas
-// y registra la misión. Lo comparten todas las plantillas de juego.
-import { useState } from 'react';
+// Final de cualquier misión: registra la misión, muestra lo ganado y pide la
+// autoevaluación con caritas. Lo comparten todas las plantillas de juego.
+// La misión se registra apenas se llega aquí: si el niño sale con ✕ o recarga sin
+// tocar una carita, no pierde lo ganado. La carita solo agrega cómo se sintió.
+import { useEffect, useRef, useState } from 'react';
 import type { Mision } from '../tipos';
-import { premiosDeMision, registrarMision, type Premio } from '../progreso';
+import { fijarAutoevaluacion, registrarMision, type Premio } from '../progreso';
 import { sonar } from '../audio';
 
 interface Props {
@@ -10,7 +12,7 @@ interface Props {
   errores: number;
   base: string;
   imagenFiesta: string;
-  /** Se llama una vez, al registrar la misión, para anotar lo que costó. */
+  /** Se llama una sola vez, al registrar la misión, para anotar lo que costó. */
   alRegistrar: () => void;
   onTerminar: () => void;
 }
@@ -23,19 +25,29 @@ const CARITAS: [string, number][] = [
 
 export function CierreMision({ mision, errores, base, imagenFiesta, alRegistrar, onTerminar }: Props) {
   const [premios, setPremios] = useState<Premio[] | null>(null);
+  const [sentir, setSentir] = useState<number | null>(null);
+  // El ref sobrevive al doble efecto de StrictMode: la misión se registra una vez.
+  const registrada = useRef(false);
+
+  useEffect(() => {
+    if (registrada.current) return;
+    registrada.current = true;
+    alRegistrar();
+    setPremios(registrarMision(mision.id, errores, undefined, mision.estrellas));
+  }, [alRegistrar, mision.id, mision.estrellas, errores]);
 
   const autoevaluar = (valor: number) => {
     sonar('estrella');
-    alRegistrar();
-    setPremios(registrarMision(mision.id, errores, valor, mision.estrellas));
+    fijarAutoevaluacion(mision.id, valor);
+    setSentir(valor);
   };
 
   return (
     <main className="cierre">
       <img className="cierre__guia" src={base + imagenFiesta} alt="" width="170" height="152" draggable={false} />
-      {premios === null ? (
+      {premios !== null && sentir === null && (
         <>
-          {premiosDeMision(mision.id, errores, mision.estrellas).map((p) => (
+          {premios.map((p) => (
             <div className="premio" key={p.clave}>
               {p.clave === 'completar' ? `★ +${p.estrellas}` : '🏅'}
             </div>
@@ -48,7 +60,8 @@ export function CierreMision({ mision, errores, base, imagenFiesta, alRegistrar,
             ))}
           </div>
         </>
-      ) : (
+      )}
+      {premios !== null && sentir !== null && (
         <>
           <div className="premio premio--total">
             {premios.some((p) => p.clave === 'completar') ? `★ +${premios.reduce((a, p) => a + p.estrellas, 0)}` : premios.length ? '🏅' : '👍'}

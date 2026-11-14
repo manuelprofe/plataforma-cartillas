@@ -1,7 +1,8 @@
 // Mundo explorable de un territorio, visto desde arriba. El niño mueve al guía con
 // el dedo en cualquier dirección, habla con los personajes, atrapa luciérnagas y
 // decide a qué misión entrar. Los habitantes le piden palabras perdidas, los animales
-// le regalan otras para su álbum, y el agua, los árboles y las casas no se atraviesan.
+// le regalan otras para su álbum. El guía va por los caminos: al tocar, busca la ruta
+// (src/rutas.ts) y la recorre acelerando y frenando; el agua, el bosque y las casas no se atraviesan.
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import type { Estela, Heroe, Linea, ModoIdioma, Palabra, Territorio } from './tipos';
 import { agregarAlAlbum, fijarDestino, fijarEncargo, marcarAyudado, marcarVista, useProgreso } from './progreso';
@@ -9,8 +10,27 @@ import { Album } from './Album';
 import { MiniMapa } from './MiniMapa';
 import { atenuarAmbiente, decir, iniciarAmbiente, pararAmbiente, sonar } from './audio';
 import { Dialogo } from './Dialogo';
+import { Caminos, type Circulo, type Punto } from './rutas';
 
 const VELOCIDAD = 430; // px por segundo
+// Andar: arranca y frena suave, y el trote sigue a la velocidad.
+const ACELERACION = 1500; // px/s²
+const FRENADO = 1100; // px/s²: desde la velocidad máxima frena en unos 85 px
+const TROTE = 1.4; // en viajes largos, tras un segundo andando, va así de más rápido
+const ZANCADA = 150; // px que avanza en cada saltito del trote
+const ANTICIPACION = 0.08; // s que se agacha antes de arrancar desde quieto
+// Con el dedo apoyado y moviéndose, la ruta se recalcula como mucho cada tanto.
+const MS_ENTRE_RUTAS = 140;
+const MS_DEDO_QUIETO = 400; // un toque más largo que esto, con el dedo quieto, también es "sígueme"
+// Un toque más lejos que esto de cualquier camino (bosque cerrado) no mueve al guía: duda.
+const LEJOS_DEL_CAMINO = 220;
+const RADIO_TOQUE_LUCIERNAGA = 70;
+// Puntitos de la ruta, que se apagan al pasar.
+const RASTROS = 30;
+const SEPARACION_RASTRO = 46;
+const RUTA_LARGA = 380; // px: desde aquí se dibujan los puntitos
+// Idea anotada, pendiente de Manuel: si el destino queda muy lejos, viaje rápido con Lumi desde
+// el mini mapa, solo a lugares ya encendidos (docs/referencias/juegos.md, M7). Por ahora se camina.
 const RADIO_CERCA = 110;
 const RADIO_LUCIERNAGA = 52;
 
@@ -20,6 +40,7 @@ const CAMARA_RAPIDEZ = 2.6; // rigidez del resorte: arranca despacio y alcanza a
 const CAMARA_ZONA = 0.08; // fracción del ancho en que el guía se mueve sin que la cámara lo siga
 const CAMARA_BORDE = 0.24; // el guía nunca queda más cerca que esto del borde
 const CAMARA_PIES = 0.58; // altura de la pantalla en que descansa el guía (su cuerpo queda encima)
+const CAMARA_ADELANTE = 0.12; // fracción de la pantalla que la cámara se adelanta hacia donde va
 // El mundo se ajusta al tamaño de la pantalla: en celular se ve el claro con sus caminos
 // y en pantallas grandes sigue habiendo algo que explorar.
 const LADO_DE_REFERENCIA = 1000;
@@ -58,6 +79,53 @@ export function olvidarMundo() {
   atrapadas.clear();
   saludadas.clear();
   cargaGuardada = null;
+}
+
+/** Rejilla por la que se camina; si el paquete no la trae, todo menos el agua. */
+function rejillaDe(mundo: Territorio['mundo']) {
+  if (mundo.caminable) return mundo.caminable;
+  const filas = mundo.agua.map((fila) => {
+    const tramos: number[] = [];
+    let actual = '1';
+    let largo = 0;
+    for (const c of fila) {
+      if (c === actual) largo++;
+      else {
+        tramos.push(largo);
+        actual = c;
+        largo = 1;
+      }
+    }
+    tramos.push(largo);
+    return tramos.join(',');
+  });
+  return { celda: mundo.celda, ancho: mundo.agua[0]?.length ?? 0, alto: mundo.agua.length, filas };
+}
+
+/** Lo que no se puede pisar aunque esté sobre el camino: troncos y las cosas de la aldea. */
+function obstaculos(mundo: Territorio['mundo']): Circulo[] {
+  return [
+    ...mundo.arboles.map((a) => ({ x: a.x, y: a.y - 6, r: 14 * a.escala + 8 })),
+    ...mundo.objetos.filter((o) => o.choque > 0).map((o) => ({ x: o.x, y: o.y - o.choque * 0.45, r: o.choque })),
+  ];
+}
+
+// Se arma una vez por mundo y se conserva al volver de una misión.
+const caminosGuardados = new WeakMap<Territorio['mundo'], Caminos>();
+function caminosDe(mundo: Territorio['mundo']) {
+  let c = caminosGuardados.get(mundo);
+  if (!c) {
+    c = new Caminos(rejillaDe(mundo), obstaculos(mundo), mundo.inicio);
+    caminosGuardados.set(mundo, c);
+  }
+  return c;
+}
+
+/** Largo que queda desde cada punto de la ruta hasta el final. */
+function largosHastaElFinal(ruta: Punto[]) {
+  const resto = new Float32Array(ruta.length);
+  for (let k = ruta.length - 2; k >= 0; k--) resto[k] = resto[k + 1] + Math.hypot(ruta[k + 1].x - ruta[k].x, ruta[k + 1].y - ruta[k].y);
+  return resto;
 }
 
 interface Props {
@@ -99,6 +167,7 @@ export function Mundo({ territorio, heroe, estelas, base, vozIngles, vozEspanol,
   const criaturas = useRef<(HTMLDivElement | null)[]>([]);
   const ondas = useRef<HTMLDivElement>(null);
   const frente = useRef<HTMLDivElement>(null);
+  const rastro = useRef<HTMLDivElement>(null);
 
   const [tam, setTam] = useState({ ancho: 390, alto: 0 });
   const [cerca, setCerca] = useState<string | null>(null);
@@ -174,10 +243,26 @@ export function Mundo({ territorio, heroe, estelas, base, vozIngles, vozEspanol,
   const mov = useRef({
     x: ultimaPosicion?.x ?? mundo.inicio.x,
     y: ultimaPosicion?.y ?? mundo.inicio.y,
-    objetivo: null as { x: number; y: number } | null,
+    // Ruta que está recorriendo, el punto al que va ahora y cuánto le queda desde cada punto.
+    ruta: null as Punto[] | null,
+    tramo: 0,
+    resto: new Float32Array(0),
+    avance: 0,
+    rapidez: 0,
+    arranque: 0,
+    // Segundos que lleva andando sin parar: en viajes largos, pasado un segundo, trota.
+    andando: 0,
+    rumbo: { x: 1, y: 0 },
+    // Distancia recorrida en la ruta a la que se apaga cada puntito, y el siguiente por apagar.
+    marcas: [] as number[],
+    marca: 0,
+    rutaEn: 0,
     pendiente: null as string | null,
     // Dedo apoyado, en coordenadas de pantalla: mientras siga ahí, el guía lo persigue.
     dedo: null as { x: number; y: number } | null,
+    destinoDedo: null as Punto | null,
+    dedoEn: 0,
+    arrastra: false,
     camara: { x: 0, y: 0 },
     camaraVel: { x: 0, y: 0 },
     escala: 1,
@@ -200,10 +285,84 @@ export function Mundo({ territorio, heroe, estelas, base, vozIngles, vozEspanol,
     return () => obs.disconnect();
   }, []);
 
+  // Por dónde se camina: se arma una vez por mundo y solo se consulta al tocar.
+  const caminos = useMemo(() => caminosDe(mundo), [mundo]);
+  const caminosRef = useRef(caminos);
+  caminosRef.current = caminos;
+
+  const apagarRastro = () => {
+    const m = mov.current;
+    const puntos = rastro.current?.children;
+    if (puntos) for (let k = m.marca; k < m.marcas.length; k++) (puntos[k] as HTMLElement).dataset.ver = 'no';
+    m.marcas = [];
+    m.marca = 0;
+  };
+
+  /** Deja de andar donde está. */
+  const detener = () => {
+    const m = mov.current;
+    m.ruta = null;
+    m.pendiente = null;
+    m.rapidez = 0;
+    apagarRastro();
+  };
+
+  /** Busca la ruta hasta un punto (o hasta lo caminable más cercano) y empieza a recorrerla. */
+  const irA = (destino: Punto, pendiente: string | null) => {
+    const m = mov.current;
+    m.rutaEn = performance.now();
+    const ruta = caminos.ruta({ x: m.x, y: m.y }, destino);
+    apagarRastro();
+    m.pendiente = pendiente;
+    if (!ruta || ruta.length < 2) {
+      m.ruta = null;
+      return;
+    }
+    m.ruta = ruta;
+    m.tramo = 1;
+    m.resto = largosHastaElFinal(ruta);
+    m.avance = 0;
+    if (m.rapidez < 30) m.andando = 0;
+    // Desde quieto, se agacha un instante antes de salir (anticipación).
+    const cuerpo = guia.current?.querySelector<HTMLElement>('.guia__cuerpo img');
+    if (m.rapidez < 30 && !sinMovimiento() && m.resto[0] > 60) {
+      m.arranque = ANTICIPACION;
+      cuerpo?.animate([{ transform: 'none' }, { transform: 'translateY(3px) scale(1.09, 0.88)' }, { transform: 'none' }], { duration: 170, easing: 'ease-out' });
+    }
+    // El aro aparece con un rebote en el destino nuevo.
+    if (!pendiente && !sinMovimiento() && meta.current) {
+      meta.current.animate([{ scale: '0.3' }, { scale: '1.2' }, { scale: '1' }], { duration: 280, easing: 'ease-out' });
+    }
+    // Puntitos sobre la ruta en los viajes largos, que se apagan cuando el guía pasa.
+    const puntos = rastro.current?.children;
+    const total = m.resto[0];
+    if (!puntos || total < RUTA_LARGA) return;
+    let k = 0;
+    let recorrido = 0;
+    for (let t = 1; t < ruta.length && k < RASTROS; t++) {
+      const a = ruta[t - 1];
+      const b = ruta[t];
+      const largo = Math.hypot(b.x - a.x, b.y - a.y);
+      for (let s = Math.ceil((recorrido + 1) / SEPARACION_RASTRO) * SEPARACION_RASTRO; s < recorrido + largo && k < RASTROS; s += SEPARACION_RASTRO) {
+        if (s < 50 || s > total - 36) continue;
+        const f = (s - recorrido) / largo;
+        const el = puntos[k] as HTMLElement;
+        el.style.transform = `translate3d(${a.x + (b.x - a.x) * f}px, ${a.y + (b.y - a.y) * f}px, 0)`;
+        el.dataset.ver = 'si';
+        m.marcas.push(s);
+        k++;
+      }
+      recorrido += largo;
+    }
+  };
+  const irARef = useRef(irA);
+  irARef.current = irA;
+  const detenerRef = useRef(detener);
+  detenerRef.current = detener;
+
   const abrir = (cosa: Cosa) => {
     sonar('toque');
-    mov.current.objetivo = null;
-    mov.current.pendiente = null;
+    detener();
     if (cosa.tipo === 'toma') {
       const palabra = vecinoActivo?.encargo?.opciones[cosa.indice];
       if (!palabra) return;
@@ -332,29 +491,70 @@ export function Mundo({ territorio, heroe, estelas, base, vozIngles, vozEspanol,
     let inclinacion = 0;
     let esperaChispa = 0;
     let turnoChispa = 0;
-    let atascado = 0;
     let cuadroVista = '';
+    let fase = 0;
     const quieto = sinMovimiento();
     const huida = mundo.criaturas.map(() => ({ x: 0, y: 0 }));
-
-    // Lo que no se puede pisar: agua, troncos y las cosas de la aldea.
-    const choques = [
-      ...mundo.arboles.map((a) => ({ x: a.x, y: a.y - 6, r: 14 * a.escala + 8 })),
-      ...mundo.objetos.filter((o) => o.choque > 0).map((o) => ({ x: o.x, y: o.y - o.choque * 0.45, r: o.choque })),
-    ];
-    const libre = (x: number, y: number) => {
-      const fila = mundo.agua[Math.floor(y / mundo.celda)];
-      if (fila && fila[Math.floor(x / mundo.celda)] === '1') return false;
-      for (const c of choques) if ((x - c.x) ** 2 + (y - c.y) ** 2 < c.r * c.r) return false;
-      return true;
-    };
+    const cuerpo = () => guia.current?.querySelector<HTMLElement>('.guia__cuerpo img') ?? null;
     const dentroX = (x: number) => Math.max(50, Math.min(mundo.ancho - 50, x));
     const dentroY = (y: number) => Math.max(110, Math.min(mundo.alto - 20, y));
+    const libre = (x: number, y: number) => caminosRef.current.libre(x, y);
+
+    const atrapar = (i: number) => {
+      if (atrapadas.has(i)) return;
+      const l = mundo.luciernagas[i];
+      const palabras = vivo.current.palabras;
+      atrapadas.add(i);
+      const palabra = palabras[(i * 7 + 3) % palabras.length];
+      agregarAlAlbum(palabra);
+      sonar('estrella');
+      window.setTimeout(() => decir(palabra.en, vozIngles), 250);
+      setDestello({ palabra, x: l.x, y: l.y, n: i });
+      repintar((n) => n + 1);
+    };
+
+    // Al terminar la ruta: se asienta y abre lo que el niño había tocado.
+    const llegar = () => {
+      const pendiente = m.pendiente;
+      m.ruta = null;
+      m.rapidez = 0;
+      m.pendiente = null;
+      if (!quieto) {
+        cuerpo()?.animate(
+          [{ transform: 'translateY(2px) scale(1.1, 0.88)' }, { transform: 'translateY(-2px) scale(0.97, 1.04)' }, { transform: 'none' }],
+          { duration: 300, easing: 'ease-out' },
+        );
+      }
+      if (pendiente?.startsWith('luz-')) atrapar(Number(pendiente.slice(4)));
+      else if (pendiente) {
+        const tocada = vivo.current.cosas.find((c) => c.id === pendiente);
+        if (tocada) abrirRef.current(tocada);
+      }
+    };
+
+    // Con teclado (computador): se mueve libre, pero solo por donde se puede pisar.
+    const deslizar = (dx: number, dy: number) => {
+      let nx = dentroX(m.x + dx);
+      let ny = dentroY(m.y + dy);
+      if (!libre(nx, ny) && libre(m.x, m.y)) {
+        // Se desliza por el borde en vez de frenar en seco.
+        const lado = [
+          [nx, m.y],
+          [m.x, ny],
+          [m.x - dy, m.y + dx],
+          [m.x + dy, m.y - dx],
+        ].find(([x, y]) => libre(dentroX(x), dentroY(y)));
+        nx = lado ? dentroX(lado[0]) : m.x;
+        ny = lado ? dentroY(lado[1]) : m.y;
+      }
+      m.x = nx;
+      m.y = ny;
+    };
 
     const paso = (ahora: number) => {
       const dt = Math.min(0.05, (ahora - antes) / 1000);
       antes = ahora;
-      const { cosas, tam, palabras } = vivo.current;
+      const { cosas, tam } = vivo.current;
       const escala = Math.max(ESCALA_MINIMA, Math.min(ESCALA_MAXIMA, Math.max(tam.ancho, tam.alto) / LADO_DE_REFERENCIA));
       const vista = { x: tam.ancho / escala, y: tam.alto / escala };
       m.escala = escala;
@@ -362,72 +562,89 @@ export function Mundo({ territorio, heroe, estelas, base, vozIngles, vozEspanol,
       let dx = 0;
       let dy = 0;
       if (!m.pausa) {
-        if (m.dedo) m.objetivo = { x: m.dedo.x / escala + m.camara.x, y: m.dedo.y / escala + m.camara.y - 24 };
-        const t = m.teclas;
-        if (t.size) {
-          dx = (t.has('arrowright') || t.has('d') ? 1 : 0) - (t.has('arrowleft') || t.has('a') ? 1 : 0);
-          dy = (t.has('arrowdown') || t.has('s') ? 1 : 0) - (t.has('arrowup') || t.has('w') ? 1 : 0);
-          if (dx || dy) {
-            m.objetivo = null;
-            m.pendiente = null;
-            const largo = Math.hypot(dx, dy);
-            dx = (dx / largo) * VELOCIDAD * dt;
-            dy = (dy / largo) * VELOCIDAD * dt;
-          }
-        }
-        if (m.objetivo) {
-          const ox = m.objetivo.x - m.x;
-          const oy = m.objetivo.y - m.y;
-          const dist = Math.hypot(ox, oy);
-          if (dist < 4) m.objetivo = null;
-          else {
-            const avance = Math.min(dist, VELOCIDAD * dt * Math.min(1, 0.35 + dist / 160));
-            dx = (ox / dist) * avance;
-            dy = (oy / dist) * avance;
-          }
-        }
         const x0 = m.x;
         const y0 = m.y;
-        let nx = dentroX(m.x + dx);
-        let ny = dentroY(m.y + dy);
-        if (!libre(nx, ny) && libre(m.x, m.y)) {
-          // Se desliza por el borde del obstáculo en vez de frenar en seco.
-          const paso = Math.hypot(dx, dy);
-          const lado = [
-            [nx, m.y],
-            [m.x, ny],
-            [m.x - (dy / (paso || 1)) * paso, m.y + (dx / (paso || 1)) * paso],
-            [m.x + (dy / (paso || 1)) * paso, m.y - (dx / (paso || 1)) * paso],
-          ].find(([x, y]) => libre(dentroX(x), dentroY(y)));
-          nx = lado ? dentroX(lado[0]) : m.x;
-          ny = lado ? dentroY(lado[1]) : m.y;
+        // Dedo apoyado que se mueve (o que queda quieto mientras la cámara avanza): nueva ruta,
+        // pero no en cada cuadro.
+        if (m.dedo && (m.arrastra || ahora - m.dedoEn > MS_DEDO_QUIETO) && ahora - m.rutaEn > MS_ENTRE_RUTAS) {
+          const bajo = { x: m.dedo.x / escala + m.camara.x, y: m.dedo.y / escala + m.camara.y };
+          const d = m.destinoDedo;
+          if (!d || Math.hypot(bajo.x - d.x, bajo.y - d.y) > caminosRef.current.celda * 1.5) {
+            m.destinoDedo = bajo;
+            irARef.current(bajo, null);
+          }
         }
-        m.x = nx;
-        m.y = ny;
+        const t = m.teclas;
+        const tx = (t.has('arrowright') || t.has('d') ? 1 : 0) - (t.has('arrowleft') || t.has('a') ? 1 : 0);
+        const ty = (t.has('arrowdown') || t.has('s') ? 1 : 0) - (t.has('arrowup') || t.has('w') ? 1 : 0);
+        if (tx || ty) {
+          if (m.ruta) detenerRef.current();
+          const largo = Math.hypot(tx, ty);
+          m.rumbo = { x: tx / largo, y: ty / largo };
+          m.rapidez = Math.min(VELOCIDAD, m.rapidez + ACELERACION * dt);
+          deslizar(m.rumbo.x * m.rapidez * dt, m.rumbo.y * m.rapidez * dt);
+        } else if (m.ruta) {
+          if (m.arranque > 0) m.arranque -= dt;
+          else {
+            // Acelera hasta la velocidad de paseo y frena a tiempo para llegar sin pasarse.
+            const ruta = m.ruta;
+            const sig = ruta[m.tramo];
+            const queda = Math.hypot(sig.x - m.x, sig.y - m.y) + m.resto[m.tramo];
+            m.andando += dt;
+            const crucero = m.andando > 1 && queda > 450 ? VELOCIDAD * TROTE : VELOCIDAD;
+            const tope = Math.min(crucero, Math.sqrt(2 * FRENADO * queda) + 30);
+            m.rapidez = Math.min(tope, m.rapidez + ACELERACION * dt);
+            let falta = m.rapidez * dt;
+            while (falta > 0 && m.tramo < ruta.length) {
+              const q = ruta[m.tramo];
+              const ex = q.x - m.x;
+              const ey = q.y - m.y;
+              const d = Math.hypot(ex, ey);
+              if (d <= falta) {
+                m.x = q.x;
+                m.y = q.y;
+                falta -= d;
+                m.avance += d;
+                m.tramo++;
+              } else {
+                m.x += (ex / d) * falta;
+                m.y += (ey / d) * falta;
+                m.avance += falta;
+                falta = 0;
+              }
+            }
+            // Los puntitos que ya pisó se apagan.
+            const puntos = rastro.current?.children;
+            while (puntos && m.marca < m.marcas.length && m.avance >= m.marcas[m.marca] - 14) {
+              (puntos[m.marca] as HTMLElement).dataset.ver = 'no';
+              m.marca++;
+            }
+            if (m.tramo >= ruta.length) llegar();
+          }
+        } else if (m.rapidez > 0) {
+          // Soltó las teclas: frena en unos pasos.
+          m.rapidez = Math.max(0, m.rapidez - FRENADO * 1.6 * dt);
+          deslizar(m.rumbo.x * m.rapidez * dt, m.rumbo.y * m.rapidez * dt);
+        }
         dx = m.x - x0;
         dy = m.y - y0;
-        // Si un toque quedó detrás de algo que no se puede cruzar, se suelta.
-        atascado = m.objetivo && !m.dedo && Math.hypot(dx, dy) < 0.3 ? atascado + dt : 0;
-        if (atascado > 0.6) {
-          m.objetivo = null;
-          m.pendiente = null;
-          atascado = 0;
+        // Mira hacia donde va: el rumbo gira suave y el cambio de lado tiene un margen,
+        // para que no parpadee en las curvas casi verticales.
+        const mueve = Math.hypot(dx, dy);
+        if (mueve > 0.05) {
+          const k = 1 - Math.exp(-14 * dt);
+          const rx = m.rumbo.x + (dx / mueve - m.rumbo.x) * k;
+          const ry = m.rumbo.y + (dy / mueve - m.rumbo.y) * k;
+          const lr = Math.hypot(rx, ry) || 1;
+          m.rumbo = { x: rx / lr, y: ry / lr };
+          if (m.rumbo.x > 0.25) mirando = 1;
+          else if (m.rumbo.x < -0.25) mirando = -1;
         }
-        if (Math.abs(dx) > 0.2) mirando = dx > 0 ? 1 : -1;
         ultimaPosicion = { x: m.x, y: m.y };
 
         // Luciérnagas: al tocarlas dicen una palabra.
         mundo.luciernagas.forEach((l, i) => {
-          if (atrapadas.has(i)) return;
-          if (Math.hypot(l.x - m.x, l.y - m.y) < RADIO_LUCIERNAGA) {
-            atrapadas.add(i);
-            const palabra = palabras[(i * 7 + 3) % palabras.length];
-            agregarAlAlbum(palabra);
-            sonar('estrella');
-            window.setTimeout(() => decir(palabra.en, vozIngles), 250);
-            setDestello({ palabra, x: l.x, y: l.y, n: i });
-            repintar((n) => n + 1);
-          }
+          if (!atrapadas.has(i) && Math.hypot(l.x - m.x, l.y - m.y) < RADIO_LUCIERNAGA) atrapar(i);
         });
 
         // Qué hay cerca para hablar o entrar.
@@ -451,7 +668,9 @@ export function Mundo({ territorio, heroe, estelas, base, vozIngles, vozEspanol,
       for (const eje of ['x', 'y'] as const) {
         const largoMundo = eje === 'x' ? mundo.ancho : mundo.alto;
         const tope = largoMundo - vista[eje];
-        const deseada = m[eje] - vista[eje] * pies[eje];
+        // Mira un poco hacia adelante: se ve lo que viene, no lo que queda atrás. Norte siempre arriba.
+        const adelante = quieto ? 0 : m.rumbo[eje] * Math.min(1, m.rapidez / VELOCIDAD) * vista[eje] * CAMARA_ADELANTE;
+        const deseada = m[eje] + adelante - vista[eje] * pies[eje];
         if (!m.camaraLista) {
           m.camara[eje] = deseada;
         } else {
@@ -507,6 +726,21 @@ export function Mundo({ territorio, heroe, estelas, base, vozIngles, vozEspanol,
         if (inclina !== inclinacion) {
           inclinacion = inclina;
           guia.current.style.setProperty('--inclina', `${inclina}deg`);
+        }
+        // Trote atado a lo que avanza: un saltito por zancada, más alto cuanto más rápido va,
+        // para que los pies no patinen al arrancar ni al frenar.
+        const img = cuerpo();
+        if (img && !quieto) {
+          if (anda) {
+            const recorre = Math.hypot(dx, dy);
+            fase += (recorre / ZANCADA) * Math.PI;
+            const u = Math.abs(Math.sin(fase));
+            const k = Math.min(1, recorre / (VELOCIDAD * dt || 1)) * 0.75 + 0.25;
+            img.style.transform = `translateY(${((2 - 16 * u) * k).toFixed(1)}px) scale(${(1 + (0.07 - 0.12 * u) * k).toFixed(3)}, ${(1 + (0.14 * u - 0.08) * k).toFixed(3)})`;
+          } else if (img.style.transform) {
+            img.style.transform = '';
+            fase = 0;
+          }
         }
 
         // Estela de chispas detrás del guía.
@@ -573,8 +807,9 @@ export function Mundo({ territorio, heroe, estelas, base, vozIngles, vozEspanol,
 
       // Marca del lugar al que va.
       if (meta.current) {
-        const o = m.pausa || m.pendiente ? null : m.objetivo;
-        if (o) meta.current.style.transform = `translate3d(${o.x}px, ${o.y + 24}px, 0)`;
+        // Donde el guía de verdad va a parar (no donde cayó el dedo); se apaga al llegar.
+        const o = m.pausa || m.pendiente || !m.ruta ? null : m.ruta[m.ruta.length - 1];
+        if (o) meta.current.style.transform = `translate3d(${o.x}px, ${o.y}px, 0)`;
         const ver = o ? 'si' : 'no';
         if (meta.current.dataset.ver !== ver) meta.current.dataset.ver = ver;
       }
@@ -616,32 +851,69 @@ export function Mundo({ territorio, heroe, estelas, base, vozIngles, vozEspanol,
     y: y / mov.current.escala + mov.current.camara.y,
   });
 
-  // El dedo: tocar o arrastrar en cualquier parte lleva al guía hasta ahí.
+  // El dedo: tocar en cualquier parte lleva al guía hasta ahí por los caminos; si el dedo se
+  // queda apoyado o se arrastra, el guía lo sigue (la ruta se recalcula de vez en cuando).
   const apuntar = (e: React.PointerEvent) => {
-    if (mov.current.pausa || (e.target as HTMLElement).closest('button')) return;
+    const m = mov.current;
+    if (m.pausa || !e.isPrimary || (e.target as HTMLElement).closest('button')) return;
     if (e.type === 'pointermove' && e.buttons === 0 && e.pointerType === 'mouse') return;
     const caja = marco.current!.getBoundingClientRect();
     const x = e.clientX - caja.left;
     const y = e.clientY - caja.top;
-    const punto = alMundo(x, y);
-    mov.current.dedo = { x, y };
-    mov.current.objetivo = { x: punto.x, y: punto.y - 24 };
-    mov.current.pendiente = null;
-    if (e.type === 'pointerdown') {
-      sonar('toque');
-      ondear(punto.x, punto.y);
+    if (e.type === 'pointermove') {
+      // Un temblor del dedo no es arrastrar.
+      if (m.dedo && Math.hypot(x - m.dedo.x, y - m.dedo.y) < 10 && !m.arrastra) return;
+      m.arrastra = true;
+      m.dedo = { x, y };
+      return;
     }
+    const punto = alMundo(x, y);
+    m.dedo = { x, y };
+    m.arrastra = false;
+    m.dedoEn = performance.now();
+    m.destinoDedo = punto;
+    sonar('toque');
+    // Una luciérnaga tocada: va hacia ella y la atrapa al llegar, aunque esté entre los árboles.
+    const luz = mundo.luciernagas.findIndex((l, i) => !atrapadas.has(i) && Math.hypot(l.x - punto.x, l.y - punto.y) < RADIO_TOQUE_LUCIERNAGA);
+    if (luz >= 0) {
+      ondear(punto.x, punto.y);
+      irA(mundo.luciernagas[luz], `luz-${luz}`);
+      return;
+    }
+    // Muy adentro del bosque o del agua: no se va a ninguna parte; el guía mira y duda.
+    const llegada = caminos.cercano(punto.x, punto.y);
+    if (!llegada || Math.hypot(llegada.x - punto.x, llegada.y - punto.y) > LEJOS_DEL_CAMINO) {
+      ondear(punto.x, punto.y, true);
+      detener();
+      dudar(punto.x);
+      return;
+    }
+    ondear(punto.x, punto.y);
+    irA(punto, null);
   };
   const soltar = () => {
     mov.current.dedo = null;
   };
 
+  // "Hmm": se voltea hacia el punto y mueve la cabeza; sin rojo ni sonido de error.
+  const dudar = (x: number) => {
+    const g = guia.current;
+    if (!g) return;
+    g.dataset.mira = x >= mov.current.x ? 'der' : 'izq';
+    if (sinMovimiento()) return;
+    g.querySelector('.guia__cuerpo')?.animate(
+      [{ rotate: '0deg' }, { rotate: '-9deg' }, { rotate: '8deg' }, { rotate: '-5deg' }, { rotate: '0deg' }],
+      { duration: 650, easing: 'ease-in-out' },
+    );
+  };
+
   // Onda en el punto tocado: muestra la causa de que el guía se mueva.
   const turnoOnda = useRef(0);
-  const ondear = (x: number, y: number) => {
+  const ondear = (x: number, y: number, gris = false) => {
     const caja = ondas.current;
     if (!caja) return;
     const onda = caja.children[turnoOnda.current++ % caja.children.length] as HTMLElement;
+    onda.dataset.gris = gris ? 'si' : 'no';
     const lugar = `translate3d(${x}px, ${y}px, 0)`;
     onda.animate(
       sinMovimiento()
@@ -658,8 +930,8 @@ export function Mundo({ territorio, heroe, estelas, base, vozIngles, vozEspanol,
       return;
     }
     sonar('salto');
-    m.objetivo = { x: cosa.x, y: cosa.y + (cosa.tipo === 'toma' ? 40 : 62) };
-    m.pendiente = cosa.id;
+    // Su punto de llegada en el camino: frente a la cosa, o lo caminable más cercano a eso.
+    irA({ x: cosa.x, y: cosa.y + (cosa.tipo === 'toma' ? 40 : 62) }, cosa.id);
   };
 
   const cosa = (id: string) => cosas.find((c) => c.id === id)!;
@@ -825,6 +1097,11 @@ export function Mundo({ territorio, heroe, estelas, base, vozIngles, vozEspanol,
               );
             })}
 
+            <div ref={rastro} aria-hidden="true">
+              {Array.from({ length: RASTROS }, (_, i) => (
+                <span key={i} className="rastro" data-ver="no" />
+              ))}
+            </div>
             <span ref={meta} className="meta" data-ver="no" aria-hidden="true" />
             <div ref={ondas} aria-hidden="true">
               <span className="onda-toque" />

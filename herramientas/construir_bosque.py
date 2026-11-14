@@ -6,6 +6,10 @@ pone pistas en el piso de cada camino, siembra los árboles y marca dónde no se
 
 Uso: python3 -I herramientas/construir_bosque.py suelo.png public/cartillas/ingles-3/cartilla.json
 Si cambia la imagen del suelo hay que volver a ejecutarlo.
+
+Con --solo-rejilla al final solo recalcula la rejilla de lo caminable (`mundo.caminable`) y deja
+igual todo lo demás del JSON: sirve cuando el suelo es una copia comprimida (WebP) cuyos colores
+moverían un poco las misiones y los árboles.
 """
 import heapq
 import json
@@ -17,9 +21,11 @@ from collections import deque
 from PIL import Image, ImageFilter
 
 suelo, ruta = sys.argv[1], sys.argv[2]
+SOLO_REJILLA = '--solo-rejilla' in sys.argv[3:]
 random.seed(11)
 
 MUNDO = 2800
+PUENTE = (2557, 1330)  # centro del puente sobre el río
 N = 700  # cuadrícula de análisis
 E = MUNDO / N
 # El suelo pintado tiene detalle fino (flores, piedras, hongos, brillos del agua). La mediana
@@ -61,6 +67,127 @@ def cuenta(x, y, radio):
                 n += 1
     return {k: v / n for k, v in c.items()}
 
+
+# ---------- Lo caminable: caminos, claros, la plaza, el puente y un borde de pasto ----------
+CELDA_CAMINABLE = 20
+
+
+def rejilla_caminable(inicio):
+    """Rejilla de celdas donde el guía puede pisar, comprimida por filas.
+
+    Cada fila es una lista de tramos separados por comas que se alternan, empezando por las
+    celdas que no se pisan: "12,30,98" son 12 bloqueadas, 30 caminables y 98 bloqueadas.
+    Solo queda la parte unida al punto de inicio, para que todo lo caminable sea alcanzable.
+    """
+    lado = MUNDO // CELDA_CAMINABLE
+    paso = CELDA_CAMINABLE / E  # píxeles de análisis por celda
+    tipo = [[None] * lado for _ in range(lado)]
+    for j in range(lado):
+        for i in range(lado):
+            cuenta_ = {'agua': 0, 'camino': 0, 'claro': 0, 'bosque': 0}
+            a0, b0 = int(i * paso), int(j * paso)
+            for b in range(b0, max(b0 + 1, int((j + 1) * paso))):
+                for a in range(a0, max(a0 + 1, int((i + 1) * paso))):
+                    cuenta_[CLASE[b][a] if 0 <= a < N and 0 <= b < N else 'bosque'] += 1
+            total = sum(cuenta_.values())
+            x, y = (i + 0.5) * CELDA_CAMINABLE, (j + 0.5) * CELDA_CAMINABLE
+            if abs(x - PUENTE[0]) < 150 and abs(y - PUENTE[1]) < 45:
+                tipo[j][i] = 'puente'
+            elif cuenta_['agua'] > total * 0.15:
+                tipo[j][i] = 'agua'
+            elif cuenta_['camino'] + cuenta_['claro'] >= total * 0.4:
+                tipo[j][i] = 'camino' if cuenta_['camino'] >= cuenta_['claro'] else 'claro'
+            else:
+                tipo[j][i] = 'bosque'
+    base = [[tipo[j][i] in ('camino', 'claro', 'puente') for i in range(lado)] for j in range(lado)]
+    vecinas = lambda i, j, d: [(i + da, j + db) for da in range(-d, d + 1) for db in range(-d, d + 1) if 0 <= i + da < lado and 0 <= j + db < lado]
+    # Borra manchas sueltas del color del camino (los hongos encendidos, por ejemplo): un camino
+    # de verdad es una franja larga, no un grupo de pocas celdas.
+    pisa = [fila[:] for fila in base]
+    vistos = [[False] * lado for _ in range(lado)]
+    for j in range(lado):
+        for i in range(lado):
+            if tipo[j][i] != 'camino' or vistos[j][i]:
+                continue
+            mancha, cola = [], deque([(i, j)])
+            vistos[j][i] = True
+            while cola:
+                a, b = cola.popleft()
+                mancha.append((a, b))
+                for u, v in vecinas(a, b, 1):
+                    if tipo[v][u] == 'camino' and not vistos[v][u]:
+                        vistos[v][u] = True
+                        cola.append((u, v))
+            if len(mancha) < 20:
+                for a, b in mancha:
+                    pisa[b][a] = False
+    # Rellena huecos pequeños (manchas de pasto oscuro en la plaza o en un claro).
+    vistos = [[False] * lado for _ in range(lado)]
+    for j in range(lado):
+        for i in range(lado):
+            if pisa[j][i] or vistos[j][i]:
+                continue
+            hueco, cola, agua_ = [], deque([(i, j)]), False
+            vistos[j][i] = True
+            while cola:
+                a, b = cola.popleft()
+                hueco.append((a, b))
+                agua_ = agua_ or tipo[b][a] == 'agua'
+                for da, db in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+                    u, v = a + da, b + db
+                    if 0 <= u < lado and 0 <= v < lado and not pisa[v][u] and not vistos[v][u]:
+                        vistos[v][u] = True
+                        cola.append((u, v))
+            if len(hueco) <= 40 and not agua_:
+                for a, b in hueco:
+                    pisa[b][a] = True
+    # Borde corto de pasto: una celda a cada lado del camino, para que el andar no sea de riel.
+    junto = [(i, j) for j in range(lado) for i in range(lado) if tipo[j][i] == 'bosque' and not pisa[j][i]
+             and any(tipo[v][u] == 'camino' and pisa[v][u] for u, v in vecinas(i, j, 1))]
+    for i, j in junto:
+        pisa[j][i] = True
+    # Solo lo unido al inicio (en cruz, que es lo que el motor recorre sin cortar esquinas).
+    i0, j0 = int(inicio['x'] // CELDA_CAMINABLE), int(inicio['y'] // CELDA_CAMINABLE)
+    assert pisa[j0][i0], 'el punto de inicio no queda sobre lo caminable'
+    unida = [[False] * lado for _ in range(lado)]
+    unida[j0][i0] = True
+    cola = deque([(i0, j0)])
+    while cola:
+        a, b = cola.popleft()
+        for da, db in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+            u, v = a + da, b + db
+            if 0 <= u < lado and 0 <= v < lado and pisa[v][u] and not unida[v][u]:
+                unida[v][u] = True
+                cola.append((u, v))
+    filas = []
+    for j in range(lado):
+        tramos, actual, largo = [], False, 0
+        for i in range(lado):
+            if unida[j][i] == actual:
+                largo += 1
+            else:
+                tramos.append(largo)
+                actual, largo = unida[j][i], 1
+        tramos.append(largo)
+        filas.append(','.join(map(str, tramos)))
+    sueltas = sum(pisa[j][i] and not unida[j][i] for j in range(lado) for i in range(lado))
+    print('caminable:', sum(map(sum, unida)), 'celdas de', lado * lado, f'({sueltas} sueltas descartadas)')
+    return {'celda': CELDA_CAMINABLE, 'ancho': lado, 'alto': lado, 'filas': filas}
+
+
+def guardar(c):
+    # Respeta si el archivo terminaba o no en salto de línea, para no ensuciar el diff.
+    final = '\n' if open(ruta).read().endswith('\n') else ''
+    json.dump(c, open(ruta, 'w'), ensure_ascii=False, indent=1)
+    open(ruta, 'a').write(final)
+
+
+if SOLO_REJILLA:
+    c = json.load(open(ruta))
+    m = c['territorios'][0]['mundo']
+    m['caminable'] = rejilla_caminable(m['inicio'])
+    guardar(c)
+    sys.exit(0)
 
 # ---------- Claros ----------
 visto = [[False] * N for _ in range(N)]
@@ -642,7 +769,6 @@ for tema in TEMAS:
             huellas.append({'x': round(x), 'y': round(y), 'icono': lista[k % len(lista)]['icono'], 'mision': f'bosque-{tema}' + ('' if parte == 0 else '-2')})
 
 # Puente: Nova en el puente y Rayo en el camino.
-PUENTE = (2557, 1330)
 t['puerta'].update({'x': PUENTE[0] - 30, 'y': PUENTE[1] + 10})
 ocupar(PUENTE[0], PUENTE[1], 120)
 tramo_puente = [pt for pt in ruta_entre(centro, {'x': PUENTE[0] - 190, 'y': PUENTE[1]}) if math.hypot(pt[0] - CX, pt[1] - CY) > centro['r'] + 60]
@@ -781,6 +907,7 @@ for j in range(MUNDO // CELDA):
     filas.append(fila)
 m['celda'] = CELDA
 m['agua'] = filas
+m['caminable'] = rejilla_caminable(m['inicio'])
 
 # ---------- Copas en primer plano: pocas, lejos de todo lo que hay que ver ----------
 frente = []
@@ -794,8 +921,7 @@ for _ in range(6000):
 m['frente'] = [{'x': round(x), 'y': round(y), 'tipo': tp} for x, y, tp in frente]
 
 m.update({'ancho': MUNDO, 'alto': MUNDO, 'luces': [{'x': round(CX), 'y': round(CY), 'radio': 480}], 'radioLuzMision': 420, 'colorPenumbra': 'rgb(16 8 46 / 0.62)'})
-json.dump(c, open(ruta, 'w'), ensure_ascii=False, indent=1)
-open(ruta, 'a').write('\n')
+guardar(c)
 
 print('centro', round(CX), round(CY), round(centro['r']))
 for tema, (a, b) in CAMINO.items():

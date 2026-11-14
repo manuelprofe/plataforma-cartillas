@@ -427,6 +427,15 @@ img {
   animation: trotar 0.34s ease-in-out infinite alternate;
 }
 
+/* Al andar, el rebote del cuerpo lo pone el motor según la velocidad; el giro de lado es suave. */
+.guia[data-anda='si'] .guia__cuerpo img {
+  animation: none;
+}
+
+.guia__cuerpo img {
+  transition: scale 0.14s ease-out;
+}
+
 .guia__carga {
   position: absolute;
   left: -27px;
@@ -485,6 +494,32 @@ img {
   border: 3px solid var(--oro);
   box-shadow: 0 0 10px rgb(255 207 58 / 0.7);
   animation: latir 0.7s ease-in-out infinite;
+}
+
+.onda-toque[data-gris='si'] {
+  border-color: rgb(235 235 235 / 0.8);
+  box-shadow: none;
+}
+
+/* Puntitos de luz de la ruta: se apagan cuando el guía pasa. */
+.rastro {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 10px;
+  height: 10px;
+  margin: -5px 0 0 -5px;
+  border-radius: 50%;
+  background: #fff6c2;
+  box-shadow: 0 0 8px 2px rgb(255 220 90 / 0.7);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease-out;
+}
+
+.rastro[data-ver='si'] {
+  opacity: 0.9;
+  transition-duration: 0.15s;
 }
 
 .onda-toque {

@@ -175,6 +175,8 @@ export interface Territorio {
     /** Cuadrícula de agua ('1' = no se puede caminar) y tamaño de cada celda. */
     agua: string[];
     celda: number;
+    /** Por dónde se camina (caminos, claros, puente). Sin ella, se camina por todo menos el agua. */
+    caminable?: RejillaCaminable;
     /** Color de la penumbra: cada territorio tiene su hora del día. */
     colorPenumbra: string;
     luciernagas: { x: number; y: number }[];
@@ -209,4 +211,16 @@ export interface Cartilla {
 export interface Frase {
   es: string;
   en: string;
+}
+
+/**
+ * Rejilla de lo caminable de un mundo, generada por el guion del territorio. Cada fila es una
+ * lista de tramos separados por comas que se alternan, empezando por celdas que no se pisan:
+ * "12,30,98" son 12 bloqueadas, 30 caminables y 98 bloqueadas.
+ */
+export interface RejillaCaminable {
+  celda: number;
+  ancho: number;
+  alto: number;
+  filas: string[];
 }

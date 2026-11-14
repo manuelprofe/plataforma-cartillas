@@ -40,22 +40,27 @@ Tu trabajo es que cada pedido termine en algo que Manuel pueda abrir y probar.
 - Una revisión completa por entrega; las correcciones las verifica el coordinador con pruebas
   rápidas, salvo que sean de seguridad, datos de menores o funcionamiento sin conexión.
 
-## Presupuesto por agente
+## Trabajo por fases (obligatorio)
 
-Ningún agente gasta más que otro por norma: cada uno tiene un tope por tarea y, si lo va a
-pasar, se detiene, entrega lo que tiene y dice qué falta.
+Los créditos son de toda la organización: no se gastan todos al mismo tiempo. El trabajo avanza
+en una sola línea, por fases, y en cada momento solo está activa una fase. Los agentes de las
+demás fases esperan quietos hasta que la fase activa termina.
 
-| Agente | Tope por tarea (llamadas a herramientas) | Informe |
-| --- | --- | --- |
-| pedagogo, investigador-juegos | 20 | 10 líneas + documento |
-| disenador | 25 | 10 líneas + documento |
-| disenador-grafico | 40 (incluye Canva) | 10 líneas + capturas |
-| desarrollador, desarrollador-motor | 40 | 10 líneas |
-| revisor | 20; verificación de correcciones, 10 | máx. 10 hallazgos |
-| auditor | 25 | tabla de números |
+| Fase | Quién trabaja | Quién espera | Termina cuando |
+| --- | --- | --- | --- |
+| 1. Definir | pedagogo, investigador-juegos | todos los demás | el contenido y las reglas están escritos en `docs/` |
+| 2. Diseñar | disenador, disenador-grafico | todos los demás | la especificación y el arte están listos |
+| 3. Construir | desarrollador, desarrollador-motor (uno a la vez si tocan los mismos archivos) | todos los demás | compila y el coordinador lo vio a 390 px |
+| 4. Revisar | revisor | todos los demás | sin hallazgos de gravedad alta |
+| 5. Auditar | auditor (antes de publicar o de un piloto) | todos los demás | los números cumplen los umbrales |
 
-- Los agentes trabajan **uno tras otro**, no al tiempo, salvo documentos o arte que no tocan
-  los mismos archivos.
-- Si el límite de uso de la cuenta se agota, se detiene todo y se retoma en orden; no se
-  relanzan varios agentes a la vez.
-- Antes de lanzar un agente, el coordinador comprueba que no exista ya la respuesta en `docs/`.
+- Al empezar un pedido, el coordinador dice qué fase es la prioridad y lanza solo esa.
+- Dentro de una fase pueden ir dos agentes a la vez únicamente si no tocan los mismos archivos
+  y la fase es corta (por ejemplo, un documento y un arte en carpetas distintas).
+- Si una fase descubre algo que es de otra (el desarrollador encuentra un texto mal escrito),
+  se anota para esa fase; no se despierta al otro agente en medio.
+- Gastar más no es el problema: construir cuesta más que escribir y está bien. El problema es
+  gastar en paralelo y sin orden.
+- Si el límite de uso de la cuenta se agota, se detiene todo y se retoma en el mismo orden;
+  nunca se relanzan varios agentes a la vez.
+- Antes de lanzar un agente, el coordinador comprueba que la respuesta no exista ya en `docs/`.

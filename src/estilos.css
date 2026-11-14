@@ -1666,6 +1666,16 @@ img {
   z-index: -1;
 }
 
+.carta-grande .decir__suena {
+  margin: 4px 0 2px;
+  padding: 0 18px;
+  border-radius: 999px;
+  background: #efe4ff;
+  color: #6a2fc0;
+  font-size: 2.1rem;
+  letter-spacing: 0.02em;
+}
+
 .decir__eco {
   min-height: 52px;
   font-size: 2.6rem;

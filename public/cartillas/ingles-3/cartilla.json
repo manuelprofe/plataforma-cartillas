@@ -28,27 +28,32 @@
       {
        "en": "pencil",
        "es": "lápiz",
-       "icono": "iconos/270f.svg"
+       "icono": "iconos/270f.svg",
+       "pronuncia": "pén-sil"
       },
       {
        "en": "eraser",
        "es": "borrador",
-       "icono": "iconos/1f9fd.svg"
+       "icono": "iconos/1f9fd.svg",
+       "pronuncia": "i-réi-ser"
       },
       {
        "en": "notebook",
        "es": "cuaderno",
-       "icono": "iconos/1f4d3.svg"
+       "icono": "iconos/1f4d3.svg",
+       "pronuncia": "nóut-buk"
       },
       {
        "en": "ruler",
        "es": "regla",
-       "icono": "iconos/1f4cf.svg"
+       "icono": "iconos/1f4cf.svg",
+       "pronuncia": "rú-ler"
       },
       {
        "en": "scissors",
        "es": "tijeras",
-       "icono": "iconos/2702.svg"
+       "icono": "iconos/2702.svg",
+       "pronuncia": "sí-sors"
       }
      ],
      "x": 829,
@@ -71,27 +76,32 @@
       {
        "en": "backpack",
        "es": "mochila",
-       "icono": "iconos/1f392.svg"
+       "icono": "iconos/1f392.svg",
+       "pronuncia": "bák-pak"
       },
       {
        "en": "book",
        "es": "libro",
-       "icono": "iconos/1f4d8.svg"
+       "icono": "iconos/1f4d8.svg",
+       "pronuncia": "buk"
       },
       {
        "en": "marker",
        "es": "marcador",
-       "icono": "iconos/1f58a.svg"
+       "icono": "iconos/1f58a.svg",
+       "pronuncia": "már-ker"
       },
       {
        "en": "crayon",
        "es": "crayón",
-       "icono": "iconos/1f58d.svg"
+       "icono": "iconos/1f58d.svg",
+       "pronuncia": "kréi-on"
       },
       {
        "en": "chair",
        "es": "silla",
-       "icono": "iconos/1fa91.svg"
+       "icono": "iconos/1fa91.svg",
+       "pronuncia": "cher"
       }
      ],
      "x": 411,
@@ -115,27 +125,32 @@
       {
        "en": "red",
        "es": "rojo",
-       "icono": "iconos/1f534.svg"
+       "icono": "iconos/1f534.svg",
+       "pronuncia": "red"
       },
       {
        "en": "blue",
        "es": "azul",
-       "icono": "iconos/1f535.svg"
+       "icono": "iconos/1f535.svg",
+       "pronuncia": "blu"
       },
       {
        "en": "green",
        "es": "verde",
-       "icono": "iconos/1f7e2.svg"
+       "icono": "iconos/1f7e2.svg",
+       "pronuncia": "griin"
       },
       {
        "en": "yellow",
        "es": "amarillo",
-       "icono": "iconos/1f7e1.svg"
+       "icono": "iconos/1f7e1.svg",
+       "pronuncia": "yé-lou"
       },
       {
        "en": "orange",
        "es": "naranja",
-       "icono": "iconos/1f7e0.svg"
+       "icono": "iconos/1f7e0.svg",
+       "pronuncia": "ó-rinch"
       }
      ],
      "x": 681,
@@ -158,27 +173,32 @@
       {
        "en": "purple",
        "es": "morado",
-       "icono": "iconos/1f7e3.svg"
+       "icono": "iconos/1f7e3.svg",
+       "pronuncia": "pér-pol"
       },
       {
        "en": "pink",
        "es": "rosado",
-       "icono": "iconos/color-pink.svg"
+       "icono": "iconos/color-pink.svg",
+       "pronuncia": "pink"
       },
       {
        "en": "brown",
        "es": "café",
-       "icono": "iconos/color-brown.svg"
+       "icono": "iconos/color-brown.svg",
+       "pronuncia": "bráun"
       },
       {
        "en": "black",
        "es": "negro",
-       "icono": "iconos/color-black.svg"
+       "icono": "iconos/color-black.svg",
+       "pronuncia": "blak"
       },
       {
        "en": "white",
        "es": "blanco",
-       "icono": "iconos/color-white.svg"
+       "icono": "iconos/color-white.svg",
+       "pronuncia": "uáit"
       }
      ],
      "x": 188,
@@ -202,27 +222,32 @@
       {
        "en": "one",
        "es": "uno",
-       "icono": "iconos/0031_20e3.svg"
+       "icono": "iconos/0031_20e3.svg",
+       "pronuncia": "uán"
       },
       {
        "en": "two",
        "es": "dos",
-       "icono": "iconos/0032_20e3.svg"
+       "icono": "iconos/0032_20e3.svg",
+       "pronuncia": "tu"
       },
       {
        "en": "three",
        "es": "tres",
-       "icono": "iconos/0033_20e3.svg"
+       "icono": "iconos/0033_20e3.svg",
+       "pronuncia": "zrii"
       },
       {
        "en": "four",
        "es": "cuatro",
-       "icono": "iconos/0034_20e3.svg"
+       "icono": "iconos/0034_20e3.svg",
+       "pronuncia": "for"
       },
       {
        "en": "five",
        "es": "cinco",
-       "icono": "iconos/0035_20e3.svg"
+       "icono": "iconos/0035_20e3.svg",
+       "pronuncia": "fáiv"
       }
      ],
      "x": 1911,
@@ -245,27 +270,32 @@
       {
        "en": "six",
        "es": "seis",
-       "icono": "iconos/0036_20e3.svg"
+       "icono": "iconos/0036_20e3.svg",
+       "pronuncia": "siks"
       },
       {
        "en": "seven",
        "es": "siete",
-       "icono": "iconos/0037_20e3.svg"
+       "icono": "iconos/0037_20e3.svg",
+       "pronuncia": "sé-ven"
       },
       {
        "en": "eight",
        "es": "ocho",
-       "icono": "iconos/0038_20e3.svg"
+       "icono": "iconos/0038_20e3.svg",
+       "pronuncia": "éit"
       },
       {
        "en": "nine",
        "es": "nueve",
-       "icono": "iconos/0039_20e3.svg"
+       "icono": "iconos/0039_20e3.svg",
+       "pronuncia": "náin"
       },
       {
        "en": "ten",
        "es": "diez",
-       "icono": "iconos/1f51f.svg"
+       "icono": "iconos/1f51f.svg",
+       "pronuncia": "ten"
       }
      ],
      "x": 2339,
@@ -289,22 +319,26 @@
       {
        "en": "head",
        "es": "cabeza",
-       "icono": "iconos/1f642.svg"
+       "icono": "iconos/1f642.svg",
+       "pronuncia": "jed"
       },
       {
        "en": "eyes",
        "es": "ojos",
-       "icono": "iconos/1f440.svg"
+       "icono": "iconos/1f440.svg",
+       "pronuncia": "áis"
       },
       {
        "en": "ears",
        "es": "orejas",
-       "icono": "iconos/1f442.svg"
+       "icono": "iconos/1f442.svg",
+       "pronuncia": "írs"
       },
       {
        "en": "nose",
        "es": "nariz",
-       "icono": "iconos/1f443.svg"
+       "icono": "iconos/1f443.svg",
+       "pronuncia": "nóus"
       }
      ],
      "x": 943,
@@ -327,27 +361,32 @@
       {
        "en": "mouth",
        "es": "boca",
-       "icono": "iconos/1f444.svg"
+       "icono": "iconos/1f444.svg",
+       "pronuncia": "máuz"
       },
       {
        "en": "hands",
        "es": "manos",
-       "icono": "iconos/1f64c.svg"
+       "icono": "iconos/1f64c.svg",
+       "pronuncia": "jands"
       },
       {
        "en": "arms",
        "es": "brazos",
-       "icono": "iconos/1f4aa.svg"
+       "icono": "iconos/1f4aa.svg",
+       "pronuncia": "arms"
       },
       {
        "en": "legs",
        "es": "piernas",
-       "icono": "iconos/1f9b5.svg"
+       "icono": "iconos/1f9b5.svg",
+       "pronuncia": "legs"
       },
       {
        "en": "feet",
        "es": "pies",
-       "icono": "iconos/1f9b6.svg"
+       "icono": "iconos/1f9b6.svg",
+       "pronuncia": "fiit"
       }
      ],
      "x": 421,
@@ -371,22 +410,26 @@
       {
        "en": "hello",
        "es": "hola",
-       "icono": "iconos/1f44b.svg"
+       "icono": "iconos/1f44b.svg",
+       "pronuncia": "je-lóu"
       },
       {
        "en": "good morning",
        "es": "buenos días",
-       "icono": "iconos/1f305.svg"
+       "icono": "iconos/1f305.svg",
+       "pronuncia": "gud mór-ning"
       },
       {
        "en": "good night",
        "es": "buenas noches",
-       "icono": "iconos/1f319.svg"
+       "icono": "iconos/1f319.svg",
+       "pronuncia": "gud náit"
       },
       {
        "en": "thank you",
        "es": "gracias",
-       "icono": "iconos/1f64f.svg"
+       "icono": "iconos/1f64f.svg",
+       "pronuncia": "zénk-iu"
       }
      ],
      "x": 1907,
@@ -409,37 +452,44 @@
       {
        "en": "mother",
        "es": "mamá",
-       "icono": "iconos/1f469.svg"
+       "icono": "iconos/1f469.svg",
+       "pronuncia": "mó-der"
       },
       {
        "en": "father",
        "es": "papá",
-       "icono": "iconos/1f468.svg"
+       "icono": "iconos/1f468.svg",
+       "pronuncia": "fá-der"
       },
       {
        "en": "sister",
        "es": "hermana",
-       "icono": "iconos/1f467.svg"
+       "icono": "iconos/1f467.svg",
+       "pronuncia": "sís-ter"
       },
       {
        "en": "brother",
        "es": "hermano",
-       "icono": "iconos/1f466.svg"
+       "icono": "iconos/1f466.svg",
+       "pronuncia": "bró-der"
       },
       {
        "en": "grandmother",
        "es": "abuela",
-       "icono": "iconos/1f475.svg"
+       "icono": "iconos/1f475.svg",
+       "pronuncia": "gránd-mo-der"
       },
       {
        "en": "grandfather",
        "es": "abuelo",
-       "icono": "iconos/1f474.svg"
+       "icono": "iconos/1f474.svg",
+       "pronuncia": "gránd-fa-der"
       },
       {
        "en": "baby",
        "es": "bebé",
-       "icono": "iconos/1f476.svg"
+       "icono": "iconos/1f476.svg",
+       "pronuncia": "béi-bi"
       }
      ],
      "x": 2380,
@@ -463,32 +513,38 @@
       {
        "en": "one o'clock",
        "es": "la una",
-       "icono": "iconos/1f550.svg"
+       "icono": "iconos/1f550.svg",
+       "pronuncia": "uán o-klók"
       },
       {
        "en": "three o'clock",
        "es": "las tres",
-       "icono": "iconos/1f552.svg"
+       "icono": "iconos/1f552.svg",
+       "pronuncia": "zrii o-klók"
       },
       {
        "en": "six o'clock",
        "es": "las seis",
-       "icono": "iconos/1f555.svg"
+       "icono": "iconos/1f555.svg",
+       "pronuncia": "siks o-klók"
       },
       {
        "en": "nine o'clock",
        "es": "las nueve",
-       "icono": "iconos/1f558.svg"
+       "icono": "iconos/1f558.svg",
+       "pronuncia": "náin o-klók"
       },
       {
        "en": "ten o'clock",
        "es": "las diez",
-       "icono": "iconos/1f559.svg"
+       "icono": "iconos/1f559.svg",
+       "pronuncia": "ten o-klók"
       },
       {
        "en": "twelve o'clock",
        "es": "las doce",
-       "icono": "iconos/1f55b.svg"
+       "icono": "iconos/1f55b.svg",
+       "pronuncia": "tuelv o-klók"
       }
      ],
      "x": 1894,
@@ -599,23 +655,27 @@
        "pide": {
         "en": "eraser",
         "es": "borrador",
-        "icono": "iconos/1f9fd.svg"
+        "icono": "iconos/1f9fd.svg",
+        "pronuncia": "i-réi-ser"
        },
        "opciones": [
         {
          "en": "pencil",
          "es": "lápiz",
-         "icono": "iconos/270f.svg"
+         "icono": "iconos/270f.svg",
+         "pronuncia": "pén-sil"
         },
         {
          "en": "eraser",
          "es": "borrador",
-         "icono": "iconos/1f9fd.svg"
+         "icono": "iconos/1f9fd.svg",
+         "pronuncia": "i-réi-ser"
         },
         {
          "en": "ruler",
          "es": "regla",
-         "icono": "iconos/1f4cf.svg"
+         "icono": "iconos/1f4cf.svg",
+         "pronuncia": "rú-ler"
         }
        ],
        "x": 570,
@@ -637,23 +697,27 @@
        "pide": {
         "en": "red",
         "es": "rojo",
-        "icono": "iconos/1f534.svg"
+        "icono": "iconos/1f534.svg",
+        "pronuncia": "red"
        },
        "opciones": [
         {
          "en": "blue",
          "es": "azul",
-         "icono": "iconos/1f535.svg"
+         "icono": "iconos/1f535.svg",
+         "pronuncia": "blu"
         },
         {
          "en": "red",
          "es": "rojo",
-         "icono": "iconos/1f534.svg"
+         "icono": "iconos/1f534.svg",
+         "pronuncia": "red"
         },
         {
          "en": "yellow",
          "es": "amarillo",
-         "icono": "iconos/1f7e1.svg"
+         "icono": "iconos/1f7e1.svg",
+         "pronuncia": "yé-lou"
         }
        ],
        "x": 418,
@@ -675,23 +739,27 @@
        "pide": {
         "en": "three",
         "es": "tres",
-        "icono": "iconos/0033_20e3.svg"
+        "icono": "iconos/0033_20e3.svg",
+        "pronuncia": "zrii"
        },
        "opciones": [
         {
          "en": "five",
          "es": "cinco",
-         "icono": "iconos/0035_20e3.svg"
+         "icono": "iconos/0035_20e3.svg",
+         "pronuncia": "fáiv"
         },
         {
          "en": "three",
          "es": "tres",
-         "icono": "iconos/0033_20e3.svg"
+         "icono": "iconos/0033_20e3.svg",
+         "pronuncia": "zrii"
         },
         {
          "en": "one",
          "es": "uno",
-         "icono": "iconos/0031_20e3.svg"
+         "icono": "iconos/0031_20e3.svg",
+         "pronuncia": "uán"
         }
        ],
        "x": 2118,
@@ -713,23 +781,27 @@
        "pide": {
         "en": "nose",
         "es": "nariz",
-        "icono": "iconos/1f443.svg"
+        "icono": "iconos/1f443.svg",
+        "pronuncia": "nóus"
        },
        "opciones": [
         {
          "en": "eyes",
          "es": "ojos",
-         "icono": "iconos/1f440.svg"
+         "icono": "iconos/1f440.svg",
+         "pronuncia": "áis"
         },
         {
          "en": "nose",
          "es": "nariz",
-         "icono": "iconos/1f443.svg"
+         "icono": "iconos/1f443.svg",
+         "pronuncia": "nóus"
         },
         {
          "en": "ears",
          "es": "orejas",
-         "icono": "iconos/1f442.svg"
+         "icono": "iconos/1f442.svg",
+         "pronuncia": "írs"
         }
        ],
        "x": 650,
@@ -751,23 +823,27 @@
        "pide": {
         "en": "hello",
         "es": "hola",
-        "icono": "iconos/1f44b.svg"
+        "icono": "iconos/1f44b.svg",
+        "pronuncia": "je-lóu"
        },
        "opciones": [
         {
          "en": "thank you",
          "es": "gracias",
-         "icono": "iconos/1f64f.svg"
+         "icono": "iconos/1f64f.svg",
+         "pronuncia": "zénk-iu"
         },
         {
          "en": "hello",
          "es": "hola",
-         "icono": "iconos/1f44b.svg"
+         "icono": "iconos/1f44b.svg",
+         "pronuncia": "je-lóu"
         },
         {
          "en": "good night",
          "es": "buenas noches",
-         "icono": "iconos/1f319.svg"
+         "icono": "iconos/1f319.svg",
+         "pronuncia": "gud náit"
         }
        ],
        "x": 2118,

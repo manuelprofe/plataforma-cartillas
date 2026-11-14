@@ -175,7 +175,67 @@ c = json.load(open(ruta))
 t = c['territorios'][0]
 m = t['mundo']
 I = lambda n: f'iconos/{n}.svg'
-W = lambda en, es, icono: {'en': en, 'es': es, 'icono': I(icono)}
+# Guía de pronunciación escrita como se lee en español. El juego de voz la muestra en lugar de
+# la palabra escrita, para que escribirla siga siendo un reto. Revisión pendiente del pedagogo.
+PRONUNCIA = {
+    'pencil': 'pén-sil',
+    'eraser': 'i-réi-ser',
+    'notebook': 'nóut-buk',
+    'ruler': 'rú-ler',
+    'scissors': 'sí-sors',
+    'backpack': 'bák-pak',
+    'book': 'buk',
+    'marker': 'már-ker',
+    'crayon': 'kréi-on',
+    'chair': 'cher',
+    'red': 'red',
+    'blue': 'blu',
+    'green': 'griin',
+    'yellow': 'yé-lou',
+    'orange': 'ó-rinch',
+    'purple': 'pér-pol',
+    'pink': 'pink',
+    'brown': 'bráun',
+    'black': 'blak',
+    'white': 'uáit',
+    'one': 'uán',
+    'two': 'tu',
+    'three': 'zrii',
+    'four': 'for',
+    'five': 'fáiv',
+    'six': 'siks',
+    'seven': 'sé-ven',
+    'eight': 'éit',
+    'nine': 'náin',
+    'ten': 'ten',
+    'head': 'jed',
+    'eyes': 'áis',
+    'ears': 'írs',
+    'nose': 'nóus',
+    'mouth': 'máuz',
+    'hands': 'jands',
+    'arms': 'arms',
+    'legs': 'legs',
+    'feet': 'fiit',
+    'hello': 'je-lóu',
+    'good morning': 'gud mór-ning',
+    'good night': 'gud náit',
+    'thank you': 'zénk-iu',
+    'mother': 'mó-der',
+    'father': 'fá-der',
+    'sister': 'sís-ter',
+    'brother': 'bró-der',
+    'grandmother': 'gránd-mo-der',
+    'grandfather': 'gránd-fa-der',
+    'baby': 'béi-bi',
+    "one o'clock": 'uán o-klók',
+    "three o'clock": 'zrii o-klók',
+    "six o'clock": 'siks o-klók',
+    "nine o'clock": 'náin o-klók',
+    "ten o'clock": 'ten o-klók',
+    "twelve o'clock": 'tuelv o-klók',
+}
+W = lambda en, es, icono: {'en': en, 'es': es, 'icono': I(icono), **({'pronuncia': PRONUNCIA[en]} if en in PRONUNCIA else {})}
 L = lambda quien, es, en, **mas: {'quien': quien, 'es': es, 'en': en, **mas}
 
 PALABRAS = {

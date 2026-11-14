@@ -7,6 +7,8 @@ export interface Palabra {
   en: string;
   es: string;
   icono: string;
+  /** Cómo suena, escrito como se lee en español ("pén-sil"). El juego de voz la muestra en vez de la palabra. */
+  pronuncia?: string;
 }
 
 /** Cómo se narra la historia: en español, en inglés con apoyo, o solo en inglés. */

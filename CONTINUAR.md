@@ -226,6 +226,11 @@ aquí; usar el mapa original como referencia mantiene el estilo.
 
 - Si se reconoce la palabra, la carta brilla. Si dice otra cosa, se aplaude el intento y
   se le vuelve a decir la palabra; nunca hay error en pantalla. Si no habló, 👂 y repite.
+- **Pedido de Manuel (14 nov):** la carta no muestra la palabra escrita sino cómo se
+  pronuncia, escrito como se lee en español ("bák-pak"). Si estuviera escrita, escribirla
+  no sería reto. La palabra escrita aparece solo después del intento, como modelo. Las
+  guías están en `PRONUNCIA` dentro de `construir_bosque.py` (campo `pronuncia` de cada
+  palabra); falta que el pedagogo las revise.
 - ⌨️ abre un campo para escribirla. Igual o con una letra de diferencia cuenta como
   intento bueno; si no, se le muestra cómo se escribe y puede seguir igual.
 - Sin micrófono (no existe, permiso negado, sin conexión) el 🎤 se cambia solo por 🗣️

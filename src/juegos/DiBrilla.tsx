@@ -38,6 +38,8 @@ export function DiBrilla({ mision, base, idiomaVoz, imagenFiesta, onTerminar, on
   const palabra = rondas[indice];
   // Después de intentarlo una vez, ya puede seguir.
   const intento = estado !== 'listo' && estado !== 'escuchando' && estado !== 'silencio' && estado !== 'escribir';
+  // Después del intento se revela cómo se escribe, como modelo.
+  const mostrarEscrita = intento;
 
   useEffect(
     () => () => {
@@ -139,7 +141,12 @@ export function DiBrilla({ mision, base, idiomaVoz, imagenFiesta, onTerminar, on
         <main className={`decir decir--${estado}`}>
           <button type="button" className="carta-grande decir__carta" key={palabra.en} onClick={oir} aria-label={`Escuchar ${palabra.en}`}>
             <img src={base + palabra.icono} alt="" width="150" height="150" draggable={false} />
-            <strong lang="en">{palabra.en}</strong>
+            {/* Antes de intentarlo solo se ve cómo suena: si estuviera escrita, escribirla no sería reto. */}
+            {mostrarEscrita || !palabra.pronuncia ? (
+              <strong lang="en">{palabra.en}</strong>
+            ) : (
+              <strong className="decir__suena">{palabra.pronuncia}</strong>
+            )}
             <small>{palabra.es}</small>
             <span className="carta-grande__oir" aria-hidden="true">🔊</span>
             {estado === 'brilla' && <span className="decir__brillo" aria-hidden="true" />}

@@ -513,7 +513,69 @@ por misión).
 
 ---
 
-## 6. Qué registrar en el piloto
+## 6. Guía de pronunciación
+
+Revisión del diccionario `PRONUNCIA` (`herramientas/construir_bosque.py`, línea 180). El diccionario
+aparece en "Di y brilla" en lugar de la palabra escrita.
+
+**Reglas de escritura (para que sea coherente):**
+
+1. **Las palabras de una sílaba van sin tilde**, como en español ("pan", "sol"): `red`, `uan`,
+   `nain`. Hoy unas la llevan (`uán`, `éit`, `bráun`) y otras no (`red`, `blak`). En "ai", "au" y "ei"
+   la vocal fuerte ya suena sola; la tilde no aporta y confunde a un niño que está aprendiendo a
+   tildar.
+2. **Las palabras de dos o más sílabas siempre llevan tilde en la sílaba fuerte y guion entre
+   sílabas**, aunque en español no la llevarían: `pén-sil`, `ru-ler` → `rú-ler`. Así la tilde
+   significa siempre "aquí se pega más fuerte".
+3. **No se duplican vocales** (`griin`, `zrii`, `fiit`). Un niño de 8 años lee "gri-in" en dos
+   sílabas, y la convención no se aplicaba igual en todas (`blu` y `tu` no la tenían). La duración la
+   da el audio.
+4. **`z` = el sonido "th".** En Colombia la z se lee como s, así que `zri` se leerá "sri". Se mantiene
+   la `z` como señal de "lengua entre los dientes", pero esto hay que enseñarlo una vez: la docente lo
+   modela en clase y Cosmo puede decirlo en la primera misión de voz. No hay letra del español que lo
+   resuelva. Con `d` no pasa: "mó-der" leído en español ya suena casi igual que *mother*.
+5. Las palabras de varias partes se separan con espacio (`gud mór-ning`, `uan o-klók`) y la `j` marca
+   la h inglesa (`jed`, `je-lóu`). Ambas reglas están bien y no cambian.
+
+**Palabras que cambian y palabras nuevas** (las que no aparecen aquí están bien como están):
+
+| Palabra | Actual | Propuesta | Motivo |
+| --- | --- | --- | --- |
+| scissors | sí-sors | sí-sers | La segunda vocal es neutra, "er", no "o" (/ˈsɪzərz/). |
+| purple | pér-pol | pér-pel | Misma vocal neutra; queda coherente con `rú-ler` y `sí-sers`. |
+| green | griin | grin | Regla 3. |
+| brown | bráun | braun | Regla 1. |
+| white | uáit | uait | Regla 1. "uai" se lee bien, como en "Uruguay". |
+| one | uán | uan | Regla 1. |
+| three | zrii | zri | Reglas 3 y 4. |
+| five | fáiv | faiv | Regla 1. |
+| eight | éit | eit | Regla 1. |
+| nine | náin | nain | Regla 1. |
+| eyes | áis | ais | Regla 1. |
+| ears | írs | irs | Regla 1. |
+| nose | nóus | nous | Regla 1. |
+| mouth | máuz | mauz | Regla 1 (la `z` final es el "th", regla 4). |
+| feet | fiit | fit | Regla 3. |
+| good night | gud náit | gud nait | Regla 1. |
+| one o'clock | uán o-klók | uan o-klók | Regla 1 en "one". |
+| three o'clock | zrii o-klók | zri o-klók | Reglas 3 y 4. |
+| nine o'clock | náin o-klók | nain o-klók | Regla 1. |
+| twelve o'clock | tuelv o-klók | tuelv o-klók | Sin cambio; se lista para confirmarla. |
+| pen (nueva, reemplaza a *marker*) | — | pen | Si se mantiene *marker*, `már-ker` está bien. |
+| goodbye (nueva, si se agrega) | — | gud-bái | Es una sola palabra en inglés de dos sílabas: va con guion y tilde. |
+| bee (álbum) | — | bi | |
+| bird (álbum) | — | berd | La "ir" inglesa suena "er". |
+| butterfly (álbum) | — | bá-ter-flai | Sílaba fuerte al inicio. |
+| frog (álbum) | — | frog | |
+| owl (álbum) | — | aul | |
+| It's three o'clock (campo `frase`, si se agrega) | — | its zri o-klók | Para la misión 2 de la hora. |
+
+Nota para el desarrollador: los animales del álbum no pasan por `W` (se arman en `PAL` y `criatura`).
+Para que reciban `pronuncia` hay que tomarla de `PRONUNCIA` también allí.
+
+---
+
+## 7. Qué registrar en el piloto
 
 - **Antes.** Prueba corta imprimible: escuchar y señalar 10 palabras del Bosque con imagen, y decir 5
   palabras (el docente marca "lo intentó" y "se entiende"). Encuesta de agrado con caritas de 4 o 5

@@ -223,26 +223,3 @@ exigirlo.
 
 ---
 
-## 2. Por qué volver cada día sin rachas que castigan
-
-_(en preparación)_
-
-## 3. Repetición espaciada y repaso dentro del juego
-
-_(en preparación)_
-
-## 4. Feedback al error y práctica de voz
-
-_(en preparación)_
-
-## 5. Personajes que acompañan y animaciones de bajo costo
-
-_(en preparación)_
-
-## 6. Lo que NO hacer
-
-_(en preparación)_
-
-## 7. Top 10 de propuestas priorizadas
-
-_(en preparación)_

@@ -223,3 +223,247 @@ exigirlo.
 
 ---
 
+
+## 2. Por qué volver cada día sin rachas que castigan
+
+Contexto: Manuel ya decidió el plan por semanas (la docente pone el tema, la misión cambia cada
+día) y una sesión diaria de unos 15 minutos. Esta sección no reabre eso: propone cómo se siente
+"volver" dentro del juego.
+
+### 2.1 Hallazgos
+
+| Fuente | Comprobado |
+| --- | --- |
+| Teach Your Monster (blog oficial) | Dice que nunca usan *dark patterns* como las rachas para animar a jugar, y critica los juegos que dan premio de juego por responder preguntas educativas. [teachyourmonster.org](https://www.teachyourmonster.org/?p=3079) |
+| Animal Crossing (charla de Eguchi, GDC) | Los ganchos diarios son pequeños y del mundo: cartas en el buzón, fósiles, lo que hay en la tienda. "None of the things in the game are compulsory." El reloj real es la base del diseño. [Game Developer](https://www.gamedeveloper.com/design/gdc-is-that-a-franchise-in-your-pocket-an-i-animal-crossing-wild-world-i-case-study), [Game Developer, cambios en tiempo real](https://gamedeveloper.com/design/why-nintendo-s-new-i-animal-crossing-i-features-allow-instant-change-in-the-real-time-game) |
+| Estudio de 859 diseños de rachas (Mobbin) | Las rachas casi siempre cuentan días y se apoyan en la aversión a la pérdida. Perder una puede producir el efecto "ya qué" (Polivy y Herman). En el estudio de Lally (UCL), faltar una vez "did not materially affect the habit formation process". Alternativas: bajar la exigencia diaria (+40 % mantuvo 7 días en una prueba de Duolingo), **reparar en vez de reiniciar** (Finch), pausas largas (Alma, 14 días). [Mobbin](https://mobbin.com/blog/streaks-are-about-losing-a-study-of-859-streak-designs) |
+| Críticas a la racha de Duolingo con niños | Guías para padres reportan ansiedad por el "todo o nada" de la racha y notificaciones culpabilizadoras. Son fuentes de divulgación, no estudios. [ScreenWise](https://screenwiseapp.com/guides/duolingo-streaks-and-anxiety-in-kids), [análisis de diseño de conducta](https://jtbdux-protocol.pages.dev/adoption-and-behavior/behavior-design-patterns/how-duolingo-engineered-50-million-daily-users-and-the-backlash-that-came-with-it) |
+| Radesky et al. 2022 (JAMA Network Open) | Ejemplo clasificado como presión parasocial: "Come back tomorrow to get THIS dragon! Then visit Dragolandia each day for other valuable rewards!". El 24,8 % de las apps usaba personajes para alargar el juego. [PMC9206186](https://pmc.ncbi.nlm.nih.gov/articles/PMC9206186/) |
+| Khan Academy Kids (guía docente) | Cita un estudio de UMass Amherst con preescolares que usaron la app "around 20 minutes a day". El docente asigna práctica según su secuencia. [Guía de implementación](https://sites.google.com/khanacademy.org/khanacademykids/implementation-guidance) |
+
+**Interpretación.** Lo que hace volver en los juegos amables es la **curiosidad por lo que cambió**
+(algo nuevo en el mundo) y **la relación con los personajes**, no el miedo a perder. Para niños
+de 5 a 9 años que dependen de que un adulto les preste el celular, una racha castiga al niño por
+algo que no controla (regla 6, y Ryan y Deci: autonomía).
+
+### 2.2 Propuestas
+
+**D1. Algo nuevo cada día en el bosque, que espera — costo media.** Cada día del plan semanal
+aparece una novedad atada al tema: un vecino con un encargo nuevo, luciérnagas con las palabras
+del día, una carta de Pixie en el buzón de la aldea con una adivinanza en audio. **Nada caduca**:
+si el niño no entra el martes, la novedad del martes lo sigue esperando el miércoles. Respalda:
+Ausubel (el tema de clase es el ancla), Ryan y Deci (autonomía). Riesgo: si las novedades se
+acumulan y el niño encuentra seis cosas pendientes, se agobia; mostrar como máximo dos.
+
+**D2. Los cinco farolitos de la semana — costo baja.** En la plaza, un poste con cinco farolitos
+(lunes a viernes). Cada día que se juega se enciende uno; el orden no importa y uno apagado
+**nunca se rompe ni se reinicia**: se puede encender después, dentro de la misma semana. El lunes
+siguiente empieza un poste nuevo; el anterior queda en el álbum como recuerdo. Nunca se muestra
+"días seguidos". Respalda: Kapp (meta visible y alcanzable), Ryan y Deci (competencia sin
+amenaza). Riesgo frente a la regla 6: si alguien añade luego un contador de días seguidos, se
+convierte en racha. Dejarlo escrito como prohibido.
+
+**D3. Una sesión con principio y final — costo media.** 15 minutos en cuatro tiempos:
+1. **Llegada (1 min):** Lumi saluda y repasa 2 o 3 palabras que tocan hoy (ver tema 3).
+2. **Misión del día (5 a 6 min):** la que puso la docente; brilla en el mini mapa y Lumi lleva si
+   está lejos (M7).
+3. **Libre (5 min):** explorar, encargos, álbum, otra misión si quiere.
+4. **Cierre (1 min):** las luciérnagas se van a dormir, Lumi bosteza y deja una pista de mañana
+   ("Mañana Nova trae algo del Valle…"). Un final natural, lo contrario de alargar el juego. El
+   niño puede seguir si quiere; no hay bloqueo ni castigo.
+Respalda: Bruner (la narración da estructura y deja un hilo abierto), Ryan y Deci. Riesgo: el
+"te dejo una pista de mañana" puede volverse presión si va atado a un premio; debe ser historia,
+nunca "vuelve mañana o pierdes X".
+
+**D4. Sin notificaciones al niño — costo nula.** El recordatorio lo da la docente o la familia,
+no el celular. Si algún día se notifica, solo al adulto y solo sobre lo aprendido.
+
+---
+
+## 3. Repetición espaciada y repaso dentro del juego
+
+### 3.1 Hallazgos
+
+| Fuente | Comprobado |
+| --- | --- |
+| Duolingo (blog) | Al final de una lección se repasan los errores. La práctica personalizada usa repetición espaciada y precisión para elegir qué palabras volver a ver. Principio: "review newer information more frequently, and older information less frequently". No describe Duolingo ABC. [blog.duolingo.com](https://blog.duolingo.com/spaced-repetition-for-learning) |
+| Duolingo ABC (Common Sense Media) | Ruta fija; "new games review what's already been introduced". No pude comprobar que use un algoritmo de intervalos. [Common Sense Media](https://www.commonsensemedia.org/app-reviews/duolingo-abc-learn-to-read) |
+| Khan Academy Kids | La ruta ajusta la dificultad según las respuestas; la mayoría de habilidades tiene 4 lecciones de práctica, que permiten "additional practice, spiral review, and remediation as-needed". El docente ve datos y asigna práctica. [Guía de implementación](https://sites.google.com/khanacademy.org/khanacademykids/implementation-guidance) |
+| Teach Your Monster | "Repetition is crucial" y da espacio para equivocarse y oír los sonidos varias veces. Common Sense: hay repeticiones, pero con mucho en medio no molestan. [teachyourmonster.org](https://www.teachyourmonster.org/?p=3079), [Common Sense Media](https://www.commonsensemedia.org/app-reviews/teach-your-monster-to-read) |
+| Investigación con niños | Quinto grado: palabras repasadas con una semana de separación se recordaron más cinco semanas después que las repasadas en bloque (Sobel, Cepeda y Kapler). En preescolar, practicar recordando ayuda cuando es **recuerdo con pista** y hay **retroalimentación inmediata**; con recuerdo libre el efecto desaparece (Kliegl et al. 2018). Resultados mixtos en primaria (Goossens et al. 2016). [Resumen Structural Learning](https://www.structural-learning.com/research-briefings/space-it-out), [Kliegl et al. 2018](https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2018.01446/full), [Leonard et al. 2024](https://pubs.asha.org/doi/10.1044/2024_JSLHR-23-00528), [Learning Scientists sobre límites en aula](https://www.learningscientists.org/blog/2017/7/20-1) |
+
+**Interpretación.** Para 5 a 9 años el repaso funciona mejor como **reconocer con pista**
+(oír y tocar entre pocas opciones) que como "dime la palabra" en frío, y el repaso no debe
+sentirse como examen: debe aparecer como parte del mundo.
+
+### 3.2 Propuestas
+
+**R1. La palabra que costó vuelve en la misma misión — costo baja.** Hoy `EscuchaToca` anota la
+palabra que costó (`costaron`) y la repite. Proponer: al terminar la ronda, esa palabra vuelve
+**una vez más** antes del cierre, con dos opciones en lugar de tres (más fácil). Así el niño
+termina con un acierto en la palabra difícil (como el repaso de errores de Duolingo). Respalda:
+Vygotsky (se baja la ayuda a su zona), Krashen (cierra con éxito, filtro afectivo bajo).
+
+**R2. El repaso vive en el mundo — costo media.** Las palabras de `repasar` aparecen al día
+siguiente como luciérnagas que dicen su palabra o como un encargo de un vecino ("Tito volvió a
+perder *red*"). El niño la encuentra entre tres: recuerdo con pista. Respalda: Bruner (de lo
+icónico a lo simbólico), Ausubel (se ancla en el personaje que ya conoce). Riesgo: ninguno si no
+se muestra como "palabras que fallaste" al niño (regla 6); el adulto sí lo ve en el resumen.
+
+**R3. Calendario simple por palabra, contado en sesiones — costo media.** Cada palabra tiene un
+estado: nueva → la reconoce → la dice → firme. Al acertarla vuelve a las 1, 3, 7 y 15 sesiones
+jugadas (no días de calendario, porque el niño falta días sin culpa). Al fallar, vuelve a la
+siguiente sesión. La llegada de cada sesión (D3) toma 2 o 3 de las que tocan. Cabe en
+`progreso.ts`. Respalda: Ausubel (aprendizaje significativo que se consolida), Kapp.
+
+**R4. El viernes mezcla — costo baja.** La prueba o repaso del viernes del plan semanal incluye
+palabras de esta semana y de dos semanas atrás. El docente ve qué palabras le costaron al grupo
+(R5).
+
+**R5. El docente ve lo que costó al grupo — costo media (necesita Supabase).** Como Khan Kids:
+"Estas 5 palabras le costaron a más de la mitad del grupo" con botón para proyectar un juego de
+aula con ellas. Respalda: Vygotsky (el docente es el otro más capaz). Riesgo regla 7: es dato de
+progreso, permitido; no mostrar nombres de niños en la vista proyectada.
+
+---
+
+## 4. Feedback al error y práctica de voz
+
+### 4.1 Hallazgos
+
+| Fuente | Comprobado |
+| --- | --- |
+| Teach Your Monster | Señales visuales y sonoras que "make them feel good about getting the right answer, while not making them feel bad about getting a wrong answer". [teachyourmonster.org](https://www.teachyourmonster.org/?p=3079) |
+| Endless Alphabet / Wordplay | Sin respuestas "malas", sin temporizador, sin puntajes; la letra mal puesta se devuelve suave a su sitio para otro intento. Las letras son monstruos que dicen su sonido al arrastrarlas. [ScreenWise](https://screenwiseapp.com/media/endless-alphabet-app), [Common Sense Media](https://www.commonsensemedia.org/app-reviews/endless-alphabet) |
+| Lingokids | La única actividad de voz documentada es un bebé robot que **repite lo que dice el niño**; no encontré que califique la pronunciación. [Ayuda Lingokids](https://help.lingokids.com/hc/en-us/articles/11465888382865-In-App-Audio-Gallery-and-Camera-Features) |
+| Reconocimiento de voz infantil | El error de reconocimiento sube cuanto más pequeño es el niño: se reportan 15 a 21 % de palabras mal reconocidas en niños de 6 a 10 años y hasta 35 % en 4 a 6 años; también para oyentes humanos. En aula, el ruido empeora todo. [The Learning Agency](https://the-learning-agency.com/the-cutting-ed/article/how-speech-recognition-systems-struggle-with-childrens-voices/), [CogSci 2020](https://cognitivesciencesociety.org/cogsci20/papers/0340/index.html), [Universidad de Colorado](https://www.colorado.edu/research/ai-institute/media/53) |
+| Mueller y Dweck 1998 | Elogiar la inteligencia ("eres listo") llevó a elegir tareas fáciles y a rendir peor tras un fallo; elogiar el esfuerzo, lo contrario. Muestra de quinto grado. [PDF](https://www.columbia.edu/cu/psychology/courses/3615/Readings/Mueller_Dweck.pdf) |
+| Deci, Koestner y Ryan 1999 | Metaanálisis de 128 estudios: las recompensas tangibles esperadas bajan la motivación intrínseca, más en niños; la retroalimentación verbal positiva la sube. [PDF](https://home.ubalt.edu/ntygmitc/642/Articles%20syllabus/Deci%20Koestner%20Ryan%20meta%20IM%20psy%20bull%2099.pdf) |
+| Kliegl et al. 2018 | La retroalimentación inmediata es ingrediente necesario para que practicar recordando sirva en preescolar. [Frontiers](https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2018.01446/full) |
+
+**Interpretación.** El reconocedor de voz se equivoca con niños pequeños una de cada tres a cinco
+veces. Por eso nunca puede ser juez: "Di y brilla" ya hace bien en premiar el intento. Lo que
+falta es que el error **enseñe algo** en los juegos de escucha.
+
+### 4.2 Propuestas
+
+**V1. El error dice su propio nombre — costo baja.** En `EscuchaToca`, hoy la carta equivocada se
+apaga, suena "intenta" y se repite la palabra objetivo. Propuesta: la carta tocada **dice su
+palabra** ("*blue*") con un giro suave, y después Cosmo repite la que se buscaba. El error se
+vuelve entrada comprensible: el niño aprendió qué es *blue*. Respalda: Krashen (entrada
+comprensible), Kapp (retroalimentación informativa, no solo correctiva).
+
+**V2. Ayuda en escalera — costo baja.** Primer intento fallido: se repite la palabra. Segundo:
+la carta correcta respira con un brillo leve. Tercero: Lumi vuela a la carta. Nunca se pierde
+nada ni se cuenta en pantalla. Respalda: Vygotsky (andamiaje graduado que se retira).
+
+**V3. Guion de elogios — costo baja.** Lumi y Cosmo elogian **lo que el niño hizo**, nunca lo
+que el niño "es": "¡Lo dijiste con tu voz!", "Escuchaste con atención", "Lo intentaste otra vez
+y lo lograste". Prohibido: "¡Eres muy inteligente!", "¡Perfecto!" tras cada toque (pierde valor).
+Respalda: Ryan y Deci (retroalimentación que informa competencia), Mueller y Dweck como apoyo.
+Entregar al pedagogo como lista para `construir_bosque.py`.
+
+**V4. "Eco de Lumi" para quien aún no escribe — costo media, riesgo alto.** Como el bebé robot
+de Lingokids: el niño habla y Lumi le devuelve su propia voz con tono de estrella (al instante,
+en memoria, sin guardar ni enviar), y luego la voz modelo. Compara su voz con el modelo sin que
+nadie lo califique. **Riesgo frente a la regla 7:** aunque no se guarde, es manejar la grabación
+de un menor; necesita visto bueno del auditor y de Manuel, y del consentimiento de las familias.
+Solo proponer si el reconocimiento por servidor (ya señalado en `CONTINUAR.md`) se descarta.
+
+**V5. La voz siempre es privada — costo nula.** Nada de lo que el niño dice se muestra en el
+proyector ni se compara. El docente da las estrellas de "pronunciar" desde su modo, por conducta
+observada en clase; la app solo puede sugerir "lo intentó 12 veces esta semana".
+
+---
+
+## 5. Personajes que acompañan y animaciones de bajo costo
+
+### 5.1 Hallazgos
+
+| Fuente | Comprobado |
+| --- | --- |
+| Duolingo con Rive | Cada personaje tiene animaciones de reposo (asentir, parpadear, cejas), un estado final según acierto o error, y más de 20 formas de boca sincronizadas con el audio. Todo va en un archivo de Rive con máquina de estados: "much less than sending down a little movie". [blog.duolingo.com](https://blog.duolingo.com/world-character-visemes) |
+| Rive | No hay sincronía labial automática desde texto; los estados de boca se activan desde el código con una entrada numérica. [Foro Rive](https://rive.app/community/forums/support/fsnLLkXUaA62/lip-sync/ftyrdnSzhsd7) |
+| Principios de animación en juegos | La anticipación larga en una acción del jugador se siente como retraso; basta un cuadro breve de "aplastar" en el momento del toque. Las acciones secundarias (orejas, cola, reposo) dan mucha vida con poco costo. [Game Developer](https://www.gamedeveloper.com/production/the-12-principles-of-animation-in-video-games) |
+| Khan Academy Kids | Kodi saluda, guía y enseña a tocar y arrastrar; así niños desde 2 años usan la app solos. [Sitio docente Khan Kids](https://sites.google.com/khanacademy.org/khanacademykids/getting-students-into-the-app/three-ways-to-play) |
+| Radesky et al. 2022 | Personajes usados para culpar o presionar: "Do you want to give up?", "You're making me want to go to sleep" (Talking Tom 2). [PMC9206186](https://pmc.ncbi.nlm.nih.gov/articles/PMC9206186/) |
+
+### 5.2 Propuestas
+
+**A1. Seis estados por personaje, no más — costo media (Rive).** Para Tavi, Mika, Bruno, Lumi y
+Cosmo: **reposo** (respira; parpadeo cada 3 a 6 s al azar), **habla** (3 bocas: cerrada, media,
+abierta, movidas por el volumen del audio; no 20 visemas), **escucha** (inclina la cabeza mientras
+el micrófono está abierto), **celebra**, **ánimo** (gesto de "otra vez" tras un error, nunca triste),
+**duerme** (cierre de sesión, D3). Respalda: Kapp (el personaje es la retroalimentación). Riesgo
+regla 4: un archivo Rive por personaje suele pesar decenas de KB y el motor de Rive para web
+varios cientos; medir y cargarlo después de la primera pantalla.
+
+**A2. Mientras llega Rive, emoción con CSS — costo baja.** Sobre las imágenes actuales:
+respirar (escala 1 a 1,03 en 2,5 s), aplastar 80 ms al tocar, salto con estiramiento al celebrar,
+inclinar al escuchar. **Lumi es una estrella: su emoción es su luz** (brilla más al acertar,
+titila curiosa al esperar, se acerca al niño tras un error). Es el recurso más barato y más
+coherente con "la luz vuelve a Englishland". Con `prefers-reduced-motion`, solo cambia el brillo.
+
+**A3. Reposo que guía — costo baja.** Si el niño no toca nada en 6 s, su personaje mira hacia lo
+más cercano que tiene algo (luciérnaga, misión del día). A los 12 s, Lumi da una vuelta en esa
+dirección. Acción secundaria que sirve de pista sin texto (regla 2). Respalda: Vygotsky.
+
+**A4. Papeles claros — costo nula.** Lumi = el andamio (pistas, normaliza el error, retira la ayuda
+cuando el niño ya puede). Cosmo = narrador del bosque. Pixie = el misterio de la semana. Vecinos =
+piden palabras. Un niño de 5 años entiende mejor un mundo donde cada uno hace una cosa.
+
+**A5. Lista de frases prohibidas para personajes — costo nula.** Ningún personaje dice que se
+pone triste si el niño se va, ni pide volver, ni apura con tiempo, ni compara al niño con otros.
+Despedida permitida: "Cuando vuelvas, aquí estaré" (sin premio atado). Va al pedagogo y al revisor.
+
+---
+
+## 6. Lo que NO hacer
+
+| No hacer | Por qué (fuente) | Regla de `CLAUDE.md` |
+| --- | --- | --- |
+| Racha de días con reinicio, contador de "días seguidos" | Se apoya en la aversión a la pérdida y castiga al niño por algo que depende del adulto. TYM lo llama *dark pattern* y no lo usa. ([Mobbin](https://mobbin.com/blog/streaks-are-about-losing-a-study-of-859-streak-designs), [TYM](https://www.teachyourmonster.org/?p=3079)) | 6 |
+| Personajes que culpan, presionan o se ponen tristes si el niño se va | Presión parasocial en 24,8 % de las apps estudiadas. ([Radesky 2022](https://pmc.ncbi.nlm.nih.gov/articles/PMC9206186/)) | 6 |
+| Temporizadores falsos, "¡rápido!", "solo hoy" | Presión de tiempo en 17,3 % de las apps. (Radesky 2022) | 6 |
+| Cofres, ruletas, sobres sorpresa o premios al azar | Mecánica parecida al juego de azar; asociada a problemas de juego en estudios correlacionales. ([GambleAware 2021](https://www.gambleaware.org/media/inochmdq/gaming_and_gambling_report_final.pdf), [Zendle](https://committees.parliament.uk/writtenevidence/83/html/)) | 5 (las estrellas reconocen conductas, no suerte) |
+| Anuncios, premios por ver anuncios, botones de compra | 95 % de 135 apps infantiles tenía publicidad; "host selling" con personajes. ([Meyer et al. 2019](https://www.michiganmedicine.org/health-lab/advertising-kids-apps-more-prevalent-parents-may-realize), Radesky 2022) | 7 y 8 |
+| Tablas de posiciones, ranking del grupo en el proyector | Insignias, tablas y puntos son los elementos más reportados con efectos negativos; los de abajo se desaniman. ([Mapeo sistemático](https://arxiv.org/abs/2305.08346), [NSF](https://par.nsf.gov/servlets/purl/10510520)) | 6 |
+| Premio tangible por cada acierto | Las recompensas tangibles esperadas bajan la motivación intrínseca, más en niños. (Deci, Koestner y Ryan 1999). La decisión de Manuel (estrellas al completar la misión, no por acierto) va en la buena dirección. | 5 |
+| Encadenar la siguiente actividad sola, "una más" sin pausa | "Gameplay prolonging" y restricción de navegación: 45,9 % de las apps. (Radesky 2022) | 6 |
+| Botón de cerrar pequeño o escondido | 46 % de apps dificultaba salir de un anuncio. (Radesky 2022) | 3 (48 px) |
+| Juez automático de pronunciación | Reconocimiento de voz infantil con errores de 15 a 35 %. ([The Learning Agency](https://the-learning-agency.com/the-cutting-ed/article/how-speech-recognition-systems-struggle-with-childrens-voices/)) | 6 |
+
+**En lugar de la tabla de posiciones: una meta del grupo.** En el modo docente, "la luz del grupo":
+un faro de la aldea que se enciende con las misiones de **todos** los niños, sin decir quién aportó
+cuánto. Respalda: Ryan y Deci (relación), Vygotsky (aprendizaje social). Costo media, necesita
+Supabase. Riesgo: que el docente lo use para señalar al que no aportó; el faro nunca muestra
+nombres.
+
+---
+
+## 7. Top 10 de propuestas priorizadas
+
+Orden: primero lo que desbloquea trabajo en curso o evita frustración; después lo que mejora el
+aprendizaje con poco costo; al final lo que depende de Supabase o de Rive.
+
+| # | Propuesta | Tema | Autor que la respalda | Riesgo frente a `CLAUDE.md` | Costo |
+| --- | --- | --- | --- | --- | --- |
+| 1 | **Buscar camino (A*) y resolver toques en agua u obstáculos** (M1, M2): llega siempre que haya camino; si no, gesto amable y Lumi señala el paso | 1 | Ryan y Deci, Vygotsky | Ninguno; cuidar gama baja calculando solo al tocar | Media |
+| 2 | **El error dice su propio nombre** y ayuda en escalera (V1, V2) | 4 | Krashen, Vygotsky, Kapp | Ninguno | Baja |
+| 3 | **La palabra que costó vuelve al final de la misión** con dos opciones (R1) | 3 | Vygotsky, Krashen | Ninguno | Baja |
+| 4 | **Indicador honesto y cámara que mira adelante** (M3, M5): aro en el destino real, puntitos en viajes largos, norte fijo | 1 | Bruner, Kapp | Ninguno | Baja |
+| 5 | **Sesión de 15 min con llegada, misión del día, libre y cierre** con el bosque que se duerme (D3) | 2 | Bruner, Ryan y Deci | Que el gancho de mañana se ate a un premio (prohibido) | Media |
+| 6 | **Cinco farolitos de la semana** sin reinicio ni días seguidos (D2) y novedades que esperan (D1) | 2 | Kapp, Ryan y Deci, Ausubel | Que alguien lo convierta en racha | Baja a media |
+| 7 | **Emoción con CSS y la luz de Lumi** (A2) + reposo que guía (A3), mientras llega Rive | 5 | Kapp, Vygotsky | `prefers-reduced-motion` | Baja |
+| 8 | **Guion de elogios y lista de frases prohibidas** para todos los personajes (V3, A5) | 4, 5 | Ryan y Deci | Ninguno | Baja |
+| 9 | **Repaso en el mundo con calendario por sesiones** (R2, R3) y viaje con Lumi a lugares encendidos (M7) | 3, 1 | Ausubel, Bruner, Ryan y Deci | Que el repaso se sienta examen; no mostrar "fallaste" | Media |
+| 10 | **Docente: palabras que costaron al grupo + faro del grupo en vez de ranking** (R5, sección 6) | 3, 6 | Vygotsky, Ryan y Deci | Regla 7: sin nombres en lo proyectado | Media (Supabase) |
+
+Fuera del top por riesgo: el "Eco de Lumi" (V4) toca la regla 7 y queda para decisión del
+auditor y de Manuel.
+
+**Decisiones que este documento deja a Manuel y al pedagogo:**
+1. ¿El viaje rápido con Lumi solo a lugares encendidos, o a cualquier claro? (recomiendo encendidos).
+2. ¿Los farolitos de la semana dan algo (una estela, un accesorio) o solo se ven? Recomiendo que
+   solo se vean: si dan premio, se acercan a una racha.
+3. ¿Se acepta el "Eco de Lumi" con la voz del niño en memoria, sin guardar?

@@ -1,6 +1,5 @@
 // Voz y efectos de sonido.
-// La voz usa por ahora la síntesis del navegador como sustituto temporal: se
-// reemplazará por archivos de audio generados una sola vez con una voz de calidad.
+// La voz viene grabada en el paquete de la cartilla; la síntesis del navegador queda de respaldo.
 
 let ctx: AudioContext | null = null;
 
@@ -177,21 +176,85 @@ export function atenuarAmbiente(bajo: boolean) {
 
 let turnoVoz = 0;
 
+// ---------- Voz grabada ----------
+// El paquete de la cartilla trae la voz ya generada (herramientas/generar_voz.py): un índice
+// texto → archivo por idioma. Lo que no esté en el índice se dice con la voz del navegador.
+
+type IndiceVoz = Record<string, Record<string, string>>;
+let voz: { base: string; indice: IndiceVoz } | null = null;
+const grabaciones = new Map<string, Promise<AudioBuffer>>();
+let sonando: AudioBufferSourceNode | null = null;
+
+/** Le dice al audio dónde está la voz grabada de la cartilla. */
+export function configurarVoz(base: string, indice: IndiceVoz | undefined) {
+  voz = indice ? { base, indice } : null;
+  grabaciones.clear();
+}
+
+function grabacion(c: AudioContext, url: string): Promise<AudioBuffer> {
+  let g = grabaciones.get(url);
+  if (!g) {
+    g = fetch(url)
+      .then((r) => (r.ok ? r.arrayBuffer() : Promise.reject(r.status)))
+      .then((datos) => c.decodeAudioData(datos));
+    grabaciones.set(url, g);
+    // Si falló (sin red y sin guardar todavía), que se pueda volver a intentar después.
+    g.catch(() => grabaciones.delete(url));
+  }
+  return g;
+}
+
+function pararGrabacion() {
+  if (!sonando) return;
+  sonando.onended = null;
+  try {
+    sonando.stop();
+  } catch {
+    // Ya había terminado.
+  }
+  sonando = null;
+}
+
 /**
  * Dice un texto. `alTerminar` se llama cuando termina de sonar, solo si nada lo interrumpió
- * (si no hay voz en el navegador, se llama enseguida para no trancar el juego).
+ * (si no hay voz disponible, se llama enseguida para no trancar el juego).
  */
 export function decir(texto: string, idioma: string, alTerminar?: () => void) {
   const turno = ++turnoVoz;
+  pararGrabacion();
+  if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+  const archivo = voz?.indice[idioma.slice(0, 2)]?.[texto.trim()];
+  const c = ctx;
+  if (!archivo || !voz || !c) {
+    decirConNavegador(texto, idioma, turno, alTerminar);
+    return;
+  }
+  grabacion(c, voz.base + archivo).then(
+    (bufer) => {
+      if (turno !== turnoVoz) return;
+      const fuente = c.createBufferSource();
+      fuente.buffer = bufer;
+      fuente.connect(c.destination);
+      fuente.onended = () => {
+        if (sonando === fuente) sonando = null;
+        if (turno === turnoVoz) alTerminar?.();
+      };
+      sonando = fuente;
+      fuente.start();
+    },
+    () => turno === turnoVoz && decirConNavegador(texto, idioma, turno, alTerminar),
+  );
+}
+
+function decirConNavegador(texto: string, idioma: string, turno: number, alTerminar?: () => void) {
   if (!('speechSynthesis' in window)) {
     alTerminar?.();
     return;
   }
   const sint = window.speechSynthesis;
-  sint.cancel();
   const frase = new SpeechSynthesisUtterance(texto);
-  const voz = sint.getVoices().find((v) => v.lang.replace('_', '-').startsWith(idioma.slice(0, 2)));
-  if (voz) frase.voice = voz;
+  const vozNavegador = sint.getVoices().find((v) => v.lang.replace('_', '-').startsWith(idioma.slice(0, 2)));
+  if (vozNavegador) frase.voice = vozNavegador;
   frase.lang = idioma;
   frase.rate = 0.82;
   frase.pitch = 1.1;
@@ -205,5 +268,6 @@ export function decir(texto: string, idioma: string, alTerminar?: () => void) {
 
 export function callar() {
   turnoVoz++;
+  pararGrabacion();
   if ('speechSynthesis' in window) window.speechSynthesis.cancel();
 }

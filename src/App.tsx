@@ -7,7 +7,7 @@ import { DiBrilla } from './juegos/DiBrilla';
 import { Memoria } from './juegos/Memoria';
 import { ElegirHeroe } from './ElegirHeroe';
 import { Cinematica } from './Cinematica';
-import { activarAudio, sonar } from './audio';
+import { activarAudio, configurarVoz, sonar } from './audio';
 import { elegirHeroe, reconocerVoz, reiniciarProgreso, useProgreso } from './progreso';
 import { fijarMomentoSeguro } from './sinConexion';
 
@@ -65,6 +65,7 @@ export function App() {
       .then((c: Cartilla) => {
         // Progreso de antes de la opción B: las misiones de voz ya hechas reciben "pronunciar".
         reconocerVoz(c.territorios.flatMap((t) => t.misiones.filter((m) => m.plantilla === 'di-brilla').map((m) => m.id)));
+        configurarVoz(BASE, c.voz);
         setCartilla(c);
       })
       .catch(() => setFallo(true));

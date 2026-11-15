@@ -240,6 +240,8 @@ export interface Cartilla {
   estelas: Estela[];
   /** Piezas para vestir al personaje. */
   accesorios?: Accesorio[];
+  /** Voz grabada: idioma ('es', 'en') → texto → archivo de audio del paquete. */
+  voz?: Record<string, Record<string, string>>;
   /** Imágenes de la portada y de la celebración al terminar una misión. */
   imagenes?: { portada?: string; fiesta?: string };
   territorios: Territorio[];

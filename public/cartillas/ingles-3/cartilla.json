@@ -842,7 +842,8 @@
        "aceptar": [
         "1:00"
        ],
-       "frase": "It's one o'clock."
+       "frase": "It's one o'clock.",
+       "cifra": "1:00"
       },
       {
        "en": "three o'clock",
@@ -852,7 +853,8 @@
        "aceptar": [
         "3:00"
        ],
-       "frase": "It's three o'clock."
+       "frase": "It's three o'clock.",
+       "cifra": "3:00"
       },
       {
        "en": "six o'clock",
@@ -862,7 +864,8 @@
        "aceptar": [
         "6:00"
        ],
-       "frase": "It's six o'clock."
+       "frase": "It's six o'clock.",
+       "cifra": "6:00"
       },
       {
        "en": "nine o'clock",
@@ -872,7 +875,8 @@
        "aceptar": [
         "9:00"
        ],
-       "frase": "It's nine o'clock."
+       "frase": "It's nine o'clock.",
+       "cifra": "9:00"
       },
       {
        "en": "ten o'clock",
@@ -882,7 +886,8 @@
        "aceptar": [
         "10:00"
        ],
-       "frase": "It's ten o'clock."
+       "frase": "It's ten o'clock.",
+       "cifra": "10:00"
       },
       {
        "en": "twelve o'clock",
@@ -892,7 +897,8 @@
        "aceptar": [
         "12:00"
        ],
-       "frase": "It's twelve o'clock."
+       "frase": "It's twelve o'clock.",
+       "cifra": "12:00"
       }
      ],
      "x": 1894,
@@ -920,7 +926,8 @@
        "aceptar": [
         "3:00"
        ],
-       "frase": "It's three o'clock."
+       "frase": "It's three o'clock.",
+       "cifra": "3:00"
       },
       {
        "en": "six o'clock",
@@ -930,7 +937,8 @@
        "aceptar": [
         "6:00"
        ],
-       "frase": "It's six o'clock."
+       "frase": "It's six o'clock.",
+       "cifra": "6:00"
       },
       {
        "en": "twelve o'clock",
@@ -940,7 +948,8 @@
        "aceptar": [
         "12:00"
        ],
-       "frase": "It's twelve o'clock."
+       "frase": "It's twelve o'clock.",
+       "cifra": "12:00"
       }
      ],
      "x": 2036,

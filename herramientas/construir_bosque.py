@@ -10,6 +10,12 @@ Si cambia la imagen del suelo hay que volver a ejecutarlo.
 Con --solo-rejilla al final solo recalcula la rejilla de lo caminable (`mundo.caminable`) y deja
 igual todo lo demás del JSON: sirve cuando el suelo es una copia comprimida (WebP) cuyos colores
 moverían un poco las misiones y los árboles.
+
+Con --solo-contenido al final vuelve a escribir todo lo que no es geometría (textos, palabras,
+estrellas, estelas, accesorios, escenas, cinemáticas) y deja como están el mundo y las posiciones
+de misiones y puente. Es lo que se usa mientras el suelo PNG siga solo en Canva: con la copia
+WebP el guion completo movería casas y misiones. No toca lo que vive dentro de `mundo`
+(encargos de los vecinos, palabras de los animales).
 """
 import heapq
 import json
@@ -22,6 +28,7 @@ from PIL import Image, ImageFilter
 
 suelo, ruta = sys.argv[1], sys.argv[2]
 SOLO_REJILLA = '--solo-rejilla' in sys.argv[3:]
+SOLO_CONTENIDO = '--solo-contenido' in sys.argv[3:]
 random.seed(11)
 
 MUNDO = 2800
@@ -438,11 +445,21 @@ FRASE = {
     "ten o'clock": "It's ten o'clock.",
     "twelve o'clock": "It's twelve o'clock.",
 }
+# Cómo se ve la hora en un celular: se muestra en pequeño bajo el reloj en la fase de mirar
+# (pedagogía, ronda 1, sección 1.3: es como los niños ya conocen la hora).
+CIFRA = {
+    "one o'clock": '1:00',
+    "three o'clock": '3:00',
+    "six o'clock": '6:00',
+    "nine o'clock": '9:00',
+    "ten o'clock": '10:00',
+    "twelve o'clock": '12:00',
+}
 
 
 def W(en, es, icono):
     p = {'en': en, 'es': es, 'icono': I(icono)}
-    for campo, tabla in (('pronuncia', PRONUNCIA), ('aceptar', ACEPTAR), ('frase', FRASE)):
+    for campo, tabla in (('pronuncia', PRONUNCIA), ('aceptar', ACEPTAR), ('frase', FRASE), ('cifra', CIFRA)):
         if en in tabla:
             p[campo] = tabla[en]
     return p
@@ -965,6 +982,19 @@ for _ in range(6000):
 m['frente'] = [{'x': round(x), 'y': round(y), 'tipo': tp} for x, y, tp in frente]
 
 m.update({'ancho': MUNDO, 'alto': MUNDO, 'luces': [{'x': round(CX), 'y': round(CY), 'radio': 480}], 'radioLuzMision': 420, 'colorPenumbra': 'rgb(16 8 46 / 0.62)'})
+if SOLO_CONTENIDO:
+    # Se injerta el contenido recién armado sobre la geometría que ya estaba escrita.
+    viejo = json.load(open(ruta))
+    tv = viejo['territorios'][0]
+    sitio = {mi['id']: (mi['x'], mi['y']) for mi in tv['misiones']}
+    assert set(sitio) == {mi['id'] for mi in misiones}, 'cambiaron las misiones: hace falta el guion completo con el suelo PNG'
+    for mi in misiones:
+        mi['x'], mi['y'] = sitio[mi['id']]
+    t['puerta'].update({'x': tv['puerta']['x'], 'y': tv['puerta']['y']})
+    t['mundo'] = tv['mundo']
+    guardar(c)
+    print('solo contenido: el mundo y las posiciones quedan como estaban')
+    sys.exit(0)
 revisar_alcance(t, rejilla)
 guardar(c)
 

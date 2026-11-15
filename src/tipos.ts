@@ -16,6 +16,8 @@ export interface Palabra {
   aceptar?: string[];
   /** Frase completa con que se presenta la palabra ("It's three o'clock."). Opcional. */
   frase?: string;
+  /** La misma palabra en cifras, como se ve en un celular ("3:00"). Se muestra al presentarla. Opcional. */
+  cifra?: string;
 }
 
 /** Cómo se narra la historia: en español, en inglés con apoyo, o solo en inglés. */

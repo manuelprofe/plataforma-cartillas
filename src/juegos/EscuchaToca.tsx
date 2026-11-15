@@ -109,6 +109,7 @@ export function EscuchaToca({ mision, base, idiomaVoz, imagenGuia, imagenFiesta,
         <main className="mirar">
           <button type="button" className="carta-grande" key={objetivo.en} onClick={repetir} aria-label={`Escuchar ${objetivo.en}`}>
             <img src={base + objetivo.icono} alt="" width="160" height="160" draggable={false} />
+            {objetivo.cifra && <span className="carta-grande__cifra">{objetivo.cifra}</span>}
             <strong>{objetivo.en}</strong>
             <small>{objetivo.es}</small>
             <span className="carta-grande__oir" aria-hidden="true">🔊</span>

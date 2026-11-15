@@ -671,6 +671,17 @@ img {
   opacity: 0.6;
 }
 
+/* La hora en cifras, pequeña, bajo el reloj. */
+.carta-grande__cifra {
+  padding: 0 14px;
+  border-radius: 999px;
+  background: #efe4ff;
+  color: #4a1f8f;
+  font-size: 1.25rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
 .carta-grande__oir {
   position: absolute;
   top: 12px;

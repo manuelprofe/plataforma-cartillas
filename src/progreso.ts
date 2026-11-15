@@ -66,6 +66,10 @@ export interface Progreso {
   encargo?: string;
   /** Palabras de misión que le costaron: salen de aquí cuando las vuelve a hacer sin tropiezo. */
   repasar: Palabra[];
+  /** Palabras (en inglés) que estuvieron en `repasar` y ya salieron: lo que ahora sí le sale. */
+  superadas?: string[];
+  /** Días en que completó alguna misión (AAAA-MM-DD, sin hora). */
+  dias?: string[];
 }
 
 /** Lo que se reconoce al terminar una misión, para mostrarlo en el cierre. */
@@ -87,10 +91,9 @@ const VACIO: Progreso = { estrellas: 0, registro: [], vistas: [], misiones: {}, 
 const CAMBIO_V3 = 8.75;
 
 const sumar = (registro: Estrella[]) => registro.reduce((a, e) => a + e.estrellas, 0);
-const hoy = () => {
-  const d = new Date();
-  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
-};
+/** Fecha local sin hora, AAAA-MM-DD. */
+export const diaDe = (d: Date) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+const hoy = () => diaDe(new Date());
 
 /**
  * Pasa el progreso anterior a la escala de la tesis sin que nadie pierda nada: cada misión ya
@@ -215,7 +218,9 @@ export function anotarPractica(bien: Palabra[], costaron: Palabra[]) {
   const quedan = estado.repasar.filter((p) => !fuera.has(p.en));
   salioDeRepasar = quedan.length < estado.repasar.length;
   const nuevas = costaron.filter((p) => !quedan.some((q) => q.en === p.en));
-  guardar({ ...estado, repasar: [...quedan, ...nuevas] });
+  const salieron = estado.repasar.filter((p) => fuera.has(p.en)).map((p) => p.en);
+  const superadas = [...new Set([...(estado.superadas ?? []), ...salieron])];
+  guardar({ ...estado, repasar: [...quedan, ...nuevas], superadas });
 }
 
 /**
@@ -237,6 +242,7 @@ export function registrarMision(id: string, errores: number, pronuncio = false):
     conEstrellas(
       {
         ...estado,
+        dias: estado.dias?.includes(dia) ? estado.dias : [...(estado.dias ?? []), dia],
         misiones: {
           ...estado.misiones,
           [id]: {

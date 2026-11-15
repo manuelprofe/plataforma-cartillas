@@ -55,6 +55,8 @@ export interface Mision {
   y: number;
   antes: Linea[];
   palabras: Palabra[];
+  /** Para el resumen de la familia: cómo se llama el tema para el adulto y una idea para hacer en casa. */
+  familia?: { tema: string; idea: string };
   /** No hace falta para abrir la puerta del territorio (repasos). Las demás son sus faroles. */
   opcional?: boolean;
   /** Misión que hay que completar antes para que esta despierte. */

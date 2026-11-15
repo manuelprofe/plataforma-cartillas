@@ -7,12 +7,15 @@ import { DiBrilla } from './juegos/DiBrilla';
 import { Memoria } from './juegos/Memoria';
 import { ElegirHeroe } from './ElegirHeroe';
 import { Cinematica } from './Cinematica';
+import { Familia } from './Familia';
+import { BotonSostenido } from './BotonSostenido';
 import { activarAudio, configurarVoz, sonar } from './audio';
 import { elegirHeroe, reconocerVoz, reiniciarProgreso, useProgreso } from './progreso';
 import { fijarMomentoSeguro } from './sinConexion';
 
 const BASE = `${import.meta.env.BASE_URL}cartillas/ingles-3/`;
 const MS_CORTINA = 420;
+const MS_PUERTA_FAMILIA = 3000;
 const IMAGEN_FIESTA = 'personajes/lumi-celebrate.webp';
 
 /**
@@ -26,13 +29,14 @@ const JUEGOS: Record<Mision['plantilla'], ComponentType<PropsJuego>> = {
   memoria: Memoria,
 };
 
-type Pantalla = { tipo: 'inicio' } | { tipo: 'elegir' } | { tipo: 'cine' } | { tipo: 'mapa' } | { tipo: 'mision'; indice: number };
+type Pantalla = { tipo: 'inicio' } | { tipo: 'elegir' } | { tipo: 'cine' } | { tipo: 'mapa' } | { tipo: 'familia' } | { tipo: 'mision'; indice: number };
 
 export function App() {
   const [cartilla, setCartilla] = useState<Cartilla | null>(null);
   const [fallo, setFallo] = useState(false);
   const [pantalla, setPantalla] = useState<Pantalla>({ tipo: 'inicio' });
   const [cortina, setCortina] = useState<'cierra' | 'abre' | null>(null);
+  const [pistaFamilia, setPistaFamilia] = useState(false);
   const progreso = useProgreso();
   const esperas = useRef<number[]>([]);
 
@@ -126,19 +130,28 @@ export function App() {
           >
             ▶
           </button>
-          {progreso.estrellas > 0 && (
-            <button
-              type="button"
-              className="enlace"
-              onClick={() => {
-                reiniciarProgreso();
-                olvidarMundo();
-              }}
-            >
-              Empezar de nuevo
-            </button>
-          )}
+          {/* Puerta del adulto: solo abre si se mantiene presionado; la instrucción la entiende quien lee. */}
+          <BotonSostenido ms={MS_PUERTA_FAMILIA} className="enlace" onListo={() => irA({ tipo: 'familia' })} onCorto={() => setPistaFamilia(true)}>
+            Para la familia
+          </BotonSostenido>
+          <p className="inicio__pista" role="status">
+            {pistaFamilia ? 'Mantenga presionado 3 segundos.' : ''}
+          </p>
         </div>
+      )}
+
+      {pantalla.tipo === 'familia' && (
+        <Familia
+          cartilla={cartilla}
+          territorio={territorio}
+          base={BASE}
+          onVolver={() => irA({ tipo: 'inicio' })}
+          onBorrar={() => {
+            reiniciarProgreso();
+            olvidarMundo();
+            irA({ tipo: 'inicio' });
+          }}
+        />
       )}
 
       {pantalla.tipo === 'elegir' && (

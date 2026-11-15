@@ -507,6 +507,18 @@ TITULOS = {
     'body': ('My face', 'My body', 'Say your body', '1f440', '1f64c', '1f443'),
     'family': ('Hello!', 'My family', 'Say hello to the family', '1f44b', '1f469', '1f44b'),
 }
+# Resumen para la familia (pedagogía, ronda 1, sección 4.3): cómo se llama cada tema para el
+# adulto y una idea de cinco minutos, sin materiales, en que el niño le enseña al adulto. Se
+# le habla de usted y es una sugerencia, nunca una tarea.
+FAMILIA = {
+    'school': ('los útiles del salón', 'Al alistar la mochila por la noche, pídale que saque cada cosa y la nombre en inglés. Si no se acuerdan, óiganla juntos aquí.'),
+    'colors': ('los colores', 'Jueguen a "Veo, veo un color" en la casa, en la ropa, en las frutas del mercado o camino a la escuela.'),
+    'numbers': ('los números', 'Cuenten juntos en inglés lo que haya a la mano: escalones, arepas en la mesa, dedos.'),
+    'body': ('el cuerpo', 'Jueguen a "Simón dice": usted lo dice en español y el niño o la niña se toca esa parte y la dice en inglés.'),
+    'family': ('los saludos y la familia', 'Digan "Good morning" al levantarse y "Good night" al acostarse. Miren fotos y nombren quién es quién.'),
+    'time': ('la hora', 'Cuando sea una hora en punto, pregúntele "What time is it?" para que responda mirando el reloj o el celular.'),
+}
+familia = lambda tema: {'tema': FAMILIA[tema][0], 'idea': FAMILIA[tema][1]}
 # En inglés se usan contracciones (Let's, It's, I'm, That's): así las oirá el niño.
 ANTES = {
     'school': (
@@ -595,6 +607,7 @@ for tema in TEMAS:
             'x': round(claro['x']) if claro else None,
             'y': round(claro['y'] - 10) if claro else None,
             'antes': [ANTES[tema][parte]],
+            'familia': familia(tema),
             **({'atrapa': ATRAPA} if parte == 1 else {}),
             **({'requiere': f'bosque-{tema}{SUFIJO[parte - 1]}'} if parte else {}),
         })
@@ -890,6 +903,7 @@ rx, ry = tramo_puente[int(len(tramo_puente) * 0.72)]
 misiones.append({
     'id': 'bosque-time', 'titulo': 'What time is it?', 'plantilla': 'escucha-toca', 'icono': I('reloj-3.webp'), 'palabras': RELOJES,
     'x': round(hx), 'y': round(hy - 135),
+    'familia': familia('time'),
     'antes': [L('cosmo', 'El reloj del bosque se detuvo. Escucha la hora y toca el reloj correcto.', 'The forest clock stopped. Listen to the time and tap the right clock.')],
 })
 ocupar(hx, hy - 135, 120)
@@ -897,6 +911,7 @@ misiones.append({
     'id': 'bosque-time-2', 'titulo': 'Tell Rayo the time', 'plantilla': 'di-brilla', 'icono': I('reloj-12.webp'),
     'palabras': [p for p in RELOJES if p['en'] in RELOJES_DECIR],
     'x': round((hx + rx) / 2), 'y': round((hy + ry) / 2 - 135),
+    'familia': familia('time'),
     'antes': [L('rayo', '¡Rayo necesita saber la hora! Él pregunta "What time is it?" y tú le dices la hora.', 'Rayo needs to know the time! He asks "What time is it?" and you tell him.')],
     'requiere': 'bosque-time',
 })

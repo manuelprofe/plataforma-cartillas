@@ -120,6 +120,315 @@ img {
   text-decoration: underline;
 }
 
+/* Botón que hay que mantener presionado: la barra se llena mientras tanto (solo transform). */
+.sostenido {
+  position: relative;
+  overflow: hidden;
+  touch-action: none;
+  -webkit-touch-callout: none;
+}
+
+.sostenido__barra {
+  position: absolute;
+  inset: 0;
+  background: rgb(255 207 58 / 0.45);
+  transform-origin: 0 50%;
+  transition: transform linear;
+  /* La regla general de movimiento reducido no debe dejarla sin avance visible: es la única señal. */
+  transition-duration: inherit;
+}
+
+.sostenido__texto {
+  position: relative;
+}
+
+.inicio .inicio__pista {
+  min-height: 1.5em;
+  margin: 0;
+  font-size: 1rem;
+}
+
+/* ---------- Resumen para la familia (pantalla del adulto) ---------- */
+
+.familia {
+  height: 100dvh;
+  overflow-y: auto;
+  background: #fffdf8;
+  color: var(--tinta);
+  user-select: text;
+  touch-action: pan-y;
+}
+
+.familia__hoja {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: max(16px, env(safe-area-inset-top)) 18px 40px;
+  font-size: 1.0625rem;
+  line-height: 1.5;
+}
+
+.familia__cabeza {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.familia h1 {
+  margin: 0;
+  font-size: 1.6rem;
+  line-height: 1.15;
+}
+
+.familia h2 {
+  margin: 22px 0 4px;
+  font-size: 1.2rem;
+}
+
+.familia h3 {
+  margin: 10px 0 4px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #5b4a7a;
+}
+
+.familia p {
+  margin: 0 0 8px;
+  max-width: 62ch;
+}
+
+.familia__boton {
+  flex: none;
+  min-height: 52px;
+  padding: 0 22px;
+  border-radius: 999px;
+  background: var(--noche);
+  color: var(--crema);
+  font-weight: 700;
+}
+
+.familia__boton--claro {
+  background: #ece4f6;
+  color: var(--tinta);
+  margin-bottom: 12px;
+}
+
+.familia__boton--peligro {
+  background: #8a1c3c;
+}
+
+.familia__lista,
+.familia__chips {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.familia__chips {
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+}
+
+.familia__lista li,
+.familia__chips li {
+  display: grid;
+  grid-template-columns: 36px minmax(0, 1fr) 48px;
+  overflow-wrap: anywhere;
+  align-items: center;
+  gap: 8px;
+  min-height: 56px;
+  padding: 4px 4px 4px 10px;
+  border-radius: 14px;
+  background: #eefaf7;
+  border: 1px solid #bfeee6;
+  line-height: 1.15;
+}
+
+.familia__lista li {
+  background: #fff7dc;
+  border-color: #ffe39a;
+}
+
+.familia__lista small,
+.familia__chips small {
+  display: block;
+  font-size: 0.9rem;
+  color: #5b4a7a;
+}
+
+.familia__oir {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #fff;
+  font-size: 1.3rem;
+}
+
+.familia__nota {
+  margin-top: 20px !important;
+  font-size: 0.95rem;
+  color: #5b4a7a;
+}
+
+.familia__imprimir-solo {
+  display: none;
+}
+
+.familia .familia__borrar {
+  display: block;
+  margin-top: 36px;
+  padding: 0;
+  color: #5b4a7a;
+  opacity: 1;
+  text-align: left;
+}
+
+.familia__confirmar {
+  position: fixed;
+  inset: 0;
+  z-index: 30;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  background: rgb(15 6 40 / 0.72);
+}
+
+.familia__confirmar > div {
+  max-width: 420px;
+  display: grid;
+  gap: 12px;
+  padding: 20px;
+  border-radius: 22px;
+  background: #fffdf8;
+  font-size: 1.0625rem;
+  line-height: 1.5;
+}
+
+.familia__confirmar .familia__boton {
+  margin: 0;
+}
+
+/* Una hoja carta en blanco y negro, para que vaya y vuelva en el cuaderno. */
+@media print {
+  @page {
+    size: letter;
+    margin: 12mm;
+  }
+
+  html,
+  body,
+  #raiz {
+    height: auto;
+  }
+
+  body {
+    background: #fff;
+    overflow: visible;
+  }
+
+  .familia {
+    height: auto;
+    overflow: visible;
+    background: #fff;
+    color: #000;
+  }
+
+  .familia__hoja {
+    max-width: none;
+    padding: 0;
+    font-size: 10pt;
+  }
+
+  .familia button,
+  .familia__confirmar,
+  .familia__pantalla-solo,
+  .cortina {
+    display: none !important;
+  }
+
+  /* Compacto para que el territorio completo quepa en una sola hoja. */
+  .familia__chips {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 3px;
+  }
+
+  .familia h1 {
+    font-size: 16pt;
+  }
+
+  .familia h2 {
+    font-size: 12pt;
+  }
+
+  .familia h3 {
+    margin: 4px 0 2px;
+    font-size: 10pt;
+    color: #000;
+  }
+
+  .familia p {
+    max-width: none;
+    margin-bottom: 4px;
+    line-height: 1.3;
+  }
+
+  .familia small,
+  .familia__nota {
+    color: #000 !important;
+  }
+
+  .familia__nota {
+    margin-top: 6px !important;
+  }
+
+  .familia__lista {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .familia__lista li,
+  .familia__chips li {
+    grid-template-columns: 18px minmax(0, 1fr);
+    gap: 4px;
+    min-height: 0;
+    padding: 1px 4px;
+    border-radius: 6px;
+    background: none;
+    border: 1px solid #999;
+    font-size: 9pt;
+    break-inside: avoid;
+  }
+
+  .familia__lista small,
+  .familia__chips small {
+    display: inline;
+    font-size: 8pt;
+  }
+
+  .familia__lista img,
+  .familia__chips img {
+    width: 18px;
+    height: 18px;
+    filter: grayscale(1);
+  }
+
+  .familia h2 {
+    margin-top: 5px;
+    break-after: avoid;
+  }
+
+  .familia__imprimir-solo {
+    display: block;
+  }
+
+  .familia__renglon {
+    height: 7mm;
+    border-bottom: 1px solid #000;
+    margin-bottom: 2mm;
+  }
+}
+
 /* ---------- Cortina entre pantallas ---------- */
 
 .cortina {

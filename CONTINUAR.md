@@ -71,6 +71,31 @@ desarrollador, desarrollador-motor, revisor, auditor. Claude actúa como coordin
   y copias de trabajo viejas. Para tareas pequeñas, el coordinador las hace directamente.
 - Si se acaba el límite de uso, se para todo y se retoma en el mismo orden.
 
+## Primera tarea de la próxima sesión: complementos para Claude Code
+
+Manuel pidió instalar estos cinco (vistos en un video; los nombres pueden venir deformados, así
+que primero hay que identificar el repositorio oficial de cada uno):
+
+| Nombre que dio Manuel | Para qué sirve | Probable origen (confirmar) |
+| --- | --- | --- |
+| Cloud Mem | Guarda contexto entre sesiones | `claude-mem` |
+| Find Skills | Busca skills según lo que se necesita y ayuda a instalarlas | skill `find-skills` |
+| AnyDoc | Convierte Word, Excel y PowerPoint a Markdown | quizá `markitdown` o similar |
+| Claude Code Zeta | Analiza el proyecto y recomienda skills, automatizaciones y conexiones | quizá el plugin `claude-code-setup` |
+| Agent Skills | Skills para planificar, programar, probar y revisar | repositorio "agent-skills" |
+
+Cómo hacerlo, según `CLAUDE.md`:
+1. Confirmar la fuente de cada uno (repositorio, autor, licencia, última actualización). Si un
+   nombre no se encuentra con seguridad, preguntarle a Manuel antes de elegir uno parecido.
+2. **Leerlo completo antes de instalar** (regla del proyecto): qué comandos corre, qué guarda,
+   a qué servicios se conecta. Descartar lo que envíe datos del proyecto a terceros sin
+   necesidad. Ojo con el de memoria: no debe guardar datos de estudiantes (Ley 1581).
+3. Instalarlo de forma que persista: las sesiones en la nube empiezan limpias, así que lo que
+   sirva al proyecto va en `.claude/` del repositorio (skills, plugins) o en el script de
+   configuración del entorno, no solo en el contenedor del momento.
+4. Probar cada uno con una tarea pequeña y anotar aquí cuáles quedaron y para qué.
+5. Hacerlo uno por uno (trabajo por fases): es tarea del coordinador, sin lanzar agentes.
+
 ## Pendientes
 
 1. **Pruebas de los conocidos de Manuel:** él traerá un informe de errores y mejoras. Atenderlo

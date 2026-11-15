@@ -1,6 +1,7 @@
 // Reproductor de cinemáticas. Elige el video vertical (celular) u horizontal (computador o
 // proyector) según la pantalla, dice la narración del contenido en su momento y siempre se
-// puede saltar. Si el video no carga (sin red), sigue de largo sin darlo por visto.
+// puede saltar. Si el video no carga (sin red), sigue de largo sin darlo por visto y avisa
+// a quien la abrió (`onTerminar(false)`), sin mostrarle ningún error al niño.
 import { useEffect, useRef, useState } from 'react';
 import type { Cinematica as DatosCinematica } from './tipos';
 import { callar, decir } from './audio';
@@ -10,7 +11,8 @@ interface Props {
   cine: DatosCinematica;
   base: string;
   vozEspanol: string;
-  onTerminar: () => void;
+  /** `vista` es falso si el video no se pudo ver. */
+  onTerminar: (vista: boolean) => void;
 }
 
 export function Cinematica({ cine, base, vozEspanol, onTerminar }: Props) {
@@ -25,7 +27,7 @@ export function Cinematica({ cine, base, vozEspanol, onTerminar }: Props) {
     listo.current = true;
     callar();
     if (vista) marcarVista(cine.vista);
-    onTerminar();
+    onTerminar(vista);
   };
 
   useEffect(() => {

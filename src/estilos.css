@@ -1555,8 +1555,86 @@ img {
   animation: temblar 0.4s;
 }
 
-.panel__caja--corta {
-  grid-template-rows: auto 1fr;
+/* El álbum apila lo que haya (recuerdos, repaso) y las palabras ocupan el resto. */
+.panel__caja--album {
+  display: flex;
+  flex-direction: column;
+}
+
+.panel__caja--album > * {
+  flex: none;
+}
+
+.panel__caja--album > .album,
+.panel__caja--album > .panel__vacio {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+/* Recuerdos: cinemáticas ya vistas, para volver a verlas. */
+.recuerdos {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 8px;
+  border-radius: 18px;
+  background: #e8ddff;
+  overflow-x: auto;
+  touch-action: pan-x;
+}
+
+.recuerdos__uno {
+  position: relative;
+  flex: none;
+  width: 104px;
+  display: grid;
+  justify-items: center;
+  gap: 2px;
+  padding: 6px 4px 4px;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 3px 0 rgb(36 18 63 / 0.14);
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.recuerdos__uno img {
+  width: 54px;
+  height: 96px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.recuerdos__uno small {
+  font-size: 0.85rem;
+}
+
+.recuerdos__ver {
+  position: absolute;
+  top: 30px;
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--oro);
+  color: var(--tinta);
+  font-size: 1.3rem;
+  box-shadow: 0 3px 0 var(--oro-hondo);
+}
+
+/* Sin red el video no está: la tarjeta se apaga un poco y tiembla, sin mensajes. */
+.recuerdos__uno.es-dormido {
+  animation: temblar 0.4s;
+}
+
+.recuerdos__uno.es-dormido img {
+  filter: grayscale(0.8) brightness(0.8);
+}
+
+.recuerdos__uno.es-dormido .recuerdos__ver {
+  background: #fff;
+  box-shadow: none;
 }
 
 /* ---------- Vestidor ---------- */

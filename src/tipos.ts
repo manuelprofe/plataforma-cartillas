@@ -226,6 +226,8 @@ export interface Territorio {
 export interface Cinematica {
   /** Escena que queda marcada como vista al terminarla o saltarla. */
   vista: string;
+  /** Nombre con que queda en "Recuerdos" para volver a verla. */
+  titulo?: string;
   videos: { vertical: string; horizontal: string };
   poster?: string;
   lineas: { t: number; quien: string; es: string; en: string }[];

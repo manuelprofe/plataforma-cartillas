@@ -79,16 +79,26 @@ export function App() {
   // Solo en la portada, sin cortina, puede entrar una versión nueva de la app (recarga).
   useEffect(() => fijarMomentoSeguro(pantalla.tipo === 'inicio' && !cortina), [pantalla.tipo, cortina]);
 
-  // Cambia de pantalla detrás de una cortina circular.
-  const irA = (destino: Pantalla) => {
-    if (cortina) return;
+  // Cambia de pantalla detrás de una cortina circular. Mientras la cortina se mueve no se
+  // atiende otro cambio, salvo que se pida esperar: así una cinemática que falla enseguida
+  // (sin red) no deja al niño en una pantalla vacía.
+  const ocupada = useRef(false);
+  const irA = (destino: Pantalla, esperar = false) => {
+    if (ocupada.current) {
+      if (esperar) esperas.current.push(window.setTimeout(() => irA(destino, true), MS_CORTINA));
+      return;
+    }
+    ocupada.current = true;
     setCortina('cierra');
     esperas.current.push(
       window.setTimeout(() => {
         setPantalla(destino);
         setCortina('abre');
       }, MS_CORTINA),
-      window.setTimeout(() => setCortina(null), MS_CORTINA * 2),
+      window.setTimeout(() => {
+        ocupada.current = false;
+        setCortina(null);
+      }, MS_CORTINA * 2),
     );
   };
 
@@ -168,11 +178,11 @@ export function App() {
       )}
 
       {pantalla.tipo === 'cine' && intro && (
-        <Cinematica cine={intro} base={BASE} vozEspanol={cartilla.idiomaHistoria} onTerminar={() => irA({ tipo: 'mapa' })} />
+        <Cinematica cine={intro} base={BASE} vozEspanol={cartilla.idiomaHistoria} onTerminar={() => irA({ tipo: 'mapa' }, true)} />
       )}
 
       {pantalla.tipo === 'mapa' && heroe && (
-        <Mundo territorio={territorio} heroe={heroe} estelas={cartilla.estelas} accesorios={cartilla.accesorios ?? []} ayudas={cartilla.ayudas ?? {}} base={BASE} vozIngles={cartilla.idiomaVoz} vozEspanol={cartilla.idiomaHistoria} onEntrar={(indice) => irA({ tipo: 'mision', indice })} />
+        <Mundo territorio={territorio} heroe={heroe} estelas={cartilla.estelas} accesorios={cartilla.accesorios ?? []} cinematicas={cartilla.cinematicas ?? {}} ayudas={cartilla.ayudas ?? {}} base={BASE} vozIngles={cartilla.idiomaVoz} vozEspanol={cartilla.idiomaHistoria} onEntrar={(indice) => irA({ tipo: 'mision', indice })} />
       )}
 
       {mision && Juego && (

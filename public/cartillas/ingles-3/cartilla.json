@@ -4382,6 +4382,7 @@
  "cinematicas": {
   "inicio": {
    "vista": "cine-inicio",
+   "titulo": "Así empezó todo",
    "videos": {
     "vertical": "videos/inicio-bosque-9x16.mp4",
     "horizontal": "videos/inicio-bosque-16x9.mp4"

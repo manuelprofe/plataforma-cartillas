@@ -4,9 +4,10 @@
 // le regalan otras para su álbum. El guía va por los caminos: al tocar, busca la ruta
 // (src/rutas.ts) y la recorre acelerando y frenando; el agua, el bosque y las casas no se atraviesan.
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
-import type { Accesorio, Estela, Frase, Heroe, Linea, ModoIdioma, Palabra, Territorio } from './tipos';
+import type { Accesorio, Cinematica as DatosCinematica, Estela, Frase, Heroe, Linea, ModoIdioma, Palabra, Territorio } from './tipos';
 import { agregarAlAlbum, fijarDestino, fijarEncargo, marcarAyudado, marcarVista, useProgreso } from './progreso';
 import { Album } from './Album';
+import { Cinematica } from './Cinematica';
 import { Vestidor } from './Vestidor';
 import { Figura, accesoriosPuestos } from './Figura';
 import { decirAyuda } from './juegos/ayuda';
@@ -137,6 +138,8 @@ interface Props {
   heroe: Heroe;
   estelas: Estela[];
   accesorios: Accesorio[];
+  /** Cinemáticas del paquete: las ya vistas quedan en "Recuerdos", dentro del álbum. */
+  cinematicas: Record<string, DatosCinematica>;
   /** Frases de ayuda del contenido (aquí, la del vestidor). */
   ayudas: Record<string, Frase>;
   base: string;
@@ -159,7 +162,7 @@ interface Charla {
   alCerrar?: () => void;
 }
 
-export function Mundo({ territorio, heroe, estelas, accesorios, ayudas, base, vozIngles, vozEspanol, onEntrar }: Props) {
+export function Mundo({ territorio, heroe, estelas, accesorios, cinematicas, ayudas, base, vozIngles, vozEspanol, onEntrar }: Props) {
   const progreso = useProgreso();
   const { misiones, puerta, mundo, personajes, escenas } = territorio;
 
@@ -183,6 +186,12 @@ export function Mundo({ territorio, heroe, estelas, accesorios, ayudas, base, vo
   const [, repintar] = useState(0);
   const [destello, setDestello] = useState<{ palabra: Palabra; x: number; y: number; n: number } | null>(null);
   const [panel, setPanel] = useState<'album' | 'mapa' | 'vestidor' | null>(null);
+  // Recuerdo que se está volviendo a ver, y el que se intentó ver y no cargó (sin red).
+  const [cine, setCine] = useState<string | null>(null);
+  const [sinVideo, setSinVideo] = useState<string | null>(null);
+  const recuerdos = Object.entries(cinematicas)
+    .filter(([, c]) => progreso.vistas.includes(c.vista))
+    .map(([id, c]) => ({ id, titulo: c.titulo ?? '', poster: c.poster }));
   const [ventana, setVentana] = useState(() => {
     const x = ultimaPosicion?.x ?? mundo.inicio.x;
     const y = ultimaPosicion?.y ?? mundo.inicio.y;
@@ -472,7 +481,7 @@ export function Mundo({ territorio, heroe, estelas, accesorios, ayudas, base, vo
     if (mundo.ambiente) iniciarAmbiente(mundo.ambiente);
     return pararAmbiente;
   }, [mundo.ambiente]);
-  useEffect(() => atenuarAmbiente(charla !== null), [charla]);
+  useEffect(() => atenuarAmbiente(charla !== null || cine !== null), [charla, cine]);
 
   // Penumbra con un hueco de luz por zona encendida; las nuevas crecen poco a poco.
   useEffect(() => {
@@ -1200,7 +1209,34 @@ export function Mundo({ territorio, heroe, estelas, accesorios, ayudas, base, vo
       )}
 
       {panel === 'album' && (
-        <Album palabras={progreso.album} repasar={progreso.repasar} total={palabrasDelMundo} base={base} vozIngles={vozIngles} onCerrar={() => setPanel(null)} />
+        <Album
+          palabras={progreso.album}
+          repasar={progreso.repasar}
+          total={palabrasDelMundo}
+          recuerdos={recuerdos}
+          sinVideo={sinVideo}
+          onVerRecuerdo={(id) => {
+            setSinVideo(null);
+            setPanel(null);
+            setCine(id);
+          }}
+          base={base}
+          vozIngles={vozIngles}
+          onCerrar={() => (setSinVideo(null), setPanel(null))}
+        />
+      )}
+      {cine && cinematicas[cine] && (
+        <Cinematica
+          cine={cinematicas[cine]}
+          base={base}
+          vozEspanol={vozEspanol}
+          onTerminar={(vista) => {
+            // Si no cargó, se vuelve al álbum y la tarjeta lo muestra; nada de mensajes de error.
+            setSinVideo(vista ? null : cine);
+            setCine(null);
+            setPanel('album');
+          }}
+        />
       )}
       {panel === 'vestidor' && (
         <Vestidor

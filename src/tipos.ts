@@ -55,8 +55,8 @@ export interface Mision {
   y: number;
   antes: Linea[];
   palabras: Palabra[];
-  /** Estrellas que da al completarla; la suma del territorio es lo que pide el puente. */
-  estrellas: number;
+  /** No hace falta para abrir la puerta del territorio (repasos). Las demás son sus faroles. */
+  opcional?: boolean;
   /** Misión que hay que completar antes para que esta despierte. */
   requiere?: string;
   /** Escena que se cuenta si el niño toca la misión mientras duerme (por defecto 'dormida'). */
@@ -116,7 +116,7 @@ export interface Heroe {
   saludo: { es: string; en: string };
 }
 
-/** Estela que deja el personaje al caminar; se desbloquea con estrellas. */
+/** Estela que deja el personaje al caminar; se abre al llegar a ese total de Mission Stars. */
 export interface Estela {
   id: string;
   estrellas: number;
@@ -183,8 +183,8 @@ export interface Territorio {
     colorPenumbra: string;
     luciernagas: { x: number; y: number }[];
   };
+  /** Se abre cuando brillan todos los faroles: cada misión no opcional completada enciende el suyo. */
   puerta: {
-    estrellas: number;
     destino: string;
     personaje: string;
     x: number;

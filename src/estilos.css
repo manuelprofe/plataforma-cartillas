@@ -772,6 +772,12 @@ img {
   animation: celebrar 0.8s ease-out, flotar 2.6s ease-in-out 0.8s infinite;
 }
 
+.premios {
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+}
+
 .premio {
   padding: 4px 28px;
   border-radius: 999px;

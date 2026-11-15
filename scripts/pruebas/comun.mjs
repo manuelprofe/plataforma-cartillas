@@ -13,7 +13,8 @@ export const CAPTURAS = process.env.CAPTURAS ?? '/tmp/capturas-cartillas';
 mkdirSync(CAPTURAS, { recursive: true });
 const PUERTO = 4319;
 export const URL_APP = `http://localhost:${PUERTO}/`;
-export const CLAVE = 'pc_progreso_v3';
+export const CLAVE = 'pc_progreso_v4';
+export const CLAVE_V3 = 'pc_progreso_v3';
 
 export async function servir() {
   const proceso = spawn('node_modules/.bin/vite', ['preview', '--port', String(PUERTO), '--strictPort'], { stdio: 'ignore' });
@@ -28,9 +29,9 @@ export async function servir() {
 }
 
 /** Abre la app con un progreso guardado (o ninguno). Devuelve la página y los errores de consola. */
-export async function abrir(navegador, { progreso, ancho = 390, alto = 844, sinVideos = false } = {}) {
+export async function abrir(navegador, { progreso, clave = CLAVE, ancho = 390, alto = 844, sinVideos = false } = {}) {
   const contexto = await navegador.newContext({ viewport: { width: ancho, height: alto }, reducedMotion: 'reduce' });
-  if (progreso !== undefined) await contexto.addInitScript(([k, v]) => { if (!sessionStorage.sembrado) { localStorage.setItem(k, v); sessionStorage.sembrado = '1'; } }, [CLAVE, JSON.stringify(progreso)]);
+  if (progreso !== undefined) await contexto.addInitScript(([k, v]) => { if (!sessionStorage.sembrado) { localStorage.setItem(k, v); sessionStorage.sembrado = '1'; } }, [clave, JSON.stringify(progreso)]);
   if (sinVideos) await contexto.route('**/*.mp4', (r) => r.abort());
   const pagina = await contexto.newPage();
   const errores = [];
@@ -77,4 +78,25 @@ export async function menorToque(pagina, selector) {
 }
 
 /** Progreso de quien ya eligió héroe y vio la introducción. */
-export const BASE_JUGADO = { estrellas: 0, vistas: ['cine-inicio', 'intro'], misiones: {}, album: [], ayudados: [], repasar: [], heroe: 'mika' };
+export const BASE_JUGADO = { estrellas: 0, registro: [], vistas: ['cine-inicio', 'intro'], misiones: {}, album: [], ayudados: [], repasar: [], heroe: 'mika' };
+
+/** Juega una misión de "escucha y toca" hasta el cierre, tocando opciones hasta acertar. */
+export async function jugarEscuchaToca(pagina) {
+  while (await pagina.locator('.mirar .boton-seguir').count()) {
+    await pagina.click('.mirar .boton-seguir');
+    await pagina.waitForTimeout(150);
+  }
+  for (let i = 0; i < 80 && !(await pagina.locator('.cierre').count()); i++) {
+    const libre = pagina.locator('.opcion:not(.opcion--no):not(.opcion--bien)').first();
+    if (await libre.count() && !(await pagina.locator('.opcion--bien').count())) await libre.click();
+    await pagina.waitForTimeout(350);
+  }
+  await pagina.waitForSelector('.cierre .carita');
+}
+
+/** Progreso (formato nuevo) con estas misiones completas y sus estrellas de completar. */
+export function conMisiones(ids, extra = {}) {
+  const registro = ids.map((mision) => ({ conducta: 'completar', estrellas: 15, mision, origen: 'app' }));
+  return { ...BASE_JUGADO, misiones: Object.fromEntries(ids.map((id) => [id, { veces: 1, mejorErrores: 0 }])), registro, estrellas: registro.length * 15, ...extra };
+}
+export const FAROLES = ['school', 'colors', 'numbers', 'body', 'family'].flatMap((t) => ['', '-2', '-3'].map((s) => `bosque-${t}${s}`)).concat(['bosque-time', 'bosque-time-2']);

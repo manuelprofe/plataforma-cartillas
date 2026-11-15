@@ -197,7 +197,10 @@ export function Mundo({ territorio, heroe, estelas, base, vozIngles, vozEspanol,
   const hechas = misiones.filter((m) => progreso.misiones[m.id]).length;
   const luz = misiones.length ? hechas / misiones.length : 0;
   const modo: ModoIdioma = territorio.idiomaPorAvance[Math.min(hechas, territorio.idiomaPorAvance.length - 1)];
-  const puertaAbierta = progreso.estrellas >= puerta.estrellas;
+  // El puente se abre con la luz, no con estrellas: cuando brillan todos los faroles.
+  const faroles = misiones.filter((m) => !m.opcional);
+  const farolesEncendidos = faroles.filter((m) => progreso.misiones[m.id]).length;
+  const puertaAbierta = faroles.length > 0 && farolesEncendidos === faroles.length;
   // Zonas que ya se ven iluminadas: las fijas del mapa y las misiones cuya luz ya se mostró.
   const [encendidas, setEncendidas] = useState<string[]>(() => misiones.filter((m) => brilloZona.has(m.id)).map((m) => m.id));
   const luces = useMemo(
@@ -1102,11 +1105,11 @@ export function Mundo({ territorio, heroe, estelas, base, vozIngles, vozEspanol,
               className={`puerta${puertaAbierta ? ' puerta--abierta' : ''}${cerca === 'puente' ? ' es-cerca' : ''}`}
               style={{ left: puerta.x, top: puerta.y, zIndex: Math.round(puerta.y) }}
               onClick={() => tocarCosa(cosa('puente'))}
-              aria-label={`Puente a ${puerta.destino}: ${progreso.estrellas} de ${puerta.estrellas} estrellas`}
+              aria-label={`Puente a ${puerta.destino}: ${farolesEncendidos} de ${faroles.length} faroles encendidos`}
             >
               <img src={base + personajes[puerta.personaje].imagen} alt="" width="120" height="82" draggable={false} />
               <span className="puerta__cuenta">
-                ★ {Math.min(progreso.estrellas, puerta.estrellas)}/{puerta.estrellas}
+                🏮 {farolesEncendidos}/{faroles.length}
               </span>
               <span className="globito">💬</span>
             </button>
@@ -1162,10 +1165,7 @@ export function Mundo({ territorio, heroe, estelas, base, vozIngles, vozEspanol,
         <span className="marcador__estrella" key={progreso.estrellas}>
           ★
         </span>
-        <span>
-          {progreso.estrellas}
-          <small>/{puerta.estrellas}</small>
-        </span>
+        <span>{progreso.estrellas}</span>
       </div>
       <div className="lugar">
         {territorio.nombre}

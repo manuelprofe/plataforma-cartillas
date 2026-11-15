@@ -8,7 +8,7 @@ import { Memoria } from './juegos/Memoria';
 import { ElegirHeroe } from './ElegirHeroe';
 import { Cinematica } from './Cinematica';
 import { activarAudio, sonar } from './audio';
-import { elegirHeroe, reiniciarProgreso, useProgreso } from './progreso';
+import { elegirHeroe, reconocerVoz, reiniciarProgreso, useProgreso } from './progreso';
 import { fijarMomentoSeguro } from './sinConexion';
 
 const BASE = `${import.meta.env.BASE_URL}cartillas/ingles-3/`;
@@ -62,7 +62,11 @@ export function App() {
   useEffect(() => {
     fetch(`${BASE}cartilla.json`)
       .then((r) => (r.ok ? r.json() : Promise.reject(r.status)))
-      .then(setCartilla)
+      .then((c: Cartilla) => {
+        // Progreso de antes de la opción B: las misiones de voz ya hechas reciben "pronunciar".
+        reconocerVoz(c.territorios.flatMap((t) => t.misiones.filter((m) => m.plantilla === 'di-brilla').map((m) => m.id)));
+        setCartilla(c);
+      })
       .catch(() => setFallo(true));
     return () => esperas.current.forEach(clearTimeout);
   }, []);

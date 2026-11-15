@@ -540,11 +540,22 @@ SUFIJO = ('', '-2', '-3')
 # más rápido que el final) y distractores por ronda (la última cifra vale para el resto).
 ATRAPA = {'cruceInicio': 6, 'cruceFinal': 4.5, 'distractores': [2, 2, 3]}
 
-# Estrellas PROVISIONALES: 3 por misión de camino (45) y 5 en la hora (3 + 2) suman los 50 del
-# puente. La opción B de Manuel (el puente abre con todos los faroles y Mission Stars vuelve a
-# la escala de la tesis) está pendiente; ya no se exige que la suma cuadre.
-ESTRELLAS_POR_MISION = (3, 3, 3)
-ESTRELLAS_HORA = (3, 2)
+# Estrellas, opción B (decisión de Manuel; pedagogía, ronda 1, sección 5). Las misiones ya no
+# traen estrellas: el puente se abre cuando brillan todos los faroles (toda misión que no sea
+# `opcional`) y las Mission Stars las da el motor con la escala de la tesis (src/progreso.ts).
+#
+# De dónde salen los umbrales de estelas y accesorios: en una primera pasada cada misión deja
+# al menos 25 estrellas (completar 15 + autoevaluarse 10; las de voz, 10 más), así que un umbral
+# es "cuántas misiones lleva" × 25. Se conserva el ritmo de la escala anterior (3 por misión:
+# 12 → 4 misiones, 26 → 9, 40 → 14...), en que casi cada misión trae algo nuevo. Un territorio
+# completo sin repetir nada da unas 485 (17 faroles × 25 + 6 misiones de voz × 10).
+ESTRELLAS_PRIMERA_PASADA = 25
+
+
+def umbral(misiones_hechas):
+    return misiones_hechas * ESTRELLAS_PRIMERA_PASADA
+
+
 RELOJES = [W("one o'clock", 'la una', 'reloj-1.webp'), W("three o'clock", 'las tres', 'reloj-3.webp'), W("six o'clock", 'las seis', 'reloj-6.webp'),
            W("nine o'clock", 'las nueve', 'reloj-9.webp'), W("ten o'clock", 'las diez', 'reloj-10.webp'), W("twelve o'clock", 'las doce', 'reloj-12.webp')]
 RELOJES_DECIR = ["three o'clock", "six o'clock", "twelve o'clock"]
@@ -558,7 +569,8 @@ POZO = {
     'escenaDormida': 'pozo-dormido',
     'formas': ['imagen-sonido', 'imagen-palabra'], 'parejas': 4,
     'antes': [L('lumi', 'Este es el pozo de los recuerdos. Gira dos cartas y busca las que van juntas.', 'This is the memory well. Flip two cards and find the ones that go together.')],
-    'estrellas': 0,
+    # El pozo es repaso y siempre es opcional: no hace falta para abrir el puente.
+    'opcional': True,
 }
 
 
@@ -582,16 +594,15 @@ for tema in TEMAS:
             'x': round(claro['x']) if claro else None,
             'y': round(claro['y'] - 10) if claro else None,
             'antes': [ANTES[tema][parte]],
-            'estrellas': ESTRELLAS_POR_MISION[parte],
             **({'atrapa': ATRAPA} if parte == 1 else {}),
             **({'requiere': f'bosque-{tema}{SUFIJO[parte - 1]}'} if parte else {}),
         })
 t['misiones'] = misiones
 c['estelas'] = [
     {'id': 'oro', 'estrellas': 0, 'colores': ['#fff3a6', '#ffd95a']},
-    {'id': 'menta', 'estrellas': 12, 'colores': ['#b6fff0', '#19c6b1']},
-    {'id': 'rosa', 'estrellas': 26, 'colores': ['#ffd0e6', '#ff5fa2']},
-    {'id': 'arcoiris', 'estrellas': 40, 'colores': ['#ff5f6d', '#ffc371', '#fff36b', '#6bffb0', '#6bc5ff', '#c58bff']},
+    {'id': 'menta', 'estrellas': umbral(4), 'colores': ['#b6fff0', '#19c6b1']},
+    {'id': 'rosa', 'estrellas': umbral(9), 'colores': ['#ffd0e6', '#ff5fa2']},
+    {'id': 'arcoiris', 'estrellas': umbral(14), 'colores': ['#ff5f6d', '#ffc371', '#fff36b', '#6bffb0', '#6bc5ff', '#c58bff']},
 ]
 # Imágenes que usa la app fuera del mundo; van aquí para que el service worker las guarde.
 # Cinemáticas: video vertical y horizontal, y la narración que dice la app sincronizada.
@@ -683,7 +694,7 @@ TEXTOS = {
 }
 
 # Escenas fijas que arma este guion (las demás, como 'intro' o 'lumi', viven solo en el JSON).
-# 'rayo' y 'puente-cerrado' siguen hablando de 50 estrellas hasta que se aplique la opción B.
+# 'rayo' y los dos del puente hablan de faroles, no de estrellas (opción B).
 ESCENAS = {
     'ayuda': {'lineas': [
         L('cosmo', 'Toca la pantalla y caminas hasta tu dedo. ¡Puedes ir a donde quieras!', 'Touch the screen and you walk to your finger. You can go anywhere!'),
@@ -696,11 +707,15 @@ ESCENAS = {
     'rayo': {'lineas': [
         L('rayo', '¡Correo, correo! Soy Rayo. Llevo cartas al Valle de las Palabras...', "Mail, mail! I'm Rayo. I carry letters to the Valley of Words..."),
         L('rayo', '...pero siempre llego tarde: el reloj del bosque se apagó y el puente también.', "...but I'm always late: the forest clock went dark, and so did the bridge."),
-        L('rayo', 'Completa todas las misiones. Con las 50 estrellas, el puente se enciende.', 'Complete all the missions. With all 50 stars, the bridge lights up.'),
+        L('rayo', 'Enciende todos los faroles del bosque y el puente se encenderá.', 'Light all the forest lanterns and the bridge will light up.'),
     ]},
     'puente-cerrado': {'lineas': [
         L('nova', 'Soy Nova. Este puente lleva al Valle de las Palabras.', "I'm Nova. This bridge goes to the Valley of Words."),
-        L('nova', 'Cada misión que completas te da estrellas. Cuando tengas 50, el puente se encenderá.', 'Every mission you complete gives you stars. When you have 50, the bridge will light up.'),
+        L('nova', 'Cuando todos los faroles del bosque brillen, el puente se encenderá.', 'When all the forest lanterns shine, the bridge will light up.'),
+    ]},
+    'puente-abierto': {'lineas': [
+        L('nova', '¡Lo lograste! Todos los faroles brillan y el puente se encendió.', 'You did it! All the lanterns shine and the bridge lit up.'),
+        L('nova', 'El Valle de las Palabras abrirá muy pronto. ¡Te espero!', "The Valley of Words opens very soon. I'll wait for you!"),
     ]},
 }
 E_.update(ESCENAS)
@@ -830,6 +845,7 @@ for tema in TEMAS:
 
 # Puente: Nova en el puente y Rayo en el camino.
 t['puerta'].update({'x': PUENTE[0] - 30, 'y': PUENTE[1] + 10})
+t['puerta'].pop('estrellas', None)  # ya no se abre por cantidad de estrellas
 ocupar(PUENTE[0], PUENTE[1], 120)
 tramo_puente = [pt for pt in ruta_entre(centro, {'x': PUENTE[0] - 190, 'y': PUENTE[1]}) if math.hypot(pt[0] - CX, pt[1] - CY) > centro['r'] + 60]
 # La misión de la hora, a un lado del camino del puente, con Rayo el cartero más adelante.
@@ -840,7 +856,6 @@ misiones.append({
     'id': 'bosque-time', 'titulo': 'What time is it?', 'plantilla': 'escucha-toca', 'icono': I('reloj-3.webp'), 'palabras': RELOJES,
     'x': round(hx), 'y': round(hy - 135),
     'antes': [L('cosmo', 'El reloj del bosque se detuvo. Escucha la hora y toca el reloj correcto.', 'The forest clock stopped. Listen to the time and tap the right clock.')],
-    'estrellas': ESTRELLAS_HORA[0],
 })
 ocupar(hx, hy - 135, 120)
 misiones.append({
@@ -848,7 +863,6 @@ misiones.append({
     'palabras': [p for p in RELOJES if p['en'] in RELOJES_DECIR],
     'x': round((hx + rx) / 2), 'y': round((hy + ry) / 2 - 135),
     'antes': [L('rayo', '¡Rayo necesita saber la hora! Él pregunta "What time is it?" y tú le dices la hora.', 'Rayo needs to know the time! He asks "What time is it?" and you tell him.')],
-    'estrellas': ESTRELLAS_HORA[1],
     'requiere': 'bosque-time',
 })
 ocupar((hx + rx) / 2, (hy + ry) / 2 - 135, 70)

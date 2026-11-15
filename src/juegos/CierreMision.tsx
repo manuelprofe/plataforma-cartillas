@@ -12,6 +12,8 @@ interface Props {
   errores: number;
   base: string;
   imagenFiesta: string;
+  /** El juego fue de voz y el niño intentó decir las palabras. */
+  pronuncio?: boolean;
   /** Se llama una sola vez, al registrar la misión, para anotar lo que costó. */
   alRegistrar: () => void;
   onTerminar: () => void;
@@ -23,7 +25,10 @@ const CARITAS: [string, number][] = [
   ['🤔', 1],
 ];
 
-export function CierreMision({ mision, errores, base, imagenFiesta, alRegistrar, onTerminar }: Props) {
+// Dibujo de cada reconocimiento, para que se entienda sin leer.
+const DIBUJO: Partial<Record<Premio['clave'], string>> = { completar: '🏮', pronunciar: '🗣️', mejorar: '🏅', autoevaluar: '😊' };
+
+export function CierreMision({ mision, errores, base, imagenFiesta, pronuncio = false, alRegistrar, onTerminar }: Props) {
   const [premios, setPremios] = useState<Premio[] | null>(null);
   const [sentir, setSentir] = useState<number | null>(null);
   // El ref sobrevive al doble efecto de StrictMode: la misión se registra una vez.
@@ -33,12 +38,13 @@ export function CierreMision({ mision, errores, base, imagenFiesta, alRegistrar,
     if (registrada.current) return;
     registrada.current = true;
     alRegistrar();
-    setPremios(registrarMision(mision.id, errores, undefined, mision.estrellas));
-  }, [alRegistrar, mision.id, mision.estrellas, errores]);
+    setPremios(registrarMision(mision.id, errores, pronuncio));
+  }, [alRegistrar, mision.id, errores, pronuncio]);
 
   const autoevaluar = (valor: number) => {
     sonar('estrella');
-    fijarAutoevaluacion(mision.id, valor);
+    const premio = fijarAutoevaluacion(mision.id, valor);
+    if (premio) setPremios((antes) => [...(antes ?? []), premio]);
     setSentir(valor);
   };
 
@@ -47,11 +53,13 @@ export function CierreMision({ mision, errores, base, imagenFiesta, alRegistrar,
       <img className="cierre__guia" src={base + imagenFiesta} alt="" width="170" height="152" draggable={false} />
       {premios !== null && sentir === null && (
         <>
-          {premios.map((p) => (
-            <div className="premio" key={p.clave}>
-              {p.clave === 'completar' ? (p.estrellas ? `★ +${p.estrellas}` : '✨') : '🏅'}
-            </div>
-          ))}
+          <div className="premios">
+            {premios.map((p) => (
+              <div className="premio" key={p.clave}>
+                <span aria-hidden="true">{DIBUJO[p.clave]}</span> ★ +{p.estrellas}
+              </div>
+            ))}
+          </div>
           <div className="caritas" role="group" aria-label="¿Cómo te sentiste?">
             {CARITAS.map(([cara, valor]) => (
               <button key={valor} type="button" className="carita" onClick={() => autoevaluar(valor)} aria-label={`Me sentí ${cara}`}>
@@ -64,7 +72,7 @@ export function CierreMision({ mision, errores, base, imagenFiesta, alRegistrar,
       {premios !== null && sentir !== null && (
         <>
           <div className="premio premio--total">
-            {premios.some((p) => p.clave === 'completar' && p.estrellas) ? `★ +${premios.reduce((a, p) => a + p.estrellas, 0)}` : premios.some((p) => p.clave === 'mejorar') ? '🏅' : '👍'}
+            {premios.length ? `★ +${premios.reduce((a, p) => a + p.estrellas, 0)}` : '👍'}
           </div>
           <button type="button" className="boton-seguir" onClick={onTerminar} aria-label="Volver al mapa">
             ➜

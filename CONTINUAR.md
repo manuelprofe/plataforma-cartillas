@@ -71,30 +71,33 @@ desarrollador, desarrollador-motor, revisor, auditor. Claude actúa como coordin
   y copias de trabajo viejas. Para tareas pequeñas, el coordinador las hace directamente.
 - Si se acaba el límite de uso, se para todo y se retoma en el mismo orden.
 
-## Primera tarea de la próxima sesión: complementos para Claude Code
+## Complementos de Claude Code (revisados el 15 de noviembre)
 
-Manuel pidió instalar estos cinco (vistos en un video; los nombres pueden venir deformados, así
-que primero hay que identificar el repositorio oficial de cada uno):
+Los cinco que pidió Manuel se identificaron, se leyeron completos y quedaron así. El detalle
+(repositorio, commit, licencia, qué se modificó) está en `.claude/skills/ORIGEN.md`.
 
-| Nombre que dio Manuel | Para qué sirve | Probable origen (confirmar) |
-| --- | --- | --- |
-| Cloud Mem | Guarda contexto entre sesiones | `claude-mem` |
-| Find Skills | Busca skills según lo que se necesita y ayuda a instalarlas | skill `find-skills` |
-| AnyDoc | Convierte Word, Excel y PowerPoint a Markdown | quizá `markitdown` o similar |
-| Claude Code Zeta | Analiza el proyecto y recomienda skills, automatizaciones y conexiones | quizá el plugin `claude-code-setup` |
-| Agent Skills | Skills para planificar, programar, probar y revisar | repositorio "agent-skills" |
+| Nombre que dio Manuel | Qué era | Estado | Para qué sirve aquí |
+| --- | --- | --- | --- |
+| Find Skills | `find-skills` de `vercel-labs/skills` | Instalada | Buscar skills en skills.sh cuando falte una capacidad; con la regla de leer antes de instalar |
+| AnyDoc | `firecrawl/anydoc` (skill `convert-documents-to-markdown`) | Instalada | Leer Word, Excel, PowerPoint y PDF (tesis, planes de área, listas) convirtiéndolos a Markdown en local. Prohibido `--ocr hosted` sin permiso |
+| Claude Code Zeta | Plugin oficial `claude-code-setup` de Anthropic (skill `claude-automation-recommender`) | Instalada | Analiza el proyecto y recomienda hooks, skills y conexiones; solo lee |
+| Agent Skills | `addyosmani/agent-skills` | Instaladas 4 de 25 | `planning-and-task-breakdown`, `incremental-implementation`, `test-driven-development`, `code-review-and-quality` (planificar, programar, probar, revisar). El resto no se copió para no cargar el contexto ni chocar con el equipo de agentes |
+| Cloud Mem | `thedotmack/claude-mem` | **No instalada** | Guarda en el disco de la máquina (se borra en la nube) o en su servicio; registra todas las acciones y gasta uso extra. La memoria entre sesiones sigue siendo este archivo. Si Manuel usa Claude Code en su propio computador y la quiere allí, se instala allí con la analítica y la sincronización apagadas |
 
-Cómo hacerlo, según `CLAUDE.md`:
-1. Confirmar la fuente de cada uno (repositorio, autor, licencia, última actualización). Si un
-   nombre no se encuentra con seguridad, preguntarle a Manuel antes de elegir uno parecido.
-2. **Leerlo completo antes de instalar** (regla del proyecto): qué comandos corre, qué guarda,
-   a qué servicios se conecta. Descartar lo que envíe datos del proyecto a terceros sin
-   necesidad. Ojo con el de memoria: no debe guardar datos de estudiantes (Ley 1581).
-3. Instalarlo de forma que persista: las sesiones en la nube empiezan limpias, así que lo que
-   sirva al proyecto va en `.claude/` del repositorio (skills, plugins) o en el script de
-   configuración del entorno, no solo en el contenedor del momento.
-4. Probar cada uno con una tarea pequeña y anotar aquí cuáles quedaron y para qué.
-5. Hacerlo uno por uno (trabajo por fases): es tarea del coordinador, sin lanzar agentes.
+Se instalaron como archivos en `.claude/skills/` (no como plugins) para que estén en toda sesión
+nueva sin configurar nada. Cuando una skill externa contradiga `CLAUDE.md` o `lider.md`, mandan
+estos.
+
+**Probado:** las siete skills cargan en la sesión; el recomendador se corrió sobre el proyecto
+(resultado abajo). **Falta probar** `npx @firecrawl/anydoc` y `npx skills find`: el entorno
+bloqueó ejecutar esos paquetes y hace falta que Manuel lo autorice.
+
+Recomendaciones del recomendador (sin aplicar; las decide Manuel):
+1. Hook que corra `tsc --noEmit` después de editar `src/` (hoy no hay pruebas ni linter).
+2. Hook que impida editar a mano `public/cartillas/ingles-3/cartilla.json` (se genera con
+   `herramientas/construir_bosque.py`).
+3. Pruebas unitarias (Vitest) para `src/rutas.ts` y `src/progreso.ts` antes de conectar Supabase.
+4. Conexión de Supabase para Claude solo cuando empiece la fase de cuentas, y de solo lectura.
 
 ## Pendientes
 

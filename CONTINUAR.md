@@ -99,16 +99,41 @@ Recomendaciones del recomendador (sin aplicar; las decide Manuel):
 3. Pruebas unitarias (Vitest) para `src/rutas.ts` y `src/progreso.ts` antes de conectar Supabase.
 4. Conexión de Supabase para Claude solo cuando empiece la fase de cuentas, y de solo lectura.
 
+## Versión publicada para pruebas (15 de noviembre, tarde)
+
+En Netlify está la punta de la rama hasta el commit de la voz: hora "3:00", estrellas opción B,
+vestidor, voz grabada y diálogos en español. Manuel dijo que es la última versión para esta
+ronda de pruebas. (El silencio en su computador era Chrome con el sonido apagado, no un error.)
+
+- **Idioma (decisión de Manuel):** en grado tercero los personajes hablan siempre en español;
+  en inglés solo suenan las palabras que se aprenden (`idiomaPorAvance = ['es']` en el guion).
+  Más adelante el inglés entra poco a poco **mezclado dentro de frases en español, estilo
+  "Dora la exploradora"**. Falta que el pedagogo defina esa progresión y escriba la versión
+  mezclada de los diálogos (hoy solo existen español completo e inglés completo; el modo
+  `mixto` del código dice la frase en inglés y luego en español, que no es lo que se quiere).
+- **Voz grabada:** `herramientas/generar_voz.py` genera un MP3 por frase con Piper (voz neuronal
+  local, no envía nada a internet) y anota el índice `voz` en `cartilla.json`; los audios van en
+  `public/cartillas/ingles-3/voz/` (188 frases, ~1,4 MB, fuera de la primera carga; el service
+  worker los guarda con el paquete). Voces: `es_MX-claude-high` (Apache 2.0) y
+  `en_US-ljspeech-high` (dominio público), de huggingface.co/rhasspy/piper-voices.
+  **Después de cambiar textos: correr `construir_bosque.py` y luego `generar_voz.py`** (solo
+  genera lo nuevo). Lo que no esté grabado suena con la voz del navegador. Nadie ha oído aún
+  la voz nueva con oído humano: esperar la opinión de Manuel y los probadores.
+- **En curso (desarrollador):** resumen para la familia con "Empezar de nuevo" (a medias, sin
+  confirmar: `src/Familia.tsx`, `src/BotonSostenido.tsx`) y después "Recuerdos". Al terminar:
+  revisor. Nada de esto está publicado.
+- No reescribir la historia de la rama (el entorno bloquea `push --force`); si un agente
+  enmienda un commit ya subido, se une con `git merge -s ours`.
+
 ## Pendientes
 
 1. **Pruebas de los conocidos de Manuel:** él traerá un informe de errores y mejoras. Atenderlo
    primero cuando llegue.
-2. **Construir lo ya especificado:** estrellas opción B, vestidor de accesorios (recalibrar los
-   umbrales con la escala nueva), resumen para la familia imprimible con "Empezar de nuevo",
-   sección "Recuerdos" para volver a ver cinemáticas, la hora muestra "3:00" en la fase de mirar.
+2. **Construir lo ya especificado:** hechos la hora "3:00", estrellas opción B y vestidor;
+   faltan el resumen para la familia con "Empezar de nuevo" y la sección "Recuerdos".
 3. **Probado solo en simulador:** micrófono real, modo avión e instalación en un Android real.
 4. Unir la rama de trabajo con `main` (con permiso de Manuel) para que Netlify publique solo.
-5. Voz definitiva grabada o generada (hoy es la del navegador).
+5. Voz: ya es generada (Piper). Falta la opinión de Manuel; si no convence, grabar o probar otra.
 6. Territorios 2 a 4. Vista para el docente y la familia. Medición antes/después del piloto.
 7. Pendiente técnico conocido: la app no carga dentro de un iframe con sandbox sin
    `allow-same-origin`, ni en una subcarpeta escrita sin barra final.

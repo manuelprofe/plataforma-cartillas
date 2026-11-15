@@ -333,6 +333,9 @@ self.addEventListener('fetch', (evento) => {
   }
   if (peticion.mode === 'navigate') return;
 
+  // Los videos van directo a la red (con peticiones Range); no se guardan.
+  if (/\.(mp4|webm)$/.test(destino.pathname)) return;
+
   const carpeta = carpetaDe(href);
   if (carpeta) {
     // cartilla.json incluido: va atado a la versión; una cartilla nueva llega con el

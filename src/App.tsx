@@ -6,6 +6,7 @@ import { EscuchaAtrapa } from './juegos/EscuchaAtrapa';
 import { DiBrilla } from './juegos/DiBrilla';
 import { Memoria } from './juegos/Memoria';
 import { ElegirHeroe } from './ElegirHeroe';
+import { Cinematica } from './Cinematica';
 import { activarAudio, sonar } from './audio';
 import { elegirHeroe, reiniciarProgreso, useProgreso } from './progreso';
 import { fijarMomentoSeguro } from './sinConexion';
@@ -25,7 +26,7 @@ const JUEGOS: Record<Mision['plantilla'], ComponentType<PropsJuego>> = {
   memoria: Memoria,
 };
 
-type Pantalla = { tipo: 'inicio' } | { tipo: 'elegir' } | { tipo: 'mapa' } | { tipo: 'mision'; indice: number };
+type Pantalla = { tipo: 'inicio' } | { tipo: 'elegir' } | { tipo: 'cine' } | { tipo: 'mapa' } | { tipo: 'mision'; indice: number };
 
 export function App() {
   const [cartilla, setCartilla] = useState<Cartilla | null>(null);
@@ -97,6 +98,9 @@ export function App() {
   const heroe = cartilla.heroes.find((h) => h.id === progreso.heroe);
   const hechas = territorio.misiones.filter((m) => progreso.misiones[m.id]).length;
   const modo = territorio.idiomaPorAvance[Math.min(hechas, territorio.idiomaPorAvance.length - 1)];
+  // La cinemática de inicio se ve sola la primera vez que se va al mapa.
+  const intro = cartilla.cinematicas?.inicio;
+  const alMapa = (): Pantalla => (intro && !progreso.vistas.includes(intro.vista) ? { tipo: 'cine' } : { tipo: 'mapa' });
 
   return (
     <>
@@ -112,7 +116,7 @@ export function App() {
             onClick={() => {
               activarAudio();
               sonar('fiesta');
-              irA({ tipo: heroe ? 'mapa' : 'elegir' });
+              irA(heroe ? alMapa() : { tipo: 'elegir' });
             }}
           >
             ▶
@@ -140,9 +144,13 @@ export function App() {
           elegido={progreso.heroe}
           onElegir={(id) => {
             elegirHeroe(id);
-            irA({ tipo: 'mapa' });
+            irA(alMapa());
           }}
         />
+      )}
+
+      {pantalla.tipo === 'cine' && intro && (
+        <Cinematica cine={intro} base={BASE} vozEspanol={cartilla.idiomaHistoria} onTerminar={() => irA({ tipo: 'mapa' })} />
       )}
 
       {pantalla.tipo === 'mapa' && heroe && (

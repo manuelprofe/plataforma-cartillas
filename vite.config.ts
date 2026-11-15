@@ -4,8 +4,11 @@ import { join, relative, resolve, sep } from 'node:path';
 import { defineConfig, type Plugin, type ResolvedConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 
-/** Medios que se guardan para jugar sin conexión cuando cartilla.json los nombra. */
-const MEDIOS = /\.(webp|avif|png|jpe?g|svg|gif|mp3|ogg|m4a|wav|webm|mp4|vtt)$/i;
+/**
+ * Medios que se guardan para jugar sin conexión cuando cartilla.json los nombra. Los videos no:
+ * pesan mucho, se piden a la red solo cuando se van a ver y sin red hay una escena de respaldo.
+ */
+const MEDIOS = /\.(webp|avif|png|jpe?g|svg|gif|mp3|ogg|m4a|wav|vtt)$/i;
 
 /** Lista todos los archivos bajo una carpeta, con rutas relativas a `raiz` y separador "/". */
 function archivos(carpeta: string, raiz: string): string[] {
@@ -49,6 +52,8 @@ function sinConexion(): Plugin {
     },
     closeBundle() {
       const salida = resolve(config.root, config.build.outDir);
+      // Si la compilación falló no hay index: no se tapa el error verdadero con otro.
+      if (!existsSync(join(salida, 'index.html'))) return;
       const leer = (ruta: string) => readFileSync(join(salida, ruta));
       const todos = archivos(salida, salida);
 

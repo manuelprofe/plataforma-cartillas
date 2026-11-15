@@ -577,6 +577,8 @@ c['estelas'] = [
     {'id': 'arcoiris', 'estrellas': 40, 'colores': ['#ff5f6d', '#ffc371', '#fff36b', '#6bffb0', '#6bc5ff', '#c58bff']},
 ]
 # Imágenes que usa la app fuera del mundo; van aquí para que el service worker las guarde.
+# Cinemáticas: video vertical y horizontal, y la narración que dice la app sincronizada.
+c['cinematicas'] = {"inicio": {"vista": "cine-inicio", "videos": {"vertical": "videos/inicio-bosque-9x16.mp4", "horizontal": "videos/inicio-bosque-16x9.mp4"}, "poster": "videos/inicio-bosque-poster.webp", "lineas": [{"t": 0.8, "quien": "pixie", "es": "Esta es Englishland. Aquí cada cosa tiene una palabra… y cada palabra brilla.", "en": "This is Englishland. Here everything has a word… and every word shines."}, {"t": 7.6, "quien": "pixie", "es": "Un día, las palabras se fueron volando… y el bosque empezó a perder su color.", "en": "One day, the words flew away… and the forest began to lose its color."}, {"t": 15.2, "quien": "pixie", "es": "¡Hola! Soy Pixie. Y ella es Lumi: su luz nunca se apaga.", "en": "Hi! I'm Pixie. And this is Lumi: her light never goes out."}, {"t": 20.2, "quien": "lumi", "es": "¡Hola!", "en": "Hi!"}, {"t": 22.4, "quien": "pixie", "es": "Escucha, juega y habla en inglés: cada palabra devuelve la luz.", "en": "Listen, play and speak English: every word brings the light back."}, {"t": 27.6, "quien": "lumi", "es": "¡Vamos juntos!", "en": "Let's go together!"}]}}
 c['imagenes'] = {'portada': 'personajes/lumi-wave.webp', 'fiesta': 'personajes/lumi-celebrate.webp'}
 t['idiomaPorAvance'] = ['es', 'es', 'es', 'es', 'mixto', 'mixto', 'mixto', 'mixto', 'mixto', 'en', 'en']
 

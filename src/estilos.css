@@ -2175,6 +2175,51 @@ img {
   animation: entrar-carta 0.5s cubic-bezier(0.2, 1.4, 0.4, 1);
 }
 
+/* ---------- Cinemáticas ---------- */
+
+.cine {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  background: var(--noche-honda);
+}
+
+.cine__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cine__saltar {
+  position: absolute;
+  top: max(12px, env(safe-area-inset-top));
+  right: 12px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: rgb(255 255 255 / 0.8);
+  font-size: 1.5rem;
+  box-shadow: 0 4px 0 rgb(23 10 54 / 0.3);
+}
+
+.cine__texto {
+  position: absolute;
+  left: 50%;
+  bottom: max(20px, env(safe-area-inset-bottom));
+  width: min(92%, 640px);
+  margin: 0;
+  padding: 8px 16px;
+  translate: -50% 0;
+  border-radius: 16px;
+  background: rgb(23 10 54 / 0.62);
+  color: var(--crema);
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.25;
+  text-align: center;
+  animation: aparecer 0.4s ease-out;
+}
+
 @media (min-width: 720px) {
   .opciones { gap: 20px; }
   .oir { width: 180px; height: 180px; }

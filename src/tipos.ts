@@ -194,6 +194,15 @@ export interface Territorio {
   misiones: Mision[];
 }
 
+/** Cinemática en video. La narración la dice la app en el momento `t` (segundos) del video. */
+export interface Cinematica {
+  /** Escena que queda marcada como vista al terminarla o saltarla. */
+  vista: string;
+  videos: { vertical: string; horizontal: string };
+  poster?: string;
+  lineas: { t: number; quien: string; es: string; en: string }[];
+}
+
 export interface Cartilla {
   id: string;
   titulo: string;
@@ -208,6 +217,8 @@ export interface Cartilla {
   territorios: Territorio[];
   /** Frases de ayuda que dicen los juegos ('memoria-pista1'...). */
   ayudas?: Record<string, Frase>;
+  /** Cinemáticas en video ('inicio'...). */
+  cinematicas?: Record<string, Cinematica>;
 }
 
 export interface Frase {

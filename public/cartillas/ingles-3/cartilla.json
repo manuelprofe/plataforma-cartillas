@@ -10,7 +10,6 @@
    "nombre": "Bosque de los Sonidos",
    "guia": "cosmo",
    "puerta": {
-    "estrellas": 50,
     "destino": "Valle de las Palabras",
     "x": 2527,
     "y": 1340,
@@ -64,8 +63,7 @@
        "es": "Aquí se apagaron los útiles de la escuela. Escucha y toca el correcto.",
        "en": "The school things lost their light here. Listen and tap the right one."
       }
-     ],
-     "estrellas": 3
+     ]
     },
     {
      "id": "bosque-school-2",
@@ -113,7 +111,6 @@
        "en": "Look! More classroom things are floating. Catch the one you hear."
       }
      ],
-     "estrellas": 3,
      "atrapa": {
       "cruceInicio": 6,
       "cruceFinal": 4.5,
@@ -171,7 +168,6 @@
        "en": "Now you give the words a voice. Listen, and when you're ready, say it. Every try counts!"
       }
      ],
-     "estrellas": 3,
      "requiere": "bosque-school-2"
     },
     {
@@ -219,8 +215,7 @@
        "es": "Los colores del bosque se volvieron grises. ¡Vamos a encenderlos!",
        "en": "The colors of the forest turned gray. Let's light them up!"
       }
-     ],
-     "estrellas": 3
+     ]
     },
     {
      "id": "bosque-colors-2",
@@ -268,7 +263,6 @@
        "en": "Five more colors are flying. Listen and catch the one I say."
       }
      ],
-     "estrellas": 3,
      "atrapa": {
       "cruceInicio": 6,
       "cruceFinal": 4.5,
@@ -326,7 +320,6 @@
        "en": "Your voice lights up the colors! Listen to each one and say it your way."
       }
      ],
-     "estrellas": 3,
      "requiere": "bosque-colors-2"
     },
     {
@@ -387,8 +380,7 @@
        "es": "Los números se escondieron entre los árboles. Empecemos del uno al cinco.",
        "en": "The numbers are hiding in the trees. Let's count from one to five."
       }
-     ],
-     "estrellas": 3
+     ]
     },
     {
      "id": "bosque-numbers-2",
@@ -440,7 +432,6 @@
        "en": "You can count to five! Now catch six to ten."
       }
      ],
-     "estrellas": 3,
      "atrapa": {
       "cruceInicio": 6,
       "cruceFinal": 4.5,
@@ -506,7 +497,6 @@
        "en": "Abu wants to hear you count. Listen to the number and say it."
       }
      ],
-     "estrellas": 3,
      "requiere": "bosque-numbers-2"
     },
     {
@@ -548,8 +538,7 @@
        "es": "Mira tu cara: ojos, orejas, nariz y boca. Cuando oigas una, tócatela tú también.",
        "en": "Look at your face: eyes, ears, nose and mouth. When you hear one, touch it too!"
       }
-     ],
-     "estrellas": 3
+     ]
     },
     {
      "id": "bosque-body-2",
@@ -600,7 +589,6 @@
        "en": "Now the rest of the body: head, arms, hands, legs and feet. Catch them!"
       }
      ],
-     "estrellas": 3,
      "atrapa": {
       "cruceInicio": 6,
       "cruceFinal": 4.5,
@@ -658,7 +646,6 @@
        "en": "Púa wants to hear you name the body. Listen and say it out loud."
       }
      ],
-     "estrellas": 3,
      "requiere": "bosque-body-2"
     },
     {
@@ -703,8 +690,7 @@
        "es": "Aquí aprendemos a saludar y a dar las gracias.",
        "en": "Here we learn to say hello and thank you."
       }
-     ],
-     "estrellas": 3
+     ]
     },
     {
      "id": "bosque-family-2",
@@ -764,7 +750,6 @@
        "en": "Every home has a different family. Listen and catch each person."
       }
      ],
-     "estrellas": 3,
      "atrapa": {
       "cruceInicio": 6,
       "cruceFinal": 4.5,
@@ -825,7 +810,6 @@
        "en": "Let's say hello to the forest family. Listen and say it."
       }
      ],
-     "estrellas": 3,
      "requiere": "bosque-family-2"
     },
     {
@@ -909,8 +893,7 @@
        "es": "El reloj del bosque se detuvo. Escucha la hora y toca el reloj correcto.",
        "en": "The forest clock stopped. Listen to the time and tap the right clock."
       }
-     ],
-     "estrellas": 3
+     ]
     },
     {
      "id": "bosque-time-2",
@@ -961,7 +944,6 @@
        "en": "Rayo needs to know the time! He asks \"What time is it?\" and you tell him."
       }
      ],
-     "estrellas": 2,
      "requiere": "bosque-time"
     },
     {
@@ -1003,7 +985,7 @@
        "en": "This is the memory well. Flip two cards and find the ones that go together."
       }
      ],
-     "estrellas": 0,
+     "opcional": true,
      "x": 1477,
      "y": 1254
     }
@@ -3874,8 +3856,8 @@
       },
       {
        "quien": "nova",
-       "es": "Cada misión que completas te da estrellas. Cuando tengas 50, el puente se encenderá.",
-       "en": "Every mission you complete gives you stars. When you have 50, the bridge will light up."
+       "es": "Cuando todos los faroles del bosque brillen, el puente se encenderá.",
+       "en": "When all the forest lanterns shine, the bridge will light up."
       }
      ]
     },
@@ -3883,8 +3865,8 @@
      "lineas": [
       {
        "quien": "nova",
-       "es": "¡Lo lograste! El puente brilla con tus estrellas.",
-       "en": "You did it! The bridge shines with your stars."
+       "es": "¡Lo lograste! Todos los faroles brillan y el puente se encendió.",
+       "en": "You did it! All the lanterns shine and the bridge lit up."
       },
       {
        "quien": "nova",
@@ -3935,8 +3917,8 @@
       },
       {
        "quien": "rayo",
-       "es": "Completa todas las misiones. Con las 50 estrellas, el puente se enciende.",
-       "en": "Complete all the missions. With all 50 stars, the bridge lights up."
+       "es": "Enciende todos los faroles del bosque y el puente se encenderá.",
+       "en": "Light all the forest lanterns and the bridge will light up."
       }
      ]
     },
@@ -4217,7 +4199,7 @@
   },
   {
    "id": "menta",
-   "estrellas": 12,
+   "estrellas": 100,
    "colores": [
     "#b6fff0",
     "#19c6b1"
@@ -4225,7 +4207,7 @@
   },
   {
    "id": "rosa",
-   "estrellas": 26,
+   "estrellas": 225,
    "colores": [
     "#ffd0e6",
     "#ff5fa2"
@@ -4233,7 +4215,7 @@
   },
   {
    "id": "arcoiris",
-   "estrellas": 40,
+   "estrellas": 350,
    "colores": [
     "#ff5f6d",
     "#ffc371",

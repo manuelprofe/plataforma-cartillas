@@ -244,6 +244,7 @@ export function DiBrilla({ mision, base, idiomaVoz, imagenFiesta, onTerminar, on
         <CierreMision
           mision={mision}
           errores={costaron.length}
+          pronuncio
           base={base}
           imagenFiesta={imagenFiesta}
           alRegistrar={() =>

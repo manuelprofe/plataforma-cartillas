@@ -113,15 +113,27 @@ ronda de pruebas. (El silencio en su computador era Chrome con el sonido apagado
   `mixto` del código dice la frase en inglés y luego en español, que no es lo que se quiere).
 - **Voz grabada:** `herramientas/generar_voz.py` genera un MP3 por frase con Piper (voz neuronal
   local, no envía nada a internet) y anota el índice `voz` en `cartilla.json`; los audios van en
-  `public/cartillas/ingles-3/voz/` (188 frases, ~1,4 MB, fuera de la primera carga; el service
+  `public/cartillas/ingles-3/voz/` (158 frases, ~1,2 MB, fuera de la primera carga; el service
   worker los guarda con el paquete). Voces: `es_MX-claude-high` (Apache 2.0) y
   `en_US-ljspeech-high` (dominio público), de huggingface.co/rhasspy/piper-voices.
   **Después de cambiar textos: correr `construir_bosque.py` y luego `generar_voz.py`** (solo
   genera lo nuevo). Lo que no esté grabado suena con la voz del navegador. Nadie ha oído aún
   la voz nueva con oído humano: esperar la opinión de Manuel y los probadores.
-- **En curso (desarrollador):** resumen para la familia con "Empezar de nuevo" (a medias, sin
-  confirmar: `src/Familia.tsx`, `src/BotonSostenido.tsx`) y después "Recuerdos". Al terminar:
-  revisor. Nada de esto está publicado.
+- **Construido y revisado, sin publicar:** resumen para la familia (portada, sostener 3 s;
+  "Empezar de nuevo" al final, sostener 2 s), "Recuerdos" en el álbum, y los arreglos del
+  revisor a la voz (se reanuda si el sistema pausa el audio; si la grabación tarda más de
+  1,5 s la frase la dice el navegador; ya no se guarda el audio decodificado). La versión
+  publicada **no** tiene esos arreglos de voz. Publicar cuando Manuel lo apruebe.
+- **Hallazgos del revisor que quedan abiertos:** (1) la puerta del adulto la pasa un niño de
+  tercero que sepa leer y puede borrar su avance: pedir algo que un niño no resuelva o dar
+  "deshacer"; (2) el contador "✦ n/10" del mapa cuenta luciérnagas y se confunde con las
+  estrellas: cambiar el dibujo; (3) `src/Familia.tsx` tiene textos del territorio y la materia
+  en el código ("vecinos del bosque", "en inglés"): pasarlos al paquete; (4) las caritas del
+  cierre de misión siguen sin voz (pedagogía §1.7).
+- **Preguntas abiertas para Manuel:** ¿la mochila cohete tan al final (misión 15 de 17)?,
+  ¿3 s para entrar al resumen?, ¿el pozo debe dar estrellas?
+- `construir_bosque.py` tiene `--solo-contenido`: reescribe textos y datos sin mover el mapa.
+  Usarlo siempre mientras el PNG del suelo siga solo en Canva. Pruebas en `scripts/pruebas/`.
 - No reescribir la historia de la rama (el entorno bloquea `push --force`); si un agente
   enmienda un commit ya subido, se une con `git merge -s ours`.
 
@@ -129,8 +141,7 @@ ronda de pruebas. (El silencio en su computador era Chrome con el sonido apagado
 
 1. **Pruebas de los conocidos de Manuel:** él traerá un informe de errores y mejoras. Atenderlo
    primero cuando llegue.
-2. **Construir lo ya especificado:** hechos la hora "3:00", estrellas opción B y vestidor;
-   faltan el resumen para la familia con "Empezar de nuevo" y la sección "Recuerdos".
+2. Lo ya especificado quedó construido (ver arriba); faltan los hallazgos abiertos del revisor.
 3. **Probado solo en simulador:** micrófono real, modo avión e instalación en un Android real.
 4. Unir la rama de trabajo con `main` (con permiso de Manuel) para que Netlify publique solo.
 5. Voz: ya es generada (Piper). Falta la opinión de Manuel; si no convence, grabar o probar otra.

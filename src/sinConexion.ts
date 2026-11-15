@@ -49,6 +49,7 @@ async function registrar() {
 
     // Ruta relativa: funciona igual en la raíz del dominio o en una subruta.
     const registro = await sw.register('./sw.js');
+    if (!registro) return;
 
     let recargando = false;
     alCambiar = () => {

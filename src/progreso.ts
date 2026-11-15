@@ -121,7 +121,11 @@ function leer(): Progreso {
     const anterior = localStorage.getItem(CLAVE_V3);
     if (anterior) {
       const migrado = migrarV3(JSON.parse(anterior));
-      localStorage.setItem(CLAVE, JSON.stringify(migrado));
+      try {
+        localStorage.setItem(CLAVE, JSON.stringify(migrado));
+      } catch {
+        // Sin espacio para guardar: igual se juega con lo migrado; la copia vieja sigue ahí.
+      }
       return migrado;
     }
   } catch {
@@ -285,5 +289,11 @@ export function reconocerVoz(misionesDeVoz: string[]) {
 }
 
 export function reiniciarProgreso() {
+  try {
+    // Que no quede en el dispositivo la copia de antes de la opción B.
+    localStorage.removeItem(CLAVE_V3);
+  } catch {
+    // Almacenamiento bloqueado: no hay nada que borrar.
+  }
   guardar(VACIO);
 }

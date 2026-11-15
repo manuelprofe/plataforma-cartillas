@@ -182,8 +182,12 @@ let turnoVoz = 0;
 
 type IndiceVoz = Record<string, Record<string, string>>;
 let voz: { base: string; indice: IndiceVoz } | null = null;
-const grabaciones = new Map<string, Promise<AudioBuffer>>();
+// Se guarda el audio comprimido (pocos KB por frase), no el decodificado: en un celular de
+// gama baja el decodificado de todas las frases ocuparía decenas de MB.
+const grabaciones = new Map<string, Promise<ArrayBuffer>>();
 let sonando: AudioBufferSourceNode | null = null;
+/** Si la grabación no está lista en este tiempo, esa frase la dice la voz del navegador. */
+const MS_ESPERA_GRABACION = 1500;
 
 /** Le dice al audio dónde está la voz grabada de la cartilla. */
 export function configurarVoz(base: string, indice: IndiceVoz | undefined) {
@@ -191,17 +195,25 @@ export function configurarVoz(base: string, indice: IndiceVoz | undefined) {
   grabaciones.clear();
 }
 
-function grabacion(c: AudioContext, url: string): Promise<AudioBuffer> {
+function grabacion(url: string): Promise<ArrayBuffer> {
   let g = grabaciones.get(url);
   if (!g) {
-    g = fetch(url)
-      .then((r) => (r.ok ? r.arrayBuffer() : Promise.reject(r.status)))
-      .then((datos) => c.decodeAudioData(datos));
+    g = fetch(url).then((r) => (r.ok ? r.arrayBuffer() : Promise.reject(r.status)));
     grabaciones.set(url, g);
     // Si falló (sin red y sin guardar todavía), que se pueda volver a intentar después.
     g.catch(() => grabaciones.delete(url));
   }
   return g;
+}
+
+// El navegador puede pausar el audio (llamada, cambio de app, pestaña en segundo plano):
+// se reanuda al volver y con cualquier toque.
+function reanudar() {
+  if (ctx && ctx.state !== 'running') void ctx.resume().catch(() => {});
+}
+if (typeof document !== 'undefined') {
+  document.addEventListener('pointerdown', reanudar, { capture: true, passive: true });
+  document.addEventListener('visibilitychange', () => !document.hidden && reanudar());
 }
 
 function pararGrabacion() {
@@ -223,15 +235,32 @@ export function decir(texto: string, idioma: string, alTerminar?: () => void) {
   const turno = ++turnoVoz;
   pararGrabacion();
   if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+  // Pantallas a las que se llega sin pasar por "Jugar" (la de la familia): se intenta aquí.
+  if (!ctx) activarAudio();
   const archivo = voz?.indice[idioma.slice(0, 2)]?.[texto.trim()];
   const c = ctx;
-  if (!archivo || !voz || !c) {
+  let resuelto = false;
+  const respaldo = () => {
+    if (resuelto || turno !== turnoVoz) return;
+    resuelto = true;
     decirConNavegador(texto, idioma, turno, alTerminar);
+  };
+  if (!archivo || !voz || !c) {
+    respaldo();
     return;
   }
-  grabacion(c, voz.base + archivo).then(
-    (bufer) => {
-      if (turno !== turnoVoz) return;
+  const plazo = window.setTimeout(respaldo, MS_ESPERA_GRABACION);
+  Promise.all([grabacion(voz.base + archivo), c.state === 'running' ? null : c.resume()])
+    // decodeAudioData se queda con los datos que recibe: se le pasa una copia.
+    .then(([datos]) => c.decodeAudioData(datos.slice(0)))
+    .then((bufer) => {
+      clearTimeout(plazo);
+      if (resuelto || turno !== turnoVoz) return;
+      if (c.state !== 'running') {
+        respaldo();
+        return;
+      }
+      resuelto = true;
       const fuente = c.createBufferSource();
       fuente.buffer = bufer;
       fuente.connect(c.destination);
@@ -241,9 +270,11 @@ export function decir(texto: string, idioma: string, alTerminar?: () => void) {
       };
       sonando = fuente;
       fuente.start();
-    },
-    () => turno === turnoVoz && decirConNavegador(texto, idioma, turno, alTerminar),
-  );
+    })
+    .catch(() => {
+      clearTimeout(plazo);
+      respaldo();
+    });
 }
 
 function decirConNavegador(texto: string, idioma: string, turno: number, alTerminar?: () => void) {

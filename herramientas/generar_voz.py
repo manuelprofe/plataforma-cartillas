@@ -26,25 +26,23 @@ def reunir(cartilla):
     """Devuelve {'es': set(textos), 'en': set(textos)} con lo que la app dice en voz alta."""
     textos = {'es': set(), 'en': set()}
 
-    def ver(o):
+    def ver(o, clave=''):
         if isinstance(o, dict):
-            o = {k: v for k, v in o.items() if k != 'voz'}
             es, en = o.get('es'), o.get('en')
             if isinstance(es, str) and isinstance(en, str):
-                es_palabra = 'icono' in o or 'pronuncia' in o
-                if es_palabra:
+                if 'icono' in o or 'pronuncia' in o:
                     textos['en'].add(en)          # el vocabulario siempre suena en inglés
                 else:
                     textos['es'].add(es)          # la historia y las ayudas, en español
-                    if len(en) <= 40:
-                        textos['en'].add(en)      # pedidos cortos de los vecinos
             if isinstance(o.get('frase'), str):
                 textos['en'].add(o['frase'])
-            for v in o.values():
-                ver(v)
+            for k, v in o.items():
+                # El índice de voz no se lee a sí mismo; los nombres de accesorios no se dicen.
+                if k not in ('voz', 'accesorios'):
+                    ver(v, k)
         elif isinstance(o, list):
             for v in o:
-                ver(v)
+                ver(v, clave)
 
     ver(cartilla)
     return {k: {t.strip() for t in v if t.strip()} for k, v in textos.items()}

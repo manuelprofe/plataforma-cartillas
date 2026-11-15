@@ -3,3 +3,4 @@ dist
 .env*
 dist-artefacto
 .claude/worktrees/
+.netlify/

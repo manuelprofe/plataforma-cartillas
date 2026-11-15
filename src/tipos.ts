@@ -113,7 +113,31 @@ export interface Heroe {
   nombre: string;
   imagen: string;
   ancho: number;
+  /** Alto con que se dibuja (misma proporción de la imagen). */
+  alto?: number;
   saludo: { es: string; en: string };
+  /** Dónde se agarra cada accesorio: fracciones del ancho y alto de la imagen del héroe. */
+  anclas?: Partial<Record<Ranura, { x: number; y: number; escala: number }>>;
+}
+
+/** Sitio del personaje donde va un accesorio; una pieza por ranura. */
+export type Ranura = 'cabeza' | 'cara' | 'cuello' | 'espalda';
+
+/**
+ * Pieza para vestir al personaje. Se abre al llegar a ese total de Mission Stars (no se gastan).
+ * Los umbrales los fija el contenido; de dónde salen está anotado en herramientas/construir_bosque.py.
+ */
+export interface Accesorio {
+  id: string;
+  nombre: Frase;
+  ranura: Ranura;
+  estrellas: number;
+  /** Imagen cuadrada con la pieza centrada. */
+  imagen: string;
+  /** Punto de la pieza (fracción de su imagen) que va sobre el ancla del héroe. */
+  punto: [number, number];
+  /** Ancho de la pieza como fracción del ancho del héroe. */
+  ancho: number;
 }
 
 /** Estela que deja el personaje al caminar; se abre al llegar a ese total de Mission Stars. */
@@ -214,6 +238,8 @@ export interface Cartilla {
   idiomaHistoria: string;
   heroes: Heroe[];
   estelas: Estela[];
+  /** Piezas para vestir al personaje. */
+  accesorios?: Accesorio[];
   /** Imágenes de la portada y de la celebración al terminar una misión. */
   imagenes?: { portada?: string; fiesta?: string };
   territorios: Territorio[];

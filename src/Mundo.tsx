@@ -4,11 +4,14 @@
 // le regalan otras para su álbum. El guía va por los caminos: al tocar, busca la ruta
 // (src/rutas.ts) y la recorre acelerando y frenando; el agua, el bosque y las casas no se atraviesan.
 import { useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
-import type { Estela, Heroe, Linea, ModoIdioma, Palabra, Territorio } from './tipos';
+import type { Accesorio, Estela, Frase, Heroe, Linea, ModoIdioma, Palabra, Territorio } from './tipos';
 import { agregarAlAlbum, fijarDestino, fijarEncargo, marcarAyudado, marcarVista, useProgreso } from './progreso';
 import { Album } from './Album';
+import { Vestidor } from './Vestidor';
+import { Figura, accesoriosPuestos } from './Figura';
+import { decirAyuda } from './juegos/ayuda';
 import { MiniMapa } from './MiniMapa';
-import { atenuarAmbiente, decir, iniciarAmbiente, pararAmbiente, sonar } from './audio';
+import { atenuarAmbiente, callar, decir, iniciarAmbiente, pararAmbiente, sonar } from './audio';
 import { Dialogo } from './Dialogo';
 import { Caminos, type Circulo, type Punto } from './rutas';
 
@@ -133,6 +136,9 @@ interface Props {
   territorio: Territorio;
   heroe: Heroe;
   estelas: Estela[];
+  accesorios: Accesorio[];
+  /** Frases de ayuda del contenido (aquí, la del vestidor). */
+  ayudas: Record<string, Frase>;
   base: string;
   vozIngles: string;
   vozEspanol: string;
@@ -153,7 +159,7 @@ interface Charla {
   alCerrar?: () => void;
 }
 
-export function Mundo({ territorio, heroe, estelas, base, vozIngles, vozEspanol, onEntrar }: Props) {
+export function Mundo({ territorio, heroe, estelas, accesorios, ayudas, base, vozIngles, vozEspanol, onEntrar }: Props) {
   const progreso = useProgreso();
   const { misiones, puerta, mundo, personajes, escenas } = territorio;
 
@@ -169,14 +175,14 @@ export function Mundo({ territorio, heroe, estelas, base, vozIngles, vozEspanol,
   const ondas = useRef<HTMLDivElement>(null);
   const frente = useRef<HTMLDivElement>(null);
   const rastro = useRef<HTMLDivElement>(null);
-  const imagenGuia = useRef<HTMLImageElement>(null);
+  const imagenGuia = useRef<HTMLDivElement>(null);
 
   const [tam, setTam] = useState({ ancho: 390, alto: 0 });
   const [cerca, setCerca] = useState<string | null>(null);
   const [charla, setCharla] = useState<Charla | null>(null);
   const [, repintar] = useState(0);
   const [destello, setDestello] = useState<{ palabra: Palabra; x: number; y: number; n: number } | null>(null);
-  const [panel, setPanel] = useState<'album' | 'mapa' | null>(null);
+  const [panel, setPanel] = useState<'album' | 'mapa' | 'vestidor' | null>(null);
   const [ventana, setVentana] = useState(() => {
     const x = ultimaPosicion?.x ?? mundo.inicio.x;
     const y = ultimaPosicion?.y ?? mundo.inicio.y;
@@ -192,6 +198,9 @@ export function Mundo({ territorio, heroe, estelas, base, vozIngles, vozEspanol,
     setCarga(p);
   };
   const estela = estelas.find((e) => e.id === progreso.estela && progreso.estrellas >= e.estrellas) ?? estelas[0];
+  // Lo que lleva puesto (solo piezas que ya se abrieron) y si hay alguna abierta sin desenvolver.
+  const puestos = accesoriosPuestos(accesorios, progreso.accesorios, progreso.estrellas);
+  const hayPiezaNueva = accesorios.some((a) => progreso.estrellas >= a.estrellas && !progreso.accesoriosVistos?.includes(a.id));
   const vecinoActivo = mundo.habitantes.find((h) => h.id === progreso.encargo && h.encargo && !progreso.ayudados.includes(h.id));
 
   const hechas = misiones.filter((m) => progreso.misiones[m.id]).length;
@@ -1143,7 +1152,7 @@ export function Mundo({ territorio, heroe, estelas, base, vozIngles, vozEspanol,
             <div ref={guia} className="guia" data-anda="no">
               <span className="guia__sombra" />
               <div className="guia__cuerpo">
-                <img ref={imagenGuia} src={base + heroe.imagen} alt={heroe.nombre} width={heroe.ancho} draggable={false} />
+                <Figura ref={imagenGuia} heroe={heroe} puestos={puestos} base={base} ancho={heroe.ancho} />
               </div>
               {carga && (
                 <span className="guia__carga" key={carga.en}>
@@ -1177,6 +1186,10 @@ export function Mundo({ territorio, heroe, estelas, base, vozIngles, vozEspanol,
 
       {!charla && !panel && (
         <div className="utiles">
+          <button type="button" className={`utiles__vestidor${hayPiezaNueva ? ' es-nuevo' : ''}`} onClick={() => (sonar('toque'), setPanel('vestidor'))} aria-label={hayPiezaNueva ? 'Vestir al personaje: hay algo nuevo' : 'Vestir al personaje'}>
+            <img src={base + heroe.imagen} alt="" width="56" height="56" draggable={false} />
+            {hayPiezaNueva && <small>✦</small>}
+          </button>
           <button type="button" onClick={() => (sonar('toque'), setPanel('album'))} aria-label={`Álbum: ${progreso.album.length} palabras`}>
             📖<small>{progreso.album.length}</small>
           </button>
@@ -1187,7 +1200,21 @@ export function Mundo({ territorio, heroe, estelas, base, vozIngles, vozEspanol,
       )}
 
       {panel === 'album' && (
-        <Album palabras={progreso.album} repasar={progreso.repasar} total={palabrasDelMundo} estelas={estelas} estela={estela.id} estrellas={progreso.estrellas} base={base} vozIngles={vozIngles} onCerrar={() => setPanel(null)} />
+        <Album palabras={progreso.album} repasar={progreso.repasar} total={palabrasDelMundo} base={base} vozIngles={vozIngles} onCerrar={() => setPanel(null)} />
+      )}
+      {panel === 'vestidor' && (
+        <Vestidor
+          heroe={heroe}
+          accesorios={accesorios}
+          estelas={estelas}
+          estela={estela.id}
+          estrellas={progreso.estrellas}
+          puestos={progreso.accesorios ?? {}}
+          vistos={progreso.accesoriosVistos ?? []}
+          base={base}
+          alTocarCerrada={() => decirAyuda({ ayudas, modo, idiomaVoz: vozIngles, vozHistoria: vozEspanol }, 'vestidor-pronto')}
+          onCerrar={() => (callar(), setPanel(null))}
+        />
       )}
       {panel === 'mapa' && (
         <MiniMapa

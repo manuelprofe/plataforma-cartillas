@@ -158,7 +158,7 @@ export function App() {
       )}
 
       {pantalla.tipo === 'mapa' && heroe && (
-        <Mundo territorio={territorio} heroe={heroe} estelas={cartilla.estelas} base={BASE} vozIngles={cartilla.idiomaVoz} vozEspanol={cartilla.idiomaHistoria} onEntrar={(indice) => irA({ tipo: 'mision', indice })} />
+        <Mundo territorio={territorio} heroe={heroe} estelas={cartilla.estelas} accesorios={cartilla.accesorios ?? []} ayudas={cartilla.ayudas ?? {}} base={BASE} vozIngles={cartilla.idiomaVoz} vozEspanol={cartilla.idiomaHistoria} onEntrar={(indice) => irA({ tipo: 'mision', indice })} />
       )}
 
       {mision && Juego && (

@@ -1,7 +1,7 @@
 // Única capa que lee y escribe el progreso del estudiante. Hoy guarda en el
 // dispositivo; cuando exista el servidor, solo cambia este archivo.
 import { useSyncExternalStore } from 'react';
-import type { Palabra } from './tipos';
+import type { Palabra, Ranura } from './tipos';
 
 export interface RegistroMision {
   veces: number;
@@ -54,6 +54,10 @@ export interface Progreso {
   heroe?: string;
   /** Estela elegida. */
   estela?: string;
+  /** Accesorio que lleva puesto en cada ranura. */
+  accesorios?: Partial<Record<Ranura, string>>;
+  /** Accesorios que ya desenvolvió (los abiertos que no están aquí son nuevos). */
+  accesoriosVistos?: string[];
   /** Palabras encontradas en el mundo. */
   album: Palabra[];
   /** Habitantes que ya recuperaron su palabra. */
@@ -160,6 +164,16 @@ export function elegirHeroe(id: string) {
 
 export function elegirEstela(id: string) {
   guardar({ ...estado, estela: id });
+}
+
+/** Pone una pieza en su ranura, o la quita si no se da ninguna. Queda como vista. */
+export function ponerAccesorio(ranura: Ranura, id: string | undefined) {
+  const vistos = estado.accesoriosVistos ?? [];
+  guardar({
+    ...estado,
+    accesorios: { ...estado.accesorios, [ranura]: id },
+    accesoriosVistos: id && !vistos.includes(id) ? [...vistos, id] : vistos,
+  });
 }
 
 /** Guarda una palabra en el álbum. Devuelve si era nueva. */

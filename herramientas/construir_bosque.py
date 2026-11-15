@@ -21,6 +21,7 @@ import heapq
 import json
 import math
 import random
+import os
 import sys
 from collections import deque
 
@@ -604,6 +605,35 @@ c['estelas'] = [
     {'id': 'rosa', 'estrellas': umbral(9), 'colores': ['#ffd0e6', '#ff5fa2']},
     {'id': 'arcoiris', 'estrellas': umbral(14), 'colores': ['#ff5f6d', '#ffc371', '#fff36b', '#6bffb0', '#6bc5ff', '#c58bff']},
 ]
+# ---------- Accesorios del personaje (diseño, ronda 1, sección 4) ----------
+# Dónde va cada pieza (ranura, punto de agarre, ancho) y las anclas de cada héroe las midió el
+# diseñador y viven en docs/diseno/accesorios.json. Aquí se ponen el nombre y cuántas Mission
+# Stars abren cada una, con la escala de la opción B (ver `umbral` arriba): los umbrales del
+# diseño (4, 9, 18, 27, 36, 45) eran de la escala vieja de 3 por misión. La bufanda llega con
+# la primera misión aunque no se toque ninguna carita (15); la capa va una misión después de
+# la estela rosa (225) para que no lleguen juntas. Se intercalan con las estelas (100, 225, 350).
+ACCESORIOS = {
+    'bufanda': ('Bufanda de rayas', 'Striped scarf', 15),
+    'gafas-estrella': ('Gafas de estrella', 'Star glasses', umbral(3)),
+    'antena-luciernaga': ('Antena con luciérnaga', 'Firefly antenna', umbral(6)),
+    'capa-hojas': ('Capa de hojas', 'Leaf cape', umbral(10)),
+    'corona-flores': ('Corona de flores', 'Flower crown', umbral(12)),
+    'mochila-cohete': ('Mochila cohete', 'Rocket backpack', umbral(15)),
+}
+RAIZ = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+medidas = json.load(open(os.path.join(RAIZ, 'docs', 'diseno', 'accesorios.json')))
+assert {a['id'] for a in medidas['accesorios']} == set(ACCESORIOS), 'los accesorios del diseño y los del guion no coinciden'
+c['accesorios'] = [
+    {'id': a['id'], 'nombre': {'es': ACCESORIOS[a['id']][0], 'en': ACCESORIOS[a['id']][1]}, 'ranura': a['ranura'],
+     'estrellas': ACCESORIOS[a['id']][2], 'imagen': a['imagen'], 'punto': a['punto'], 'ancho': a['ancho']}
+    for a in medidas['accesorios']
+]
+anclas = {h['id']: h['anclas'] for h in medidas['heroes']}
+for h in c['heroes']:
+    h['anclas'] = anclas[h['id']]
+    # Alto con que se dibuja, según la proporción de su imagen: las anclas son fracciones de ese alto.
+    w, a = Image.open(os.path.join(os.path.dirname(ruta), h['imagen'])).size
+    h['alto'] = round(h['ancho'] * a / w)
 # Imágenes que usa la app fuera del mundo; van aquí para que el service worker las guarde.
 # Cinemáticas: video vertical y horizontal, y la narración que dice la app sincronizada.
 c['cinematicas'] = {"inicio": {"vista": "cine-inicio", "videos": {"vertical": "videos/inicio-bosque-9x16.mp4", "horizontal": "videos/inicio-bosque-16x9.mp4"}, "poster": "videos/inicio-bosque-poster.webp", "lineas": [{"t": 0.8, "quien": "pixie", "es": "Esta es Englishland. Aquí cada cosa tiene una palabra… y cada palabra brilla.", "en": "This is Englishland. Here everything has a word… and every word shines."}, {"t": 7.6, "quien": "pixie", "es": "Un día, las palabras se fueron volando… y el bosque empezó a perder su color.", "en": "One day, the words flew away… and the forest began to lose its color."}, {"t": 15.2, "quien": "pixie", "es": "¡Hola! Soy Pixie. Y ella es Lumi: su luz nunca se apaga.", "en": "Hi! I'm Pixie. And this is Lumi: her light never goes out."}, {"t": 20.2, "quien": "lumi", "es": "¡Hola!", "en": "Hi!"}, {"t": 22.4, "quien": "pixie", "es": "Escucha, juega y habla en inglés: cada palabra devuelve la luz.", "en": "Listen, play and speak English: every word brings the light back."}, {"t": 27.6, "quien": "lumi", "es": "¡Vamos juntos!", "en": "Let's go together!"}]}}
@@ -725,6 +755,8 @@ AYUDAS = {
     'memoria-pista1': {'es': 'Escucha bien: cada dibujo tiene su palabra.', 'en': 'Listen: every picture has its word.'},
     'memoria-pista2': {'es': 'Mira, por aquí.', 'en': 'Look, over here.'},
     'atrapa-inicio': {'es': 'Atrapa la luz que te digo.', 'en': 'Catch the light I say.'},
+    # Vestidor: lo que dice Lumi al tocar una pieza o una estela que todavía no se abre.
+    'vestidor-pronto': {'es': '¡Pronto! Sigue encendiendo el bosque.', 'en': 'Soon! Keep lighting up the forest.'},
 }
 c['ayudas'] = AYUDAS
 

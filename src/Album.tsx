@@ -1,27 +1,23 @@
 // Álbum del explorador: las palabras que el niño encontró en el mundo, para
-// volver a escucharlas, las estelas que ha ganado con sus estrellas y las palabras de
-// las misiones que conviene repasar porque costaron un poco.
-import type { Estela, Palabra } from './tipos';
+// volver a escucharlas, y las palabras de las misiones que conviene repasar porque
+// costaron un poco. Las estelas viven en el vestidor (son del personaje).
+import type { Palabra } from './tipos';
 import { decir, sonar } from './audio';
-import { elegirEstela } from './progreso';
 
 interface Props {
   palabras: Palabra[];
   /** Palabras de misión que costaron; se muestran primero para volver a oírlas. */
   repasar: Palabra[];
   total: number;
-  estelas: Estela[];
-  estela: string;
-  estrellas: number;
   base: string;
   vozIngles: string;
   onCerrar: () => void;
 }
 
-export function Album({ palabras, repasar, total, estelas, estela, estrellas, base, vozIngles, onCerrar }: Props) {
+export function Album({ palabras, repasar, total, base, vozIngles, onCerrar }: Props) {
   return (
     <div className="panel" role="dialog" aria-label="Álbum de palabras">
-      <div className={`panel__caja${repasar.length ? ' panel__caja--repasar' : ''}`}>
+      <div className={`panel__caja${repasar.length ? '' : ' panel__caja--corta'}`}>
         <div className="panel__cabeza">
           <strong>
             📖 {palabras.length}/{total}
@@ -29,29 +25,6 @@ export function Album({ palabras, repasar, total, estelas, estela, estrellas, ba
           <button type="button" className="panel__cerrar" onClick={onCerrar} aria-label="Cerrar">
             ✕
           </button>
-        </div>
-
-        <div className="estelas" aria-label="Estela del personaje">
-          {estelas.map((e) => {
-            const abierta = estrellas >= e.estrellas;
-            return (
-              <button
-                key={e.id}
-                type="button"
-                className={`estelas__una${estela === e.id ? ' es-elegido' : ''}`}
-                disabled={!abierta}
-                aria-pressed={estela === e.id}
-                aria-label={abierta ? `Estela ${e.id}` : `Estela ${e.id}: se abre con ${e.estrellas} estrellas`}
-                style={{ background: `conic-gradient(${[...e.colores, e.colores[0]].join(', ')})` }}
-                onClick={() => {
-                  sonar('acierto');
-                  elegirEstela(e.id);
-                }}
-              >
-                {!abierta && <span>★{e.estrellas}</span>}
-              </button>
-            );
-          })}
         </div>
 
         {repasar.length > 0 && (

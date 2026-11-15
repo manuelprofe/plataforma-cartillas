@@ -4165,7 +4165,30 @@
    "saludo": {
     "es": "¡Hola! Soy Tavi.",
     "en": "Hello! I'm Tavi."
-   }
+   },
+   "anclas": {
+    "cabeza": {
+     "x": 0.49,
+     "y": 0.035,
+     "escala": 1
+    },
+    "cara": {
+     "x": 0.54,
+     "y": 0.4,
+     "escala": 1
+    },
+    "cuello": {
+     "x": 0.52,
+     "y": 0.535,
+     "escala": 1
+    },
+    "espalda": {
+     "x": 0.5,
+     "y": 0.57,
+     "escala": 1
+    }
+   },
+   "alto": 105
   },
   {
    "id": "mika",
@@ -4175,7 +4198,30 @@
    "saludo": {
     "es": "¡Hola! Soy Mika.",
     "en": "Hello! I'm Mika."
-   }
+   },
+   "anclas": {
+    "cabeza": {
+     "x": 0.51,
+     "y": 0.205,
+     "escala": 1
+    },
+    "cara": {
+     "x": 0.49,
+     "y": 0.44,
+     "escala": 1.05
+    },
+    "cuello": {
+     "x": 0.5,
+     "y": 0.585,
+     "escala": 1
+    },
+    "espalda": {
+     "x": 0.52,
+     "y": 0.61,
+     "escala": 1
+    }
+   },
+   "alto": 121
   },
   {
    "id": "bruno",
@@ -4185,7 +4231,30 @@
    "saludo": {
     "es": "¡Hola! Soy Bruno.",
     "en": "Hello! I'm Bruno."
-   }
+   },
+   "anclas": {
+    "cabeza": {
+     "x": 0.5,
+     "y": 0.035,
+     "escala": 1
+    },
+    "cara": {
+     "x": 0.44,
+     "y": 0.34,
+     "escala": 1
+    },
+    "cuello": {
+     "x": 0.45,
+     "y": 0.505,
+     "escala": 1
+    },
+    "espalda": {
+     "x": 0.45,
+     "y": 0.53,
+     "escala": 1
+    }
+   },
+   "alto": 104
   }
  ],
  "estelas": [
@@ -4242,6 +4311,10 @@
   "atrapa-inicio": {
    "es": "Atrapa la luz que te digo.",
    "en": "Catch the light I say."
+  },
+  "vestidor-pronto": {
+   "es": "¡Pronto! Sigue encendiendo el bosque.",
+   "en": "Soon! Keep lighting up the forest."
   }
  },
  "imagenes": {
@@ -4295,5 +4368,97 @@
     }
    ]
   }
- }
+ },
+ "accesorios": [
+  {
+   "id": "bufanda",
+   "nombre": {
+    "es": "Bufanda de rayas",
+    "en": "Striped scarf"
+   },
+   "ranura": "cuello",
+   "estrellas": 15,
+   "imagen": "accesorios/bufanda.webp",
+   "punto": [
+    0.5,
+    0.2
+   ],
+   "ancho": 0.6
+  },
+  {
+   "id": "gafas-estrella",
+   "nombre": {
+    "es": "Gafas de estrella",
+    "en": "Star glasses"
+   },
+   "ranura": "cara",
+   "estrellas": 75,
+   "imagen": "accesorios/gafas-estrella.webp",
+   "punto": [
+    0.43,
+    0.5
+   ],
+   "ancho": 0.66
+  },
+  {
+   "id": "antena-luciernaga",
+   "nombre": {
+    "es": "Antena con luciérnaga",
+    "en": "Firefly antenna"
+   },
+   "ranura": "cabeza",
+   "estrellas": 150,
+   "imagen": "accesorios/antena-luciernaga.webp",
+   "punto": [
+    0.37,
+    0.4
+   ],
+   "ancho": 1.05
+  },
+  {
+   "id": "capa-hojas",
+   "nombre": {
+    "es": "Capa de hojas",
+    "en": "Leaf cape"
+   },
+   "ranura": "espalda",
+   "estrellas": 250,
+   "imagen": "accesorios/capa-hojas.webp",
+   "punto": [
+    0.5,
+    0.2
+   ],
+   "ancho": 1.1
+  },
+  {
+   "id": "corona-flores",
+   "nombre": {
+    "es": "Corona de flores",
+    "en": "Flower crown"
+   },
+   "ranura": "cabeza",
+   "estrellas": 300,
+   "imagen": "accesorios/corona-flores.webp",
+   "punto": [
+    0.5,
+    0.5
+   ],
+   "ancho": 0.8
+  },
+  {
+   "id": "mochila-cohete",
+   "nombre": {
+    "es": "Mochila cohete",
+    "en": "Rocket backpack"
+   },
+   "ranura": "espalda",
+   "estrellas": 375,
+   "imagen": "accesorios/mochila-cohete.webp",
+   "punto": [
+    0.5,
+    0.45
+   ],
+   "ancho": 1.05
+  }
+ ]
 }

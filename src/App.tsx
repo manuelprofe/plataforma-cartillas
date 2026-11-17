@@ -270,7 +270,7 @@ export function App() {
   const entrarComo = (nino: Cara) => {
     cambiarA(nino.id);
     if (!progresoDe(nino.id).heroe && cartilla.heroes.some((h) => h.id === nino.avatar)) elegirHeroe(nino.avatar);
-    irA(preguntarSiEsSuyo(nino.id) ? { tipo: 'unir' } : destinoDe(nino.id), pantalla.tipo === 'inicio' ? 'sumar' : 'reemplazar');
+    irA(preguntarSiEsSuyo(nino.id) ? { tipo: 'unir' } : destinoDe(nino.id), pantalla.tipo === 'inicio' ? 'sumar' : 'reemplazar', true);
   };
 
   return (
@@ -306,7 +306,8 @@ export function App() {
           inicial={codigoQR}
           onCaras={(codigo, caras) => {
             setGrupo({ codigo, caras });
-            irA({ tipo: 'caras' });
+            // La respuesta puede llegar con la cortina aún abriendo (QR): se espera a que termine.
+            irA({ tipo: 'caras' }, 'sumar', true);
           }}
           onInvitado={jugarInvitado}
           onVolver={() => irA({ tipo: 'inicio' }, 'volver')}

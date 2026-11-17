@@ -28,7 +28,8 @@ const registros = [];
 const otras = [];
 
 async function simular(contexto) {
-  await contexto.route(/\/(auth|rest)\/v1\//, async (r) => {
+  await contexto.route(/\/(auth|rest)\/v1\//, (r) => atender(r).catch((e) => { otras.push(String(e)); return r.abort(); }));
+  async function atender(r) {
     const q = r.request();
     const u = new URL(q.url());
     const cuerpo = q.postData() ? JSON.parse(q.postData()) : {};
@@ -50,7 +51,7 @@ async function simular(contexto) {
     if (u.pathname === '/rest/v1/estrellas') return responder(sara ? [{ id: 9, motivo: 'completar', cantidad: 15, mision_id: 'bosque-colors-2', creado: '2026-11-10', otorgada_por: null }, { id: 10, motivo: 'participar', cantidad: 10, mision_id: null, creado: '2026-11-12', otorgada_por: 'd1' }] : []);
     otras.push(`${q.method()} ${u.pathname}`);
     return responder({ message: 'sin simular' }, 404);
-  });
+  }
 }
 
 async function nuevo(navegador, progreso) {
@@ -279,9 +280,8 @@ try {
     await p2.click('text=Tengo una tarjeta');
     await p2.waitForSelector('.teclado-codigo');
     await p2.keyboard.type('k7m2p');
-    await p2.waitForSelector('.nino--caras', { timeout: 8000 }).catch(async () => console.log('teclado:', await p2.locator('.tarjeta__casillas').getAttribute('aria-label'), await p2.locator('.tarjeta__aviso').textContent(), otras));
-    comprobar(true, 'a 1280 el código se escribe con el teclado físico');
-    await foto(p2, '16b-caras-1280'); console.log('ruta 1280', ruta(p2));
+    await p2.waitForSelector('.nino--caras', { timeout: 8000 });
+    comprobar(ruta(p2) === '/tarjeta/quien', 'a 1280 el código se escribe con el teclado físico');
     await p2.click('.cara:has-text("Sara")', { timeout: 5000 });
     await p2.waitForSelector('.teclado-pin');
     await foto(p2, '17-clave-1280');

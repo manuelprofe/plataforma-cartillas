@@ -1,0 +1,585 @@
+/* Entrada del niño: ¿Quién va a jugar?, tarjeta, PIN, descanso y sumar invitado (boceto 01 y 02).
+   Botones del niño de 72 px o más; solo se animan transform y opacity. */
+
+.nino {
+  height: 100dvh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  /* Contenido de 528 px como máximo, centrado; el fondo ocupa toda la ventana. */
+  padding: max(16px, env(safe-area-inset-top)) max(16px, calc((100% - 528px) / 2)) max(12px, env(safe-area-inset-bottom));
+  color: var(--crema);
+  font-size: 1.375rem;
+  background: radial-gradient(120% 70% at 50% 100%, #6b2fbf 0%, var(--noche) 50%, var(--noche-honda) 100%);
+}
+
+.nino__centro {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.nino__abajo {
+  display: grid;
+  gap: 16px;
+}
+
+.nino__abajo--fila {
+  grid-template-columns: 1.4fr 1fr;
+}
+
+.nino__lumi {
+  width: 180px;
+  height: auto;
+  animation: flotar 3.2s ease-in-out infinite;
+}
+
+.nino__titulo {
+  margin: 0;
+  font-size: 1.9rem;
+  font-weight: 800;
+  line-height: 1.05;
+  text-align: center;
+  color: var(--oro);
+}
+
+.nino__barra {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+/* ---------- Lumi y su globo ---------- */
+
+.lumi-dice {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.lumi-dice img {
+  width: 88px;
+  height: auto;
+  flex: none;
+}
+
+.lumi-dice--grande {
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.lumi-dice--grande img {
+  width: 170px;
+}
+
+.nino__centro .lumi-dice:not(.lumi-dice--grande) img {
+  display: none;
+}
+
+.globo {
+  min-height: 72px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border-radius: 20px 20px 20px 6px;
+  background: var(--crema);
+  color: var(--tinta);
+  font-size: 1.3rem;
+  font-weight: 600;
+  line-height: 1.2;
+  text-align: left;
+}
+
+.globo .icono {
+  flex: none;
+  color: var(--noche);
+}
+
+.lumi-dice--grande .globo {
+  border-radius: 20px;
+  max-width: 360px;
+}
+
+/* ---------- Acciones grandes ---------- */
+
+.accion {
+  min-height: 88px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 20px;
+  border-radius: 24px;
+  font-size: 1.375rem;
+  font-weight: 600;
+  line-height: 1.15;
+  text-align: left;
+  transition: transform 0.12s;
+}
+
+.accion:active {
+  transform: translateY(4px) scale(0.98);
+}
+
+.accion__ico {
+  width: 56px;
+  height: 56px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+}
+
+.accion--jugar {
+  background: var(--oro);
+  color: var(--tinta);
+  box-shadow: 0 6px 0 var(--oro-hondo);
+}
+
+.accion--jugar .accion__ico {
+  background: var(--tinta);
+  color: var(--oro);
+}
+
+.accion--si {
+  background: var(--menta);
+  color: var(--tinta);
+  box-shadow: 0 6px 0 #0f8f80;
+}
+
+.accion--si .accion__ico {
+  background: var(--tinta);
+  color: var(--menta);
+}
+
+.accion--tarjeta {
+  background: rgb(255 248 236 / 0.1);
+  border: 2px solid rgb(255 248 236 / 0.25);
+  color: var(--crema);
+}
+
+.accion--tarjeta .accion__ico {
+  background: var(--crema);
+  color: var(--noche);
+}
+
+.accion--bajo,
+.accion--otro {
+  min-height: 72px;
+}
+
+.accion--bajo .accion__ico,
+.accion--otro .accion__ico {
+  width: 48px;
+  height: 48px;
+}
+
+/* Puerta del adulto: discreta, pero con 48 px de alto para el dedo del adulto. */
+.pie-familia {
+  align-self: center;
+  min-height: 48px;
+  padding: 0 20px;
+  color: var(--crema);
+  opacity: 0.6;
+  font-size: 1rem;
+}
+
+.pie-familia__pista {
+  min-height: 1.4em;
+  margin: -12px 0 0;
+  text-align: center;
+  font-size: 1rem;
+}
+
+/* ---------- Caras ---------- */
+
+.rejilla {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: auto;
+}
+
+.rejilla--tres {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.cara {
+  min-height: 176px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+  padding: 12px 6px;
+  border-radius: 24px;
+  background: rgb(255 248 236 / 0.1);
+  border: 2px solid rgb(255 248 236 / 0.18);
+  color: var(--crema);
+  transition: transform 0.2s cubic-bezier(0.2, 0.7, 0.2, 1), opacity 0.2s;
+}
+
+.cara:active {
+  transform: scale(0.96);
+}
+
+.cara__apodo {
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 1.375rem;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.cara--chica {
+  min-height: 120px;
+  padding: 8px 4px;
+  border-radius: 20px;
+}
+
+.cara--chica .disco {
+  width: 76px;
+  height: 76px;
+}
+
+.cara--chica .cara__apodo {
+  font-size: 1.125rem;
+}
+
+.cara--invitado .disco {
+  outline: 3px dashed var(--oro);
+  outline-offset: 3px;
+  background: rgb(255 248 236 / 0.85);
+}
+
+.rejilla--eligiendo .cara:not(.cara--elegida) {
+  opacity: 0.4;
+}
+
+.cara--elegida {
+  border-color: var(--oro);
+  background: rgb(255 207 58 / 0.18);
+  transform: translateY(-6px);
+  box-shadow: 0 0 0 6px rgb(255 207 58 / 0.25);
+}
+
+.disco {
+  width: 112px;
+  height: 112px;
+  flex: none;
+  overflow: hidden;
+  border-radius: 50%;
+  background: var(--crema);
+}
+
+.disco img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.disco--borde {
+  border: 3px solid var(--oro);
+}
+
+.disco--grande {
+  width: 150px;
+  height: 150px;
+}
+
+/* ---------- Tarjeta (la escribe el adulto) ---------- */
+
+.nino--tarjeta {
+  gap: 12px;
+}
+
+.tarjeta__titulo {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.tarjeta__recordados {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tarjeta__recordado {
+  min-height: 48px;
+  padding: 0 16px;
+  border-radius: 999px;
+  border: 2px solid rgb(255 248 236 / 0.35);
+  color: var(--crema);
+  font-size: 1.05rem;
+}
+
+.tarjeta__casillas {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.tarjeta__casilla {
+  width: 56px;
+  height: 64px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  background: var(--crema);
+  color: var(--tinta);
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.tarjeta__casilla.es-actual {
+  box-shadow: 0 0 0 4px var(--oro);
+}
+
+.tarjeta__aviso {
+  min-height: 1.3em;
+  margin: 0;
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+.tarjeta__aviso.es-error {
+  color: var(--oro);
+  font-weight: 600;
+}
+
+.teclado-codigo {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 6px;
+  margin-top: auto;
+}
+
+.teclado-codigo button {
+  min-height: 48px;
+  border-radius: 12px;
+  background: rgb(255 248 236 / 0.92);
+  color: var(--tinta);
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.teclado-codigo button:disabled {
+  opacity: 0.5;
+}
+
+.teclado-codigo__borrar {
+  grid-column: span 1;
+  display: grid;
+  place-items: center;
+}
+
+.tarjeta__seguir {
+  min-height: 64px;
+  border-radius: 20px;
+  background: var(--oro);
+  color: var(--tinta);
+  font-size: 1.3rem;
+  font-weight: 700;
+  box-shadow: 0 5px 0 var(--oro-hondo);
+}
+
+.tarjeta__seguir:disabled {
+  opacity: 0.45;
+  box-shadow: none;
+}
+
+/* ---------- PIN ---------- */
+
+.redondo {
+  width: 72px;
+  height: 72px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgb(255 248 236 / 0.12);
+  color: var(--crema);
+}
+
+.redondo:disabled {
+  opacity: 0.4;
+}
+
+.redondo--vacio {
+  background: none;
+}
+
+.quien-soy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.quien-soy .disco {
+  width: 88px;
+  height: 88px;
+}
+
+.ranuras {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.ranura {
+  width: 72px;
+  height: 72px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  border: 3px dashed rgb(255 248 236 / 0.45);
+}
+
+.ranura--llena {
+  border: 3px solid var(--crema);
+  background: var(--crema);
+  animation: llegar 0.22s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.ranura--brilla {
+  border-color: var(--oro);
+  box-shadow: 0 0 0 6px rgb(255 207 58 / 0.35);
+}
+
+.es-errado .ranuras {
+  animation: sacudir 0.36s ease-in-out;
+}
+
+.teclado-pin {
+  display: grid;
+  grid-template-columns: repeat(4, 72px);
+  gap: 12px;
+  justify-content: center;
+  margin-top: auto;
+}
+
+.tecla-pin {
+  width: 72px;
+  height: 72px;
+  display: grid;
+  place-items: center;
+  border-radius: 18px;
+  background: var(--crema);
+  box-shadow: 0 4px 0 rgb(23 10 54 / 0.45);
+  transition: transform 0.1s;
+}
+
+.tecla-pin:nth-child(9) {
+  grid-column: 2;
+}
+
+.tecla-pin:active {
+  transform: scale(0.92);
+}
+
+/* Mientras se comprueba no se puede tocar, pero no se ve apagado (no es un castigo). */
+.tecla-pin:disabled {
+  opacity: 1;
+}
+
+@keyframes llegar {
+  from {
+    transform: scale(0.4) translateY(40px);
+    opacity: 0;
+  }
+}
+
+@keyframes sacudir {
+  20%,
+  60% {
+    transform: translateX(-8px);
+  }
+  40%,
+  80% {
+    transform: translateX(8px);
+  }
+}
+
+/* ---------- ¿Este camino lo recorriste tú? ---------- */
+
+.faroles {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  max-width: 340px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.farol-chico {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #fff3c4;
+  box-shadow: 0 0 12px 3px rgb(255 207 58 / 0.6);
+  transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1), opacity 0.6s;
+}
+
+.es-sumando .farol-chico {
+  transform: translateY(-260px) scale(0.5);
+  opacity: 0;
+}
+
+/* ---------- Cambiar de jugador (en el mapa) ---------- */
+
+.cambiar-jugador {
+  position: absolute;
+  top: max(8px, env(safe-area-inset-top));
+  left: 8px;
+  z-index: 11;
+  width: 72px;
+  height: 72px;
+  display: grid;
+  place-items: center;
+}
+
+.cambiar-jugador .disco {
+  width: 56px;
+  height: 56px;
+  border: 3px solid var(--oro);
+  box-shadow: var(--sombra);
+}
+
+.cambiar-jugador ~ .mundo .marcador {
+  left: 88px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .es-errado .ranuras {
+    animation: none;
+  }
+  .es-sumando .farol-chico {
+    transform: none;
+  }
+}
+
+@media (min-width: 900px) {
+  .nino {
+    padding-top: 32px;
+  }
+}

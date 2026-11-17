@@ -4373,6 +4373,46 @@
   "vestidor-pronto": {
    "es": "¡Pronto! Sigue encendiendo el bosque.",
    "en": "Soon! Keep lighting up the forest."
+  },
+  "entrada-quien": {
+   "es": "¿Quién va a jugar?",
+   "en": "Who is going to play?"
+  },
+  "entrada-busca": {
+   "es": "Busca tu cara",
+   "en": "Find your face"
+  },
+  "entrada-clave": {
+   "es": "Toca tus tres dibujos",
+   "en": "Touch your three pictures"
+  },
+  "entrada-errado": {
+   "es": "Esas no son. Prueba otra vez con calma",
+   "en": "Not those. Try again, calmly"
+  },
+  "entrada-descanso": {
+   "es": "Lumi necesita un descanso. Busca tu tarjeta o pídele ayuda a un adulto",
+   "en": "Lumi needs a rest. Find your card or ask a grown-up for help"
+  },
+  "entrada-ayuda": {
+   "es": "Lumi necesita un descanso. Pídele ayuda a tu profe",
+   "en": "Lumi needs a rest. Ask your teacher for help"
+  },
+  "entrada-hola": {
+   "es": "¡Hola! Vamos al bosque",
+   "en": "Hello! Let's go to the forest"
+  },
+  "entrada-unir": {
+   "es": "¿Este camino lo recorriste tú?",
+   "en": "Did you walk this path?"
+  },
+  "entrada-contadas": {
+   "es": "Lumi contó tus estrellas",
+   "en": "Lumi counted your stars"
+  },
+  "entrada-sin-red": {
+   "es": "Para usar tu tarjeta hace falta internet una vez. Mientras tanto, ¡a jugar!",
+   "en": "To use your card you need internet once. Meanwhile, let's play!"
   }
  },
  "imagenes": {

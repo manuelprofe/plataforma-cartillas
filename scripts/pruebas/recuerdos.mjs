@@ -5,7 +5,7 @@ const navegador = await chromium.launch();
 try {
   // Quien no la ha visto no tiene recuerdos.
   let { pagina, errores } = await abrir(navegador, { progreso: { ...BASE_JUGADO, vistas: ['intro'] }, sinVideos: true });
-  await pagina.click('.boton-jugar');
+  await pagina.click('.jugar-invitado');
   await pagina.waitForSelector('.mundo', { timeout: 15000 }); await pagina.waitForTimeout(900);
   await pagina.click('.utiles button[aria-label^="Álbum"]');
   console.log('sin haberla visto: recuerdos', await pagina.locator('.recuerdos__uno').count(), '| errores', errores);

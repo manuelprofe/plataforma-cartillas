@@ -38,7 +38,7 @@ export async function abrir(navegador, { progreso, clave = CLAVE, ancho = 390, a
   pagina.on('pageerror', (e) => errores.push(String(e)));
   pagina.on('console', (m) => m.type() === 'error' && !/mp4|ERR_FAILED/.test(m.text()) && errores.push(m.text()));
   await pagina.goto(URL_APP);
-  await pagina.waitForSelector('.boton-jugar');
+  await pagina.waitForSelector('.jugar-invitado');
   return { pagina, errores };
 }
 
@@ -47,7 +47,7 @@ export const guardado = (pagina) => pagina.evaluate((k) => JSON.parse(localStora
 
 /** De la portada al mapa (con héroe ya elegido y la intro ya vista en el progreso sembrado). */
 export async function alMapa(pagina) {
-  await pagina.click('.boton-jugar');
+  await pagina.click('.jugar-invitado');
   await pagina.waitForSelector('.mundo', { timeout: 8000 });
   await pagina.waitForTimeout(900);
   await cerrarCharla(pagina);

@@ -14,7 +14,7 @@ try {
   const por = (c) => p.registro.filter((e) => e.conducta === c).length;
   console.log('migración: estrellas', p.estrellas, '(antes 11) suma registro', suma(p), '| completar', por('completar'), 'mejorar', por('mejorar'), 'autoevaluar', por('autoevaluar'), 'pronunciar', por('pronunciar'),
     '| conserva', p.heroe, p.estela, p.album.length, p.ayudados.length, Object.keys(p.misiones).length, '| v3 sigue guardado:', await pagina.evaluate((k) => Boolean(localStorage.getItem(k)), CLAVE_V3));
-  await pagina.reload(); await pagina.waitForSelector('.boton-jugar');
+  await pagina.reload(); await pagina.waitForSelector('.jugar-invitado');
   console.log('tras recargar no suma dos veces:', (await guardado(pagina)).estrellas === p.estrellas);
   await pagina.context().close();
 

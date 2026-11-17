@@ -1,12 +1,16 @@
 // Resumen para la familia: una página tranquila para el adulto, que también se imprime.
 // Abre con lo logrado y cierra con una sugerencia. Sin notas, porcentajes ni comparaciones:
 // lo que falta se nombra como "para seguir practicando" (pedagogía, ronda 1, sección 4).
-// Todo sale del progreso y del paquete de la cartilla. Aquí vive también "Empezar de nuevo".
+// Todo sale del progreso y del paquete de la cartilla. Aquí viven también "Empezar de nuevo",
+// los niños guardados en este celular y la entrada discreta de los adultos (esqueleto.md §1.4).
+// Se entra con un reto que un niño que no lee no resuelve.
 import { useEffect, useState } from 'react';
 import type { Cartilla, Palabra, Territorio } from './tipos';
 import { callar, decir, sonar } from './audio';
-import { diaDe, hayAvanceBorrado, recuperarProgreso, useProgreso } from './progreso';
+import { diaDe, hayAvanceBorrado, INVITADO, recuperarProgreso, useActivo, useProgreso, usarPerfil } from './progreso';
+import { invitadoUsado, quitarPerfil, usePerfiles } from './perfiles';
 import { BotonSostenido } from './BotonSostenido';
+import { navegar } from './navegacion';
 
 interface Props {
   cartilla: Cartilla;
@@ -23,11 +27,84 @@ const veces = (n: number) => (n === 1 ? '1 vez' : `${n} veces`);
 /** "a, b y c" */
 const lista = (partes: string[]) => (partes.length < 2 ? partes.join('') : `${partes.slice(0, -1).join(', ')} y ${partes[partes.length - 1]}`);
 
-export function Familia({ cartilla, territorio, base, onVolver, onBorrar }: Props) {
+const UNIDADES = ['', 'uno', 'dos', 'tres', 'cuatro', 'cinco', 'seis', 'siete', 'ocho', 'nueve'];
+const VEINTI = ['', 'veintiuno', 'veintidós', 'veintitrés', 'veinticuatro', 'veinticinco', 'veintiséis', 'veintisiete', 'veintiocho', 'veintinueve'];
+const DECENAS = ['', '', '', 'treinta', 'cuarenta', 'cincuenta', 'sesenta', 'setenta', 'ochenta', 'noventa'];
+/** 21 a 99 sin decenas exactas, en letras. */
+const enLetras = (n: number) => (n < 30 ? VEINTI[n - 20] : `${DECENAS[Math.floor(n / 10)]} y ${UNIDADES[n % 10]}`);
+const azar = () => {
+  let n = 0;
+  while (n % 10 === 0) n = 21 + Math.floor(Math.random() * 79);
+  return n;
+};
+
+/** Reto para adultos: "Toque el número veintisiete". Al fallar, otro número; sin castigo. */
+function Reto({ onBien, onVolver }: { onBien: () => void; onVolver: () => void }) {
+  const nuevo = () => {
+    const n = azar();
+    // Distractores que se parecen: las cifras al revés y vecinos.
+    const otros = new Set<number>();
+    for (const c of [(n % 10) * 10 + Math.floor(n / 10), n + 10, n - 10, n + 1, n - 1, n + 11]) if (c !== n && c > 10 && c < 100 && otros.size < 3) otros.add(c);
+    return { n, opciones: [n, ...otros].sort(() => Math.random() - 0.5) };
+  };
+  const [reto, setReto] = useState(nuevo);
+  const [otraVez, setOtraVez] = useState(false);
+  return (
+    <div className="familia">
+      <div className="familia__hoja familia__reto">
+        <header className="familia__cabeza">
+          <h1>Para la familia</h1>
+          <button type="button" className="familia__boton" onClick={onVolver}>
+            Volver al juego
+          </button>
+        </header>
+        <p>Esta parte es para los adultos.</p>
+        <p className="familia__pregunta" aria-live="polite">
+          {otraVez ? 'Probemos con otro. ' : ''}Toque el número <strong>{enLetras(reto.n)}</strong>.
+        </p>
+        <div className="familia__numeros">
+          {reto.opciones.map((o) => (
+            <button
+              key={o}
+              type="button"
+              className="familia__numero"
+              onClick={() => {
+                if (o === reto.n) onBien();
+                else {
+                  setOtraVez(true);
+                  setReto(nuevo());
+                }
+              }}
+            >
+              {o}
+            </button>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export function Familia(props: Props) {
+  const [abierta, setAbierta] = useState(false);
+  return abierta ? <Resumen {...props} /> : <Reto onBien={() => setAbierta(true)} onVolver={props.onVolver} />;
+}
+
+function Resumen({ cartilla, territorio, base, onVolver, onBorrar }: Props) {
   const progreso = useProgreso();
+  const activo = useActivo();
+  const perfiles = usePerfiles();
   const [leyendo, setLeyendo] = useState(false);
   const [borrar, setBorrar] = useState(false);
+  const [aviso, setAviso] = useState('');
   useEffect(() => callar, []);
+  // Niños de este celular: los de tarjeta y el invitado, si ya jugó.
+  const ninos = [...perfiles.map((p) => ({ id: p.id, apodo: p.apodo, avatar: p.avatar })), ...(invitadoUsado() || !perfiles.length ? [{ id: INVITADO, apodo: 'Sin tarjeta', avatar: undefined }] : [])];
+  const imagenDe = (avatar?: string) => base + (cartilla.heroes.find((h) => h.id === avatar)?.imagen ?? cartilla.imagenes?.portada ?? '');
+  const quitar = (id: string) => {
+    setAviso('');
+    void quitarPerfil(id).then((r) => setAviso(r === 'pendiente' ? 'Ese niño tiene juego sin subir. Conéctese a internet y vuelva a intentarlo para no perderlo.' : ''));
+  };
 
   const hechas = territorio.misiones.filter((m) => progreso.misiones[m.id]);
   const faroles = territorio.misiones.filter((m) => !m.opcional);
@@ -129,9 +206,20 @@ export function Familia({ cartilla, territorio, base, onVolver, onBorrar }: Prop
         <header className="familia__cabeza">
           <h1>Lo que practicó en {cartilla.materia.toLowerCase()}</h1>
           <button type="button" className="familia__boton" onClick={onVolver}>
-            Volver
+            Volver al juego
           </button>
         </header>
+
+        {ninos.length > 1 && (
+          <div className="familia__ninos" role="group" aria-label="Ver lo de">
+            {ninos.map((n) => (
+              <button key={n.id} type="button" className="familia__nino" aria-pressed={n.id === activo} onClick={() => (callar(), setLeyendo(false), usarPerfil(n.id))}>
+                <img src={imagenDe(n.avatar)} alt="" width="48" height="48" />
+                <span>{n.apodo}</span>
+              </button>
+            ))}
+          </div>
+        )}
 
         {hechas.length === 0 ? (
           <p>Todavía no hay misiones completas. Cuando termine la primera, aquí verá las palabras que practicó.</p>
@@ -211,11 +299,38 @@ export function Familia({ cartilla, territorio, base, onVolver, onBorrar }: Prop
             Recuperar el avance que se borró
           </button>
         )}
+        {perfiles.length > 0 && (
+          <section className="familia__celular">
+            <h2>En este celular</h2>
+            <p>Niños que entraron con su tarjeta. Quitar uno lo borra de este celular, no de su cuenta del colegio.</p>
+            <ul className="familia__lista-ninos">
+              {perfiles.map((p) => (
+                <li key={p.id}>
+                  <img src={imagenDe(p.avatar)} alt="" width="40" height="40" />
+                  <span>
+                    {p.apodo} <small>{p.grupo}</small>
+                  </span>
+                  <button type="button" className="familia__boton familia__boton--claro" onClick={() => quitar(p.id)}>
+                    Quitar
+                  </button>
+                </li>
+              ))}
+            </ul>
+            <p role="status">{aviso}</p>
+          </section>
+        )}
+
         {(hechas.length > 0 || progreso.heroe) && (
           <button type="button" className="enlace familia__borrar" onClick={() => setBorrar(true)}>
             Empezar de nuevo: borrar el avance de este dispositivo
           </button>
         )}
+
+        <p className="familia__adultos">
+          <button type="button" className="enlace" onClick={() => navegar('/adultos')}>
+            ¿Es docente o directivo? Entrar
+          </button>
+        </p>
       </div>
 
       {borrar && (

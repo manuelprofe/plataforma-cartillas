@@ -18,7 +18,7 @@ async function contexto(navegador, { ancho = 390, alto = 844, progreso = BASE_JU
   await adultoPorRuta(c);
   return c;
 }
-const listo = (p) => p.waitForSelector('h1, .boton-jugar, .mundo', { timeout: 10000 });
+const listo = (p) => p.waitForSelector('h1, .jugar-invitado, .mundo', { timeout: 10000 });
 const errores = (p) => { const e = []; p.on('pageerror', (x) => e.push(String(x))); p.on('console', (m) => m.type() === 'error' && !/mp4|ERR_FAILED|ERR_INTERNET/.test(m.text()) && e.push(m.text())); return e; };
 
 const servidor = await servir();
@@ -48,9 +48,9 @@ try {
     const p = await c.newPage();
     const e = errores(p);
     await p.goto(url('/')); await listo(p);
-    await p.click('.boton-jugar'); await p.waitForSelector('.mundo', { timeout: 8000 });
+    await p.click('.jugar-invitado'); await p.waitForSelector('.mundo', { timeout: 8000 });
     comprobar(new URL(p.url()).pathname === '/mapa', 'jugar lleva a /mapa');
-    await p.goBack(); await p.waitForSelector('.boton-jugar');
+    await p.goBack(); await p.waitForSelector('.jugar-invitado');
     comprobar(new URL(p.url()).pathname === '/', 'atrás desde /mapa vuelve a la portada');
     await p.goto(url('/adultos')); await listo(p);
     await p.goto(url('/docente')); await listo(p);
@@ -71,7 +71,7 @@ try {
     await p.click('text=Ya terminé la clase');
     comprobar(!(await p.locator('.cortina-a').count()) && (await p.locator('text=Aquí aparecerán los niños de 3B').count()) === 1, 'cortina tras proyectar y "Ya terminé la clase" la quita');
     await p.goto(url('/docente/nada')); await p.waitForSelector('h1:has-text("Inicio")');
-    await p.goto(url('/cualquier-cosa')); await p.waitForSelector('.boton-jugar');
+    await p.goto(url('/cualquier-cosa')); await p.waitForSelector('.jugar-invitado');
     comprobar(new URL(p.url()).pathname === '/', 'ruta desconocida del niño cae en la portada');
     comprobar(!e.length, `sin errores de consola ${e.join(' | ')}`);
     await c.close();
@@ -87,7 +87,7 @@ try {
     await p.goBack(); await p.waitForSelector('.mundo');
     const trasAtras = new URL(p.url()).pathname;
     await p.waitForTimeout(500);
-    await p.goBack(); await p.waitForSelector('.boton-jugar');
+    await p.goBack(); await p.waitForSelector('.jugar-invitado');
     comprobar(/^\/mision\//.test(enMision) && trasAtras === '/mapa' && new URL(p.url()).pathname === '/', `misión ${enMision} → atrás ${trasAtras} → atrás /`);
     comprobar(!e.length, `misión sin errores ${e.join(' | ')}`);
     await p.context().close();
@@ -100,7 +100,7 @@ try {
     const pedidos = [];
     p.on('request', (q) => pedidos.push(new URL(q.url()).pathname));
     await p.goto(url('/'), { waitUntil: 'networkidle' });
-    await p.waitForSelector('.boton-jugar');
+    await p.waitForSelector('.jugar-invitado');
     await p.waitForTimeout(1000);
     const peso = (r) => { const f = `dist${r === '/' ? '/index.html' : decodeURIComponent(r)}`; return existsSync(f) ? gzipSync(readFileSync(f), { level: 9 }).length : 0; };
     const armazon = [...new Set(pedidos)].filter((r) => r === '/' || r.startsWith('/assets/'));

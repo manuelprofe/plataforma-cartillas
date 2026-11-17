@@ -1,16 +1,13 @@
 // Capa de datos de la cuenta del adulto: la única que habla con Supabase y guarda la sesión.
-// Cliente mínimo con fetch (Auth y PostgREST) en vez de @supabase/supabase-js: usamos seis
+// Cliente mínimo con fetch (src/supabase.ts, compartido con el aparato del niño) en vez de @supabase/supabase-js: usamos seis
 // llamadas y la librería agregaría unos 45 KB comprimidos y una dependencia al paquete de adultos.
 // Solo la importa el paquete de adultos: el celular del niño nunca la descarga.
 import { useSyncExternalStore } from 'react';
+import { campo, ErrorCuenta, errorDe, pedir, renovarTokens, tokensDe, type Tokens } from '../supabase';
 
-const URL_SB = (import.meta.env.VITE_SUPABASE_URL as string | undefined)?.replace(/\/+$/, '');
-const CLAVE_PUBLICA = import.meta.env.VITE_SUPABASE_CLAVE_PUBLICA as string | undefined;
-/** Esta copia de la app se compiló con la dirección y la clave pública de Supabase. */
-export const configurada = Boolean(URL_SB && CLAVE_PUBLICA);
+export { configurada, ErrorCuenta, type Falla } from '../supabase';
 
 const LLAVE = 'pc_adulto_v1';
-const ESPERA_MS = 12000;
 
 export type Rol = 'dueno' | 'coordinador' | 'docente';
 export interface Perfil {
@@ -22,11 +19,7 @@ export interface Perfil {
 /** Inicio de cada rol. Un adulto que entra a la sección de otro rol vuelve aquí. */
 export const INICIO: Record<Rol, string> = { dueno: '/plataforma', coordinador: '/colegio', docente: '/docente' };
 
-interface Sesion {
-  access: string;
-  refresh: string;
-  /** Milisegundos (época) en que vence el token de acceso. */
-  vence: number;
+interface Sesion extends Tokens {
   correo?: string;
   perfil?: Perfil;
 }
@@ -38,14 +31,6 @@ export type Estado =
   | { tipo: 'sin-acceso'; correo?: string }
   /** `sinRed`: entró con lo último que tenía guardado; solo lectura. */
   | { tipo: 'dentro'; perfil: Perfil; correo?: string; sinRed: boolean };
-
-export type Falla = 'red' | 'credenciales' | 'clave-corta' | 'misma-clave' | 'enlace' | 'sin-config' | 'otro';
-
-export class ErrorCuenta extends Error {
-  constructor(public falla: Falla, detalle = '') {
-    super(detalle || falla);
-  }
-}
 
 // ---------------------------------------------------------------- Estado observable
 
@@ -90,60 +75,17 @@ function guardarSesion(s: Sesion | null) {
 
 let sesion: Sesion | null = null;
 
-// ---------------------------------------------------------------- HTTP
-
-interface Respuesta {
-  ok: boolean;
-  status: number;
-  datos: unknown;
-}
-
-async function pedir(ruta: string, opciones: { metodo?: string; cuerpo?: unknown; token?: string; cabeceras?: Record<string, string> } = {}): Promise<Respuesta> {
-  if (!configurada) throw new ErrorCuenta('sin-config');
-  if (!navigator.onLine) throw new ErrorCuenta('red');
-  let r: Response;
-  try {
-    r = await fetch(URL_SB + ruta, {
-      method: opciones.metodo ?? (opciones.cuerpo === undefined ? 'GET' : 'POST'),
-      headers: {
-        apikey: CLAVE_PUBLICA!,
-        'Content-Type': 'application/json',
-        ...(opciones.token ? { Authorization: `Bearer ${opciones.token}` } : {}),
-        ...opciones.cabeceras,
-      },
-      body: opciones.cuerpo === undefined ? undefined : JSON.stringify(opciones.cuerpo),
-      signal: AbortSignal.timeout(ESPERA_MS),
-    });
-  } catch {
-    throw new ErrorCuenta('red');
-  }
-  const texto = await r.text();
-  let datos: unknown = null;
-  try {
-    datos = texto ? JSON.parse(texto) : null;
-  } catch {
-    datos = texto;
-  }
-  return { ok: r.ok, status: r.status, datos };
-}
-
-const campo = (datos: unknown, nombre: string): string => {
-  const v = datos && typeof datos === 'object' ? (datos as Record<string, unknown>)[nombre] : undefined;
-  return typeof v === 'string' ? v : '';
-};
-
 /** Convierte la respuesta de /auth/v1/token en sesión. */
 function sesionDe(datos: unknown, previa?: Sesion | null): Sesion {
-  const d = datos as { access_token: string; refresh_token: string; expires_in?: number; expires_at?: number; user?: { email?: string } };
-  const vence = d.expires_at ? d.expires_at * 1000 : Date.now() + (d.expires_in ?? 3600) * 1000;
-  return { access: d.access_token, refresh: d.refresh_token, vence, correo: d.user?.email ?? previa?.correo, perfil: previa?.perfil };
+  const correo = (datos as { user?: { email?: string } }).user?.email;
+  return { ...tokensDe(datos), correo: correo ?? previa?.correo, perfil: previa?.perfil };
 }
 
 /** Renueva el token de acceso. Devuelve false si la sesión ya no sirve. */
 async function renovar(): Promise<boolean> {
   if (!sesion) return false;
-  const r = await pedir('/auth/v1/token?grant_type=refresh_token', { cuerpo: { refresh_token: sesion.refresh } });
-  if (!r.ok) return false;
+  const r = await renovarTokens(sesion.refresh);
+  if (!r) return false;
   sesion = sesionDe(r.datos, sesion);
   guardarSesion(sesion);
   return true;
@@ -162,14 +104,14 @@ async function token(): Promise<string> {
 /** Llama una función de la base de datos (`supabase/migraciones`). */
 export async function rpc<T>(funcion: string, args: Record<string, unknown> = {}): Promise<T> {
   const r = await pedir(`/rest/v1/rpc/${funcion}`, { cuerpo: args, token: await token() });
-  if (!r.ok) throw new ErrorCuenta('otro', campo(r.datos, 'message') || `HTTP ${r.status}`);
+  if (!r.ok) throw errorDe(r);
   return r.datos as T;
 }
 
 /** Lee filas de una tabla con la sintaxis de PostgREST (`select=...&id=eq...`). La seguridad por filas decide qué vuelve. */
 export async function leer<T>(tabla: string, consulta: string): Promise<T[]> {
   const r = await pedir(`/rest/v1/${tabla}?${consulta}`, { token: await token() });
-  if (!r.ok) throw new ErrorCuenta('otro', campo(r.datos, 'message') || `HTTP ${r.status}`);
+  if (!r.ok) throw errorDe(r);
   return r.datos as T[];
 }
 

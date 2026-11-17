@@ -2788,3 +2788,92 @@ img {
   box-shadow: 0 0 6px 3px rgb(255 232 110 / 0.85);
   vertical-align: middle;
 }
+
+/* ---------- Familia: reto, niños del celular y entrada de adultos ---------- */
+
+.familia__pregunta {
+  margin-top: 16px !important;
+  font-size: 1.3rem;
+}
+
+.familia__numeros {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  max-width: 360px;
+  margin-top: 12px;
+}
+
+.familia__numero {
+  min-height: 64px;
+  border-radius: 16px;
+  background: #ece4f6;
+  color: var(--tinta);
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.familia__ninos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.familia__nino {
+  min-height: 56px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 16px 4px 4px;
+  border-radius: 999px;
+  border: 2px solid #d9cfe9;
+  color: var(--tinta);
+  font-weight: 600;
+}
+
+.familia__nino[aria-pressed='true'] {
+  border-color: var(--noche);
+  background: #ece4f6;
+}
+
+.familia__nino img,
+.familia__lista-ninos img {
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: 50% 15%;
+  background: #fff3c4;
+}
+
+.familia__lista-ninos {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.familia__lista-ninos li {
+  display: grid;
+  grid-template-columns: 40px 1fr auto;
+  align-items: center;
+  gap: 10px;
+}
+
+.familia__lista-ninos small {
+  color: #5b4a7a;
+}
+
+.familia__lista-ninos .familia__boton {
+  margin: 0;
+}
+
+.familia__adultos {
+  margin-top: 28px !important;
+}
+
+.familia__adultos .enlace {
+  margin: 0;
+  padding: 0;
+  color: #5b4a7a;
+}

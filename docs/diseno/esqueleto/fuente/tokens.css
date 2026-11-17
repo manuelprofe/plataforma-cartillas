@@ -1,0 +1,143 @@
+/*
+ * Tokens del esqueleto (diseñador, 17 nov 2026). Fuente de verdad: docs/diseno/esqueleto.md §5.
+ * Los del niño (--noche, --oro, --menta, --rosa, --tinta, --crema) ya existen en src/estilos.css
+ * y no cambian. Aquí se suman los de adultos (--a-*) y los del telón (--p-*).
+ */
+@font-face {
+  font-family: 'Baloo 2 Variable';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400 800;
+  src: url(../../../../node_modules/@fontsource-variable/baloo-2/files/baloo-2-latin-wght-normal.woff2) format('woff2-variations');
+}
+
+:root {
+  /* Niño (existentes) */
+  --noche: #2a1458;
+  --noche-honda: #170a36;
+  --tinta: #24123f;
+  --crema: #fff8ec;
+  --oro: #ffcf3a;
+  --oro-hondo: #f2a100;
+  --menta: #19c6b1;
+  --rosa: #ff5fa2;
+
+  /* Adultos: rampa neutra apenas teñida hacia la noche de Englishland */
+  --a-fondo: #f6f5f9;
+  --a-superficie: #ffffff;
+  --a-hundido: #eeecf3;
+  --a-linea: rgb(34 26 51 / 0.1);
+  --a-linea-fuerte: rgb(34 26 51 / 0.2);
+  --a-texto: #221a33;
+  --a-texto-2: #4f4862;
+  --a-texto-3: #6b6580;
+  --a-tinta: #2a1458;          /* acción principal: la noche, con texto blanco (14,9:1) */
+  --a-tinta-activa: #3b2273;
+  --a-farol: #ffcf3a;          /* solo la firma: farol encendido */
+  --a-farol-tinta: #7a5200;    /* oro como texto sobre claro (6,4:1) */
+  --a-ok: #2d7a57;
+  --a-aviso: #8a5a00;
+  --a-error: #a1453a;          /* solo errores de formulario del adulto */
+  --a-foco: #0f8a7b;
+
+  /* Telón (proyectar): claro, porque el salón tiene luz y el negro del proyector se lava */
+  --p-fondo: #fff8ec;
+  --p-texto: #24123f;
+  --p-marco: #170a36;
+  --p-control: #2a1458;
+
+  /* Tipografía */
+  --f-marca: 'Baloo 2 Variable', ui-rounded, system-ui, sans-serif;
+  --f-texto: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  /* Escala de adultos (tamaño / interlínea) */
+  --t-meta: 14px;   --l-meta: 20px;
+  --t-texto: 16px;  --l-texto: 24px;
+  --t-lead: 18px;   --l-lead: 26px;
+  --t-h3: 20px;     --l-h3: 26px;
+  --t-h2: 24px;     --l-h2: 30px;
+  --t-h1: 30px;     --l-h1: 36px;
+
+  /* Espacio (rejilla de 4) */
+  --e-1: 4px; --e-2: 8px; --e-3: 12px; --e-4: 16px; --e-5: 24px; --e-6: 32px; --e-7: 48px; --e-8: 64px;
+
+  /* Radios anidados */
+  --r-control: 10px;
+  --r-tarjeta: 14px;
+  --r-panel: 20px;
+
+  /* Toque */
+  --toque: 48px;
+  --toque-fila: 56px;
+  --toque-proyector: 64px;
+  --toque-nino: 72px;
+
+  /* Movimiento */
+  --m-curva: cubic-bezier(0.2, 0.7, 0.2, 1);
+  --m-rapido: 120ms;
+  --m-medio: 200ms;
+  --m-entrada: 280ms;
+
+  --sombra-a: 0 1px 2px rgb(34 26 51 / 0.06), 0 4px 12px rgb(34 26 51 / 0.06);
+}
+
+/* ---------- Lámina de bocetos (solo para el render) ---------- */
+* { box-sizing: border-box; margin: 0; }
+body.lamina {
+  background: #e4e2ea;
+  font-family: var(--f-texto);
+  padding: 32px;
+  display: flex;
+  gap: 32px;
+  align-items: flex-start;
+}
+.cuadro { display: flex; flex-direction: column; gap: 12px; }
+.cuadro > .rotulo { font: 500 15px/20px var(--f-texto); color: #4f4862; padding-left: 4px; }
+.cel {
+  width: 390px; height: 844px; overflow: hidden; position: relative;
+  border-radius: 28px; box-shadow: 0 0 0 1px rgb(0 0 0 / 0.12), 0 12px 32px rgb(34 26 51 / 0.12);
+}
+svg.i { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+
+/* ---------- Adultos: piezas comunes ---------- */
+.adulto { background: var(--a-fondo); color: var(--a-texto); font: 400 var(--t-texto)/var(--l-texto) var(--f-texto); }
+.adulto h1, .adulto h2, .adulto h3 { font-family: var(--f-marca); font-weight: 600; color: var(--a-texto); }
+.adulto h1 { font-size: var(--t-h1); line-height: var(--l-h1); }
+.adulto h2 { font-size: var(--t-h2); line-height: var(--l-h2); }
+.adulto h3 { font-size: var(--t-h3); line-height: var(--l-h3); }
+.meta { font-size: var(--t-meta); line-height: var(--l-meta); color: var(--a-texto-3); }
+.sec { color: var(--a-texto-2); }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  min-height: var(--toque); padding: 0 var(--e-4); border-radius: var(--r-control);
+  font: 500 16px/1 var(--f-texto); border: 1px solid var(--a-linea-fuerte); background: var(--a-superficie); color: var(--a-texto);
+}
+.btn--primario { background: var(--a-tinta); color: #fff; border-color: transparent; }
+.btn--texto { border-color: transparent; background: none; color: var(--a-texto-2); padding: 0 var(--e-2); }
+.btn--ancho { width: 100%; }
+.barra-sup {
+  height: 56px; display: flex; align-items: center; gap: var(--e-3); padding: 0 var(--e-4);
+  background: var(--a-superficie); border-bottom: 1px solid var(--a-linea);
+}
+.barra-sup .marca { font: 600 18px/1 var(--f-marca); color: var(--a-tinta); }
+.barra-sup .estado { margin-left: auto; display: flex; align-items: center; gap: 6px; font-size: var(--t-meta); color: var(--a-texto-3); }
+.tabs {
+  position: absolute; left: 0; right: 0; bottom: 0; height: 64px; display: grid; grid-template-columns: repeat(5, 1fr);
+  background: var(--a-superficie); border-top: 1px solid var(--a-linea);
+}
+.tabs a { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; font-size: 12px; line-height: 16px; color: var(--a-texto-3); text-decoration: none; }
+.tabs a.activo { color: var(--a-tinta); font-weight: 600; }
+.panel { background: var(--a-superficie); border: 1px solid var(--a-linea); border-radius: var(--r-panel); }
+.fila {
+  min-height: var(--toque-fila); display: flex; align-items: center; gap: var(--e-3);
+  padding: 0 var(--e-4); border-top: 1px solid var(--a-linea);
+}
+.fila:first-child { border-top: 0; }
+.fila .fin { margin-left: auto; color: var(--a-texto-3); }
+
+/* Firma: el farol (estado de un tema o una clase) */
+.farol { width: 14px; height: 18px; position: relative; display: inline-block; flex: none; }
+.farol::before { content: ''; position: absolute; left: 4px; top: 0; width: 6px; height: 3px; border-radius: 2px 2px 0 0; background: var(--a-texto-3); }
+.farol::after { content: ''; position: absolute; left: 0; top: 4px; width: 14px; height: 14px; border-radius: 50%; border: 1.5px solid var(--a-texto-3); background: transparent; }
+.farol--medio::after { background: linear-gradient(90deg, var(--a-farol) 50%, transparent 50%); border-color: var(--a-farol-tinta); }
+.farol--lleno::after { background: var(--a-farol); border-color: var(--a-farol-tinta); }

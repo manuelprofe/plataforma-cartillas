@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<title>Boceto: 04-proyectar</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+.telon { width: 1366px; height: 768px; position: relative; overflow: hidden; background: var(--p-fondo); color: var(--p-texto); font-family: var(--f-marca);
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 0.12), 0 12px 32px rgb(34 26 51 / 0.12); }
+.telon .cab { position: absolute; top: 0; left: 0; right: 0; height: 88px; display: flex; align-items: center; padding: 0 40px; gap: 16px;
+  background: var(--p-marco); color: var(--crema); }
+.telon .cab .t { font: 600 32px/1 var(--f-marca); }
+.telon .cab .t small { font-weight: 500; opacity: 0.7; margin-left: 12px; }
+.telon .salir { margin-left: auto; display: flex; align-items: center; gap: 10px; height: 56px; padding: 0 20px; border-radius: 14px; border: 2px solid rgb(255 248 236 / 0.3); font: 500 22px/1 var(--f-marca); }
+.telon .salir svg.i { width: 24px; height: 24px; }
+.lam { position: absolute; top: 88px; bottom: 112px; left: 0; right: 0; display: grid; grid-template-columns: 1fr 1fr; align-items: center; padding: 0 96px; gap: 64px; }
+.lam .img { height: 440px; display: flex; align-items: center; justify-content: center; }
+.lam .img img { height: 400px; }
+.lam .palabra { font: 700 150px/1 var(--f-marca); letter-spacing: -0.01em; }
+.lam .suena { font: 500 40px/1.2 var(--f-marca); color: #5a4a78; margin-top: 16px; }
+.controles { position: absolute; bottom: 0; left: 0; right: 0; height: 112px; display: flex; align-items: center; justify-content: center; gap: 24px; border-top: 2px solid rgb(36 18 63 / 0.1); }
+.ctl { height: 72px; min-width: 72px; padding: 0 24px; border-radius: 18px; display: flex; align-items: center; justify-content: center; gap: 12px; font: 600 26px/1 var(--f-marca); background: #fff; border: 2px solid rgb(36 18 63 / 0.18); color: var(--p-texto); }
+.ctl svg.i { width: 32px; height: 32px; stroke-width: 2; }
+.ctl--mayor { background: var(--p-control); color: var(--crema); border-color: transparent; padding: 0 36px; }
+.puntos { position: absolute; right: 40px; bottom: 40px; font: 500 24px/1 var(--f-marca); color: #5a4a78; }
+.tecla-ayuda { margin-left: auto; font: 400 16px/1 var(--f-texto); color: rgb(255 248 236 / 0.7); white-space: pre; }
+.tecla-ayuda + .salir { margin-left: 32px; }
+kbd { font: 600 14px/1 var(--f-texto); border: 1px solid rgb(255 248 236 / 0.35); border-bottom-width: 2px; border-radius: 6px; padding: 3px 7px; color: var(--crema); }
+.lobby { position: absolute; top: 88px; left: 0; right: 0; bottom: 0; padding: 40px; display: grid; grid-template-columns: 340px 1fr; gap: 40px; }
+.lobby .lado { display: flex; flex-direction: column; gap: 16px; }
+.lobby .lado img { width: 260px; }
+.lobby .lado p { font: 500 26px/1.25 var(--f-marca); }
+.lobby .opciones { display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: 168px; gap: 24px; align-content: start; }
+.op { border-radius: 20px; background: #fff; border: 2px solid rgb(36 18 63 / 0.12); padding: 20px; display: flex; flex-direction: column; justify-content: space-between; }
+.op b { font: 600 30px/1.05 var(--f-marca); }
+.op span { font: 500 20px/1.2 var(--f-marca); color: #5a4a78; }
+.op .ico { width: 56px; height: 56px; border-radius: 14px; background: var(--p-control); color: var(--oro); display: flex; align-items: center; justify-content: center; }
+.op .ico svg.i { width: 30px; height: 30px; stroke-width: 2; }
+.op--hueco { background: transparent; border-style: dashed; }
+.op--hueco b, .op--hueco span { color: #8a7ea0; }
+.op--hueco .ico { background: #eee7da; color: #8a7ea0; }
+.listo { display: flex; align-items: center; gap: 10px; font: 500 22px/1 var(--f-marca); color: #2d7a57; }
+.listo svg.i { width: 26px; height: 26px; }
+body.lamina { flex-direction: column; }
+</style></head>
+<body class="lamina"><svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="house" viewBox="0 0 24 24"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" /><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /></symbol><symbol id="users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><path d="M16 3.128a4 4 0 0 1 0 7.744" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /><circle cx="9" cy="7" r="4" /></symbol><symbol id="calendar-days" viewBox="0 0 24 24"><path d="M8 2v3" /><path d="M16 2v3" /><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M3 9h18" /><path d="M8 13h.01" /><path d="M12 13h.01" /><path d="M16 13h.01" /><path d="M8 17h.01" /><path d="M12 17h.01" /><path d="M16 17h.01" /></symbol><symbol id="presentation" viewBox="0 0 24 24"><path d="M2 3h20" /><path d="M21 3v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V3" /><path d="m7 21 5-5 5 5" /></symbol><symbol id="ellipsis" viewBox="0 0 24 24"><circle cx="12" cy="12" r="1" /><circle cx="19" cy="12" r="1" /><circle cx="5" cy="12" r="1" /></symbol><symbol id="star" viewBox="0 0 24 24"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" /></symbol><symbol id="list-checks" viewBox="0 0 24 24"><path d="M13 5h8" /><path d="M13 12h8" /><path d="M13 19h8" /><path d="m3 17 2 2 4-4" /><path d="m3 7 2 2 4-4" /></symbol><symbol id="printer" viewBox="0 0 24 24"><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" /><path d="M6 9V3a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v6" /><rect x="6" y="14" width="12" height="8" rx="1" /></symbol><symbol id="play" viewBox="0 0 24 24"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z" /></symbol><symbol id="volume-2" viewBox="0 0 24 24"><path d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z" /><path d="M16 9a5 5 0 0 1 0 6" /><path d="M19.364 18.364a9 9 0 0 0 0-12.728" /></symbol><symbol id="wifi-off" viewBox="0 0 24 24"><path d="M12 20h.01" /><path d="M8.5 16.429a5 5 0 0 1 7 0" /><path d="M5 12.859a10 10 0 0 1 5.17-2.69" /><path d="M19 12.859a10 10 0 0 0-2.007-1.523" /><path d="M2 8.82a15 15 0 0 1 4.177-2.643" /><path d="M22 8.82a15 15 0 0 0-11.288-3.764" /><path d="m2 2 20 20" /></symbol><symbol id="cloud-upload" viewBox="0 0 24 24"><path d="M12 13v8" /><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242" /><path d="m8 17 4-4 4 4" /></symbol><symbol id="eye-off" viewBox="0 0 24 24"><path d="M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49" /><path d="M14.084 14.158a3 3 0 0 1-4.242-4.242" /><path d="M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143" /><path d="m2 2 20 20" /></symbol><symbol id="chevron-left" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6" /></symbol><symbol id="chevron-right" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6" /></symbol><symbol id="x" viewBox="0 0 24 24"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></symbol><symbol id="snail" viewBox="0 0 24 24"><path d="M2 13a6 6 0 1 0 12 0 4 4 0 1 0-8 0 2 2 0 0 0 4 0" /><circle cx="10" cy="13" r="8" /><path d="M2 21h12c4.4 0 8-3.6 8-8V7a2 2 0 1 0-4 0v6" /><path d="M18 3 19.1 5.2" /><path d="M22 3 20.9 5.2" /></symbol><symbol id="rotate-ccw" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" /><path d="M3 3v5h5" /></symbol><symbol id="check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5" /></symbol><symbol id="download" viewBox="0 0 24 24"><path d="M12 15V3" /><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><path d="m7 10 5 5 5-5" /></symbol><symbol id="book-open" viewBox="0 0 24 24"><path d="M12 5v16" /><path d="M20.001 19A2 2 0 0022 17V5a2 2 0 00-1.999-2L16 3.002A5 5 0 0012 5a5 5 0 00-4-2H4a2 2 0 00-2 2v12a2 2 0 001.999 2H8a5 5 0 014 2 5 5 0 014-2z" /></symbol><symbol id="file-text" viewBox="0 0 24 24"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z" /><path d="M14 2v5a1 1 0 0 0 1 1h5" /><path d="M10 9H8" /><path d="M16 13H8" /><path d="M16 17H8" /></symbol><symbol id="lock" viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2" ry="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></symbol><symbol id="id-card" viewBox="0 0 24 24"><path d="M13 19a4 4 0 00-8 0" /><path d="M16 10h2" /><path d="M16 14h2" /><circle cx="9" cy="12" r="3" /><rect x="2" y="5" width="20" height="14" rx="2" /></symbol><symbol id="plus" viewBox="0 0 24 24"><path d="M5 12h14" /><path d="M12 5v14" /></symbol><symbol id="circle-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path d="M9 9.5a3 2.5 0 016 0c0 2-2 2-3 3.5" /><path d="M12 17h.01" /></symbol><symbol id="log-out" viewBox="0 0 24 24"><path d="m16 17 5-5-5-5" /><path d="M21 12H9" /><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" /></symbol><symbol id="school" viewBox="0 0 24 24"><path d="M14 21v-3a2 2 0 0 0-4 0v3" /><path d="M18 4.933V21" /><path d="m4 6 7.106-3.79a2 2 0 0 1 1.788 0L20 6" /><path d="m6 11-3.52 2.147a1 1 0 0 0-.48.854V19a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-5a1 1 0 0 0-.48-.853L18 11" /><path d="M6 4.933V21" /><circle cx="12" cy="9" r="2" /></symbol><symbol id="chart-no-axes-column" viewBox="0 0 24 24"><path d="M5 21v-6" /><path d="M12 21V3" /><path d="M19 21V9" /></symbol><symbol id="maximize" viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 0 0-2 2v3" /><path d="M21 8V5a2 2 0 0 0-2-2h-3" /><path d="M3 16v3a2 2 0 0 0 2 2h3" /><path d="M16 21h3a2 2 0 0 0 2-2v-3" /></symbol><symbol id="hand" viewBox="0 0 24 24"><path d="M18 11V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2" /><path d="M14 10V4a2 2 0 0 0-2-2a2 2 0 0 0-2 2v2" /><path d="M10 10.5V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2v8" /><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15" /></symbol></svg>
+<div class="cuadro"><div class="rotulo">Proyectar: menú del tema (1366 × 768)</div><div class="" style="width:1366px;height:auto"><div class="telon">
+  <div class="cab"><span class="t">Colores<small>Bosque de los Sonidos</small></span><span class="salir"><svg class="i" ><use href="#x"/></svg>Terminar</span></div>
+  <div class="lobby">
+    <div class="lado"><img src="../../../../public/cartillas/ingles-3/personajes/cosmo-point.webp" alt=""><p>Hoy encendemos los colores</p>
+      <div class="listo"><svg class="i" ><use href="#check"/></svg>Listo sin red</div></div>
+    <div class="opciones">
+      <div class="op "><div class="ico"><svg class="i" ><use href="#book-open"/></svg></div><div><b>Láminas</b><br><span>8 palabras</span></div></div>
+      <div class="op "><div class="ico"><svg class="i" ><use href="#hand"/></svg></div><div><b>Escucha y toca</b><br><span>Todos señalan</span></div></div>
+      <div class="op "><div class="ico"><svg class="i" ><use href="#star"/></svg></div><div><b>Memory</b><br><span>Por equipos</span></div></div>
+      <div class="op "><div class="ico"><svg class="i" ><use href="#play"/></svg></div><div><b>Listen & Catch</b><br><span>Atrapa el color</span></div></div>
+      <div class="op "><div class="ico"><svg class="i" ><use href="#volume-2"/></svg></div><div><b>Di y brilla</b><br><span>En coro</span></div></div>
+      <div class="op "><div class="ico"><svg class="i" ><use href="#list-checks"/></svg></div><div><b>El reto de Cosmo</b><br><span>Clase 2</span></div></div>
+      <div class="op op--hueco"><div class="ico"><svg class="i" ><use href="#play"/></svg></div><div><b>Canción del tema</b><br><span>Aquí irá la canción de los colores</span></div></div>
+      <div class="op "><div class="ico"><svg class="i" ><use href="#file-text"/></svg></div><div><b>Caritas</b><br><span>¿Cómo me fue?</span></div></div>
+    </div>
+  </div>
+</div></div></div><div class="cuadro"><div class="rotulo">Proyectar: lámina con su audio</div><div class="" style="width:1366px;height:auto"><div class="telon">
+  <div class="cab"><span class="t">Colores<small>Láminas</small></span><span class="tecla-ayuda"><kbd>Espacio</kbd> otra vez   <kbd>D</kbd> despacio   <kbd>←</kbd> <kbd>→</kbd> pasar   <kbd>Esc</kbd> terminar</span><span class="salir"><svg class="i" ><use href="#x"/></svg>Terminar</span></div>
+  <div class="lam">
+    <div class="img"><img src="../../../../public/cartillas/ingles-3/iconos/1f7e1.svg" alt=""></div>
+    <div><div class="palabra">yellow</div><div class="suena">Suena: yé-lou</div></div>
+  </div>
+  <div class="controles">
+    <div class="ctl"><svg class="i" ><use href="#chevron-left"/></svg></div>
+    <div class="ctl ctl--mayor"><svg class="i" ><use href="#volume-2"/></svg>Otra vez</div>
+    <div class="ctl"><svg class="i" ><use href="#snail"/></svg>Despacio</div>
+    <div class="ctl"><svg class="i" ><use href="#chevron-right"/></svg></div>
+    <span class="puntos">3 de 8</span>
+  </div>
+</div></div></div>
+</body></html>

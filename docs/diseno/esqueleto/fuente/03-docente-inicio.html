@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<title>Boceto: 03-docente-inicio</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+.app { height: 100%; position: relative; display: flex; flex-direction: column; }
+.cont { padding: 24px 16px 88px; display: flex; flex-direction: column; gap: 24px; flex: 1; }
+.proxima { padding: 20px; display: flex; flex-direction: column; gap: 16px; }
+.proxima .cab { display: flex; gap: 16px; align-items: flex-start; }
+.proxima .tema-img { width: 72px; height: 72px; border-radius: var(--r-tarjeta); background: var(--noche); display: flex; align-items: flex-end; justify-content: center; overflow: hidden; flex: none; }
+.proxima .tema-img img { width: 70px; }
+.clases { display: flex; gap: 16px; }
+.clases > div { display: flex; align-items: center; gap: 8px; font-size: var(--t-meta); color: var(--a-texto-2); }
+.atajos { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.atajo { min-height: 72px; border-radius: var(--r-tarjeta); background: var(--a-superficie); border: 1px solid var(--a-linea); display: flex; align-items: center; gap: 12px; padding: 0 16px; font-weight: 500; }
+.atajo svg.i { color: var(--a-texto-2); }
+.aviso { display: flex; gap: 12px; align-items: flex-start; padding: 12px 16px; border-radius: var(--r-tarjeta); background: var(--a-hundido); color: var(--a-texto-2); font-size: var(--t-meta); line-height: var(--l-meta); }
+.aviso svg.i { margin-top: 0; color: var(--a-aviso); }
+.cortina { position: absolute; inset: 56px 0 64px; background: var(--a-fondo); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; padding: 32px; text-align: center; }
+.cortina .marco { width: 72px; height: 72px; border-radius: 50%; background: var(--a-hundido); display: flex; align-items: center; justify-content: center; color: var(--a-texto-2); }
+.cortina .marco svg.i { width: 32px; height: 32px; }
+.borroso { filter: blur(10px); opacity: 0.5; }
+</style></head>
+<body class="lamina"><svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="house" viewBox="0 0 24 24"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" /><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /></symbol><symbol id="users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><path d="M16 3.128a4 4 0 0 1 0 7.744" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /><circle cx="9" cy="7" r="4" /></symbol><symbol id="calendar-days" viewBox="0 0 24 24"><path d="M8 2v3" /><path d="M16 2v3" /><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M3 9h18" /><path d="M8 13h.01" /><path d="M12 13h.01" /><path d="M16 13h.01" /><path d="M8 17h.01" /><path d="M12 17h.01" /><path d="M16 17h.01" /></symbol><symbol id="presentation" viewBox="0 0 24 24"><path d="M2 3h20" /><path d="M21 3v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V3" /><path d="m7 21 5-5 5 5" /></symbol><symbol id="ellipsis" viewBox="0 0 24 24"><circle cx="12" cy="12" r="1" /><circle cx="19" cy="12" r="1" /><circle cx="5" cy="12" r="1" /></symbol><symbol id="star" viewBox="0 0 24 24"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" /></symbol><symbol id="list-checks" viewBox="0 0 24 24"><path d="M13 5h8" /><path d="M13 12h8" /><path d="M13 19h8" /><path d="m3 17 2 2 4-4" /><path d="m3 7 2 2 4-4" /></symbol><symbol id="printer" viewBox="0 0 24 24"><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" /><path d="M6 9V3a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v6" /><rect x="6" y="14" width="12" height="8" rx="1" /></symbol><symbol id="play" viewBox="0 0 24 24"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z" /></symbol><symbol id="volume-2" viewBox="0 0 24 24"><path d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z" /><path d="M16 9a5 5 0 0 1 0 6" /><path d="M19.364 18.364a9 9 0 0 0 0-12.728" /></symbol><symbol id="wifi-off" viewBox="0 0 24 24"><path d="M12 20h.01" /><path d="M8.5 16.429a5 5 0 0 1 7 0" /><path d="M5 12.859a10 10 0 0 1 5.17-2.69" /><path d="M19 12.859a10 10 0 0 0-2.007-1.523" /><path d="M2 8.82a15 15 0 0 1 4.177-2.643" /><path d="M22 8.82a15 15 0 0 0-11.288-3.764" /><path d="m2 2 20 20" /></symbol><symbol id="cloud-upload" viewBox="0 0 24 24"><path d="M12 13v8" /><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242" /><path d="m8 17 4-4 4 4" /></symbol><symbol id="eye-off" viewBox="0 0 24 24"><path d="M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49" /><path d="M14.084 14.158a3 3 0 0 1-4.242-4.242" /><path d="M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143" /><path d="m2 2 20 20" /></symbol><symbol id="chevron-left" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6" /></symbol><symbol id="chevron-right" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6" /></symbol><symbol id="x" viewBox="0 0 24 24"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></symbol><symbol id="snail" viewBox="0 0 24 24"><path d="M2 13a6 6 0 1 0 12 0 4 4 0 1 0-8 0 2 2 0 0 0 4 0" /><circle cx="10" cy="13" r="8" /><path d="M2 21h12c4.4 0 8-3.6 8-8V7a2 2 0 1 0-4 0v6" /><path d="M18 3 19.1 5.2" /><path d="M22 3 20.9 5.2" /></symbol><symbol id="rotate-ccw" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" /><path d="M3 3v5h5" /></symbol><symbol id="check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5" /></symbol><symbol id="download" viewBox="0 0 24 24"><path d="M12 15V3" /><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><path d="m7 10 5 5 5-5" /></symbol><symbol id="book-open" viewBox="0 0 24 24"><path d="M12 5v16" /><path d="M20.001 19A2 2 0 0022 17V5a2 2 0 00-1.999-2L16 3.002A5 5 0 0012 5a5 5 0 00-4-2H4a2 2 0 00-2 2v12a2 2 0 001.999 2H8a5 5 0 014 2 5 5 0 014-2z" /></symbol><symbol id="file-text" viewBox="0 0 24 24"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z" /><path d="M14 2v5a1 1 0 0 0 1 1h5" /><path d="M10 9H8" /><path d="M16 13H8" /><path d="M16 17H8" /></symbol><symbol id="lock" viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2" ry="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></symbol><symbol id="id-card" viewBox="0 0 24 24"><path d="M13 19a4 4 0 00-8 0" /><path d="M16 10h2" /><path d="M16 14h2" /><circle cx="9" cy="12" r="3" /><rect x="2" y="5" width="20" height="14" rx="2" /></symbol><symbol id="plus" viewBox="0 0 24 24"><path d="M5 12h14" /><path d="M12 5v14" /></symbol><symbol id="circle-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path d="M9 9.5a3 2.5 0 016 0c0 2-2 2-3 3.5" /><path d="M12 17h.01" /></symbol><symbol id="log-out" viewBox="0 0 24 24"><path d="m16 17 5-5-5-5" /><path d="M21 12H9" /><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" /></symbol><symbol id="school" viewBox="0 0 24 24"><path d="M14 21v-3a2 2 0 0 0-4 0v3" /><path d="M18 4.933V21" /><path d="m4 6 7.106-3.79a2 2 0 0 1 1.788 0L20 6" /><path d="m6 11-3.52 2.147a1 1 0 0 0-.48.854V19a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-5a1 1 0 0 0-.48-.853L18 11" /><path d="M6 4.933V21" /><circle cx="12" cy="9" r="2" /></symbol><symbol id="chart-no-axes-column" viewBox="0 0 24 24"><path d="M5 21v-6" /><path d="M12 21V3" /><path d="M19 21V9" /></symbol><symbol id="maximize" viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 0 0-2 2v3" /><path d="M21 8V5a2 2 0 0 0-2-2h-3" /><path d="M3 16v3a2 2 0 0 0 2 2h3" /><path d="M16 21h3a2 2 0 0 0 2-2v-3" /></symbol><symbol id="hand" viewBox="0 0 24 24"><path d="M18 11V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2" /><path d="M14 10V4a2 2 0 0 0-2-2a2 2 0 0 0-2 2v2" /><path d="M10 10.5V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2v8" /><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15" /></symbol></svg>
+<div class="cuadro"><div class="rotulo">Inicial: próxima clase y atajos</div><div class="cel"><div class="app adulto"><header class="barra-sup"><span class="marca">English Adventure Quest</span><span class="estado"><svg class="i" ><use href="#check"/></svg>Todo guardado</span></header>
+<main class="cont">
+  <div><h1 style="font-size:26px;line-height:32px">Jueves 20 de noviembre</h1><p class="meta">I.E. Jorge Barco Mora</p></div>
+  <section class="panel proxima">
+    <div class="cab"><div class="tema-img"><img src="../../../../public/cartillas/ingles-3/personajes/cosmo-point.webp" alt=""></div>
+      <div><p class="meta">Próxima clase · 3B</p><h2 style="font-size:22px;line-height:28px">Colores, clase 1</h2>
+      <p class="sec" style="font-size:15px;line-height:22px">Escuchar y atrapar los colores</p></div></div>
+    <div class="clases"><div><span class="farol farol--medio"></span>Clase 1 hoy</div><div><span class="farol"></span>Clase 2 jueves 27</div></div>
+    <a class="btn btn--primario btn--ancho"><svg class="i" ><use href="#presentation"/></svg>Proyectar Colores</a>
+    <a class="btn btn--ancho"><svg class="i" ><use href="#file-text"/></svg>Ver el planeador</a>
+  </section>
+  <section class="atajos">
+    <a class="atajo"><svg class="i" ><use href="#star"/></svg>Dar estrellas</a>
+    <a class="atajo"><svg class="i" ><use href="#users"/></svg>Lista de 3B</a>
+    <a class="atajo"><svg class="i" ><use href="#printer"/></svg>Imprimir lista</a>
+    <a class="atajo"><svg class="i" ><use href="#book-open"/></svg>Materiales</a>
+  </section>
+  <p class="meta">Otros grupos: 3A, martes 9:00</p>
+</main><nav class="tabs"><a class="activo"><svg class="i" ><use href="#house"/></svg>Inicio</a><a class=""><svg class="i" ><use href="#users"/></svg>Grupos</a><a class=""><svg class="i" ><use href="#calendar-days"/></svg>Planear</a><a class=""><svg class="i" ><use href="#presentation"/></svg>Proyectar</a><a class=""><svg class="i" ><use href="#ellipsis"/></svg>Más</a></nav></div></div></div><div class="cuadro"><div class="rotulo">Vacío: docente sin grupos</div><div class="cel"><div class="app adulto"><header class="barra-sup"><span class="marca">English Adventure Quest</span><span class="estado"></span></header>
+<main class="cont">
+  <div><h1 style="font-size:26px;line-height:32px">Jueves 20 de noviembre</h1><p class="meta">I.E. Jorge Barco Mora</p></div>
+  <section class="panel" style="padding:24px;display:flex;flex-direction:column;gap:16px">
+    <img src="../../../../public/cartillas/ingles-3/personajes/cosmo-wave.webp" alt="" style="width:120px">
+    <h2 style="font-size:22px;line-height:28px">Todavía no tiene grupos</h2>
+    <p class="sec">Cree su grupo y la plataforma le da el código que los niños usan en casa. Después agrega los apodos.</p>
+    <a class="btn btn--primario btn--ancho"><svg class="i" ><use href="#plus"/></svg>Crear un grupo</a>
+  </section>
+  <section class="panel" style="padding:20px;display:flex;flex-direction:column;gap:12px">
+    <h3>Mientras tanto puede proyectar</h3>
+    <p class="sec" style="font-size:15px;line-height:22px">Los juegos y las láminas no necesitan grupo ni cuenta.</p>
+    <a class="btn btn--ancho"><svg class="i" ><use href="#presentation"/></svg>Abrir proyectar</a>
+  </section>
+</main><nav class="tabs"><a class="activo"><svg class="i" ><use href="#house"/></svg>Inicio</a><a class=""><svg class="i" ><use href="#users"/></svg>Grupos</a><a class=""><svg class="i" ><use href="#calendar-days"/></svg>Planear</a><a class=""><svg class="i" ><use href="#presentation"/></svg>Proyectar</a><a class=""><svg class="i" ><use href="#ellipsis"/></svg>Más</a></nav></div></div></div><div class="cuadro"><div class="rotulo">Sin red, con estrellas por subir</div><div class="cel"><div class="app adulto"><header class="barra-sup"><span class="marca">English Adventure Quest</span><span class="estado"><svg class="i" ><use href="#cloud-upload"/></svg>3 por subir</span></header>
+<main class="cont">
+  <div class="aviso"><svg class="i" ><use href="#wifi-off"/></svg><span>Sin conexión. Lo que marque se guarda en este celular y sube solo cuando vuelva la señal.</span></div>
+  <div><h1 style="font-size:26px;line-height:32px">Jueves 20 de noviembre</h1><p class="meta">I.E. Jorge Barco Mora</p></div>
+  <section class="panel proxima">
+    <div class="cab"><div class="tema-img"><img src="../../../../public/cartillas/ingles-3/personajes/cosmo-point.webp" alt=""></div>
+      <div><p class="meta">Próxima clase · 3B</p><h2 style="font-size:22px;line-height:28px">Colores, clase 1</h2>
+      <p class="sec" style="font-size:15px;line-height:22px">Listo para proyectar sin red</p></div></div>
+    <a class="btn btn--primario btn--ancho"><svg class="i" ><use href="#presentation"/></svg>Proyectar Colores</a>
+  </section>
+  <section class="atajos">
+    <a class="atajo"><svg class="i" ><use href="#star"/></svg>Dar estrellas</a>
+    <a class="atajo"><svg class="i" ><use href="#users"/></svg>Lista de 3B</a>
+  </section>
+  <section class="panel">
+    <div class="fila"><svg class="i" ><use href="#cloud-upload"/></svg><span>3 estrellas por subir</span><span class="fin meta">Hoy 10:52</span></div>
+  </section>
+</main><nav class="tabs"><a class="activo"><svg class="i" ><use href="#house"/></svg>Inicio</a><a class=""><svg class="i" ><use href="#users"/></svg>Grupos</a><a class=""><svg class="i" ><use href="#calendar-days"/></svg>Planear</a><a class=""><svg class="i" ><use href="#presentation"/></svg>Proyectar</a><a class=""><svg class="i" ><use href="#ellipsis"/></svg>Más</a></nav></div></div></div><div class="cuadro"><div class="rotulo">Cortina: abre la lista después de proyectar</div><div class="cel"><div class="app adulto"><header class="barra-sup"><span class="marca">English Adventure Quest</span><span class="estado"></span></header>
+<main class="cont"><div class="borroso"><h1 style="font-size:26px">3B</h1><section class="panel" style="margin-top:16px"><div class="fila"><span>Ana</span><span class="fin"><svg class="i" ><use href="#star"/></svg></span></div><div class="fila"><span>Brayan</span><span class="fin"><svg class="i" ><use href="#star"/></svg></span></div><div class="fila"><span>Camila</span><span class="fin"><svg class="i" ><use href="#star"/></svg></span></div><div class="fila"><span>Dylan</span><span class="fin"><svg class="i" ><use href="#star"/></svg></span></div><div class="fila"><span>Emily</span><span class="fin"><svg class="i" ><use href="#star"/></svg></span></div><div class="fila"><span>Juan M</span><span class="fin"><svg class="i" ><use href="#star"/></svg></span></div><div class="fila"><span>Juan P</span><span class="fin"><svg class="i" ><use href="#star"/></svg></span></div><div class="fila"><span>Luciana</span><span class="fin"><svg class="i" ><use href="#star"/></svg></span></div></section></div></main>
+<div class="cortina">
+  <div class="marco"><svg class="i" ><use href="#eye-off"/></svg></div>
+  <h2 style="font-size:22px;line-height:28px">¿Su pantalla se ve en el telón?</h2>
+  <p class="sec">Esta sección muestra los apodos de los niños. Hace 12 minutos estaba proyectando desde este celular.</p>
+  <a class="btn btn--primario btn--ancho">Mostrar la lista aquí</a>
+  <a class="btn btn--ancho">Volver al inicio</a>
+  <a class="btn btn--texto">Ya terminé la clase</a>
+</div><nav class="tabs"><a class=""><svg class="i" ><use href="#house"/></svg>Inicio</a><a class="activo"><svg class="i" ><use href="#users"/></svg>Grupos</a><a class=""><svg class="i" ><use href="#calendar-days"/></svg>Planear</a><a class=""><svg class="i" ><use href="#presentation"/></svg>Proyectar</a><a class=""><svg class="i" ><use href="#ellipsis"/></svg>Más</a></nav></div></div></div>
+</body></html>

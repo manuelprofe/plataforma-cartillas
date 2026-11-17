@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<title>Boceto: 06-coordinador-inicio</title>
+<link rel="stylesheet" href="tokens.css">
+<style>
+.esc { width: 1366px; height: 768px; display: grid; grid-template-columns: 256px 1fr; overflow: hidden; box-shadow: 0 0 0 1px rgb(0 0 0 / 0.12), 0 12px 32px rgb(34 26 51 / 0.12); }
+.lateral { background: var(--a-superficie); border-right: 1px solid var(--a-linea); padding: 24px 12px; display: flex; flex-direction: column; gap: 4px; }
+.lateral .marca { font: 600 20px/1.1 var(--f-marca); color: var(--a-tinta); padding: 0 12px 4px; }
+.lateral .cole { font-size: var(--t-meta); color: var(--a-texto-3); padding: 0 12px 24px; }
+.nav { min-height: 48px; display: flex; align-items: center; gap: 12px; padding: 0 12px; border-radius: var(--r-control); color: var(--a-texto-2); font-weight: 500; }
+.nav.activo { background: var(--a-hundido); color: var(--a-texto); box-shadow: inset 3px 0 0 var(--a-tinta); }
+.lateral .abajo { margin-top: auto; }
+.principal { padding: 32px 40px; display: flex; flex-direction: column; gap: 24px; overflow: hidden; }
+.encab { display: flex; align-items: flex-end; gap: 16px; }
+.encab .btn { margin-left: auto; }
+.cifras { display: grid; grid-template-columns: repeat(3, 1fr) 1.4fr; gap: 16px; }
+.cifra { padding: 16px 20px; }
+.cifra b { display: block; font: 600 34px/40px var(--f-marca); font-variant-numeric: tabular-nums; }
+.cifra.nota { background: var(--a-hundido); border-color: transparent; color: var(--a-texto-2); font-size: var(--t-meta); line-height: var(--l-meta); display: flex; align-items: center; }
+table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+th { text-align: left; font: 500 14px/20px var(--f-texto); color: var(--a-texto-3); padding: 12px 16px; border-bottom: 1px solid var(--a-linea); }
+td { padding: 0 16px; height: 56px; border-bottom: 1px solid var(--a-linea); }
+td.num, th.num { text-align: right; }
+tr:last-child td { border-bottom: 0; }
+.faroles { display: flex; gap: 6px; align-items: center; }
+.barra { width: 120px; height: 8px; border-radius: 4px; background: var(--a-hundido); overflow: hidden; display: inline-block; vertical-align: middle; margin-right: 10px; }
+.barra i { display: block; height: 100%; background: var(--a-tinta); }
+.pequeno td { color: var(--a-texto-3); }
+</style></head>
+<body class="lamina"><svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="house" viewBox="0 0 24 24"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8" /><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /></symbol><symbol id="users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" /><path d="M16 3.128a4 4 0 0 1 0 7.744" /><path d="M22 21v-2a4 4 0 0 0-3-3.87" /><circle cx="9" cy="7" r="4" /></symbol><symbol id="calendar-days" viewBox="0 0 24 24"><path d="M8 2v3" /><path d="M16 2v3" /><rect x="3" y="3" width="18" height="18" rx="2" /><path d="M3 9h18" /><path d="M8 13h.01" /><path d="M12 13h.01" /><path d="M16 13h.01" /><path d="M8 17h.01" /><path d="M12 17h.01" /><path d="M16 17h.01" /></symbol><symbol id="presentation" viewBox="0 0 24 24"><path d="M2 3h20" /><path d="M21 3v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V3" /><path d="m7 21 5-5 5 5" /></symbol><symbol id="ellipsis" viewBox="0 0 24 24"><circle cx="12" cy="12" r="1" /><circle cx="19" cy="12" r="1" /><circle cx="5" cy="12" r="1" /></symbol><symbol id="star" viewBox="0 0 24 24"><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" /></symbol><symbol id="list-checks" viewBox="0 0 24 24"><path d="M13 5h8" /><path d="M13 12h8" /><path d="M13 19h8" /><path d="m3 17 2 2 4-4" /><path d="m3 7 2 2 4-4" /></symbol><symbol id="printer" viewBox="0 0 24 24"><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" /><path d="M6 9V3a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v6" /><rect x="6" y="14" width="12" height="8" rx="1" /></symbol><symbol id="play" viewBox="0 0 24 24"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z" /></symbol><symbol id="volume-2" viewBox="0 0 24 24"><path d="M11 4.702a.705.705 0 0 0-1.203-.498L6.413 7.587A1.4 1.4 0 0 1 5.416 8H3a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2.416a1.4 1.4 0 0 1 .997.413l3.383 3.384A.705.705 0 0 0 11 19.298z" /><path d="M16 9a5 5 0 0 1 0 6" /><path d="M19.364 18.364a9 9 0 0 0 0-12.728" /></symbol><symbol id="wifi-off" viewBox="0 0 24 24"><path d="M12 20h.01" /><path d="M8.5 16.429a5 5 0 0 1 7 0" /><path d="M5 12.859a10 10 0 0 1 5.17-2.69" /><path d="M19 12.859a10 10 0 0 0-2.007-1.523" /><path d="M2 8.82a15 15 0 0 1 4.177-2.643" /><path d="M22 8.82a15 15 0 0 0-11.288-3.764" /><path d="m2 2 20 20" /></symbol><symbol id="cloud-upload" viewBox="0 0 24 24"><path d="M12 13v8" /><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242" /><path d="m8 17 4-4 4 4" /></symbol><symbol id="eye-off" viewBox="0 0 24 24"><path d="M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49" /><path d="M14.084 14.158a3 3 0 0 1-4.242-4.242" /><path d="M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143" /><path d="m2 2 20 20" /></symbol><symbol id="chevron-left" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6" /></symbol><symbol id="chevron-right" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6" /></symbol><symbol id="x" viewBox="0 0 24 24"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></symbol><symbol id="snail" viewBox="0 0 24 24"><path d="M2 13a6 6 0 1 0 12 0 4 4 0 1 0-8 0 2 2 0 0 0 4 0" /><circle cx="10" cy="13" r="8" /><path d="M2 21h12c4.4 0 8-3.6 8-8V7a2 2 0 1 0-4 0v6" /><path d="M18 3 19.1 5.2" /><path d="M22 3 20.9 5.2" /></symbol><symbol id="rotate-ccw" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" /><path d="M3 3v5h5" /></symbol><symbol id="check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5" /></symbol><symbol id="download" viewBox="0 0 24 24"><path d="M12 15V3" /><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><path d="m7 10 5 5 5-5" /></symbol><symbol id="book-open" viewBox="0 0 24 24"><path d="M12 5v16" /><path d="M20.001 19A2 2 0 0022 17V5a2 2 0 00-1.999-2L16 3.002A5 5 0 0012 5a5 5 0 00-4-2H4a2 2 0 00-2 2v12a2 2 0 001.999 2H8a5 5 0 014 2 5 5 0 014-2z" /></symbol><symbol id="file-text" viewBox="0 0 24 24"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z" /><path d="M14 2v5a1 1 0 0 0 1 1h5" /><path d="M10 9H8" /><path d="M16 13H8" /><path d="M16 17H8" /></symbol><symbol id="lock" viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2" ry="2" /><path d="M7 11V7a5 5 0 0 1 10 0v4" /></symbol><symbol id="id-card" viewBox="0 0 24 24"><path d="M13 19a4 4 0 00-8 0" /><path d="M16 10h2" /><path d="M16 14h2" /><circle cx="9" cy="12" r="3" /><rect x="2" y="5" width="20" height="14" rx="2" /></symbol><symbol id="plus" viewBox="0 0 24 24"><path d="M5 12h14" /><path d="M12 5v14" /></symbol><symbol id="circle-help" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path d="M9 9.5a3 2.5 0 016 0c0 2-2 2-3 3.5" /><path d="M12 17h.01" /></symbol><symbol id="log-out" viewBox="0 0 24 24"><path d="m16 17 5-5-5-5" /><path d="M21 12H9" /><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" /></symbol><symbol id="school" viewBox="0 0 24 24"><path d="M14 21v-3a2 2 0 0 0-4 0v3" /><path d="M18 4.933V21" /><path d="m4 6 7.106-3.79a2 2 0 0 1 1.788 0L20 6" /><path d="m6 11-3.52 2.147a1 1 0 0 0-.48.854V19a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-5a1 1 0 0 0-.48-.853L18 11" /><path d="M6 4.933V21" /><circle cx="12" cy="9" r="2" /></symbol><symbol id="chart-no-axes-column" viewBox="0 0 24 24"><path d="M5 21v-6" /><path d="M12 21V3" /><path d="M19 21V9" /></symbol><symbol id="maximize" viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 0 0-2 2v3" /><path d="M21 8V5a2 2 0 0 0-2-2h-3" /><path d="M3 16v3a2 2 0 0 0 2 2h3" /><path d="M16 21h3a2 2 0 0 0 2-2v-3" /></symbol><symbol id="hand" viewBox="0 0 24 24"><path d="M18 11V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2" /><path d="M14 10V4a2 2 0 0 0-2-2a2 2 0 0 0-2 2v2" /><path d="M10 10.5V6a2 2 0 0 0-2-2a2 2 0 0 0-2 2v8" /><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15" /></symbol></svg>
+<div class="cuadro"><div class="rotulo">Coordinador: uso y avance (1366 × 768)</div><div class="" style="width:1366px;height:auto"><div class="esc adulto">
+  <aside class="lateral">
+    <span class="marca">English Adventure Quest</span><span class="cole">I.E. Jorge Barco Mora</span>
+    <a class="nav activo"><svg class="i" ><use href="#chart-no-axes-column"/></svg>Uso y avance</a>
+    <a class="nav"><svg class="i" ><use href="#users"/></svg>Docentes y grupos</a>
+    <a class="nav"><svg class="i" ><use href="#book-open"/></svg>Materiales</a>
+    <a class="nav"><svg class="i" ><use href="#calendar-days"/></svg>Cierre del año</a>
+    <a class="nav abajo"><svg class="i" ><use href="#log-out"/></svg>Salir</a>
+  </aside>
+  <main class="principal">
+    <div class="encab"><div><p class="meta">Semana del 17 al 21 de noviembre</p><h1>Grado tercero</h1></div>
+      <a class="btn"><svg class="i" ><use href="#printer"/></svg>Imprimir</a></div>
+    <div class="cifras">
+      <div class="panel cifra"><span class="meta">Niños con cuenta</span><b>98 de 104</b></div>
+      <div class="panel cifra"><span class="meta">Practicaron en casa esta semana</span><b>61</b></div>
+      <div class="panel cifra"><span class="meta">Clases dadas con la cartilla</span><b>14</b></div>
+      <div class="panel cifra nota">Lo que viene de la app muestra solo a quienes juegan en casa. No sirve para calificar ni para comparar docentes</div>
+    </div>
+    <section class="panel">
+      <table>
+        <thead><tr><th>Grupo</th><th>Docente</th><th>Tema según el plan</th><th class="num">Con cuenta</th><th>Practicaron esta semana</th><th class="num">Autorizaciones</th></tr></thead>
+        <tbody>
+          <tr><td><b style="font-weight:600">3A</b></td><td class="sec">Martha Ruiz</td><td><span style="display:flex;align-items:center;gap:12px;white-space:nowrap"><span class="faroles"><span class="farol farol--lleno"></span><span class="farol farol--medio"></span><span class="farol "></span><span class="farol "></span><span class="farol "></span><span class="farol "></span></span><span class="sec">Colores</span></span></td>
+    <td class="num">32 de 34</td><td><span class="barra"><i style="width:66%"></i></span>21</td><td class="num">33 de 34</td></tr>
+          <tr><td><b style="font-weight:600">3B</b></td><td class="sec">Martha Ruiz</td><td><span style="display:flex;align-items:center;gap:12px;white-space:nowrap"><span class="faroles"><span class="farol farol--lleno"></span><span class="farol farol--medio"></span><span class="farol "></span><span class="farol "></span><span class="farol "></span><span class="farol "></span></span><span class="sec">Colores</span></span></td>
+    <td class="num">33 de 35</td><td><span class="barra"><i style="width:58%"></i></span>19</td><td class="num">35 de 35</td></tr>
+          <tr><td><b style="font-weight:600">3C</b></td><td class="sec">Jorge Peña</td><td><span style="display:flex;align-items:center;gap:12px;white-space:nowrap"><span class="faroles"><span class="farol farol--lleno"></span><span class="farol farol--lleno"></span><span class="farol farol--medio"></span><span class="farol "></span><span class="farol "></span><span class="farol "></span></span><span class="sec">Números</span></span></td>
+    <td class="num">33 de 35</td><td><span class="barra"><i style="width:64%"></i></span>21</td><td class="num">34 de 35</td></tr>
+          <tr class="pequeno"><td><b style="font-weight:600">3 Aceleración</b></td><td>Jorge Peña</td><td colspan="4">Grupo de menos de 5 niños: no se muestran cifras</td></tr>
+        </tbody>
+      </table>
+    </section>
+    <p class="meta">Los grupos van en orden de nombre. Farol lleno: tema terminado; medio: en curso</p>
+  </main>
+</div></div></div>
+</body></html>

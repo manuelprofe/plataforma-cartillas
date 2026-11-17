@@ -153,9 +153,8 @@ ronda de pruebas. (El silencio en su computador era Chrome con el sonido apagado
   2. **Estatua o escultura** en cada lugar que, al tocarla, explique algo breve (con audio
      primero; el texto acompaña).
 - **Docente, cuentas y coordinador:** sí a las recomendaciones del pedagogo
-  (`docs/pedagogia/ronda-2-docente.md` §6, de la 2 a la 8). **Faltan por responder:** qué
-  celulares hay en el salón, país del proyecto de Supabase y si activó *Allow anonymous
-  sign-ins*. Antes de conectar la app hay que corregir `supabase/esquema.sql` (§4.5) y que el
+  (`docs/pedagogia/ronda-2-docente.md` §6, de la 2 a la 8). Manuel dice que **ya activó *Allow anonymous sign-ins*** (sin comprobar desde aquí).
+  **Faltan por responder:** qué celulares hay en el salón y el país del proyecto de Supabase. Antes de conectar la app hay que corregir `supabase/esquema.sql` (§4.5) y que el
   auditor verifique si el reconocedor de voz del navegador envía audio al fabricante.
 
 Orden de trabajo: diseñador ajusta el mapa (estaciones y estatua) → pedagogo escribe frases,

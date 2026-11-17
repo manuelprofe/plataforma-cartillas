@@ -87,6 +87,14 @@ Playwright en `scripts/pruebas/*.mjs`.
 - Cinemáticas: 9:16 y 16:9, se ven una vez y quedan en "Recuerdos".
 - Lo que recomiende el pedagogo queda como decisión (Manuel lo delegó).
 
+- **Decisiones del 17 nov (Manuel: "sí a lo que recomiendas"):** Supabase se queda en EE. UU.
+  con autorización expresa de los padres para la transferencia; el docente reparte y recoge la
+  autorización y la encuesta de acceso en la reunión de padres; el modo docente se diseña para
+  proyectar con computador, celular con adaptador o inalámbrico (no se sabe cuál usa cada colegio),
+  sin que el telón muestre nunca datos de niños; las 4 preguntas de `ronda-2-mapa.md` §6 van como
+  recomendó el diseñador (bandeja se abre sola, repetir no gasta cupo, una estatua común, quitar los 6 postes).
+- Skill `unslop` instalada: solo pantallas de adultos.
+
 ## Trabajo en curso (retomar aquí, en este orden)
 
 **Foco nuevo de Manuel (17 nov):** primero el **esqueleto** de la plataforma (interfaces de los
@@ -101,7 +109,7 @@ construcción del mapa (§8, 5 tandas) y los textos del mapa (§7, pedagogo) esp
    juego en casa con celular familiar, prueba del tema y autorización con datos en EE. UU.; y escribir
    `docs/pedagogia/catalogo-interfaces.md` (qué contenido vive en cada interfaz, campos de cada
    material del docente, si sale del paquete de la cartilla o de la base de datos).
-2. **Diseñador:** mapa de pantallas de los cuatro modos (estudiante con código, apodo y PIN; familia;
+2. **Diseñador (en curso):** mapa de pantallas de los cuatro modos (estudiante con código, apodo y PIN; familia;
    docente con plan, materiales y clase proyectada; coordinador; dueño), navegación, bocetos a
    390 px y en proyector. **Mostrar a Manuel antes de construir.**
 3. **Desarrollador:** corregir `supabase/esquema.sql` según ronda-2-docente §4.5 (el coordinador lee

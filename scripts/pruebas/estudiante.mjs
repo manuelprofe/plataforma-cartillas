@@ -222,11 +222,14 @@ try {
   await p.waitForSelector('.nino--quien .cara');
 
   // 8. Invitado aparte: "Sin tarjeta" lleva a elegir personaje (su avance se sumó a Sara).
+  console.log('antes invitado', await p.locator('.cortina').count());
   await p.click('.cara--invitado');
   await p.waitForSelector('.elegir');
+  console.log('en elegir', await p.locator('.cortina').getAttribute('class').catch(() => 'no'));
   comprobar(ruta(p) === '/elegir', 'el invitado vacío elige personaje');
   await p.goBack();
   await p.waitForSelector('.nino--quien');
+  for (let i = 0; i < 6; i++) { console.log('cortina', i, await p.locator('.cortina').getAttribute('class').catch(() => 'no')); await p.waitForTimeout(400); }
   await c.setOffline(false);
 
   // 9. Familia: sostener 3 s, reto para adultos y entrada de adultos.

@@ -97,7 +97,7 @@ Hecho: el diseño del mapa con estaciones y estatua (`docs/diseno/ronda-2-mapa.m
 f85fec0). Sus 4 preguntas (§6) se construyen con lo recomendado si Manuel no dice otra cosa. La
 construcción del mapa (§8, 5 tandas) y los textos del mapa (§7, pedagogo) esperan a que el esqueleto esté listo.
 
-1. **Pedagogo (en curso):** ajustar `docs/pedagogia/ronda-2-docente.md` a proyector en el salón,
+1. **Pedagogo (hecho, 17 nov):** ajustar `docs/pedagogia/ronda-2-docente.md` a proyector en el salón,
    juego en casa con celular familiar, prueba del tema y autorización con datos en EE. UU.; y escribir
    `docs/pedagogia/catalogo-interfaces.md` (qué contenido vive en cada interfaz, campos de cada
    material del docente, si sale del paquete de la cartilla o de la base de datos).

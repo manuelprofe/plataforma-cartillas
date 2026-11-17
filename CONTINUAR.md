@@ -141,21 +141,26 @@ ronda de pruebas. (El silencio en su computador era Chrome con el sonido apagado
 - No reescribir la historia de la rama (el entorno bloquea `push --force`); si un agente
   enmienda un commit ya subido, se une con `git merge -s ours`.
 
-## En espera de Manuel (17 de noviembre)
+## Decisiones de Manuel del 17 de noviembre (tarde)
 
-- **Voz en español:** el inglés (`af_heart`) le gustó; el español de Kokoro no. Tiene tres
-  muestras de Chatterbox multilingüe (MIT; instalado en el scratchpad, se pierde al cerrar):
-  por defecto, con timbre de mujer, y más expresiva. Cuando elija, adaptar `generar_voz.py`
-  para español (≈25 min de cómputo, 94 frases). Si ninguna sirve: servicio de pago con su clave.
-- **Mapa nuevo:** `docs/diseno/ronda-2-mapa.md` recomienda "mirador y senderos" (bosque entero
-  con 7 botones; dentro, de parada en parada). Faltan sus seis respuestas (§6). Luego:
-  pedagogo revisa frases y nombres → desarrollador-motor construye en 4 tandas → revisor.
-- **Docente, cuentas y coordinador:** definido en `docs/pedagogia/ronda-2-docente.md`.
-  Siguiente fase: diseñador. Antes hay que corregir `supabase/esquema.sql` (§4.5): el
-  coordinador puede leer y borrar datos de cada niño y `lista_grupo` entrega apodos a quien
-  adivine el código. Verificar con el auditor si el reconocedor de voz del navegador envía
-  audio al fabricante. Falta saber si Manuel activó *Allow anonymous sign-ins* y en qué país
-  está el proyecto de Supabase.
+- **Voz:** se queda la publicada (Kokoro: `ef_dora` y `af_heart`). Más adelante quiere que los
+  personajes hablen con una voz clonada a partir de ~10 s de grabación (Chatterbox multilingüe,
+  MIT, lo permite; con permiso escrito de quien grabe). No tocar la voz hasta entonces.
+- **Mapa:** aprobado "mirador y senderos" y **sí a las seis preguntas** de
+  `docs/diseno/ronda-2-mapa.md` §6. Dos cambios suyos sobre ese diseño:
+  1. **Estaciones:** los ejercicios de un mismo tema van juntos en **una sola estación**
+     (no un farol por ejercicio), para caminar menos y no perderse.
+  2. **Estatua o escultura** en cada lugar que, al tocarla, explique algo breve (con audio
+     primero; el texto acompaña).
+- **Docente, cuentas y coordinador:** sí a las recomendaciones del pedagogo
+  (`docs/pedagogia/ronda-2-docente.md` §6, de la 2 a la 8). **Faltan por responder:** qué
+  celulares hay en el salón, país del proyecto de Supabase y si activó *Allow anonymous
+  sign-ins*. Antes de conectar la app hay que corregir `supabase/esquema.sql` (§4.5) y que el
+  auditor verifique si el reconocedor de voz del navegador envía audio al fabricante.
+
+Orden de trabajo: diseñador ajusta el mapa (estaciones y estatua) → pedagogo escribe frases,
+nombres y textos de las estatuas → desarrollador-motor construye por tandas → revisor.
+Después: diseñador con las pantallas del docente.
 
 ## Pendientes
 

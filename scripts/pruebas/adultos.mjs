@@ -187,7 +187,7 @@ try {
     let aceptada = false;
     const { c, p } = await abrirAdultos(navegador, {
       extra: (u, q) => {
-        if (u.pathname === '/rest/v1/perfiles') return { json: aceptada ? [{ rol: 'docente', nombre: 'Marta', colegio_id: 'c1', activo: true }] : [] };
+        if (u.pathname === '/rest/v1/rpc/mi_perfil') return { json: aceptada ? { rol: 'docente', nombre: 'Marta', colegio_id: 'c1', activo: true } : null };
         if (u.pathname === '/rest/v1/rpc/aceptar_invitacion') { aceptada = true; return { json: 'docente' }; }
         if (u.pathname === '/auth/v1/user') return q.method() === 'PUT' ? { json: {} } : { json: { email: 'marta@colegio.co' } };
         return null;
@@ -205,7 +205,7 @@ try {
   }
   {
     const { c, p } = await abrirAdultos(navegador, {
-      extra: (u) => (u.pathname === '/rest/v1/perfiles' ? { json: [] } : u.pathname === '/rest/v1/rpc/aceptar_invitacion' ? { json: null } : u.pathname === '/auth/v1/user' ? { json: { email: 'otro@colegio.co' } } : null),
+      extra: (u) => (u.pathname === '/rest/v1/rpc/mi_perfil' ? { json: null } : u.pathname === '/rest/v1/rpc/aceptar_invitacion' ? { json: null } : u.pathname === '/auth/v1/user' ? { json: { email: 'otro@colegio.co' } } : null),
     });
     await p.goto(url('/adultos/invitacion#access_token=falso-nadie&refresh_token=r&expires_in=3600&type=magiclink'));
     await p.waitForSelector('h1:has-text("No encontramos su invitación")');
@@ -222,7 +222,7 @@ try {
   {
     const { c, p } = await abrirAdultos(navegador, {
       sesion: sesionAdulto('docente'),
-      extra: (u) => (u.pathname === '/rest/v1/perfiles' ? { json: [{ rol: 'docente', nombre: 'X', colegio_id: null, activo: false }] } : null),
+      extra: (u) => (u.pathname === '/rest/v1/rpc/mi_perfil' ? { json: { rol: 'docente', nombre: 'X', colegio_id: null, activo: false } } : null),
     });
     await p.goto(url('/docente'));
     await p.waitForSelector('h1:has-text("Su cuenta no tiene acceso")');

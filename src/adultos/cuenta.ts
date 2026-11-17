@@ -175,13 +175,18 @@ export async function leer<T>(tabla: string, consulta: string): Promise<T[]> {
 
 // ---------------------------------------------------------------- Perfil
 
-/** Pide el perfil al servidor y fija el estado. Sin perfil activo intenta aceptar una invitación. */
+type FilaPerfil = Perfil & { activo: boolean };
+
+/**
+ * Pide el perfil propio al servidor (`mi_perfil()`: una sola fila, la del usuario de la sesión;
+ * leer la tabla perfiles devolvería también los de otros adultos que el rol deja ver) y fija el
+ * estado. Sin perfil, intenta aceptar una invitación.
+ */
 async function cargarPerfil(): Promise<void> {
-  const filas = await leer<Perfil & { activo: boolean }>('perfiles', 'select=rol,nombre,colegio_id,activo');
-  let fila = filas[0];
+  let fila = await rpc<FilaPerfil | null>('mi_perfil');
   if (!fila) {
     const rol = await rpc<Rol | null>('aceptar_invitacion');
-    if (rol) fila = (await leer<Perfil & { activo: boolean }>('perfiles', 'select=rol,nombre,colegio_id,activo'))[0];
+    if (rol) fila = await rpc<FilaPerfil | null>('mi_perfil');
   }
   if (!sesion) return;
   if (!fila || !fila.activo) {
@@ -246,13 +251,15 @@ export async function recuperar(correo: string): Promise<void> {
 }
 
 /**
- * Envía a un adulto el correo con el enlace de entrada (la invitación ya debe existir en la base
- * con `invitar`). El enlace lleva a /adultos/invitacion. Lo usan el coordinador y el dueño.
+ * Invita a un adulto (dueño: coordinadores o docentes; coordinador: docentes de su colegio).
+ * Lo hace la Edge Function `invitar` (supabase/funciones/invitar): registra la invitación con
+ * la sesión de quien invita y envía el correo con la clave de servicio, que nunca llega aquí.
+ * El enlace del correo lleva a /adultos/invitacion.
  */
-export async function enviarInvitacion(correo: string): Promise<void> {
-  const destino = encodeURIComponent(`${location.origin}/adultos/invitacion`);
-  const r = await pedir(`/auth/v1/otp?redirect_to=${destino}`, { cuerpo: { email: correo.trim().toLowerCase(), create_user: true } });
-  if (!r.ok) throw new ErrorCuenta('otro', campo(r.datos, 'msg'));
+export async function invitar(datos: { correo: string; nombre: string; rol: 'coordinador' | 'docente'; colegio_id?: string }): Promise<'enviada' | 'ya-registrado'> {
+  const r = await pedir('/functions/v1/invitar', { cuerpo: datos, token: await token() });
+  if (!r.ok) throw new ErrorCuenta('otro', campo(r.datos, 'error') || `HTTP ${r.status}`);
+  return campo(r.datos, 'estado') === 'ya-registrado' ? 'ya-registrado' : 'enviada';
 }
 
 /**

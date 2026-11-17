@@ -122,7 +122,10 @@ export async function simularSupabase(contexto, extra = () => null) {
     const propio = await extra(url, q);
     const r = propio ?? (() => {
       const rol = /falso-(\w+)/.exec(q.headers().authorization ?? '')?.[1];
-      if (url.pathname === '/rest/v1/perfiles' && rol) return { json: [{ rol, nombre: `Prueba ${rol}`, colegio_id: null, activo: true }] };
+      if (url.pathname === '/rest/v1/rpc/mi_perfil' && rol) return { json: { rol, nombre: `Prueba ${rol}`, colegio_id: null, activo: true } };
+      // Trampa: la tabla perfiles devuelve varias filas (como al coordinador) y la primera es de otro
+      // rol. La app no debe usarla para saber quién entró.
+      if (url.pathname === '/rest/v1/perfiles') return { json: [{ rol: 'dueno', nombre: 'Otro', colegio_id: null, activo: true }, { rol: rol ?? 'docente', nombre: 'Yo', colegio_id: null, activo: true }] };
       if (url.pathname === '/auth/v1/logout') return { status: 204 };
       return { status: 404, json: { message: 'sin simular' } };
     })();

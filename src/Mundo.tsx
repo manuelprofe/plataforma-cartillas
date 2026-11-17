@@ -1188,7 +1188,7 @@ export function Mundo({ territorio, heroe, estelas, accesorios, cinematicas, ayu
       <div className="lugar">
         {territorio.nombre}
         <span className="lugar__luciernagas" aria-label={`Luciérnagas atrapadas: ${atrapadas.size}`}>
-          ✦ {atrapadas.size}/{mundo.luciernagas.length}
+          <i className="lugar__punto" aria-hidden="true" /> {atrapadas.size}/{mundo.luciernagas.length}
           {restantes === 0 ? ' ✓' : ''}
         </span>
       </div>
@@ -1197,7 +1197,7 @@ export function Mundo({ territorio, heroe, estelas, accesorios, cinematicas, ayu
         <div className="utiles">
           <button type="button" className={`utiles__vestidor${hayPiezaNueva ? ' es-nuevo' : ''}`} onClick={() => (sonar('toque'), setPanel('vestidor'))} aria-label={hayPiezaNueva ? 'Vestir al personaje: hay algo nuevo' : 'Vestir al personaje'}>
             <img src={base + heroe.imagen} alt="" width="56" height="56" draggable={false} />
-            {hayPiezaNueva && <small>✦</small>}
+            {hayPiezaNueva && <small>🎁</small>}
           </button>
           <button type="button" onClick={() => (sonar('toque'), setPanel('album'))} aria-label={`Álbum: ${progreso.album.length} palabras`}>
             📖<small>{progreso.album.length}</small>

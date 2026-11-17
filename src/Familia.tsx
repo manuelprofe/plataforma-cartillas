@@ -5,7 +5,7 @@
 import { useEffect, useState } from 'react';
 import type { Cartilla, Palabra, Territorio } from './tipos';
 import { callar, decir, sonar } from './audio';
-import { diaDe, useProgreso } from './progreso';
+import { diaDe, hayAvanceBorrado, recuperarProgreso, useProgreso } from './progreso';
 import { BotonSostenido } from './BotonSostenido';
 
 interface Props {
@@ -67,7 +67,7 @@ export function Familia({ cartilla, territorio, base, onVolver, onBorrar }: Prop
   // Las mismas frases se muestran y se leen en voz alta.
   const frases = {
     avance: `${territorio.nombre}. Encendió ${encendidos} de ${faroles.length} faroles y tiene ${progreso.estrellas} estrellas.`,
-    vecinos: progreso.ayudados.length ? `Ayudó a ${progreso.ayudados.length === 1 ? '1 vecino' : `${progreso.ayudados.length} vecinos`} del bosque.` : '',
+    vecinos: progreso.ayudados.length ? `Ayudó a ${progreso.ayudados.length === 1 ? '1 vecino' : `${progreso.ayudados.length} vecinos`}.` : '',
     dias: dias ? `Esta semana practicó ${dias === 1 ? '1 día' : `${dias} días`}.` : '',
     repaso: repetidas.length ? `Volvió a jugar ${lista(repetidas.map((m) => `"${m.titulo}"`))}${mejoradas.length ? ' y le fue mejor que la primera vez' : ''}.` : '',
     superadas: superadas.length ? `Ahora ya le ${superadas.length === 1 ? 'sale' : 'salen'}: ${lista(superadas)}.` : '',
@@ -127,7 +127,7 @@ export function Familia({ cartilla, territorio, base, onVolver, onBorrar }: Prop
           {cartilla.titulo} · {cartilla.materia}, grado {cartilla.grado} · {new Date().toLocaleDateString('es-CO', { day: 'numeric', month: 'long', year: 'numeric' })}
         </p>
         <header className="familia__cabeza">
-          <h1>Lo que practicó en inglés</h1>
+          <h1>Lo que practicó en {cartilla.materia.toLowerCase()}</h1>
           <button type="button" className="familia__boton" onClick={onVolver}>
             Volver
           </button>
@@ -206,6 +206,11 @@ export function Familia({ cartilla, territorio, base, onVolver, onBorrar }: Prop
           </>
         )}
 
+        {hayAvanceBorrado() && (
+          <button type="button" className="familia__boton familia__boton--claro" onClick={() => (recuperarProgreso(), onVolver())}>
+            Recuperar el avance que se borró
+          </button>
+        )}
         {(hechas.length > 0 || progreso.heroe) && (
           <button type="button" className="enlace familia__borrar" onClick={() => setBorrar(true)}>
             Empezar de nuevo: borrar el avance de este dispositivo
@@ -216,7 +221,7 @@ export function Familia({ cartilla, territorio, base, onVolver, onBorrar }: Prop
       {borrar && (
         <div className="familia__confirmar" role="alertdialog" aria-label="Borrar el avance">
           <div>
-            <p>¿Borrar el avance de este dispositivo? Se pierden las estrellas, el álbum y lo que lleva puesto el personaje.</p>
+            <p>¿Borrar el avance de este dispositivo? Se quitan las estrellas, el álbum y lo que lleva puesto el personaje. Durante 7 días se puede recuperar desde esta misma pantalla.</p>
             <BotonSostenido ms={MS_BORRAR} className="familia__boton familia__boton--peligro" onListo={onBorrar}>
               Borrar (mantenga presionado 2 segundos)
             </BotonSostenido>

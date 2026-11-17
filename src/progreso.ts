@@ -288,7 +288,45 @@ export function reconocerVoz(misionesDeVoz: string[]) {
   if (nuevas.length) guardar(conEstrellas(estado, nuevas));
 }
 
+// "Empezar de nuevo" se puede deshacer durante unos días: un niño que sepa leer puede llegar
+// hasta el botón, y el avance de meses no debe perderse por un toque. La copia vive solo en
+// este dispositivo y se borra sola al vencer.
+const CLAVE_RESPALDO = 'pc_progreso_respaldo';
+const DIAS_RESPALDO = 7;
+
+function leerRespaldo(): Progreso | null {
+  try {
+    const crudo = localStorage.getItem(CLAVE_RESPALDO);
+    if (!crudo) return null;
+    const { fecha, progreso } = JSON.parse(crudo) as { fecha: number; progreso: Progreso };
+    if (Date.now() - fecha < DIAS_RESPALDO * 86_400_000) return progreso;
+    localStorage.removeItem(CLAVE_RESPALDO);
+  } catch {
+    // Almacenamiento bloqueado o copia dañada: no hay nada que recuperar.
+  }
+  return null;
+}
+
+export const hayAvanceBorrado = () => leerRespaldo() !== null;
+
+/** Devuelve el avance que se borró con "Empezar de nuevo". */
+export function recuperarProgreso() {
+  const copia = leerRespaldo();
+  if (!copia) return;
+  guardar({ ...VACIO, ...copia });
+  try {
+    localStorage.removeItem(CLAVE_RESPALDO);
+  } catch {
+    // Nada que hacer.
+  }
+}
+
 export function reiniciarProgreso() {
+  try {
+    if (estado.heroe || estado.estrellas > 0) localStorage.setItem(CLAVE_RESPALDO, JSON.stringify({ fecha: Date.now(), progreso: estado }));
+  } catch {
+    // Sin espacio no hay copia; se borra igual.
+  }
   try {
     // Que no quede en el dispositivo la copia de antes de la opción B.
     localStorage.removeItem(CLAVE_V3);

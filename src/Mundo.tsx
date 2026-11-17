@@ -16,18 +16,21 @@ import { atenuarAmbiente, callar, decir, iniciarAmbiente, pararAmbiente, sonar }
 import { Dialogo } from './Dialogo';
 import { Caminos, type Circulo, type Punto } from './rutas';
 
-const VELOCIDAD = 430; // px por segundo
+// Más pausado tras las pruebas de noviembre: se movía muy rápido y era muy sensible al dedo.
+const VELOCIDAD = 280; // px por segundo
 // Andar: arranca y frena suave, y el trote sigue a la velocidad.
-const ACELERACION = 1500; // px/s²
-const FRENADO = 1100; // px/s²: desde la velocidad máxima frena en unos 85 px
-const TROTE = 1.4; // en viajes largos, tras un segundo andando, va así de más rápido
+const ACELERACION = 900; // px/s²
+const FRENADO = 700; // px/s²: desde la velocidad máxima frena en unos 56 px
+const TROTE = 1.2; // en viajes largos, tras un segundo andando, va así de más rápido
 const ZANCADA = 150; // px que avanza en cada saltito del trote
 const ANTICIPACION = 0.08; // s que se agacha antes de arrancar desde quieto
 // Con el dedo apoyado y moviéndose, la ruta se recalcula como mucho cada tanto.
-const MS_ENTRE_RUTAS = 140;
-const MS_DEDO_QUIETO = 400; // un toque más largo que esto, con el dedo quieto, también es "sígueme"
+const MS_ENTRE_RUTAS = 220;
+const MS_DEDO_QUIETO = 650; // un toque más largo que esto, con el dedo quieto, también es "sígueme"
 // Un toque más lejos que esto de cualquier camino (bosque cerrado) no mueve al guía: duda.
 const LEJOS_DEL_CAMINO = 220;
+// Px que debe moverse el dedo apoyado para contar como arrastre (un niño no toca quieto).
+const UMBRAL_ARRASTRE = 28;
 const RADIO_TOQUE_LUCIERNAGA = 70;
 // Puntitos de la ruta, que se apagan al pasar.
 const RASTROS = 30;
@@ -903,7 +906,7 @@ export function Mundo({ territorio, heroe, estelas, accesorios, cinematicas, ayu
     const y = e.clientY - caja.top;
     if (e.type === 'pointermove') {
       // Un temblor del dedo no es arrastrar.
-      if (m.dedo && Math.hypot(x - m.dedo.x, y - m.dedo.y) < 10 && !m.arrastra) return;
+      if (m.dedo && Math.hypot(x - m.dedo.x, y - m.dedo.y) < UMBRAL_ARRASTRE && !m.arrastra) return;
       m.arrastra = true;
       m.dedo = { x, y };
       return;

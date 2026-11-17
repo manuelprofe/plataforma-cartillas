@@ -40,7 +40,7 @@ async function token(): Promise<string> {
       return sesion.access;
     }
   }
-  // Sesión nueva: los niños tendrán que volver a entrar con su PIN y red para que lo jugado suba.
+  // Sesión nueva (la anterior no existe o Auth la rechazó): los niños tendrán que volver a entrar con su PIN y red para que lo jugado suba.
   const r = await pedir('/auth/v1/signup', { cuerpo: { data: {} } });
   if (!r.ok) throw new ErrorCuenta('otro', campo(r.datos, 'msg') || `HTTP ${r.status}`);
   sesion = tokensDe(r.datos);
@@ -106,7 +106,7 @@ export async function subir(): Promise<void> {
     } catch (e) {
       if (esRed(e)) return;
       // El niño no está unido a esta sesión (sesión nueva): espera a que vuelva a entrar con red.
-      if (e instanceof Error && /no entró en este aparato/.test(e.message)) continue;
+      // Cuenta como intento: tras MAX_INTENTOS sale de la cola y no bloquea "Quitar de este celular".
       if ((envio.intentos ?? 0) + 1 >= MAX_INTENTOS) quitarDeCola(envio.id);
       else anotarIntento(envio.id);
     }

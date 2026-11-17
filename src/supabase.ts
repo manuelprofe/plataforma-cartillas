@@ -84,8 +84,13 @@ export function tokensDe(datos: unknown): Tokens {
   return { access: d.access_token, refresh: d.refresh_token, vence };
 }
 
-/** Renueva el token de acceso. Devuelve null si la sesión ya no sirve. */
+/**
+ * Renueva el token de acceso. Devuelve null solo si Auth dice que la sesión ya no sirve (400/401).
+ * Ante cualquier otra falla (5xx, 429, sin red) lanza un error de red: la sesión se conserva.
+ */
 export async function renovarTokens(refresh: string): Promise<{ tokens: Tokens; datos: unknown } | null> {
   const r = await pedir('/auth/v1/token?grant_type=refresh_token', { cuerpo: { refresh_token: refresh } });
-  return r.ok ? { tokens: tokensDe(r.datos), datos: r.datos } : null;
+  if (r.ok) return { tokens: tokensDe(r.datos), datos: r.datos };
+  if (r.status === 400 || r.status === 401) return null;
+  throw new ErrorCuenta('red', `HTTP ${r.status}`);
 }

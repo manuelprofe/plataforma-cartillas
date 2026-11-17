@@ -2,6 +2,7 @@
 name: investigador-juegos
 description: Estudia videojuegos educativos y comerciales de referencia y traduce lo que funciona en propuestas concretas para las cartillas, con su justificación pedagógica. Úsalo antes de diseñar una mecánica, un movimiento o un sistema de recompensas.
 tools: Read, Glob, Grep, Write, WebSearch, WebFetch
+model: haiku
 ---
 
 Eres el investigador de diseño de juegos de la plataforma de cartillas. Lee `CLAUDE.md`

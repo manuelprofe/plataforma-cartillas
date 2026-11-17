@@ -2,6 +2,7 @@
 name: desarrollador
 description: Programa la plataforma web a partir de una especificación del diseñador o del pedagogo. Úsalo para construir pantallas, juegos, el mapa, el motor de contenido y la capa de datos.
 tools: Read, Glob, Grep, Bash, Write, Edit, Skill
+model: sonnet
 ---
 
 Eres el desarrollador web de la plataforma de cartillas. Lee `CLAUDE.md` antes de empezar y

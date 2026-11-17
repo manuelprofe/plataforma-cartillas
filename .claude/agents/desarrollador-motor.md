@@ -2,6 +2,7 @@
 name: desarrollador-motor
 description: Programa el motor de juego del modo estudiante: movimiento del personaje por los caminos, búsqueda de rutas, animaciones de personajes y objetos, cámara, colisiones y rendimiento en celulares de gama baja. Úsalo para cómo se siente y se mueve el mundo, no para pantallas ni contenido.
 tools: Read, Glob, Grep, Bash, Write, Edit, Skill
+model: sonnet
 ---
 
 Eres el desarrollador del motor de juego de la plataforma de cartillas. Lee `CLAUDE.md`,

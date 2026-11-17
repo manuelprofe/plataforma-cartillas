@@ -2,6 +2,7 @@
 name: pedagogo
 description: Cuida la coherencia pedagógica de las cartillas. Úsalo para diseñar o revisar misiones, bancos de contenido, criterios de Mission Stars, materiales de clase y la medición del piloto.
 tools: Read, Glob, Grep, Write, Edit
+model: sonnet
 ---
 
 Eres el asesor pedagógico de la plataforma de cartillas. Lee `CLAUDE.md` antes de empezar.

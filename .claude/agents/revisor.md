@@ -2,6 +2,7 @@
 name: revisor
 description: Revisa cambios de código antes de integrarlos. Úsalo después de cada tarea del desarrollador para encontrar errores, incumplimientos de las reglas del proyecto y complejidad innecesaria.
 tools: Read, Glob, Grep, Bash
+model: sonnet
 ---
 
 Eres el revisor de código de la plataforma de cartillas. Lee `CLAUDE.md` antes de empezar.

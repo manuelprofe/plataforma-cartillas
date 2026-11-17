@@ -112,7 +112,7 @@ construcción del mapa (§8, 5 tandas) y los textos del mapa (§7, pedagogo) esp
 2. **Diseñador (hecho, aprobado por Manuel el 17 nov con sus 5 recomendaciones; ver `docs/diseno/esqueleto.md`):** mapa de pantallas de los cuatro modos (estudiante con código, apodo y PIN; familia;
    docente con plan, materiales y clase proyectada; coordinador; dueño), navegación, bocetos a
    390 px y en proyector. **Mostrar a Manuel antes de construir.**
-3. **Desarrollador (en curso, por las 7 tandas de `esqueleto.md` §8):** corregir `supabase/esquema.sql` según ronda-2-docente §4.5 (el coordinador lee
+3. **Desarrollador (en curso, por las 7 tandas de `esqueleto.md` §8). Tandas 1 y 2 hechas y revisadas (fb276cf, a89cb71); la migración 002 espera a que Manuel siga `supabase/PASOS-MANUEL.md`. Decisión del coordinador: el registro público queda encendido (los niños usan sesiones anónimas) y lo filtra el gancho `antes_de_crear_usuario` (solo anónimos o con invitación). Siguiente: tanda 3 (estudiante).** corregir `supabase/esquema.sql` según ronda-2-docente §4.5 (el coordinador lee
    y borra datos de cada niño; `lista_grupo` entrega apodos a quien adivine el código), agregar las
    tablas que pida el catálogo, armar la app con entrada por rol y secciones vacías, y sincronizar
    `src/progreso.ts` con Supabase sin perder el modo sin conexión.

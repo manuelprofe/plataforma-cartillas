@@ -1,0 +1,35 @@
+# Pasos en Supabase (los hace Manuel; la clave secreta nunca pasa por el chat)
+
+Proyecto: https://supabase.com/dashboard → proyecto `jpwwmzfhbdnzsvwuciqa`. Hacerlos en orden.
+
+1. **SQL Editor** → New query → pegar todo `supabase/migraciones/002-esqueleto.sql` → Run.
+   Debe terminar sin error (se puede volver a correr sin daño).
+2. **Authentication → Users → Add user → Create new user**: su correo y contraseña, marcando
+   "Auto Confirm User". Tiene que ser **antes del paso 5**.
+3. **SQL Editor**: darse el rol de dueño (correo en minúsculas):
+   ```sql
+   insert into perfiles (id, rol, nombre, correo)
+   select id, 'dueno', 'Manuel Vega', email from auth.users where email = 'su-correo@ejemplo.com';
+   ```
+   Debe decir "1 row". Si dice 0, el correo no coincide con el del paso 2.
+4. **SQL Editor**: registrar la versión de la cartilla:
+   ```sql
+   insert into cartilla_versiones values ('ingles-3', '2027.1', now(), null);
+   ```
+   (Habilitarla para un colegio se hará desde la pantalla del dueño en la tanda 7.)
+5. **Authentication → Hooks** → "Before User Created" → tipo Postgres → función
+   `public.antes_de_crear_usuario` → activar. "Allow new users to sign up" queda **encendido**
+   (si se apaga, los niños no pueden entrar: usan sesiones anónimas).
+6. **Authentication → Sign In / Providers → Email**: comprobar que **"Confirm email" está activado**.
+   Es lo que impide que alguien use un correo invitado que no es suyo.
+7. **Edge Functions → Deploy a new function → Via Editor**: nombre `invitar`, pegar
+   `supabase/funciones/invitar/index.ts`, dejar "Verify JWT" activado → Deploy.
+8. **Authentication → URL Configuration**: Site URL `https://curious-stroopwafel-4b70aa.netlify.app`;
+   en Redirect URLs agregar `https://curious-stroopwafel-4b70aa.netlify.app/adultos/**`.
+9. **Authentication → Email Templates**: pasar al español "Invite user" y "Reset password".
+10. **Authentication → SMTP Settings**: configurar un correo propio (el de Supabase envía muy pocos
+    por hora). Puede esperar hasta antes del piloto.
+11. Solo si Netlify construye el sitio: en Netlify, variables `VITE_SUPABASE_URL` y
+    `VITE_SUPABASE_CLAVE_PUBLICA` (valores en `.env.example`).
+
+Al terminar, avisar en el chat qué pasos quedaron hechos y si alguno dio error (copiar el mensaje).

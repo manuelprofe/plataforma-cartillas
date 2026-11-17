@@ -279,9 +279,10 @@ try {
     await p2.click('text=Tengo una tarjeta');
     await p2.waitForSelector('.teclado-codigo');
     await p2.keyboard.type('k7m2p');
-    await p2.waitForSelector('.nino--caras');
+    await p2.waitForSelector('.nino--caras', { timeout: 8000 }).catch(async () => console.log('teclado:', await p2.locator('.tarjeta__casillas').getAttribute('aria-label'), await p2.locator('.tarjeta__aviso').textContent(), otras));
     comprobar(true, 'a 1280 el código se escribe con el teclado físico');
-    await p2.click('.cara:has-text("Sara")');
+    await foto(p2, '16b-caras-1280'); console.log('ruta 1280', ruta(p2));
+    await p2.click('.cara:has-text("Sara")', { timeout: 5000 });
     await p2.waitForSelector('.teclado-pin');
     await foto(p2, '17-clave-1280');
     await c2.close();

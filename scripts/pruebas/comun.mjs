@@ -100,3 +100,48 @@ export function conMisiones(ids, extra = {}) {
   return { ...BASE_JUGADO, misiones: Object.fromEntries(ids.map((id) => [id, { veces: 1, mejorErrores: 0 }])), registro, estrellas: registro.length * 15, ...extra };
 }
 export const FAROLES = ['school', 'colors', 'numbers', 'body', 'family'].flatMap((t) => ['', '-2', '-3'].map((s) => `bosque-${t}${s}`)).concat(['bosque-time', 'bosque-time-2']);
+
+// ---------------------------------------------------------------- Adultos con Supabase simulado
+
+/** Llave de la sesión de adulto en el aparato (src/adultos/cuenta.ts). */
+export const LLAVE_ADULTO = 'pc_adulto_v1';
+
+/** Sesión guardada de un adulto con este rol. El token falso lleva el rol para el simulador. */
+export const sesionAdulto = (rol, extra = {}) => ({ access: `falso-${rol}`, refresh: `r-${rol}`, vence: Date.now() + 3600e3, correo: `${rol}@prueba.co`, perfil: { rol, nombre: `Prueba ${rol}`, colegio_id: null }, ...extra });
+
+/**
+ * Responde en lugar de Supabase (nunca sale a la red): perfiles según el token, logout y 404 para
+ * lo demás. `extra(ruta, peticion)` puede responder antes ({ status, json } o { abortar: true }).
+ */
+export async function simularSupabase(contexto, extra = () => null) {
+  const pedidos = [];
+  await contexto.route(/\/(auth|rest)\/v1\//, async (ruta) => {
+    const q = ruta.request();
+    const url = new URL(q.url());
+    pedidos.push({ metodo: q.method(), ruta: url.pathname + url.search, cuerpo: q.postData(), auth: q.headers().authorization });
+    const propio = await extra(url, q);
+    const r = propio ?? (() => {
+      const rol = /falso-(\w+)/.exec(q.headers().authorization ?? '')?.[1];
+      if (url.pathname === '/rest/v1/perfiles' && rol) return { json: [{ rol, nombre: `Prueba ${rol}`, colegio_id: null, activo: true }] };
+      if (url.pathname === '/auth/v1/logout') return { status: 204 };
+      return { status: 404, json: { message: 'sin simular' } };
+    })();
+    if (r.abortar) return ruta.abort('internetdisconnected');
+    await ruta.fulfill({ status: r.status ?? 200, contentType: 'application/json', body: r.json === undefined ? '' : JSON.stringify(r.json) });
+  });
+  return pedidos;
+}
+
+/**
+ * Para pruebas de rutas: con sesión simulada del rol de la sección que se abre (docente,
+ * coordinador o dueño); en /adultos, sin sesión, para ver el formulario.
+ */
+export async function adultoPorRuta(contexto) {
+  await contexto.addInitScript(([llave]) => {
+    const tramo = location.pathname.split('/')[1];
+    const rol = { docente: 'docente', colegio: 'coordinador', plataforma: 'dueno' }[tramo];
+    if (tramo === 'adultos') localStorage.removeItem(llave);
+    else if (rol) localStorage.setItem(llave, JSON.stringify({ access: `falso-${rol}`, refresh: 'r', vence: Date.now() + 3600e3, correo: `${rol}@prueba.co`, perfil: { rol, nombre: `Prueba ${rol}`, colegio_id: null } }));
+  }, [LLAVE_ADULTO]);
+  await simularSupabase(contexto);
+}

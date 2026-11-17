@@ -2,7 +2,7 @@
 // Uso: `npm run build`, luego `node scripts/pruebas/rutas.mjs`.
 import { readFileSync, existsSync } from 'node:fs';
 import { gzipSync } from 'node:zlib';
-import { chromium, servir, URL_APP, CLAVE, CAPTURAS, BASE_JUGADO, abrir, alMapa, entrarAMision } from './comun.mjs';
+import { chromium, servir, URL_APP, CLAVE, CAPTURAS, BASE_JUGADO, abrir, alMapa, entrarAMision, adultoPorRuta } from './comun.mjs';
 
 const RUTAS = ['/', '/adultos', '/docente', '/docente/grupos', '/docente/grupos/3B', '/docente/planear', '/docente/mas', '/docente/registro', '/colegio', '/colegio/docentes', '/plataforma', '/plataforma/cartillas', '/proyectar', '/proyectar/fin', '/mapa'];
 const ANCHAS = ['/docente', '/colegio', '/plataforma', '/proyectar'];
@@ -14,6 +14,8 @@ const comprobar = (ok, texto) => { console.log(ok ? 'bien ' : 'FALLA', texto); i
 async function contexto(navegador, { ancho = 390, alto = 844, progreso = BASE_JUGADO, sw = 'block' } = {}) {
   const c = await navegador.newContext({ viewport: { width: ancho, height: alto }, reducedMotion: 'reduce', serviceWorkers: sw });
   if (progreso) await c.addInitScript(([k, v]) => { if (!localStorage.getItem(k)) localStorage.setItem(k, v); }, [CLAVE, JSON.stringify(progreso)]);
+  // Docente, colegio y plataforma piden cuenta (tanda 2): sesión simulada del rol de cada sección.
+  await adultoPorRuta(c);
   return c;
 }
 const listo = (p) => p.waitForSelector('h1, .boton-jugar, .mundo', { timeout: 10000 });

@@ -1,13 +1,20 @@
 // Paquete de adultos: entrada, docente, coordinador y dueño (esqueleto §1.5, §2 y §3).
-// Tanda 1: rutas y cascarón con sus huecos. Sin datos ni Supabase todavía (tanda 2).
-import { StrictMode, useEffect, useState, type FormEvent } from 'react';
+// Tanda 2: entrada con cuenta (correo y contraseña, recuperar, invitación) y redirección por rol.
+// Las secciones siguen con sus huecos hasta las tandas 4 a 7.
+import { StrictMode, useEffect, useState, useSyncExternalStore, type FormEvent, type ReactNode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { navegar, useRuta } from '../navegacion';
 import { minutosDesdeProyeccion, terminarClase } from '../proyectando';
 import { Boton, Cascaron, Cortina, Encabezado, Farol, Fila, Hueco, Panel, Vacio, type Seccion } from './base';
+import { cambiarClave, correoDeSesion, entrar, ErrorCuenta, iniciar, INICIO, recuperar, salir, tomarEnlace, useCuenta, type Estado, type Falla, type Rol } from './cuenta';
 import { Icono } from './Icono';
 
+/** Resultado de leer la sesión que traen los enlaces de los correos (se lee antes de pintar). */
+let enlace: ReturnType<typeof tomarEnlace> = 'nada';
+
 export function montar(raiz: HTMLElement) {
+  if (/^\/adultos\/(clave-nueva|invitacion)\/?$/.test(location.pathname)) enlace = tomarEnlace();
+  void iniciar();
   createRoot(raiz).render(
     <StrictMode>
       <Adultos />
@@ -22,14 +29,54 @@ function useTitulo(titulo: string) {
   }, [titulo]);
 }
 
+/** ¿Hay red ahora? Se vuelve a pintar al perderla o recuperarla. */
+function useEnLinea(): boolean {
+  return useSyncExternalStore(
+    (cambio) => {
+      window.addEventListener('online', cambio);
+      window.addEventListener('offline', cambio);
+      return () => {
+        window.removeEventListener('online', cambio);
+        window.removeEventListener('offline', cambio);
+      };
+    },
+    () => navigator.onLine,
+  );
+}
+
+const NOMBRE_ROL: Record<Rol, string> = { dueno: 'Dueño de la plataforma', coordinador: 'Coordinación', docente: 'Docente' };
+
 function Adultos() {
   const ruta = useRuta().replace(/\/+$/, '') || '/';
+  const cuenta = useCuenta();
+  const enLinea = useEnLinea();
   const [, modo, ...resto] = ruta.split('/');
-  if (modo === 'docente') return <Docente resto={resto} />;
-  if (modo === 'colegio') return <Colegio resto={resto} />;
-  if (modo === 'plataforma') return <Plataforma resto={resto} />;
-  return <Entrada />;
+  if (modo === 'adultos') {
+    switch (resto[0]) {
+      case undefined:
+        return <Entrada cuenta={cuenta} />;
+      case 'recuperar':
+        return <Recuperar />;
+      case 'clave-nueva':
+        return <ClaveNueva cuenta={cuenta} />;
+      case 'invitacion':
+        return <Invitacion cuenta={cuenta} />;
+      default:
+        return <AlInicio ruta="/adultos" />;
+    }
+  }
+  // Docente, colegio y plataforma piden cuenta; cada rol vive solo en su sección.
+  if (cuenta.tipo === 'cargando') return <Cargando />;
+  if (cuenta.tipo !== 'dentro') return <AlInicio ruta="/adultos" />;
+  const propio = INICIO[cuenta.perfil.rol];
+  if (`/${modo}` !== propio) return <AlInicio ruta={propio} />;
+  const sinRed = cuenta.sinRed || !enLinea;
+  if (modo === 'docente') return <Docente resto={resto} cuenta={cuenta} sinRed={sinRed} />;
+  if (modo === 'colegio') return <Colegio resto={resto} cuenta={cuenta} sinRed={sinRed} />;
+  return <Plataforma resto={resto} cuenta={cuenta} sinRed={sinRed} />;
 }
+
+type Dentro = Extract<Estado, { tipo: 'dentro' }>;
 
 /** Ruta desconocida dentro de un modo: a su inicio, sin dejarla en el historial. */
 function AlInicio({ ruta }: { ruta: string }) {
@@ -37,46 +84,341 @@ function AlInicio({ ruta }: { ruta: string }) {
   return null;
 }
 
+function Cargando() {
+  return <main className="cargando" aria-busy="true" aria-label="Cargando" />;
+}
+
+function cerrarSesion() {
+  void salir();
+  navegar('/adultos', true);
+}
+
+/** Banda de "sin conexión" arriba del contenido (esqueleto §2.6). */
+function AvisoSinRed({ texto }: { texto: string }) {
+  return (
+    <p className="aviso-red" role="status">
+      <Icono nombre="sinRed" />
+      <span>{texto}</span>
+    </p>
+  );
+}
+
 // ---------------------------------------------------------------- Entrada (/adultos)
 
-function Entrada() {
-  useTitulo('Entrar');
-  const [ver, setVer] = useState(false);
-  const [aviso, setAviso] = useState('');
-  const entrar = (e: FormEvent) => {
-    e.preventDefault();
-    setAviso('La entrada con cuenta todavía no está abierta. Llega con la próxima versión.');
-  };
+/** Caja centrada de las pantallas de entrada, con la marca y el título. */
+function CajaEntrada({ titulo, texto, alEnviar, children }: { titulo: string; texto?: ReactNode; alEnviar?: (e: FormEvent) => void; children: ReactNode }) {
+  useTitulo(titulo);
+  const cabeza = (
+    <div className="encabezado">
+      <p className="entrada__marca">English Adventure Quest</p>
+      <h1>{titulo}</h1>
+      {texto && <p className="sec">{texto}</p>}
+    </div>
+  );
   return (
     <main className="entrada">
-      <form className="entrada__caja" onSubmit={entrar} noValidate>
-        <div className="encabezado">
-          <p className="entrada__marca">English Adventure Quest</p>
-          <h1>Entrar</h1>
-          <p className="sec">Para docentes y directivos del colegio.</p>
+      {alEnviar ? (
+        <form className="entrada__caja" onSubmit={alEnviar} noValidate>
+          {cabeza}
+          {children}
+        </form>
+      ) : (
+        <div className="entrada__caja">
+          {cabeza}
+          {children}
         </div>
-        <div className="campo">
-          <label htmlFor="correo">Correo</label>
-          <input id="correo" type="email" autoComplete="username" inputMode="email" />
+      )}
+    </main>
+  );
+}
+
+/** Campo de texto con etiqueta y su mensaje de error debajo. */
+function Campo(props: { id: string; etiqueta: string; tipo?: 'email' | 'password' | 'text'; valor: string; alCambiar: (v: string) => void; error?: string; autoComplete: string; ver?: { activo: boolean; alternar: () => void } }) {
+  const idError = `${props.id}-error`;
+  const entrada = (
+    <input
+      id={props.id}
+      type={props.ver ? (props.ver.activo ? 'text' : 'password') : (props.tipo ?? 'text')}
+      inputMode={props.tipo === 'email' ? 'email' : undefined}
+      autoComplete={props.autoComplete}
+      autoCapitalize="none"
+      spellCheck={false}
+      value={props.valor}
+      onChange={(e) => props.alCambiar(e.target.value)}
+      aria-invalid={props.error ? true : undefined}
+      aria-describedby={props.error ? idError : undefined}
+    />
+  );
+  return (
+    <div className="campo">
+      <label htmlFor={props.id}>{props.etiqueta}</label>
+      {props.ver ? (
+        <div className="campo__fila">
+          {entrada}
+          <Boton onClick={props.ver.alternar}>{props.ver.activo ? 'Ocultar' : 'Ver'}</Boton>
         </div>
-        <div className="campo">
-          <label htmlFor="clave">Contraseña</label>
-          <div className="campo__fila">
-            <input id="clave" type={ver ? 'text' : 'password'} autoComplete="current-password" />
-            <Boton onClick={() => setVer(!ver)}>{ver ? 'Ocultar' : 'Ver'}</Boton>
-          </div>
-        </div>
-        <Boton variante="primario" ancho tipo="submit">
-          Entrar
-        </Boton>
-        <p className="sec" role="status">
-          {aviso}
-        </p>
-        <Boton variante="texto" onClick={() => setAviso('Recuperar la contraseña llega con la entrada con cuenta.')}>
+      ) : (
+        entrada
+      )}
+      <p id={idError} className="mensaje mensaje--error">
+        {props.error}
+      </p>
+    </div>
+  );
+}
+
+const SIN_RED_ENTRAR = 'Sin conexión. Para entrar la primera vez hace falta internet.';
+
+/** Texto para el adulto según lo que falló. */
+function textoFalla(e: unknown, contexto: 'entrar' | 'clave' | 'correo'): string {
+  const falla: Falla = e instanceof ErrorCuenta ? e.falla : 'otro';
+  switch (falla) {
+    case 'red':
+      return contexto === 'entrar' ? SIN_RED_ENTRAR : 'Sin conexión. Intente de nuevo cuando vuelva la señal.';
+    case 'credenciales':
+      return 'El correo o la contraseña no coinciden.';
+    case 'clave-corta':
+      return 'Use una contraseña de al menos 8 caracteres.';
+    case 'misma-clave':
+      return 'Esa es la contraseña que ya tenía. Escriba otra.';
+    case 'enlace':
+      return 'El enlace venció o ya se usó. Pida uno nuevo.';
+    case 'sin-config':
+      return 'La entrada con cuenta no está disponible en esta copia de la plataforma.';
+    default:
+      return e instanceof ErrorCuenta && e.message === 'demasiados' ? 'Se pidieron muchos correos seguidos. Espere unos minutos e intente de nuevo.' : 'No se pudo completar. Intente de nuevo en un momento.';
+  }
+}
+
+const correoValido = (c: string) => /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(c.trim());
+
+function Entrada({ cuenta }: { cuenta: Estado }) {
+  const [ver, setVer] = useState(false);
+  const [correo, setCorreo] = useState('');
+  const [clave, setClave] = useState('');
+  const [errores, setErrores] = useState<{ correo?: string; clave?: string; general?: string }>({});
+  const [enviando, setEnviando] = useState(false);
+
+  if (cuenta.tipo === 'dentro') return <AlInicio ruta={INICIO[cuenta.perfil.rol]} />;
+  if (cuenta.tipo === 'cargando') return <Cargando />;
+  if (cuenta.tipo === 'sin-acceso') return <SinAcceso correo={cuenta.correo} />;
+
+  const alEnviar = async (e: FormEvent) => {
+    e.preventDefault();
+    const nuevos = {
+      correo: !correo.trim() ? 'Escriba su correo.' : !correoValido(correo) ? 'Revise el correo: debe ser como nombre@colegio.edu.co.' : undefined,
+      clave: !clave ? 'Escriba su contraseña.' : undefined,
+    };
+    setErrores(nuevos);
+    if (nuevos.correo || nuevos.clave) return;
+    setEnviando(true);
+    try {
+      await entrar(correo, clave);
+    } catch (falla) {
+      const texto = textoFalla(falla, 'entrar');
+      setErrores(falla instanceof ErrorCuenta && falla.falla === 'credenciales' ? { clave: texto } : { general: texto });
+    } finally {
+      setEnviando(false);
+    }
+  };
+
+  return (
+    <CajaEntrada titulo="Entrar" texto="Para docentes y directivos del colegio." alEnviar={alEnviar}>
+      <Campo id="correo" etiqueta="Correo" tipo="email" autoComplete="username" valor={correo} alCambiar={setCorreo} error={errores.correo} />
+      <Campo id="clave" etiqueta="Contraseña" autoComplete="current-password" valor={clave} alCambiar={setClave} error={errores.clave} ver={{ activo: ver, alternar: () => setVer(!ver) }} />
+      <Boton variante="primario" ancho tipo="submit" disabled={enviando}>
+        {enviando ? 'Entrando…' : 'Entrar'}
+      </Boton>
+      <p className="mensaje mensaje--error" role="alert">
+        {errores.general}
+      </p>
+      <div className="entrada__pie">
+        <Boton variante="texto" ruta="/adultos/recuperar">
           Olvidé mi contraseña
         </Boton>
-      </form>
-    </main>
+        <Boton variante="texto" ruta="/">
+          Volver al juego
+        </Boton>
+      </div>
+    </CajaEntrada>
+  );
+}
+
+/** Cuenta que existe en Auth pero no tiene rol: invitación sin aceptar o acceso desactivado. */
+function SinAcceso({ correo }: { correo?: string }) {
+  return (
+    <CajaEntrada titulo="Su cuenta no tiene acceso" texto={`${correo ? `La cuenta ${correo}` : 'Esta cuenta'} no tiene un colegio asignado o su acceso fue desactivado.`}>
+      <p className="sec">Si recibió una invitación, ábrala desde el enlace del correo. Si su acceso se desactivó, hable con la coordinación de su colegio.</p>
+      <Boton variante="primario" ancho icono="salir" onClick={cerrarSesion}>
+        Salir
+      </Boton>
+    </CajaEntrada>
+  );
+}
+
+function Recuperar() {
+  const [correo, setCorreo] = useState('');
+  const [error, setError] = useState<string>();
+  const [general, setGeneral] = useState<string>();
+  const [enviado, setEnviado] = useState(false);
+  const [enviando, setEnviando] = useState(false);
+
+  const alEnviar = async (e: FormEvent) => {
+    e.preventDefault();
+    const malo = !correo.trim() ? 'Escriba su correo.' : !correoValido(correo) ? 'Revise el correo: debe ser como nombre@colegio.edu.co.' : undefined;
+    setError(malo);
+    setGeneral(undefined);
+    if (malo) return;
+    setEnviando(true);
+    try {
+      await recuperar(correo);
+      setEnviado(true);
+    } catch (falla) {
+      setGeneral(textoFalla(falla, 'correo'));
+    } finally {
+      setEnviando(false);
+    }
+  };
+
+  if (enviado)
+    return (
+      <CajaEntrada titulo="Revise su correo" texto={`Si ${correo.trim()} tiene cuenta, le llegó un enlace para crear una contraseña nueva. Revise también el correo no deseado.`}>
+        <Boton variante="primario" ancho ruta="/adultos">
+          Volver a entrar
+        </Boton>
+      </CajaEntrada>
+    );
+  return (
+    <CajaEntrada titulo="Recuperar la contraseña" texto="Escriba el correo con el que entra. Le enviaremos un enlace para crear una contraseña nueva." alEnviar={alEnviar}>
+      <Campo id="correo" etiqueta="Correo" tipo="email" autoComplete="username" valor={correo} alCambiar={setCorreo} error={error} />
+      <Boton variante="primario" ancho tipo="submit" disabled={enviando}>
+        {enviando ? 'Enviando…' : 'Enviar el enlace'}
+      </Boton>
+      <p className="mensaje mensaje--error" role="alert">
+        {general}
+      </p>
+      <div className="entrada__pie">
+        <Boton variante="texto" icono="volver" ruta="/adultos">
+          Volver a entrar
+        </Boton>
+      </div>
+    </CajaEntrada>
+  );
+}
+
+/** Formulario de contraseña nueva, común a recuperar e invitación. */
+function FormClave({ titulo, texto, boton, alGuardar }: { titulo: string; texto: ReactNode; boton: string; alGuardar: () => void }) {
+  const [clave, setClave] = useState('');
+  const [ver, setVer] = useState(false);
+  const [error, setError] = useState<string>();
+  const [general, setGeneral] = useState<string>();
+  const [enviando, setEnviando] = useState(false);
+
+  const alEnviar = async (e: FormEvent) => {
+    e.preventDefault();
+    const malo = clave.length < 8 ? 'Use una contraseña de al menos 8 caracteres.' : undefined;
+    setError(malo);
+    setGeneral(undefined);
+    if (malo) return;
+    setEnviando(true);
+    try {
+      await cambiarClave(clave);
+      alGuardar();
+    } catch (falla) {
+      const f = falla instanceof ErrorCuenta ? falla.falla : 'otro';
+      if (f === 'clave-corta' || f === 'misma-clave') setError(textoFalla(falla, 'clave'));
+      else setGeneral(textoFalla(falla, 'clave'));
+      setEnviando(false);
+    }
+  };
+
+  return (
+    <CajaEntrada titulo={titulo} texto={texto} alEnviar={alEnviar}>
+      <Campo id="clave-nueva" etiqueta="Contraseña nueva" autoComplete="new-password" valor={clave} alCambiar={setClave} error={error} ver={{ activo: ver, alternar: () => setVer(!ver) }} />
+      <p className="meta">Al menos 8 caracteres. Úsela solo en esta plataforma.</p>
+      <Boton variante="primario" ancho tipo="submit" disabled={enviando}>
+        {enviando ? 'Guardando…' : boton}
+      </Boton>
+      <p className="mensaje mensaje--error" role="alert">
+        {general}
+      </p>
+    </CajaEntrada>
+  );
+}
+
+/** El correo de la sesión que abrió el enlace, para mostrarlo. */
+function useCorreo(cuenta: Estado): string | undefined {
+  const inicial = cuenta.tipo === 'dentro' || cuenta.tipo === 'sin-acceso' ? cuenta.correo : undefined;
+  const [correo, setCorreo] = useState(inicial);
+  useEffect(() => {
+    if (!correo && (cuenta.tipo === 'dentro' || cuenta.tipo === 'sin-acceso')) void correoDeSesion().then(setCorreo, () => undefined);
+  }, [correo, cuenta.tipo]);
+  return correo ?? inicial;
+}
+
+function EnlaceVencido({ titulo, texto, accion }: { titulo: string; texto: string; accion: { ruta: string; etiqueta: string } }) {
+  return (
+    <CajaEntrada titulo={titulo} texto={texto}>
+      <Boton variante="primario" ancho ruta={accion.ruta}>
+        {accion.etiqueta}
+      </Boton>
+      <div className="entrada__pie">
+        <Boton variante="texto" icono="volver" ruta="/adultos">
+          Volver a entrar
+        </Boton>
+      </div>
+    </CajaEntrada>
+  );
+}
+
+/** /adultos/clave-nueva: llega desde el correo de "Olvidé mi contraseña". */
+function ClaveNueva({ cuenta }: { cuenta: Estado }) {
+  const correo = useCorreo(cuenta);
+  if (cuenta.tipo === 'cargando') return <Cargando />;
+  if (enlace === 'enlace' || cuenta.tipo === 'fuera')
+    return <EnlaceVencido titulo="El enlace ya no sirve" texto="El enlace venció o ya se usó. Pida uno nuevo: llega en un par de minutos." accion={{ ruta: '/adultos/recuperar', etiqueta: 'Pedir un enlace nuevo' }} />;
+  return <FormClave titulo="Contraseña nueva" texto={correo ? `Para la cuenta ${correo}.` : 'Escriba la contraseña con la que va a entrar.'} boton="Guardar y entrar" alGuardar={() => navegar(cuenta.tipo === 'dentro' ? INICIO[cuenta.perfil.rol] : '/adultos', true)} />;
+}
+
+/** /adultos/invitacion: llega desde el correo de invitación; crea la contraseña y entra. */
+function Invitacion({ cuenta }: { cuenta: Estado }) {
+  const correo = useCorreo(cuenta);
+  if (cuenta.tipo === 'cargando') return <Cargando />;
+  if (enlace === 'enlace')
+    return <EnlaceVencido titulo="La invitación ya no sirve" texto="El enlace venció o ya se usó. Pida a quien lo invitó que se la envíe de nuevo. Si ya creó su contraseña, entre con ella." accion={{ ruta: '/adultos', etiqueta: 'Entrar con mi contraseña' }} />;
+  if (cuenta.tipo === 'fuera')
+    return <EnlaceVencido titulo="Aceptar la invitación" texto="Abra el enlace de la invitación que le llegó al correo. Si ya creó su contraseña, entre con ella." accion={{ ruta: '/adultos', etiqueta: 'Entrar con mi contraseña' }} />;
+  if (cuenta.tipo === 'sin-acceso')
+    return (
+      <CajaEntrada titulo="No encontramos su invitación" texto={`${correo ? `El correo ${correo}` : 'Este correo'} no tiene una invitación vigente. Las invitaciones duran 14 días.`}>
+        <p className="sec">Pida a quien lo invitó que se la envíe de nuevo, con este mismo correo.</p>
+        <Boton variante="primario" ancho icono="salir" onClick={cerrarSesion}>
+          Salir
+        </Boton>
+      </CajaEntrada>
+    );
+  return (
+    <FormClave
+      titulo={`Le damos la bienvenida, ${cuenta.perfil.nombre}`}
+      texto={`Entra como ${NOMBRE_ROL[cuenta.perfil.rol].toLowerCase()}${correo ? ` con ${correo}` : ''}. Cree su contraseña para las próximas veces.`}
+      boton="Guardar y entrar"
+      alGuardar={() => navegar(INICIO[cuenta.perfil.rol], true)}
+    />
+  );
+}
+
+/** Cuenta del adulto: nombre, correo, rol y salir. */
+function MiCuenta({ cuenta, volver }: { cuenta: Dentro; volver?: { ruta: string; etiqueta: string } }) {
+  useTitulo('Cuenta');
+  return (
+    <>
+      <Encabezado titulo="Cuenta" volver={volver} />
+      <Panel filas>
+        <Fila icono="cuenta" titulo={cuenta.perfil.nombre} detalle={cuenta.correo} />
+        <Fila titulo={NOMBRE_ROL[cuenta.perfil.rol]} detalle="Rol en la plataforma" />
+        <Fila alTocar={cerrarSesion} icono="salir" titulo="Salir" detalle="Cierra la sesión en este aparato" />
+      </Panel>
+    </>
   );
 }
 
@@ -95,7 +437,10 @@ const MAS = ['registro', 'ayuda', 'cuenta'];
 
 const hoy = () => new Intl.DateTimeFormat('es-CO', { weekday: 'long', day: 'numeric', month: 'long' }).format(new Date());
 
-function Docente({ resto }: { resto: string[] }) {
+const SIN_RED_DOCENTE = 'Sin conexión. Lo que marque se guarda en este celular y sube solo cuando vuelva la señal.';
+const SIN_RED_LECTURA = 'Sin conexión. Ve lo último que se cargó; para cambiar algo hace falta internet.';
+
+function Docente({ resto, cuenta, sinRed }: { resto: string[]; cuenta: Dentro; sinRed: boolean }) {
   const [seccion = '', ...mas] = resto;
   const activa = seccion === '' ? '/docente' : MAS.includes(seccion) || seccion === 'mas' ? '/docente/mas' : `/docente/${seccion}`;
   const estado = (
@@ -105,13 +450,13 @@ function Docente({ resto }: { resto: string[] }) {
     </>
   );
   return (
-    <Cascaron inicio="/docente" estado={estado} secciones={DOCENTE} activa={activa} nombre="Secciones del docente">
-      <PaginaDocente seccion={seccion} mas={mas} />
+    <Cascaron inicio="/docente" estado={estado} aviso={sinRed && <AvisoSinRed texto={SIN_RED_DOCENTE} />} secciones={DOCENTE} activa={activa} nombre="Secciones del docente">
+      <PaginaDocente seccion={seccion} mas={mas} cuenta={cuenta} />
     </Cascaron>
   );
 }
 
-function PaginaDocente({ seccion, mas }: { seccion: string; mas: string[] }) {
+function PaginaDocente({ seccion, mas, cuenta }: { seccion: string; mas: string[]; cuenta: Dentro }) {
   switch (seccion) {
     case '':
       return <DocenteInicio />;
@@ -126,7 +471,7 @@ function PaginaDocente({ seccion, mas }: { seccion: string; mas: string[] }) {
     case 'ayuda':
       return <SeccionVacia titulo="Ayuda" hueco="Aquí irá la guía de uso de la plataforma" volver={{ ruta: '/docente/mas', etiqueta: 'Más' }} />;
     case 'cuenta':
-      return <SeccionVacia titulo="Cuenta" hueco="Aquí irán los datos de su cuenta" volver={{ ruta: '/docente/mas', etiqueta: 'Más' }} />;
+      return <MiCuenta cuenta={cuenta} volver={{ ruta: '/docente/mas', etiqueta: 'Más' }} />;
     case 'mas':
       return <DocenteMas />;
     default:
@@ -221,7 +566,7 @@ function DocenteMas() {
         <Fila ruta="/docente/registro" icono="registro" titulo="Registro del piloto" />
         <Fila ruta="/docente/ayuda" icono="ayuda" titulo="Ayuda" />
         <Fila ruta="/docente/cuenta" icono="cuenta" titulo="Cuenta" />
-        <Fila ruta="/adultos" icono="salir" titulo="Salir" />
+        <Fila alTocar={cerrarSesion} icono="salir" titulo="Salir" />
       </Panel>
     </>
   );
@@ -248,7 +593,14 @@ const COLEGIO: Seccion[] = [
   { ruta: '/colegio/cuenta', etiqueta: 'Cuenta', icono: 'cuenta' },
 ];
 
-function Colegio({ resto }: { resto: string[] }) {
+/** Salir, a la derecha de la barra (coordinador y dueño no tienen pestaña "Más"). */
+const BOTON_SALIR = (
+  <Boton variante="texto" icono="salir" onClick={cerrarSesion}>
+    Salir
+  </Boton>
+);
+
+function Colegio({ resto, cuenta, sinRed }: { resto: string[]; cuenta: Dentro; sinRed: boolean }) {
   const [seccion = ''] = resto;
   const activa = seccion === '' ? '/colegio' : `/colegio/${seccion === 'grupos' ? 'docentes' : seccion}`;
   let pagina;
@@ -273,13 +625,13 @@ function Colegio({ resto }: { resto: string[] }) {
       pagina = <SeccionVacia titulo="Cierre del año" hueco="Aquí irá el cierre del año escolar" texto="Explicará qué se borra al cerrar el año y pedirá escribir el año para confirmar." />;
       break;
     case 'cuenta':
-      pagina = <SeccionVacia titulo="Cuenta" hueco="Aquí irán los datos de su cuenta" />;
+      pagina = <MiCuenta cuenta={cuenta} />;
       break;
     default:
       pagina = <AlInicio ruta="/colegio" />;
   }
   return (
-    <Cascaron inicio="/colegio" secciones={COLEGIO} activa={activa} nombre="Secciones del colegio">
+    <Cascaron inicio="/colegio" fin={BOTON_SALIR} aviso={sinRed && <AvisoSinRed texto={SIN_RED_LECTURA} />} secciones={COLEGIO} activa={activa} nombre="Secciones del colegio">
       {pagina}
     </Cascaron>
   );
@@ -303,11 +655,11 @@ const PAGINAS_PLATAFORMA: Record<string, { titulo: string; hueco: string; texto?
   piloto: { titulo: 'Datos del piloto', hueco: 'Aún no hay datos para exportar', texto: 'El resumen se descargará sin apodos.' },
 };
 
-function Plataforma({ resto }: { resto: string[] }) {
+function Plataforma({ resto, sinRed }: { resto: string[]; cuenta: Dentro; sinRed: boolean }) {
   const [seccion = ''] = resto;
   const datos = PAGINAS_PLATAFORMA[seccion];
   return (
-    <Cascaron inicio="/plataforma" secciones={PLATAFORMA} activa={seccion ? `/plataforma/${seccion}` : '/plataforma'} nombre="Secciones de la plataforma">
+    <Cascaron inicio="/plataforma" fin={BOTON_SALIR} aviso={sinRed && <AvisoSinRed texto={SIN_RED_LECTURA} />} secciones={PLATAFORMA} activa={seccion ? `/plataforma/${seccion}` : '/plataforma'} nombre="Secciones de la plataforma">
       {datos ? <SeccionVacia {...datos} /> : <AlInicio ruta="/plataforma" />}
     </Cascaron>
   );

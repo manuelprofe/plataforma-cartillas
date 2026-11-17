@@ -25,8 +25,8 @@ export interface Seccion {
   icono: NombreIcono;
 }
 
-/** Barra superior de 56 px: nombre de la plataforma y, a la derecha, el estado de guardado. */
-export function Barra({ inicio, estado }: { inicio: string; estado?: ReactNode }) {
+/** Barra superior de 56 px: nombre de la plataforma y, a la derecha, el estado de guardado y acciones. */
+export function Barra({ inicio, estado, fin }: { inicio: string; estado?: ReactNode; fin?: ReactNode }) {
   return (
     <header className="barra">
       <Enlace ruta={inicio} className="barra__marca">
@@ -37,6 +37,7 @@ export function Barra({ inicio, estado }: { inicio: string; estado?: ReactNode }
           {estado}
         </p>
       )}
+      {fin && <div className="barra__fin">{fin}</div>}
     </header>
   );
 }
@@ -55,13 +56,16 @@ export function Pestanas({ secciones, activa, nombre }: { secciones: Seccion[]; 
   );
 }
 
-/** Cascarón de una pantalla de adultos: barra, pestañas y el contenido de la sección. */
-export function Cascaron(props: { inicio: string; estado?: ReactNode; secciones: Seccion[]; activa: string; nombre: string; children: ReactNode }) {
+/** Cascarón de una pantalla de adultos: barra, pestañas, un aviso opcional y el contenido. */
+export function Cascaron(props: { inicio: string; estado?: ReactNode; fin?: ReactNode; aviso?: ReactNode; secciones: Seccion[]; activa: string; nombre: string; children: ReactNode }) {
   return (
     <div className="cascaron">
-      <Barra inicio={props.inicio} estado={props.estado} />
+      <Barra inicio={props.inicio} estado={props.estado} fin={props.fin} />
       <Pestanas secciones={props.secciones} activa={props.activa} nombre={props.nombre} />
-      <main className="contenido">{props.children}</main>
+      <main className="contenido">
+        {props.aviso}
+        {props.children}
+      </main>
     </div>
   );
 }
@@ -98,8 +102,8 @@ export function Panel({ titulo, fin, filas, children }: { titulo?: string; fin?:
   );
 }
 
-/** Fila de 56 px. Con `ruta` es un enlace con flecha; sin ella, solo muestra. */
-export function Fila({ ruta, icono, titulo, detalle, fin }: { ruta?: string; icono?: NombreIcono; titulo: ReactNode; detalle?: ReactNode; fin?: ReactNode }) {
+/** Fila de 56 px. Con `ruta` es un enlace con flecha; con `alTocar`, un botón; sin ninguno, solo muestra. */
+export function Fila({ ruta, alTocar, icono, titulo, detalle, fin }: { ruta?: string; alTocar?: () => void; icono?: NombreIcono; titulo: ReactNode; detalle?: ReactNode; fin?: ReactNode }) {
   const dentro = (
     <>
       {icono && <Icono nombre={icono} />}
@@ -115,6 +119,12 @@ export function Fila({ ruta, icono, titulo, detalle, fin }: { ruta?: string; ico
       )}
     </>
   );
+  if (alTocar)
+    return (
+      <button type="button" className="fila" onClick={alTocar}>
+        {dentro}
+      </button>
+    );
   return ruta ? (
     <Enlace ruta={ruta} className="fila">
       {dentro}

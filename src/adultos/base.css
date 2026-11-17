@@ -149,6 +149,8 @@ a {
   color: var(--a-texto-3);
 }
 .barra__estado .icono { width: 18px; height: 18px; color: var(--a-ok); }
+.barra__estado + .barra__fin { margin-left: 0; }
+.barra__fin { margin-left: auto; display: flex; align-items: center; }
 
 .pestanas {
   position: fixed;
@@ -262,6 +264,7 @@ a {
   font: inherit;
   text-align: left;
 }
+button.fila { border: 0; border-top: 1px solid var(--a-linea); cursor: pointer; }
 .fila:first-child { border-top: 0; }
 a.fila:hover, button.fila:hover { background: var(--a-fondo); }
 .fila:focus-visible { outline-offset: -3px; }
@@ -399,6 +402,25 @@ a.fila:hover, button.fila:hover { background: var(--a-fondo); }
 }
 .entrada__caja { width: 100%; max-width: 400px; display: flex; flex-direction: column; gap: var(--e-5); }
 .entrada__marca { font: 600 20px/1 var(--f-marca); color: var(--a-tinta); }
+.entrada__pie { display: flex; flex-direction: column; align-items: flex-start; gap: var(--e-2); }
+
+/* Mensajes de formulario y avisos de estado. El color nunca es la única señal: siempre hay texto. */
+.mensaje { margin: 0; }
+.mensaje:empty { display: none; }
+.mensaje--error { color: var(--a-error); font-weight: 500; }
+.mensaje--ok { color: var(--a-ok); font-weight: 500; }
+.campo input[aria-invalid='true'] { border-color: var(--a-error); }
+.aviso-red {
+  display: flex;
+  gap: var(--e-3);
+  align-items: flex-start;
+  padding: var(--e-3) var(--e-4);
+  border-radius: var(--r-control);
+  background: var(--a-hundido);
+  color: var(--a-texto-2);
+}
+.aviso-red .icono { margin-top: 2px; }
+.cargando { min-height: 100dvh; }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {

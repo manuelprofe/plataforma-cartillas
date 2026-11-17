@@ -1,5 +1,9 @@
--- Esquema de la plataforma de cartillas.
--- Se pega completo en el editor SQL de Supabase y se ejecuta una vez.
+-- Esquema de la plataforma de cartillas: punto de partida (migración 001).
+-- NO es el estado final. Instalación nueva: pegar en el editor SQL de Supabase este archivo y
+-- después, en orden, cada archivo de supabase/migraciones/ (002-esqueleto.sql, ...).
+-- La migración 002 cambia funciones de aquí (lista_grupo, entrar_estudiante, dar_estrellas,
+-- registrar_mision, crear_grupo, crear_estudiante) y quita al coordinador y al dueño la
+-- lectura de filas de cada niño. Prueba local de todo junto: supabase/prueba_local.sql.
 --
 -- Jerarquía: colegio -> docentes -> grupos -> estudiantes.
 -- Adultos (dueño, coordinador, docente) entran con correo y contraseña.

@@ -64,7 +64,9 @@ function sinConexion(): Plugin {
         const entra =
           ruta === 'manifest.webmanifest' ||
           ruta.startsWith('iconos-app/') ||
-          /^assets\/.+\.(js|css)$/.test(ruta) ||
+          // Del armazón se excluye el código de adultos y del telón: el celular del niño no lo
+          // descarga al instalar. assets/ es caché primero, así que se guarda la primera vez que se pide.
+          (/^assets\/.+\.(js|css)$/.test(ruta) && !/^assets\/(Adultos|Proyectar|base)-/.test(ruta)) ||
           // Solo la fuente latina; devanagari, vietnamese y latin-ext se piden si hacen falta.
           /^assets\/.*-latin-wght-.*\.woff2$/.test(ruta);
         if (entra) armazon[ruta] = huellaDe(leer(ruta));
@@ -123,7 +125,7 @@ function adelantarEstudiante(): Plugin {
         ];
         const guion =
           `if(!${ajenas}.test(location.pathname))[${enlaces.join(',')}]` +
-          `.forEach(function(e){var l=document.createElement('link');l.rel=e[0];l.href=e[1];if(e[2])l.as=e[2];document.head.appendChild(l)})`;
+          `.forEach(function(e){var l=document.createElement('link');l.rel=e[0];l.href=e[1];if(e[2])l.as=e[2];l.crossOrigin='';document.head.appendChild(l)})`;
         return html.replace('</head>', `  <script>${guion}</script>\n  </head>`);
       },
     },

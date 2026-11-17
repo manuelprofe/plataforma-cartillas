@@ -1,3 +1,5 @@
+# Un archivo de assets que ya no existe (pestaña vieja tras publicar) responde 404, no el index.
+/assets/*  /404.html  404
 # Rutas con historial: cualquier dirección que no sea un archivo publicado abre la app.
 # Netlify sirve primero los archivos que existen (assets, cartillas, sw.js).
 /*    /index.html   200

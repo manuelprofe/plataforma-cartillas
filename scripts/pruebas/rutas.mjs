@@ -125,6 +125,11 @@ try {
     await p.goto(url('/')); await listo(p);
     await p.evaluate(() => navigator.serviceWorker.ready);
     await p.waitForTimeout(8000); // instala y baja el paquete de la cartilla en segundo plano
+    // El armazón no trae el código de adultos ni del telón: se guarda la primera vez que se abre.
+    const sw = await p.evaluate(() => fetch('/sw.js').then((r) => r.text()));
+    comprobar(!/assets\/(Adultos|Proyectar|base)-/.test(sw), 'el armazón del niño no incluye adultos ni proyectar');
+    for (const r of ['/docente/grupos', '/proyectar']) { await p.goto(url(r)); await listo(p); }
+    await p.waitForTimeout(1000);
     await c.setOffline(true);
     for (const r of ['/mapa', '/docente/grupos', '/colegio', '/proyectar', '/adultos', '/']) {
       await p.goto(url(r)); await listo(p);

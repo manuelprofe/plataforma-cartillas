@@ -16,9 +16,4 @@ const PAQUETES: Record<Modo, () => Promise<{ montar: (raiz: HTMLElement) => void
 };
 void PAQUETES[modo]().then((m) => m.montar(raiz));
 
-// Atrás o adelante hacia otro modo: se carga esa página completa.
-window.addEventListener('popstate', () => {
-  if (modoDe(location.pathname) !== modo) location.reload();
-});
-
 registrarSinConexion();

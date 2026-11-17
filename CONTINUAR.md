@@ -109,10 +109,10 @@ construcción del mapa (§8, 5 tandas) y los textos del mapa (§7, pedagogo) esp
    juego en casa con celular familiar, prueba del tema y autorización con datos en EE. UU.; y escribir
    `docs/pedagogia/catalogo-interfaces.md` (qué contenido vive en cada interfaz, campos de cada
    material del docente, si sale del paquete de la cartilla o de la base de datos).
-2. **Diseñador (en curso):** mapa de pantallas de los cuatro modos (estudiante con código, apodo y PIN; familia;
+2. **Diseñador (hecho, aprobado por Manuel el 17 nov con sus 5 recomendaciones; ver `docs/diseno/esqueleto.md`):** mapa de pantallas de los cuatro modos (estudiante con código, apodo y PIN; familia;
    docente con plan, materiales y clase proyectada; coordinador; dueño), navegación, bocetos a
    390 px y en proyector. **Mostrar a Manuel antes de construir.**
-3. **Desarrollador:** corregir `supabase/esquema.sql` según ronda-2-docente §4.5 (el coordinador lee
+3. **Desarrollador (en curso, por las 7 tandas de `esqueleto.md` §8):** corregir `supabase/esquema.sql` según ronda-2-docente §4.5 (el coordinador lee
    y borra datos de cada niño; `lista_grupo` entrega apodos a quien adivine el código), agregar las
    tablas que pida el catálogo, armar la app con entrada por rol y secciones vacías, y sincronizar
    `src/progreso.ts` con Supabase sin perder el modo sin conexión.

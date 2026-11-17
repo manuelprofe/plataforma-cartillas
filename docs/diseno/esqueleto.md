@@ -427,3 +427,8 @@ esquema lo corrige el desarrollador en la tanda 2 con la §7.
 | 3 | Sin red, el PIN se comprueba con una huella guardada en el celular. Con 1.000 combinaciones, alguien con el celular en la mano podría adivinarla. | **Aceptarlo**: el PIN separa hermanos, no protege secretos (el avance solo crece). El auditor lo revisa |
 | 4 | ¿Cortina de privacidad durante 90 minutos después de proyectar desde ese aparato? | **Sí, 90 minutos**: una hora de clase con margen; "Ya terminé la clase" la quita antes |
 | 5 | ¿El QR de la tarjeta abre la dirección `/t/CÓDIGO` con la cámara del celular, sin pedir cámara dentro de la app? | **Sí**: funciona en cualquier Android reciente y la app no pide permisos |
+
+**Respuesta de Manuel (17 nov): aprobados los bocetos y las 5 recomendaciones.** Además, criterio
+de estilo: las interfaces de dueño, coordinador o rector y docente son **serias y profesionales**
+(con clase, estilo y altura; personajes solo como acento discreto, nunca como decoración); la del
+niño es **especialmente para niños**: cómoda, que lo identifique y le dé ganas de volver.

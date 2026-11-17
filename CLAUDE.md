@@ -16,6 +16,10 @@ para el próximo año escolar con grado tercero; después vienen preescolar y el
 
 Jerarquía de datos: colegio → docentes → grupos → estudiantes.
 
+Dos lenguajes visuales: los modos de adultos (dueño, coordinador o rector, docente, zona de la
+familia) son serios y profesionales, con clase y altura; el modo estudiante es hecho para niños,
+cómodo, que los identifique y les dé ganas de volver.
+
 ## Reglas que no se negocian
 
 1. **Contenido separado del motor.** Una cartilla es un paquete de datos (textos, imágenes,

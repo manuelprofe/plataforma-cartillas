@@ -111,14 +111,18 @@ ronda de pruebas. (El silencio en su computador era Chrome con el sonido apagado
   "Dora la exploradora"**. Falta que el pedagogo defina esa progresión y escriba la versión
   mezclada de los diálogos (hoy solo existen español completo e inglés completo; el modo
   `mixto` del código dice la frase en inglés y luego en español, que no es lo que se quiere).
-- **Voz grabada:** `herramientas/generar_voz.py` genera un MP3 por frase con Piper (voz neuronal
-  local, no envía nada a internet) y anota el índice `voz` en `cartilla.json`; los audios van en
-  `public/cartillas/ingles-3/voz/` (158 frases, ~1,2 MB, fuera de la primera carga; el service
-  worker los guarda con el paquete). Voces: `es_MX-claude-high` (Apache 2.0) y
-  `en_US-ljspeech-high` (dominio público), de huggingface.co/rhasspy/piper-voices.
-  **Después de cambiar textos: correr `construir_bosque.py` y luego `generar_voz.py`** (solo
-  genera lo nuevo). Lo que no esté grabado suena con la voz del navegador. Nadie ha oído aún
-  la voz nueva con oído humano: esperar la opinión de Manuel y los probadores.
+- **Voz grabada:** `herramientas/generar_voz.py` genera un MP3 por frase con **Kokoro**
+  (modelo Kokoro-82M, Apache 2.0; corre local, no envía nada a internet) y anota el índice
+  `voz` en `cartilla.json`; los audios van en `public/cartillas/ingles-3/voz/` (158 frases,
+  ~1,5 MB, fuera de la primera carga). Voces: `ef_dora` (español, a 0,82 de velocidad) y
+  `af_heart` (inglés, a 0,85). La primera versión usó Piper y a Manuel le sonó robótica,
+  peor que la del navegador: no volver a Piper. Manuel tiene muestras de `ef_dora`, `em_alex`,
+  `af_heart` y `af_bella` para elegir. Si Kokoro tampoco convence, el siguiente escalón es un
+  servicio de pago con voces colombianas (Azure `es-CO`, ElevenLabs): requiere cuenta y clave
+  de Manuel (pedirla con el formulario seguro, nunca en el chat) y revisar que no envíe datos
+  de menores (solo son los textos de la cartilla).
+  **Después de cambiar textos: correr `construir_bosque.py --solo-contenido` y luego
+  `generar_voz.py`** (solo genera lo nuevo). Lo que no esté grabado suena con la voz del navegador.
 - **Construido y revisado, sin publicar:** resumen para la familia (portada, sostener 3 s;
   "Empezar de nuevo" al final, sostener 2 s), "Recuerdos" en el álbum, y los arreglos del
   revisor a la voz (se reanuda si el sistema pausa el audio; si la grabación tarda más de

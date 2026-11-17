@@ -2,24 +2,26 @@
 """Genera la voz de una cartilla como archivos de audio, una sola vez.
 
 Lee `cartilla.json`, reúne todo lo que la app dice en voz alta y lo convierte a MP3 con
-Piper (voz neuronal que corre en este computador; no envía nada a internet). Deja los
+Kokoro (voz neuronal que corre en este computador; no envía nada a internet). Deja los
 archivos en `voz/` junto a la cartilla y anota en `cartilla.json` el índice `voz`
 (idioma -> texto -> archivo). La app busca cada frase ahí; si no está, usa la voz del navegador.
 Correrlo después de `construir_bosque.py` cada vez que cambien los textos.
 
 Uso (desde la raíz del proyecto):
-    pip install piper-tts            # y tener ffmpeg instalado
-    python3 herramientas/generar_voz.py public/cartillas/ingles-3 --voces <carpeta con los .onnx>
+    pip install kokoro-onnx soundfile        # y tener ffmpeg instalado
+    python3 herramientas/generar_voz.py public/cartillas/ingles-3 --voces <carpeta del modelo>
 
-Voces (se descargan de https://huggingface.co/rhasspy/piper-voices):
-    es_MX-claude-high   (español latino; licencia Apache 2.0)
-    en_US-ljspeech-high (inglés; dominio público)
+La carpeta del modelo debe tener `kokoro-v1.0.onnx` y `voices-v1.0.bin`, de
+https://github.com/thewh1teagle/kokoro-onnx/releases (modelo Kokoro-82M, licencia Apache 2.0).
 Solo se generan las frases nuevas o cambiadas; las que ya no se usan se borran.
+Para cambiar de voz basta editar VOCES: el nombre del archivo depende de la voz.
 """
-import argparse, hashlib, json, subprocess, sys, tempfile, wave
+import argparse, hashlib, json, subprocess, sys, tempfile
 from pathlib import Path
 
-VOCES = {'es': ('es_MX-claude-high', 1.08), 'en': ('en_US-ljspeech-high', 1.15)}  # (modelo, lentitud)
+# idioma -> (voz de Kokoro, código de idioma, velocidad). Un poco más despacio que lo normal:
+# quien escucha tiene 7 u 8 años y, en inglés, está oyendo la palabra por primera vez.
+VOCES = {'es': ('ef_dora', 'es', 0.82), 'en': ('af_heart', 'en-us', 0.85)}
 
 
 def reunir(cartilla):
@@ -49,23 +51,23 @@ def reunir(cartilla):
 
 
 def nombre(idioma, texto):
-    return f"{idioma}-{hashlib.sha1((VOCES[idioma][0] + '|' + texto).encode()).hexdigest()[:12]}.mp3"
+    return f"{idioma}-{hashlib.sha1((f'{VOCES[idioma][0]}@{VOCES[idioma][2]}|' + texto).encode()).hexdigest()[:12]}.mp3"
 
 
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('carpeta', type=Path, help='carpeta de la cartilla (donde está cartilla.json)')
-    ap.add_argument('--voces', type=Path, required=True, help='carpeta con los modelos .onnx de Piper')
+    ap.add_argument('--voces', type=Path, required=True, help='carpeta con kokoro-v1.0.onnx y voices-v1.0.bin')
     a = ap.parse_args()
-    from piper import PiperVoice, SynthesisConfig
+    import soundfile
+    from kokoro_onnx import Kokoro
 
     cartilla = json.loads((a.carpeta / 'cartilla.json').read_text(encoding='utf-8'))
     salida = a.carpeta / 'voz'
     salida.mkdir(exist_ok=True)
-    indice, usados, nuevos = {}, set(), 0
+    indice, usados, nuevos, motor = {}, set(), 0, None
     for idioma, textos in reunir(cartilla).items():
-        modelo, lentitud = VOCES[idioma]
-        voz = None
+        voz, codigo, velocidad = VOCES[idioma]
         indice[idioma] = {}
         for texto in sorted(textos):
             archivo = nombre(idioma, texto)
@@ -73,14 +75,14 @@ def main():
             usados.add(archivo)
             if (salida / archivo).exists():
                 continue
-            voz = voz or PiperVoice.load(str(a.voces / f'{modelo}.onnx'))
+            motor = motor or Kokoro(str(a.voces / 'kokoro-v1.0.onnx'), str(a.voces / 'voices-v1.0.bin'))
             with tempfile.NamedTemporaryFile(suffix='.wav') as tmp:
-                with wave.open(tmp.name, 'wb') as w:
-                    voz.synthesize_wav(texto, w, syn_config=SynthesisConfig(length_scale=lentitud))
-                # Mono, 24 kbps: suficiente para voz y liviano. Se recorta el silencio del final.
+                audio, tasa = motor.create(texto, voice=voz, speed=velocidad, lang=codigo)
+                soundfile.write(tmp.name, audio, tasa)
+                # Mono, 32 kbps: suficiente para voz y liviano. Se recorta el silencio del final.
                 subprocess.run(['ffmpeg', '-v', 'error', '-y', '-i', tmp.name, '-af',
                                 'areverse,silenceremove=start_periods=1:start_threshold=-45dB,areverse,loudnorm=I=-18:TP=-2',
-                                '-ac', '1', '-ar', '22050', '-c:a', 'libmp3lame', '-b:a', '24k', str(salida / archivo)], check=True)
+                                '-ac', '1', '-ar', '24000', '-c:a', 'libmp3lame', '-b:a', '32k', str(salida / archivo)], check=True)
             nuevos += 1
     for viejo in salida.glob('*.mp3'):
         if viejo.name not in usados:

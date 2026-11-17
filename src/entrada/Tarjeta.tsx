@@ -44,6 +44,8 @@ export function TarjetaCodigo({ paquete, inicial, onCaras, onInvitado, onVolver 
   const [estado, setEstado] = useState<'escribiendo' | 'buscando' | 'no-existe' | 'espera' | 'sin-red' | 'fallo'>(() => (navigator.onLine ? 'escribiendo' : 'sin-red'));
   const recordados = codigosRecordados();
   const pedido = useRef(0);
+  // Lo escrito hasta ahora, al día aunque lleguen varias teclas antes de pintar.
+  const escrito = useRef(codigo);
 
   const consultar = (c: string) => {
     if (c.length < LARGO) return;
@@ -68,6 +70,8 @@ export function TarjetaCodigo({ paquete, inicial, onCaras, onInvitado, onVolver 
   const poner = (nuevo: string) => {
     if (estado === 'buscando') return;
     const c = limpio(nuevo);
+    if (c === escrito.current && c.length === LARGO) return;
+    escrito.current = c;
     setCodigo(c);
     setEstado('escribiendo');
     if (c.length === LARGO) consultar(c);
@@ -77,8 +81,8 @@ export function TarjetaCodigo({ paquete, inicial, onCaras, onInvitado, onVolver 
   useEffect(() => {
     const tecla = (e: KeyboardEvent) => {
       if (e.ctrlKey || e.metaKey || e.altKey) return;
-      if (e.key === 'Backspace') poner(codigo.slice(0, -1));
-      else if (e.key.length === 1 && LETRAS_CODIGO.includes(e.key.toUpperCase())) poner(codigo + e.key);
+      if (e.key === 'Backspace') poner(escrito.current.slice(0, -1));
+      else if (e.key.length === 1 && LETRAS_CODIGO.includes(e.key.toUpperCase())) poner(escrito.current + e.key);
       else return;
       e.preventDefault();
     };
@@ -125,11 +129,11 @@ export function TarjetaCodigo({ paquete, inicial, onCaras, onInvitado, onVolver 
       </p>
       <div className="teclado-codigo" aria-busy={estado === 'buscando'}>
         {[...LETRAS_CODIGO].map((c) => (
-          <button key={c} type="button" onClick={() => poner(codigo + c)} disabled={codigo.length >= LARGO}>
+          <button key={c} type="button" onClick={() => poner(escrito.current + c)} disabled={codigo.length >= LARGO}>
             {c}
           </button>
         ))}
-        <button type="button" className="teclado-codigo__borrar" aria-label="Borrar la última" onClick={() => poner(codigo.slice(0, -1))} disabled={!codigo}>
+        <button type="button" className="teclado-codigo__borrar" aria-label="Borrar la última" onClick={() => poner(escrito.current.slice(0, -1))} disabled={!codigo}>
           <Icono nombre="borrar" tam={22} />
         </button>
       </div>

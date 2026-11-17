@@ -222,14 +222,12 @@ try {
   await p.waitForSelector('.nino--quien .cara');
 
   // 8. Invitado aparte: "Sin tarjeta" lleva a elegir personaje (su avance se sumó a Sara).
-  console.log('antes invitado', await p.locator('.cortina').count());
   await p.click('.cara--invitado');
   await p.waitForSelector('.elegir');
-  console.log('en elegir', await p.locator('.cortina').getAttribute('class').catch(() => 'no'));
   comprobar(ruta(p) === '/elegir', 'el invitado vacío elige personaje');
   await p.goBack();
   await p.waitForSelector('.nino--quien');
-  for (let i = 0; i < 6; i++) { console.log('cortina', i, await p.locator('.cortina').getAttribute('class').catch(() => 'no')); await p.waitForTimeout(400); }
+  await p.waitForSelector('.cortina', { state: 'detached' });
   await c.setOffline(false);
 
   // 9. Familia: sostener 3 s, reto para adultos y entrada de adultos.
@@ -237,9 +235,7 @@ try {
   await foto(p, '11b-quien-tres-390');
   const pie = await p.locator('.pie-familia').boundingBox();
   await p.mouse.move(pie.x + pie.width / 2, pie.y + pie.height / 2);
-  console.log('en el punto', pie, await p.evaluate(([x, y]) => document.elementFromPoint(x, y)?.outerHTML.slice(0, 100), [pie.x + pie.width / 2, pie.y + pie.height / 2]));
   await p.mouse.down(); await p.waitForTimeout(3300); await p.mouse.up();
-  await p.waitForTimeout(1000); await foto(p, 'depurar'); console.log('tras sostener', ruta(p));
   await p.waitForSelector('.familia__numeros');
   await foto(p, '12-reto-390');
   const enLetras = (n) => { const U = ['', 'uno', 'dos', 'tres', 'cuatro', 'cinco', 'seis', 'siete', 'ocho', 'nueve']; const V = ['', 'veintiuno', 'veintidós', 'veintitrés', 'veinticuatro', 'veinticinco', 'veintiséis', 'veintisiete', 'veintiocho', 'veintinueve']; const D = ['', '', '', 'treinta', 'cuarenta', 'cincuenta', 'sesenta', 'setenta', 'ochenta', 'noventa']; return n < 30 ? V[n - 20] : `${D[Math.floor(n / 10)]} y ${U[n % 10]}`; };

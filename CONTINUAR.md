@@ -95,6 +95,27 @@ Playwright en `scripts/pruebas/*.mjs`.
   recomendó el diseñador (bandeja se abre sola, repetir no gasta cupo, una estatua común, quitar los 6 postes).
 - Skill `unslop` instalada: solo pantallas de adultos.
 
+## ElevenLabs (17 nov; plan de pago "starter", 40.000 créditos al mes)
+
+- La clave está guardada como secreto del entorno para `api.elevenlabs.io` (el proxy la pone; en
+  scripts basta `ELEVENLABS_API_KEY=proxy-injected`). También hay conector MCP de ElevenLabs.
+- **Voces aprobadas por Manuel:** Pixie = La Profe Karen (`tM3tZzTqto62uc7KyCkB`), Lumi = Hellen
+  (`fSdfFSsuhxAbMOq35MJx`, también las ayudas sin personaje), Cosmo = Jorge
+  (`MXbNlTMQcU6GZQlRkXHB`), Nova = Nancy (`qSd0nNFPQdeWlFXiPj2l`); inglés = Emma, Bright Kids
+  Educator (`oClOrzqamOXmtcB8iqTj`, velocidad 0,9). Modelo `eleven_v4`. Todo en
+  `herramientas/generar_voz.py`; vecinos y héroes siguen con Kokoro hasta aprobar voces para ellos.
+- **Video de inicio nuevo** (aprobado): 4 tomas con Veo 3.1 Lite a partir de imágenes clave con
+  los personajes reales (flujo de ElevenLabs "Video de inicio - Bosque de los Sonidos"), 27 s,
+  vertical (tomas 3 y 4 con fondo difuminado) y horizontal, < 1,8 MB cada uno. Narración en la app.
+- **Canciones aprobadas** (`public/cartillas/ingles-3/canciones/`, letras en
+  `docs/pedagogia/canciones-bosque.md`): propias, de preescolar a primaria, siempre con la letra
+  sincronizada en pantalla (por construir: pantalla de canciones con tiempos de Scribe).
+- Gastado el 17 nov: unos 30.000 créditos (video ~14.500 con una toma repetida, imágenes ~5.900,
+  canciones 3.375, voces del juego ~5.500, muestras ~1.000).
+- **Siguiente video:** cinemática C del puente (fiesta y llegada de Nova, transición al Valle de
+  las Palabras), guion en `docs/cinematicas/guiones.md`, mismo método; ~6.000-8.000 créditos.
+- El personaje camina más despacio y es menos sensible al dedo (pedido de los probadores).
+
 ## Trabajo en curso (retomar aquí, en este orden)
 
 **Foco nuevo de Manuel (17 nov):** primero el **esqueleto** de la plataforma (interfaces de los
@@ -112,7 +133,7 @@ construcción del mapa (§8, 5 tandas) y los textos del mapa (§7, pedagogo) esp
 2. **Diseñador (hecho, aprobado por Manuel el 17 nov con sus 5 recomendaciones; ver `docs/diseno/esqueleto.md`):** mapa de pantallas de los cuatro modos (estudiante con código, apodo y PIN; familia;
    docente con plan, materiales y clase proyectada; coordinador; dueño), navegación, bocetos a
    390 px y en proyector. **Mostrar a Manuel antes de construir.**
-3. **Desarrollador (en curso, por las 7 tandas de `esqueleto.md` §8). Tandas 1 y 2 hechas y revisadas (fb276cf, a89cb71); la migración 002 espera a que Manuel siga `supabase/PASOS-MANUEL.md`. Decisión del coordinador: el registro público queda encendido (los niños usan sesiones anónimas) y lo filtra el gancho `antes_de_crear_usuario` (solo anónimos o con invitación). Siguiente: tanda 3 (estudiante).** corregir `supabase/esquema.sql` según ronda-2-docente §4.5 (el coordinador lee
+3. **Desarrollador (en curso, por las 7 tandas de `esqueleto.md` §8). Tandas 1, 2 y 3 hechas y revisadas (tanda 3: f6923fa; arreglos de la revisión en curso) (fb276cf, a89cb71); la migración 002 espera a que Manuel siga `supabase/PASOS-MANUEL.md`. Decisión del coordinador: el registro público queda encendido (los niños usan sesiones anónimas) y lo filtra el gancho `antes_de_crear_usuario` (solo anónimos o con invitación). Siguiente: tanda 3 (estudiante).** corregir `supabase/esquema.sql` según ronda-2-docente §4.5 (el coordinador lee
    y borra datos de cada niño; `lista_grupo` entrega apodos a quien adivine el código), agregar las
    tablas que pida el catálogo, armar la app con entrada por rol y secciones vacías, y sincronizar
    `src/progreso.ts` con Supabase sin perder el modo sin conexión.

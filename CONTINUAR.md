@@ -141,6 +141,22 @@ ronda de pruebas. (El silencio en su computador era Chrome con el sonido apagado
 - No reescribir la historia de la rama (el entorno bloquea `push --force`); si un agente
   enmienda un commit ya subido, se une con `git merge -s ours`.
 
+## En espera de Manuel (17 de noviembre)
+
+- **Voz en español:** el inglés (`af_heart`) le gustó; el español de Kokoro no. Tiene tres
+  muestras de Chatterbox multilingüe (MIT; instalado en el scratchpad, se pierde al cerrar):
+  por defecto, con timbre de mujer, y más expresiva. Cuando elija, adaptar `generar_voz.py`
+  para español (≈25 min de cómputo, 94 frases). Si ninguna sirve: servicio de pago con su clave.
+- **Mapa nuevo:** `docs/diseno/ronda-2-mapa.md` recomienda "mirador y senderos" (bosque entero
+  con 7 botones; dentro, de parada en parada). Faltan sus seis respuestas (§6). Luego:
+  pedagogo revisa frases y nombres → desarrollador-motor construye en 4 tandas → revisor.
+- **Docente, cuentas y coordinador:** definido en `docs/pedagogia/ronda-2-docente.md`.
+  Siguiente fase: diseñador. Antes hay que corregir `supabase/esquema.sql` (§4.5): el
+  coordinador puede leer y borrar datos de cada niño y `lista_grupo` entrega apodos a quien
+  adivine el código. Verificar con el auditor si el reconocedor de voz del navegador envía
+  audio al fabricante. Falta saber si Manuel activó *Allow anonymous sign-ins* y en qué país
+  está el proyecto de Supabase.
+
 ## Pendientes
 
 1. **Pruebas de los conocidos de Manuel:** él traerá un informe de errores y mejoras. Atenderlo

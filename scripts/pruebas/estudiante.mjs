@@ -234,6 +234,7 @@ try {
   await foto(p, '11b-quien-tres-390');
   const pie = await p.locator('.pie-familia').boundingBox();
   await p.mouse.move(pie.x + pie.width / 2, pie.y + pie.height / 2);
+  console.log('en el punto', pie, await p.evaluate(([x, y]) => document.elementFromPoint(x, y)?.outerHTML.slice(0, 100), [pie.x + pie.width / 2, pie.y + pie.height / 2]));
   await p.mouse.down(); await p.waitForTimeout(3300); await p.mouse.up();
   await p.waitForTimeout(1000); await foto(p, 'depurar'); console.log('tras sostener', ruta(p));
   await p.waitForSelector('.familia__numeros');

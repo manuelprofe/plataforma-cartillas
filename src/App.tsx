@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState, type ComponentType } from 'react';
-import type { Cartilla, Mision, Palabra, PropsJuego } from './tipos';
+import type { Cartilla, Mision, Palabra, PropsJuego, Territorio } from './tipos';
 import { Mundo, olvidarMundo } from './Mundo';
 import { EscuchaToca } from './juegos/EscuchaToca';
 import { EscuchaAtrapa } from './juegos/EscuchaAtrapa';
@@ -9,9 +9,10 @@ import { ElegirHeroe } from './ElegirHeroe';
 import { Cinematica } from './Cinematica';
 import { Familia } from './Familia';
 import { BotonSostenido } from './BotonSostenido';
-import { activarAudio, configurarVoz, sonar } from './audio';
+import { activarAudio, callar, configurarVoz, sonar } from './audio';
 import { elegirHeroe, reconocerVoz, reiniciarProgreso, useProgreso } from './progreso';
 import { fijarMomentoSeguro } from './sinConexion';
+import { navegar, useRuta, volver } from './navegacion';
 
 const BASE = `${import.meta.env.BASE_URL}cartillas/ingles-3/`;
 const MS_CORTINA = 420;
@@ -31,16 +32,43 @@ const JUEGOS: Record<Mision['plantilla'], ComponentType<PropsJuego>> = {
 
 type Pantalla = { tipo: 'inicio' } | { tipo: 'elegir' } | { tipo: 'cine' } | { tipo: 'mapa' } | { tipo: 'familia' } | { tipo: 'mision'; indice: number };
 
+/** Cómo se cambia de pantalla: sumar al historial, reemplazar la actual o volver a la madre. */
+type Paso = 'sumar' | 'reemplazar' | 'volver';
+
+// Cada pantalla tiene su dirección, sin identificadores del niño (esqueleto §1.1).
+const RUTAS: Record<Exclude<Pantalla['tipo'], 'mision'>, string> = {
+  inicio: '/',
+  elegir: '/elegir',
+  cine: '/historia',
+  mapa: '/mapa',
+  familia: '/familia',
+};
+
+function pantallaDe(ruta: string, territorio: Territorio | undefined): Pantalla | null {
+  const tipo = (Object.keys(RUTAS) as (keyof typeof RUTAS)[]).find((t) => RUTAS[t] === ruta);
+  if (tipo) return { tipo } as Pantalla;
+  const id = /^\/mision\/([^/]+)$/.exec(ruta)?.[1];
+  if (id === undefined) return null;
+  const indice = territorio?.misiones.findIndex((m) => m.id === decodeURIComponent(id)) ?? -1;
+  return indice >= 0 ? { tipo: 'mision', indice } : null;
+}
+
+function rutaDe(pantalla: Pantalla, territorio: Territorio): string {
+  return pantalla.tipo === 'mision' ? `/mision/${encodeURIComponent(territorio.misiones[pantalla.indice].id)}` : RUTAS[pantalla.tipo];
+}
+
 export function App() {
   const [cartilla, setCartilla] = useState<Cartilla | null>(null);
   const [fallo, setFallo] = useState(false);
-  const [pantalla, setPantalla] = useState<Pantalla>({ tipo: 'inicio' });
+  const ruta = useRuta();
   const [cortina, setCortina] = useState<'cierra' | 'abre' | null>(null);
   const [pistaFamilia, setPistaFamilia] = useState(false);
   const progreso = useProgreso();
   const esperas = useRef<number[]>([]);
 
   const territorio = cartilla?.territorios[0];
+  // Una dirección desconocida (o una misión que ya no existe) se trata como la portada.
+  const pantalla: Pantalla = pantallaDe(ruta, territorio) ?? { tipo: 'inicio' };
   const misionDelContenido = pantalla.tipo === 'mision' ? territorio?.misiones[pantalla.indice] : undefined;
   // Las misiones de repaso traen sus palabras de las misiones que el niño ya completó.
   const mision = useMemo(() => {
@@ -59,9 +87,24 @@ export function App() {
   useEffect(() => {
     if (pantalla.tipo === 'mision' && cartilla && !Juego) {
       console.warn(`Misión sin juego disponible (plantilla "${mision?.plantilla}"): se vuelve al mapa.`);
-      setPantalla({ tipo: 'mapa' });
+      navegar(RUTAS.mapa, true);
     }
   }, [pantalla, cartilla, Juego, mision]);
+
+  // Dirección que no corresponde: a la portada, sin dejarla en el historial. Mapa, misión e
+  // historia sin personaje elegido (recarga tras borrar el avance): también a la portada.
+  const sinHeroe = cartilla && !cartilla.heroes.some((h) => h.id === progreso.heroe);
+  useEffect(() => {
+    if (!cartilla) return;
+    if (!pantallaDe(ruta, territorio) || (sinHeroe && ['mapa', 'mision', 'cine'].includes(pantalla.tipo))) navegar(RUTAS.inicio, true);
+  }, [ruta, cartilla, territorio, sinHeroe, pantalla.tipo]);
+
+  // Salir de una misión con el atrás del celular: que no siga sonando la voz del juego.
+  const tipoAnterior = useRef(pantalla.tipo);
+  useEffect(() => {
+    if (tipoAnterior.current === 'mision' && pantalla.tipo !== 'mision') callar();
+    tipoAnterior.current = pantalla.tipo;
+  }, [pantalla.tipo]);
 
   useEffect(() => {
     fetch(`${BASE}cartilla.json`)
@@ -83,16 +126,19 @@ export function App() {
   // atiende otro cambio, salvo que se pida esperar: así una cinemática que falla enseguida
   // (sin red) no deja al niño en una pantalla vacía.
   const ocupada = useRef(false);
-  const irA = (destino: Pantalla, esperar = false) => {
+  const irA = (destino: Pantalla, paso: Paso = 'sumar', esperar = false) => {
     if (ocupada.current) {
-      if (esperar) esperas.current.push(window.setTimeout(() => irA(destino, true), MS_CORTINA));
+      if (esperar) esperas.current.push(window.setTimeout(() => irA(destino, paso, true), MS_CORTINA));
       return;
     }
+    if (!territorio) return;
+    const hacia = rutaDe(destino, territorio);
     ocupada.current = true;
     setCortina('cierra');
     esperas.current.push(
       window.setTimeout(() => {
-        setPantalla(destino);
+        if (paso === 'volver') volver(hacia);
+        else navegar(hacia, paso === 'reemplazar');
         setCortina('abre');
       }, MS_CORTINA),
       window.setTimeout(() => {
@@ -155,11 +201,11 @@ export function App() {
           cartilla={cartilla}
           territorio={territorio}
           base={BASE}
-          onVolver={() => irA({ tipo: 'inicio' })}
+          onVolver={() => irA({ tipo: 'inicio' }, 'volver')}
           onBorrar={() => {
             reiniciarProgreso();
             olvidarMundo();
-            irA({ tipo: 'inicio' });
+            irA({ tipo: 'inicio' }, 'volver');
           }}
         />
       )}
@@ -172,13 +218,13 @@ export function App() {
           elegido={progreso.heroe}
           onElegir={(id) => {
             elegirHeroe(id);
-            irA(alMapa());
+            irA(alMapa(), 'reemplazar');
           }}
         />
       )}
 
       {pantalla.tipo === 'cine' && intro && (
-        <Cinematica cine={intro} base={BASE} vozEspanol={cartilla.idiomaHistoria} onTerminar={() => irA({ tipo: 'mapa' }, true)} />
+        <Cinematica cine={intro} base={BASE} vozEspanol={cartilla.idiomaHistoria} onTerminar={() => irA({ tipo: 'mapa' }, 'reemplazar', true)} />
       )}
 
       {pantalla.tipo === 'mapa' && heroe && (
@@ -196,8 +242,8 @@ export function App() {
           ayudas={cartilla.ayudas ?? {}}
           modo={modo}
           vozHistoria={cartilla.idiomaHistoria}
-          onTerminar={() => irA({ tipo: 'mapa' })}
-          onSalir={() => irA({ tipo: 'mapa' })}
+          onTerminar={() => irA({ tipo: 'mapa' }, 'volver')}
+          onSalir={() => irA({ tipo: 'mapa' }, 'volver')}
         />
       )}
 

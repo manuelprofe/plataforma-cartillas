@@ -8,6 +8,7 @@
   "orientation": "any",
   "background_color": "#170a36",
   "theme_color": "#2a1458",
+  "shortcuts": [{ "name": "Docente", "short_name": "Docente", "url": "/docente" }],
   "icons": [
     { "src": "iconos-app/icono-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
     { "src": "iconos-app/icono-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },

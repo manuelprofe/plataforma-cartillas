@@ -47,8 +47,8 @@ async function registrar() {
       alCambiar();
     });
 
-    // Ruta relativa: funciona igual en la raíz del dominio o en una subruta.
-    const registro = await sw.register('./sw.js');
+    // Desde la base de la app (no relativa a la página): así /docente/grupos registra el mismo.
+    const registro = await sw.register(`${import.meta.env.BASE_URL}sw.js`);
     if (!registro) return;
 
     let recargando = false;

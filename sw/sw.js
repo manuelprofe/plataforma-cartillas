@@ -326,8 +326,11 @@ self.addEventListener('fetch', (evento) => {
   const href = destino.origin + destino.pathname;
 
   // La app: siempre el index de esta versión, aunque la red esté colgada o redirija.
-  // Solo en la raíz del alcance; otras páginas futuras (p. ej. docente/) van a la red.
-  if (href === URL_APP || href === url('index.html')) {
+  // Toda navegación a una ruta de la app (/mapa, /docente/grupos/3B, /proyectar...) recibe el
+  // mismo index: el enrutador de la página decide qué mostrar. Una navegación a un archivo
+  // (con extensión, p. ej. un PDF del paquete) va a la red.
+  const esRutaDeLaApp = peticion.mode === 'navigate' && !/\.[a-z0-9]+$/i.test(destino.pathname);
+  if (href === URL_APP || href === url('index.html') || esRutaDeLaApp) {
     evento.respondWith(cachePrimero(evento, CACHE_ARMAZON, URL_APP));
     return;
   }

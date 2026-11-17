@@ -1,0 +1,3 @@
+# Rutas con historial: cualquier dirección que no sea un archivo publicado abre la app.
+# Netlify sirve primero los archivos que existen (assets, cartillas, sw.js).
+/*    /index.html   200

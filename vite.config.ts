@@ -3,6 +3,7 @@ import { readFileSync, readdirSync, statSync, writeFileSync, existsSync } from '
 import { join, relative, resolve, sep } from 'node:path';
 import { defineConfig, type Plugin, type ResolvedConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import { TRAMOS } from './src/modos.ts';
 
 /**
  * Medios que se guardan para jugar sin conexión cuando cartilla.json los nombra. Los videos no:
@@ -100,7 +101,38 @@ function sinConexion(): Plugin {
   };
 }
 
+/**
+ * main.tsx carga el paquete de cada modo bajo demanda. En las rutas del niño, el index pide
+ * desde el principio el JS y el CSS de su paquete, en paralelo con la entrada, para que dividir
+ * el código no le sume una espera a la primera pantalla del juego.
+ */
+function adelantarEstudiante(): Plugin {
+  return {
+    name: 'adelantar-estudiante',
+    apply: 'build',
+    transformIndexHtml: {
+      order: 'post',
+      handler(html, { bundle }) {
+        const chunk = Object.values(bundle ?? {}).find((c) => c.type === 'chunk' && c.facadeModuleId?.endsWith('/src/estudiante.tsx'));
+        if (!chunk || chunk.type !== 'chunk') throw new Error('No se encontró el paquete del estudiante.');
+        const css = [...(chunk.viteMetadata?.importedCss ?? [])];
+        const ajenas = new RegExp(`^/(${[...TRAMOS.adultos, ...TRAMOS.proyectar].join('|')})(/|$)`);
+        const enlaces = [
+          `['modulepreload','/${chunk.fileName}']`,
+          ...css.map((c) => `['preload','/${c}','style']`),
+        ];
+        const guion =
+          `if(!${ajenas}.test(location.pathname))[${enlaces.join(',')}]` +
+          `.forEach(function(e){var l=document.createElement('link');l.rel=e[0];l.href=e[1];if(e[2])l.as=e[2];document.head.appendChild(l)})`;
+        return html.replace('</head>', `  <script>${guion}</script>\n  </head>`);
+      },
+    },
+  };
+}
+
 export default defineConfig({
-  base: './',
-  plugins: [react(), sinConexion()],
+  // Absoluta: con rutas como /docente/grupos/3B, una base relativa buscaría los archivos en
+  // /docente/grupos/assets/. El sitio se publica en la raíz del dominio (ver netlify.toml).
+  base: '/',
+  plugins: [react(), adelantarEstudiante(), sinConexion()],
 });

@@ -100,6 +100,12 @@ function Resumen({ cartilla, territorio, base, onVolver, onBorrar }: Props) {
   useEffect(() => callar, []);
   // Niños de este celular: los de tarjeta y el invitado, si ya jugó.
   const ninos = [...perfiles.map((p) => ({ id: p.id, apodo: p.apodo, avatar: p.avatar })), ...(invitadoUsado() || !perfiles.length ? [{ id: INVITADO, apodo: 'Sin tarjeta', avatar: undefined }] : [])];
+  // Se muestra siempre el resumen de un niño de la lista (el invitado vacío no aparece en ella).
+  const primero = ninos[0]?.id;
+  const enLista = ninos.some((n) => n.id === activo);
+  useEffect(() => {
+    if (!enLista && primero) usarPerfil(primero);
+  }, [enLista, primero]);
   const imagenDe = (avatar?: string) => base + (cartilla.heroes.find((h) => h.id === avatar)?.imagen ?? cartilla.imagenes?.portada ?? '');
   const quitar = (id: string) => {
     setAviso('');

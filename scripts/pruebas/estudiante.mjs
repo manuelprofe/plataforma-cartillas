@@ -249,6 +249,9 @@ try {
   await p.click(`.familia__numero:text-is("${opciones2.find((n) => enLetras(n) === pedido2)}")`);
   await p.waitForSelector('.familia__ninos');
   comprobar((await p.locator('.familia__nino').count()) === 2 && (await p.locator('.familia__lista-ninos li').count()) === 2, 'familia: selector de niño y "En este celular" con Sara y Thiago');
+  comprobar((await p.locator('.familia__nino[aria-pressed="true"]').textContent()) === 'Sara' && (await p.locator('text=Ya las reconoce').count()) === 1, 'familia abre con el resumen de un niño de la lista (Sara)');
+  await p.click('.familia__nino:has-text("Thiago")');
+  comprobar((await p.locator('.familia__hoja').innerText()).includes('1 de 17 faroles'), 'el selector cambia al resumen de Thiago');
   await foto(p, '13-familia-390');
   await p.locator('.familia').evaluate((e) => e.scrollTo(0, e.scrollHeight));
   await foto(p, '14-familia-pie-390');

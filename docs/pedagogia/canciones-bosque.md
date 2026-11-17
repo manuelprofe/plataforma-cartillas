@@ -3,6 +3,20 @@
 Tres canciones de ~60 s para repasar **colores**, **números 1 a 10** y **cuerpo**, generadas con
 ElevenLabs Music. Escritas con la regla de `ronda-2-docente.md` §5.2.
 
+## Decisiones de Manuel (17 nov)
+
+- **Canciones propias:** letra escrita para el proyecto y música compuesta nueva por ElevenLabs
+  Music a partir de una descripción de estilo. Nunca se pide imitar una canción, melodía o artista
+  existente ("con la melodía de…" no se usa). Que sirvan de preescolar a primaria.
+- **Letra siempre a la vista:** en video, en la app o proyectada, la canción se muestra con la
+  letra sincronizada línea por línea y la palabra en inglés resaltada mientras suena (el audio
+  generado tiene algo de eco y no todo se entiende de oído). Los tiempos de cada palabra se sacan
+  con la transcripción de ElevenLabs (Scribe) sobre el audio final y se guardan en el paquete de
+  la cartilla junto a la canción. La letra también se puede imprimir (regla 9).
+- Generadas el 17 nov (flujo de ElevenLabs "Canciones del Bosque"): colores 75 s, números 71 s,
+  cuerpo 75 s. Pendiente: que Manuel las escuche y apruebe; revisar los términos de uso de
+  ElevenLabs Music para su plan antes de publicarlas.
+
 ## Reglas que siguen las tres
 
 | Regla | Cómo se cumple |

@@ -89,57 +89,28 @@ Playwright en `scripts/pruebas/*.mjs`.
 
 ## Trabajo en curso (retomar aquí, en este orden)
 
-### 1. Diseñador: ajustar el mapa con estaciones y estatua — **interrumpido por límite de uso**
+**Foco nuevo de Manuel (17 nov):** primero el **esqueleto** de la plataforma (interfaces de los
+cuatro modos y base de datos), después llenar cada interfaz con su contenido (en el docente:
+guías, fichas, planeadores de clase...). `npx skills find` y AnyDoc quedan para cuando toque esa parte.
 
-El diseñador empezó y solo alcanzó a dejar `docs/diseno/ronda-2/10-boceto-estacion.webp`; el
-documento **no** está actualizado. Relanzar el agente `disenador` (fase diseñar, sin programar)
-con este encargo:
+Hecho: el diseño del mapa con estaciones y estatua (`docs/diseno/ronda-2-mapa.md`, commit
+f85fec0). Sus 4 preguntas (§6) se construyen con lo recomendado si Manuel no dice otra cosa. La
+construcción del mapa (§8, 5 tandas) y los textos del mapa (§7, pedagogo) esperan a que el esqueleto esté listo.
 
-> Actualiza `docs/diseno/ronda-2-mapa.md` en el sitio (reescribe las secciones afectadas; que no
-> queden versiones contradictorias) con los dos cambios de Manuel. (1) **Estaciones:** los
-> ejercicios de un tema van en una sola estación (lo natural: una por tema con sus 3 ejercicios;
-> define qué pasa con las 2 de la hora y el Memory del pozo), cómo se ve, cómo muestra sin texto
-> cuántos ejercicios tiene y cuáles brillan (pueden ser tres luces de la misma estación; cada
-> misión sigue encendiendo su luz), cómo se entra al siguiente y se repite uno hecho, cómo encaja
-> con la sesión de 3 misiones y el puente de 17 luces; qué se simplifica de §3. (2) **Estatua por
-> lugar** que explica algo breve: posición, tamaño y zona de toque, qué muestra (tarjeta,
-> duración, cierre), audio primero, datos del paquete. Además, **ajusta a la decisión de que el
-> niño juega en casa con el celular de los papás** (celular compartido, sesiones cortas, un
-> adulto cerca a veces). Usa o rehace el boceto `10-boceto-estacion.webp` (uno solo). Al final:
-> "Encargo para el pedagogo" (frases de Lumi, nombres de los 7 lugares, textos de las estatuas,
-> con límites de largo y tono) y "Tandas de construcción" con criterio de aceptación a 390 px.
-> Commit en español, push normal. Informe de 10 líneas.
-
-### 2. Pedagogo: textos del mapa y ajuste del documento docente
-
-Después del diseñador, en una sola tarea del agente `pedagogo`:
-- Escribir lo que pida "Encargo para el pedagogo" (frases de Lumi, nombres de lugares, textos de
-  las estatuas) directamente en `herramientas/construir_bosque.py` o en una sección del documento
-  que el desarrollador pase al guion.
-- **Ajustar `docs/pedagogia/ronda-2-docente.md`** a que en el salón no hay celulares: el docente
-  trabaja con proyector (juegos de aula proyectados, dar estrellas de participar y colaborar
-  en clase), el niño practica en casa con el celular de los papás, y la **prueba del tema** debe
-  poder hacerse proyectada en clase o en casa (decidir cuál y cómo, sin que el niño vea notas).
-  Revisar la entrada con código de grupo, apodo y PIN pensando en un celular familiar compartido
-  entre hermanos.
-- **Región East US (Ohio):** los datos quedan en Estados Unidos; el borrador de autorización para
-  los padres debe decir dónde se guardan y que hay transferencia internacional (Ley 1581). El texto
-  no es concepto jurídico: que lo revise el colegio.
-
-### 3. Desarrollador-motor: construir el mapa nuevo por tandas
-
-Con el documento del mapa ya actualizado y los textos del pedagogo. Una tanda por vez, commit por
-tanda, comprobación a 390 px con Playwright, sin publicar. Después de cada tanda grande, `revisor`
-(máximo 10 hallazgos). Mostrar a Manuel antes de publicar.
-
-### 4. Diseñador: pantallas del docente, la entrada del estudiante y el coordinador
-
-Partir de `docs/pedagogia/ronda-2-docente.md` ya ajustado. Pantallas del docente **para
-proyector** (y celular del docente para preparar la clase), entrada del estudiante en celular
-familiar, coordinador. Antes de construir: corregir `supabase/esquema.sql` según su §4.5 (el
-coordinador hoy puede leer y borrar datos de cada niño; `lista_grupo` entrega apodos a cualquier
-sesión anónima que adivine el código) y que el `auditor` verifique si el reconocedor de voz del
-navegador (`src/escuchar.ts`) envía audio al fabricante.
+1. **Pedagogo (en curso):** ajustar `docs/pedagogia/ronda-2-docente.md` a proyector en el salón,
+   juego en casa con celular familiar, prueba del tema y autorización con datos en EE. UU.; y escribir
+   `docs/pedagogia/catalogo-interfaces.md` (qué contenido vive en cada interfaz, campos de cada
+   material del docente, si sale del paquete de la cartilla o de la base de datos).
+2. **Diseñador:** mapa de pantallas de los cuatro modos (estudiante con código, apodo y PIN; familia;
+   docente con plan, materiales y clase proyectada; coordinador; dueño), navegación, bocetos a
+   390 px y en proyector. **Mostrar a Manuel antes de construir.**
+3. **Desarrollador:** corregir `supabase/esquema.sql` según ronda-2-docente §4.5 (el coordinador lee
+   y borra datos de cada niño; `lista_grupo` entrega apodos a quien adivine el código), agregar las
+   tablas que pida el catálogo, armar la app con entrada por rol y secciones vacías, y sincronizar
+   `src/progreso.ts` con Supabase sin perder el modo sin conexión.
+4. **Revisor** y **auditor** (seguridad por filas, datos de menores, si `src/escuchar.ts` envía
+   audio al fabricante).
+5. **Contenidos** por interfaz, empezando por la del docente.
 
 ## Pendientes menores
 

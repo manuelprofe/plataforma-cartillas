@@ -124,46 +124,32 @@ Six, seven, eight, nine, ten,
 
 ---
 
-## 3. Cuerpo: "Mi body, ¡a mover!"
+## 3. Cuerpo: "¡A mover el cuerpo!"
 
 **Palabras (9):** eyes, ears, nose, mouth, head, arms, hands, legs, feet.
-
-> "body" no es una palabra del vocabulario del Bosque (es el nombre del tema). Por eso el título lleva "body" solo en la portada; **dentro de la letra no se canta**. Si Manuel prefiere ceñirse al pie de la letra: título "Mi cuerpo, ¡a mover!".
 
 **Letra**
 
 ```
 [Estrofa 1]
-Con mis ojos miro: eyes, eyes.
-Con mis orejas oigo: ears, ears.
-Con mi nariz respiro: nose, nose.
-Con mi boca canto: mouth, mouth.
+Con mis eyes miro, eyes, eyes.
+Con mis ears escucho, ears, ears.
+Con mi nose respiro, nose, nose.
+Con mi mouth canto, mouth, mouth.
 
 [Coro]
-Head, head, ¡mi cabeza arriba!
-Arms, arms, ¡mis brazos a bailar!
-Hands, hands, ¡aplaudo con mis hands!
+Head, head, ¡arriba, arriba!
+Arms, arms, ¡a bailar, a bailar!
+Hands, hands, ¡aplaudo así!
 Legs, legs, feet, feet, ¡a caminar!
 
 [Estrofa 2]
-Muevo la cabeza: head, head.
-Estiro los brazos: arms, arms.
-Aplaudo con las manos: hands, hands.
-Doy un paso con las piernas: legs, legs.
-Y toco el suelo con los pies: feet, feet.
+Muevo mi head, head, head.
+Estiro mis arms, arms, arms.
+Aplaudo con mis hands, hands, hands.
+Doy un paso con mis legs, legs, legs.
+Toco el suelo con mis feet, feet, feet.
 
-[Coro]
-Head, head, ¡mi cabeza arriba!
-Arms, arms, ¡mis brazos a bailar!
-Hands, hands, ¡aplaudo con mis hands!
-Legs, legs, feet, feet, ¡a caminar!
-```
-
-Observación pedagógica: las líneas con "mis cabeza / mis brazos / con mis hands" ya llevan el sustantivo en español y en inglés para la misma parte (cabeza y `head`). Es redundante y rompe §5.2.5 (no traducir enseguida). **Corrección aplicada abajo**: en el coro se usa solo un idioma por línea.
-
-**Letra definitiva del coro (reemplaza el de arriba)**
-
-```
 [Coro]
 Head, head, ¡arriba, arriba!
 Arms, arms, ¡a bailar, a bailar!
@@ -171,16 +157,8 @@ Hands, hands, ¡aplaudo así!
 Legs, legs, feet, feet, ¡a caminar!
 ```
 
-Y en la estrofa 2 se quita el sustantivo español repetido para no dar la pareja pegada:
-
-```
-[Estrofa 2]
-Muevo esto: head, head.
-Estiro esto: arms, arms.
-Aplaudo con: hands, hands.
-Doy un paso con: legs, legs.
-Toco el suelo con: feet, feet.
-```
+Nota: aquí la parte del cuerpo no aparece también en español; el niño la entiende porque el
+verbo y el gesto la señalan (§5.2.5, sin traducir). El posesivo va en español ("mis", "mi").
 
 **Acciones (TPR)**
 

@@ -10,7 +10,8 @@
 //    dueño o el coordinador del colegio (y que el coordinador solo invite docentes) y deja la
 //    invitación registrada. Si la base la rechaza, aquí no se envía nada.
 // 2. Con la clave de servicio (solo existe aquí, en el servidor) pide a Auth el correo de
-//    invitación (`auth.admin.inviteUserByEmail`). El enlace lleva a /adultos/invitacion.
+//    invitación (`auth.admin.inviteUserByEmail`). El enlace lleva a /adultos con la sesión en el hash (type=invite);
+//    la app lo reconoce allí y también si Auth lo manda a la raíz.
 //    El gancho `antes_de_crear_usuario` deja crear la cuenta porque la invitación ya existe.
 import { createClient } from 'npm:@supabase/supabase-js@2';
 
@@ -63,7 +64,7 @@ Deno.serve(async (peticion) => {
   const origen = peticion.headers.get('Origin') ?? '';
   const admin = createClient(url, servicio, { auth: { persistSession: false, autoRefreshToken: false } });
   const { error } = await admin.auth.admin.inviteUserByEmail(correo, {
-    redirectTo: origen ? `${origen}/adultos/invitacion` : undefined,
+    redirectTo: origen ? `${origen}/adultos` : undefined,
   });
   if (error) {
     // Ya tiene cuenta confirmada pero no perfil: la invitación quedó registrada y se acepta

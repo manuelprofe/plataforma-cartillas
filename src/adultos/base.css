@@ -434,3 +434,51 @@ a.fila:hover, button.fila:hover { background: var(--a-fondo); }
   .barra, .pestanas { display: none; }
   .contenido { padding: 0; }
 }
+
+/* ---------- Listas de personas, invitaciones y grupos (dueño y coordinador) ---------- */
+
+.campo select {
+  min-height: var(--toque);
+  padding: 0 var(--e-3);
+  border: 1px solid var(--a-linea-fuerte);
+  border-radius: var(--r-control);
+  background: var(--a-superficie);
+  font: inherit;
+  color: inherit;
+}
+.formulario { display: flex; flex-direction: column; gap: var(--e-4); max-width: 480px; }
+.lista { list-style: none; padding: 0; margin: 0; }
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--e-3);
+  padding: var(--e-3) var(--e-4);
+  border-top: 1px solid var(--a-linea);
+}
+.item:first-child { border-top: 0; }
+.item__texto { display: flex; flex-direction: column; min-width: 0; overflow-wrap: anywhere; }
+.item__nombre { display: flex; flex-wrap: wrap; align-items: center; gap: var(--e-2); }
+.item__acciones { display: flex; flex-wrap: wrap; align-items: center; gap: var(--e-2); }
+.item__acciones .campo { flex: 1 1 200px; }
+.etiqueta {
+  font-size: 13px;
+  line-height: 20px;
+  padding: 0 var(--e-2);
+  border: 1px solid var(--a-linea-fuerte);
+  border-radius: var(--e-1);
+  color: var(--a-texto-2);
+  white-space: nowrap;
+}
+.etiqueta--ok { color: var(--a-ok); border-color: currentColor; }
+.etiqueta--aviso { color: var(--a-aviso); border-color: currentColor; }
+.cifras { display: flex; flex-wrap: wrap; gap: var(--e-1) var(--e-5); color: var(--a-texto-2); font-variant-numeric: tabular-nums; }
+.pregunta { display: inline-flex; flex-wrap: wrap; align-items: center; gap: var(--e-2); }
+.pregunta > span { font-weight: 500; }
+.cabeza-pagina { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: var(--e-3); }
+.nota { padding: var(--e-3) var(--e-4); border-radius: var(--r-control); background: var(--a-hundido); color: var(--a-texto-2); }
+
+@media (min-width: 720px) {
+  .item { flex-direction: row; align-items: center; justify-content: space-between; }
+  .item__acciones { justify-content: flex-end; flex: none; }
+  .item__acciones .campo { flex: 0 0 220px; }
+}

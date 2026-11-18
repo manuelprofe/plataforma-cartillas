@@ -8,6 +8,9 @@ import { minutosDesdeProyeccion, terminarClase } from '../proyectando';
 import { Boton, Cascaron, Cortina, Encabezado, Farol, Fila, Hueco, Panel, Vacio, type Seccion } from './base';
 import { cambiarClave, correoDeSesion, entrar, ErrorCuenta, iniciar, INICIO, recuperar, salir, tomarEnlace, useCuenta, type Estado, type Falla, type Rol } from './cuenta';
 import { Icono } from './Icono';
+import { DocentesYGrupos, UsoYAvance } from './Colegio';
+import { Campo, correoValido, useTitulo } from './comun';
+import { PaginaDueno } from './Plataforma';
 
 /** Resultado de leer la sesión que traen los enlaces de los correos (se lee antes de pintar). */
 let enlace: ReturnType<typeof tomarEnlace> = 'nada';
@@ -20,13 +23,6 @@ export function montar(raiz: HTMLElement) {
       <Adultos />
     </StrictMode>,
   );
-}
-
-/** Título de la pestaña del navegador para cada pantalla. */
-function useTitulo(titulo: string) {
-  useEffect(() => {
-    document.title = `${titulo} · English Adventure Quest`;
-  }, [titulo]);
 }
 
 /** ¿Hay red ahora? Se vuelve a pintar al perderla o recuperarla. */
@@ -132,41 +128,6 @@ function CajaEntrada({ titulo, texto, alEnviar, children }: { titulo: string; te
   );
 }
 
-/** Campo de texto con etiqueta y su mensaje de error debajo. */
-function Campo(props: { id: string; etiqueta: string; tipo?: 'email' | 'password' | 'text'; valor: string; alCambiar: (v: string) => void; error?: string; autoComplete: string; ver?: { activo: boolean; alternar: () => void } }) {
-  const idError = `${props.id}-error`;
-  const entrada = (
-    <input
-      id={props.id}
-      type={props.ver ? (props.ver.activo ? 'text' : 'password') : (props.tipo ?? 'text')}
-      inputMode={props.tipo === 'email' ? 'email' : undefined}
-      autoComplete={props.autoComplete}
-      autoCapitalize="none"
-      spellCheck={false}
-      value={props.valor}
-      onChange={(e) => props.alCambiar(e.target.value)}
-      aria-invalid={props.error ? true : undefined}
-      aria-describedby={props.error ? idError : undefined}
-    />
-  );
-  return (
-    <div className="campo">
-      <label htmlFor={props.id}>{props.etiqueta}</label>
-      {props.ver ? (
-        <div className="campo__fila">
-          {entrada}
-          <Boton onClick={props.ver.alternar}>{props.ver.activo ? 'Ocultar' : 'Ver'}</Boton>
-        </div>
-      ) : (
-        entrada
-      )}
-      <p id={idError} className="mensaje mensaje--error">
-        {props.error}
-      </p>
-    </div>
-  );
-}
-
 const SIN_RED_ENTRAR = 'Sin conexión. Para entrar la primera vez hace falta internet.';
 
 /** Texto para el adulto según lo que falló. */
@@ -189,8 +150,6 @@ function textoFalla(e: unknown, contexto: 'entrar' | 'clave' | 'correo'): string
       return e instanceof ErrorCuenta && e.message === 'demasiados' ? 'Se pidieron muchos correos seguidos. Espere unos minutos e intente de nuevo.' : 'No se pudo completar. Intente de nuevo en un momento.';
   }
 }
-
-const correoValido = (c: string) => /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(c.trim());
 
 function Entrada({ cuenta }: { cuenta: Estado }) {
   const [ver, setVer] = useState(false);
@@ -606,17 +565,11 @@ function Colegio({ resto, cuenta, sinRed }: { resto: string[]; cuenta: Dentro; s
   let pagina;
   switch (seccion) {
     case '':
-      pagina = (
-        <SeccionVacia
-          titulo="Uso y avance"
-          hueco="Aquí verá el uso de la cartilla por grado"
-          texto="Cuando sus docentes creen grupos, aquí verá por grupo el tema según el plan, cuántos niños tienen cuenta y cuántos practicaron esta semana. Lo que viene de la app muestra solo a quienes juegan en casa. No sirve para calificar ni para comparar docentes."
-        />
-      );
+      pagina = <UsoYAvance />;
       break;
     case 'docentes':
     case 'grupos':
-      pagina = <SeccionVacia titulo="Docentes y grupos" hueco="Aquí irán sus docentes y sus grupos" texto="Invite a su primer docente con su correo." />;
+      pagina = <DocentesYGrupos sinRed={sinRed} />;
       break;
     case 'materiales':
       pagina = <SeccionVacia titulo="Materiales" hueco="Aquí irán los materiales de la cartilla" texto="Solo para leer e imprimir." />;
@@ -648,19 +601,20 @@ const PLATAFORMA: Seccion[] = [
 ];
 
 const PAGINAS_PLATAFORMA: Record<string, { titulo: string; hueco: string; texto?: string }> = {
-  '': { titulo: 'Colegios', hueco: 'Aquí irán los colegios', texto: 'Cree el primer colegio.' },
   cartillas: { titulo: 'Cartillas', hueco: 'Aquí aparecerán las cartillas al subir su paquete', texto: 'Cada cartilla con sus versiones y qué versión usa cada colegio.' },
   documentos: { titulo: 'Documentos de plataforma', hueco: 'Aquí irán los documentos de la plataforma', texto: 'Autorización base, instrucciones de la tarjeta y ayuda.' },
-  cuentas: { titulo: 'Cuentas', hueco: 'Aquí irán las cuentas de coordinador', texto: 'Crear un coordinador con su correo y su colegio, y reenviar la invitación.' },
   piloto: { titulo: 'Datos del piloto', hueco: 'Aún no hay datos para exportar', texto: 'El resumen se descargará sin apodos.' },
 };
 
 function Plataforma({ resto, sinRed }: { resto: string[]; cuenta: Dentro; sinRed: boolean }) {
-  const [seccion = ''] = resto;
+  const [seccion = '', id] = resto;
   const datos = PAGINAS_PLATAFORMA[seccion];
+  const activa = seccion === '' || seccion === 'colegios' ? '/plataforma' : `/plataforma/${seccion}`;
+  const propia = datos ? null : <PaginaDueno seccion={seccion} id={id} sinRed={sinRed} />;
+  const valida = seccion === '' || seccion === 'cuentas' || (seccion === 'colegios' && id);
   return (
-    <Cascaron inicio="/plataforma" fin={BOTON_SALIR} aviso={sinRed && <AvisoSinRed texto={SIN_RED_LECTURA} />} secciones={PLATAFORMA} activa={seccion ? `/plataforma/${seccion}` : '/plataforma'} nombre="Secciones de la plataforma">
-      {datos ? <SeccionVacia {...datos} /> : <AlInicio ruta="/plataforma" />}
+    <Cascaron inicio="/plataforma" fin={BOTON_SALIR} aviso={sinRed && <AvisoSinRed texto={SIN_RED_LECTURA} />} secciones={PLATAFORMA} activa={activa} nombre="Secciones de la plataforma">
+      {datos ? <SeccionVacia {...datos} /> : valida ? propia : <AlInicio ruta="/plataforma" />}
     </Cascaron>
   );
 }

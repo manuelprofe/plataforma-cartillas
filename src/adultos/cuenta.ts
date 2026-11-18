@@ -115,6 +115,24 @@ export async function leer<T>(tabla: string, consulta: string): Promise<T[]> {
   return r.datos as T[];
 }
 
+/**
+ * Escribe en una tabla con PostgREST (POST, PATCH o DELETE) y devuelve las filas afectadas. La
+ * `consulta` debe llevar `select=` con columnas con nombre (grupos no deja leer `codigo`). Si la
+ * seguridad por filas no deja tocar nada, PostgREST responde 200 con 0 filas: aquí es un error.
+ */
+export async function escribir<T>(tabla: string, metodo: 'POST' | 'PATCH' | 'DELETE', consulta: string, cuerpo?: unknown, mezclar = false): Promise<T[]> {
+  const r = await pedir(`/rest/v1/${tabla}?${consulta}`, {
+    metodo,
+    cuerpo,
+    token: await token(),
+    cabeceras: { Prefer: `return=representation${mezclar ? ',resolution=merge-duplicates' : ''}` },
+  });
+  if (!r.ok) throw errorDe(r);
+  const filas = Array.isArray(r.datos) ? (r.datos as T[]) : [];
+  if (metodo !== 'POST' && filas.length === 0) throw new ErrorCuenta('otro', 'No tiene permiso para este cambio o ya no existe');
+  return filas;
+}
+
 // ---------------------------------------------------------------- Perfil
 
 type FilaPerfil = Perfil & { activo: boolean };
@@ -196,7 +214,7 @@ export async function recuperar(correo: string): Promise<void> {
  * Invita a un adulto (dueño: coordinadores o docentes; coordinador: docentes de su colegio).
  * Lo hace la Edge Function `invitar` (supabase/funciones/invitar): registra la invitación con
  * la sesión de quien invita y envía el correo con la clave de servicio, que nunca llega aquí.
- * El enlace del correo lleva a /adultos/invitacion.
+ * El enlace del correo lleva a /adultos (la app lo reconoce por el type=invite del hash).
  */
 export async function invitar(datos: { correo: string; nombre: string; rol: 'coordinador' | 'docente'; colegio_id?: string }): Promise<'enviada' | 'ya-registrado'> {
   const r = await pedir('/functions/v1/invitar', { cuerpo: datos, token: await token() });

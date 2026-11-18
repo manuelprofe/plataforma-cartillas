@@ -161,6 +161,12 @@ const TRAZOS = {
       <path d="m2 2 20 20" />
     </>
   ),
+  crear: (
+    <>
+      <path d="M5 12h14" />
+      <path d="M12 5v14" />
+    </>
+  ),
   siguiente: <path d="m9 18 6-6-6-6" />,
   volver: (
     <>

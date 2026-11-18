@@ -10,8 +10,8 @@ los documentos de `docs/`. Al empezar: leer esto, `CLAUDE.md`, y seguir "Siguien
   Publicar: herramienta Netlify `deploy-site` y correr el `npx` que devuelve. **Solo con permiso de Manuel.**
   Última publicación: 18 nov (dueño y coordinador con invitaciones por correo; 2ccb2e5).
 - Supabase `https://jpwwmzfhbdnzsvwuciqa.supabase.co` (EE. UU.), clave pública en `.env.example` y
-  `netlify.toml`. Migración 002 aplicada y gancho activo; **la 003 (`supabase/migraciones/003-ajustes.sql`) debe pegarla Manuel** (sin ella fallan las listas de invitaciones). Pasos de Manuel en `supabase/PASOS-MANUEL.md`
-  (faltan 9 y 10: SMTP propio y correos en español, antes del piloto). Cuenta de profesor de prueba:
+  `netlify.toml`. Migración 002 aplicada y gancho activo; 003 aplicada. SMTP propio con Gmail configurado (18 nov); primera invitación real a un docente funcionó. Pasos de Manuel en `supabase/PASOS-MANUEL.md`
+  (falta el 9: correos en español). Cuenta de profesor de prueba:
   la que dio Manuel en el chat (no guardarla en el repo).
 - ElevenLabs: clave como secreto del entorno (`ELEVENLABS_API_KEY=proxy-injected` en scripts) y
   conector MCP. Voces y modelo en `herramientas/generar_voz.py`. Plan 40.000 créditos/mes; el
@@ -21,8 +21,6 @@ los documentos de `docs/`. Al empezar: leer esto, `CLAUDE.md`, y seguir "Siguien
 ## Siguiente (en orden)
 
 1. **Informe de los probadores:** atenderlo primero cuando llegue.
-2. **Primera invitación real** con la cuenta de profesor de prueba (dueño → colegio → habilitar
-   cartilla → invitar docente → aceptar desde el correo). Hecho y revisado: dueño y coordinador.
 3. **Esqueleto, tandas 4 a 6** (`docs/diseno/esqueleto.md` §8; desarrollador → revisor → prueba a
    390 px): 4 docente base (grupos, niños con apodo, autorización, PIN, tarjetas imprimibles,
    estrellas sin red) — con esto los niños entran con tarjeta; 5 proyectar, cortina y plantilla de

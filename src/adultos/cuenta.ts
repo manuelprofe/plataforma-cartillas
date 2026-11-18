@@ -27,6 +27,8 @@ interface Sesion extends Tokens {
 export type Estado =
   | { tipo: 'cargando' }
   | { tipo: 'fuera' }
+  /** Hay sesión (por ejemplo la del enlace de una invitación) pero no hubo red para saber el perfil. */
+  | { tipo: 'sin-red' }
   /** Con sesión, pero sin rol: invitación sin aceptar o acceso desactivado. */
   | { tipo: 'sin-acceso'; correo?: string }
   /** `sinRed`: entró con lo último que tenía guardado; solo lectura. */
@@ -171,7 +173,7 @@ export async function iniciar(): Promise<void> {
   if (!vigilando) {
     vigilando = true;
     window.addEventListener('online', () => {
-      if (estado.tipo === 'dentro' && estado.sinRed) void iniciar();
+      if ((estado.tipo === 'dentro' && estado.sinRed) || estado.tipo === 'sin-red') void iniciar();
     });
   }
   sesion = leerSesion();
@@ -183,7 +185,8 @@ export async function iniciar(): Promise<void> {
   } catch (e) {
     if (e instanceof ErrorCuenta && e.falla === 'red') {
       if (guardado) poner({ tipo: 'dentro', perfil: guardado, correo: sesion?.correo, sinRed: true });
-      else poner({ tipo: 'fuera' });
+      // Sesión sin perfil (enlace de invitación recién abierto): los tokens quedan guardados y se reintenta.
+      else poner({ tipo: 'sin-red' });
       return;
     }
     // Token revocado o vencido sin remedio: hay que entrar de nuevo.
@@ -222,11 +225,15 @@ export async function invitar(datos: { correo: string; nombre: string; rol: 'coo
   return campo(r.datos, 'estado') === 'ya-registrado' ? 'ya-registrado' : 'enviada';
 }
 
+/** Sesión del enlace que espera la confirmación de quien ya tenía otra cuenta abierta en este aparato. */
+let enlacePendiente: Sesion | null = null;
+
 /**
  * Lee la sesión que trae el enlace de un correo (recuperar o invitación) y la borra de la
- * dirección. Devuelve 'ok', 'enlace' (vencido o ya usado) o 'nada' (se abrió sin enlace).
+ * dirección. Devuelve 'ok', 'enlace' (vencido o ya usado), 'nada' (se abrió sin enlace) o
+ * 'confirmar' (el aparato ya tiene la sesión de otra persona: no se pisa sin preguntar).
  */
-export function tomarEnlace(): 'ok' | 'enlace' | 'nada' {
+export function tomarEnlace(): 'ok' | 'enlace' | 'nada' | 'confirmar' {
   const datos = new URLSearchParams(location.hash.slice(1));
   const consulta = new URLSearchParams(location.search);
   if (location.hash || location.search) history.replaceState(history.state, '', location.pathname);
@@ -234,9 +241,36 @@ export function tomarEnlace(): 'ok' | 'enlace' | 'nada' {
   const access = datos.get('access_token');
   const refresh = datos.get('refresh_token');
   if (!access || !refresh) return sesion ? 'ok' : 'nada';
-  sesion = sesionDe({ access_token: access, refresh_token: refresh, expires_in: Number(datos.get('expires_in')) || 3600, expires_at: Number(datos.get('expires_at')) || undefined });
+  const nueva = sesionDe({ access_token: access, refresh_token: refresh, expires_in: Number(datos.get('expires_in')) || 3600, expires_at: Number(datos.get('expires_at')) || undefined });
+  const abierta = leerSesion();
+  if (abierta && abierta.refresh !== nueva.refresh) {
+    enlacePendiente = nueva;
+    return 'confirmar';
+  }
+  sesion = nueva;
   guardarSesion(sesion);
   return 'ok';
+}
+
+/** Correo de la cuenta que abre el enlace y de la que está abierta ahora, para el aviso de confirmación. */
+export async function cuentasEnJuego(): Promise<{ enlace?: string; abierta?: string }> {
+  const r = enlacePendiente ? await pedir('/auth/v1/user', { token: enlacePendiente.access }).catch(() => null) : null;
+  return { enlace: r?.ok ? campo(r.datos, 'email') || undefined : undefined, abierta: leerSesion()?.correo };
+}
+
+/** El adulto confirmó: la cuenta del enlace reemplaza a la abierta y se carga su perfil. */
+export async function aceptarEnlace(): Promise<void> {
+  if (!enlacePendiente) return;
+  poner({ tipo: 'cargando' });
+  sesion = enlacePendiente;
+  enlacePendiente = null;
+  guardarSesion(sesion);
+  await iniciar();
+}
+
+/** El adulto no quiso cambiar de cuenta: se descarta el enlace y sigue la sesión que estaba. */
+export function descartarEnlace() {
+  enlacePendiente = null;
 }
 
 /** Correo de la sesión abierta con el enlace, para mostrarlo en el formulario. */

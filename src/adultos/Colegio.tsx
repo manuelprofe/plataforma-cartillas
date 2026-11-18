@@ -93,7 +93,7 @@ export function DocentesYGrupos({ sinRed }: { sinRed: boolean }) {
 
               {invitaciones.length > 0 && (
                 <Panel titulo="Invitaciones" filas>
-                  <ListaInvitaciones items={invitaciones} sinRed={sinRed} alCambiar={carga.recargar} puedeCancelar={() => true} />
+                  <ListaInvitaciones items={invitaciones} sinRed={sinRed} alCambiar={carga.recargar} puedeCancelar={(i) => !i.del_dueno} />
                 </Panel>
               )}
 
@@ -156,7 +156,7 @@ function FilaGrupo({ g, docentes, lista, sinRed, alCambiar }: { g: Grupo; docent
         </p>
       </div>
       <div className="item__acciones">
-        <CampoOpciones id={`doc-${g.id}`} etiqueta="Cambiar docente" valor={g.docente_id} opciones={opciones} alCambiar={(v) => v !== g.docente_id && void correr(() => asignarDocente(g.id, v), 'Docente cambiado.')} />
+        <CampoOpciones id={`doc-${g.id}`} etiqueta="Cambiar docente" disabled={sinRed || ocupado} valor={g.docente_id} opciones={opciones} alCambiar={(v) => v !== g.docente_id && void correr(() => asignarDocente(g.id, v), 'Docente cambiado.')} />
         <Confirmar etiqueta="Renovar código" pregunta="¿Renovar el código?" si="Sí, renovar" disabled={sinRed || ocupado} alConfirmar={() => void correr(() => renovarCodigo(g.id), 'Código renovado. El docente ve el nuevo en su grupo; los niños que ya entraron siguen dentro.')} />
       </div>
     </li>

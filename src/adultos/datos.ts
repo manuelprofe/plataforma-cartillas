@@ -27,6 +27,8 @@ export interface Invitacion {
   colegio_id: string;
   creado: string;
   aceptada: string | null;
+  /** La envió el dueño: el coordinador no puede reenviarla ni cancelarla (la base la rechaza). */
+  del_dueno: boolean;
 }
 export interface Habilitada {
   colegio_id: string;
@@ -70,7 +72,8 @@ export const listarColegios = () => leer<Colegio>('colegios', 'select=id,nombre,
 export const listarHabilitadas = () => leer<Habilitada>('colegio_cartillas', 'select=colegio_id,cartilla_id,version');
 export const listarVersiones = () => leer<Version>('cartilla_versiones', 'select=cartilla_id,version&order=version.desc');
 export const listarPersonas = () => leer<Persona>('perfiles', 'select=id,colegio_id,rol,nombre,correo,activo&order=nombre.asc');
-export const listarInvitaciones = () => leer<Invitacion>('invitaciones', 'select=id,correo,nombre,rol,colegio_id,creado,aceptada&order=creado.desc');
+/** Migración 003: `lista_invitaciones()` trae lo que ve cada rol y si la invitó el dueño. */
+export const listarInvitaciones = () => rpc<Invitacion[]>('lista_invitaciones', {});
 export const listarGrupos = () => leer<Grupo>('grupos', 'select=id,colegio_id,docente_id,nombre,grado&order=nombre.asc');
 export const cifrasGrupos = () => rpc<Cifra[]>('cifras_grupos', {});
 

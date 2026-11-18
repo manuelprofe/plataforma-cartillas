@@ -119,12 +119,12 @@ export function Campo(props: { id: string; etiqueta: string; tipo?: 'email' | 'p
   );
 }
 
-export function CampoOpciones(props: { id: string; etiqueta: string; valor: string; alCambiar: (v: string) => void; opciones: { valor: string; etiqueta: string }[]; vacio?: string; error?: string }) {
+export function CampoOpciones(props: { id: string; etiqueta: string; valor: string; alCambiar: (v: string) => void; opciones: { valor: string; etiqueta: string }[]; vacio?: string; error?: string; disabled?: boolean }) {
   const idError = `${props.id}-error`;
   return (
     <div className="campo">
       <label htmlFor={props.id}>{props.etiqueta}</label>
-      <select id={props.id} value={props.valor} onChange={(e) => props.alCambiar(e.target.value)} aria-invalid={props.error ? true : undefined} aria-describedby={props.error ? idError : undefined}>
+      <select id={props.id} value={props.valor} disabled={props.disabled} onChange={(e) => props.alCambiar(e.target.value)} aria-invalid={props.error ? true : undefined} aria-describedby={props.error ? idError : undefined}>
         {props.vacio !== undefined && <option value="">{props.vacio}</option>}
         {props.opciones.map((o) => (
           <option key={o.valor} value={o.valor}>
@@ -140,11 +140,11 @@ export function CampoOpciones(props: { id: string; etiqueta: string; valor: stri
 }
 
 /** Botón que pide confirmar antes de una acción que no se puede deshacer. */
-export function Confirmar({ etiqueta, pregunta, si, alConfirmar, disabled }: { etiqueta: string; pregunta: string; si: string; alConfirmar: () => void; disabled?: boolean }) {
+export function Confirmar({ etiqueta, pregunta, si, alConfirmar, disabled, principal }: { etiqueta: string; pregunta: string; si: string; alConfirmar: () => void; disabled?: boolean; principal?: boolean }) {
   const [abierto, setAbierto] = useState(false);
   if (!abierto)
     return (
-      <Boton variante="texto" onClick={() => setAbierto(true)} disabled={disabled}>
+      <Boton variante={principal ? 'primario' : 'texto'} onClick={() => setAbierto(true)} disabled={disabled}>
         {etiqueta}
       </Boton>
     );
@@ -267,6 +267,7 @@ export function ListaInvitaciones({ items, colegios, sinRed, alCambiar, puedeCan
                   {i.correo} · {NOMBRE_ROL_PERSONA[i.rol]}
                   {colegio ? ` · ${colegio}` : ''} · {estado === 'aceptada' ? `aceptó el ${fecha(i.aceptada!)}` : `enviada el ${fecha(i.creado)}`}
                 </span>
+                {estado !== 'aceptada' && !puedeCancelar(i) && <span className="meta">Esta invitación la envió el administrador de la plataforma; pídale que la gestione.</span>}
               </div>
               {estado !== 'aceptada' && puedeCancelar(i) && (
                 <div className="item__acciones">
@@ -324,7 +325,7 @@ export function ListaPersonas({ items, sinRed, alCambiar, puedeCambiar }: { item
             {puedeCambiar(p) && (
               <div className="item__acciones">
                 {p.activo ? (
-                  <Confirmar etiqueta="Desactivar" pregunta="¿Quitarle el acceso?" si="Sí, desactivar" disabled={sinRed || ocupada === p.id} alConfirmar={() => void cambiar(p)} />
+                  <Confirmar etiqueta="Desactivar" pregunta={p.rol === 'coordinador' ? '¿Quitarle el acceso? Sus docentes y grupos quedan sin quien los administre.' : '¿Quitarle el acceso?'} si="Sí, desactivar" disabled={sinRed || ocupada === p.id} alConfirmar={() => void cambiar(p)} />
                 ) : (
                   <Boton onClick={() => void cambiar(p)} disabled={sinRed || ocupada === p.id}>
                     Activar de nuevo

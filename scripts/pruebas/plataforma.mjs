@@ -41,7 +41,10 @@ function crearBase() {
     }
     if (t === 'invitaciones') {
       if (m === 'DELETE') { const n = b.invitaciones.length; b.invitaciones = b.invitaciones.filter((i) => i.id !== filtro); return { json: n === b.invitaciones.length ? [] : [{ id: filtro }] }; }
-      return { json: quien === 'coordinador' ? b.invitaciones.filter((i) => i.rol === 'docente') : b.invitaciones };
+    }
+    if (t === 'rpc/lista_invitaciones') {
+      const filas = quien === 'coordinador' ? b.invitaciones.filter((i) => i.rol === 'docente') : b.invitaciones;
+      return { json: filas.map((i) => ({ ...i, del_dueno: i.por === 'dueno' })) };
     }
     if (t === 'grupos') {
       if (/codigo|select=\*/.test(u.search)) return { status: 401, json: { message: 'permission denied for column codigo' } };
@@ -54,6 +57,7 @@ function crearBase() {
     }
     if (t === 'rpc/renovar_codigo') return { json: null };
     if (t === 'rpc/cifras_grupos') return { json: b.grupos.map((g) => ({ grupo_id: g.id, nombre: g.nombre, grado: g.grado, docente: b.perfiles.find((p) => p.id === g.docente_id)?.nombre ?? '', con_cifras: g.nombre === '3A', ninos: 14, autorizaciones: 12, practicaron_semana: 9 })) };
+    if (b.caido && t === 'rpc/mi_perfil') return { abortar: true };
     if (t === 'rpc/mi_perfil' && b.aceptarCon) return { json: b.aceptado ? { rol: b.aceptarCon.rol, nombre: b.aceptarCon.nombre, colegio_id: 'col-1', activo: true } : null };
     if (t === 'rpc/aceptar_invitacion') { b.aceptado = true; return { json: b.aceptarCon.rol }; }
     if (u.pathname === '/auth/v1/user' && m === 'PUT') { b.clave = cuerpo.password; return { json: { email: 'rosa@colegio.edu.co' } }; }
@@ -69,7 +73,7 @@ function crearBase() {
     if (b.perfiles.some((p) => p.correo === d.correo)) return { status: 403, json: { error: 'Ese correo ya tiene cuenta' } };
     const previa = b.invitaciones.find((i) => i.correo === d.correo && !i.aceptada);
     if (previa) Object.assign(previa, { nombre: d.nombre, creado: new Date().toISOString() });
-    else b.invitaciones.push({ id: b.id('inv'), correo: d.correo, nombre: d.nombre, rol: d.rol, colegio_id: d.colegio_id ?? 'col-1', creado: new Date().toISOString(), aceptada: null });
+    else b.invitaciones.push({ id: b.id('inv'), correo: d.correo, nombre: d.nombre, rol: d.rol, colegio_id: d.colegio_id ?? 'col-1', creado: new Date().toISOString(), aceptada: null, por: quien });
     return { json: { estado: 'enviada' } };
   };
   return b;
@@ -121,6 +125,8 @@ try {
     comprobar((await p.locator('main').textContent()).includes('Todavía no hay personas'), 'colegio nuevo: vacío de personas con qué hacer');
     await p.screenshot({ path: `${CAPTURAS}/plataforma-colegio-nuevo-390.png`, fullPage: true });
     await p.click('button:has-text("Habilitar cartilla 2027.1")');
+    comprobar(!base.llamadas.some((l) => l.t === 'colegio_cartillas' && l.m === 'POST'), 'habilitar la cartilla pide confirmación antes de escribir');
+    await p.click('button:has-text("Sí, habilitar")');
     await p.waitForSelector('strong:has-text("2027.1")');
     const hab = base.llamadas.find((l) => l.t === 'colegio_cartillas' && l.m === 'POST');
     comprobar(hab?.cuerpo.cartilla_id === 'ingles-3' && hab.cuerpo.version === '2027.1' && hab.q.includes('on_conflict=colegio_id,cartilla_id'), 'habilita ingles-3 2027.1 para el colegio');
@@ -189,6 +195,8 @@ try {
     await p.click('a.fila');
     await p.waitForSelector('li:has-text("Ana Gómez")');
     comprobar((await p.locator('li:has-text("Ana Gómez") .etiqueta').textContent()) === 'Vencida', 'invitación de más de 14 días: "Vencida" con Reenviar');
+    await p.locator('li:has-text("Luis Mora") >> button:has-text("Desactivar")').first().click();
+    comprobar((await p.locator('[role=group]').textContent()).includes('sin quien los administre'), 'desactivar un coordinador advierte que sus docentes y grupos quedan sin quien los administre');
     await p.screenshot({ path: `${CAPTURAS}/plataforma-colegio-1280.png`, fullPage: true });
     await c.close();
   }
@@ -204,12 +212,14 @@ try {
     );
     const ok = new Date().toISOString();
     for (const [correo, nombre] of [['rosa@colegio.edu.co', 'Rosa Pérez'], ['marta@colegio.edu.co', 'Marta Díaz'], ['gil@colegio.edu.co', 'Inactivo Gil']]) base.invitaciones.push({ id: base.id('inv'), correo, nombre, rol: 'docente', colegio_id: 'col-1', creado: ok, aceptada: ok });
+    base.invitaciones.push({ id: 'inv-d', correo: 'deldueno@colegio.edu.co', nombre: 'Del Dueño', rol: 'docente', colegio_id: 'col-1', creado: ok, aceptada: null, por: 'dueno' });
     const { c, p, errores } = await abrir(navegador, base, { rol: 'coordinador' });
     await p.goto(url('/colegio'));
     await p.waitForSelector('h2:has-text("Todavía no hay grupos")');
     comprobar(true, 'coordinador sin grupos: vacío en Uso y avance');
     await p.goto(url('/colegio/docentes'));
     await p.waitForSelector('li:has-text("Rosa Pérez")');
+    comprobar((await p.locator('li:has-text("Del Dueño") button').count()) === 0 && (await p.locator('li:has-text("Del Dueño")').textContent()).includes('administrador de la plataforma'), 'invitación del dueño: el coordinador no ve Reenviar ni Cancelar y sabe por qué');
     comprobar((await p.locator('#inv-rol').count()) === 0, 'el coordinador solo invita docentes (sin selector de rol)');
     await p.fill('#inv-nombre', 'Pedro Ruiz');
     await p.fill('#inv-correo', 'pedro@colegio.edu.co');
@@ -226,6 +236,11 @@ try {
     await p.selectOption('#gr-docente', 'u-1');
     await p.click('main button[type=submit]:has-text("Crear grupo")');
     await p.waitForSelector('li:has-text("3B") >> text=Docente: Rosa Pérez');
+    await c.setOffline(true);
+    await p.waitForSelector('.aviso-red');
+    comprobar(await p.locator('li:has-text("3B") select').isDisabled(), 'sin red: "Cambiar docente" deshabilitado');
+    await c.setOffline(false);
+    await p.waitForFunction(() => !document.querySelector('.aviso-red'));
     const cg = base.llamadas.find((l) => l.t === 'rpc/crear_grupo');
     comprobar(cg?.cuerpo.p_nombre === '3B' && cg.cuerpo.p_grado === '3°' && cg.cuerpo.p_docente === 'u-1', 'crear_grupo recibe nombre, grado y docente');
     await p.locator('li:has-text("3B") select').selectOption('u-2');
@@ -289,6 +304,54 @@ try {
     await p.goto(url('/#error=access_denied&error_code=otp_expired&error_description=Email+link+is+invalid+or+has+expired'));
     await p.waitForSelector('h1:has-text("La invitación ya no sirve")');
     comprobar(ruta(p) === '/adultos/invitacion', 'enlace vencido en la raíz: "La invitación ya no sirve"');
+    await c.close();
+  }
+  {
+    // Enlace de invitación en un aparato con otra persona dentro: se pregunta antes de cambiar.
+    for (const continuar of [false, true]) {
+      const base = crearBase();
+      const { c, p } = await abrir(navegador, base, { rol: 'docente' });
+      await p.goto(url('/adultos#access_token=falso-coordinador&refresh_token=r2&expires_in=3600&type=invite'));
+      await p.waitForSelector('h1:has-text("Cambiar de cuenta")');
+      const texto = await p.locator('main').textContent();
+      comprobar(texto.includes('Va a entrar como rosa@colegio.edu.co') && texto.includes('docente@prueba.co') && ruta(p) === '/adultos/invitacion', 'enlace con otra sesión abierta: "Va a entrar como…" y la cuenta abierta');
+      comprobar((await p.evaluate((k) => JSON.parse(localStorage.getItem(k)).access, LLAVE_ADULTO)) === 'falso-docente', 'mientras no confirme, la sesión abierta no se toca');
+      if (continuar) {
+        await p.click('button:has-text("Continuar")');
+        await p.waitForSelector('#clave-nueva');
+        comprobar((await p.evaluate((k) => JSON.parse(localStorage.getItem(k)).access, LLAVE_ADULTO)) === 'falso-coordinador', 'Continuar cambia a la cuenta del enlace');
+      } else {
+        await p.click('button:has-text("Cancelar")');
+        await p.waitForSelector('h1:has-text("Inicio")');
+        comprobar(ruta(p) === '/docente' && (await p.evaluate((k) => JSON.parse(localStorage.getItem(k)).access, LLAVE_ADULTO)) === 'falso-docente', 'Cancelar deja la sesión anterior y vuelve a su inicio');
+      }
+      await c.close();
+    }
+    // El type del enlace elige la pantalla; con sesión y sin enlace, /adultos/invitacion va al inicio.
+    const base = crearBase();
+    const { c, p } = await abrir(navegador, base);
+    await p.goto(url('/adultos/invitacion#access_token=falso-docente&refresh_token=r&expires_in=3600&type=recovery'));
+    await p.waitForSelector('h1:has-text("Contraseña nueva")');
+    comprobar(ruta(p) === '/adultos/clave-nueva', 'type=recovery lleva a la contraseña nueva aunque se abra en /invitacion');
+    await p.goto(url('/adultos/invitacion'));
+    await p.waitForSelector('h1:has-text("Inicio")');
+    comprobar(ruta(p) === '/docente', '/adultos/invitacion con sesión y sin enlace va al inicio del rol');
+    await c.close();
+  }
+  {
+    // Sin red al aceptar la invitación: error de red con Reintentar, sin pedir otro enlace.
+    const base = crearBase();
+    base.aceptarCon = { rol: 'docente', nombre: 'Rosa Pérez' };
+    base.caido = true;
+    const { c, p } = await abrir(navegador, base);
+    await p.goto(url('/adultos#access_token=falso-nuevo&refresh_token=r&expires_in=3600&type=invite'));
+    await p.waitForSelector('h1:has-text("Sin conexión")');
+    comprobar((await p.locator('main').textContent()).includes('no hace falta abrirlo de nuevo') && !p.url().includes('access_token'), 'sin red al aceptar: "Sin conexión" con Reintentar, no "Abra el enlace"');
+    await p.screenshot({ path: `${CAPTURAS}/invitacion-sin-red-390.png` });
+    base.caido = false;
+    await p.click('button:has-text("Reintentar")');
+    await p.waitForSelector('h1:has-text("Rosa Pérez")');
+    comprobar(base.llamadas.some((l) => l.t === 'rpc/aceptar_invitacion'), 'Reintentar usa los tokens guardados y acepta la invitación');
     await c.close();
   }
   {

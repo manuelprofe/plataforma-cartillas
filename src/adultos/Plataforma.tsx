@@ -2,7 +2,7 @@
 import { useState, type FormEvent } from 'react';
 import { navegar } from '../navegacion';
 import { Boton, Encabezado, Fila, Panel, Vacio } from './base';
-import { Campo, Cargado, FormInvitar, ListaInvitaciones, ListaPersonas, textoAccion, useCarga, useTitulo } from './comun';
+import { Campo, Cargado, Confirmar, FormInvitar, ListaInvitaciones, ListaPersonas, textoAccion, useCarga, useTitulo } from './comun';
 import { crearColegio, habilitarCartilla, listarColegios, listarHabilitadas, listarInvitaciones, listarPersonas, listarVersiones, type Colegio, type Habilitada, type Invitacion, type Persona, type Version } from './datos';
 
 /** Páginas del dueño que tienen datos. Devuelve null si la sección no es de este archivo. */
@@ -156,9 +156,7 @@ function FichaColegio({ c, habilitada, versiones, personas, invitaciones, sinRed
         ) : (
           <Vacio texto="Este colegio todavía no tiene la cartilla habilitada.">
             {versiones.map((v) => (
-              <Boton key={`${v.cartilla_id}-${v.version}`} variante="primario" onClick={() => void habilitar(v)} disabled={sinRed || ocupado}>
-                Habilitar cartilla {v.version}
-              </Boton>
+              <Confirmar key={`${v.cartilla_id}-${v.version}`} principal etiqueta={`Habilitar cartilla ${v.version}`} pregunta={`¿Habilitar la versión ${v.version} para ${c.nombre}?`} si="Sí, habilitar" disabled={sinRed || ocupado} alConfirmar={() => void habilitar(v)} />
             ))}
           </Vacio>
         )}

@@ -6,7 +6,7 @@ import { createRoot } from 'react-dom/client';
 import { navegar, useRuta } from '../navegacion';
 import { minutosDesdeProyeccion, terminarClase } from '../proyectando';
 import { Boton, Cascaron, Cortina, Encabezado, Farol, Fila, Hueco, Panel, Vacio, type Seccion } from './base';
-import { cambiarClave, correoDeSesion, entrar, ErrorCuenta, iniciar, INICIO, recuperar, salir, tomarEnlace, useCuenta, type Estado, type Falla, type Rol } from './cuenta';
+import { aceptarEnlace, cambiarClave, correoDeSesion, cuentasEnJuego, descartarEnlace, entrar, ErrorCuenta, iniciar, INICIO, recuperar, salir, tomarEnlace, useCuenta, type Estado, type Falla, type Rol } from './cuenta';
 import { Icono } from './Icono';
 import { DocentesYGrupos, UsoYAvance } from './Colegio';
 import { Campo, correoValido, useTitulo } from './comun';
@@ -16,7 +16,13 @@ import { PaginaDueno } from './Plataforma';
 let enlace: ReturnType<typeof tomarEnlace> = 'nada';
 
 export function montar(raiz: HTMLElement) {
-  if (/^\/adultos\/(clave-nueva|invitacion)\/?$/.test(location.pathname)) enlace = tomarEnlace();
+  if (/^\/adultos\/(clave-nueva|invitacion)\/?$/.test(location.pathname)) {
+    // El `type` del enlace decide la pantalla: invite → invitación, recovery → contraseña nueva.
+    const tipo = new URLSearchParams(location.hash.slice(1)).get('type');
+    const destino = tipo === 'recovery' ? '/adultos/clave-nueva' : tipo === 'invite' ? '/adultos/invitacion' : null;
+    if (destino && !location.pathname.startsWith(destino)) history.replaceState(null, '', destino + location.hash);
+    enlace = tomarEnlace();
+  }
   void iniciar();
   createRoot(raiz).render(
     <StrictMode>
@@ -160,6 +166,7 @@ function Entrada({ cuenta }: { cuenta: Estado }) {
 
   if (cuenta.tipo === 'dentro') return <AlInicio ruta={INICIO[cuenta.perfil.rol]} />;
   if (cuenta.tipo === 'cargando') return <Cargando />;
+  if (cuenta.tipo === 'sin-red') return <SinRedPerfil />;
   if (cuenta.tipo === 'sin-acceso') return <SinAcceso correo={cuenta.correo} />;
 
   const alEnviar = async (e: FormEvent) => {
@@ -199,6 +206,54 @@ function Entrada({ cuenta }: { cuenta: Estado }) {
           Volver al juego
         </Boton>
       </div>
+    </CajaEntrada>
+  );
+}
+
+/** Hay sesión pero no hubo red para saber el perfil (por ejemplo al abrir el enlace de una invitación sin señal). */
+function SinRedPerfil() {
+  return (
+    <CajaEntrada titulo="Sin conexión" texto="No pudimos terminar de entrar porque no hay señal. Su enlace sigue guardado en este aparato; no hace falta abrirlo de nuevo.">
+      <Boton variante="primario" ancho onClick={() => void iniciar()}>
+        Reintentar
+      </Boton>
+      <div className="entrada__pie">
+        <Boton variante="texto" icono="salir" onClick={cerrarSesion}>
+          Salir
+        </Boton>
+      </div>
+    </CajaEntrada>
+  );
+}
+
+/** Un enlace de correo llegó a un aparato que ya tiene a otra persona dentro: se pregunta antes de cambiar. */
+function ConfirmarEntrada({ alCambiar }: { alCambiar: () => void }) {
+  const [cuentas, setCuentas] = useState<{ enlace?: string; abierta?: string }>();
+  useEffect(() => {
+    void cuentasEnJuego().then(setCuentas);
+  }, []);
+  return (
+    <CajaEntrada titulo="Cambiar de cuenta" texto={`Va a entrar como ${cuentas?.enlace ?? 'la persona que recibió el correo'}.${cuentas?.abierta ? ` Ahora está abierta la cuenta de ${cuentas.abierta}; se cerrará en este aparato.` : ' Se cerrará la cuenta que está abierta en este aparato.'}`}>
+      <Boton
+        variante="primario"
+        ancho
+        onClick={() => {
+          enlace = 'ok';
+          void aceptarEnlace();
+          alCambiar();
+        }}
+      >
+        Continuar
+      </Boton>
+      <Boton
+        ancho
+        onClick={() => {
+          descartarEnlace();
+          navegar('/adultos', true);
+        }}
+      >
+        Cancelar
+      </Boton>
     </CajaEntrada>
   );
 }
@@ -333,7 +388,9 @@ function EnlaceVencido({ titulo, texto, accion }: { titulo: string; texto: strin
 /** /adultos/clave-nueva: llega desde el correo de "Olvidé mi contraseña". */
 function ClaveNueva({ cuenta }: { cuenta: Estado }) {
   const correo = useCorreo(cuenta);
+  if (enlace === 'confirmar') return <ConfirmarEntrada alCambiar={() => navegar('/adultos/clave-nueva', true)} />;
   if (cuenta.tipo === 'cargando') return <Cargando />;
+  if (cuenta.tipo === 'sin-red') return <SinRedPerfil />;
   if (enlace === 'enlace' || cuenta.tipo === 'fuera')
     return <EnlaceVencido titulo="El enlace ya no sirve" texto="El enlace venció o ya se usó. Pida uno nuevo: llega en un par de minutos." accion={{ ruta: '/adultos/recuperar', etiqueta: 'Pedir un enlace nuevo' }} />;
   return <FormClave titulo="Contraseña nueva" texto={correo ? `Para la cuenta ${correo}.` : 'Escriba la contraseña con la que va a entrar.'} boton="Guardar y entrar" alGuardar={() => navegar(cuenta.tipo === 'dentro' ? INICIO[cuenta.perfil.rol] : '/adultos', true)} />;
@@ -342,7 +399,11 @@ function ClaveNueva({ cuenta }: { cuenta: Estado }) {
 /** /adultos/invitacion: llega desde el correo de invitación; crea la contraseña y entra. */
 function Invitacion({ cuenta }: { cuenta: Estado }) {
   const correo = useCorreo(cuenta);
+  if (enlace === 'confirmar') return <ConfirmarEntrada alCambiar={() => navegar('/adultos/invitacion', true)} />;
   if (cuenta.tipo === 'cargando') return <Cargando />;
+  if (cuenta.tipo === 'sin-red') return <SinRedPerfil />;
+  // Con sesión abierta y sin enlace (se recargó o se llegó a mano): a su inicio.
+  if (cuenta.tipo === 'dentro' && enlace === 'nada') return <AlInicio ruta={INICIO[cuenta.perfil.rol]} />;
   if (enlace === 'enlace')
     return <EnlaceVencido titulo="La invitación ya no sirve" texto="El enlace venció o ya se usó. Pida a quien lo invitó que se la envíe de nuevo. Si ya creó su contraseña, entre con ella." accion={{ ruta: '/adultos', etiqueta: 'Entrar con mi contraseña' }} />;
   if (cuenta.tipo === 'fuera')

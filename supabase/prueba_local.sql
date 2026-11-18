@@ -27,6 +27,8 @@ grant usage on schema public to anon, authenticated;
 \i supabase/esquema.sql
 \i supabase/migraciones/002-esqueleto.sql
 \i supabase/migraciones/002-esqueleto.sql
+\i supabase/migraciones/003-ajustes.sql
+\i supabase/migraciones/003-ajustes.sql
 
 -- Datos: dos colegios; en el uno, dos docentes y un coordinador; en el dos, un docente y un
 -- coordinador; el dueño; tres aparatos anónimos; dos adultos que llegan por invitación.
@@ -96,7 +98,8 @@ select invitar('jefe@x.co', 'Jefe', 'coordinador', '10000000-0000-0000-0000-0000
 
 -- ------------------------------------------------ Docente Uno arma su grupo
 select pg_temp.soy('00000000-0000-0000-0000-0000000000a1');
-insert into t select 'grupo1', (crear_grupo('Tercero A', '3')).id::text;
+with g as (select * from crear_grupo('Tercero A', '3')) insert into t select 'grupo1', id::text from g union all select 'codigo1_api', codigo from g;
+select pg_temp.verificar(pg_temp.v('codigo1_api') is not null, 'crear_grupo sí devuelve el código al docente del grupo');
 insert into t select 'codigo1', codigo from mis_codigos() where grupo_id = pg_temp.v('grupo1')::uuid;
 select pg_temp.debe_fallar('select codigo from grupos', 'ni el docente lee grupos.codigo directo (usa mis_codigos)');
 select pg_temp.debe_fallar('select * from lista_grupo(''AAAAA'')', 'una sesión de adulto no usa lista_grupo');
@@ -255,7 +258,8 @@ select pg_temp.verificar((select count(*) from incidencias) = 1 and (select coun
 select pg_temp.debe_fallar(format('select crear_grupo(%L, %L, %L)', 'X', '3', '00000000-0000-0000-0000-0000000000a5'), 'no asigna un docente que no llegó por invitación');
 select pg_temp.debe_fallar(format('select crear_grupo(%L, %L, %L)', 'X', '3', '00000000-0000-0000-0000-0000000000a3'), 'el coordinador no se asigna grupos a sí mismo');
 select pg_temp.debe_fallar($$insert into perfiles (id, colegio_id, rol, nombre) values ('00000000-0000-0000-0000-0000000000b8', '10000000-0000-0000-0000-000000000001', 'docente', 'Yo')$$, 'el coordinador no crea perfiles');
-insert into t select 'grupo3', (crear_grupo('Tercero B', '3', '00000000-0000-0000-0000-0000000000a1')).id::text;
+with g as (select * from crear_grupo('Tercero B', '3', '00000000-0000-0000-0000-0000000000a1')) insert into t select 'grupo3', id::text from g union all select 'codigo3_api', coalesce(codigo, 'sin código') from g;
+select pg_temp.verificar(pg_temp.v('codigo3_api') = 'sin código', 'crear_grupo no devuelve el código al coordinador');
 select pg_temp.verificar((select docente_id from grupos where id = pg_temp.v('grupo3')::uuid) = '00000000-0000-0000-0000-0000000000a1', 'coordinador asigna un docente invitado de su colegio');
 select pg_temp.debe_fallar(format('update grupos set docente_id = %L where id = %L', '00000000-0000-0000-0000-0000000000a5', pg_temp.v('grupo3')), 'no pasa un grupo a un docente sin invitación');
 select pg_temp.verificar((select not con_cifras and ninos is null from cifras_grupos() where grupo_id = pg_temp.v('grupo3')::uuid), 'grupo de menos de 5: sin cifras');

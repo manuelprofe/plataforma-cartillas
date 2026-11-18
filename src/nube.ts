@@ -126,7 +126,11 @@ export async function traer(estudiante: string): Promise<void> {
   mezclarNube(estudiante, { misiones, estrellas });
 }
 
-/** "Quitar de este celular": suelta al niño de la sesión del aparato. */
+/** "Quitar de este celular": suelta al niño de la sesión del aparato. Sin red no hay nada que soltar; otro error se lanza. */
 export async function soltar(estudiante: string): Promise<void> {
-  await rpc('soltar_estudiante', { p_estudiante: estudiante });
+  try {
+    await rpc('soltar_estudiante', { p_estudiante: estudiante });
+  } catch (e) {
+    if (!esRed(e)) throw e;
+  }
 }

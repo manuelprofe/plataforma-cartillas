@@ -310,6 +310,18 @@ img {
   margin: 0;
 }
 
+.familia__quien {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0;
+}
+
+.familia__quien img {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
 /* Una hoja carta en blanco y negro, para que vaya y vuelva en el cuaderno. */
 @media print {
   @page {

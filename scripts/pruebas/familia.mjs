@@ -9,16 +9,26 @@ const sostener = async (pagina, selector, ms) => {
   await pagina.waitForTimeout(ms);
   await pagina.mouse.up();
 };
+const enLetras = (n) => { const U = ['', 'uno', 'dos', 'tres', 'cuatro', 'cinco', 'seis', 'siete', 'ocho', 'nueve']; const V = ['', 'veintiuno', 'veintidós', 'veintitrés', 'veinticuatro', 'veinticinco', 'veintiséis', 'veintisiete', 'veintiocho', 'veintinueve']; const D = ['', '', '', 'treinta', 'cuarenta', 'cincuenta', 'sesenta', 'setenta', 'ochenta', 'noventa']; return n < 30 ? V[n - 20] : `${D[Math.floor(n / 10)]} y ${U[n % 10]}`; };
+/** Puerta de la familia: sostener "Para la familia" 3 s y resolver el reto del adulto. */
+const entrarFamilia = async (pagina) => {
+  await sostener(pagina, '.pie-familia', 3300);
+  await pagina.waitForSelector('.familia__numeros');
+  const pedido = await pagina.locator('.familia__pregunta strong').textContent();
+  const opciones = (await pagina.locator('.familia__numero').allTextContents()).map(Number);
+  await pagina.click(`.familia__numero:text-is("${opciones.find((n) => enLetras(n) === pedido)}")`);
+  await pagina.waitForSelector('.familia__hoja:not(.familia__reto)');
+  await pagina.waitForTimeout(900);
+};
 try {
   // Vacío: sin misiones no hay imprimir. Un toque corto no abre nada.
   let { pagina, errores } = await abrir(navegador, { progreso: BASE_JUGADO });
-  console.log('en la portada ya no está "Empezar de nuevo":', !(await pagina.locator('.inicio').textContent()).includes('Empezar de nuevo'), '| toque mínimo del enlace', await menorToque(pagina, '.inicio .enlace'));
-  await pagina.click('.inicio .enlace');
+  console.log('en la portada no está "Empezar de nuevo":', !(await pagina.locator('.nino').textContent()).includes('Empezar de nuevo'), '| toque mínimo del pie', await menorToque(pagina, '.pie-familia'));
+  await pagina.click('.pie-familia');
   await pagina.waitForTimeout(900);
-  console.log('toque corto: abre', await pagina.locator('.familia').count(), '| pista:', await pagina.locator('.inicio__pista').textContent());
+  console.log('toque corto: abre', await pagina.locator('.familia').count(), '| pista:', await pagina.locator('.pie-familia__pista').textContent());
   await foto(pagina, 'familia-portada-390');
-  await sostener(pagina, '.inicio .enlace', 3300);
-  await pagina.waitForSelector('.familia'); await pagina.waitForTimeout(900);
+  await entrarFamilia(pagina);
   await foto(pagina, 'familia-vacio-390');
   console.log('vacío:', (await pagina.locator('.familia__hoja p:not(.familia__imprimir-solo)').first().textContent()).slice(0, 50), '| imprimir', await pagina.getByText('Imprimir').count(), '| errores', errores);
   await pagina.context().close();
@@ -29,8 +39,7 @@ try {
   Object.assign(p.misiones['bosque-colors'], { veces: 2, mejoras: 1, autoeval: 3 });
   p.misiones['bosque-school'].autoeval = 1; p.misiones['bosque-school-2'].autoeval = 1;
   ({ pagina, errores } = await abrir(navegador, { progreso: p }));
-  await sostener(pagina, '.inicio .enlace', 3300);
-  await pagina.waitForSelector('.familia'); await pagina.waitForTimeout(900);
+  await entrarFamilia(pagina);
   await pagina.screenshot({ path: `${CAPTURAS}/familia-datos-390.png`, fullPage: false });
   const texto = await pagina.locator('.familia__hoja').innerText();
   console.log(texto.split('\n').filter((l) => l.length > 30).join('\n'));
@@ -53,14 +62,13 @@ try {
   await pagina.waitForTimeout(300);
   console.log('toque corto en Borrar: estrellas siguen', (await guardado(pagina)).estrellas);
   await sostener(pagina, '.familia__boton--peligro', 2300);
-  await pagina.waitForSelector('.inicio .boton-jugar'); await pagina.waitForTimeout(900);
+  await pagina.waitForSelector('.jugar-invitado'); await pagina.waitForTimeout(900);
   const g = await guardado(pagina);
   console.log('tras sostener: estrellas', g.estrellas, 'misiones', Object.keys(g.misiones).length, 'héroe', g.heroe, '| errores', errores);
   await pagina.context().close();
 
   ({ pagina, errores } = await abrir(navegador, { progreso: p, ancho: 1280, alto: 800 }));
-  await sostener(pagina, '.inicio .enlace', 3300);
-  await pagina.waitForSelector('.familia'); await pagina.waitForTimeout(900);
+  await entrarFamilia(pagina);
   await foto(pagina, 'familia-datos-1280');
 } finally {
   await navegador.close();

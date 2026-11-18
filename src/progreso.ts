@@ -280,6 +280,11 @@ export function quitarDeCola(id: string) {
   guardarCola(leerCola().filter((e) => e.id !== id));
 }
 
+/** El adulto descarta lo que un niño tenía pendiente de subir (al quitarlo de este celular). */
+export function descartarDeCola(estudiante: string) {
+  guardarCola(leerCola().filter((e) => e.estudiante !== estudiante));
+}
+
 /** Un intento fallido que no fue por falta de red. */
 export function anotarIntento(id: string) {
   guardarCola(leerCola().map((e) => (e.id === id ? { ...e, intentos: (e.intentos ?? 0) + 1 } : e)));
@@ -444,13 +449,13 @@ function respaldoDe(perfil: string) {
   return perfil === INVITADO ? CLAVE_RESPALDO : `${CLAVE_RESPALDO}:${perfil}`;
 }
 
-function leerRespaldo(): Progreso | null {
+function leerRespaldo(perfil = activo): Progreso | null {
   try {
-    const crudo = localStorage.getItem(respaldoDe(activo));
+    const crudo = localStorage.getItem(respaldoDe(perfil));
     if (!crudo) return null;
     const { fecha, progreso } = JSON.parse(crudo) as { fecha: number; progreso: Progreso };
     if (Date.now() - fecha < DIAS_RESPALDO * 86_400_000) return progreso;
-    localStorage.removeItem(respaldoDe(activo));
+    localStorage.removeItem(respaldoDe(perfil));
   } catch {
     // Almacenamiento bloqueado o copia dañada: no hay nada que recuperar.
   }
@@ -458,6 +463,17 @@ function leerRespaldo(): Progreso | null {
 }
 
 export const hayAvanceBorrado = () => leerRespaldo() !== null;
+/** El invitado tiene un avance que se puede recuperar (lo borraron o se sumó a un niño con tarjeta). */
+export const hayRespaldoInvitado = () => leerRespaldo(INVITADO) !== null;
+
+/** Guarda una copia del progreso de un perfil por 7 días, antes de vaciarlo. */
+function respaldar(perfil: string, p: Progreso) {
+  try {
+    if (p.heroe || p.estrellas > 0 || Object.keys(p.misiones).length > 0) localStorage.setItem(respaldoDe(perfil), JSON.stringify({ fecha: Date.now(), progreso: p }));
+  } catch {
+    // Sin espacio no hay copia; se vacía igual.
+  }
+}
 
 /** Devuelve el avance que se borró con "Empezar de nuevo". */
 export function recuperarProgreso() {
@@ -471,15 +487,13 @@ export function recuperarProgreso() {
   }
 }
 
+/** "Empezar de nuevo": solo para el invitado. Un niño con tarjeta se quita con `quitarPerfil`. */
 export function reiniciarProgreso() {
-  try {
-    if (estado.heroe || estado.estrellas > 0) localStorage.setItem(respaldoDe(activo), JSON.stringify({ fecha: Date.now(), progreso: estado }));
-  } catch {
-    // Sin espacio no hay copia; se borra igual.
-  }
+  if (activo !== INVITADO) return;
+  respaldar(INVITADO, estado);
   try {
     // Que no quede en el dispositivo la copia de antes de la opción B.
-    if (activo === INVITADO) localStorage.removeItem(CLAVE_V3);
+    localStorage.removeItem(CLAVE_V3);
   } catch {
     // Almacenamiento bloqueado: no hay nada que borrar.
   }
@@ -551,6 +565,8 @@ export function sumarInvitadoA(perfil: string) {
   const invitado = progresoDe(INVITADO);
   escribir(perfil, unirProgreso(progresoDe(perfil), invitado));
   for (const [mision, r] of Object.entries(invitado.misiones)) encolar({ mision, errores: r.mejorErrores, ...(r.autoeval ? { autoeval: r.autoeval } : {}) }, perfil);
+  // Con respaldo de 7 días: la familia puede deshacerlo (se ve en "Sin tarjeta").
+  respaldar(INVITADO, invitado);
   escribir(INVITADO, VACIO);
 }
 

@@ -4,7 +4,7 @@
 // comprobar un PIN, subir la cola) lo hace src/nube.ts, que se importa bajo demanda: nunca
 // entra en la primera carga de `/`.
 import { useSyncExternalStore } from 'react';
-import { INVITADO, leerCola, olvidarProgreso, perfilActivo, progresoDe, sumarInvitadoA, usarPerfil } from './progreso';
+import { descartarDeCola, INVITADO, leerCola, olvidarProgreso, perfilActivo, progresoDe, sumarInvitadoA, usarPerfil } from './progreso';
 
 /** Hay dirección y clave pública de Supabase en esta copia (sin ellas, solo se juega sin tarjeta). */
 export const hayNube = Boolean(import.meta.env.VITE_SUPABASE_URL && import.meta.env.VITE_SUPABASE_CLAVE_PUBLICA);
@@ -207,12 +207,22 @@ export function sincronizar(): Promise<void> {
 
 /**
  * "Quitar de este celular" (zona de la familia): borra al niño y su avance del aparato, no de
- * su cuenta. Si tiene juego sin subir y no hay red, no se quita para no perderlo.
+ * su cuenta. Si tiene juego sin subir, o el servidor no pudo soltarlo, no se quita ('pendiente')
+ * para no perder nada. Con `descartar` (el adulto ya confirmó) se tira lo pendiente y se quita.
  */
-export async function quitarPerfil(id: string): Promise<'ok' | 'pendiente'> {
-  await sincronizar();
-  if (leerCola().some((e) => e.estudiante === id)) return 'pendiente';
-  if (hayNube && navigator.onLine) await import('./nube').then((n) => n.soltar(id)).catch(() => undefined);
+export async function quitarPerfil(id: string, descartar = false): Promise<'ok' | 'pendiente'> {
+  if (descartar) descartarDeCola(id);
+  else {
+    await sincronizar();
+    if (leerCola().some((e) => e.estudiante === id)) return 'pendiente';
+  }
+  if (hayNube && navigator.onLine) {
+    try {
+      await import('./nube').then((n) => n.soltar(id));
+    } catch {
+      if (!descartar) return 'pendiente';
+    }
+  }
   guardar(perfiles.filter((p) => p.id !== id));
   olvidarProgreso(id);
   return 'ok';

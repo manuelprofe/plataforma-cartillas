@@ -7,7 +7,8 @@
 import { useEffect, useState } from 'react';
 import type { Cartilla, Palabra, Territorio } from './tipos';
 import { callar, decir, sonar } from './audio';
-import { diaDe, hayAvanceBorrado, INVITADO, recuperarProgreso, useActivo, useProgreso, usarPerfil } from './progreso';
+import { diaDe, hayAvanceBorrado, hayRespaldoInvitado, INVITADO, perfilActivo, recuperarProgreso, useActivo, useProgreso, usarPerfil } from './progreso';
+import { olvidarMundo } from './Mundo';
 import { invitadoUsado, quitarPerfil, usePerfiles } from './perfiles';
 import { BotonSostenido } from './BotonSostenido';
 import { navegar } from './navegacion';
@@ -97,20 +98,38 @@ function Resumen({ cartilla, territorio, base, onVolver, onBorrar }: Props) {
   const [leyendo, setLeyendo] = useState(false);
   const [borrar, setBorrar] = useState(false);
   const [aviso, setAviso] = useState('');
+  // Niño con juego sin subir que el adulto quiere quitar igual (pide confirmación).
+  const [descartando, setDescartando] = useState<string | null>(null);
+  const [confirmarDescarte, setConfirmarDescarte] = useState(false);
   useEffect(() => callar, []);
+  /** Cambia el niño que se ve; el mundo del mapa también se olvida para que el otro no herede posición ni brillos. */
+  const cambiarNino = (id: string) => {
+    if (id === perfilActivo()) return;
+    usarPerfil(id);
+    olvidarMundo();
+  };
   // Niños de este celular: los de tarjeta y el invitado, si ya jugó.
-  const ninos = [...perfiles.map((p) => ({ id: p.id, apodo: p.apodo, avatar: p.avatar })), ...(invitadoUsado() || !perfiles.length ? [{ id: INVITADO, apodo: 'Sin tarjeta', avatar: undefined }] : [])];
+  const ninos = [...perfiles.map((p) => ({ id: p.id, apodo: p.apodo, avatar: p.avatar })), ...(invitadoUsado() || !perfiles.length || hayRespaldoInvitado() ? [{ id: INVITADO, apodo: 'Sin tarjeta', avatar: undefined }] : [])];
   // Se muestra siempre el resumen de un niño de la lista (el invitado vacío no aparece en ella).
   const primero = ninos[0]?.id;
   const enLista = ninos.some((n) => n.id === activo);
   useEffect(() => {
-    if (!enLista && primero) usarPerfil(primero);
+    if (!enLista && primero) cambiarNino(primero);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [enLista, primero]);
   const imagenDe = (avatar?: string) => base + (cartilla.heroes.find((h) => h.id === avatar)?.imagen ?? cartilla.imagenes?.portada ?? '');
-  const quitar = (id: string) => {
+  const quitar = (id: string, descartar = false) => {
     setAviso('');
-    void quitarPerfil(id).then((r) => setAviso(r === 'pendiente' ? 'Ese niño tiene juego sin subir. Conéctese a internet y vuelva a intentarlo para no perderlo.' : ''));
+    setDescartando(null);
+    const activoAntes = perfilActivo();
+    void quitarPerfil(id, descartar).then((r) => {
+      if (r === 'pendiente') {
+        setDescartando(id);
+        setAviso('Ese niño tiene juego sin subir. Conéctese a internet y vuelva a intentarlo para no perderlo. Para subirlo, el niño debe volver a entrar con su tarjeta y tener internet.');
+      } else if (activoAntes === id) olvidarMundo();
+    });
   };
+  const nombreDescartando = perfiles.find((p) => p.id === descartando)?.apodo;
 
   const hechas = territorio.misiones.filter((m) => progreso.misiones[m.id]);
   const faroles = territorio.misiones.filter((m) => !m.opcional);
@@ -219,7 +238,7 @@ function Resumen({ cartilla, territorio, base, onVolver, onBorrar }: Props) {
         {ninos.length > 1 && (
           <div className="familia__ninos" role="group" aria-label="Ver lo de">
             {ninos.map((n) => (
-              <button key={n.id} type="button" className="familia__nino" aria-pressed={n.id === activo} onClick={() => (callar(), setLeyendo(false), usarPerfil(n.id))}>
+              <button key={n.id} type="button" className="familia__nino" aria-pressed={n.id === activo} onClick={() => (callar(), setLeyendo(false), cambiarNino(n.id))}>
                 <img src={imagenDe(n.avatar)} alt="" width="48" height="48" />
                 <span>{n.apodo}</span>
               </button>
@@ -317,18 +336,23 @@ function Resumen({ cartilla, territorio, base, onVolver, onBorrar }: Props) {
                     {p.apodo} <small>{p.grupo}</small>
                   </span>
                   <button type="button" className="familia__boton familia__boton--claro" onClick={() => quitar(p.id)}>
-                    Quitar
+                    Quitar de este celular
                   </button>
                 </li>
               ))}
             </ul>
             <p role="status">{aviso}</p>
+            {descartando && (
+              <button type="button" className="familia__boton familia__boton--peligro" onClick={() => setConfirmarDescarte(true)}>
+                Quitar y descartar lo pendiente
+              </button>
+            )}
           </section>
         )}
 
-        {(hechas.length > 0 || progreso.heroe) && (
+        {activo === INVITADO && (hechas.length > 0 || progreso.heroe) && (
           <button type="button" className="enlace familia__borrar" onClick={() => setBorrar(true)}>
-            Empezar de nuevo: borrar el avance de este dispositivo
+            Empezar de nuevo: borrar el avance de «Sin tarjeta»
           </button>
         )}
 
@@ -339,10 +363,30 @@ function Resumen({ cartilla, territorio, base, onVolver, onBorrar }: Props) {
         </p>
       </div>
 
+      {confirmarDescarte && descartando && (
+        <div className="familia__confirmar" role="alertdialog" aria-label="Quitar y descartar lo pendiente">
+          <div>
+            <p>
+              ¿Quitar a {nombreDescartando} de este celular y descartar lo que no ha subido? Esas misiones no llegarán a su cuenta del colegio desde este celular. El avance que ya está en su cuenta no se toca.
+            </p>
+            <button type="button" className="familia__boton familia__boton--peligro" onClick={() => (setConfirmarDescarte(false), quitar(descartando, true))}>
+              Sí, quitar y descartar
+            </button>
+            <button type="button" className="familia__boton familia__boton--claro" onClick={() => setConfirmarDescarte(false)}>
+              No quitar
+            </button>
+          </div>
+        </div>
+      )}
+
       {borrar && (
         <div className="familia__confirmar" role="alertdialog" aria-label="Borrar el avance">
           <div>
-            <p>¿Borrar el avance de este dispositivo? Se quitan las estrellas, el álbum y lo que lleva puesto el personaje. Durante 7 días se puede recuperar desde esta misma pantalla.</p>
+            <p className="familia__quien">
+              <img src={imagenDe(progreso.heroe)} alt="" width="48" height="48" />
+              <strong>Sin tarjeta</strong>
+            </p>
+            <p>¿Borrar el avance de «Sin tarjeta» en este dispositivo? Se quitan las estrellas, el álbum y lo que lleva puesto el personaje. Los niños con tarjeta no se tocan. Durante 7 días se puede recuperar desde esta misma pantalla.</p>
             <BotonSostenido ms={MS_BORRAR} className="familia__boton familia__boton--peligro" onListo={onBorrar}>
               Borrar (mantenga presionado 2 segundos)
             </BotonSostenido>

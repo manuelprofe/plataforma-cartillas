@@ -2,7 +2,7 @@
 // carga ese. Así la primera carga de `/` no trae nada de los adultos ni del telón.
 import '@fontsource-variable/baloo-2';
 import { modoDe, type Modo } from './modos';
-import { registrarSinConexion } from './sinConexion';
+import { fijarMomentoSeguro, registrarSinConexion } from './sinConexion';
 
 const raiz = document.getElementById('raiz')!;
 
@@ -29,3 +29,6 @@ const PAQUETES: Record<Modo, () => Promise<{ montar: (raiz: HTMLElement) => void
 void PAQUETES[modo]().then((m) => m.montar(raiz));
 
 registrarSinConexion();
+// Los adultos y el telón reciben la versión nueva apenas abren (el niño solo en un momento seguro,
+// que decide su app): si no, un docente podía quedarse días con pantallas viejas.
+if (modo !== 'estudiante') fijarMomentoSeguro(true);

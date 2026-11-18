@@ -30,6 +30,8 @@ export interface EstadoCola {
   acciones: Accion[];
   /** Estrellas (una por niño) que aún no están en la base, incluidas las que se pueden deshacer. */
   porSubir: number;
+  /** Niños que recibieron una estrella subida en esta sesión (para el punto de "ya reconocido hoy"). */
+  subidas: string[];
   /** Mensaje si la base rechazó una acción (ya no se reintenta). */
   rechazo?: string;
 }
@@ -52,14 +54,14 @@ function guardar(acciones: Accion[]) {
   }
 }
 
-const armar = (acciones: Accion[], rechazo?: string): EstadoCola => ({ acciones, porSubir: acciones.reduce((n, a) => n + a.ninos.length, 0), rechazo });
+const armar = (acciones: Accion[], rechazo?: string, subidas: string[] = []): EstadoCola => ({ acciones, porSubir: acciones.reduce((n, a) => n + a.ninos.length, 0), subidas, rechazo });
 
 let estado: EstadoCola = armar(leerGuardada());
 const oyentes = new Set<() => void>();
 
-function poner(acciones: Accion[], rechazo = estado.rechazo) {
+function poner(acciones: Accion[], rechazo = estado.rechazo, subidas = estado.subidas) {
   guardar(acciones);
-  estado = armar(acciones, rechazo);
+  estado = armar(acciones, rechazo, subidas);
   oyentes.forEach((o) => o());
 }
 
@@ -110,7 +112,7 @@ export async function subir(): Promise<void> {
       if (!a) break;
       try {
         await rpc('dar_estrellas', { p_estudiantes: a.ninos, p_cartilla: a.cartilla, p_motivo: a.motivo, p_accion: a.accion });
-        poner(estado.acciones.filter((x) => x.accion !== a.accion));
+        poner(estado.acciones.filter((x) => x.accion !== a.accion), estado.rechazo, [...new Set([...estado.subidas, ...a.ninos])]);
       } catch (e) {
         if (e instanceof ErrorCuenta && (e.falla === 'red' || e.falla === 'credenciales' || e.falla === 'sin-config')) break;
         // La base rechazó la acción (por ejemplo, el niño ya no está): no se reintenta.

@@ -432,7 +432,7 @@ function Estrellas({ grupo, ninos, paquete }: { grupo: GrupoDoc; ninos: Nino[]; 
   useTitulo(`Estrellas · ${grupo.nombre}`);
   const cola = useCola();
   const ids = ninos.map((n) => n.id);
-  const hoy = useCarga(() => reconocidosHoy(ids).catch(() => new Set<string>()), `hoy-${grupo.id}-${ids.length}`);
+  const hoy = useCarga(() => reconocidosHoy(ids), `hoy-${grupo.id}-${ids.length}`);
   const [hoja, setHoja] = useState<Nino | null>(null);
   const [equipo, setEquipo] = useState(false);
   const [marcados, setMarcados] = useState<Set<string>>(new Set());
@@ -441,7 +441,7 @@ function Estrellas({ grupo, ninos, paquete }: { grupo: GrupoDoc; ninos: Nino[]; 
 
   const nombres = new Map(ninos.map((n) => [n.id, n.apodo]));
   const deHoy = new Set(cola.acciones.filter((a) => a.creado > Date.now() - 24 * 3600e3).flatMap((a) => a.ninos));
-  const reconocido = (id: string) => deHoy.has(id) || Boolean(hoy.datos?.has(id));
+  const reconocido = (id: string) => deHoy.has(id) || cola.subidas.includes(id) || Boolean(hoy.datos?.has(id));
   const avisos = cola.acciones.filter((a) => a.listoEn > ahora && a.ninos.some((id) => nombres.has(id))).slice(-3).reverse();
 
   const dar = (idsNinos: string[], motivo: Motivo) => {

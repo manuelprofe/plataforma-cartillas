@@ -45,7 +45,7 @@ export function Estrellas({ n }: { n: number }) {
 }
 
 function Img({ src, alt = '', tam }: { src: string; alt?: string; tam: number }) {
-  return <img src={BASE + src} alt={alt} width={tam} height={tam} loading="lazy" decoding="async" draggable={false} />;
+  return <img src={BASE + src} alt={alt} width={tam} height={tam} decoding="async" draggable={false} />;
 }
 
 /** Lo que se ve de una palabra: su imagen, el objeto o la mano, y las estrellas si es un número. */

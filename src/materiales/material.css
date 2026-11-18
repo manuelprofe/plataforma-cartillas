@@ -169,6 +169,11 @@ a.mat-chip:hover { background: var(--a-hundido); }
   .mat-imp--media-carta .mat-imagenes:not(.mat-imagenes--recortable):not(.mat-imagenes-grupo *) .mat-celda .mat-visual img { width: 26mm; height: 26mm; }
   .mat-imp--media-carta .mat-imagenes:not(.mat-imagenes--recortable):not(.mat-imagenes-grupo *) .mat-celda .mat-estrellas { width: 20mm; }
   .mat-imagenes--recortable .mat-celda { border-style: dashed; min-height: 34mm; }
+  .mat-imp .mat-imagenes-grupo .mat-imagenes .mat-celda { min-height: 0; padding: 0.8mm; }
+  .mat-imp .mat-imagenes-grupo .mat-imagenes .mat-celda .mat-visual img { width: 10.5mm; height: 10.5mm; }
+  .mat-imp .mat-imagenes-grupo .mat-imagenes .mat-celda .mat-visual { gap: 0.6mm; }
+  .mat-imp .mat-imagenes-grupo .mat-imagenes .mat-celda .mat-estrellas { width: 14mm; }
+  .mat-imp .mat-imagenes-grupo .mat-imagenes .mat-celda:has(.mat-estrellas) { min-height: 22mm; }
 
   .mat-items { gap: 3mm; }
   .mat-item { border: 0; border-radius: 0; padding: 0; flex-direction: row; align-items: center; gap: 4mm; break-inside: avoid; }

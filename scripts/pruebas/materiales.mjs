@@ -292,7 +292,7 @@ try {
       await p.goto(url('/proyectar/numeros/numeros-laminas'));
       await p.waitForSelector('.deck__palabra');
       await p.keyboard.press('ArrowRight'); await p.keyboard.press('ArrowRight');
-      await foto(p, `${nombre}-lamina-numero`);
+      await p.waitForTimeout(500); await foto(p, `${nombre}-lamina-numero`);
       comprobar((await p.locator('.deck__lamina .mat-estrellas').count()) === 1 && (await p.locator('.deck__lamina img').count()) === 2, 'lámina de número: numeral, estrellas y mano');
     }
     // Esc pide confirmar; "Seguir" cierra

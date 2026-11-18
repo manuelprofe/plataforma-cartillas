@@ -2,6 +2,12 @@
   command = "npm run build"
   publish = "dist"
 
+# Solo valores públicos (viajan en el JS del navegador; la seguridad la ponen las políticas de la
+# base). La clave secreta de Supabase nunca va aquí.
+[build.environment]
+  VITE_SUPABASE_URL = "https://jpwwmzfhbdnzsvwuciqa.supabase.co"
+  VITE_SUPABASE_CLAVE_PUBLICA = "sb_publishable_CaFq1L46SKUAHTkjWbk8_w_gCb509s1"
+
 # Lo que lleva hash en el nombre no cambia nunca. El service worker ya revalida sw.js,
 # index.html y cartilla.json por su cuenta, así que no necesitan reglas aquí.
 # La ruta es la de la raíz del sitio publicado en Netlify; si algún día se publica en una

@@ -184,3 +184,18 @@ a.tarjeta-t:active { transform: scale(0.98); }
   .tarjeta-t, .deck__btn { transition: none; }
   a.tarjeta-t:active, .deck__btn:active { transform: none; }
 }
+
+/* Celular en vertical (el docente proyecta desde su celular): los controles bajan de línea y
+   nada se sale de la pantalla. */
+@media (max-aspect-ratio: 1/1) {
+  .deck__ctl { flex-wrap: wrap; gap: var(--e-2); padding: var(--e-2) var(--e-3); min-height: 0; }
+  .deck__btn { min-width: 56px; height: 56px; padding: 0 var(--e-3); font-size: 18px; }
+  .deck__btn .icono { width: 24px; height: 24px; }
+  .deck__cuenta { position: static; width: 100%; text-align: center; font-size: 16px; }
+  .deck__opciones { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--e-3); }
+  .deck__opcion { min-height: 18vh; }
+  .tarjetas { grid-template-columns: 1fr; }
+  .telon__cabeza { flex-wrap: wrap; gap: var(--e-2); }
+  .telon, .deck, .tarjetas, .telon__cabeza { max-width: 100vw; }
+  .telon__teclas { display: none; }
+}

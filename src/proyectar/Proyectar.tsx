@@ -213,9 +213,9 @@ function MenuTema({ tema }: { tema: string }) {
   );
 }
 
-function tarjetas(e: EntradaTema, indice: Indice) {
+function tarjetas(e: EntradaTema, _indice: Indice) {
   const lista = e.materiales.filter((m) => m.proyectar !== 'no');
-  const juegos = e.juegos?.length ? e.juegos : (indice.temas.find((t) => t.juegos?.length)?.juegos ?? []);
+  const juegos = e.juegos ?? [];
   const tiene = (tipo: string) => lista.some((m) => m.tipo === tipo);
   const hueco = (clave: string, titulo: string, sub: string) => (
     <div key={clave} className="tarjeta-t tarjeta-t--hueco">

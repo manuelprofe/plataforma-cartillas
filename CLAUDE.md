@@ -2,7 +2,8 @@
 
 Plataforma web donde viven cartillas interactivas por materia y grado. La primera cartilla es
 **English Adventure Quest** (inglés, grado tercero), nacida del trabajo de grado de Manuel Vega
-en la I.E. Jorge Barco Mora (Los Patios, Norte de Santander). El piloto en aula está previsto
+en la I.E. Jorge Barco Mora (Los Patios, Norte de Santander: municipio propio del área
+metropolitana de Cúcuta, no es Cúcuta). El piloto en aula está previsto
 para el próximo año escolar con grado tercero; después vienen preescolar y el resto de primaria.
 
 ## Para quién se construye

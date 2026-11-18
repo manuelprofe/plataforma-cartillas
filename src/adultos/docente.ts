@@ -2,7 +2,7 @@
 // sobre los niños. Todo pasa por cuenta.ts (rpc, leer, escribir); la seguridad por filas de
 // Supabase decide qué ve y qué cambia. Nunca se guarda un PIN legible: se genera aquí, se manda
 // a la base (que guarda solo su huella) y se conserva en memoria hasta imprimir la tarjeta.
-import { ErrorCuenta, escribir, leer, rpc } from './cuenta';
+import { alCerrarSesion, ErrorCuenta, escribir, leer, miId, rpc } from './cuenta';
 
 export interface GrupoDoc {
   id: string;
@@ -66,19 +66,25 @@ export const hoyCo = () => new Intl.DateTimeFormat('en-CA', { timeZone: 'America
 // (esqueleto §2.6). Son apodos y personajes, nunca PIN. Se borra al salir.
 const LLAVE_LECTURA = 'pc_docente_lectura_v1';
 interface Lectura {
+  /** Dueño de la copia: otra cuenta en el mismo aparato no la ve. */
+  uid?: string;
   grupos?: GrupoDoc[];
   ninos?: Record<string, Nino[]>;
 }
 const leerLectura = (): Lectura => {
   try {
-    return JSON.parse(localStorage.getItem(LLAVE_LECTURA) ?? '{}') as Lectura;
+    const l = JSON.parse(localStorage.getItem(LLAVE_LECTURA) ?? '{}') as Lectura;
+    return l.uid && l.uid === miId() ? l : {};
   } catch {
     return {};
   }
 };
 function guardarLectura(cambio: (l: Lectura) => void) {
+  const uid = miId();
+  if (!uid) return; // Sin sesión (salió o venció mientras la lectura estaba en vuelo): no se guarda nada.
   try {
     const l = leerLectura();
+    l.uid = uid;
     cambio(l);
     localStorage.setItem(LLAVE_LECTURA, JSON.stringify(l));
   } catch {
@@ -92,6 +98,11 @@ export function olvidarLecturas() {
     // Nada que borrar.
   }
 }
+alCerrarSesion(() => {
+  olvidarLecturas();
+  pines.clear();
+});
+
 /** Si la lectura falló por falta de red y hay una copia, la devuelve; si no, vuelve a lanzar el error. */
 function conCopia<T>(e: unknown, copia: T | undefined): T {
   if (e instanceof ErrorCuenta && e.falla === 'red' && copia) return copia;

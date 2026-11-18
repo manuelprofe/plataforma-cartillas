@@ -295,9 +295,27 @@ export async function cambiarClave(clave: string): Promise<void> {
   }
 }
 
+/** Quien guarda datos de la sesión (copias locales) se anota aquí para borrarlos cuando la sesión se cierra o vence. */
+const alCerrar = new Set<() => void>();
+export const alCerrarSesion = (f: () => void) => void alCerrar.add(f);
+
 function cerrarLocal() {
   sesion = null;
   guardarSesion(null);
+  alCerrar.forEach((f) => f());
+}
+
+/** Identificador de quien tiene la sesión: el `sub` del token (o, si no se puede leer, el correo). Sin sesión, undefined. */
+export function miId(): string | undefined {
+  if (!sesion) return undefined;
+  try {
+    const carga = sesion.access.split('.')[1].replace(/-/g, '+').replace(/_/g, '/');
+    const sub = (JSON.parse(atob(carga)) as { sub?: unknown }).sub;
+    if (typeof sub === 'string' && sub) return sub;
+  } catch {
+    // No es un JWT legible: se usa el correo.
+  }
+  return sesion.correo;
 }
 
 /** Cierra la sesión en el servidor (si hay red) y en este aparato. */

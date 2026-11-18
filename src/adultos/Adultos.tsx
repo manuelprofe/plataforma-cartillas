@@ -12,7 +12,7 @@ import { Campo, correoValido, useTitulo } from './comun';
 import { PaginaDueno } from './Plataforma';
 import { DocenteInicio, MisGrupos, PaginaGrupo } from './Docente';
 import { olvidarLecturas } from './docente';
-import { iniciarCola, useCola } from './estrellas';
+import { iniciarCola, prepararSalida, useAvisoSalida, useCola } from './estrellas';
 
 /** Resultado de leer la sesión que traen los enlaces de los correos (se lee antes de pintar). */
 let enlace: ReturnType<typeof tomarEnlace> = 'nada';
@@ -92,7 +92,9 @@ function Cargando() {
   return <main className="cargando" aria-busy="true" aria-label="Cargando" />;
 }
 
-function cerrarSesion() {
+async function cerrarSesion() {
+  // Con estrellas pendientes intenta subirlas antes de cerrar; si no puede, la entrada lo avisa.
+  await prepararSalida().catch(() => undefined);
   olvidarLecturas();
   void salir();
   navegar('/adultos', true);
@@ -166,6 +168,7 @@ function Entrada({ cuenta }: { cuenta: Estado }) {
   const [clave, setClave] = useState('');
   const [errores, setErrores] = useState<{ correo?: string; clave?: string; general?: string }>({});
   const [enviando, setEnviando] = useState(false);
+  const avisoSalida = useAvisoSalida();
 
   if (cuenta.tipo === 'dentro') return <AlInicio ruta={INICIO[cuenta.perfil.rol]} />;
   if (cuenta.tipo === 'cargando') return <Cargando />;
@@ -193,6 +196,11 @@ function Entrada({ cuenta }: { cuenta: Estado }) {
 
   return (
     <CajaEntrada titulo="Entrar" texto="Para docentes y directivos del colegio." alEnviar={alEnviar}>
+      {avisoSalida && (
+        <p className="nota" role="status">
+          {avisoSalida}
+        </p>
+      )}
       <Campo id="correo" etiqueta="Correo" tipo="email" autoComplete="username" valor={correo} alCambiar={setCorreo} error={errores.correo} />
       <Campo id="clave" etiqueta="Contraseña" autoComplete="current-password" valor={clave} alCambiar={setClave} error={errores.clave} ver={{ activo: ver, alternar: () => setVer(!ver) }} />
       <Boton variante="primario" ancho tipo="submit" disabled={enviando}>

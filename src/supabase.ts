@@ -15,6 +15,8 @@ export type Falla = 'red' | 'credenciales' | 'clave-corta' | 'misma-clave' | 'en
 export class ErrorCuenta extends Error {
   /** Código de PostgreSQL o de PostgREST cuando lo hay ('PC429'...). */
   codigo = '';
+  /** Estado HTTP de la respuesta (0 si no hubo respuesta). */
+  status = 0;
   constructor(
     public falla: Falla,
     detalle = '',
@@ -67,6 +69,7 @@ export const campo = (datos: unknown, nombre: string): string => {
 export function errorDe(r: Respuesta): ErrorCuenta {
   const e = new ErrorCuenta(r.status === 401 ? 'credenciales' : 'otro', campo(r.datos, 'message') || `HTTP ${r.status}`);
   e.codigo = campo(r.datos, 'code');
+  e.status = r.status;
   return e;
 }
 

@@ -24,6 +24,7 @@ function nuevaBase({ conGrupo = true, ninos = [] } = {}) {
     estrellas: [],
     llamadas: [],
     perderRespuesta: 0,
+    fallas: [],
     siguiente: 1,
   };
 }
@@ -67,7 +68,9 @@ function atender(base) {
       const ids = (u.searchParams.get('estudiante_id') ?? '').replace(/^in\.\(|\)$/g, '').split(',');
       return { json: base.estrellas.filter((e) => ids.includes(e.estudiante_id) && e.creado === hoyCo).map((e) => ({ estudiante_id: e.estudiante_id })) };
     }
+    if (p === '/auth/v1/token') return { json: { access_token: 'falso-docente', refresh_token: 'r-d', expires_in: 3600, user: { email: cuerpo.email } } };
     if (p === '/rest/v1/rpc/dar_estrellas') {
+      if (base.fallas.length) return base.fallas.shift();
       base.llamadas.push(`dar_estrellas ${cuerpo.p_motivo} ${cuerpo.p_estudiantes.length}`);
       let nuevas = 0;
       for (const e of cuerpo.p_estudiantes) {
@@ -111,7 +114,9 @@ const medir = (p) => p.evaluate(() => ({
 }));
 const texto = (p) => p.evaluate(() => document.body.innerText);
 const estado = (p) => p.locator('.barra__estado').innerText().then((t) => t.trim());
-const cola = (p) => p.evaluate(() => JSON.parse(localStorage.getItem('pc_cola_estrellas_v1') ?? '[]'));
+/** Acciones guardadas en el aparato (la cola se guarda por docente: { uid: [acciones] }). */
+const colas = (p) => p.evaluate(() => JSON.parse(localStorage.getItem('pc_cola_estrellas_v1') ?? '{}'));
+const cola = (p) => colas(p).then((t) => Object.values(t).flat());
 const tocarPin = async (p, cifras) => { for (const c of cifras) { await p.click(`.tecla-pin[aria-label="${PIN[Number(c)]}"]`); await p.waitForTimeout(60); } };
 const darUna = async (p, apodo, motivo) => {
   await p.click(`.estrella-fila:has-text("${apodo}")`);
@@ -180,6 +185,22 @@ try {
     await p.click('button:has-text("Dar colaborar a 2")');
     await p.waitForFunction(() => document.querySelector('.barra__estado')?.textContent?.includes('Todo guardado'), null, { timeout: 9000 });
     comprobar(base.llamadas.at(-1) === 'dar_estrellas colaborar 2', `colaborar a varios es una sola llamada: ${base.llamadas.at(-1)}`);
+
+    // Una caída del servidor no pierde la estrella; un rechazo de la base sí la descarta, con texto fijo.
+    base.fallas = [{ status: 503, json: { message: 'upstream connect error' } }];
+    await darUna(p, 'Ana', 'Participar');
+    const botonDeshacer = await p.locator('.aviso-estrella button').evaluate((b) => b.getBoundingClientRect().height);
+    comprobar(botonDeshacer >= 48, `el botón Deshacer mide ${botonDeshacer} px (48 o más)`);
+    await p.waitForTimeout(5600);
+    comprobar((await estado(p)) === '1 por subir' && (await cola(p)).length === 1, 'ante un 503 la estrella sigue en la cola');
+    comprobar(!/503|upstream|HTTP/.test(await texto(p)), 'nunca se ve "HTTP 503" ni texto crudo del servidor');
+    await p.evaluate(() => dispatchEvent(new Event('online')));
+    await p.waitForFunction(() => document.querySelector('.barra__estado')?.textContent?.includes('Todo guardado'), null, { timeout: 9000 });
+    comprobar(base.estrellas.filter((e) => e.estudiante_id === 's4' && e.motivo === 'participar').length === 1, 'al reintentar, la estrella sube una sola vez');
+    base.fallas = [{ status: 400, json: { code: 'P0001', message: 'No tienes acceso a uno de estos estudiantes' } }];
+    await darUna(p, 'Leo', 'Participar');
+    await p.waitForFunction(() => document.body.innerText.includes('No se pudo guardar una estrella'), null, { timeout: 9000 });
+    comprobar(!(await texto(p)).includes('No tienes acceso') && (await cola(p)).length === 0, 'un rechazo de la base descarta la acción y avisa con texto fijo');
 
     // 2. Modo avión: 3 estrellas, "3 por subir", suben una sola vez al volver la red (aun con una respuesta perdida).
     const antes = base.estrellas.length;
@@ -334,6 +355,48 @@ try {
     comprobar((pdf2.toString('latin1').match(/\/Type\s*\/Page\b/g) ?? []).length === 1, 'la lista de 9 niños cabe en una hoja');
     await p.emulateMedia({ media: 'screen' });
     comprobar(!errores.length, `sin errores de consola ${errores.join(' | ')}`);
+    await c.close();
+  }
+
+  // 3b. Dos docentes en el mismo aparato: la cola de uno no la sube ni la pierde el otro.
+  {
+    const b = nuevaBase({ ninos: [['s1', 'Sara', 'mika', '2026-11-10'], ['s2', 'Leo', 'bruno', '2026-11-10']] });
+    const { c, p } = await abrir(navegador, b);
+    await p.goto(url('/docente/grupos/g1/estrellas'));
+    await p.waitForSelector('.estrella-fila');
+    b.caida = true;
+    await darUna(p, 'Sara', 'Participar');
+    await darUna(p, 'Leo', 'Colaborar');
+    await p.waitForTimeout(5600);
+    comprobar((await estado(p)) === '2 por subir', 'docente A sin servidor: "2 por subir"');
+    await p.goto(url('/docente'));
+    await p.waitForSelector('h1:has-text("Inicio")');
+    await p.click('nav >> text=Más');
+    await p.click('main button:has-text("Salir"), main a:has-text("Salir"), main >> text=Salir');
+    await p.waitForSelector('h1:has-text("Entrar")');
+    comprobar((await texto(p)).includes('Tiene 2 estrellas sin subir; entre de nuevo con su cuenta para subirlas'), 'al salir con estrellas pendientes la entrada avisa');
+    comprobar((await p.evaluate(() => localStorage.getItem('pc_docente_lectura_v1'))) === null, 'al salir se borra la copia de grupos y apodos');
+    b.caida = false;
+    await p.fill('#correo', 'docenteb@prueba.co');
+    await p.fill('#clave', 'bien');
+    await p.click('button:has-text("Entrar")');
+    await p.waitForSelector('h1:has-text("Inicio")');
+    await p.waitForTimeout(1500);
+    comprobar(!b.llamadas.some((l) => l.startsWith('dar_estrellas')) && (await estado(p)) === 'Todo guardado', 'el docente B no sube las estrellas de A y no las ve');
+    comprobar((await cola(p)).length === 2, 'la cola de A sigue guardada en el aparato');
+    await p.click('nav >> text=Más');
+    await p.click('main >> text=Salir');
+    await p.waitForSelector('h1:has-text("Entrar")');
+    comprobar((await cola(p)).length === 2 && !b.llamadas.some((l) => l.startsWith('dar_estrellas')), 'al salir B la cola de A sigue intacta');
+    await p.fill('#correo', 'docente@prueba.co');
+    await p.fill('#clave', 'bien');
+    await p.click('button:has-text("Entrar")');
+    await p.waitForSelector('h1:has-text("Inicio")');
+    await p.waitForFunction(() => true);
+    await p.waitForTimeout(500);
+    await p.evaluate(() => dispatchEvent(new Event('online')));
+    await p.waitForFunction(() => !localStorage.getItem('pc_cola_estrellas_v1'), null, { timeout: 15000 });
+    comprobar(b.estrellas.length === 2, 'A vuelve a entrar y sus 2 estrellas suben');
     await c.close();
   }
 

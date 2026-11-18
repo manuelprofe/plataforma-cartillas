@@ -12,8 +12,18 @@ import { Cara, ConCortina, fechaCorta, useAhora } from './docenteComun';
 import { darEstrellas, deshacer, olvidarRechazo, useCola, VALOR, type Motivo } from './estrellas';
 import { Icono } from './Icono';
 import { Tarjetas, ListaEstrellas } from './Imprimibles';
+import { cargarIndice, cargarTema } from '../materiales/datos';
 
 const SIN_INTERNET = 'Necesita internet';
+
+/** El primer tema con materiales y cómo se llaman sus dos clases (texto del paquete). */
+async function primerTema() {
+  const indice = await cargarIndice();
+  const e = indice.temas.find((t) => t.estado === 'listo');
+  if (!e) throw new Error('sin temas');
+  const doc = await cargarTema(e);
+  return { id: e.id, nombre: e.nombre, titulo: e.titulo, clases: doc.materiales.filter((m) => m.tipo === 'planeador').map((m) => m.titulo).join('. ') };
+}
 
 const hoyEscrito = () => {
   const t = new Intl.DateTimeFormat('es-CO', { weekday: 'long', day: 'numeric', month: 'long' }).format(new Date());
@@ -29,6 +39,7 @@ export function DocenteInicio({ colegioId }: { colegioId: string | null }) {
   const grupos = useCarga(cargarGrupos, 'grupos');
   const colegio = useCarga(() => nombreColegio(colegioId).catch(() => null), 'colegio');
   const cola = useCola();
+  const primero = useCarga(primerTema, 'primer-tema');
   return (
     <>
       <Encabezado titulo="Inicio" meta={colegio.datos ? `${hoyEscrito()} · ${colegio.datos}` : hoyEscrito()} />
@@ -63,7 +74,25 @@ export function DocenteInicio({ colegioId }: { colegioId: string | null }) {
                   </span>
                 }
               >
-                <Hueco titulo="Aquí irá su próxima clase" texto="El tema, si es la clase 1 o la 2, y el planeador." />
+                {primero.datos ? (
+                  <>
+                    <p>
+                      <strong>{primero.datos.nombre}</strong> <span className="meta">· {primero.datos.titulo}</span>
+                    </p>
+                    <p className="sec">{primero.datos.clases}</p>
+                    <div className="atajos">
+                      <Boton variante="primario" icono="proyectar" ruta={`/proyectar/${primero.datos.id}`}>
+                        Proyectar {primero.datos.nombre.toLowerCase()}
+                      </Boton>
+                      <Boton icono="planear" ruta={`/docente/planear/${primero.datos.id}`}>
+                        Ver el planeador
+                      </Boton>
+                    </div>
+                    <p className="meta">Empiece por el primer tema. Las fechas por grupo llegan con el plan de cada grupo.</p>
+                  </>
+                ) : (
+                  <Hueco titulo="Aquí irá su próxima clase" texto="El tema, si es la clase 1 o la 2, y el planeador." />
+                )}
               </Panel>
               <div className="atajos atajos--cuatro">
                 <Boton variante="primario" icono="proyectar" ruta="/proyectar">

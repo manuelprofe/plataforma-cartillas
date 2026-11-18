@@ -8,6 +8,7 @@ import { Boton, Encabezado, Enlace, Hueco, Panel, Fila } from '../adultos/base';
 import { Icono } from '../adultos/Icono';
 import { BASE, TIPO_NOMBRE, type Bloque, type Impresion, type ItemImagen, type Material, type Palabra, type TipoCatalogo } from './datos';
 import { sonar } from './sonido';
+import { CancionPantalla, LetraImpresa } from './Cancion';
 
 // ---------------------------------------------------------------- Piezas de imagen
 
@@ -394,6 +395,8 @@ function BloqueUno({ b, ctx }: { b: Bloque; ctx: Ctx }) {
     case 'hueco':
       if (ctx.modo === 'impresion') return b.imprime ? <div className="mat-hueco-imp">{b.titulo}</div> : null;
       return <Hueco titulo={b.titulo} texto="Llega con la próxima versión de la cartilla. Traerá:" trae={b.trae} />;
+    case 'cancion':
+      return ctx.modo === 'impresion' ? <LetraImpresa ingles={b.ingles} lineas={b.lineas} /> : <CancionPantalla audio={b.audio} ingles={b.ingles} lineas={b.lineas} />;
     default:
       return null;
   }
@@ -511,8 +514,8 @@ function Hoja({ material, impresion, nombreTema, copia, bloques }: { material: M
       </div>
       <footer className="mat-hoja__pie">
         <span>
-          {TIPO_NOMBRE[material.tipo]}
-          {material.tipo === 'ficha' || material.tipo === 'laminas' ? ` · ${material.titulo}` : ''}
+          {material.tipo === 'laminas' ? material.titulo : TIPO_NOMBRE[material.tipo]}
+          {material.tipo === 'ficha' ? ` · ${material.titulo}` : ''}
         </span>
         {material.tipo === 'prueba' && nino && <span>Sin nota ni puntaje</span>}
       </footer>
@@ -611,7 +614,7 @@ export function MaterialPantalla({ material, nombreTema, volver, rutaProyectar, 
 
 // ---------------------------------------------------------------- Hueco: lo que aún no tiene contenido
 
-export function MaterialHueco({ nombre, tipo, tema, volver, mientras }: { nombre: string; tipo?: TipoCatalogo; tema: string; volver: { ruta: string; etiqueta: string }; mientras: { ruta: string; titulo: string }[] }) {
+export function MaterialHueco({ nombre, aqui, tipo, tema, volver, mientras }: { nombre: string; aqui: string; tipo?: TipoCatalogo; tema: string; volver: { ruta: string; etiqueta: string }; mientras: { ruta: string; titulo: string }[] }) {
   return (
     <article className="mat">
       <div className="mat-pantalla">
@@ -621,7 +624,7 @@ export function MaterialHueco({ nombre, tipo, tema, volver, mientras }: { nombre
             Imprimir
           </Boton>
         </div>
-        <Hueco titulo={`Aquí irá ${nombre.charAt(0).toLowerCase()}${nombre.slice(1)}`} texto="Llega con la próxima versión de la cartilla. Traerá:" trae={tipo?.trae} />
+        <Hueco titulo={`Aquí irá ${aqui}`} texto="Llega con la próxima versión de la cartilla. Traerá:" trae={tipo?.trae} />
         {mientras.length > 0 && (
           <>
             <h2 className="h3">Mientras tanto</h2>

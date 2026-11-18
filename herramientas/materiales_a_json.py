@@ -18,6 +18,7 @@ import sys
 RAIZ = pathlib.Path(__file__).resolve().parent.parent
 MD = RAIZ / "docs/pedagogia/materiales"
 CATALOGO = RAIZ / "docs/pedagogia/catalogo-interfaces.md"
+CANCIONES_MD = RAIZ / "docs/pedagogia/canciones-bosque.md"
 PAQ = RAIZ / "public/cartillas/ingles-3"
 SALIDA = PAQ / "materiales"
 
@@ -223,7 +224,7 @@ def bloque_palabra(tema, p, alt=None):
 
 # ---------------------------------------------------------------- Un tema
 
-def construir_tema(tema, archivo):
+def construir_tema(tema, archivo, con_cancion=False):
     texto = (MD / archivo).read_text(encoding="utf-8")
     cab, _, resto = texto.partition("\n## ")
     secs = partir_secciones("## " + resto)
@@ -341,8 +342,8 @@ def construir_tema(tema, archivo):
 
     # ---- Enlaces del planeador a sus materiales
     ids = {m["id"] for m in mats}
-    reglas = [(r"lámina", "laminas"), (r"ficha 1", "ficha-1"), (r"ficha 2", "ficha-2"), (r"prueba", "prueba"), (r"decir en parejas|§5", "decir"), (r"nota para la casa", "casa"), (r"caritas", "caritas")]
-    nombres = {"laminas": "Láminas", "ficha-1": "Ficha 1", "ficha-2": "Ficha 2", "prueba": "El reto de Cosmo", "decir": "Decir en parejas", "casa": "Nota para la casa", "caritas": "Hoja de caritas"}
+    reglas = [(r"lámina", "laminas"), (r"ficha 1", "ficha-1"), (r"ficha 2", "ficha-2"), (r"prueba", "prueba"), (r"decir en parejas|§5", "decir"), (r"nota para la casa", "casa"), (r"caritas", "caritas"), (r"canción", "cancion")]
+    nombres = {"laminas": "Láminas", "ficha-1": "Ficha 1", "ficha-2": "Ficha 2", "prueba": "El reto de Cosmo", "decir": "Decir en parejas", "casa": "Nota para la casa", "caritas": "Hoja de caritas", "cancion": "Canción"}
     for m in mats:
         if m["tipo"] != "planeador":
             continue
@@ -353,13 +354,41 @@ def construir_tema(tema, archivo):
             enl = []
             for rx, clave in reglas:
                 if re.search(rx, t) and f"{tema}-{clave}" not in [e["id"] for e in enl]:
-                    if f"{tema}-{clave}" in ids or clave == "caritas":
+                    if f"{tema}-{clave}" in ids or clave == "caritas" or (clave == "cancion" and con_cancion):
                         enl.append({"id": f"{tema}-{clave}", "texto": nombres[clave]})
             if enl:
                 b["enlaces"] = enl
 
     return {"id": tema, "nombre": nombre, "titulo": titulo_en, "territorio": territorio, "palabras": [{k: v for k, v in p.items() if k != "numeral"} for p in palabras.values()],
             "juegos": juegos_de(secs[1][1]), "materiales": mats}
+
+
+def titulos_canciones():
+    """{tema: título} desde los encabezados `## 1. Colores: "¡Red, blue, a cantar!"` del documento de canciones."""
+    res = {}
+    for m in re.finditer(r'(?m)^## \d+\. ([^:]+): "([^"]+)"', CANCIONES_MD.read_text(encoding="utf-8")):
+        tema = m.group(1).lower().replace("ú", "u")
+        res[tema] = m.group(2)
+    return res
+
+
+def construir_cancion(tema, nombre, titulos):
+    """Material tipo canción desde canciones/<tema>.letra.json (ya sincronizada). None si el tema no tiene."""
+    ruta = PAQ / "canciones" / f"{tema}.letra.json"
+    if not ruta.is_file():
+        return None
+    letra = json.loads(ruta.read_text(encoding="utf-8"))
+    if not (PAQ / letra["audio"]).is_file():
+        falla(f'la canción de {tema}: no existe {letra["audio"]}')
+    if tema not in titulos:
+        falla(f"la canción de {tema} no tiene encabezado en canciones-bosque.md")
+    return {
+        "id": f"{tema}-cancion", "tipo": "cancion", "cartilla": "ingles-3", "tema": tema, "version": 1,
+        "titulo": f'Canción: {titulos.get(tema, tema)}', "subtitulo": f"Canción del tema · {nombre}", "origen": "paquete", "privacidad": "publico",
+        "formatos": {"proyectar": "todo", "imprimir": "carta", "copias": 1},
+        "impresiones": [{"nombre": "Letra completa"}],
+        "bloques": [{"tipo": "cancion", "audio": letra["audio"], "ingles": letra["ingles"], "lineas": letra["lineas"]}],
+    }
 
 
 def juegos_de(sec1):
@@ -531,7 +560,7 @@ def prueba_bloques(cuerpo, ctx):
             for t in textos[1:]:
                 out.append({"tipo": "parrafo", "texto": limpio(t), "solo": "docente"})
         elif tit.startswith("Clave"):
-            out.append({"tipo": "titulo", "texto": "Clave del docente", "nivel": 2})
+            out.append({"tipo": "titulo", "texto": "Clave del docente", "nivel": 2, "solo": "docente"})
             textos = [l for l in c.split("\n") if l.strip()]
             out.append({"tipo": "clave", "texto": limpio(textos[0])})
         else:
@@ -567,10 +596,28 @@ def main():
         tipos[id_] = catalogo[nombre]
     temas_doc = {}
     for tema, archivo in TEMAS:
-        temas_doc[tema] = construir_tema(tema, archivo)
+        temas_doc[tema] = construir_tema(tema, archivo, (PAQ / "canciones" / f"{tema}.letra.json").is_file())
     if errores:
         print("No se escribió nada. Problemas:", *sorted(set(errores)), sep="\n  - ")
         sys.exit(1)
+
+    titulos = titulos_canciones()
+    canciones = {}
+    for tema, doc in temas_doc.items():
+        canciones[tema] = construir_cancion(tema, doc["nombre"], titulos)
+    for id_, nombre, _t in PENDIENTES:
+        canciones[id_] = construir_cancion(id_, nombre, titulos)
+    if errores:
+        print("No se escribió nada. Problemas:", *sorted(set(errores)), sep="\n  - ")
+        sys.exit(1)
+
+    def entrada_cancion(c):
+        return {"id": c["id"], "tipo": "cancion", "titulo": c["titulo"], "subtitulo": c["subtitulo"], "estado": "listo", "proyectar": "todo", "archivo": f'materiales/{c["id"]}.json'}
+
+    for tema, c in canciones.items():
+        if c:
+            (SALIDA / f"{tema}-cancion.json").parent.mkdir(parents=True, exist_ok=True)
+            (SALIDA / f"{tema}-cancion.json").write_text(json.dumps(c, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
 
     SALIDA.mkdir(parents=True, exist_ok=True)
     indice_temas = []
@@ -581,12 +628,12 @@ def main():
         indice_temas.append({
             "id": tema, "nombre": doc["nombre"], "titulo": doc["titulo"], "territorio": doc["territorio"], "estado": "listo", "archivo": f"materiales/{tema}.json",
             "palabras": len(doc["palabras"]), "juegos": doc["juegos"],
-            "materiales": [{"id": m["id"], "tipo": m["tipo"], "titulo": m["titulo"], "subtitulo": m["subtitulo"], "estado": "listo", "proyectar": m["formatos"]["proyectar"]} for m in doc["materiales"]],
+            "materiales": [{"id": m["id"], "tipo": m["tipo"], "titulo": m["titulo"], "subtitulo": m["subtitulo"], "estado": "listo", "proyectar": m["formatos"]["proyectar"]} for m in doc["materiales"]] + ([entrada_cancion(canciones[tema])] if canciones[tema] else []),
         })
     # Los seis temas del territorio, en orden; los que no tienen documento van como pendientes.
     orden = ["escuela", "colores", "numeros"] + [p[0] for p in PENDIENTES]
     for id_, nombre, titulo in PENDIENTES:
-        indice_temas.append({"id": id_, "nombre": nombre, "titulo": titulo, "territorio": "Bosque de los Sonidos", "estado": "pendiente", "materiales": []})
+        indice_temas.append({"id": id_, "nombre": nombre, "titulo": titulo, "territorio": "Bosque de los Sonidos", "estado": "pendiente", "materiales": [entrada_cancion(canciones[id_])] if canciones[id_] else []})
     indice_temas.sort(key=lambda t: orden.index(t["id"]))
     indice = {"cartilla": "ingles-3", "tipos": tipos, "temas": indice_temas}
     indice["version"] = hashlib.sha256(json.dumps(indice, ensure_ascii=False).encode()).hexdigest()[:10]

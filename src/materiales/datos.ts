@@ -19,6 +19,13 @@ export interface Palabra {
   alt?: string;
 }
 
+/** Una línea de la letra con el segundo en que empieza (canciones/<tema>.letra.json). */
+export interface LineaLetra {
+  t: number;
+  seccion: string;
+  texto: string;
+}
+
 export interface Enlace {
   id: string;
   texto: string;
@@ -59,6 +66,7 @@ export type Bloque = Comun &
     | { tipo: 'casillas'; columnas: string[]; filas: string[] }
     | { tipo: 'nota'; id: string; texto: string; etiqueta: string }
     | { tipo: 'hueco'; titulo: string; trae: string[]; imprime?: boolean }
+    | { tipo: 'cancion'; audio: string; ingles: string[]; lineas: LineaLetra[] }
   );
 
 export interface Impresion {
@@ -73,7 +81,7 @@ export interface Impresion {
 
 export interface Material {
   id: string;
-  tipo: 'guia' | 'planeador' | 'laminas' | 'ficha' | 'decir' | 'prueba' | 'casa';
+  tipo: 'guia' | 'planeador' | 'laminas' | 'ficha' | 'decir' | 'prueba' | 'casa' | 'cancion';
   tema: string;
   titulo: string;
   subtitulo: string;
@@ -110,7 +118,8 @@ export interface EntradaTema {
   archivo?: string;
   palabras?: number;
   juegos?: string[];
-  materiales: { id: string; tipo: string; titulo: string; subtitulo: string; estado: 'listo'; proyectar: string }[];
+  /** `archivo`: el material vive en su propio archivo (las canciones, también las de un tema pendiente). */
+  materiales: { id: string; tipo: string; titulo: string; subtitulo: string; estado: 'listo'; proyectar: string; archivo?: string }[];
 }
 
 export interface Indice {
@@ -121,16 +130,17 @@ export interface Indice {
 
 /** Lo que cada tema trae, en orden fijo (catálogo §3.2). `tipo` apunta a `Indice.tipos`. */
 export const RANURAS = [
-  { ranura: 'guia', tipo: 'guia', nombre: 'Guía del tema' },
-  { ranura: 'planeador-1', tipo: 'planeador', nombre: 'Planeador de la clase 1' },
-  { ranura: 'planeador-2', tipo: 'planeador', nombre: 'Planeador de la clase 2' },
-  { ranura: 'laminas', tipo: 'laminas', nombre: 'Láminas' },
-  { ranura: 'ficha-1', tipo: 'fichas', nombre: 'Ficha de trabajo 1' },
-  { ranura: 'ficha-2', tipo: 'fichas', nombre: 'Ficha de trabajo 2' },
-  { ranura: 'decir', tipo: 'decir', nombre: 'Decir en parejas' },
-  { ranura: 'prueba', tipo: 'prueba', nombre: 'Prueba del tema' },
-  { ranura: 'caritas', tipo: 'caritas', nombre: 'Hoja de caritas' },
-  { ranura: 'casa', tipo: 'casa', nombre: 'Nota para la casa' },
+  { ranura: 'guia', aqui: 'la guía del tema', tipo: 'guia', nombre: 'Guía del tema' },
+  { ranura: 'planeador-1', aqui: 'el planeador de la clase 1', tipo: 'planeador', nombre: 'Planeador de la clase 1' },
+  { ranura: 'planeador-2', aqui: 'el planeador de la clase 2', tipo: 'planeador', nombre: 'Planeador de la clase 2' },
+  { ranura: 'laminas', aqui: 'las láminas', tipo: 'laminas', nombre: 'Láminas' },
+  { ranura: 'cancion', aqui: 'la canción del tema', tipo: 'cancion', nombre: 'Canción del tema' },
+  { ranura: 'ficha-1', aqui: 'la ficha de trabajo 1', tipo: 'fichas', nombre: 'Ficha de trabajo 1' },
+  { ranura: 'ficha-2', aqui: 'la ficha de trabajo 2', tipo: 'fichas', nombre: 'Ficha de trabajo 2' },
+  { ranura: 'decir', aqui: 'la actividad de decir en parejas', tipo: 'decir', nombre: 'Decir en parejas' },
+  { ranura: 'prueba', aqui: 'la prueba del tema', tipo: 'prueba', nombre: 'Prueba del tema' },
+  { ranura: 'caritas', aqui: 'la hoja de caritas', tipo: 'caritas', nombre: 'Hoja de caritas' },
+  { ranura: 'casa', aqui: 'la nota para la casa', tipo: 'casa', nombre: 'Nota para la casa' },
 ] as const;
 
 const cacheTemas = new Map<string, Promise<TemaDoc>>();
@@ -169,7 +179,8 @@ export async function cargarMaterial(temaId: string, materialId: string) {
   const entrada = indice.temas.find((t) => t.id === temaId);
   if (!entrada) return { indice, entrada: undefined, tema: undefined, material: undefined, ranura: undefined };
   const tema = entrada.estado === 'listo' ? await cargarTema(entrada) : undefined;
-  const material = tema?.materiales.find((m) => m.id === materialId);
+  const propio = entrada.materiales.find((m) => m.id === materialId)?.archivo;
+  const material = propio ? await pedir<Material>(propio) : tema?.materiales.find((m) => m.id === materialId);
   const ranura = RANURAS.find((r) => `${temaId}-${r.ranura}` === materialId);
   return { indice, entrada, tema, material, ranura };
 }
@@ -182,4 +193,5 @@ export const TIPO_NOMBRE: Record<Material['tipo'], string> = {
   decir: 'Decir en parejas',
   prueba: 'Prueba del tema',
   casa: 'Nota para la casa',
+  cancion: 'Canción',
 };

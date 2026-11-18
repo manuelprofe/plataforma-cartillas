@@ -266,6 +266,7 @@ a {
 }
 button.fila { border: 0; border-top: 1px solid var(--a-linea); cursor: pointer; }
 .fila:first-child { border-top: 0; }
+.fila--tenue, .fila--tenue > .icono:first-child { color: var(--a-texto-3); }
 a.fila:hover, button.fila:hover { background: var(--a-fondo); }
 .fila:focus-visible { outline-offset: -3px; }
 .fila__texto { display: flex; flex-direction: column; min-width: 0; }

@@ -11,6 +11,7 @@ import { DocentesYGrupos, UsoYAvance } from './Colegio';
 import { Campo, correoValido, useTitulo } from './comun';
 import { PaginaDueno } from './Plataforma';
 import { DocenteInicio, MisGrupos, PaginaGrupo } from './Docente';
+import { MaterialPagina, Planear, PlanTema, TemaMateriales } from './Materiales';
 import { olvidarLecturas } from './docente';
 import { iniciarCola, prepararSalida, useAvisoSalida, useCola } from './estrellas';
 
@@ -471,7 +472,7 @@ const SIN_RED_LECTURA = 'Sin conexión. Ve lo último que se cargó; para cambia
 
 function Docente({ resto, cuenta, sinRed }: { resto: string[]; cuenta: Dentro; sinRed: boolean }) {
   const [seccion = '', ...mas] = resto;
-  const activa = seccion === '' ? '/docente' : MAS.includes(seccion) || seccion === 'mas' ? '/docente/mas' : `/docente/${seccion}`;
+  const activa = seccion === '' ? '/docente' : MAS.includes(seccion) || seccion === 'mas' ? '/docente/mas' : seccion === 'temas' ? '/docente/planear' : `/docente/${seccion}`;
   const cola = useCola();
   useEffect(iniciarCola, []);
   const estado = cola.porSubir > 0 ? (
@@ -499,9 +500,9 @@ function PaginaDocente({ seccion, mas, cuenta, sinRed }: { seccion: string; mas:
     case 'grupos':
       return mas[0] ? <PaginaGrupo resto={mas} sinRed={sinRed} /> : <MisGrupos sinRed={sinRed} />;
     case 'planear':
-      return <SeccionVacia titulo="Planear" hueco="Aquí irá el plan de cada grupo" texto="Elija el primer tema del grupo y las fechas de sus dos clases. Verá los seis temas del territorio en orden, cada uno con su farol." />;
+      return mas[0] ? <PlanTema tema={mas[0]} /> : <Planear />;
     case 'temas':
-      return <SeccionVacia titulo="Materiales del tema" hueco="Aquí irán los materiales del tema" texto="Los materiales de este tema llegan con la próxima versión de la cartilla. Ya puede proyectar las láminas y los juegos." volver={{ ruta: '/docente', etiqueta: 'Inicio' }} />;
+      return mas[1] ? <MaterialPagina tema={mas[0]} id={mas[1]} /> : mas[0] ? <TemaMateriales tema={mas[0]} /> : <AlInicio ruta="/docente/planear" />;
     case 'registro':
       return <SeccionVacia titulo="Registro del piloto" hueco="Aquí irá el registro del piloto" texto="Cotejo, incidencias, encuesta de acceso y prueba de entrada y salida, cada parte con su plantilla imprimible." volver={{ ruta: '/docente/mas', etiqueta: 'Más' }} />;
     case 'ayuda':

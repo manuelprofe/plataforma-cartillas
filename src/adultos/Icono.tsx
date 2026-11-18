@@ -199,6 +199,13 @@ const TRAZOS = {
       <path d="M7 2v4.172a2 2 0 0 0 .586 1.414L12 12l4.414-4.414A2 2 0 0 0 17 6.172V2" />
     </>
   ),
+  reproducir: <polygon points="6 3 20 12 6 21 6 3" />,
+  pausa: (
+    <>
+      <rect x="14" y="4" width="4" height="16" rx="1" />
+      <rect x="6" y="4" width="4" height="16" rx="1" />
+    </>
+  ),
   cerrar: (
     <>
       <path d="M18 6 6 18" />

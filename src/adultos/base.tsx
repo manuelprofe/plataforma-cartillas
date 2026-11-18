@@ -103,7 +103,7 @@ export function Panel({ titulo, fin, filas, children }: { titulo?: string; fin?:
 }
 
 /** Fila de 56 px. Con `ruta` es un enlace con flecha; con `alTocar`, un botón; sin ninguno, solo muestra. */
-export function Fila({ ruta, alTocar, icono, titulo, detalle, fin }: { ruta?: string; alTocar?: () => void; icono?: NombreIcono; titulo: ReactNode; detalle?: ReactNode; fin?: ReactNode }) {
+export function Fila({ ruta, alTocar, icono, titulo, detalle, fin, tenue }: { ruta?: string; alTocar?: () => void; icono?: NombreIcono; titulo: ReactNode; detalle?: ReactNode; fin?: ReactNode; tenue?: boolean }) {
   const dentro = (
     <>
       {icono && <Icono nombre={icono} />}
@@ -121,16 +121,16 @@ export function Fila({ ruta, alTocar, icono, titulo, detalle, fin }: { ruta?: st
   );
   if (alTocar)
     return (
-      <button type="button" className="fila" onClick={alTocar}>
+      <button type="button" className={tenue ? 'fila fila--tenue' : 'fila'} onClick={alTocar}>
         {dentro}
       </button>
     );
   return ruta ? (
-    <Enlace ruta={ruta} className="fila">
+    <Enlace ruta={ruta} className={tenue ? 'fila fila--tenue' : 'fila'}>
       {dentro}
     </Enlace>
   ) : (
-    <div className="fila">{dentro}</div>
+    <div className={tenue ? 'fila fila--tenue' : 'fila'}>{dentro}</div>
   );
 }
 

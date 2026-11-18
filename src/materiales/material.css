@@ -177,9 +177,10 @@ a.mat-chip:hover { background: var(--a-hundido); }
   .mat-item__cab .meta { display: none; }
   .mat-marca { width: 11mm; height: 11mm; color: #000; }
   .mat-item__opciones { flex: 1; gap: 3mm; }
-  .mat-item__opciones li { min-height: 28mm; border: 0.35mm solid #000; border-radius: 2mm; }
-  .mat-item__opciones .mat-visual img { width: 17mm; height: 17mm; }
-  .mat-item__opciones .mat-estrellas { width: 18mm; }
+  .mat-item__opciones li { min-height: 0; padding: 1.5mm; border: 0.35mm solid #000; border-radius: 2mm; }
+  .mat-item__opciones .mat-visual { gap: 1mm; }
+  .mat-item__opciones .mat-visual img { width: 12mm; height: 12mm; }
+  .mat-item__opciones .mat-estrellas { width: 14mm; }
   .mat-item__opciones li.correcta { border-width: 0.9mm; position: relative; }
   .correcta__marca { position: absolute; bottom: 0.5mm; font-size: 6.5pt; }
 
@@ -191,4 +192,30 @@ a.mat-chip:hover { background: var(--a-hundido); }
   .mat-hueco-imp { border: 0.3mm dashed #000; padding: 4mm; text-align: center; border-radius: 2mm; }
   .mat-momentos-imp table { table-layout: fixed; }
   .mat-momentos-imp th:nth-child(1) { width: 8mm; }
+}
+
+/* ---------- Canción: la letra siempre a la vista ---------- */
+
+.cancion { display: flex; flex-direction: column; gap: var(--e-4); }
+.cancion__control { display: flex; flex-wrap: wrap; align-items: center; gap: var(--e-3); }
+.cancion__tiempo { font-variant-numeric: tabular-nums; margin-left: auto; }
+.boton[aria-pressed='true'] { background: var(--a-hundido); border-color: var(--a-tinta); }
+.letra { list-style: none; margin: 0; padding: var(--e-2); position: relative; max-height: 62vh; overflow-y: auto; background: var(--a-superficie); border: 1px solid var(--a-linea); border-radius: var(--r-tarjeta); display: flex; flex-direction: column; gap: var(--e-1); }
+.letra__seccion { margin-top: var(--e-3); padding: 0 var(--e-3); font: 600 var(--t-meta) / var(--l-meta) var(--f-texto); color: var(--a-texto-3); }
+.letra__seccion:first-child { margin-top: var(--e-1); }
+.letra__linea { display: block; width: 100%; min-height: var(--toque); padding: var(--e-2) var(--e-3); border: 0; border-radius: var(--r-control); background: none; color: var(--a-texto-2); font: 500 var(--t-lead) / var(--l-lead) var(--f-marca); text-align: left; cursor: pointer; transition: background-color var(--m-rapido), color var(--m-rapido); }
+.letra__linea:hover { background: var(--a-hundido); }
+.letra__linea--paso { color: var(--a-texto-3); }
+.letra__linea--suena { background: var(--a-tinta); color: #fff; }
+.letra__linea--suena:hover { background: var(--a-tinta); }
+.letra .en { font-weight: 700; color: var(--a-tinta); text-decoration: underline; text-decoration-color: var(--a-farol); text-decoration-thickness: 3px; text-underline-offset: 4px; }
+.letra__linea--suena .en { color: #fff; }
+
+.letra-imp { display: none; }
+@media print {
+  .letra-imp { display: block; columns: 2; column-gap: 12mm; }
+  .letra-imp section { break-inside: avoid; margin-bottom: 5mm; }
+  .letra-imp h3 { font: 600 9pt var(--f-texto); margin: 0 0 1mm; }
+  .letra-imp p { font: 500 13pt / 1.35 var(--f-marca); margin: 0; }
+  .letra-imp b { font-weight: 800; }
 }

@@ -167,6 +167,7 @@ const TRAZOS = {
       <path d="M12 5v14" />
     </>
   ),
+  marca: <path d="M20 6 9 17l-5-5" />,
   subir: (
     <>
       <path d="M12 13v8" />

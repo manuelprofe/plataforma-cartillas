@@ -4,13 +4,15 @@
 import { StrictMode, useEffect, useState, useSyncExternalStore, type FormEvent, type ReactNode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { navegar, useRuta } from '../navegacion';
-import { minutosDesdeProyeccion, terminarClase } from '../proyectando';
-import { Boton, Cascaron, Cortina, Encabezado, Farol, Fila, Hueco, Panel, Vacio, type Seccion } from './base';
+import { Boton, Cascaron, Encabezado, Fila, Hueco, Panel, type Seccion } from './base';
 import { aceptarEnlace, cambiarClave, correoDeSesion, cuentasEnJuego, descartarEnlace, entrar, ErrorCuenta, iniciar, INICIO, recuperar, salir, tomarEnlace, useCuenta, type Estado, type Falla, type Rol } from './cuenta';
 import { Icono } from './Icono';
 import { DocentesYGrupos, UsoYAvance } from './Colegio';
 import { Campo, correoValido, useTitulo } from './comun';
 import { PaginaDueno } from './Plataforma';
+import { DocenteInicio, MisGrupos, PaginaGrupo } from './Docente';
+import { olvidarLecturas } from './docente';
+import { iniciarCola, useCola } from './estrellas';
 
 /** Resultado de leer la sesión que traen los enlaces de los correos (se lee antes de pintar). */
 let enlace: ReturnType<typeof tomarEnlace> = 'nada';
@@ -91,6 +93,7 @@ function Cargando() {
 }
 
 function cerrarSesion() {
+  olvidarLecturas();
   void salir();
   navegar('/adultos', true);
 }
@@ -455,15 +458,20 @@ const DOCENTE: Seccion[] = [
 /** Lo que va bajo "Más" en celular; en el computador se llega igual desde esa pestaña. */
 const MAS = ['registro', 'ayuda', 'cuenta'];
 
-const hoy = () => new Intl.DateTimeFormat('es-CO', { weekday: 'long', day: 'numeric', month: 'long' }).format(new Date());
-
 const SIN_RED_DOCENTE = 'Sin conexión. Lo que marque se guarda en este celular y sube solo cuando vuelva la señal.';
 const SIN_RED_LECTURA = 'Sin conexión. Ve lo último que se cargó; para cambiar algo hace falta internet.';
 
 function Docente({ resto, cuenta, sinRed }: { resto: string[]; cuenta: Dentro; sinRed: boolean }) {
   const [seccion = '', ...mas] = resto;
   const activa = seccion === '' ? '/docente' : MAS.includes(seccion) || seccion === 'mas' ? '/docente/mas' : `/docente/${seccion}`;
-  const estado = (
+  const cola = useCola();
+  useEffect(iniciarCola, []);
+  const estado = cola.porSubir > 0 ? (
+    <>
+      <Icono nombre="subir" />
+      {cola.porSubir} por subir
+    </>
+  ) : (
     <>
       <Icono nombre="guardado" />
       Todo guardado
@@ -471,17 +479,17 @@ function Docente({ resto, cuenta, sinRed }: { resto: string[]; cuenta: Dentro; s
   );
   return (
     <Cascaron inicio="/docente" estado={estado} aviso={sinRed && <AvisoSinRed texto={SIN_RED_DOCENTE} />} secciones={DOCENTE} activa={activa} nombre="Secciones del docente">
-      <PaginaDocente seccion={seccion} mas={mas} cuenta={cuenta} />
+      <PaginaDocente seccion={seccion} mas={mas} cuenta={cuenta} sinRed={sinRed} />
     </Cascaron>
   );
 }
 
-function PaginaDocente({ seccion, mas, cuenta }: { seccion: string; mas: string[]; cuenta: Dentro }) {
+function PaginaDocente({ seccion, mas, cuenta, sinRed }: { seccion: string; mas: string[]; cuenta: Dentro; sinRed: boolean }) {
   switch (seccion) {
     case '':
-      return <DocenteInicio />;
+      return <DocenteInicio colegioId={cuenta.perfil.colegio_id} />;
     case 'grupos':
-      return mas[0] ? <Grupo g={decodeURIComponent(mas[0])} /> : <Grupos />;
+      return mas[0] ? <PaginaGrupo resto={mas} sinRed={sinRed} /> : <MisGrupos sinRed={sinRed} />;
     case 'planear':
       return <SeccionVacia titulo="Planear" hueco="Aquí irá el plan de cada grupo" texto="Elija el primer tema del grupo y las fechas de sus dos clases. Verá los seis temas del territorio en orden, cada uno con su farol." />;
     case 'temas':
@@ -497,84 +505,6 @@ function PaginaDocente({ seccion, mas, cuenta }: { seccion: string; mas: string[
     default:
       return <AlInicio ruta="/docente" />;
   }
-}
-
-function DocenteInicio() {
-  useTitulo('Inicio');
-  return (
-    <>
-      <Encabezado titulo="Inicio" meta={hoy()} />
-      <Panel
-        titulo="Próxima clase"
-        fin={
-          <span className="faroles">
-            <Farol estado="apagado" de="Clase 1" />
-            <Farol estado="apagado" de="Clase 2" />
-          </span>
-        }
-      >
-        <Hueco titulo="Aquí irá su próxima clase" texto="El grupo, el tema y si es la clase 1 o la 2, con el botón para proyectarla y el planeador." />
-      </Panel>
-      <div className="atajos">
-        <Boton variante="primario" icono="proyectar" ruta="/proyectar">
-          Proyectar
-        </Boton>
-        <Boton icono="estrella" ruta="/docente/grupos">
-          Dar estrellas
-        </Boton>
-        <Boton icono="lista" ruta="/docente/grupos">
-          Lista
-        </Boton>
-      </div>
-      <Panel>
-        <Vacio titulo="Todavía no tiene grupos" texto="Cree su grupo y la plataforma le da el código que los niños usan en casa. Después agrega los apodos.">
-          <Boton ruta="/docente/grupos">Crear un grupo</Boton>
-        </Vacio>
-      </Panel>
-    </>
-  );
-}
-
-function Grupos() {
-  useTitulo('Mis grupos');
-  return (
-    <>
-      <Encabezado titulo="Mis grupos" />
-      <Panel>
-        <Vacio titulo="Todavía no tiene grupos" texto="Cree su grupo y la plataforma le da el código que los niños usan en casa. Después agrega los apodos." />
-        <Hueco titulo="Aquí irá cada grupo" texto="Una fila por grupo: nombre, grado, número de niños y código." />
-      </Panel>
-    </>
-  );
-}
-
-/** Pantalla con apodos: va detrás de la cortina si en este aparato se proyectó hace poco. */
-function Grupo({ g }: { g: string }) {
-  useTitulo(`Grupo ${g}`);
-  const [minutos, setMinutos] = useState(minutosDesdeProyeccion);
-  const [mostrar, setMostrar] = useState(false);
-  const tapada = minutos !== null && !mostrar;
-  return (
-    <>
-      <Encabezado titulo={`Grupo ${g}`} volver={{ ruta: '/docente/grupos', etiqueta: 'Mis grupos' }} />
-      {!tapada && (
-        <Panel titulo="Lista">
-          <Hueco titulo={`Aquí aparecerán los niños de ${g}`} texto="Escriba solo el apodo o el primer nombre, sin apellidos." />
-        </Panel>
-      )}
-      {tapada && (
-        <Cortina
-          motivo={minutos === 0 ? 'Hace menos de un minuto estaba proyectando desde este aparato.' : `Hace ${minutos} ${minutos === 1 ? 'minuto' : 'minutos'} estaba proyectando desde este aparato.`}
-          onMostrar={() => setMostrar(true)}
-          onInicio={() => navegar('/docente')}
-          onTermine={() => {
-            terminarClase();
-            setMinutos(null);
-          }}
-        />
-      )}
-    </>
-  );
 }
 
 function DocenteMas() {

@@ -62,8 +62,54 @@ export const hoyCo = () => new Intl.DateTimeFormat('en-CA', { timeZone: 'America
 
 // ---------------------------------------------------------------- Lecturas
 
+// Lo último que se leyó queda en el aparato para abrir los grupos y dar estrellas sin red
+// (esqueleto §2.6). Son apodos y personajes, nunca PIN. Se borra al salir.
+const LLAVE_LECTURA = 'pc_docente_lectura_v1';
+interface Lectura {
+  grupos?: GrupoDoc[];
+  ninos?: Record<string, Nino[]>;
+}
+const leerLectura = (): Lectura => {
+  try {
+    return JSON.parse(localStorage.getItem(LLAVE_LECTURA) ?? '{}') as Lectura;
+  } catch {
+    return {};
+  }
+};
+function guardarLectura(cambio: (l: Lectura) => void) {
+  try {
+    const l = leerLectura();
+    cambio(l);
+    localStorage.setItem(LLAVE_LECTURA, JSON.stringify(l));
+  } catch {
+    // Sin almacenamiento solo se pierde la lectura sin red.
+  }
+}
+export function olvidarLecturas() {
+  try {
+    localStorage.removeItem(LLAVE_LECTURA);
+  } catch {
+    // Nada que borrar.
+  }
+}
+/** Si la lectura falló por falta de red y hay una copia, la devuelve; si no, vuelve a lanzar el error. */
+function conCopia<T>(e: unknown, copia: T | undefined): T {
+  if (e instanceof ErrorCuenta && e.falla === 'red' && copia) return copia;
+  throw e;
+}
+
 /** Los grupos del docente con su código y el número de niños. Sin grupos devuelve una lista vacía. */
 export async function cargarGrupos(): Promise<GrupoDoc[]> {
+  try {
+    const grupos = await leerGrupos();
+    guardarLectura((l) => (l.grupos = grupos));
+    return grupos;
+  } catch (e) {
+    return conCopia(e, leerLectura().grupos);
+  }
+}
+
+async function leerGrupos(): Promise<GrupoDoc[]> {
   const codigos = await rpc<{ grupo_id: string; codigo: string }[]>('mis_codigos', {});
   if (codigos.length === 0) return [];
   const ids = codigos.map((c) => c.grupo_id).join(',');
@@ -77,8 +123,14 @@ export async function cargarGrupos(): Promise<GrupoDoc[]> {
 const alfabetico = (a: Nino, b: Nino) => a.apodo.localeCompare(b.apodo, 'es', { sensitivity: 'base' });
 
 export async function cargarNinos(grupo: string): Promise<Nino[]> {
-  const filas = await leer<Nino>('estudiantes', `select=id,apodo,avatar,autorizacion&grupo_id=eq.${encodeURIComponent(grupo)}`);
-  return filas.sort(alfabetico);
+  try {
+    const filas = await leer<Nino>('estudiantes', `select=id,apodo,avatar,autorizacion&grupo_id=eq.${encodeURIComponent(grupo)}`);
+    const ninos = filas.sort(alfabetico);
+    guardarLectura((l) => ((l.ninos ??= {})[grupo] = ninos));
+    return ninos;
+  } catch (e) {
+    return conCopia(e, leerLectura().ninos?.[grupo]);
+  }
 }
 
 /** Niños del grupo que ya recibieron participar o colaborar hoy del docente (para el punto suave). */

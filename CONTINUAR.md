@@ -6,7 +6,7 @@ los documentos de `docs/`. Al empezar: leer esto, `CLAUDE.md`, y seguir "Siguien
 ## Datos de trabajo
 
 - Rama `ccr-c31d414e-rt7zgq` (`main` atrasada). Sitio de prueba:
-  https://curious-stroopwafel-4b70aa.netlify.app (Netlify `94f443a2-de53-4029-ab21-f6673073280c`).
+  https://englishlandmanuelprofe.netlify.app (Netlify `94f443a2-de53-4029-ab21-f6673073280c`).
   Publicar: herramienta Netlify `deploy-site` y correr el `npx` que devuelve. **Solo con permiso de Manuel.**
   Última publicación: 18 nov (entrada con perfiles, video y voces nuevas).
 - Supabase `https://jpwwmzfhbdnzsvwuciqa.supabase.co` (EE. UU.), clave pública en `.env.example` y

@@ -8,7 +8,8 @@ se estima entre las líneas vecinas. Deja `canciones/<tema>.letra.json` junto al
 
 Uso (desde la raíz; la clave de ElevenLabs la pone el proxy del entorno):
     python3 -I herramientas/letras_sincronizadas.py public/cartillas/ingles-3
-Con --sin-red usa las transcripciones ya guardadas en canciones/<tema>.scribe.json.
+Con --sin-red usa las transcripciones ya guardadas en herramientas/canciones-scribe/<tema>.scribe.json
+(fuera de public/: son datos de trabajo y no se publican).
 """
 import argparse, difflib, json, re, subprocess, sys, unicodedata
 from pathlib import Path
@@ -60,7 +61,7 @@ def main():
     a = ap.parse_args()
     for tema, (titulo, ingles) in CANCIONES.items():
         audio = a.carpeta / 'canciones' / f'{tema}.mp3'
-        guardado = a.carpeta / 'canciones' / f'{tema}.scribe.json'
+        guardado = RAIZ / 'herramientas/canciones-scribe' / f'{tema}.scribe.json'
         if not a.sin_red or not guardado.exists():
             transcribir(audio, guardado)
         palabras = [w for w in json.loads(guardado.read_text(encoding='utf-8'))['words'] if w.get('type') == 'word']

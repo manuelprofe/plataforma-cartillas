@@ -21,7 +21,8 @@ export function Cara({ paquete, avatar, className = '' }: { paquete: Paquete; av
 /** "20 nov 2026" desde AAAA-MM-DD, sin pasar por la zona horaria (la fecha es la del papel). */
 export function fechaCorta(iso: string): string {
   const [a, m, d] = iso.split('-').map(Number);
-  return new Intl.DateTimeFormat('es-CO', { day: 'numeric', month: 'short', year: 'numeric' }).format(new Date(a, m - 1, d));
+  const mes = new Intl.DateTimeFormat('es-CO', { month: 'short' }).format(new Date(a, m - 1, d)).replace('.', '');
+  return `${d} ${mes} ${a}`;
 }
 
 /** Pantalla con apodos: va detrás de la cortina si en este aparato se proyectó hace poco (esqueleto §2.3). */

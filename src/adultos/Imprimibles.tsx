@@ -97,7 +97,7 @@ export function Tarjetas({ grupo, ninos, paquete, solo, sinRed }: { grupo: Grupo
         <>
           <div className="no-imprimir imprimir-cabeza">
             <Panel>
-              <p className="sec">El PIN de cada niño no se ve en pantalla: sus tres imágenes aparecen solo en la hoja impresa. La base no lo guarda legible, así que al recargar esta página hay que generar uno nuevo.</p>
+              <p className="sec">El PIN de cada niño no se ve en pantalla: sus tres imágenes aparecen solo en la hoja impresa. Por seguridad el PIN no se guarda legible: si recarga esta página, genere uno nuevo.</p>
               {sinAutorizar.length > 0 && (
                 <p className="meta">
                   Sin autorización marcada: {sinAutorizar.map((n) => n.apodo).join(', ')}. Sus tarjetas no abren la entrada hasta que la marque.

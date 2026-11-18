@@ -259,7 +259,7 @@ try {
 
     // Autorización con fecha.
     comprobar((await p.locator('.nino:has-text("Sara") .meta--aviso').innerText()) === 'Falta la autorización', 'sin autorización: "Falta la autorización"');
-    await p.check('input[aria-label="Autorización recibida de Sara"]');
+    await p.click('input[aria-label="Autorización recibida de Sara"]');
     await p.waitForSelector('.nino:has-text("Autorización:")');
     const sara = base.ninos.find((n) => n.apodo === 'Sara');
     comprobar(sara.autorizacion === hoyCo, `marcar la autorización guarda la fecha de hoy (${sara.autorizacion})`);
@@ -294,7 +294,7 @@ try {
     await p.click('button[aria-label="Opciones de Marcos"]');
     await p.click('.nino:has-text("Marcos") button:has-text("Retirar del grupo")');
     await p.waitForSelector('text=¿Retirar a Marcos?');
-    await p.click('.nino:has-text("Marcos") >> text=No');
+    await p.click('.nino:has-text("Marcos") button:text-is("No")');
     comprobar(base.ninos.some((n) => n.apodo === 'Marcos'), 'responder No no retira');
     await p.click('.nino:has-text("Marcos") button:has-text("Retirar del grupo")');
     await p.click('.nino:has-text("Marcos") button:has-text("Sí, retirar")');
@@ -326,12 +326,12 @@ try {
 
     await p.goto(url('/docente/grupos/g1/lista'));
     await p.waitForSelector('.lista-hoja table');
-    comprobar((await p.locator('tbody tr').count()) === 8, 'lista para estrellas con una fila por niño');
+    comprobar((await p.locator('tbody tr').count()) === base.ninos.length, 'lista para estrellas con una fila por niño');
     await foto(p, '14-lista-390');
     await p.emulateMedia({ media: 'print' });
     const pdf2 = await p.pdf({ format: 'Letter', preferCSSPageSize: true, printBackground: true });
     writeFileSync(`${CAPTURAS}/docente-lista.pdf`, pdf2);
-    comprobar((pdf2.toString('latin1').match(/\/Type\s*\/Page\b/g) ?? []).length === 1, 'la lista de 8 niños cabe en una hoja');
+    comprobar((pdf2.toString('latin1').match(/\/Type\s*\/Page\b/g) ?? []).length === 1, 'la lista de 9 niños cabe en una hoja');
     await p.emulateMedia({ media: 'screen' });
     comprobar(!errores.length, `sin errores de consola ${errores.join(' | ')}`);
     await c.close();

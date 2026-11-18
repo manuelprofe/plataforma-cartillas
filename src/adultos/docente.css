@@ -22,7 +22,7 @@
 @media (min-width: 720px) {
   .atajos--cuatro { grid-template-columns: repeat(4, 1fr); }
 }
-.enlace { color: var(--a-tinta); text-decoration: underline; text-underline-offset: 3px; display: inline-block; padding: var(--e-3) 0; margin: calc(-1 * var(--e-3)) 0; }
+.enlace { color: var(--a-tinta); text-decoration: underline; text-underline-offset: 3px; display: inline-block; padding: 14px 0; margin: -14px 0; }
 .meta--aviso { color: var(--a-aviso); }
 .campo textarea {
   min-height: 112px;

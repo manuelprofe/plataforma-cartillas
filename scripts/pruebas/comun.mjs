@@ -128,7 +128,7 @@ export async function simularSupabase(contexto, extra = () => null) {
       if (url.pathname === '/rest/v1/perfiles') return { json: [{ rol: 'dueno', nombre: 'Otro', colegio_id: null, activo: true }, { rol: rol ?? 'docente', nombre: 'Yo', colegio_id: null, activo: true }] };
       if (url.pathname === '/auth/v1/logout') return { status: 204 };
       // Pantallas de colegios, grupos e invitaciones: tablas y cifras vacías.
-      if (['/rest/v1/rpc/cifras_grupos', '/rest/v1/rpc/lista_invitaciones'].includes(url.pathname) || (q.method() === 'GET' && url.pathname.startsWith('/rest/v1/') && !url.pathname.includes('/rpc/'))) return { json: [] };
+      if (['/rest/v1/rpc/cifras_grupos', '/rest/v1/rpc/lista_invitaciones', '/rest/v1/rpc/mis_codigos'].includes(url.pathname) || (q.method() === 'GET' && url.pathname.startsWith('/rest/v1/') && !url.pathname.includes('/rpc/'))) return { json: [] };
       return { status: 404, json: { message: 'sin simular' } };
     })();
     if (r.abortar) return ruta.abort('internetdisconnected');

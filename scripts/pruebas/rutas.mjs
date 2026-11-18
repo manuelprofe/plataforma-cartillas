@@ -45,6 +45,8 @@ try {
   // 2. Atrás: entre modos (recarga) y dentro de un modo (sin recarga).
   {
     const c = await contexto(navegador);
+    // Un grupo "3B" sin niños para la cortina (se registra después, así que responde primero).
+    await c.route(/\/rest\/v1\/(rpc\/mis_codigos|grupos)/, (r) => r.fulfill({ contentType: 'application/json', body: JSON.stringify(r.request().url().includes('mis_codigos') ? [{ grupo_id: 'g3b', codigo: 'K7M2P' }] : [{ id: 'g3b', nombre: '3B', grado: '3°', colegio_id: null }]) }));
     const p = await c.newPage();
     const e = errores(p);
     await p.goto(url('/')); await listo(p);
@@ -66,7 +68,7 @@ try {
     await p.waitForSelector('h1:has-text("Proyección terminada")');
     comprobar(new URL(p.url()).pathname === '/proyectar/fin', 'terminar con confirmación lleva a /proyectar/fin');
     await p.click('text=Ir a mi inicio'); await p.waitForSelector('h1:has-text("Inicio")');
-    await p.goto(url('/docente/grupos/3B')); await p.waitForSelector('.cortina-a');
+    await p.goto(url('/docente/grupos/g3b')); await p.waitForSelector('.cortina-a');
     await p.screenshot({ path: `${CAPTURAS}/rutas-cortina-390.png` });
     await p.click('text=Ya terminé la clase');
     comprobar(!(await p.locator('.cortina-a').count()) && (await p.locator('text=Aquí aparecerán los niños de 3B').count()) === 1, 'cortina tras proyectar y "Ya terminé la clase" la quita');
@@ -115,7 +117,7 @@ try {
     const pedidos2 = [];
     p2.on('request', (q) => pedidos2.push(new URL(q.url()).pathname));
     await p2.goto(url('/docente'), { waitUntil: 'networkidle' });
-    comprobar(!pedidos2.some((r) => /estudiante/.test(r)) && pedidos2.some((r) => /base-.*\.css/.test(r)), `/docente carga solo lo suyo: ${pedidos2.join(' ')}`);
+    comprobar(!pedidos2.some((r) => /estudiante/.test(r)) && pedidos2.some((r) => /(base|Adultos)-.*\.css/.test(r)), `/docente carga solo lo suyo: ${pedidos2.join(' ')}`);
     await c.close();
   }
 

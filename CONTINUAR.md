@@ -21,7 +21,9 @@ los documentos de `docs/`. Al empezar: leer esto, `CLAUDE.md`, y seguir "Siguien
 ## Siguiente (en orden)
 
 1. **Informe de los probadores:** atenderlo primero cuando llegue.
-3. **Esqueleto, tandas 4 a 6** (`docs/diseno/esqueleto.md` §8; desarrollador → revisor → prueba a
+3. **Esqueleto, tandas 5 y 6** (la 4, docente base, está hecha: `src/adultos/Docente.tsx`, `Imprimibles.tsx`,
+   `estrellas.ts`, prueba `scripts/pruebas/docente.mjs`; sin migración nueva; falta revisor y prueba con el Supabase real)
+   (`docs/diseno/esqueleto.md` §8; antes: tandas 4 a 6 (`docs/diseno/esqueleto.md` §8; desarrollador → revisor → prueba a
    390 px): 4 docente base (grupos, niños con apodo, autorización, PIN, tarjetas imprimibles,
    estrellas sin red) — con esto los niños entran con tarjeta; 5 proyectar, cortina y plantilla de
    material; 6 planear, materiales, avance, prueba, registro (estados "Aquí irá").

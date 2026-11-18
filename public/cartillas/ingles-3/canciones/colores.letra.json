@@ -1,0 +1,103 @@
+{
+ "tema": "colores",
+ "audio": "canciones/colores.mp3",
+ "ingles": [
+  "red",
+  "blue",
+  "green",
+  "yellow",
+  "orange",
+  "purple",
+  "pink",
+  "brown",
+  "black",
+  "white"
+ ],
+ "lineas": [
+  {
+   "t": 1.02,
+   "seccion": "Estrofa 1",
+   "texto": "Miro el cielo grande: blue, blue."
+  },
+  {
+   "t": 3.54,
+   "seccion": "Estrofa 1",
+   "texto": "Miro el pasto fresco: green, green."
+  },
+  {
+   "t": 8.52,
+   "seccion": "Estrofa 1",
+   "texto": "Mi manzana madura: red, red."
+  },
+  {
+   "t": 13.22,
+   "seccion": "Estrofa 1",
+   "texto": "La fruta jugosa: orange, orange."
+  },
+  {
+   "t": 18.54,
+   "seccion": "Coro",
+   "texto": "Red, red, red, ¡busca algo red!"
+  },
+  {
+   "t": 22.24,
+   "seccion": "Coro",
+   "texto": "Blue, blue, blue, ¡busca algo blue!"
+  },
+  {
+   "t": 26.04,
+   "seccion": "Coro",
+   "texto": "Pink, pink, pink, ¡salta y dilo así!"
+  },
+  {
+   "t": 30.74,
+   "seccion": "Coro",
+   "texto": "¡Colores, colores, yo los canto aquí!"
+  },
+  {
+   "t": 35.8,
+   "seccion": "Estrofa 2",
+   "texto": "El sol de la mañana: yellow, yellow."
+  },
+  {
+   "t": 40.76,
+   "seccion": "Estrofa 2",
+   "texto": "La uva del mercado: purple, purple."
+  },
+  {
+   "t": 45.82,
+   "seccion": "Estrofa 2",
+   "texto": "El chocolate rico: brown, brown."
+  },
+  {
+   "t": 48.26,
+   "seccion": "Estrofa 2",
+   "texto": "La noche tan oscura: black, black."
+  },
+  {
+   "t": 52.02,
+   "seccion": "Estrofa 2",
+   "texto": "La nube de algodón: white, white."
+  },
+  {
+   "t": 56.06,
+   "seccion": "Coro",
+   "texto": "Red, red, red, ¡busca algo red!"
+  },
+  {
+   "t": 59.76,
+   "seccion": "Coro",
+   "texto": "Blue, blue, blue, ¡busca algo blue!"
+  },
+  {
+   "t": 64.82,
+   "seccion": "Coro",
+   "texto": "Pink, pink, pink, ¡salta y dilo así!"
+  },
+  {
+   "t": 70.74,
+   "seccion": "Coro",
+   "texto": "¡Colores, colores, yo los canto aquí!"
+  }
+ ]
+}

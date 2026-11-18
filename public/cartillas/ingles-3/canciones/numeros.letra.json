@@ -1,0 +1,108 @@
+{
+ "tema": "numeros",
+ "audio": "canciones/numeros.mp3",
+ "ingles": [
+  "one",
+  "two",
+  "three",
+  "four",
+  "five",
+  "six",
+  "seven",
+  "eight",
+  "nine",
+  "ten"
+ ],
+ "lineas": [
+  {
+   "t": 8.64,
+   "seccion": "Estrofa 1",
+   "texto": "Levanto un dedito: one, one."
+  },
+  {
+   "t": 11.06,
+   "seccion": "Estrofa 1",
+   "texto": "Levanto otro dedito: two, two."
+  },
+  {
+   "t": 13.46,
+   "seccion": "Estrofa 1",
+   "texto": "Levanto un tercero: three, three."
+  },
+  {
+   "t": 15.84,
+   "seccion": "Estrofa 1",
+   "texto": "Levanto otro más: four, four."
+  },
+  {
+   "t": 18.14,
+   "seccion": "Estrofa 1",
+   "texto": "Y la mano abierta: five, five."
+  },
+  {
+   "t": 21.42,
+   "seccion": "Coro",
+   "texto": "One, two, three, four, five,"
+  },
+  {
+   "t": 22.88,
+   "seccion": "Coro",
+   "texto": "¡cuento con mis dedos, qué bien!"
+  },
+  {
+   "t": 24.12,
+   "seccion": "Coro",
+   "texto": "Six, seven, eight, nine, ten,"
+  },
+  {
+   "t": 26.8,
+   "seccion": "Coro",
+   "texto": "¡cuento otra vez, de uno a diez!"
+  },
+  {
+   "t": 37.76,
+   "seccion": "Estrofa 2",
+   "texto": "Abro la otra mano: six, six."
+  },
+  {
+   "t": 40.68,
+   "seccion": "Estrofa 2",
+   "texto": "Un dedito arriba: seven, seven."
+  },
+  {
+   "t": 43.02,
+   "seccion": "Estrofa 2",
+   "texto": "Dos deditos más: eight, eight."
+  },
+  {
+   "t": 46.88,
+   "seccion": "Estrofa 2",
+   "texto": "Casi, casi todos: nine, nine."
+  },
+  {
+   "t": 49.44,
+   "seccion": "Estrofa 2",
+   "texto": "Las dos manos abiertas: ten, ten."
+  },
+  {
+   "t": 50.71,
+   "seccion": "Coro",
+   "texto": "One, two, three, four, five,"
+  },
+  {
+   "t": 51.98,
+   "seccion": "Coro",
+   "texto": "¡cuento con mis dedos, qué bien!"
+  },
+  {
+   "t": 53.82,
+   "seccion": "Coro",
+   "texto": "Six, seven, eight, nine, ten,"
+  },
+  {
+   "t": 55.6,
+   "seccion": "Coro",
+   "texto": "¡cuento otra vez, de uno a diez!"
+  }
+ ]
+}

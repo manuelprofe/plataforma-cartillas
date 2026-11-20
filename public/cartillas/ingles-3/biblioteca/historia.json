@@ -1,0 +1,204 @@
+{
+ "titulo": "El cuaderno que abrió Englishland",
+ "en_titulo": "The notebook that opened Englishland",
+ "intro": "Lee la historia con tus estudiantes antes de iniciar la aventura. Es el portal narrativo que explica por qué escuchar, leer, pronunciar, intentar, corregir y comunicarse en inglés hace brillar a Englishland.",
+ "escenas": [
+  {
+   "n": 1,
+   "imagen": "biblioteca/historia/his-book-1.webp",
+   "es": {
+    "titulo": "Un día común en clase",
+    "parrafos": [
+     "Era un día común en el salón. Los lápices estaban sobre las mesas, los cuadernos esperaban ser abiertos y el tablero parecía listo para una nueva lección.",
+     "Mientras el docente preparaba la clase, apareció un cuaderno azul sobre el escritorio. Nadie recordaba haberlo puesto allí. Tenía estrellas doradas y una palabra escrita con brillo suave: Englishland.",
+     "El cuaderno hizo un sonido pequeño: plip. Luego otro: plip, plip."
+    ]
+   },
+   "en": {
+    "titulo": "A common day in class",
+    "parrafos": [
+     "It was a common day in the classroom. Pencils were on the desks, notebooks were waiting to be opened, and the board was ready for a new lesson.",
+     "While the teacher prepared the class, a blue notebook appeared on the desk. It had golden stars and one glowing word: Englishland.",
+     "The notebook made a tiny sound: plip. Then another one: plip, plip."
+    ]
+   },
+   "palabras": [
+    "Englishland",
+    "plip",
+    "plip, plip"
+   ]
+  },
+  {
+   "n": 2,
+   "imagen": null,
+   "es": {
+    "titulo": "Pixie aparece",
+    "parrafos": [
+     "Las páginas comenzaron a moverse solas, como si respiraran. Primero se abrieron despacio. Después brillaron.",
+     "De pronto, una pequeña luz rosada salió volando entre las hojas. Tenía ojos curiosos, casco de exploradora y una voz rápida, como si trajera una noticia importante.",
+     "Antes de que alguien pudiera responder, el cuaderno mostró un cielo morado, caminos de estrellas, árboles luminosos y palabras flotando en el aire."
+    ]
+   },
+   "en": {
+    "titulo": "Pixie appears",
+    "parrafos": [
+     "The pages began to move by themselves, as if they were breathing. First they opened slowly. Then they glowed.",
+     "Suddenly, a small pink light flew out. It had curious eyes, an explorer helmet and a quick voice.",
+     "Before anyone could answer, the notebook showed a purple sky, star paths, glowing trees and words floating in the air."
+    ]
+   },
+   "palabras": []
+  },
+  {
+   "n": 3,
+   "imagen": null,
+   "es": {
+    "titulo": "Englishland se apaga",
+    "parrafos": [
+     "Pixie señaló el cuaderno. Algo estaba mal en ese mundo mágico.",
+     "Pero algo estaba mal. Algunas palabras parpadeaban. Otras estaban borrosas. Otras casi no se podían leer.",
+     "hello se veía débil. book temblaba. friend estaba perdiendo color. I can apenas brillaba."
+    ]
+   },
+   "en": {
+    "titulo": "Englishland is fading",
+    "parrafos": [
+     "Pixie pointed at the notebook. Something was wrong in that magical world.",
+     "But something was wrong. Some words were flickering. Others were blurry. Others could barely be read.",
+     "hello looked weak. book was trembling. friend was losing color. I can barely glowed."
+    ]
+   },
+   "palabras": [
+    "hello",
+    "book",
+    "friend",
+    "I can"
+   ]
+  },
+  {
+   "n": 4,
+   "imagen": "biblioteca/historia/lumi-wave.webp",
+   "es": {
+    "titulo": "Lumi explica el reto",
+    "parrafos": [
+     "Antes de que pudieras responder, una estrella amarilla apareció entre las páginas. Tenía una sonrisa amable, casco de exploradora y una mochila llena de luces.",
+     "Pero muchos niños les tienen miedo. Algunos creen que equivocarse es perder. Otros prefieren quedarse callados. Y cuando nadie se atreve a usar las palabras, las palabras empiezan a apagarse.",
+     "Englishland se apaga cuando el inglés se convierte en silencio, miedo al error o repetición sin sentido; vuelve a brillar cuando los estudiantes exploran, juegan, escuchan, leen, hablan, ayudan, se equivocan, corrigen y usan el idioma para comunicarse."
+    ]
+   },
+   "en": {
+    "titulo": "Lumi explains the challenge",
+    "parrafos": [
+     "Before you could answer, a yellow star appeared between the pages. It had a kind smile, an explorer's helmet and a backpack full of lights.",
+     "But many children are afraid of them. Some think that making mistakes means losing. Others prefer to stay quiet. And when no one dares to use the words, the words begin to fade.",
+     "Englishland fades when English turns into silence, fear of mistakes or meaningless repetition; it shines again when students explore, play, listen, read, speak, help, make mistakes, correct themselves and use the language to communicate."
+    ]
+   },
+   "palabras": []
+  },
+  {
+   "n": 5,
+   "imagen": null,
+   "es": {
+    "titulo": "Los cuatro territorios",
+    "parrafos": [
+     "Miraste otra vez el cuaderno. Una palabra pequeña flotó frente a ti: star. Brilló un segundo y luego casi desapareció.",
+     "En Englishland se aprende explorando. Primero escucharás sonidos. Luego descubrirás palabras. Después construirás frases. Y, al final, podrás comunicar tus ideas.",
+     "Pixie dio una vuelta en el aire: —Hay cuatro territorios que debemos encender.",
+     "Cosmo te ayudará a escuchar, repetir y reconocer tus primeras palabras sin miedo al error. Nova te enseñará a unir imágenes, palabras y significados. Astro te guiará para construir frases, responder preguntas y decir pequeñas ideas en inglés. Nebu te invitará a usar el inglés para hablar de lugares, personas y situaciones de tu vida."
+    ]
+   },
+   "en": {
+    "titulo": "The four territories",
+    "parrafos": [
+     "You looked at the notebook again. A small word floated before you: star. It glowed for a second and then almost disappeared.",
+     "In Englishland, learning happens through exploring. First you'll listen to sounds. Then you'll discover words. After that you'll build sentences. And, at the end, you'll be able to communicate your ideas.",
+     "Pixie spun in the air: —There are four territories we need to light up.",
+     "Cosmo will help you listen, repeat and recognize your first words without fear of mistakes. Nova will teach you to connect images, words and meanings. Astro will guide you to build sentences, answer questions and say small ideas in English. Nebu will invite you to use English to talk about places, people and situations in your life."
+    ]
+   },
+   "palabras": [
+    "star"
+   ]
+  },
+  {
+   "n": 6,
+   "imagen": null,
+   "es": {
+    "titulo": "Mission Stars",
+    "parrafos": [
+     "Entonces el cuaderno brilló con fuerza. En el centro apareció una constelación vacía.",
+     "—¿Aunque me equivoque? —preguntaste.",
+     "Cosmo apareció desde el Bosque de los Sonidos y respondió: Especially when you try.",
+     "Nova levantó una tarjeta que decía try again. Astro dibujó una frase en el aire: I can learn. Nebu señaló la plaza y añadió: We can speak together."
+    ]
+   },
+   "en": {
+    "titulo": "Mission Stars",
+    "parrafos": [
+     "Then the notebook glowed brightly. In the center, an empty constellation appeared.",
+     "—Even when I make mistakes? —you asked.",
+     "Cosmo appeared from the Forest of Sounds and answered: Especially when you try.",
+     "Nova held up a card that said try again. Astro drew a sentence in the air: I can learn. Nebu pointed to the square and added: We can speak together."
+    ]
+   },
+   "palabras": [
+    "Especially when you try.",
+    "try again",
+    "I can learn",
+    "We can speak together"
+   ]
+  },
+  {
+   "n": 7,
+   "imagen": null,
+   "es": {
+    "titulo": "La aventura comienza",
+    "parrafos": [
+     "Lumi se acercó y puso una pequeña estrella en tu mano.",
+     "El cuaderno abrió sus páginas como una puerta. Pixie extendió la mano.",
+     "Respiraste hondo. Miraste las palabras que todavía parpadeaban. Y dijiste: Yes. I am ready.",
+     "La estrella en tu mano brilló. Tu primera Mission Star acababa de encenderse."
+    ]
+   },
+   "en": {
+    "titulo": "The adventure begins",
+    "parrafos": [
+     "Lumi came closer and placed a small star in your hand.",
+     "The notebook opened its pages like a door. Pixie reached out her hand.",
+     "You took a deep breath. You looked at the words that were still flickering. And you said: Yes. I am ready.",
+     "The star in your hand glowed. Your first Mission Star had just lit up."
+    ]
+   },
+   "palabras": [
+    "Yes. I am ready."
+   ]
+  }
+ ],
+ "personajes": [
+  {
+   "nombre": "Pixie",
+   "funcion": "Abre el portal y despierta la aventura. Activa curiosidad, sorpresa y disposición inicial."
+  },
+  {
+   "nombre": "Lumi",
+   "funcion": "Acompaña, anima y celebra avances. Fortalece motivación, confianza y regulación emocional."
+  },
+  {
+   "nombre": "Cosmo",
+   "funcion": "Guardián del Bosque de los Sonidos. Media escucha, pronunciación, sonidos y vocabulario inicial."
+  },
+  {
+   "nombre": "Nova",
+   "funcion": "Guía del Valle de las Palabras. Favorece asociación visual, vocabulario y significado."
+  },
+  {
+   "nombre": "Astro",
+   "funcion": "Guía de la Ciudad de las Frases. Acompaña construcción de frases, preguntas y respuestas."
+  },
+  {
+   "nombre": "Nebu",
+   "funcion": "Guía de la Plaza del Encuentro. Impulsa comunicación cotidiana, interacción y autonomía."
+  }
+ ]
+}

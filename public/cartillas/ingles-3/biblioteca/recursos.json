@@ -1,0 +1,295 @@
+{
+ "niveles": {
+  "n1": {
+   "titulo": "Nivel 1 · English Explorer",
+   "territorio": "Bosque de los Sonidos",
+   "importancia": "Este nivel inicia el contacto seguro con el inglés: el estudiante reconoce vocabulario cercano, lo relaciona con objetos reales e imágenes, y participa sin miedo al error.",
+   "pensum": "School objects, colors, numbers 1-20, body parts, time, greetings y primeras expresiones de aula.",
+   "evidencia": "Vocabulario reconocido mediante imagen, palabra, gesto y repetición oral."
+  },
+  "n2": {
+   "titulo": "Nivel 2 · Word Builder",
+   "territorio": "Valle de las Palabras",
+   "importancia": "Este nivel fortalece la asociación palabra-imagen-significado. Los temas se agrupan en campos semánticos cercanos para que el estudiante clasifique, recuerde y use vocabulario con más autonomía.",
+   "pensum": "Emotions, food, clothes, animals, likes/dislikes y categorías semánticas de uso cotidiano.",
+   "evidencia": "Asociaciones palabra-significado y uso oral de vocabulario en juegos guiados."
+  },
+  "n3": {
+   "titulo": "Nivel 3 · Sentence Hero",
+   "territorio": "Ciudad de las Frases",
+   "importancia": "Este nivel transforma vocabulario aislado en frases. El estudiante pasa de reconocer palabras a organizar estructuras simples para hablar de rutinas, acciones y habilidades.",
+   "pensum": "Daily routine, action verbs, present simple, days of the week, can/can't, Wh- y Yes/No questions.",
+   "evidencia": "Frases producidas oralmente o por escrito con apoyo visual y modelos."
+  },
+  "n4": {
+   "titulo": "Nivel 4 · English Communicator",
+   "territorio": "Plaza del Encuentro",
+   "importancia": "Este nivel orienta el aprendizaje hacia la comunicación funcional. Los temas permiten describir lugares, personas, objetos y sostener intercambios breves en contexto.",
+   "pensum": "Places in town, there is / there are, prepositions of place, adjectives y dialogue structures.",
+   "evidencia": "Intercambio comunicativo breve en inglés y descripción de escenas o comunidad."
+  }
+ },
+ "recursos": [
+  {
+   "id": "school-objects",
+   "tema": "School Objects",
+   "nivel": "n1",
+   "nota": "Objetos del aula para reconocer, señalar, nombrar y usar en instrucciones reales.",
+   "imagen": "biblioteca/temas/school-objects-set.webp",
+   "descargables": [
+    "https://learnenglishkids.britishcouncil.org/sites/kids/files/attachment/reading-practice-school-things-advert-worksheet.pdf",
+    "https://learnenglishkids.britishcouncil.org/sites/kids/files/attachment/flashcards-classroom-objects.pdf"
+   ],
+   "videos": [
+    "https://www.youtube.com/watch?v=4ZeBdCGGvWA"
+   ],
+   "juego_en_linea": "https://create.kahoot.it/details/school-objects/c20ee100-26c5-454f-bbee-d882f4847d85"
+  },
+  {
+   "id": "colors",
+   "tema": "Colors",
+   "nivel": "n1",
+   "nota": "Colores para describir objetos cercanos y responder a comandos visuales.",
+   "imagen": null,
+   "descargables": [
+    "https://learnenglishkids.britishcouncil.org/sites/kids/files/attachment/worksheets-colours-1.pdf",
+    "https://learnenglishkids.britishcouncil.org/sites/kids/files/attachment/flashcards-colours.pdf"
+   ],
+   "videos": [
+    "https://www.youtube.com/watch?v=2n7CXoRMsG4"
+   ],
+   "juego_en_linea": "https://create.kahoot.it/details/english-colours-and-shapes/b4bbecf1-57ba-4f11-ae71-2e98c3c44e96"
+  },
+  {
+   "id": "numbers-1-20",
+   "tema": "Numbers 1-20",
+   "nivel": "n1",
+   "nota": null,
+   "imagen": null,
+   "descargables": [
+    "https://learnenglishkids.britishcouncil.org/sites/kids/files/attachment/worksheets-numbers-1-10.pdf",
+    "https://learnenglishkids.britishcouncil.org/sites/kids/files/attachment/worksheets-numbers-11-20.pdf",
+    "https://learnenglishkids.britishcouncil.org/sites/kids/files/attachment/worksheets-numbers-10-100.pdf",
+    "https://learnenglishkids.britishcouncil.org/sites/kids/files/attachment/flashcards-numbers-1-12.pdf"
+   ],
+   "videos": [
+    "https://www.youtube.com/watch?v=jlC2l0kqocE"
+   ],
+   "juego_en_linea": "https://create.kahoot.it/details/english-numbers-1-20/af99d052-6e8c-4061-892f-af8ade4e7fec"
+  },
+  {
+   "id": "body-parts",
+   "tema": "Body Parts",
+   "nivel": "n1",
+   "nota": "Partes del cuerpo para responder con movimiento y comprensión auditiva.",
+   "imagen": "biblioteca/temas/action-touch-head.webp",
+   "descargables": [
+    "https://learnenglishteens.britishcouncil.org/sites/teens/files/body_parts_-_exercises.pdf",
+    "https://learnenglishkids.britishcouncil.org/sites/kids/files/attachment/flashcards-body.pdf"
+   ],
+   "videos": [
+    "https://www.youtube.com/watch?v=6z35B40Gxhw"
+   ],
+   "juego_en_linea": "https://create.kahoot.it/details/body-parts-english/f375b2c0-3df0-49d4-8885-81124dfe6755"
+  },
+  {
+   "id": "time",
+   "tema": "What time is it?",
+   "nivel": "n1",
+   "nota": "Hora para representar rutinas usando cuerpo, reloj e imagen.",
+   "imagen": "biblioteca/temas/school-number-pin.webp",
+   "descargables": [
+    "https://learnenglishkids.britishcouncil.org/sites/kids/files/attachment/how-to-tell-the-time-worksheet.pdf"
+   ],
+   "videos": [
+    "https://www.youtube.com/watch?v=3cwzRNZf0w0"
+   ],
+   "juego_en_linea": "https://create.kahoot.it/details/esl-telling-the-time-what-time-is-it-what-s-the-time/dffa2e29-7625-4cb9-b0df-5b642940bc67"
+  },
+  {
+   "id": "emotions",
+   "tema": "Emotions",
+   "nivel": "n2",
+   "nota": "Emociones para leer expresiones, dibujar y nombrar estados de ánimo.",
+   "imagen": "biblioteca/temas/feeling-happy.webp",
+   "descargables": [
+    "https://www.theenglishhubforrefugees.com/wp-content/uploads/2023/09/A1-Feelings-and-emotions-2-students-worksheet.pdf",
+    "https://learnenglishkids.britishcouncil.org/sites/kids/files/attachment/flashcards-feelings.pdf"
+   ],
+   "videos": [
+    "https://www.youtube.com/watch?v=aT9CKFC9D2c"
+   ],
+   "juego_en_linea": "https://create.kahoot.it/details/easy-grade-3-feelings-and-emotions-vocabulary/3af15707-50c6-459d-b616-c06f3dde37d2"
+  },
+  {
+   "id": "food",
+   "tema": "Food",
+   "nivel": "n2",
+   "nota": "Alimentos para asociar imagen-palabra y hablar de gustos cotidianos.",
+   "imagen": "biblioteca/temas/food-apple.webp",
+   "descargables": [
+    "https://learnenglishteens.britishcouncil.org/sites/teens/files/food_-_exercises.pdf",
+    "https://learnenglishkids.britishcouncil.org/sites/kids/files/attachment/flashcards-food-set-1.pdf"
+   ],
+   "videos": [
+    "https://www.youtube.com/watch?v=qDu0ZX-V8zc"
+   ],
+   "juego_en_linea": "https://create.kahoot.it/details/food-vocabulary/8f8b6db8-5083-4cc2-b342-24b0e7ef6eb1"
+  },
+  {
+   "id": "clothes",
+   "tema": "Clothes",
+   "nivel": "n2",
+   "nota": "Prendas de vestir para describir color, pertenencia y preferencias.",
+   "imagen": "biblioteca/temas/action-stand-up.webp",
+   "descargables": [
+    "https://learnenglishkids.britishcouncil.org/sites/kids/files/attachment/worksheets-clothes.pdf",
+    "https://learnenglishkids.britishcouncil.org/sites/kids/files/attachment/flashcards-clothes-set-2.pdf",
+    "https://learnenglishkids.britishcouncil.org/sites/kids/files/attachment/flashcards-clothes-set-1.pdf"
+   ],
+   "videos": [
+    "https://www.youtube.com/watch?v=5IUhK5jGN5E"
+   ],
+   "juego_en_linea": "https://create.kahoot.it/details/clothes-in-english/a432fdca-efeb-4309-97e2-b3e527c2acd5"
+  },
+  {
+   "id": "animals",
+   "tema": "Animals",
+   "nivel": "n2",
+   "nota": "Animales para conectar sonido, imagen y vocabulario oral.",
+   "imagen": "biblioteca/temas/place-park.webp",
+   "descargables": [
+    "https://learnenglishteens.britishcouncil.org/sites/teens/files/animals_-_exercises.pdf",
+    "https://learnenglishkids.britishcouncil.org/sites/kids/files/attachment/flashcards-wild-animals-set-1.pdf",
+    "https://learnenglishkids.britishcouncil.org/sites/kids/files/attachment/flashcards-pets.pdf"
+   ],
+   "videos": [
+    "https://www.youtube.com/watch?v=UmaLkXBOLzE"
+   ],
+   "juego_en_linea": "https://create.kahoot.it/details/animals-in-english/e8c5efb6-4b13-451a-8aec-9361a8af1cb6"
+  },
+  {
+   "id": "daily-routine",
+   "tema": "Daily Routine",
+   "nivel": "n3",
+   "nota": "Rutinas diarias para ordenar acciones y construir frases simples.",
+   "imagen": "biblioteca/temas/action-wake-up.webp",
+   "descargables": [
+    "https://games4esl.com/esl-worksheets/daily-routine-worksheets/",
+    "https://learnenglishkids.britishcouncil.org/sites/kids/files/attachment/flashcards-daily-routines.pdf"
+   ],
+   "videos": [
+    "https://www.youtube.com/watch?v=6j3r452hbUA"
+   ],
+   "juego_en_linea": "https://create.kahoot.it/details/daily-routine-vocabulary-for-english-learners/9d79fa4e-653b-4de6-a88e-642283a5703b"
+  },
+  {
+   "id": "action-verbs",
+   "tema": "Action Verbs",
+   "nivel": "n3",
+   "nota": null,
+   "imagen": null,
+   "descargables": [
+    "https://games4esl.com/esl-worksheets/action-verb-worksheets/",
+    "https://learnenglishkids.britishcouncil.org/sites/kids/files/attachment/flashcards-actions-set-1.pdf",
+    "https://learnenglishkids.britishcouncil.org/sites/kids/files/attachment/flashcards-actions-set-2.pdf"
+   ],
+   "videos": [
+    "https://www.youtube.com/watch?v=6ZG64devTqY"
+   ],
+   "juego_en_linea": "https://create.kahoot.it/details/action-verbs-esl/29dc7350-3b4e-4fdc-aef1-57c747e3843c"
+  },
+  {
+   "id": "present-simple",
+   "tema": "Verb To Be",
+   "nivel": "n3",
+   "nota": "Verbo to be para reconocer estructuras básicas y leer en voz alta.",
+   "imagen": "biblioteca/temas/school-notebook.webp",
+   "descargables": [
+    "https://www.theenglishhubforrefugees.com/wp-content/uploads/2021/05/Present-Simple-A1-Students-worksheet.pdf"
+   ],
+   "videos": [
+    "https://www.youtube.com/watch?v=KRyK79yP0oA"
+   ],
+   "juego_en_linea": "https://create.kahoot.it/details/present-simple-esl/e0dc1235-a45b-4f33-9537-86db886b1898"
+  },
+  {
+   "id": "questions",
+   "tema": "WH Questions",
+   "nivel": "n3",
+   "nota": "Preguntas WH para recuperar vocabulario en un tablero colaborativo.",
+   "imagen": null,
+   "descargables": [
+    "https://learnenglishkids.britishcouncil.org/sites/kids/files/attachment/spell-the-mystery-man-worksheet.pdf"
+   ],
+   "videos": [
+    "https://www.youtube.com/watch?v=rlh-XnGLtjo"
+   ],
+   "juego_en_linea": "https://create.kahoot.it/details/asking-questions-in-english-esl/cc8caa7b-8169-4110-bf4c-db236ee5b048"
+  },
+  {
+   "id": "places-in-town",
+   "tema": "Places in Town",
+   "nivel": "n4",
+   "nota": "Lugares de la comunidad para ubicar, describir y construir mapas.",
+   "imagen": "biblioteca/temas/place-school.webp",
+   "descargables": [
+    "https://learnenglishteens.britishcouncil.org/sites/teens/files/places_in_a_town_-_exercises.pdf",
+    "https://learnenglishkids.britishcouncil.org/sites/kids/files/attachment/flashcards-places-to-live-2018.pdf",
+    "https://learnenglishkids.britishcouncil.org/sites/kids/files/attachment/flashcards-places-in-a-town.pdf",
+    "https://learnenglishkids.britishcouncil.org/sites/kids/files/attachment/flashcards-shops.pdf"
+   ],
+   "videos": [
+    "https://www.youtube.com/watch?v=o3ghpdHWMwI"
+   ],
+   "juego_en_linea": "https://create.kahoot.it/details/places-in-town-esl/bf44099f-d638-4894-b8b2-894212ca68d5"
+  },
+  {
+   "id": "there-is-there-are",
+   "tema": "There is / There are",
+   "nivel": "n4",
+   "nota": "Existencia y cantidad para describir escenas, mapas y objetos reales.",
+   "imagen": "biblioteca/temas/place-house.webp",
+   "descargables": [
+    "https://www.macmillaneducation.es/wp-content/uploads/2020/05/Towns-there-is-there-are.pdf",
+    "https://assets.super.so/dd14dfd7-0d06-4d3e-b02a-ef523ae7da6b/files/db0bcecf-9b44-4554-9831-30bf1d05feb9.pdf"
+   ],
+   "videos": [
+    "https://www.youtube.com/watch?v=j3llK722RVQ"
+   ],
+   "juego_en_linea": "https://create.kahoot.it/details/new-horizon-english-1-there-is-there-are/55d4a366-dee0-482a-89a7-2f49eb1c48c7"
+  },
+  {
+   "id": "adjectives",
+   "tema": "Adjectives",
+   "nivel": "n4",
+   "nota": "Adjetivos para describir personas, lugares y objetos con intención comunicativa.",
+   "imagen": "biblioteca/temas/feeling-happy.webp",
+   "descargables": [
+    "https://learnenglishkids.britishcouncil.org/sites/kids/files/attachment/grammar-practice-adjectives-worksheet.pdf",
+    "https://learnenglishkids.britishcouncil.org/sites/kids/files/attachment/flashcards-describing-set-1.pdf",
+    "https://learnenglishkids.britishcouncil.org/sites/kids/files/attachment/flashcards-describing-set-2.pdf"
+   ],
+   "videos": [
+    "https://www.youtube.com/watch?v=RazDNRGZNoc",
+    "https://www.youtube.com/watch?v=n92anAcM41o&t=107s"
+   ],
+   "juego_en_linea": "https://create.kahoot.it/details/adjectives-in-english/b0e761b5-6348-4008-b64f-0bf275f02eb2"
+  },
+  {
+   "id": "dialogue-structures",
+   "tema": "Dialogue Structures",
+   "nivel": "n4",
+   "nota": null,
+   "imagen": null,
+   "descargables": [
+    "https://americanenglish.state.gov/files/ae/resource_files/b_dialogues_everyday_conversations_english_lo_0.pdf",
+    "https://learnenglishkids.britishcouncil.org/sites/kids/files/attachment/LearnEnglishKids-Writing-practice-Level-1-About-me.pdf"
+   ],
+   "videos": [
+    "https://www.youtube.com/watch?v=ZjZYCeFJNGU"
+   ],
+   "juego_en_linea": "https://create.kahoot.it/details/english-conversation-1/0988f7a4-23c8-4703-aef6-e8824d20fcb3"
+  }
+ ]
+}

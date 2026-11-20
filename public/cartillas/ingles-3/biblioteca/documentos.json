@@ -1,0 +1,1060 @@
+{
+ "documentos": [
+  {
+   "id": "fundamentacion",
+   "titulo": "Fundamentación teórica",
+   "bloques": [
+    {
+     "t": "titulo",
+     "n": 1,
+     "texto": "Fundamentación Teórica"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Marco conceptual que sustenta English Adventure Quest dentro del mundo de Englishland."
+    },
+    {
+     "t": "parrafo",
+     "texto": "Referentes teóricos"
+    },
+    {
+     "t": "titulo",
+     "n": 3,
+     "texto": "🧠 Aprendizaje por Descubrimiento — Jerome Bruner"
+    },
+    {
+     "t": "parrafo",
+     "texto": "La presente propuesta didáctica se fundamenta principalmente en la teoría del aprendizaje por descubrimiento, la cual reconoce como elementos esenciales la participación activa del estudiante, la exploración guiada y la construcción autónoma del conocimiento. Este enfoque, según Bruner (1994, como se citó en Rosenstiehl, 2024), sostiene que «los estudiantes aprenden mejor cuando son participantes activos en su proceso de aprendizaje, en lugar de receptores pasivos de información» (p. 210). De este modo, el docente deja de ser un transmisor de contenidos para convertirse en un mediador del conocimiento, un guía que facilita la experimentación, la reflexión y el descubrimiento."
+    },
+    {
+     "t": "parrafo",
+     "texto": "Desde esta perspectiva, el aprendizaje se concibe como un proceso dinámico que permite a los estudiantes integrar nueva información a partir de su experiencia y de la interacción social, lo cual propicia aprendizajes significativos. El modelo del aprendizaje por descubrimiento promueve además la motivación intrínseca, al ofrecer experiencias que despiertan la curiosidad, el interés y la satisfacción personal por aprender."
+    },
+    {
+     "t": "titulo",
+     "n": 3,
+     "texto": "🎮 Gamificación — Kapp"
+    },
+    {
+     "t": "parrafo",
+     "texto": "En esta línea, la gamificación se constituye en una estrategia coherente con los principios del aprendizaje por descubrimiento, pues integra elementos lúdicos que transforman el aula en un espacio interactivo, retador y significativo. La combinación de ambos enfoques favorece un aprendizaje activo, contextualizado y centrado en el estudiante, capaz de vincular las emociones con el conocimiento."
+    },
+    {
+     "t": "parrafo",
+     "texto": "De acuerdo con Kapp (2012), la gamificación se concibe como el uso de mecánicas, estéticas y pensamiento de juego para involucrar a las personas, motivar la acción, promover el aprendizaje y resolver problemas, definición que desplaza el foco desde el entretenimiento hacia el diseño intencional de experiencias instruccionales. En este sentido, el autor sostiene que la gamificación no consiste en superponer puntos, insignias o tableros de posiciones a un contenido cualquiera, sino en articular los elementos lúdicos —metas, retroalimentación inmediata, niveles, narrativa y reglas claras— con los objetivos pedagógicos, de modo que la mecánica funcione como andamiaje de los procesos cognitivos. Esta lectura dialoga directamente con el aprendizaje por descubrimiento de Bruner, dado que ambos enfoques posicionan al estudiante como agente activo, exigen un entorno estructurado que provoque exploración y conciben el error como dato útil para reorganizar la comprensión; tal como afirman Huamaní y Vega (2023), la gamificación «incide positivamente en la apropiación de conocimientos al integrar estímulos interactivos y recompensas que fortalecen la autonomía del estudiante» (p. 1403)."
+    },
+    {
+     "t": "parrafo",
+     "texto": "En esta línea, la elección de Kapp como referente para elaborar la cartilla obedece a su distinción entre gamificación estructural y gamificación de contenido, así como a su énfasis en la motivación intrínseca como horizonte del diseño instruccional. De hecho, el autor advierte que el abuso de recompensas extrínsecas puede deteriorar el interés genuino del estudiante una vez que los estímulos desaparecen, por lo que propone integrar mecánicas como la exploración, la resolución de acertijos, la narrativa y los roles, capaces de sostener el compromiso por sí mismas."
+    },
+    {
+     "t": "titulo",
+     "n": 3,
+     "texto": "👁️ Estilos de Aprendizaje — Modelo VARK (Fleming)"
+    },
+    {
+     "t": "parrafo",
+     "texto": "El tercer pilar teórico de la propuesta proviene del modelo VARK formulado por Fleming, el cual surge de la constatación de que los aprendices manifiestan preferencias perceptuales diferenciadas al procesar información nueva. Este modelo identifica cuatro modalidades sensoriales que orientan el diseño de experiencias de aprendizaje dinámicas y motivadoras: la visual (V), centrada en imágenes, mapas y diagramas; la auditiva (A), vinculada a la escucha y la verbalización; la lectoescritora (R), orientada a la lectura y producción de textos; y la kinestésica (K), asociada al movimiento y la manipulación concreta (Espinoza-Poves et al., 2019). De este modo, el modelo no encasilla al estudiante en un único estilo, sino que reconoce el carácter multimodal de la mayoría de aprendices y sustenta propuestas didácticas que diversifican los canales de entrada, organización y comunicación de los aprendizajes."
+    },
+    {
+     "t": "parrafo",
+     "texto": "En esta línea, la articulación de VARK con los referentes anteriores resulta coherente con los propósitos de la presente propuesta, dado que, si Bruner posiciona al estudiante como descubridor activo y Kapp aporta las mecánicas que sostienen ese descubrimiento mediante el juego, Fleming ofrece el criterio para diseñar las situaciones de aprendizaje de modo que cada modalidad encuentre un punto de entrada significativo. En la enseñanza del inglés en educación básica primaria, este principio se traduce en una cartilla que combina ilustraciones y mapas semánticos (V), grabaciones, canciones y diálogos (A), instrucciones escritas, glosarios y producción textual breve (R), así como dramatizaciones, juegos de rol y manipulación de tarjetas o tableros (K). De esta manera, el material no se concibe como un recurso homogéneo, sino como un dispositivo multimodal que amplía las posibilidades de comprensión y producción lingüística, atiende la heterogeneidad del aula y refuerza la motivación intrínseca que los principios de Kapp y Bruner reclaman."
+    }
+   ]
+  },
+  {
+   "id": "mission-stars",
+   "titulo": "Sistema Mission Stars",
+   "bloques": [
+    {
+     "t": "titulo",
+     "n": 1,
+     "texto": "Sistema Mission Stars"
+    },
+    {
+     "t": "parrafo",
+     "texto": "El motor de gamificación: progreso simbólico para estudiantes y seguimiento formativo para docentes."
+    },
+    {
+     "t": "titulo",
+     "n": 3,
+     "texto": "⭐ ¿Qué es Mission Stars?"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Mission Stars funciona como un sistema simbólico de progreso para el estudiante y, simultáneamente, como una herramienta de seguimiento formativo para el docente. En la experiencia del aula, las estrellas reemplazan el lenguaje cotidiano de la nota numérica, permitiendo que el estudiante perciba su avance como reto, logro y mejora continua. Internamente, el docente puede traducir las evidencias acumuladas en criterios de valoración institucional."
+    },
+    {
+     "t": "parrafo",
+     "texto": "El sistema Mission Stars es el mecanismo interno de reconocimiento simbólico que opera dentro de English Adventure Quest — Mission Stars, mediante el cual el estudiante acumula estrellas por participar, completar misiones formativas, colaborar, autoevaluarse y mejorar sus intentos a lo largo del año escolar. Las estrellas se conciben como luces visibles del proceso de aprendizaje en el aula, no como decorado lúdico ni como nota encubierta."
+    },
+    {
+     "t": "parrafo",
+     "texto": "La propuesta reemplaza, dentro del aula y frente al estudiante, la escala numérica institucional de 1 a 5 por una moneda simbólica de progreso que hace visible el esfuerzo continuo, ya que la motivación sostenida requiere que el aprendiz perciba su avance de manera concreta y permanente (Castro et al., 2023). De este modo, la nota institucional no desaparece, pero deja de ser el lenguaje cotidiano del aula."
+    },
+    {
+     "t": "parrafo",
+     "texto": "De acuerdo con Kapp (2012), la gamificación integra elementos del juego en contextos no lúdicos para incrementar la motivación y el compromiso. Huamaní y Vega (2023) constatan que las dinámicas gamificadas inciden positivamente en la apropiación de conocimientos cuando se articulan con los objetivos curriculares. Mission Stars opera bajo esta lógica: cada acción significativa recibe retroalimentación inmediata en estrellas, articulándose con el enfoque de autorregulación propuesto por Zambrano et al. (2020)."
+    },
+    {
+     "t": "parrafo",
+     "texto": "Tu compañera estelar"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Lumi celebra cada estrella ganada. Cada acción académica suma estrellas que avanzan al estudiante por la Galaxia del Lenguaje."
+    },
+    {
+     "t": "parrafo",
+     "texto": "Acciones académicas"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Acción"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Estrellas"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Participar en juegos o dinámicas"
+    },
+    {
+     "t": "parrafo",
+     "texto": "10 ⭐"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Completar correctamente una actividad"
+    },
+    {
+     "t": "parrafo",
+     "texto": "15 ⭐"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Pronunciar palabras o frases"
+    },
+    {
+     "t": "parrafo",
+     "texto": "10 ⭐"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Cumplir actividad grupal respetando roles"
+    },
+    {
+     "t": "parrafo",
+     "texto": "15 ⭐"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Mejorar una actividad anterior mediante un intento revisado"
+    },
+    {
+     "t": "parrafo",
+     "texto": "15 ⭐"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Autoevaluarse de manera honesta al cierre de la actividad"
+    },
+    {
+     "t": "parrafo",
+     "texto": "10 ⭐"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Sugerencia para el docente · Reglas operativas"
+    },
+    {
+     "t": "parrafo",
+     "texto": "La asignación de estrellas se rige por reglas que protegen la legitimidad del sistema frente al grupo:"
+    },
+    {
+     "t": "item",
+     "texto": "Se entregan en el momento en que la acción se produce."
+    },
+    {
+     "t": "item",
+     "texto": "Se otorgan por conducta observable, no por resultado."
+    },
+    {
+     "t": "item",
+     "texto": "No se usan para comparar estudiantes: reconocen participación, intento, mejora, ayuda, pronunciación, colaboración y autoevaluación."
+    },
+    {
+     "t": "item",
+     "texto": "No se retiran como castigo: la pérdida arbitraria convertiría el sistema en una nota tradicional disfrazada y desactivaría su valor motivacional."
+    },
+    {
+     "t": "parrafo",
+     "texto": "Misiones especiales\nSistema de progresión\nN1 · English Explorer\n50 ⭐\nN2 · Word Builder\n130 ⭐\nN3 · Sentence Hero\n240 ⭐\nN4 · English Communicator\n380 ⭐"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Nivel"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Meta del nivel"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Acumulado"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Reconocimiento"
+    },
+    {
+     "t": "parrafo",
+     "texto": "N1 · English Explorer"
+    },
+    {
+     "t": "parrafo",
+     "texto": "50 ⭐"
+    },
+    {
+     "t": "parrafo",
+     "texto": "🔖 Sello Explorer"
+    },
+    {
+     "t": "parrafo",
+     "texto": "N2 · Word Builder"
+    },
+    {
+     "t": "parrafo",
+     "texto": "80 ⭐"
+    },
+    {
+     "t": "parrafo",
+     "texto": "130 ⭐"
+    },
+    {
+     "t": "parrafo",
+     "texto": "🔖 Sello Builder + mural"
+    },
+    {
+     "t": "parrafo",
+     "texto": "N3 · Sentence Hero"
+    },
+    {
+     "t": "parrafo",
+     "texto": "110 ⭐"
+    },
+    {
+     "t": "parrafo",
+     "texto": "240 ⭐"
+    },
+    {
+     "t": "parrafo",
+     "texto": "🔖 Sello Hero + oral"
+    },
+    {
+     "t": "parrafo",
+     "texto": "N4 · English Communicator"
+    },
+    {
+     "t": "parrafo",
+     "texto": "140 ⭐"
+    },
+    {
+     "t": "parrafo",
+     "texto": "380 ⭐"
+    },
+    {
+     "t": "parrafo",
+     "texto": "🎓 Diploma + autoevaluación"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Articulación con la calificación institucional"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Sugerencia para el docente — este sistema es una propuesta"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Mission Stars opera como sistema cotidiano del aula; la calificación institucional opera como sistema certificador del período. Ambos coexisten sin contradecirse: solo el primero es visible para el estudiante en su día a día."
+    },
+    {
+     "t": "parrafo",
+     "texto": "El docente puede utilizar las estrellas acumuladas como indicador agregado del proceso de aprendizaje —junto con las observaciones de aula y las evidencias documentales— lo que le permite traducir el desempeño a la escala institucional con un sustento más rico que el de una prueba puntual (Negrete, 2023)."
+    }
+   ]
+  },
+  {
+   "id": "niveles",
+   "titulo": "Niveles y pensum",
+   "bloques": [
+    {
+     "t": "titulo",
+     "n": 1,
+     "texto": "Niveles & Pensum"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Cuatro territorios narrativos con objetivos didácticos, DBA y matriz de saberes."
+    },
+    {
+     "t": "parrafo",
+     "texto": "English Adventure Quest se organiza en cuatro niveles secuenciales dentro de Englishland y articula la progresión bruneriana de los modos de representación con los Derechos Básicos de Aprendizaje (DBA) establecidos por el MEN (2016) para grado tercero. Cada nivel privilegia un modo de representación distinto, avanzando desde la manipulación enactiva del vocabulario hasta la producción simbólica de intercambios comunicativos, en coherencia con el aprendizaje en espiral de Bruner (1966)."
+    },
+    {
+     "t": "parrafo",
+     "texto": "Nivel 1: English Explorer · Cosmo"
+    },
+    {
+     "t": "titulo",
+     "n": 3,
+     "texto": "Bosque de los Sonidos"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Reconocer, nombrar y perder el miedo a hablar.\nGuía: Cosmo · 50 ⭐\nModo BrunerEnactivo.\nFoco pedagógicoReconocimiento de vocabulario, sonidos y expresiones cotidianas; participación sin temor al error.\nContenido lingüísticoSchool objects, colors, numbers 1-20, body parts, time.\nDBAComprende y describe detalles en textos cortos sobre temas familiares, con imágenes y frases conocidas.\nEvidenciaVocabulario reconocido: imagen + palabra.\nNivel 2: Word Builder · Nova"
+    },
+    {
+     "t": "titulo",
+     "n": 3,
+     "texto": "Valle de las Palabras"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Asociar palabra, imagen y significado.\nGuía: Nova · 80 ⭐\nModo BrunerIcónico.\nFoco pedagógicoAsociación palabra-imagen-significado en campos semánticos cercanos al estudiante.\nContenido lingüísticoEmotions, food, clothes, animals; clasificación por categorías semánticas.\nDBAIntercambia ideas y opiniones sencillas con compañeros y profesores, siguiendo modelos o imágenes.\nEvidenciaLista de asociaciones palabra-significado.\nNivel 3: Sentence Hero · Astro"
+    },
+    {
+     "t": "titulo",
+     "n": 3,
+     "texto": "Ciudad de las Frases"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Producir frases orales y escritas.\nGuía: Astro · 110 ⭐\nModo BrunerIcónico hacia simbólico.\nFoco pedagógicoProducción oral y escrita de frases simples sobre rutinas y acciones.\nContenido lingüísticoDaily routine, action verbs, present simple, Wh- y Yes/No questions.\nDBAResponde de manera oral o escrita preguntas sencillas sobre textos descriptivos cortos.\nEvidenciaFrases producidas oralmente o por escrito.\nNivel 4: English Communicator · Nebu"
+    },
+    {
+     "t": "titulo",
+     "n": 3,
+     "texto": "Plaza del Encuentro"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Comunicar ideas en situaciones cotidianas.\nGuía: Nebu · 140 ⭐\nModo BrunerSimbólico.\nFoco pedagógicoComunicación funcional en situaciones cotidianas con autonomía creciente.\nContenido lingüísticoPlaces in town, there is / there are, prepositions, adjectives, dialogue structures.\nDBADescribe objetos, lugares, personas y comunidades usando oraciones simples.\nEvidenciaIntercambio comunicativo breve en inglés."
+    },
+    {
+     "t": "parrafo",
+     "texto": "La progresión no solo asciende en complejidad lingüística sino que también construye una experiencia narrativa coherente: lo que el estudiante reconoce en el Bosque de los Sonidos lo asocia en el Valle de las Palabras, lo produce en la Ciudad de las Frases y lo comunica con autonomía en la Plaza del Encuentro. Los umbrales crecientes de estrellas reflejan la complejidad ascendente de las tareas y exigen una participación sostenida a lo largo del año escolar (Castro et al., 2023)."
+    },
+    {
+     "t": "parrafo",
+     "texto": "Pensum anual\nÁrea\nN1\nEnglish Explorer\nN2\nWord Builder\nN3\nSentence Hero\nN4\nEnglish Communicator\nVocabulario temático\nSchool ObjectsColorsNumbers 1-20Body PartsTime\nEmotionsFoodClothesAnimals\nDaily RoutineAction Verbs\nPlaces in TownAdjectives\nGramática / estructuras\nBase lexical y reconocimiento oral.\nClasificación semántica.\nPresent Simple (I/You/He/She + verb) · Wh- y Yes/No questions.\nThere is / There are · Preposiciones de lugar · Dialogue structures.\nNivel 1"
+    },
+    {
+     "t": "titulo",
+     "n": 2,
+     "texto": "English Explorer"
+    },
+    {
+     "t": "parrafo",
+     "texto": "🌲 El Bosque de los Sonidos\n⭐ Meta: 50 estrellas\n🟣 CAPÍTULO 1 · Englishland\nCosmo y el Bosque de los Sonidos\nHaz clic para leer la historia de este nivel\n▼\nEl primer puente de luz era violeta. Lumi caminaba al frente.\nAl final del puente encontraste un reino raro. Las cosas no tenían nombre. Un perro que no sabía que era un dog. Una manzana que temblaba. Un pájaro que había olvidado volar.\n—Bienvenido al Kingdom of Lost Names —dijo una voz grave.\nEra Cosmo: un planeta color púrpura, con anillos de luz cyan y casco de astronauta.\n—Las palabras se fueron. Y cuando las cosas se quedan sin nombre, empiezan a desvanecerse. Forever.\n—¿Cómo las llamamos?\n—With your voice. Mira al dog. Dilo fuerte y claro.\n—DOG!\nEl perrito brilló. Movió la cola. Plip. Una palabra dorada se guardó en tu bolsillo: DOG.\nCaminaste por el reino nombrando todo lo que veías. House. Tree. Sun. Moon. Cat. Fish. Book. Star. Cada palabra encendía algo. Cada palabra era como prender una lucecita en un árbol de navidad gigante.\nLlegaste a una plaza. La fuente estaba seca. En el borde había una placa:\n\"Cuando todas las cosas tengan nombre, el agua va a volver.\"\nTable. Chair. Bread. Glass. Plip plip plip plip.\nLa fuente soltó un chorro de agua brillante que bajó como lluvia de estrellitas. Los habitantes te aplaudieron: —Thank you!\nCosmo te puso uno de sus anillos en la cabeza, como una corona. —You did it.\n📖 HISTORIA DE Englishland · Cap. 1 — Cosmo y el Bosque de los Sonidos · Saludos, colores, números y objetos escolares"
+    },
+    {
+     "t": "titulo",
+     "n": 4,
+     "texto": "Objetivo didáctico"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Reconocer y pronunciar vocabulario básico relacionado con el entorno escolar, los colores, los números y las partes del cuerpo a través de actividades lúdicas y kinestésicas."
+    },
+    {
+     "t": "titulo",
+     "n": 4,
+     "texto": "DBA (MEN, 2016)"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Comprende y describe algunos detalles en textos cortos y sencillos sobre temas familiares, a partir de imágenes y frases conocidas."
+    },
+    {
+     "t": "titulo",
+     "n": 4,
+     "texto": "Foco pedagógico"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Reconocimiento de vocabulario, sonidos y expresiones cotidianas; participación sin temor al error."
+    },
+    {
+     "t": "titulo",
+     "n": 4,
+     "texto": "Bruner"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Modo Enactivo — el aprendizaje ocurre a través de la manipulación de objetos y el movimiento corporal."
+    },
+    {
+     "t": "titulo",
+     "n": 4,
+     "texto": "Pensum"
+    },
+    {
+     "t": "parrafo",
+     "texto": "School Objects\npencil\nbook\nruler\nbag\neraser\nColors\nred\nblue\ngreen\nyellow\norange\npurple\nNumbers\n1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n…20\nBody Parts\nhead\nshoulders\nknees\ntoes\neyes\nears\nTime\no'clock\nhalf past"
+    },
+    {
+     "t": "titulo",
+     "n": 4,
+     "texto": "Evidencia de aprendizaje"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Vocabulario reconocido (imagen + palabra)."
+    },
+    {
+     "t": "titulo",
+     "n": 4,
+     "texto": "Matriz de Saberes"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Saber"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Vocabulario básico: objetos, colores, números 1–20, partes del cuerpo."
+    },
+    {
+     "t": "parrafo",
+     "texto": "Saber Hacer"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Identifica y nombra objetos con flashcards; responde a comandos en inglés."
+    },
+    {
+     "t": "parrafo",
+     "texto": "Saber Ser"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Participa activamente en juegos colaborativos respetando las normas del aula."
+    },
+    {
+     "t": "parrafo",
+     "texto": "Saber Aprender"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Relaciona imágenes con palabras para construir su propio vocabulario visual."
+    },
+    {
+     "t": "parrafo",
+     "texto": "Nivel 2"
+    },
+    {
+     "t": "titulo",
+     "n": 2,
+     "texto": "Word Builder"
+    },
+    {
+     "t": "parrafo",
+     "texto": "🌾 El Valle de las Palabras\n⭐ Meta: 80 estrellas\n🟠 CAPÍTULO 2 · Englishland\nNova y el Valle de las Palabras Perdidas\nHaz clic para leer la historia de este nivel\n▼\nDespués de cruzar el bosque, los estudiantes llegaron al Valle de las Palabras. Había tarjetas flotantes con animales, comida, ropa y emociones.\nPero las tarjetas estaban desordenadas. Una manzana decía shoes. Una camiseta decía lion. Un rostro feliz decía sad.\n—¡Oh, no! —dijo Pixie—. El Valle de las Palabras perdió sus conexiones.\nUna luz naranja pasó a toda velocidad y se detuvo frente al grupo.\n—Welcome! Soy Nova. Aquí cada imagen debe encontrar su palabra y cada palabra debe encontrar su significado.\nNova tomó una tarjeta con un perro. La tarjeta tembló:\ndog\nCuando el grupo la leyó en voz alta, el perro del dibujo movió la cola y brilló.\n—En este nivel serán Word Builders. Van a conectar palabras, imágenes, gustos y emociones.\nLumi mostró dos frases sencillas:\nI like apples.\nI don't like broccoli.\n—Hablar de sus gustos también ayuda a Englishland —dijo Lumi—. Cada palabra que conecten devolverá color al valle.\nNova sonrió:\n—Ready?\nY el grupo respondió:\nReady!\n📖 HISTORIA DE Englishland · Cap. 2 — Nova y el Valle de las Palabras Perdidas · Emociones, comida, ropa, animales y gustos"
+    },
+    {
+     "t": "titulo",
+     "n": 4,
+     "texto": "Objetivo didáctico"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Ampliar el vocabulario en campos semánticos específicos (emociones, alimentos, ropa, animales) y asociarlo con imágenes y sonidos reales."
+    },
+    {
+     "t": "titulo",
+     "n": 4,
+     "texto": "DBA (MEN, 2016)"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Intercambia ideas y opiniones sencillas con compañeros y profesores, siguiendo modelos o a través de imágenes."
+    },
+    {
+     "t": "titulo",
+     "n": 4,
+     "texto": "Foco pedagógico"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Asociación palabra–imagen–significado en campos semánticos cercanos al estudiante."
+    },
+    {
+     "t": "titulo",
+     "n": 4,
+     "texto": "Bruner"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Modo Icónico — el aprendizaje ocurre a través de imágenes y relaciones visuales entre conceptos."
+    },
+    {
+     "t": "titulo",
+     "n": 4,
+     "texto": "Pensum"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Emotions\nhappy\nsad\nangry\nscared\nsurprised\nFood\napple\nmilk\nbread\nchicken\nrice\nClothes\nshirt\npants\nshoes\nhat\ndress\njacket\nAnimals\ndog\ncat\nbird\nfish\nlion\nelephant"
+    },
+    {
+     "t": "titulo",
+     "n": 4,
+     "texto": "Evidencia de aprendizaje"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Lista de asociaciones palabra–significado."
+    },
+    {
+     "t": "titulo",
+     "n": 4,
+     "texto": "Matriz de Saberes"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Saber"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Vocabulario temático: emociones, alimentos, ropa y animales."
+    },
+    {
+     "t": "parrafo",
+     "texto": "Saber Hacer"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Clasifica palabras por campo semántico; asocia sonidos con imágenes."
+    },
+    {
+     "t": "parrafo",
+     "texto": "Saber Ser"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Trabaja colaborativamente en juegos de memoria y competencias grupales."
+    },
+    {
+     "t": "parrafo",
+     "texto": "Saber Aprender"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Usa estrategias visuales (mapas mentales, tarjetas) para memorizar vocabulario."
+    },
+    {
+     "t": "parrafo",
+     "texto": "Nivel 3"
+    },
+    {
+     "t": "titulo",
+     "n": 2,
+     "texto": "Sentence Hero"
+    },
+    {
+     "t": "parrafo",
+     "texto": "🏙️ La Ciudad de las Frases\n⭐ Meta: 110 estrellas\n🌙 CAPÍTULO 3 · Englishland\nAstro y la Ciudad de las Frases\nHaz clic para leer la historia de este nivel\n▼\nEl camino llevó al grupo hasta la Ciudad de las Frases, una ciudad construida con palabras.\nHabía casas hechas de verbos, puentes formados por preguntas y relojes gigantes que marcaban diferentes horas.\nPero las palabras estaban separadas.\nEn una calle flotaban:\nI · wake up · at · seven\nEn otra avenida aparecían:\nCan · you · run · ?\nY en una plaza pequeña se leía:\nWhat time is it?\nDesde una torre de libros bajó Astro, con gafas redondas y un cuaderno de notas.\n—Bienvenidos a la Ciudad de las Frases. Aquí las palabras necesitan trabajar juntas. Una palabra puede brillar, pero una frase puede abrir caminos.\nAstro unió unas palabras en el aire:\nI wake up at seven.\nLa calle se iluminó.\nLuego señaló otra frase:\nCan you jump?\nUn puente apareció sobre la ciudad.\n—En este nivel serán Sentence Heroes —explicó Lumi—. Su misión es unir palabras para hablar de rutinas, acciones, horas y preguntas sencillas.\nAstro sonrió:\nLet's build sentences.\n📖 HISTORIA DE Englishland · Cap. 3 — Astro y la Ciudad de las Frases · Rutinas, acciones, hora y preguntas simples"
+    },
+    {
+     "t": "titulo",
+     "n": 4,
+     "texto": "Objetivo didáctico"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Construir oraciones simples en presente simple sobre rutinas diarias y describir acciones usando vocabulario conocido."
+    },
+    {
+     "t": "titulo",
+     "n": 4,
+     "texto": "DBA (MEN, 2016)"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Responde, de manera oral o escrita, preguntas sencillas sobre textos descriptivos cortos y alusivos a temas conocidos y de clase."
+    },
+    {
+     "t": "titulo",
+     "n": 4,
+     "texto": "Foco pedagógico"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Producción oral y escrita de frases simples sobre rutinas y acciones."
+    },
+    {
+     "t": "titulo",
+     "n": 4,
+     "texto": "Bruner"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Transición Icónica → Simbólica — el estudiante comienza a usar estructuras lingüísticas para organizar el conocimiento."
+    },
+    {
+     "t": "titulo",
+     "n": 4,
+     "texto": "Pensum"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Daily Routine\nwake up\neat breakfast\ngo to school\nstudy\nplay\nsleep\nAction Verbs\nrun\njump\nswim\nread\nwrite\ndraw\nPresent Simple\nI + verb\nYou + verb\nHe / She + verb\nQuestions\nWhat do you do?\nDo you…?"
+    },
+    {
+     "t": "titulo",
+     "n": 4,
+     "texto": "Evidencia de aprendizaje"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Frases producidas oral o por escrito."
+    },
+    {
+     "t": "titulo",
+     "n": 4,
+     "texto": "Matriz de Saberes"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Saber"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Presente simple; vocabulario de rutinas y verbos de acción."
+    },
+    {
+     "t": "parrafo",
+     "texto": "Saber Hacer"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Construye oraciones simples; reorganiza secuencias y completa frases."
+    },
+    {
+     "t": "parrafo",
+     "texto": "Saber Ser"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Respeta los turnos de participación y anima a sus compañeros a hablar."
+    },
+    {
+     "t": "parrafo",
+     "texto": "Saber Aprender"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Usa patrones de oraciones como andamiaje para producir nuevas frases."
+    },
+    {
+     "t": "parrafo",
+     "texto": "Nivel 4"
+    },
+    {
+     "t": "titulo",
+     "n": 2,
+     "texto": "English Communicator"
+    },
+    {
+     "t": "parrafo",
+     "texto": "🏛️ La Plaza del Encuentro\n⭐ Meta: 140 estrellas\n☁️ CAPÍTULO 4 · Englishland\nNebu y la Plaza del Encuentro\nHaz clic para leer la historia de este nivel\n▼\nEl último camino llevó a los estudiantes hasta la Plaza del Encuentro. Había una escuela, un parque, una biblioteca, un mercado y un hospital.\nTodo parecía listo para una celebración, pero la plaza estaba en silencio.\nLas personas querían hablar, pero no encontraban las palabras. Los lugares estaban allí, pero nadie podía describirlos.\nEntonces bajó Nebu, una nube suave con destellos de luz.\n—Bienvenidos a la Plaza del Encuentro. Este es el lugar donde Englishland vuelve a hablar.\nNebu señaló el mapa:\nThere is a park.\nEl parque se iluminó.\nLuego señaló dos escuelas:\nThere are two schools.\nLas ventanas encendieron su luz.\nLumi explicó:\n—En este nivel serán English Communicators. Ya conocen sonidos, palabras y frases. Ahora usarán el inglés para hablar con otros, describir lugares y participar en diálogos sencillos.\nPixie levantó una tarjeta:\nWhere is the library?\nAstro respondió:\nIt is near the park.\nNova agregó:\nThe park is beautiful.\nNebu miró al grupo:\n—Englishland necesita escuchar sus voces. Speak with confidence.\n📖 HISTORIA DE Englishland · Cap. 4 — Nebu y la Plaza del Encuentro · Lugares, there is / there are, adjetivos y diálogos"
+    },
+    {
+     "t": "titulo",
+     "n": 4,
+     "texto": "Objetivo didáctico"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Comunicar información básica sobre lugares, personas y objetos usando there is / there are, adjetivos descriptivos y diálogos cortos."
+    },
+    {
+     "t": "titulo",
+     "n": 4,
+     "texto": "DBA (MEN, 2016)"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Describe, de manera oral y escrita, objetos, lugares, personas y comunidades, usando oraciones simples."
+    },
+    {
+     "t": "titulo",
+     "n": 4,
+     "texto": "Foco pedagógico"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Comunicación funcional en situaciones cotidianas con autonomía creciente."
+    },
+    {
+     "t": "titulo",
+     "n": 4,
+     "texto": "Bruner"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Modo Simbólico — el estudiante utiliza el sistema lingüístico de manera autónoma para comunicar ideas."
+    },
+    {
+     "t": "titulo",
+     "n": 4,
+     "texto": "Pensum"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Places in Town\nschool\npark\nhospital\nmarket\nlibrary\nchurch\nThere is / There are\nThere is + sing.\nThere are + pl.\nPrepositions of place\nAdjectives\nbig\nsmall\ntall\nshort\nold\nnew\nbeautiful\nDialogue Structures\ngreetings\ndescribing places\nasking directions"
+    },
+    {
+     "t": "titulo",
+     "n": 4,
+     "texto": "Evidencia de aprendizaje"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Intercambio comunicativo breve en inglés."
+    },
+    {
+     "t": "titulo",
+     "n": 4,
+     "texto": "Matriz de Saberes"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Saber"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Estructuras comunicativas básicas; vocabulario de lugares y adjetivos."
+    },
+    {
+     "t": "parrafo",
+     "texto": "Saber Hacer"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Describe lugares oralmente y por escrito; participa en role plays."
+    },
+    {
+     "t": "parrafo",
+     "texto": "Saber Ser"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Valora el inglés como herramienta de comunicación real e intercultural."
+    },
+    {
+     "t": "parrafo",
+     "texto": "Saber Aprender"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Autoevalúa su progreso y propone estrategias para seguir mejorando."
+    }
+   ]
+  },
+  {
+   "id": "referencias",
+   "titulo": "Referencias bibliográficas",
+   "bloques": [
+    {
+     "t": "item",
+     "texto": "Acosta Uñate, A. P. (2024). Implementación de la gamificación en la enseñanza del inglés a través de The Goose Game [Trabajo de grado de especialización, Universidad de La Sabana]. https://intellectum.unisabana.edu.co/entities/publication/a64ebe84-deb6-4257-91a4-bdd2542cab38"
+    },
+    {
+     "t": "item",
+     "texto": "Agudelo Escalante, Y., & Sierra Prada, K. (2022). Gamificación como estrategia didáctica en Edmodo y aprendizaje basado en retos para mejorar la competencia léxica del inglés en estudiantes de grado undécimo [Trabajo de grado, Universidad de Santander]. https://repositorio.udes.edu.co/entities/publication/3ed3daf6-dcff-4b13-ae4f-2ec4af01055b"
+    },
+    {
+     "t": "item",
+     "texto": "Anácona Samboní, G. E. (2020). Diseño de una estrategia de gamificación para el desarrollo de competencias ciudadanas dentro del entorno social de los estudiantes de la sede El Carmen, perteneciente a la Institución Educativa Municipal José Eustasio Rivera de Pitalito, Huila, Colombia [Trabajo de grado, Institución Universitaria Politécnico Grancolombiano]. https://redcol.minciencias.gov.co/Record/Poli2_ab17029d8912b123d618d3e02184ce5c"
+    },
+    {
+     "t": "item",
+     "texto": "Barrera Muzgo, L. D., Núñez Albán, G. G., Suarez Palma, S. C., & Meneses Guachun, D. P. (2024). Estrategias de gamificación en el aula de primaria: efecto sobre la motivación y el aprendizaje. LATAM Revista Latinoamericana de Ciencias Sociales y Humanidades, 5(5), 2742-2751. https://doi.org/10.56712/latam.v5i5.2811"
+    },
+    {
+     "t": "item",
+     "texto": "Boillos, F. (2024). La gamificación y el aprendizaje lúdico como recurso didáctico: práctica comparada y análisis de una metodología en centros de España y Costa Rica [Tesis doctoral, Universidad de La Rioja]. https://dialnet.unirioja.es/servlet/tesis?codigo=325324"
+    },
+    {
+     "t": "item",
+     "texto": "Bravo-Delgado, M., Ramírez-Ramírez, L. N., & Escobar-Pérez, J. Z. (2020). Retos y realidades de la participación social en educación básica: revisión sistemática de bibliografía. Revista Electrónica Educare, 24(3), 332-351. https://doi.org/10.15359/ree.24-3.16"
+    },
+    {
+     "t": "item",
+     "texto": "Bruner, J. S. (1960). The process of education. Harvard University Press."
+    },
+    {
+     "t": "item",
+     "texto": "Bruner, J. S. (1961). The act of discovery. Harvard Educational Review, 31, 21-32."
+    },
+    {
+     "t": "item",
+     "texto": "Bruner, J. S. (1966). Toward a theory of instruction. Harvard University Press."
+    },
+    {
+     "t": "item",
+     "texto": "Camizán García, H., Benites Seguín, B., & Damián Ponte, I. (2021). Estrategias de aprendizaje. TecnoHumanismo, 1(8), 1-20. https://doi.org/10.53673/th.v1i8.40"
+    },
+    {
+     "t": "item",
+     "texto": "Castillo-Mora, J., Escobar-Murillo, M., Barragán-Murillo, R., & Cárdenas-Moyano, M. (2022). La gamificación como herramienta metodológica en la enseñanza. Polo del Conocimiento, 7(1), 686-701. https://dialnet.unirioja.es/servlet/articulo?codigo=8331458"
+    },
+    {
+     "t": "item",
+     "texto": "Castro, C., Félix, G., & Sánchez, R. (2023). La motivación en el proceso de enseñanza-aprendizaje. Ciencia Latina Revista Científica Multidisciplinar, 7(1), 3922-3938. https://doi.org/10.37811/cl_rcm.v7i1.4708"
+    },
+    {
+     "t": "item",
+     "texto": "Cevallos, A., Solórzano, W., Macías, F., & Cárdenas, J. (2025). Gamificación en la enseñanza del inglés: un análisis de su efectividad en el aprendizaje de segundas lenguas. Revista UNESUM, 9(1), 74-82. https://www.researchgate.net/publication/388863282_Gamificacion_en_la_ensenanza_del_ingles_Un_analisis_de_su_efectividad_en_el_aprendizaje_de_segundas_lenguas"
+    },
+    {
+     "t": "item",
+     "texto": "Chaustre, D., & Velásquez, M. (2021). La gamificación como estrategia didáctica en el fortalecimiento de las competencias científicas en el área de química de los estudiantes de undécimo grado [Trabajo de grado, Universidad de Santander]. https://repositorio.udes.edu.co/entities/publication/dd827c06-7aae-46fd-bff1-ad7245c2b69f"
+    },
+    {
+     "t": "item",
+     "texto": "De Zubiría Samper, J. (2019). Los retos de la educación en el siglo XXI. http://148.202.167.116:8080/xmlui/handle/123456789/2603"
+    },
+    {
+     "t": "item",
+     "texto": "Escalante Domínguez, L. P., Meneses Castilla, P. A., & Meneses Castilla, M. L. (2023). Implementación de procesos de gamificación en la enseñanza de la lengua castellana aplicados a la comunidad Barí de la Institución Educativa Francisco José de Caldas del municipio de Tibú, Norte de Santander [Trabajo de investigación de maestría, Universidad Simón Bolívar]. https://bonga.unisimon.edu.co/items/d93c83a8-f250-4c1d-87ea-78235730fcd8"
+    },
+    {
+     "t": "item",
+     "texto": "Espinoza-Poves, J. L., Miranda-Vílchez, W. A., & Chafloque-Céspedes, R. (2019). Los estilos de aprendizaje VARK en estudiantes universitarios de las escuelas de negocios. Propósitos y Representaciones, 7(2), 384-414. http://dx.doi.org/10.20511/pyr2019.v7n2.254"
+    },
+    {
+     "t": "item",
+     "texto": "Feria Ávila, H., Matilla González, M., & Mantecón Licea, S. (2020). La entrevista y la encuesta. Didasc@lia: Didáctica y Educación, 11(3), 62-79. https://dialnet.unirioja.es/servlet/articulo?codigo=7692391"
+    },
+    {
+     "t": "item",
+     "texto": "Flórez, C., Cabeza, O., & Osés, A. (2022). Interacción y gamificación: enseñanza de la filosofía en la Universidad de Pamplona. https://www.redalyc.org/journal/5343/534374527001/"
+    },
+    {
+     "t": "item",
+     "texto": "Ganesan, P., Abdul Aziz, A., & Ismail, F. (2025). Comparing rote memorization and contextual learning in vocabulary acquisition among upper primary ESL students. International Journal of Academic Research in Progressive Education and Development, 14(1), 226-242. https://www.researchgate.net/publication/390944805_Comparing_Rote_Memorization_and_Contextual_Learning_in_Vocabulary_Acquisition_among_Upper_Primary_ESL_Students"
+    },
+    {
+     "t": "item",
+     "texto": "García Casaus, F., Cara, J., Martínez, J., & Cara, M. (2020). La gamificación en el proceso de enseñanza-aprendizaje: una aproximación teórica. Logía, Educación Física y Deporte, 1(1), 16-24. https://dialnet.unirioja.es/servlet/articulo?codigo=7643607"
+    },
+    {
+     "t": "item",
+     "texto": "García, A., Mora, L., & Torres, K. (2020). La gamificación para el fortalecimiento de los procesos de aprendizaje de las ciencias naturales en quinto grado de primaria de la Institución Educativa Ortún Velasco del municipio de Cácota, Norte de Santander [Trabajo de grado, Universidad de Pamplona]. http://repositoriodspace.unipamplona.edu.co/jspui/bitstream/20.500.12744/6253/1/Garc%C3%ADa_%20Mora_%20Torres_2020_TG.pdf"
+    },
+    {
+     "t": "item",
+     "texto": "Gómez, D. (2022). Ambiente de aprendizaje gamificado como estrategia didáctica en la enseñanza del algoritmo de la multiplicación en estudiantes de quinto grado de primaria [Trabajo de grado, Universidad de Santander]. https://repositorio.udes.edu.co/entities/publication/2084a2a8-a4ff-412d-a814-1a4e1e377c21"
+    },
+    {
+     "t": "item",
+     "texto": "Guayara, G., Cortés, C., González, R., & Sierra, D. (2018). La gamificación como estrategia de enseñanza en el área de ciencias naturales [Trabajo de grado, Universidad de los Andes]. https://repositorio.uniandes.edu.co/server/api/core/bitstreams/0bee85fb-9763-4948-b384-f48452d8c609/content"
+    },
+    {
+     "t": "item",
+     "texto": "Hernández Sampieri, R., Fernández Collado, C., & Baptista Lucio, P. (2014). Metodología de la investigación (6.ª ed.). McGraw-Hill."
+    },
+    {
+     "t": "item",
+     "texto": "Hernández, J., Jaramillo, J., & Rincón, J. (2020). Usos y beneficios de la gamificación en la enseñanza de matemáticas. Eco Matemático, 11(2), 30-38. https://revistas.ufps.edu.co/index.php/ecomatematico/article/view/3200/3549"
+    },
+    {
+     "t": "item",
+     "texto": "Huamaní Quispe, M. del C., & Vega Vilca, C. S. (2023). Efectos de la gamificación en la motivación y el aprendizaje. Horizontes. Revista de Investigación en Ciencias de la Educación, 7(29), 1399-1410. https://doi.org/10.33996/revistahorizontes.v7i29.600"
+    },
+    {
+     "t": "item",
+     "texto": "Jiménez, D., & Gómez, C. (2019). Fortalecimiento de la fluidez en inglés como lengua extranjera por medio de la gamificación [Trabajo de grado, Universidad Libre]. https://repository.unilibre.edu.co/handle/10901/19269"
+    },
+    {
+     "t": "item",
+     "texto": "Kapp, K. M. (2012). The gamification of learning and instruction: Game-based methods and strategies for training and education. Pfeiffer."
+    },
+    {
+     "t": "item",
+     "texto": "Lezama, M., Baldovino, G., & González, A. (2023). Gamificación como estrategia didáctica para el fomento de la creatividad en el aula. Investigación y Formación Pedagógica, 9(18), 1-18. https://revistas.uniatlantico.edu.co/index.php/Invefor/article/view/3829/4526"
+    },
+    {
+     "t": "item",
+     "texto": "Mayor, D. (2019). La gamificación como estrategia didáctica en la enseñanza de la historia de Colombia de la segunda década del siglo XX en la Institución Tomás Uribe Uribe en el grado 9-1 [Trabajo de grado, Universidad del Valle]. https://bibliotecadigital.univalle.edu.co/server/api/core/bitstreams/589522e1-2748-489e-9fe4-3b1ed6d06ae9/content"
+    },
+    {
+     "t": "item",
+     "texto": "Moreno, E. (2024). Gamificación en la enseñanza del inglés: una propuesta didáctica para educación primaria. MLS Pedagogy, Culture and Innovation, 1(2), 27-40. https://www.mlsjournals.com/pedagogy-culture-innovation/article/view/2584"
+    },
+    {
+     "t": "item",
+     "texto": "Moreno, E., & Orcera, E. (2024). Gamificación en la enseñanza del inglés: una propuesta didáctica para educación primaria. MLS Pedagogy, Culture and Innovation, 1(2), 27-40. https://www.mlsjournals.com/pedagogy-culture-innovation/article/view/2584"
+    },
+    {
+     "t": "item",
+     "texto": "Moreno, L., & Avellaneda, Y. (2021). Gamificación desde la perspectiva de estrategia pedagógica que favorece el aprendizaje autónomo del docente en Colombia [Trabajo de grado, Universidad Nacional Abierta y a Distancia]. https://repository.unad.edu.co/jspui/bitstream/10596/41391/1/ymavellanedaa.pdf"
+    },
+    {
+     "t": "item",
+     "texto": "Muñoz, G. (2024). La incidencia de la gamificación en el TDAH en niños de 9 años [Trabajo de grado, Universidad Estatal Península de Santa Elena]. https://repositorio.upse.edu.ec/bitstream/46000/10952/1/UPSE-MSP-2024-0024.pdf"
+    },
+    {
+     "t": "item",
+     "texto": "Navarro, C., Pérez, I., & Marzo, P. (2021). La gamificación en el ámbito educativo español: revisión sistemática. Retos, 42, 507-516. https://doi.org/10.47197/retos.v42i0.87384"
+    },
+    {
+     "t": "item",
+     "texto": "Negrete, L. (2023). La gamificación en el aula, para el reconocimiento y aprendizaje de los medios de comunicación en los estudiantes del grado cuarto de la Institución Educativa Técnico Industrial Antonio José Camacho, del municipio de Santiago de Cali [Trabajo de grado, Universidad de Cartagena]. https://repositorio.unicartagena.edu.co/server/api/core/bitstreams/7a943fa2-131f-4762-8e58-48b2bf723ae1/content"
+    },
+    {
+     "t": "item",
+     "texto": "Ordinola Gutiérrez, D. E., Ordinola Gutiérrez, M. E., Medina Rengifo, M. G., Ordinola Gutiérrez, V. A., Silva Rivas, Y. Y., & Medina Rengifo, R. C. (2025). Estilos de aprendizaje: una alternativa en la mejora del logro académico. Universidad, Ciencia y Tecnología, 29(especial), 1-10. https://doi.org/10.47460/uct.v29ispecial.880"
+    },
+    {
+     "t": "item",
+     "texto": "Peralta Lara, D., & Guamán Gómez, V. (2020). Metodologías activas para la enseñanza y aprendizaje de los estudios sociales. Sociedad & Tecnología, 3(2), 2-10. https://doi.org/10.51247/st.v3i2.62"
+    },
+    {
+     "t": "item",
+     "texto": "Perea Romero, R., & Despaigne Negret, O. (2021). Bilingüismo: importancia de que los niños dominen una segunda lengua. Boletín SIED, 3, 1-11. https://revista.mdp.edu.ar/boletin/article/view/47"
+    },
+    {
+     "t": "item",
+     "texto": "Pinzón, M., & Vélez, M. (2021). Enseñanza-aprendizaje del inglés bajo las políticas del Ministerio de Educación en Colombia: voces desde el aula de clase. Revista Boletín Redipe, 10(12), 163-178. https://doi.org/10.36260/rbr.v10i12.1580"
+    },
+    {
+     "t": "item",
+     "texto": "Quispe, N., Cruz, L., & Chusi, J. (2021). El bilingüismo: análisis y reflexiones para docentes y estudiantes. Paidagogo, 3(2), 1-14. https://doi.org/10.52936/p.v3i2.66"
+    },
+    {
+     "t": "item",
+     "texto": "Rosenstiehl Pachecho, L. M. (2024). Aprendizaje por descubrimiento: la clave para revolucionar la enseñanza de la biología en Colombia. Revista Digital de Investigación y Postgrado, 5(10), 209-219. https://www.redalyc.org/journal/7485/748579256006/"
+    },
+    {
+     "t": "item",
+     "texto": "Rozo Becerra, L. J., & Zerpa Machado, M. A. (2022). La gamificación como estrategia didáctica utilizada en la práctica docente para el fortalecimiento de la comprensión lectora en los estudiantes del grado cuarto de educación primaria de la Institución Educativa Colegio San José, Cúcuta [Trabajo de grado, Universidad Francisco de Paula Santander]. https://repositorio.ufps.edu.co/items/f792cbb4-1b5f-424f-8c4e-693ea0a667ab"
+    },
+    {
+     "t": "item",
+     "texto": "Salmon, E., & Parra, M. (2022). Importancia de la motivación en el proceso de aprendizaje. Ciencia Latina Revista Científica Multidisciplinar, 6(5), 4095-4106. https://doi.org/10.37811/cl_rcm.v6i5.3378"
+    },
+    {
+     "t": "item",
+     "texto": "Segura Castillo, M., Quirós Acuña, M., & Segura Castillo, M. (2019). Desde el Diseño Universal para el Aprendizaje: el estudiantado al aprender se evalúa y al evaluar se aprende. Revista Educación, 43(1), 734-754. https://doi.org/10.15517/revedu.v43i1.28449"
+    },
+    {
+     "t": "item",
+     "texto": "Sempere, S. (2020). Proyecto de gamificación basado en el escape room aplicado a un aula bilingüe de educación primaria con enfoque AICLE. Revista Tecnología, Ciencia y Educación, 16, 5-40. https://doi.org/10.51302/tce.2020.437"
+    },
+    {
+     "t": "item",
+     "texto": "Tamayo y Tamayo, M. (2003). El proceso de la investigación científica (4.ª ed.). Limusa."
+    },
+    {
+     "t": "item",
+     "texto": "Torres, S. (2021). El juego como estrategia pedagógica para contribuir al desarrollo cognitivo y proceso de socialización de los niños y las niñas de preescolar del centro educativo Winny Pooh en Ocaña, Norte de Santander [Trabajo de grado, Universidad Santo Tomás]. https://repository.usta.edu.co/server/api/core/bitstreams/02d6edf4-9165-4e47-af8d-656a86d17140/content"
+    },
+    {
+     "t": "item",
+     "texto": "Vargas, Z., Rodríguez, A., & Mendoza, M. (2019). Modelo de integración de gamificación como estrategia de aprendizaje para colegios virtuales. Revista Espacios, 40(12), 12. https://www.researchgate.net/publication/332567311_Modelo_de_integracion_de_gamificacion_como_estrategia_de_aprendizaje_para_colegios_virtuales"
+    },
+    {
+     "t": "item",
+     "texto": "Vega, N., Flores, R., Flores-Jiménez, I., Hurtado-Vega, B., & Rodríguez, J. (2019). Teorías del aprendizaje. XIKUA Boletín Científico de la Escuela Superior de Tlahuelilpan, 7(14), 51-53. https://doi.org/10.29057/xikua.v7i14.4359"
+    },
+    {
+     "t": "item",
+     "texto": "Velásquez, M., & Lozano, F. (2022). La gamificación apoyada en el aula invertida para fortalecer la lectura musical. Perspectivas, 7(S1), 304-317. https://revistas.ufps.edu.co/index.php/perspectivas/article/view/4019/4660"
+    },
+    {
+     "t": "item",
+     "texto": "Vergara, C., Nielsen, J., & Niño, J. (2021). La gamificación y el fortalecimiento de la habilidad oral en inglés a niños de primera infancia. Revista de Investigación, Desarrollo e Innovación, 11(3), 569-578. https://doi.org/10.19053/20278306.v11.n3.2021.13355"
+    },
+    {
+     "t": "item",
+     "texto": "Vital, M. (2025). Gamificación en el aprendizaje. Vida Científica Boletín Científico de la Escuela Preparatoria No. 4, 13(25), 26-28. https://doi.org/10.29057/prepa4.v13i25.13988"
+    },
+    {
+     "t": "item",
+     "texto": "Yang, W., & Charubusp, S. (2020). The effect of play-based instruction on young learners' English vocabulary learning. Journal of Modern Learning Development, 5(7), 71-85. https://so06.tci-thaijo.org/index.php/jomld/article/view/268044"
+    },
+    {
+     "t": "item",
+     "texto": "Zambrano Álava, A. P., Luque Alcívar, K. E., Lucas Zambrano, M. A., & Lucas Zambrano, A. T. (2020). La gamificación: herramientas innovadoras para promover el aprendizaje autorregulado. Dominio de las Ciencias, 6(3), 349-369. https://dialnet.unirioja.es/servlet/articulo?codigo=8231614"
+    },
+    {
+     "t": "item",
+     "texto": "Zavala León, A., Pacheco Celaya, Á., & López Ibarra, D. L. (2024). Impacto del contexto social en el rendimiento académico del alumno. En Consejo Mexicano de Investigación Educativa (Ed.), Memoria electrónica del XVII Congreso Nacional de Investigación Educativa. https://www.comie.org.mx/congreso/memoriaelectronica/v17/doc/1311.pdf"
+    }
+   ]
+  }
+ ],
+ "misiones": [
+  {
+   "icon": "🏠",
+   "name": "Home Star",
+   "place": "En casa",
+   "en_place": "At home",
+   "desc": "Actividad de refuerzo en casa con la familia",
+   "en_desc": "Reinforcement activity at home with the family",
+   "stars": 15,
+   "purpose": "Refuerza el vínculo escuela-familia, identificado por Bravo-Delgado et al. (2020) como variable de impacto en el rendimiento.",
+   "en_purpose": "Reinforces the school-family bond, identified by Bravo-Delgado et al. (2020) as an impact variable on student performance."
+  },
+  {
+   "icon": "🤝",
+   "name": "Helping Friend",
+   "place": "En el aula",
+   "en_place": "In the classroom",
+   "desc": "Ayudar a un compañero durante la actividad",
+   "en_desc": "Help a classmate during the activity",
+   "stars": 15,
+   "purpose": "Activa el aprendizaje cooperativo entre aprendices, en coherencia con Zambrano et al. (2020).",
+   "en_purpose": "Activates cooperative learning among learners, in coherence with Zambrano et al. (2020)."
+  },
+  {
+   "icon": "🎤",
+   "name": "Brave Speaker",
+   "place": "En el aula",
+   "en_place": "In the classroom",
+   "desc": "Participar oralmente aunque haya errores",
+   "en_desc": "Participate orally even when making mistakes",
+   "stars": 20,
+   "purpose": "Aborda la timidez al hablar; el criterio es la valentía de intentarlo, no la perfección (Jiménez y Gómez, 2019).",
+   "en_purpose": "Addresses speaking shyness; the criterion is the courage to try, not perfection (Jiménez y Gómez, 2019)."
+  },
+  {
+   "icon": "🥇",
+   "name": "Team Player",
+   "place": "En el aula",
+   "en_place": "In the classroom",
+   "desc": "Trabajar en equipo respetando normas y roles",
+   "en_desc": "Work in teams respecting rules and roles",
+   "stars": 15,
+   "purpose": "Desarrolla colaboración, respeto de turnos y escucha activa dentro del grupo.",
+   "en_purpose": "Develops collaboration, turn-taking and active listening within the group."
+  },
+  {
+   "icon": "🏆",
+   "name": "Quest Bonus",
+   "place": "Fin de nivel",
+   "en_place": "End of level",
+   "desc": "Reto integrador de cierre de nivel",
+   "en_desc": "Integrating challenge at level close",
+   "stars": 25,
+   "purpose": "Reto integrador que combina vocabulario, producción y trabajo colaborativo; consolida el cierre del episodio narrativo.",
+   "en_purpose": "Integrating challenge that combines vocabulary, production and collaborative work; consolidates the close of the narrative episode."
+  }
+ ]
+}

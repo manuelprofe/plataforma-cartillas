@@ -129,6 +129,16 @@ export function DocenteInicio({ colegioId }: { colegioId: string | null }) {
           )
         }
       </Cargado>
+      <Panel titulo="Primeros pasos" filas>
+        <Fila ruta="/docente/biblioteca" icono="documento" titulo="Biblioteca" detalle="La historia, recursos por tema, actividades y fundamentos" />
+        <a className="fila" href="/guias/guia-docentes.pdf" target="_blank" rel="noopener">
+          <Icono nombre="descargar" />
+          <span className="fila__texto">
+            <span>Guía rápida para docentes</span>
+            <span className="meta">PDF de dos páginas</span>
+          </span>
+        </a>
+      </Panel>
     </>
   );
 }

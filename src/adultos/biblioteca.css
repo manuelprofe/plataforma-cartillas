@@ -1,0 +1,59 @@
+/* Biblioteca del docente: lectura cómoda, sobria, imprimible. */
+.bib-historia, .bib-doc { max-width: 760px; }
+.bib-intro { margin-top: var(--e-3); }
+.bib-idioma { display: inline-flex; gap: var(--e-2); }
+.bib-escena { display: grid; grid-template-columns: 1fr; gap: var(--e-4); padding: var(--e-5) 0; border-bottom: 1px solid var(--a-linea, #e3e4e8); }
+.bib-escena h2 { margin: 0 0 var(--e-2); }
+.bib-escena p { margin: 0 0 var(--e-2); line-height: 1.6; }
+.bib-escena__img { width: 100%; max-width: 360px; border-radius: 12px; }
+.bib-escena__img--personaje { width: 120px; }
+@media (min-width: 760px) { .bib-escena { grid-template-columns: 240px 1fr; } }
+.bib-magica { background: #fdf1c7; color: inherit; padding: 0 3px; border-radius: 4px; font-weight: 600; }
+.bib-personajes { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--e-3); }
+.bib-personajes li { display: grid; grid-template-columns: 48px 1fr; gap: var(--e-3); align-items: center; }
+.bib-personajes img { width: 48px; height: 48px; object-fit: contain; }
+
+.bib-telon { position: fixed; inset: 0; z-index: 50; background: #fff; display: flex; flex-direction: column; }
+.bib-telon__escena { flex: 1; overflow: auto; display: grid; grid-template-columns: 1fr; align-content: center; gap: 4vh; padding: 5vh 6vw; }
+.bib-telon__escena h2 { font-size: clamp(28px, 5vh, 52px); margin: 0 0 2vh; }
+.bib-telon__escena p { font-size: clamp(20px, 3.4vh, 36px); line-height: 1.45; margin: 0 0 1.6vh; }
+.bib-telon .bib-escena__img { max-width: 40vh; }
+@media (min-aspect-ratio: 4/3) { .bib-telon__escena { grid-template-columns: minmax(0, 0.8fr) 2fr; align-items: center; } }
+.bib-telon__ctl { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: var(--e-3); padding: var(--e-3); border-top: 1px solid #e3e4e8; }
+
+.bib-nivel { margin-top: var(--e-6); }
+.bib-nivel h2 { margin: 0; }
+.bib-temas { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: var(--e-4); margin-top: var(--e-3); }
+.bib-tema { background: #fff; border: 1px solid #e3e4e8; border-radius: 14px; padding: var(--e-4); min-width: 0; }
+.bib-tema--destacado { border-color: var(--p-control, #2a1458); box-shadow: 0 0 0 2px var(--p-control, #2a1458) inset; }
+.bib-tema__cabeza { display: grid; grid-template-columns: 64px 1fr; gap: var(--e-3); align-items: start; }
+.bib-tema__cabeza img { width: 64px; height: 64px; object-fit: contain; }
+.bib-tema h3 { margin: 0 0 var(--e-1); }
+.bib-videos { list-style: none; margin: var(--e-3) 0 0; padding: 0; display: grid; gap: var(--e-2); }
+.bib-videos a { display: grid; grid-template-columns: 112px 1fr; gap: var(--e-3); align-items: center; min-height: 48px; }
+.bib-videos img { width: 112px; height: 63px; object-fit: cover; border-radius: 8px; background: #eee; }
+.bib-enlaces { list-style: none; margin: var(--e-2) 0 0; padding: 0; }
+.bib-enlaces li + li { border-top: 1px solid #eeeef2; }
+.bib-enlaces a { display: flex; align-items: center; min-height: 48px; padding: 8px 0; line-height: 1.3; overflow-wrap: anywhere; }
+
+.bib-filtros { display: flex; flex-wrap: wrap; gap: var(--e-3); align-items: flex-end; margin-bottom: var(--e-4); }
+.bib-filtros .campo { flex: 1 1 160px; min-width: 0; }
+.bib-actividad { background: #fff; border: 1px solid #e3e4e8; border-radius: 14px; padding: var(--e-4); margin-bottom: var(--e-4); break-inside: avoid; }
+.bib-actividad h2 { margin: 0 0 var(--e-2); }
+.bib-ficha { display: grid; grid-template-columns: 1fr; gap: 2px var(--e-3); margin: 0 0 var(--e-3); }
+.bib-ficha dt { font-weight: 600; margin-top: var(--e-2); }
+.bib-ficha dd { margin: 0; }
+@media (min-width: 760px) { .bib-ficha { grid-template-columns: 170px 1fr; } .bib-ficha dt { margin-top: 0; } }
+.bib-fases { display: grid; gap: var(--e-3); }
+@media (min-width: 1000px) { .bib-fases { grid-template-columns: repeat(3, 1fr); } }
+.bib-fases section { background: var(--a-hundido, #f4f1fa); border-radius: 10px; padding: var(--e-3); min-width: 0; }
+.bib-fases h3 { margin: 0 0 var(--e-2); font-size: 1rem; }
+.bib-fases ol, .bib-fases ul { margin: 0; padding-left: 20px; }
+.bib-doc p, .bib-doc li { line-height: 1.6; }
+.bib-doc li { margin-bottom: var(--e-2); overflow-wrap: anywhere; }
+
+@media print {
+  .no-imprimir, .cascaron__barra, .pestanas, nav { display: none !important; }
+  .bib-escena, .bib-actividad, .bib-tema { break-inside: avoid; }
+  .bib-telon { position: static; }
+}

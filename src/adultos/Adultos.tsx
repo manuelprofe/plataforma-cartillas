@@ -12,6 +12,7 @@ import { Campo, correoValido, useTitulo } from './comun';
 import { PaginaDueno } from './Plataforma';
 import { DocenteInicio, MisGrupos, PaginaGrupo } from './Docente';
 import { MaterialPagina, Planear, PlanTema, TemaMateriales } from './Materiales';
+import { Biblioteca } from './Biblioteca';
 import { olvidarLecturas } from './docente';
 import { iniciarCola, prepararSalida, useAvisoSalida, useCola } from './estrellas';
 
@@ -465,7 +466,7 @@ const DOCENTE: Seccion[] = [
 ];
 
 /** Lo que va bajo "Más" en celular; en el computador se llega igual desde esa pestaña. */
-const MAS = ['registro', 'ayuda', 'cuenta'];
+const MAS = ['biblioteca', 'registro', 'ayuda', 'cuenta'];
 
 const SIN_RED_DOCENTE = 'Sin conexión. Lo que marque se guarda en este celular y sube solo cuando vuelva la señal.';
 const SIN_RED_LECTURA = 'Sin conexión. Ve lo último que se cargó; para cambiar algo hace falta internet.';
@@ -503,6 +504,8 @@ function PaginaDocente({ seccion, mas, cuenta, sinRed }: { seccion: string; mas:
       return mas[0] ? <PlanTema tema={mas[0]} /> : <Planear />;
     case 'temas':
       return mas[1] ? <MaterialPagina tema={mas[0]} id={mas[1]} /> : mas[0] ? <TemaMateriales tema={mas[0]} /> : <AlInicio ruta="/docente/planear" />;
+    case 'biblioteca':
+      return <Biblioteca resto={mas} />;
     case 'registro':
       return <SeccionVacia titulo="Registro del piloto" hueco="Aquí irá el registro del piloto" texto="Cotejo, incidencias, encuesta de acceso y prueba de entrada y salida, cada parte con su plantilla imprimible." volver={{ ruta: '/docente/mas', etiqueta: 'Más' }} />;
     case 'ayuda':
@@ -522,6 +525,7 @@ function DocenteMas() {
     <>
       <Encabezado titulo="Más" />
       <Panel filas>
+        <Fila ruta="/docente/biblioteca" icono="documento" titulo="Biblioteca" detalle="Historia, recursos por tema, actividades y fundamentos" />
         <Fila ruta="/docente/registro" icono="registro" titulo="Registro del piloto" />
         <Fila ruta="/docente/ayuda" icono="ayuda" titulo="Ayuda" />
         <Fila ruta="/docente/cuenta" icono="cuenta" titulo="Cuenta" />

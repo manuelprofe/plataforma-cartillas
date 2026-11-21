@@ -1,6 +1,6 @@
 # Cómo continuar
 
-Solo lo pendiente (18 nov 2026). Reglas permanentes en `CLAUDE.md`; lo ya hecho está en git y en
+Solo lo pendiente (21 nov 2026). Reglas permanentes en `CLAUDE.md`; lo ya hecho está en git y en
 los documentos de `docs/`. Al empezar: leer esto, `CLAUDE.md`, y seguir "Siguiente" en orden.
 
 ## Datos de trabajo
@@ -8,7 +8,7 @@ los documentos de `docs/`. Al empezar: leer esto, `CLAUDE.md`, y seguir "Siguien
 - Rama `ccr-c31d414e-rt7zgq` (`main` atrasada). Sitio de prueba:
   https://englishlandmanuelprofe.netlify.app (Netlify `94f443a2-de53-4029-ab21-f6673073280c`).
   Publicar: herramienta Netlify `deploy-site` y correr el `npx` que devuelve. **Solo con permiso de Manuel.**
-  Última publicación: 18 nov (docente base: grupos, niños, tarjetas, estrellas; e450e40).
+  Última publicación: 21 nov (biblioteca del docente; materiales de escuela, colores y números).
 - Supabase `https://jpwwmzfhbdnzsvwuciqa.supabase.co` (EE. UU.), clave pública en `.env.example` y
   `netlify.toml`. Migración 002 aplicada y gancho activo; 003 aplicada. SMTP propio con Gmail configurado (18 nov); primera invitación real a un docente funcionó. Pasos de Manuel en `supabase/PASOS-MANUEL.md`
   (falta el 9: correos en español). Cuenta de profesor de prueba:
@@ -27,7 +27,12 @@ los documentos de `docs/`. Al empezar: leer esto, `CLAUDE.md`, y seguir "Siguien
    390 px): 4 docente base (grupos, niños con apodo, autorización, PIN, tarjetas imprimibles,
    estrellas sin red) — con esto los niños entran con tarjeta; 5 proyectar, cortina y plantilla de
    material; 6 planear, materiales, avance, prueba, registro (estados "Aquí irá").
-5. **Contenidos por interfaz**, empezando por el docente (`docs/pedagogia/catalogo-interfaces.md`).
+5. **Contenidos por interfaz** (`docs/pedagogia/catalogo-interfaces.md`). Docente: hecha la biblioteca
+   (`src/adultos/Biblioteca.tsx`, datos importados con `herramientas/importar/`) y los materiales de
+   escuela, colores y números. Faltan: materiales de cuerpo, familia y hora; rehacer las manos de
+   números (Canva); marcar clave/guion/casillas/momento como `solo:"docente"` en
+   `materiales_a_json.py`; sacar textos fijos de `Proyectar.tsx` y `RANURAS` de `datos.ts` al JSON
+   (regla 1); la tecla Espacio dispara doble en proyectar; enlazar canciones en la biblioteca.
 6. **Pantalla de canciones** con letra sincronizada (tiempos con Scribe), audios ya en
    `public/cartillas/ingles-3/canciones/`. Revisar términos de uso de ElevenLabs Music antes de difundirlas.
 7. **Cinemática C del puente** (fiesta y llegada de Nova; guion en `docs/cinematicas/guiones.md`):
@@ -44,6 +49,7 @@ los documentos de `docs/`. Al empezar: leer esto, `CLAUDE.md`, y seguir "Siguien
 - El PIN sin red es barrera contra niños, no contra adultos (documentado, aceptado).
 - Las caritas del cierre no tienen voz. Preguntas abiertas: mochila cohete en la misión 15, 3 s
   para entrar al resumen, el pozo da 15 estrellas.
+- `scripts/pruebas/docente.mjs` falla a veces en «sin grupos explica a quién pedirlo» (carrera de carga).
 - Probado solo en simulador: micrófono real, modo avión, instalación en Android real.
 - Unir la rama con `main` (con permiso). `npx skills find` y AnyDoc: cuando toque esa parte.
 - Confirmar la redacción del estándar MEN citado en `docs/pedagogia/canciones-bosque.md`.

@@ -1,0 +1,1290 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//plataforma-cartillas//calendario//ES
+CALSCALE:GREGORIAN
+X-WR-CALNAME:Plataforma de cartillas
+X-WR-TIMEZONE:America/Bogota
+BEGIN:VEVENT
+UID:cartillas-20261123-0@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261123T130000Z
+DTEND:20261123T150000Z
+SUMMARY:Multicartilla: catálogo por materia y grado\, grupo con su cartill
+ a (migración 004)
+DESCRIPTION:Bloque 1 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Multicartilla: catálogo por materia y grado\, 
+ grupo con su cartilla (migración 004)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261123-1@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261123T153000Z
+DTEND:20261123T173000Z
+SUMMARY:Multicartilla: quitar ingles-3 fijo de App.tsx\, docente.ts y datos
+ .ts
+DESCRIPTION:Bloque 2 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Multicartilla: quitar ingles-3 fijo de App.tsx\
+ , docente.ts y datos.ts
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261123-2@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261123T190000Z
+DTEND:20261123T210000Z
+SUMMARY:registrar_mision idempotente (en la migración 004) y prueba local
+DESCRIPTION:Bloque 3 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: registrar_mision idempotente (en la migración 
+ 004) y prueba local
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261124-0@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261124T130000Z
+DTEND:20261124T150000Z
+SUMMARY:Multicartilla en el estudiante: el código del grupo lleva a su car
+ tilla
+DESCRIPTION:Bloque 1 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Multicartilla en el estudiante: el código del 
+ grupo lleva a su cartilla
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261124-1@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261124T153000Z
+DTEND:20261124T173000Z
+SUMMARY:Multicartilla en el docente: Planear\, Biblioteca y Proyectar segú
+ n el grupo
+DESCRIPTION:Bloque 2 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Multicartilla en el docente: Planear\, Bibliote
+ ca y Proyectar según el grupo
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261124-2@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261124T190000Z
+DTEND:20261124T210000Z
+SUMMARY:Pruebas a 390 px y commit
+DESCRIPTION:Bloque 3 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Pruebas a 390 px y commit
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261125-0@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261125T130000Z
+DTEND:20261125T150000Z
+SUMMARY:Dueño: crear colegios y publicar cartillas
+DESCRIPTION:Bloque 1 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Dueño: crear colegios y publicar cartillas
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261125-1@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261125T153000Z
+DTEND:20261125T173000Z
+SUMMARY:Coordinador: docentes y grupos
+DESCRIPTION:Bloque 2 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Coordinador: docentes y grupos
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261125-2@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261125T190000Z
+DTEND:20261125T210000Z
+SUMMARY:Coordinador: uso y avance por grado y grupo
+DESCRIPTION:Bloque 3 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Coordinador: uso y avance por grado y grupo
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261126-0@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261126T130000Z
+DTEND:20261126T150000Z
+SUMMARY:Plantilla de juego: contar y tocar (matemáticas)
+DESCRIPTION:Bloque 1 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Plantilla de juego: contar y tocar (matemática
+ s)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261126-1@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261126T153000Z
+DTEND:20261126T173000Z
+SUMMARY:Plantilla de juego: ordenar (números y secuencias)
+DESCRIPTION:Bloque 2 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Plantilla de juego: ordenar (números y secuenc
+ ias)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261126-2@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261126T190000Z
+DTEND:20261126T210000Z
+SUMMARY:Plantilla de juego: completar la operación
+DESCRIPTION:Bloque 3 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Plantilla de juego: completar la operación
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261127-0@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261127T130000Z
+DTEND:20261127T150000Z
+SUMMARY:Plantilla de juego: armar la sílaba o la palabra (español)
+DESCRIPTION:Bloque 1 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Plantilla de juego: armar la sílaba o la palab
+ ra (español)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261127-1@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261127T153000Z
+DTEND:20261127T173000Z
+SUMMARY:DiBrilla para leer en voz alta en español
+DESCRIPTION:Bloque 2 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: DiBrilla para leer en voz alta en español
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261127-2@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261127T190000Z
+DTEND:20261127T210000Z
+SUMMARY:Pruebas de las plantillas en celular de gama baja
+DESCRIPTION:Bloque 3 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Pruebas de las plantillas en celular de gama ba
+ ja
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261128-0@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261128T130000Z
+DTEND:20261128T150000Z
+SUMMARY:Tanda 5: plan por grupo
+DESCRIPTION:Bloque 1 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Tanda 5: plan por grupo
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261128-1@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261128T153000Z
+DTEND:20261128T173000Z
+SUMMARY:Tanda 6: avance y prueba del tema
+DESCRIPTION:Bloque 2 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Tanda 6: avance y prueba del tema
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261128-2@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261128T190000Z
+DTEND:20261128T210000Z
+SUMMARY:Revisión semanal: probar a 390 px\, actualizar CONTINUAR.md y publ
+ icar (con permiso)
+DESCRIPTION:Bloque 3 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Revisión semanal: probar a 390 px\, actualizar
+  CONTINUAR.md y publicar (con permiso)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261130-0@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261130T130000Z
+DTEND:20261130T150000Z
+SUMMARY:Pantalla de canciones con letra sincronizada (estudiante)
+DESCRIPTION:Bloque 1 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Pantalla de canciones con letra sincronizada (e
+ studiante)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261130-1@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261130T153000Z
+DTEND:20261130T173000Z
+SUMMARY:Registro del piloto (docente)
+DESCRIPTION:Bloque 2 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Registro del piloto (docente)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261130-2@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261130T190000Z
+DTEND:20261130T210000Z
+SUMMARY:Deudas: regla 1 en Proyectar y datos.ts\, tecla Espacio\, solo:"doc
+ ente"
+DESCRIPTION:Bloque 3 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Deudas: regla 1 en Proyectar y datos.ts\, tecla
+  Espacio\, solo:"docente"
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261201-0@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261201T130000Z
+DTEND:20261201T150000Z
+SUMMARY:Materiales de inglés 3: cuerpo
+DESCRIPTION:Bloque 1 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Materiales de inglés 3: cuerpo
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261201-1@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261201T153000Z
+DTEND:20261201T173000Z
+SUMMARY:Materiales de inglés 3: familia
+DESCRIPTION:Bloque 2 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Materiales de inglés 3: familia
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261201-2@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261201T190000Z
+DTEND:20261201T210000Z
+SUMMARY:Materiales de inglés 3: hora
+DESCRIPTION:Bloque 3 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Materiales de inglés 3: hora
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261202-0@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261202T130000Z
+DTEND:20261202T150000Z
+SUMMARY:Rehacer las manos de números (Canva)
+DESCRIPTION:Bloque 1 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Rehacer las manos de números (Canva)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261202-1@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261202T153000Z
+DTEND:20261202T173000Z
+SUMMARY:Correos de Supabase en español y carrera de docente.mjs
+DESCRIPTION:Bloque 2 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Correos de Supabase en español y carrera de do
+ cente.mjs
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261202-2@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261202T190000Z
+DTEND:20261202T210000Z
+SUMMARY:Formato de cartilla documentado y generador de paquetes (nueva_cart
+ illa.py)
+DESCRIPTION:Bloque 3 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Formato de cartilla documentado y generador de 
+ paquetes (nueva_cartilla.py)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261203-0@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261203T130000Z
+DTEND:20261203T150000Z
+SUMMARY:Revisor: revisión de todo lo nuevo
+DESCRIPTION:Bloque 1 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Revisor: revisión de todo lo nuevo
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261203-1@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261203T153000Z
+DTEND:20261203T173000Z
+SUMMARY:Correcciones del revisor
+DESCRIPTION:Bloque 2 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Correcciones del revisor
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261203-2@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261203T190000Z
+DTEND:20261203T210000Z
+SUMMARY:Correcciones del revisor
+DESCRIPTION:Bloque 3 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Correcciones del revisor
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261204-0@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261204T130000Z
+DTEND:20261204T150000Z
+SUMMARY:Auditor: peso\, sin conexión\, accesibilidad
+DESCRIPTION:Bloque 1 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Auditor: peso\, sin conexión\, accesibilidad
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261204-1@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261204T153000Z
+DTEND:20261204T173000Z
+SUMMARY:Auditor: seguridad por filas y datos de menores
+DESCRIPTION:Bloque 2 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Auditor: seguridad por filas y datos de menores
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261204-2@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261204T190000Z
+DTEND:20261204T210000Z
+SUMMARY:Correcciones de la auditoría
+DESCRIPTION:Bloque 3 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Correcciones de la auditoría
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261205-0@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261205T130000Z
+DTEND:20261205T150000Z
+SUMMARY:Unir la rama con main (con permiso) y publicar
+DESCRIPTION:Bloque 1 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Unir la rama con main (con permiso) y publicar
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261205-1@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261205T153000Z
+DTEND:20261205T173000Z
+SUMMARY:Prueba en Android real: micrófono y modo avión
+DESCRIPTION:Bloque 2 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Prueba en Android real: micrófono y modo avió
+ n
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261205-2@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261205T190000Z
+DTEND:20261205T210000Z
+SUMMARY:Cierre de la plataforma: CONTINUAR.md y guía docente al día
+DESCRIPTION:Bloque 3 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Cierre de la plataforma: CONTINUAR.md y guía d
+ ocente al día
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261207-0@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261207T130000Z
+DTEND:20261207T150000Z
+SUMMARY:Mallas de inglés transición a 5.° (currículo sugerido y DBA del
+  MEN)
+DESCRIPTION:Bloque 1 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Mallas de inglés transición a 5.° (currícul
+ o sugerido y DBA del MEN)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261207-1@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261207T153000Z
+DTEND:20261207T173000Z
+SUMMARY:Mallas de español transición a 5.° (DBA de Lenguaje)
+DESCRIPTION:Bloque 2 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Mallas de español transición a 5.° (DBA de L
+ enguaje)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261207-2@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261207T190000Z
+DTEND:20261207T210000Z
+SUMMARY:Mallas de matemáticas transición a 5.° (DBA de Matemáticas)
+DESCRIPTION:Bloque 3 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Mallas de matemáticas transición a 5.° (DBA 
+ de Matemáticas)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261209-0@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261209T130000Z
+DTEND:20261209T150000Z
+SUMMARY:Universos y guías de español y matemáticas (mundos\, personajes)
+DESCRIPTION:Bloque 1 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Universos y guías de español y matemáticas (
+ mundos\, personajes)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261209-1@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261209T153000Z
+DTEND:20261209T173000Z
+SUMMARY:Generar los 17 paquetes de cartilla vacíos
+DESCRIPTION:Bloque 2 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Generar los 17 paquetes de cartilla vacíos
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261209-2@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261209T190000Z
+DTEND:20261209T210000Z
+SUMMARY:Plan de audio e imágenes: Kokoro para borradores\, ElevenLabs para
+  guías (cuidar créditos)
+DESCRIPTION:Bloque 3 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Plan de audio e imágenes: Kokoro para borrador
+ es\, ElevenLabs para guías (cuidar créditos)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261210-0@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261210T130000Z
+DTEND:20261210T150000Z
+SUMMARY:Inglés transición: contenido del territorio 1 (misiones\, banco d
+ e ítems\, Mission Stars)
+DESCRIPTION:Bloque 1 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Inglés transición: contenido del territorio 1
+  (misiones\, banco de ítems\, Mission Stars)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261210-1@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261210T153000Z
+DTEND:20261210T173000Z
+SUMMARY:Inglés transición: materiales del docente del periodo 1 (guía\, 
+ planeador\, láminas\, fichas\, prueba)
+DESCRIPTION:Bloque 2 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Inglés transición: materiales del docente del
+  periodo 1 (guía\, planeador\, láminas\, fichas\, prueba)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261210-2@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261210T190000Z
+DTEND:20261210T210000Z
+SUMMARY:Español transición: contenido del territorio 1 (misiones\, banco 
+ de ítems\, Mission Stars)
+DESCRIPTION:Bloque 3 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Español transición: contenido del territorio 
+ 1 (misiones\, banco de ítems\, Mission Stars)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261211-0@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261211T130000Z
+DTEND:20261211T150000Z
+SUMMARY:Español transición: materiales del docente del periodo 1 (guía\,
+  planeador\, láminas\, fichas\, prueba)
+DESCRIPTION:Bloque 1 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Español transición: materiales del docente de
+ l periodo 1 (guía\, planeador\, láminas\, fichas\, prueba)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261211-1@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261211T153000Z
+DTEND:20261211T173000Z
+SUMMARY:Matemáticas transición: contenido del territorio 1 (misiones\, ba
+ nco de ítems\, Mission Stars)
+DESCRIPTION:Bloque 2 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Matemáticas transición: contenido del territo
+ rio 1 (misiones\, banco de ítems\, Mission Stars)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261211-2@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261211T190000Z
+DTEND:20261211T210000Z
+SUMMARY:Matemáticas transición: materiales del docente del periodo 1 (gu
+ ía\, planeador\, láminas\, fichas\, prueba)
+DESCRIPTION:Bloque 3 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Matemáticas transición: materiales del docent
+ e del periodo 1 (guía\, planeador\, láminas\, fichas\, prueba)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261212-0@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261212T130000Z
+DTEND:20261212T150000Z
+SUMMARY:Inglés 1.°: contenido del territorio 1 (misiones\, banco de ítem
+ s\, Mission Stars)
+DESCRIPTION:Bloque 1 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Inglés 1.°: contenido del territorio 1 (misio
+ nes\, banco de ítems\, Mission Stars)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261212-1@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261212T153000Z
+DTEND:20261212T173000Z
+SUMMARY:Inglés 1.°: materiales del docente del periodo 1 (guía\, planead
+ or\, láminas\, fichas\, prueba)
+DESCRIPTION:Bloque 2 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Inglés 1.°: materiales del docente del period
+ o 1 (guía\, planeador\, láminas\, fichas\, prueba)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261212-2@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261212T190000Z
+DTEND:20261212T210000Z
+SUMMARY:Revisión semanal: probar a 390 px\, actualizar CONTINUAR.md y publ
+ icar (con permiso)
+DESCRIPTION:Bloque 3 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Revisión semanal: probar a 390 px\, actualizar
+  CONTINUAR.md y publicar (con permiso)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261214-0@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261214T130000Z
+DTEND:20261214T150000Z
+SUMMARY:Español 1.°: contenido del territorio 1 (misiones\, banco de íte
+ ms\, Mission Stars)
+DESCRIPTION:Bloque 1 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Español 1.°: contenido del territorio 1 (misi
+ ones\, banco de ítems\, Mission Stars)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261214-1@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261214T153000Z
+DTEND:20261214T173000Z
+SUMMARY:Español 1.°: materiales del docente del periodo 1 (guía\, planea
+ dor\, láminas\, fichas\, prueba)
+DESCRIPTION:Bloque 2 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Español 1.°: materiales del docente del perio
+ do 1 (guía\, planeador\, láminas\, fichas\, prueba)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261214-2@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261214T190000Z
+DTEND:20261214T210000Z
+SUMMARY:Matemáticas 1.°: contenido del territorio 1 (misiones\, banco de 
+ ítems\, Mission Stars)
+DESCRIPTION:Bloque 3 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Matemáticas 1.°: contenido del territorio 1 (
+ misiones\, banco de ítems\, Mission Stars)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261215-0@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261215T130000Z
+DTEND:20261215T150000Z
+SUMMARY:Matemáticas 1.°: materiales del docente del periodo 1 (guía\, pl
+ aneador\, láminas\, fichas\, prueba)
+DESCRIPTION:Bloque 1 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Matemáticas 1.°: materiales del docente del p
+ eriodo 1 (guía\, planeador\, láminas\, fichas\, prueba)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261215-1@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261215T153000Z
+DTEND:20261215T173000Z
+SUMMARY:Audio e imágenes de transición y 1.° (las tres materias)
+DESCRIPTION:Bloque 2 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Audio e imágenes de transición y 1.° (las tr
+ es materias)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261215-2@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261215T190000Z
+DTEND:20261215T210000Z
+SUMMARY:Audio e imágenes de transición y 1.°: revisión
+DESCRIPTION:Bloque 3 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Audio e imágenes de transición y 1.°: revisi
+ ón
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261216-0@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261216T130000Z
+DTEND:20261216T150000Z
+SUMMARY:Prueba de las cartillas de transición y 1.° en celular
+DESCRIPTION:Bloque 1 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Prueba de las cartillas de transición y 1.° e
+ n celular
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261216-1@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261216T153000Z
+DTEND:20261216T173000Z
+SUMMARY:Inglés 2.°: contenido del territorio 1 (misiones\, banco de ítem
+ s\, Mission Stars)
+DESCRIPTION:Bloque 2 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Inglés 2.°: contenido del territorio 1 (misio
+ nes\, banco de ítems\, Mission Stars)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261216-2@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261216T190000Z
+DTEND:20261216T210000Z
+SUMMARY:Inglés 2.°: materiales del docente del periodo 1 (guía\, planead
+ or\, láminas\, fichas\, prueba)
+DESCRIPTION:Bloque 3 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Inglés 2.°: materiales del docente del period
+ o 1 (guía\, planeador\, láminas\, fichas\, prueba)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261217-0@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261217T130000Z
+DTEND:20261217T150000Z
+SUMMARY:Español 2.°: contenido del territorio 1 (misiones\, banco de íte
+ ms\, Mission Stars)
+DESCRIPTION:Bloque 1 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Español 2.°: contenido del territorio 1 (misi
+ ones\, banco de ítems\, Mission Stars)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261217-1@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261217T153000Z
+DTEND:20261217T173000Z
+SUMMARY:Español 2.°: materiales del docente del periodo 1 (guía\, planea
+ dor\, láminas\, fichas\, prueba)
+DESCRIPTION:Bloque 2 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Español 2.°: materiales del docente del perio
+ do 1 (guía\, planeador\, láminas\, fichas\, prueba)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261217-2@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261217T190000Z
+DTEND:20261217T210000Z
+SUMMARY:Matemáticas 2.°: contenido del territorio 1 (misiones\, banco de 
+ ítems\, Mission Stars)
+DESCRIPTION:Bloque 3 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Matemáticas 2.°: contenido del territorio 1 (
+ misiones\, banco de ítems\, Mission Stars)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261218-0@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261218T130000Z
+DTEND:20261218T150000Z
+SUMMARY:Matemáticas 2.°: materiales del docente del periodo 1 (guía\, pl
+ aneador\, láminas\, fichas\, prueba)
+DESCRIPTION:Bloque 1 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Matemáticas 2.°: materiales del docente del p
+ eriodo 1 (guía\, planeador\, láminas\, fichas\, prueba)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261218-1@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261218T153000Z
+DTEND:20261218T173000Z
+SUMMARY:Español 3.°: contenido del territorio 1 (misiones\, banco de íte
+ ms\, Mission Stars)
+DESCRIPTION:Bloque 2 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Español 3.°: contenido del territorio 1 (misi
+ ones\, banco de ítems\, Mission Stars)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261218-2@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261218T190000Z
+DTEND:20261218T210000Z
+SUMMARY:Español 3.°: materiales del docente del periodo 1 (guía\, planea
+ dor\, láminas\, fichas\, prueba)
+DESCRIPTION:Bloque 3 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Español 3.°: materiales del docente del perio
+ do 1 (guía\, planeador\, láminas\, fichas\, prueba)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261219-0@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261219T130000Z
+DTEND:20261219T150000Z
+SUMMARY:Matemáticas 3.°: contenido del territorio 1 (misiones\, banco de 
+ ítems\, Mission Stars)
+DESCRIPTION:Bloque 1 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Matemáticas 3.°: contenido del territorio 1 (
+ misiones\, banco de ítems\, Mission Stars)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261219-1@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261219T153000Z
+DTEND:20261219T173000Z
+SUMMARY:Matemáticas 3.°: materiales del docente del periodo 1 (guía\, pl
+ aneador\, láminas\, fichas\, prueba)
+DESCRIPTION:Bloque 2 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Matemáticas 3.°: materiales del docente del p
+ eriodo 1 (guía\, planeador\, láminas\, fichas\, prueba)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261219-2@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261219T190000Z
+DTEND:20261219T210000Z
+SUMMARY:Revisión semanal: probar a 390 px\, actualizar CONTINUAR.md y publ
+ icar (con permiso)
+DESCRIPTION:Bloque 3 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Revisión semanal: probar a 390 px\, actualizar
+  CONTINUAR.md y publicar (con permiso)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261221-0@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261221T130000Z
+DTEND:20261221T150000Z
+SUMMARY:Audio e imágenes de 2.° y 3.° (las tres materias)
+DESCRIPTION:Bloque 1 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Audio e imágenes de 2.° y 3.° (las tres mate
+ rias)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261221-1@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261221T153000Z
+DTEND:20261221T173000Z
+SUMMARY:Audio e imágenes de 2.° y 3.°: revisión
+DESCRIPTION:Bloque 2 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Audio e imágenes de 2.° y 3.°: revisión
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261221-2@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261221T190000Z
+DTEND:20261221T210000Z
+SUMMARY:Prueba de las cartillas de 2.° y 3.° en celular
+DESCRIPTION:Bloque 3 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Prueba de las cartillas de 2.° y 3.° en celul
+ ar
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261222-0@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261222T130000Z
+DTEND:20261222T150000Z
+SUMMARY:Inglés 4.°: contenido del territorio 1 (misiones\, banco de ítem
+ s\, Mission Stars)
+DESCRIPTION:Bloque 1 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Inglés 4.°: contenido del territorio 1 (misio
+ nes\, banco de ítems\, Mission Stars)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261222-1@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261222T153000Z
+DTEND:20261222T173000Z
+SUMMARY:Inglés 4.°: materiales del docente del periodo 1 (guía\, planead
+ or\, láminas\, fichas\, prueba)
+DESCRIPTION:Bloque 2 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Inglés 4.°: materiales del docente del period
+ o 1 (guía\, planeador\, láminas\, fichas\, prueba)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261222-2@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261222T190000Z
+DTEND:20261222T210000Z
+SUMMARY:Español 4.°: contenido del territorio 1 (misiones\, banco de íte
+ ms\, Mission Stars)
+DESCRIPTION:Bloque 3 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Español 4.°: contenido del territorio 1 (misi
+ ones\, banco de ítems\, Mission Stars)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261223-0@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261223T130000Z
+DTEND:20261223T150000Z
+SUMMARY:Español 4.°: materiales del docente del periodo 1 (guía\, planea
+ dor\, láminas\, fichas\, prueba)
+DESCRIPTION:Bloque 1 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Español 4.°: materiales del docente del perio
+ do 1 (guía\, planeador\, láminas\, fichas\, prueba)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261223-1@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261223T153000Z
+DTEND:20261223T173000Z
+SUMMARY:Matemáticas 4.°: contenido del territorio 1 (misiones\, banco de 
+ ítems\, Mission Stars)
+DESCRIPTION:Bloque 2 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Matemáticas 4.°: contenido del territorio 1 (
+ misiones\, banco de ítems\, Mission Stars)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261223-2@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261223T190000Z
+DTEND:20261223T210000Z
+SUMMARY:Matemáticas 4.°: materiales del docente del periodo 1 (guía\, pl
+ aneador\, láminas\, fichas\, prueba)
+DESCRIPTION:Bloque 3 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Matemáticas 4.°: materiales del docente del p
+ eriodo 1 (guía\, planeador\, láminas\, fichas\, prueba)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261226-0@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261226T130000Z
+DTEND:20261226T150000Z
+SUMMARY:Inglés 5.°: contenido del territorio 1 (misiones\, banco de ítem
+ s\, Mission Stars)
+DESCRIPTION:Bloque 1 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Inglés 5.°: contenido del territorio 1 (misio
+ nes\, banco de ítems\, Mission Stars)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261226-1@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261226T153000Z
+DTEND:20261226T173000Z
+SUMMARY:Inglés 5.°: materiales del docente del periodo 1 (guía\, planead
+ or\, láminas\, fichas\, prueba)
+DESCRIPTION:Bloque 2 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Inglés 5.°: materiales del docente del period
+ o 1 (guía\, planeador\, láminas\, fichas\, prueba)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261226-2@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261226T190000Z
+DTEND:20261226T210000Z
+SUMMARY:Revisión semanal: probar a 390 px\, actualizar CONTINUAR.md y publ
+ icar (con permiso)
+DESCRIPTION:Bloque 3 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Revisión semanal: probar a 390 px\, actualizar
+  CONTINUAR.md y publicar (con permiso)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261228-0@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261228T130000Z
+DTEND:20261228T150000Z
+SUMMARY:Español 5.°: contenido del territorio 1 (misiones\, banco de íte
+ ms\, Mission Stars)
+DESCRIPTION:Bloque 1 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Español 5.°: contenido del territorio 1 (misi
+ ones\, banco de ítems\, Mission Stars)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261228-1@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261228T153000Z
+DTEND:20261228T173000Z
+SUMMARY:Español 5.°: materiales del docente del periodo 1 (guía\, planea
+ dor\, láminas\, fichas\, prueba)
+DESCRIPTION:Bloque 2 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Español 5.°: materiales del docente del perio
+ do 1 (guía\, planeador\, láminas\, fichas\, prueba)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261228-2@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261228T190000Z
+DTEND:20261228T210000Z
+SUMMARY:Matemáticas 5.°: contenido del territorio 1 (misiones\, banco de 
+ ítems\, Mission Stars)
+DESCRIPTION:Bloque 3 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Matemáticas 5.°: contenido del territorio 1 (
+ misiones\, banco de ítems\, Mission Stars)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261229-0@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261229T130000Z
+DTEND:20261229T150000Z
+SUMMARY:Matemáticas 5.°: materiales del docente del periodo 1 (guía\, pl
+ aneador\, láminas\, fichas\, prueba)
+DESCRIPTION:Bloque 1 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Matemáticas 5.°: materiales del docente del p
+ eriodo 1 (guía\, planeador\, láminas\, fichas\, prueba)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261229-1@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261229T153000Z
+DTEND:20261229T173000Z
+SUMMARY:Audio e imágenes de 4.° y 5.° (las tres materias)
+DESCRIPTION:Bloque 2 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Audio e imágenes de 4.° y 5.° (las tres mate
+ rias)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261229-2@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261229T190000Z
+DTEND:20261229T210000Z
+SUMMARY:Audio e imágenes de 4.° y 5.°: revisión
+DESCRIPTION:Bloque 3 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Audio e imágenes de 4.° y 5.°: revisión
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261230-0@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261230T130000Z
+DTEND:20261230T150000Z
+SUMMARY:Prueba de las cartillas de 4.° y 5.° en celular
+DESCRIPTION:Bloque 1 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Prueba de las cartillas de 4.° y 5.° en celul
+ ar
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261230-1@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261230T153000Z
+DTEND:20261230T173000Z
+SUMMARY:Colchón: terminar lo atrasado
+DESCRIPTION:Bloque 2 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Colchón: terminar lo atrasado
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261230-2@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261230T190000Z
+DTEND:20261230T210000Z
+SUMMARY:Cierre de diciembre: publicar\, CONTINUAR.md y plan de enero (terri
+ torios 2 a 4)
+DESCRIPTION:Bloque 3 de 3. Plan completo: docs/plan/calendario-diciembre.md
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Cierre de diciembre: publicar\, CONTINUAR.md y 
+ plan de enero (territorios 2 a 4)
+END:VALARM
+END:VEVENT
+END:VCALENDAR

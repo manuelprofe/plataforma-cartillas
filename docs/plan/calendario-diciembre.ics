@@ -10,13 +10,23 @@ DTSTAMP:20261121T120000Z
 DTSTART:20261123T130000Z
 DTEND:20261123T150000Z
 SUMMARY:Multicartilla: catálogo por materia y grado\, grupo con su cartill
- a (migración 004)
-DESCRIPTION:Bloque 1 de 3. Plan completo: docs/plan/calendario-diciembre.md
+ a\, registrar_mision idempotente (migración 004)
+DESCRIPTION:Propósito: Que la base de datos sepa qué cartillas existen y 
+ cuál usa cada grupo.\n\nPasos:\n- Escribir supabase/migraciones/004: tabl
+ a cartillas (id\, materia\, grado\, título\, publicada).\n- Agregar grupo
+ s.cartilla_id (inglés 3 por defecto para los grupos que ya existen).\n- r
+ egistrar_mision con identificador de envío\, para que un reintento no sum
+ e dos veces.\n- Probar en local con supabase/prueba_local.sql y escribir l
+ os pasos para Manuel.\n\nListo cuando: La migración 004 pasa la prueba lo
+ cal y está en PASOS-MANUEL.md lista para aplicar.\n\nPara empezar\, díga
+ le a Claude: «Retoma el bloque: Multicartilla: catálogo por materia y gr
+ ado\, grupo con su cartilla\, registrar_mision idempotente (migración 004
+ )»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
 DESCRIPTION:Cambio de tema: Multicartilla: catálogo por materia y grado\, 
- grupo con su cartilla (migración 004)
+ grupo con su cartilla\, registrar_mision idempotente (migración 004)
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -26,7 +36,14 @@ DTSTART:20261123T153000Z
 DTEND:20261123T173000Z
 SUMMARY:Multicartilla: quitar ingles-3 fijo de App.tsx\, docente.ts y datos
  .ts
-DESCRIPTION:Bloque 2 de 3. Plan completo: docs/plan/calendario-diciembre.md
+DESCRIPTION:Propósito: Que el código cargue cualquier cartilla\, no solo 
+ inglés 3.\n\nPasos:\n- Crear una sola función que dé la ruta de una car
+ tilla por su id.\n- Reemplazar ingles-3 en src/App.tsx\, src/adultos/docen
+ te.ts y src/materiales/datos.ts.\n- Correr todas las pruebas: nada debe ca
+ mbiar a la vista.\n\nListo cuando: npm run build y las pruebas pasan\; ing
+ lés 3 se ve igual que antes.\n\nPara empezar\, dígale a Claude: «Retoma
+  el bloque: Multicartilla: quitar ingles-3 fijo de App.tsx\, docente.ts y 
+ datos.ts»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
@@ -39,23 +56,15 @@ UID:cartillas-20261123-2@plataforma-cartillas
 DTSTAMP:20261121T120000Z
 DTSTART:20261123T190000Z
 DTEND:20261123T210000Z
-SUMMARY:registrar_mision idempotente (en la migración 004) y prueba local
-DESCRIPTION:Bloque 3 de 3. Plan completo: docs/plan/calendario-diciembre.md
-BEGIN:VALARM
-ACTION:DISPLAY
-TRIGGER:-PT10M
-DESCRIPTION:Cambio de tema: registrar_mision idempotente (en la migración 
- 004) y prueba local
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:cartillas-20261124-0@plataforma-cartillas
-DTSTAMP:20261121T120000Z
-DTSTART:20261124T130000Z
-DTEND:20261124T150000Z
 SUMMARY:Multicartilla en el estudiante: el código del grupo lleva a su car
  tilla
-DESCRIPTION:Bloque 1 de 3. Plan completo: docs/plan/calendario-diciembre.md
+DESCRIPTION:Propósito: Que cada niño llegue a la cartilla de su grupo.\n\
+ nPasos:\n- Al entrar con el código o el QR\, leer la cartilla del grupo.\
+ n- El modo sin conexión guarda la cartilla correcta.\n- Crear una cartill
+ a mínima de prueba para probar con dos cartillas.\n\nListo cuando: La pru
+ eba del estudiante pasa con dos cartillas distintas a 390 px.\n\nPara empe
+ zar\, dígale a Claude: «Retoma el bloque: Multicartilla en el estudiante
+ : el código del grupo lleva a su cartilla»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
@@ -64,13 +73,20 @@ DESCRIPTION:Cambio de tema: Multicartilla en el estudiante: el código del
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:cartillas-20261124-1@plataforma-cartillas
+UID:cartillas-20261124-0@plataforma-cartillas
 DTSTAMP:20261121T120000Z
-DTSTART:20261124T153000Z
-DTEND:20261124T173000Z
+DTSTART:20261124T130000Z
+DTEND:20261124T150000Z
 SUMMARY:Multicartilla en el docente: Planear\, Biblioteca y Proyectar segú
  n el grupo
-DESCRIPTION:Bloque 2 de 3. Plan completo: docs/plan/calendario-diciembre.md
+DESCRIPTION:Propósito: Que el docente vea los materiales de la cartilla de
+  cada grupo.\n\nPasos:\n- Planear\, Biblioteca y Proyectar leen la cartill
+ a del grupo elegido.\n- Si el docente tiene grupos de cartillas distintas\
+ , puede elegir entre ellas.\n- Ajustar las pruebas del docente y de la bib
+ lioteca.\n\nListo cuando: Un docente con dos grupos de cartillas distintas
+  ve los materiales correctos de cada uno.\n\nPara empezar\, dígale a Clau
+ de: «Retoma el bloque: Multicartilla en el docente: Planear\, Biblioteca 
+ y Proyectar según el grupo»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
@@ -79,25 +95,18 @@ DESCRIPTION:Cambio de tema: Multicartilla en el docente: Planear\, Bibliote
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:cartillas-20261124-2@plataforma-cartillas
+UID:cartillas-20261124-1@plataforma-cartillas
 DTSTAMP:20261121T120000Z
-DTSTART:20261124T190000Z
-DTEND:20261124T210000Z
-SUMMARY:Pruebas a 390 px y commit
-DESCRIPTION:Bloque 3 de 3. Plan completo: docs/plan/calendario-diciembre.md
-BEGIN:VALARM
-ACTION:DISPLAY
-TRIGGER:-PT10M
-DESCRIPTION:Cambio de tema: Pruebas a 390 px y commit
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:cartillas-20261125-0@plataforma-cartillas
-DTSTAMP:20261121T120000Z
-DTSTART:20261125T130000Z
-DTEND:20261125T150000Z
+DTSTART:20261124T153000Z
+DTEND:20261124T173000Z
 SUMMARY:Dueño: crear colegios y publicar cartillas
-DESCRIPTION:Bloque 1 de 3. Plan completo: docs/plan/calendario-diciembre.md
+DESCRIPTION:Propósito: Que Manuel administre colegios y cartillas sin toca
+ r la base de datos.\n\nPasos:\n- Pantalla de colegios: crear e invitar al 
+ coordinador.\n- Pantalla de cartillas: publicar u ocultar y asignar a cole
+ gios.\n- Diseño adulto: serio y profesional\, a 390 px y a 1280 px.\n\nLi
+ sto cuando: Manuel crea un colegio de prueba y publica una cartilla desde 
+ la interfaz.\n\nPara empezar\, dígale a Claude: «Retoma el bloque: Dueñ
+ o: crear colegios y publicar cartillas»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
@@ -105,12 +114,16 @@ DESCRIPTION:Cambio de tema: Dueño: crear colegios y publicar cartillas
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:cartillas-20261125-1@plataforma-cartillas
+UID:cartillas-20261124-2@plataforma-cartillas
 DTSTAMP:20261121T120000Z
-DTSTART:20261125T153000Z
-DTEND:20261125T173000Z
+DTSTART:20261124T190000Z
+DTEND:20261124T210000Z
 SUMMARY:Coordinador: docentes y grupos
-DESCRIPTION:Bloque 2 de 3. Plan completo: docs/plan/calendario-diciembre.md
+DESCRIPTION:Propósito: Que el coordinador organice su colegio.\n\nPasos:\n
+ - Lista de docentes con invitación por correo.\n- Grupos por grado\, con 
+ su docente y su cartilla\; reasignar un grupo.\n\nListo cuando: El coordin
+ ador invita a un docente y le asigna un grupo en la prueba.\n\nPara empeza
+ r\, dígale a Claude: «Retoma el bloque: Coordinador: docentes y grupos»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
@@ -118,12 +131,17 @@ DESCRIPTION:Cambio de tema: Coordinador: docentes y grupos
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:cartillas-20261125-2@plataforma-cartillas
+UID:cartillas-20261125-0@plataforma-cartillas
 DTSTAMP:20261121T120000Z
-DTSTART:20261125T190000Z
-DTEND:20261125T210000Z
+DTSTART:20261125T130000Z
+DTEND:20261125T150000Z
 SUMMARY:Coordinador: uso y avance por grado y grupo
-DESCRIPTION:Bloque 3 de 3. Plan completo: docs/plan/calendario-diciembre.md
+DESCRIPTION:Propósito: Que el directivo vea el uso sin exponer a ningún n
+ iño.\n\nPasos:\n- Tablero por grado y grupo: niños activos en la semana\
+ , faroles encendidos y estrellas.\n- Solo cifras de grupo\, sin nombres de
+  niños. Versión imprimible.\n\nListo cuando: El tablero carga con datos 
+ simulados y se imprime en una hoja.\n\nPara empezar\, dígale a Claude: «
+ Retoma el bloque: Coordinador: uso y avance por grado y grupo»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
@@ -131,12 +149,19 @@ DESCRIPTION:Cambio de tema: Coordinador: uso y avance por grado y grupo
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:cartillas-20261126-0@plataforma-cartillas
+UID:cartillas-20261125-1@plataforma-cartillas
 DTSTAMP:20261121T120000Z
-DTSTART:20261126T130000Z
-DTEND:20261126T150000Z
+DTSTART:20261125T153000Z
+DTEND:20261125T173000Z
 SUMMARY:Plantilla de juego: contar y tocar (matemáticas)
-DESCRIPTION:Bloque 1 de 3. Plan completo: docs/plan/calendario-diciembre.md
+DESCRIPTION:Propósito: Primer juego de matemáticas\, para transición\, 1
+ .° y 2.°.\n\nPasos:\n- Aparecen objetos\, la voz dice un número y el ni
+ ño toca esa cantidad.\n- Todo el contenido sale del JSON de la cartilla (
+ regla 1)\; se juega sin saber leer.\n- Error sin castigo: Lumi anima a int
+ entar otra vez. Objetivos de toque de 48 px o más.\n\nListo cuando: Se ju
+ ega completo a 390 px y tiene su prueba en scripts/pruebas.\n\nPara empeza
+ r\, dígale a Claude: «Retoma el bloque: Plantilla de juego: contar y toc
+ ar (matemáticas)»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
@@ -145,12 +170,17 @@ DESCRIPTION:Cambio de tema: Plantilla de juego: contar y tocar (matemática
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:cartillas-20261126-1@plataforma-cartillas
+UID:cartillas-20261125-2@plataforma-cartillas
 DTSTAMP:20261121T120000Z
-DTSTART:20261126T153000Z
-DTEND:20261126T173000Z
+DTSTART:20261125T190000Z
+DTEND:20261125T210000Z
 SUMMARY:Plantilla de juego: ordenar (números y secuencias)
-DESCRIPTION:Bloque 2 de 3. Plan completo: docs/plan/calendario-diciembre.md
+DESCRIPTION:Propósito: Juego para ordenar números\, secuencias y sucesos 
+ de un cuento.\n\nPasos:\n- Tocar o arrastrar las tarjetas en orden\, con a
+ udio de cada una.\n- Sirve para matemáticas (números) y para español (o
+ rden de un relato).\n\nListo cuando: Funciona con dos contenidos distintos
+  (números y cuento) y tiene prueba.\n\nPara empezar\, dígale a Claude: 
+ «Retoma el bloque: Plantilla de juego: ordenar (números y secuencias)»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
@@ -159,12 +189,17 @@ DESCRIPTION:Cambio de tema: Plantilla de juego: ordenar (números y secuenc
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:cartillas-20261126-2@plataforma-cartillas
+UID:cartillas-20261126-0@plataforma-cartillas
 DTSTAMP:20261121T120000Z
-DTSTART:20261126T190000Z
-DTEND:20261126T210000Z
+DTSTART:20261126T130000Z
+DTEND:20261126T150000Z
 SUMMARY:Plantilla de juego: completar la operación
-DESCRIPTION:Bloque 3 de 3. Plan completo: docs/plan/calendario-diciembre.md
+DESCRIPTION:Propósito: Sumas y restas con apoyo visual para 1.° a 5.°.\n
+ \nPasos:\n- La operación se muestra con objetos y con números\; el niño
+  elige el resultado entre 3.\n- Niveles por rango numérico\, definidos en
+  el JSON.\n\nListo cuando: Se juega a 390 px con sumas de transición y co
+ n restas de 3.°.\n\nPara empezar\, dígale a Claude: «Retoma el bloque: 
+ Plantilla de juego: completar la operación»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
@@ -172,12 +207,17 @@ DESCRIPTION:Cambio de tema: Plantilla de juego: completar la operación
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:cartillas-20261127-0@plataforma-cartillas
+UID:cartillas-20261126-1@plataforma-cartillas
 DTSTAMP:20261121T120000Z
-DTSTART:20261127T130000Z
-DTEND:20261127T150000Z
+DTSTART:20261126T153000Z
+DTEND:20261126T173000Z
 SUMMARY:Plantilla de juego: armar la sílaba o la palabra (español)
-DESCRIPTION:Bloque 1 de 3. Plan completo: docs/plan/calendario-diciembre.md
+DESCRIPTION:Propósito: Juego de lectoescritura inicial.\n\nPasos:\n- Se oy
+ e una palabra con su imagen y el niño toca las sílabas en orden.\n- Las 
+ sílabas suenan al tocarlas\; las palabras vienen del banco de la cartilla
+ .\n\nListo cuando: Arma 5 palabras de prueba sin texto obligatorio y tiene
+  prueba.\n\nPara empezar\, dígale a Claude: «Retoma el bloque: Plantilla
+  de juego: armar la sílaba o la palabra (español)»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
@@ -186,12 +226,18 @@ DESCRIPTION:Cambio de tema: Plantilla de juego: armar la sílaba o la palab
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:cartillas-20261127-1@plataforma-cartillas
+UID:cartillas-20261126-2@plataforma-cartillas
 DTSTAMP:20261121T120000Z
-DTSTART:20261127T153000Z
-DTEND:20261127T173000Z
+DTSTART:20261126T190000Z
+DTEND:20261126T210000Z
 SUMMARY:DiBrilla para leer en voz alta en español
-DESCRIPTION:Bloque 2 de 3. Plan completo: docs/plan/calendario-diciembre.md
+DESCRIPTION:Propósito: Que la práctica de voz sirva también para leer en
+  español.\n\nPasos:\n- Reconocimiento en español de Colombia.\n- Premia 
+ el intento y no guarda grabaciones (regla 7).\n- Revisar si src/escuchar.t
+ s envía audio fuera del aparato.\n\nListo cuando: Un niño lee 3 palabras
+  en español y recibe sus estrellas\; no queda audio guardado.\n\nPara emp
+ ezar\, dígale a Claude: «Retoma el bloque: DiBrilla para leer en voz alt
+ a en español»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
@@ -199,12 +245,17 @@ DESCRIPTION:Cambio de tema: DiBrilla para leer en voz alta en español
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:cartillas-20261127-2@plataforma-cartillas
+UID:cartillas-20261127-0@plataforma-cartillas
 DTSTAMP:20261121T120000Z
-DTSTART:20261127T190000Z
-DTEND:20261127T210000Z
+DTSTART:20261127T130000Z
+DTEND:20261127T150000Z
 SUMMARY:Pruebas de las plantillas en celular de gama baja
-DESCRIPTION:Bloque 3 de 3. Plan completo: docs/plan/calendario-diciembre.md
+DESCRIPTION:Propósito: Que los juegos nuevos vayan fluidos en celulares ba
+ ratos.\n\nPasos:\n- Emular un celular de gama baja (CPU 4x más lenta) a 3
+ 90 px.\n- Medir fluidez y peso de cada plantilla y corregir lo lento.\n\nL
+ isto cuando: Las 4 plantillas nuevas van fluidas y la primera carga sigue 
+ por debajo de 2 MB.\n\nPara empezar\, dígale a Claude: «Retoma el bloque
+ : Pruebas de las plantillas en celular de gama baja»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
@@ -213,12 +264,17 @@ DESCRIPTION:Cambio de tema: Pruebas de las plantillas en celular de gama ba
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:cartillas-20261128-0@plataforma-cartillas
+UID:cartillas-20261127-1@plataforma-cartillas
 DTSTAMP:20261121T120000Z
-DTSTART:20261128T130000Z
-DTEND:20261128T150000Z
+DTSTART:20261127T153000Z
+DTEND:20261127T173000Z
 SUMMARY:Tanda 5: plan por grupo
-DESCRIPTION:Bloque 1 de 3. Plan completo: docs/plan/calendario-diciembre.md
+DESCRIPTION:Propósito: Que el docente ponga fechas a los temas de su grupo
+ .\n\nPasos:\n- Calendario de temas por grupo (clase 1 y clase 2 de cada te
+ ma).\n- Inicio del docente muestra la próxima clase real.\n\nListo cuando
+ : Inicio muestra la próxima clase según el plan del grupo de prueba.\n\n
+ Para empezar\, dígale a Claude: «Retoma el bloque: Tanda 5: plan por gru
+ po»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
@@ -226,31 +282,23 @@ DESCRIPTION:Cambio de tema: Tanda 5: plan por grupo
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:cartillas-20261128-1@plataforma-cartillas
+UID:cartillas-20261127-2@plataforma-cartillas
 DTSTAMP:20261121T120000Z
-DTSTART:20261128T153000Z
-DTEND:20261128T173000Z
-SUMMARY:Tanda 6: avance y prueba del tema
-DESCRIPTION:Bloque 2 de 3. Plan completo: docs/plan/calendario-diciembre.md
+DTSTART:20261127T190000Z
+DTEND:20261127T210000Z
+SUMMARY:Revisión semanal: probar en celular a 390 px\, actualizar CONTINUA
+ R.md y publicar (con permiso)
+DESCRIPTION:Propósito: Cerrar la semana con todo probado y publicado.\n\nP
+ asos:\n- Correr todas las pruebas y mirar lo nuevo en el celular a 390 px.
+ \n- Actualizar CONTINUAR.md.\n- Pedir permiso a Manuel y publicar.\n\nList
+ o cuando: Lo de la semana está publicado y CONTINUAR.md al día.\n\nPara 
+ empezar\, dígale a Claude: «Retoma el bloque: Revisión semanal: probar 
+ en celular a 390 px\, actualizar CONTINUAR.md y publicar (con permiso)»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
-DESCRIPTION:Cambio de tema: Tanda 6: avance y prueba del tema
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:cartillas-20261128-2@plataforma-cartillas
-DTSTAMP:20261121T120000Z
-DTSTART:20261128T190000Z
-DTEND:20261128T210000Z
-SUMMARY:Revisión semanal: probar a 390 px\, actualizar CONTINUAR.md y publ
- icar (con permiso)
-DESCRIPTION:Bloque 3 de 3. Plan completo: docs/plan/calendario-diciembre.md
-BEGIN:VALARM
-ACTION:DISPLAY
-TRIGGER:-PT10M
-DESCRIPTION:Cambio de tema: Revisión semanal: probar a 390 px\, actualizar
-  CONTINUAR.md y publicar (con permiso)
+DESCRIPTION:Cambio de tema: Revisión semanal: probar en celular a 390 px\,
+  actualizar CONTINUAR.md y publicar (con permiso)
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -258,8 +306,32 @@ UID:cartillas-20261130-0@plataforma-cartillas
 DTSTAMP:20261121T120000Z
 DTSTART:20261130T130000Z
 DTEND:20261130T150000Z
+SUMMARY:Tanda 6: avance y prueba del tema
+DESCRIPTION:Propósito: Que el docente siga el avance y aplique la prueba d
+ el tema.\n\nPasos:\n- Avance por niño: faroles y estrellas\, sin comparar
+  a nadie en público.\n- Prueba del tema en pantalla e imprimible\, con su
+  registro.\n\nListo cuando: El docente ve el avance de su grupo y registra
+  una prueba en la simulación.\n\nPara empezar\, dígale a Claude: «Retom
+ a el bloque: Tanda 6: avance y prueba del tema»
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Tanda 6: avance y prueba del tema
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261130-1@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261130T153000Z
+DTEND:20261130T173000Z
 SUMMARY:Pantalla de canciones con letra sincronizada (estudiante)
-DESCRIPTION:Bloque 1 de 3. Plan completo: docs/plan/calendario-diciembre.md
+DESCRIPTION:Propósito: Que los niños escuchen las canciones con la letra 
+ en pantalla.\n\nPasos:\n- Lista de canciones de la cartilla.\n- Reproducto
+ r con la línea actual resaltada y las palabras en inglés destacadas.\n- 
+ Funciona sin conexión\; botones grandes\; nada técnico a la vista.\n\nLi
+ sto cuando: Las 3 canciones suenan con la letra sincronizada a 390 px.\n\n
+ Para empezar\, dígale a Claude: «Retoma el bloque: Pantalla de canciones
+  con letra sincronizada (estudiante)»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
@@ -268,31 +340,20 @@ DESCRIPTION:Cambio de tema: Pantalla de canciones con letra sincronizada (e
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:cartillas-20261130-1@plataforma-cartillas
-DTSTAMP:20261121T120000Z
-DTSTART:20261130T153000Z
-DTEND:20261130T173000Z
-SUMMARY:Registro del piloto (docente)
-DESCRIPTION:Bloque 2 de 3. Plan completo: docs/plan/calendario-diciembre.md
-BEGIN:VALARM
-ACTION:DISPLAY
-TRIGGER:-PT10M
-DESCRIPTION:Cambio de tema: Registro del piloto (docente)
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
 UID:cartillas-20261130-2@plataforma-cartillas
 DTSTAMP:20261121T120000Z
 DTSTART:20261130T190000Z
 DTEND:20261130T210000Z
-SUMMARY:Deudas: regla 1 en Proyectar y datos.ts\, tecla Espacio\, solo:"doc
- ente"
-DESCRIPTION:Bloque 3 de 3. Plan completo: docs/plan/calendario-diciembre.md
+SUMMARY:Registro del piloto (docente)
+DESCRIPTION:Propósito: Que el docente lleve la bitácora del piloto (sirve
+  a la tesis).\n\nPasos:\n- Por clase: fecha\, tema\, qué funcionó y qué
+  no\, e incidencias.\n- Exportable e imprimible.\n\nListo cuando: Se guard
+ a una entrada de prueba y se exporta.\n\nPara empezar\, dígale a Claude: 
+ «Retoma el bloque: Registro del piloto (docente)»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
-DESCRIPTION:Cambio de tema: Deudas: regla 1 en Proyectar y datos.ts\, tecla
-  Espacio\, solo:"docente"
+DESCRIPTION:Cambio de tema: Registro del piloto (docente)
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -301,7 +362,13 @@ DTSTAMP:20261121T120000Z
 DTSTART:20261201T130000Z
 DTEND:20261201T150000Z
 SUMMARY:Materiales de inglés 3: cuerpo
-DESCRIPTION:Bloque 1 de 3. Plan completo: docs/plan/calendario-diciembre.md
+DESCRIPTION:Propósito: Completar los materiales del tema Body parts.\n\nPa
+ sos:\n- El pedagogo escribe docs/pedagogia/materiales/cuerpo.md: guía\, p
+ laneador de 2 clases de 55 min\, láminas\, fichas y prueba.\n- Pasarlo a 
+ JSON con materiales_a_json.py y hacer las imágenes WebP.\n- Revisar la im
+ presión en carta y en media carta.\n\nListo cuando: El tema aparece en Pl
+ anear con todo y se imprime bien.\n\nPara empezar\, dígale a Claude: «Re
+ toma el bloque: Materiales de inglés 3: cuerpo»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
@@ -314,7 +381,12 @@ DTSTAMP:20261121T120000Z
 DTSTART:20261201T153000Z
 DTEND:20261201T173000Z
 SUMMARY:Materiales de inglés 3: familia
-DESCRIPTION:Bloque 2 de 3. Plan completo: docs/plan/calendario-diciembre.md
+DESCRIPTION:Propósito: Completar los materiales del tema Family.\n\nPasos:
+ \n- Igual que cuerpo: guía\, planeador\, láminas\, fichas y prueba en do
+ cs/pedagogia/materiales/familia.md.\n- JSON e imágenes\; revisar la impre
+ sión.\n\nListo cuando: El tema aparece en Planear con todo y se imprime b
+ ien.\n\nPara empezar\, dígale a Claude: «Retoma el bloque: Materiales de
+  inglés 3: familia»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
@@ -327,7 +399,12 @@ DTSTAMP:20261121T120000Z
 DTSTART:20261201T190000Z
 DTEND:20261201T210000Z
 SUMMARY:Materiales de inglés 3: hora
-DESCRIPTION:Bloque 3 de 3. Plan completo: docs/plan/calendario-diciembre.md
+DESCRIPTION:Propósito: Completar los materiales del tema Time.\n\nPasos:\n
+ - Igual que cuerpo: guía\, planeador\, láminas\, fichas y prueba en docs
+ /pedagogia/materiales/hora.md.\n- JSON e imágenes (reloj)\; revisar la im
+ presión.\n\nListo cuando: Los 6 temas del Bosque tienen materiales comple
+ tos.\n\nPara empezar\, dígale a Claude: «Retoma el bloque: Materiales de
+  inglés 3: hora»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
@@ -340,7 +417,12 @@ DTSTAMP:20261121T120000Z
 DTSTART:20261202T130000Z
 DTEND:20261202T150000Z
 SUMMARY:Rehacer las manos de números (Canva)
-DESCRIPTION:Bloque 1 de 3. Plan completo: docs/plan/calendario-diciembre.md
+DESCRIPTION:Propósito: Cambiar las manos provisionales de los números 1 a
+  10.\n\nPasos:\n- Diseñar en Canva 10 manos contando\, con el estilo de l
+ a cartilla.\n- Exportar en WebP al tamaño en que se muestran y reemplazar
+  en materiales/numeros/.\n\nListo cuando: Las láminas de números se ven 
+ bien en pantalla y en la impresión.\n\nPara empezar\, dígale a Claude: 
+ «Retoma el bloque: Rehacer las manos de números (Canva)»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
@@ -352,13 +434,22 @@ UID:cartillas-20261202-1@plataforma-cartillas
 DTSTAMP:20261121T120000Z
 DTSTART:20261202T153000Z
 DTEND:20261202T173000Z
-SUMMARY:Correos de Supabase en español y carrera de docente.mjs
-DESCRIPTION:Bloque 2 de 3. Plan completo: docs/plan/calendario-diciembre.md
+SUMMARY:Deudas: regla 1\, tecla Espacio\, solo:"docente"\, correos en espa
+ ñol\, carrera de docente.mjs
+DESCRIPTION:Propósito: Saldar las deudas técnicas pendientes.\n\nPasos:\n
+ - Pasar los textos fijos de Proyectar.tsx y RANURAS de datos.ts al JSON (r
+ egla 1).\n- Arreglar el doble disparo de la tecla Espacio en Proyectar.\n-
+  Marcar clave\, guion\, casillas y momento como solo:"docente".\n- Correos
+  de Supabase en español (paso 9 de Manuel) y la carrera de carga de docen
+ te.mjs.\n\nListo cuando: Todas las pruebas pasan dos veces seguidas sin fa
+ llas.\n\nPara empezar\, dígale a Claude: «Retoma el bloque: Deudas: regl
+ a 1\, tecla Espacio\, solo:"docente"\, correos en español\, carrera de do
+ cente.mjs»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
-DESCRIPTION:Cambio de tema: Correos de Supabase en español y carrera de do
- cente.mjs
+DESCRIPTION:Cambio de tema: Deudas: regla 1\, tecla Espacio\, solo:"docente
+ "\, correos en español\, carrera de docente.mjs
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -368,7 +459,14 @@ DTSTART:20261202T190000Z
 DTEND:20261202T210000Z
 SUMMARY:Formato de cartilla documentado y generador de paquetes (nueva_cart
  illa.py)
-DESCRIPTION:Bloque 3 de 3. Plan completo: docs/plan/calendario-diciembre.md
+DESCRIPTION:Propósito: Que crear una cartilla nueva sea llenar datos\, no 
+ programar.\n\nPasos:\n- Escribir docs/diseno/formato-cartilla.md: carpetas
+ \, cartilla.json\, misiones\, materiales y biblioteca.\n- herramientas/nue
+ va_cartilla.py crea el paquete vacío y un validador revisa que esté comp
+ leto.\n\nListo cuando: Con un comando sale una cartilla vacía que la plat
+ aforma abre sin errores.\n\nPara empezar\, dígale a Claude: «Retoma el b
+ loque: Formato de cartilla documentado y generador de paquetes (nueva_cart
+ illa.py)»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
@@ -382,7 +480,11 @@ DTSTAMP:20261121T120000Z
 DTSTART:20261203T130000Z
 DTEND:20261203T150000Z
 SUMMARY:Revisor: revisión de todo lo nuevo
-DESCRIPTION:Bloque 1 de 3. Plan completo: docs/plan/calendario-diciembre.md
+DESCRIPTION:Propósito: Encontrar errores antes de cerrar la plataforma.\n\
+ nPasos:\n- El agente revisor lee todo lo cambiado desde el 21 de noviembre
+ .\n- Hace una lista de hallazgos ordenada por gravedad.\n\nListo cuando: L
+ ista de hallazgos lista para corregir.\n\nPara empezar\, dígale a Claude:
+  «Retoma el bloque: Revisor: revisión de todo lo nuevo»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
@@ -395,7 +497,10 @@ DTSTAMP:20261121T120000Z
 DTSTART:20261203T153000Z
 DTEND:20261203T173000Z
 SUMMARY:Correcciones del revisor
-DESCRIPTION:Bloque 2 de 3. Plan completo: docs/plan/calendario-diciembre.md
+DESCRIPTION:Propósito: Corregir lo que encontró el revisor.\n\nPasos:\n- 
+ Corregir de mayor a menor gravedad\; cada corrección con su prueba.\n\nLi
+ sto cuando: No queda ningún hallazgo grave abierto.\n\nPara empezar\, dí
+ gale a Claude: «Retoma el bloque: Correcciones del revisor»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
@@ -407,12 +512,20 @@ UID:cartillas-20261203-2@plataforma-cartillas
 DTSTAMP:20261121T120000Z
 DTSTART:20261203T190000Z
 DTEND:20261203T210000Z
-SUMMARY:Correcciones del revisor
-DESCRIPTION:Bloque 3 de 3. Plan completo: docs/plan/calendario-diciembre.md
+SUMMARY:Auditor: peso\, sin conexión\, accesibilidad\, seguridad por filas
+  y datos de menores
+DESCRIPTION:Propósito: Auditoría completa antes de abrir la plataforma a 
+ más colegios.\n\nPasos:\n- Usar la skill de auditoría: peso (menos de 2 
+ MB)\, sin conexión\, accesibilidad y uso en celular.\n- Seguridad por fil
+ as en Supabase y datos de menores (Ley 1581).\n\nListo cuando: Informe de 
+ auditoría con hallazgos.\n\nPara empezar\, dígale a Claude: «Retoma el 
+ bloque: Auditor: peso\, sin conexión\, accesibilidad\, seguridad por fila
+ s y datos de menores»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
-DESCRIPTION:Cambio de tema: Correcciones del revisor
+DESCRIPTION:Cambio de tema: Auditor: peso\, sin conexión\, accesibilidad\,
+  seguridad por filas y datos de menores
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -420,34 +533,11 @@ UID:cartillas-20261204-0@plataforma-cartillas
 DTSTAMP:20261121T120000Z
 DTSTART:20261204T130000Z
 DTEND:20261204T150000Z
-SUMMARY:Auditor: peso\, sin conexión\, accesibilidad
-DESCRIPTION:Bloque 1 de 3. Plan completo: docs/plan/calendario-diciembre.md
-BEGIN:VALARM
-ACTION:DISPLAY
-TRIGGER:-PT10M
-DESCRIPTION:Cambio de tema: Auditor: peso\, sin conexión\, accesibilidad
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:cartillas-20261204-1@plataforma-cartillas
-DTSTAMP:20261121T120000Z
-DTSTART:20261204T153000Z
-DTEND:20261204T173000Z
-SUMMARY:Auditor: seguridad por filas y datos de menores
-DESCRIPTION:Bloque 2 de 3. Plan completo: docs/plan/calendario-diciembre.md
-BEGIN:VALARM
-ACTION:DISPLAY
-TRIGGER:-PT10M
-DESCRIPTION:Cambio de tema: Auditor: seguridad por filas y datos de menores
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:cartillas-20261204-2@plataforma-cartillas
-DTSTAMP:20261121T120000Z
-DTSTART:20261204T190000Z
-DTEND:20261204T210000Z
 SUMMARY:Correcciones de la auditoría
-DESCRIPTION:Bloque 3 de 3. Plan completo: docs/plan/calendario-diciembre.md
+DESCRIPTION:Propósito: Cerrar los hallazgos de la auditoría.\n\nPasos:\n-
+  Corregir y volver a medir lo que falló.\n\nListo cuando: La auditoría p
+ asa sin hallazgos graves.\n\nPara empezar\, dígale a Claude: «Retoma el 
+ bloque: Correcciones de la auditoría»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
@@ -455,44 +545,43 @@ DESCRIPTION:Cambio de tema: Correcciones de la auditoría
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:cartillas-20261205-0@plataforma-cartillas
+UID:cartillas-20261204-1@plataforma-cartillas
 DTSTAMP:20261121T120000Z
-DTSTART:20261205T130000Z
-DTEND:20261205T150000Z
-SUMMARY:Unir la rama con main (con permiso) y publicar
-DESCRIPTION:Bloque 1 de 3. Plan completo: docs/plan/calendario-diciembre.md
+DTSTART:20261204T153000Z
+DTEND:20261204T173000Z
+SUMMARY:Unir la rama con main (con permiso)\, publicar y probar en Android 
+ real
+DESCRIPTION:Propósito: Dejar la plataforma publicada y probada en un celul
+ ar de verdad.\n\nPasos:\n- Con permiso de Manuel: unir la rama con main y 
+ publicar.\n- En un Android real: micrófono\, modo avión e instalación.\
+ n\nListo cuando: La plataforma publicada funciona en el celular\, también
+  sin internet.\n\nPara empezar\, dígale a Claude: «Retoma el bloque: Uni
+ r la rama con main (con permiso)\, publicar y probar en Android real»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
-DESCRIPTION:Cambio de tema: Unir la rama con main (con permiso) y publicar
+DESCRIPTION:Cambio de tema: Unir la rama con main (con permiso)\, publicar 
+ y probar en Android real
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:cartillas-20261205-1@plataforma-cartillas
+UID:cartillas-20261204-2@plataforma-cartillas
 DTSTAMP:20261121T120000Z
-DTSTART:20261205T153000Z
-DTEND:20261205T173000Z
-SUMMARY:Prueba en Android real: micrófono y modo avión
-DESCRIPTION:Bloque 2 de 3. Plan completo: docs/plan/calendario-diciembre.md
-BEGIN:VALARM
-ACTION:DISPLAY
-TRIGGER:-PT10M
-DESCRIPTION:Cambio de tema: Prueba en Android real: micrófono y modo avió
- n
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:cartillas-20261205-2@plataforma-cartillas
-DTSTAMP:20261121T120000Z
-DTSTART:20261205T190000Z
-DTEND:20261205T210000Z
-SUMMARY:Cierre de la plataforma: CONTINUAR.md y guía docente al día
-DESCRIPTION:Bloque 3 de 3. Plan completo: docs/plan/calendario-diciembre.md
-BEGIN:VALARM
-ACTION:DISPLAY
-TRIGGER:-PT10M
-DESCRIPTION:Cambio de tema: Cierre de la plataforma: CONTINUAR.md y guía d
+DTSTART:20261204T190000Z
+DTEND:20261204T210000Z
+SUMMARY:Cierre de la plataforma: revisión semanal\, CONTINUAR.md y guía d
  ocente al día
+DESCRIPTION:Propósito: Cerrar la fase de plataforma.\n\nPasos:\n- Actualiz
+ ar CONTINUAR.md y la guía para docentes en PDF con lo nuevo.\n- Revisar c
+ on Manuel lo que viene: mallas y cartillas.\n\nListo cuando: La plataforma
+  queda lista para recibir cartillas nuevas.\n\nPara empezar\, dígale a Cl
+ aude: «Retoma el bloque: Cierre de la plataforma: revisión semanal\, CON
+ TINUAR.md y guía docente al día»
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Cierre de la plataforma: revisión semanal\, CO
+ NTINUAR.md y guía docente al día
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -502,7 +591,14 @@ DTSTART:20261207T130000Z
 DTEND:20261207T150000Z
 SUMMARY:Mallas de inglés transición a 5.° (currículo sugerido y DBA del
   MEN)
-DESCRIPTION:Bloque 1 de 3. Plan completo: docs/plan/calendario-diciembre.md
+DESCRIPTION:Propósito: Definir qué se enseña en inglés en cada grado.\n
+ \nPasos:\n- Por grado: 4 periodos\, que son los 4 territorios\; temas\, vo
+ cabulario\, funciones comunicativas y evidencias.\n- Basado en el currícu
+ lo sugerido de inglés y los DBA del MEN. Inglés 3 ya existe: alinear los
+  demás grados con él.\n- Escribir en docs/pedagogia/mallas/ingles.md.\n\
+ nListo cuando: La malla de inglés de 6 grados queda escrita y Manuel la r
+ evisa.\n\nPara empezar\, dígale a Claude: «Retoma el bloque: Mallas de i
+ nglés transición a 5.° (currículo sugerido y DBA del MEN)»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
@@ -516,7 +612,13 @@ DTSTAMP:20261121T120000Z
 DTSTART:20261207T153000Z
 DTEND:20261207T173000Z
 SUMMARY:Mallas de español transición a 5.° (DBA de Lenguaje)
-DESCRIPTION:Bloque 2 de 3. Plan completo: docs/plan/calendario-diciembre.md
+DESCRIPTION:Propósito: Definir qué se enseña en español en cada grado.\
+ n\nPasos:\n- Por grado y periodo: oralidad\, lectura\, escritura y literat
+ ura según los DBA de Lenguaje.\n- En transición y 1.°: conciencia fonol
+ ógica\, sílabas y lectura inicial.\n- Escribir en docs/pedagogia/mallas/
+ espanol.md.\n\nListo cuando: La malla de español de 6 grados queda escrit
+ a y Manuel la revisa.\n\nPara empezar\, dígale a Claude: «Retoma el bloq
+ ue: Mallas de español transición a 5.° (DBA de Lenguaje)»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
@@ -530,7 +632,13 @@ DTSTAMP:20261121T120000Z
 DTSTART:20261207T190000Z
 DTEND:20261207T210000Z
 SUMMARY:Mallas de matemáticas transición a 5.° (DBA de Matemáticas)
-DESCRIPTION:Bloque 3 de 3. Plan completo: docs/plan/calendario-diciembre.md
+DESCRIPTION:Propósito: Definir qué se enseña en matemáticas en cada gra
+ do.\n\nPasos:\n- Por grado y periodo: numérico\, espacial\, métrico\, al
+ eatorio y variacional\, según los DBA.\n- Asignar a cada tema la plantill
+ a de juego que le sirve.\n- Escribir en docs/pedagogia/mallas/matematicas.
+ md.\n\nListo cuando: La malla de matemáticas de 6 grados queda escrita y 
+ Manuel la revisa.\n\nPara empezar\, dígale a Claude: «Retoma el bloque: 
+ Mallas de matemáticas transición a 5.° (DBA de Matemáticas)»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
@@ -544,7 +652,13 @@ DTSTAMP:20261121T120000Z
 DTSTART:20261209T130000Z
 DTEND:20261209T150000Z
 SUMMARY:Universos y guías de español y matemáticas (mundos\, personajes)
-DESCRIPTION:Bloque 1 de 3. Plan completo: docs/plan/calendario-diciembre.md
+DESCRIPTION:Propósito: Darle a español y a matemáticas un mundo propio\,
+  como Englishland.\n\nPasos:\n- Para cada materia: nombre del mundo\, 4 te
+ rritorios y un guía por territorio.\n- Lumi y Pixie pueden acompañar a l
+ as tres materias.\n- Bocetos de personajes (Canva o ElevenLabs) y escritur
+ a en docs/pedagogia/universos.md.\n\nListo cuando: Manuel aprueba los dos 
+ universos.\n\nPara empezar\, dígale a Claude: «Retoma el bloque: Univers
+ os y guías de español y matemáticas (mundos\, personajes)»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
@@ -557,12 +671,21 @@ UID:cartillas-20261209-1@plataforma-cartillas
 DTSTAMP:20261121T120000Z
 DTSTART:20261209T153000Z
 DTEND:20261209T173000Z
-SUMMARY:Generar los 17 paquetes de cartilla vacíos
-DESCRIPTION:Bloque 2 de 3. Plan completo: docs/plan/calendario-diciembre.md
+SUMMARY:Generar los 17 paquetes de cartilla y plan de audio (Kokoro borrado
+ res\, ElevenLabs guías)
+DESCRIPTION:Propósito: Dejar listas las 17 carpetas para llenarlas.\n\nPas
+ os:\n- Correr nueva_cartilla.py para las 17 cartillas\, con la malla de ca
+ da una.\n- Plan de créditos: Kokoro para borradores y ElevenLabs solo par
+ a guías y frases clave\; revisar el saldo.\n\nListo cuando: Las 17 cartil
+ las abren vacías en la plataforma y el plan de audio cabe en los crédito
+ s.\n\nPara empezar\, dígale a Claude: «Retoma el bloque: Generar los 17 
+ paquetes de cartilla y plan de audio (Kokoro borradores\, ElevenLabs guía
+ s)»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
-DESCRIPTION:Cambio de tema: Generar los 17 paquetes de cartilla vacíos
+DESCRIPTION:Cambio de tema: Generar los 17 paquetes de cartilla y plan de a
+ udio (Kokoro borradores\, ElevenLabs guías)
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -570,24 +693,18 @@ UID:cartillas-20261209-2@plataforma-cartillas
 DTSTAMP:20261121T120000Z
 DTSTART:20261209T190000Z
 DTEND:20261209T210000Z
-SUMMARY:Plan de audio e imágenes: Kokoro para borradores\, ElevenLabs para
-  guías (cuidar créditos)
-DESCRIPTION:Bloque 3 de 3. Plan completo: docs/plan/calendario-diciembre.md
-BEGIN:VALARM
-ACTION:DISPLAY
-TRIGGER:-PT10M
-DESCRIPTION:Cambio de tema: Plan de audio e imágenes: Kokoro para borrador
- es\, ElevenLabs para guías (cuidar créditos)
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:cartillas-20261210-0@plataforma-cartillas
-DTSTAMP:20261121T120000Z
-DTSTART:20261210T130000Z
-DTEND:20261210T150000Z
 SUMMARY:Inglés transición: contenido del territorio 1 (misiones\, banco d
  e ítems\, Mission Stars)
-DESCRIPTION:Bloque 1 de 3. Plan completo: docs/plan/calendario-diciembre.md
+DESCRIPTION:Propósito: Dejar jugable el primer territorio de Inglés trans
+ ición.\n\nPasos:\n- Tomar de la malla de Inglés transición los temas de
+ l periodo 1.\n- Definir 5 o 6 misiones de 3 a 5 minutos\, cada una con su 
+ plantilla de juego.\n- Llenar el banco de ítems (palabras\, números\, im
+ ágenes)\, los textos del guía y las Mission Stars. Todo debe poder usars
+ e sin saber leer (regla 2).\n- Probar el recorrido en el celular\, con aud
+ io provisional.\n\nListo cuando: El territorio 1 se juega de principio a f
+ in a 390 px.\n\nPara empezar\, dígale a Claude: «Retoma el bloque: Ingl
+ és transición: contenido del territorio 1 (misiones\, banco de ítems\, 
+ Mission Stars)»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
@@ -596,13 +713,20 @@ DESCRIPTION:Cambio de tema: Inglés transición: contenido del territorio 1
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:cartillas-20261210-1@plataforma-cartillas
+UID:cartillas-20261210-0@plataforma-cartillas
 DTSTAMP:20261121T120000Z
-DTSTART:20261210T153000Z
-DTEND:20261210T173000Z
+DTSTART:20261210T130000Z
+DTEND:20261210T150000Z
 SUMMARY:Inglés transición: materiales del docente del periodo 1 (guía\, 
  planeador\, láminas\, fichas\, prueba)
-DESCRIPTION:Bloque 2 de 3. Plan completo: docs/plan/calendario-diciembre.md
+DESCRIPTION:Propósito: Que el docente de Inglés transición pueda dar el 
+ periodo 1.\n\nPasos:\n- Escribir la guía y el planeador de 2 clases de 55
+  minutos por tema.\n- Hacer las láminas\, las fichas (carta y media carta
+ ) y la prueba del tema.\n- Pasarlo a JSON y revisarlo en Planear y en la i
+ mpresión.\n\nListo cuando: Los materiales del periodo 1 se ven en Planear
+  y se imprimen bien.\n\nPara empezar\, dígale a Claude: «Retoma el bloqu
+ e: Inglés transición: materiales del docente del periodo 1 (guía\, plan
+ eador\, láminas\, fichas\, prueba)»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
@@ -611,13 +735,22 @@ DESCRIPTION:Cambio de tema: Inglés transición: materiales del docente del
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:cartillas-20261210-2@plataforma-cartillas
+UID:cartillas-20261210-1@plataforma-cartillas
 DTSTAMP:20261121T120000Z
-DTSTART:20261210T190000Z
-DTEND:20261210T210000Z
+DTSTART:20261210T153000Z
+DTEND:20261210T173000Z
 SUMMARY:Español transición: contenido del territorio 1 (misiones\, banco 
  de ítems\, Mission Stars)
-DESCRIPTION:Bloque 3 de 3. Plan completo: docs/plan/calendario-diciembre.md
+DESCRIPTION:Propósito: Dejar jugable el primer territorio de Español tran
+ sición.\n\nPasos:\n- Tomar de la malla de Español transición los temas 
+ del periodo 1.\n- Definir 5 o 6 misiones de 3 a 5 minutos\, cada una con s
+ u plantilla de juego.\n- Llenar el banco de ítems (palabras\, números\, 
+ imágenes)\, los textos del guía y las Mission Stars. Todo debe poder usa
+ rse sin saber leer (regla 2).\n- Probar el recorrido en el celular\, con a
+ udio provisional.\n\nListo cuando: El territorio 1 se juega de principio a
+  fin a 390 px.\n\nPara empezar\, dígale a Claude: «Retoma el bloque: Esp
+ añol transición: contenido del territorio 1 (misiones\, banco de ítems\
+ , Mission Stars)»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
@@ -626,13 +759,20 @@ DESCRIPTION:Cambio de tema: Español transición: contenido del territorio
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:cartillas-20261211-0@plataforma-cartillas
+UID:cartillas-20261210-2@plataforma-cartillas
 DTSTAMP:20261121T120000Z
-DTSTART:20261211T130000Z
-DTEND:20261211T150000Z
+DTSTART:20261210T190000Z
+DTEND:20261210T210000Z
 SUMMARY:Español transición: materiales del docente del periodo 1 (guía\,
   planeador\, láminas\, fichas\, prueba)
-DESCRIPTION:Bloque 1 de 3. Plan completo: docs/plan/calendario-diciembre.md
+DESCRIPTION:Propósito: Que el docente de Español transición pueda dar el
+  periodo 1.\n\nPasos:\n- Escribir la guía y el planeador de 2 clases de 5
+ 5 minutos por tema.\n- Hacer las láminas\, las fichas (carta y media cart
+ a) y la prueba del tema.\n- Pasarlo a JSON y revisarlo en Planear y en la 
+ impresión.\n\nListo cuando: Los materiales del periodo 1 se ven en Planea
+ r y se imprimen bien.\n\nPara empezar\, dígale a Claude: «Retoma el bloq
+ ue: Español transición: materiales del docente del periodo 1 (guía\, pl
+ aneador\, láminas\, fichas\, prueba)»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
@@ -641,13 +781,22 @@ DESCRIPTION:Cambio de tema: Español transición: materiales del docente de
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:cartillas-20261211-1@plataforma-cartillas
+UID:cartillas-20261211-0@plataforma-cartillas
 DTSTAMP:20261121T120000Z
-DTSTART:20261211T153000Z
-DTEND:20261211T173000Z
+DTSTART:20261211T130000Z
+DTEND:20261211T150000Z
 SUMMARY:Matemáticas transición: contenido del territorio 1 (misiones\, ba
  nco de ítems\, Mission Stars)
-DESCRIPTION:Bloque 2 de 3. Plan completo: docs/plan/calendario-diciembre.md
+DESCRIPTION:Propósito: Dejar jugable el primer territorio de Matemáticas 
+ transición.\n\nPasos:\n- Tomar de la malla de Matemáticas transición lo
+ s temas del periodo 1.\n- Definir 5 o 6 misiones de 3 a 5 minutos\, cada u
+ na con su plantilla de juego.\n- Llenar el banco de ítems (palabras\, nú
+ meros\, imágenes)\, los textos del guía y las Mission Stars. Todo debe p
+ oder usarse sin saber leer (regla 2).\n- Probar el recorrido en el celular
+ \, con audio provisional.\n\nListo cuando: El territorio 1 se juega de pri
+ ncipio a fin a 390 px.\n\nPara empezar\, dígale a Claude: «Retoma el blo
+ que: Matemáticas transición: contenido del territorio 1 (misiones\, banc
+ o de ítems\, Mission Stars)»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
@@ -656,13 +805,20 @@ DESCRIPTION:Cambio de tema: Matemáticas transición: contenido del territo
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:cartillas-20261211-2@plataforma-cartillas
+UID:cartillas-20261211-1@plataforma-cartillas
 DTSTAMP:20261121T120000Z
-DTSTART:20261211T190000Z
-DTEND:20261211T210000Z
+DTSTART:20261211T153000Z
+DTEND:20261211T173000Z
 SUMMARY:Matemáticas transición: materiales del docente del periodo 1 (gu
  ía\, planeador\, láminas\, fichas\, prueba)
-DESCRIPTION:Bloque 3 de 3. Plan completo: docs/plan/calendario-diciembre.md
+DESCRIPTION:Propósito: Que el docente de Matemáticas transición pueda da
+ r el periodo 1.\n\nPasos:\n- Escribir la guía y el planeador de 2 clases 
+ de 55 minutos por tema.\n- Hacer las láminas\, las fichas (carta y media 
+ carta) y la prueba del tema.\n- Pasarlo a JSON y revisarlo en Planear y en
+  la impresión.\n\nListo cuando: Los materiales del periodo 1 se ven en Pl
+ anear y se imprimen bien.\n\nPara empezar\, dígale a Claude: «Retoma el 
+ bloque: Matemáticas transición: materiales del docente del periodo 1 (gu
+ ía\, planeador\, láminas\, fichas\, prueba)»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
@@ -671,13 +827,41 @@ DESCRIPTION:Cambio de tema: Matemáticas transición: materiales del docent
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:cartillas-20261212-0@plataforma-cartillas
+UID:cartillas-20261211-2@plataforma-cartillas
 DTSTAMP:20261121T120000Z
-DTSTART:20261212T130000Z
-DTEND:20261212T150000Z
+DTSTART:20261211T190000Z
+DTEND:20261211T210000Z
+SUMMARY:Revisión semanal: probar en celular a 390 px\, actualizar CONTINUA
+ R.md y publicar (con permiso)
+DESCRIPTION:Propósito: Cerrar la semana con todo probado y publicado.\n\nP
+ asos:\n- Correr todas las pruebas y mirar lo nuevo en el celular a 390 px.
+ \n- Actualizar CONTINUAR.md.\n- Pedir permiso a Manuel y publicar.\n\nList
+ o cuando: Lo de la semana está publicado y CONTINUAR.md al día.\n\nPara 
+ empezar\, dígale a Claude: «Retoma el bloque: Revisión semanal: probar 
+ en celular a 390 px\, actualizar CONTINUAR.md y publicar (con permiso)»
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Revisión semanal: probar en celular a 390 px\,
+  actualizar CONTINUAR.md y publicar (con permiso)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261214-0@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261214T130000Z
+DTEND:20261214T150000Z
 SUMMARY:Inglés 1.°: contenido del territorio 1 (misiones\, banco de ítem
  s\, Mission Stars)
-DESCRIPTION:Bloque 1 de 3. Plan completo: docs/plan/calendario-diciembre.md
+DESCRIPTION:Propósito: Dejar jugable el primer territorio de Inglés 1.°.
+ \n\nPasos:\n- Tomar de la malla de Inglés 1.° los temas del periodo 1.\n
+ - Definir 5 o 6 misiones de 3 a 5 minutos\, cada una con su plantilla de j
+ uego.\n- Llenar el banco de ítems (palabras\, números\, imágenes)\, los
+  textos del guía y las Mission Stars. Todo debe poder usarse sin saber le
+ er (regla 2).\n- Probar el recorrido en el celular\, con audio provisional
+ .\n\nListo cuando: El territorio 1 se juega de principio a fin a 390 px.\n
+ \nPara empezar\, dígale a Claude: «Retoma el bloque: Inglés 1.°: conte
+ nido del territorio 1 (misiones\, banco de ítems\, Mission Stars)»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
@@ -686,13 +870,20 @@ DESCRIPTION:Cambio de tema: Inglés 1.°: contenido del territorio 1 (misio
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:cartillas-20261212-1@plataforma-cartillas
+UID:cartillas-20261214-1@plataforma-cartillas
 DTSTAMP:20261121T120000Z
-DTSTART:20261212T153000Z
-DTEND:20261212T173000Z
+DTSTART:20261214T153000Z
+DTEND:20261214T173000Z
 SUMMARY:Inglés 1.°: materiales del docente del periodo 1 (guía\, planead
  or\, láminas\, fichas\, prueba)
-DESCRIPTION:Bloque 2 de 3. Plan completo: docs/plan/calendario-diciembre.md
+DESCRIPTION:Propósito: Que el docente de Inglés 1.° pueda dar el periodo
+  1.\n\nPasos:\n- Escribir la guía y el planeador de 2 clases de 55 minuto
+ s por tema.\n- Hacer las láminas\, las fichas (carta y media carta) y la 
+ prueba del tema.\n- Pasarlo a JSON y revisarlo en Planear y en la impresi
+ ón.\n\nListo cuando: Los materiales del periodo 1 se ven en Planear y se 
+ imprimen bien.\n\nPara empezar\, dígale a Claude: «Retoma el bloque: Ing
+ lés 1.°: materiales del docente del periodo 1 (guía\, planeador\, lámi
+ nas\, fichas\, prueba)»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
@@ -701,28 +892,21 @@ DESCRIPTION:Cambio de tema: Inglés 1.°: materiales del docente del period
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:cartillas-20261212-2@plataforma-cartillas
+UID:cartillas-20261214-2@plataforma-cartillas
 DTSTAMP:20261121T120000Z
-DTSTART:20261212T190000Z
-DTEND:20261212T210000Z
-SUMMARY:Revisión semanal: probar a 390 px\, actualizar CONTINUAR.md y publ
- icar (con permiso)
-DESCRIPTION:Bloque 3 de 3. Plan completo: docs/plan/calendario-diciembre.md
-BEGIN:VALARM
-ACTION:DISPLAY
-TRIGGER:-PT10M
-DESCRIPTION:Cambio de tema: Revisión semanal: probar a 390 px\, actualizar
-  CONTINUAR.md y publicar (con permiso)
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:cartillas-20261214-0@plataforma-cartillas
-DTSTAMP:20261121T120000Z
-DTSTART:20261214T130000Z
-DTEND:20261214T150000Z
+DTSTART:20261214T190000Z
+DTEND:20261214T210000Z
 SUMMARY:Español 1.°: contenido del territorio 1 (misiones\, banco de íte
  ms\, Mission Stars)
-DESCRIPTION:Bloque 1 de 3. Plan completo: docs/plan/calendario-diciembre.md
+DESCRIPTION:Propósito: Dejar jugable el primer territorio de Español 1.°
+ .\n\nPasos:\n- Tomar de la malla de Español 1.° los temas del periodo 1.
+ \n- Definir 5 o 6 misiones de 3 a 5 minutos\, cada una con su plantilla de
+  juego.\n- Llenar el banco de ítems (palabras\, números\, imágenes)\, l
+ os textos del guía y las Mission Stars. Todo debe poder usarse sin saber 
+ leer (regla 2).\n- Probar el recorrido en el celular\, con audio provision
+ al.\n\nListo cuando: El territorio 1 se juega de principio a fin a 390 px.
+ \n\nPara empezar\, dígale a Claude: «Retoma el bloque: Español 1.°: co
+ ntenido del territorio 1 (misiones\, banco de ítems\, Mission Stars)»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
@@ -731,13 +915,20 @@ DESCRIPTION:Cambio de tema: Español 1.°: contenido del territorio 1 (misi
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:cartillas-20261214-1@plataforma-cartillas
+UID:cartillas-20261215-0@plataforma-cartillas
 DTSTAMP:20261121T120000Z
-DTSTART:20261214T153000Z
-DTEND:20261214T173000Z
+DTSTART:20261215T130000Z
+DTEND:20261215T150000Z
 SUMMARY:Español 1.°: materiales del docente del periodo 1 (guía\, planea
  dor\, láminas\, fichas\, prueba)
-DESCRIPTION:Bloque 2 de 3. Plan completo: docs/plan/calendario-diciembre.md
+DESCRIPTION:Propósito: Que el docente de Español 1.° pueda dar el period
+ o 1.\n\nPasos:\n- Escribir la guía y el planeador de 2 clases de 55 minut
+ os por tema.\n- Hacer las láminas\, las fichas (carta y media carta) y la
+  prueba del tema.\n- Pasarlo a JSON y revisarlo en Planear y en la impresi
+ ón.\n\nListo cuando: Los materiales del periodo 1 se ven en Planear y se 
+ imprimen bien.\n\nPara empezar\, dígale a Claude: «Retoma el bloque: Esp
+ añol 1.°: materiales del docente del periodo 1 (guía\, planeador\, lám
+ inas\, fichas\, prueba)»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
@@ -746,13 +937,22 @@ DESCRIPTION:Cambio de tema: Español 1.°: materiales del docente del perio
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:cartillas-20261214-2@plataforma-cartillas
+UID:cartillas-20261215-1@plataforma-cartillas
 DTSTAMP:20261121T120000Z
-DTSTART:20261214T190000Z
-DTEND:20261214T210000Z
+DTSTART:20261215T153000Z
+DTEND:20261215T173000Z
 SUMMARY:Matemáticas 1.°: contenido del territorio 1 (misiones\, banco de 
  ítems\, Mission Stars)
-DESCRIPTION:Bloque 3 de 3. Plan completo: docs/plan/calendario-diciembre.md
+DESCRIPTION:Propósito: Dejar jugable el primer territorio de Matemáticas 
+ 1.°.\n\nPasos:\n- Tomar de la malla de Matemáticas 1.° los temas del pe
+ riodo 1.\n- Definir 5 o 6 misiones de 3 a 5 minutos\, cada una con su plan
+ tilla de juego.\n- Llenar el banco de ítems (palabras\, números\, imáge
+ nes)\, los textos del guía y las Mission Stars. Todo debe poder usarse si
+ n saber leer (regla 2).\n- Probar el recorrido en el celular\, con audio p
+ rovisional.\n\nListo cuando: El territorio 1 se juega de principio a fin a
+  390 px.\n\nPara empezar\, dígale a Claude: «Retoma el bloque: Matemáti
+ cas 1.°: contenido del territorio 1 (misiones\, banco de ítems\, Mission
+  Stars)»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
@@ -761,13 +961,20 @@ DESCRIPTION:Cambio de tema: Matemáticas 1.°: contenido del territorio 1 (
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:cartillas-20261215-0@plataforma-cartillas
+UID:cartillas-20261215-2@plataforma-cartillas
 DTSTAMP:20261121T120000Z
-DTSTART:20261215T130000Z
-DTEND:20261215T150000Z
+DTSTART:20261215T190000Z
+DTEND:20261215T210000Z
 SUMMARY:Matemáticas 1.°: materiales del docente del periodo 1 (guía\, pl
  aneador\, láminas\, fichas\, prueba)
-DESCRIPTION:Bloque 1 de 3. Plan completo: docs/plan/calendario-diciembre.md
+DESCRIPTION:Propósito: Que el docente de Matemáticas 1.° pueda dar el pe
+ riodo 1.\n\nPasos:\n- Escribir la guía y el planeador de 2 clases de 55 m
+ inutos por tema.\n- Hacer las láminas\, las fichas (carta y media carta) 
+ y la prueba del tema.\n- Pasarlo a JSON y revisarlo en Planear y en la imp
+ resión.\n\nListo cuando: Los materiales del periodo 1 se ven en Planear y
+  se imprimen bien.\n\nPara empezar\, dígale a Claude: «Retoma el bloque:
+  Matemáticas 1.°: materiales del docente del periodo 1 (guía\, planeado
+ r\, láminas\, fichas\, prueba)»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
@@ -776,45 +983,24 @@ DESCRIPTION:Cambio de tema: Matemáticas 1.°: materiales del docente del p
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:cartillas-20261215-1@plataforma-cartillas
+UID:cartillas-20261216-0@plataforma-cartillas
 DTSTAMP:20261121T120000Z
-DTSTART:20261215T153000Z
-DTEND:20261215T173000Z
+DTSTART:20261216T130000Z
+DTEND:20261216T150000Z
 SUMMARY:Audio e imágenes de transición y 1.° (las tres materias)
-DESCRIPTION:Bloque 2 de 3. Plan completo: docs/plan/calendario-diciembre.md
+DESCRIPTION:Propósito: Poner voz e imágenes definitivas a las cartillas d
+ e transición y 1.°.\n\nPasos:\n- Generar las voces: ElevenLabs para guí
+ as y frases clave\, Kokoro para lo demás. Llevar la cuenta de créditos.\
+ n- Hacer las imágenes en WebP al tamaño en que se muestran.\n- Revisar q
+ ue cada cartilla pese menos de 2 MB en la primera carga.\n\nListo cuando: 
+ Las cartillas de transición y 1.° tienen audio e imágenes y respetan el
+  peso.\n\nPara empezar\, dígale a Claude: «Retoma el bloque: Audio e im
+ ágenes de transición y 1.° (las tres materias)»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
 DESCRIPTION:Cambio de tema: Audio e imágenes de transición y 1.° (las tr
  es materias)
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:cartillas-20261215-2@plataforma-cartillas
-DTSTAMP:20261121T120000Z
-DTSTART:20261215T190000Z
-DTEND:20261215T210000Z
-SUMMARY:Audio e imágenes de transición y 1.°: revisión
-DESCRIPTION:Bloque 3 de 3. Plan completo: docs/plan/calendario-diciembre.md
-BEGIN:VALARM
-ACTION:DISPLAY
-TRIGGER:-PT10M
-DESCRIPTION:Cambio de tema: Audio e imágenes de transición y 1.°: revisi
- ón
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:cartillas-20261216-0@plataforma-cartillas
-DTSTAMP:20261121T120000Z
-DTSTART:20261216T130000Z
-DTEND:20261216T150000Z
-SUMMARY:Prueba de las cartillas de transición y 1.° en celular
-DESCRIPTION:Bloque 1 de 3. Plan completo: docs/plan/calendario-diciembre.md
-BEGIN:VALARM
-ACTION:DISPLAY
-TRIGGER:-PT10M
-DESCRIPTION:Cambio de tema: Prueba de las cartillas de transición y 1.° e
- n celular
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
@@ -824,7 +1010,15 @@ DTSTART:20261216T153000Z
 DTEND:20261216T173000Z
 SUMMARY:Inglés 2.°: contenido del territorio 1 (misiones\, banco de ítem
  s\, Mission Stars)
-DESCRIPTION:Bloque 2 de 3. Plan completo: docs/plan/calendario-diciembre.md
+DESCRIPTION:Propósito: Dejar jugable el primer territorio de Inglés 2.°.
+ \n\nPasos:\n- Tomar de la malla de Inglés 2.° los temas del periodo 1.\n
+ - Definir 5 o 6 misiones de 3 a 5 minutos\, cada una con su plantilla de j
+ uego.\n- Llenar el banco de ítems (palabras\, números\, imágenes)\, los
+  textos del guía y las Mission Stars.\n- Probar el recorrido en el celula
+ r\, con audio provisional.\n\nListo cuando: El territorio 1 se juega de pr
+ incipio a fin a 390 px.\n\nPara empezar\, dígale a Claude: «Retoma el bl
+ oque: Inglés 2.°: contenido del territorio 1 (misiones\, banco de ítems
+ \, Mission Stars)»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
@@ -839,7 +1033,14 @@ DTSTART:20261216T190000Z
 DTEND:20261216T210000Z
 SUMMARY:Inglés 2.°: materiales del docente del periodo 1 (guía\, planead
  or\, láminas\, fichas\, prueba)
-DESCRIPTION:Bloque 3 de 3. Plan completo: docs/plan/calendario-diciembre.md
+DESCRIPTION:Propósito: Que el docente de Inglés 2.° pueda dar el periodo
+  1.\n\nPasos:\n- Escribir la guía y el planeador de 2 clases de 55 minuto
+ s por tema.\n- Hacer las láminas\, las fichas (carta y media carta) y la 
+ prueba del tema.\n- Pasarlo a JSON y revisarlo en Planear y en la impresi
+ ón.\n\nListo cuando: Los materiales del periodo 1 se ven en Planear y se 
+ imprimen bien.\n\nPara empezar\, dígale a Claude: «Retoma el bloque: Ing
+ lés 2.°: materiales del docente del periodo 1 (guía\, planeador\, lámi
+ nas\, fichas\, prueba)»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
@@ -854,7 +1055,15 @@ DTSTART:20261217T130000Z
 DTEND:20261217T150000Z
 SUMMARY:Español 2.°: contenido del territorio 1 (misiones\, banco de íte
  ms\, Mission Stars)
-DESCRIPTION:Bloque 1 de 3. Plan completo: docs/plan/calendario-diciembre.md
+DESCRIPTION:Propósito: Dejar jugable el primer territorio de Español 2.°
+ .\n\nPasos:\n- Tomar de la malla de Español 2.° los temas del periodo 1.
+ \n- Definir 5 o 6 misiones de 3 a 5 minutos\, cada una con su plantilla de
+  juego.\n- Llenar el banco de ítems (palabras\, números\, imágenes)\, l
+ os textos del guía y las Mission Stars.\n- Probar el recorrido en el celu
+ lar\, con audio provisional.\n\nListo cuando: El territorio 1 se juega de 
+ principio a fin a 390 px.\n\nPara empezar\, dígale a Claude: «Retoma el 
+ bloque: Español 2.°: contenido del territorio 1 (misiones\, banco de ít
+ ems\, Mission Stars)»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
@@ -869,7 +1078,14 @@ DTSTART:20261217T153000Z
 DTEND:20261217T173000Z
 SUMMARY:Español 2.°: materiales del docente del periodo 1 (guía\, planea
  dor\, láminas\, fichas\, prueba)
-DESCRIPTION:Bloque 2 de 3. Plan completo: docs/plan/calendario-diciembre.md
+DESCRIPTION:Propósito: Que el docente de Español 2.° pueda dar el period
+ o 1.\n\nPasos:\n- Escribir la guía y el planeador de 2 clases de 55 minut
+ os por tema.\n- Hacer las láminas\, las fichas (carta y media carta) y la
+  prueba del tema.\n- Pasarlo a JSON y revisarlo en Planear y en la impresi
+ ón.\n\nListo cuando: Los materiales del periodo 1 se ven en Planear y se 
+ imprimen bien.\n\nPara empezar\, dígale a Claude: «Retoma el bloque: Esp
+ añol 2.°: materiales del docente del periodo 1 (guía\, planeador\, lám
+ inas\, fichas\, prueba)»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
@@ -884,7 +1100,15 @@ DTSTART:20261217T190000Z
 DTEND:20261217T210000Z
 SUMMARY:Matemáticas 2.°: contenido del territorio 1 (misiones\, banco de 
  ítems\, Mission Stars)
-DESCRIPTION:Bloque 3 de 3. Plan completo: docs/plan/calendario-diciembre.md
+DESCRIPTION:Propósito: Dejar jugable el primer territorio de Matemáticas 
+ 2.°.\n\nPasos:\n- Tomar de la malla de Matemáticas 2.° los temas del pe
+ riodo 1.\n- Definir 5 o 6 misiones de 3 a 5 minutos\, cada una con su plan
+ tilla de juego.\n- Llenar el banco de ítems (palabras\, números\, imáge
+ nes)\, los textos del guía y las Mission Stars.\n- Probar el recorrido en
+  el celular\, con audio provisional.\n\nListo cuando: El territorio 1 se j
+ uega de principio a fin a 390 px.\n\nPara empezar\, dígale a Claude: «Re
+ toma el bloque: Matemáticas 2.°: contenido del territorio 1 (misiones\, 
+ banco de ítems\, Mission Stars)»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
@@ -899,7 +1123,14 @@ DTSTART:20261218T130000Z
 DTEND:20261218T150000Z
 SUMMARY:Matemáticas 2.°: materiales del docente del periodo 1 (guía\, pl
  aneador\, láminas\, fichas\, prueba)
-DESCRIPTION:Bloque 1 de 3. Plan completo: docs/plan/calendario-diciembre.md
+DESCRIPTION:Propósito: Que el docente de Matemáticas 2.° pueda dar el pe
+ riodo 1.\n\nPasos:\n- Escribir la guía y el planeador de 2 clases de 55 m
+ inutos por tema.\n- Hacer las láminas\, las fichas (carta y media carta) 
+ y la prueba del tema.\n- Pasarlo a JSON y revisarlo en Planear y en la imp
+ resión.\n\nListo cuando: Los materiales del periodo 1 se ven en Planear y
+  se imprimen bien.\n\nPara empezar\, dígale a Claude: «Retoma el bloque:
+  Matemáticas 2.°: materiales del docente del periodo 1 (guía\, planeado
+ r\, láminas\, fichas\, prueba)»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
@@ -914,7 +1145,15 @@ DTSTART:20261218T153000Z
 DTEND:20261218T173000Z
 SUMMARY:Español 3.°: contenido del territorio 1 (misiones\, banco de íte
  ms\, Mission Stars)
-DESCRIPTION:Bloque 2 de 3. Plan completo: docs/plan/calendario-diciembre.md
+DESCRIPTION:Propósito: Dejar jugable el primer territorio de Español 3.°
+ .\n\nPasos:\n- Tomar de la malla de Español 3.° los temas del periodo 1.
+ \n- Definir 5 o 6 misiones de 3 a 5 minutos\, cada una con su plantilla de
+  juego.\n- Llenar el banco de ítems (palabras\, números\, imágenes)\, l
+ os textos del guía y las Mission Stars.\n- Probar el recorrido en el celu
+ lar\, con audio provisional.\n\nListo cuando: El territorio 1 se juega de 
+ principio a fin a 390 px.\n\nPara empezar\, dígale a Claude: «Retoma el 
+ bloque: Español 3.°: contenido del territorio 1 (misiones\, banco de ít
+ ems\, Mission Stars)»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
@@ -927,9 +1166,36 @@ UID:cartillas-20261218-2@plataforma-cartillas
 DTSTAMP:20261121T120000Z
 DTSTART:20261218T190000Z
 DTEND:20261218T210000Z
+SUMMARY:Revisión semanal: probar en celular a 390 px\, actualizar CONTINUA
+ R.md y publicar (con permiso)
+DESCRIPTION:Propósito: Cerrar la semana con todo probado y publicado.\n\nP
+ asos:\n- Correr todas las pruebas y mirar lo nuevo en el celular a 390 px.
+ \n- Actualizar CONTINUAR.md.\n- Pedir permiso a Manuel y publicar.\n\nList
+ o cuando: Lo de la semana está publicado y CONTINUAR.md al día.\n\nPara 
+ empezar\, dígale a Claude: «Retoma el bloque: Revisión semanal: probar 
+ en celular a 390 px\, actualizar CONTINUAR.md y publicar (con permiso)»
+BEGIN:VALARM
+ACTION:DISPLAY
+TRIGGER:-PT10M
+DESCRIPTION:Cambio de tema: Revisión semanal: probar en celular a 390 px\,
+  actualizar CONTINUAR.md y publicar (con permiso)
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:cartillas-20261221-0@plataforma-cartillas
+DTSTAMP:20261121T120000Z
+DTSTART:20261221T130000Z
+DTEND:20261221T150000Z
 SUMMARY:Español 3.°: materiales del docente del periodo 1 (guía\, planea
  dor\, láminas\, fichas\, prueba)
-DESCRIPTION:Bloque 3 de 3. Plan completo: docs/plan/calendario-diciembre.md
+DESCRIPTION:Propósito: Que el docente de Español 3.° pueda dar el period
+ o 1.\n\nPasos:\n- Escribir la guía y el planeador de 2 clases de 55 minut
+ os por tema.\n- Hacer las láminas\, las fichas (carta y media carta) y la
+  prueba del tema.\n- Pasarlo a JSON y revisarlo en Planear y en la impresi
+ ón.\n\nListo cuando: Los materiales del periodo 1 se ven en Planear y se 
+ imprimen bien.\n\nPara empezar\, dígale a Claude: «Retoma el bloque: Esp
+ añol 3.°: materiales del docente del periodo 1 (guía\, planeador\, lám
+ inas\, fichas\, prueba)»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
@@ -938,13 +1204,21 @@ DESCRIPTION:Cambio de tema: Español 3.°: materiales del docente del perio
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:cartillas-20261219-0@plataforma-cartillas
+UID:cartillas-20261221-1@plataforma-cartillas
 DTSTAMP:20261121T120000Z
-DTSTART:20261219T130000Z
-DTEND:20261219T150000Z
+DTSTART:20261221T153000Z
+DTEND:20261221T173000Z
 SUMMARY:Matemáticas 3.°: contenido del territorio 1 (misiones\, banco de 
  ítems\, Mission Stars)
-DESCRIPTION:Bloque 1 de 3. Plan completo: docs/plan/calendario-diciembre.md
+DESCRIPTION:Propósito: Dejar jugable el primer territorio de Matemáticas 
+ 3.°.\n\nPasos:\n- Tomar de la malla de Matemáticas 3.° los temas del pe
+ riodo 1.\n- Definir 5 o 6 misiones de 3 a 5 minutos\, cada una con su plan
+ tilla de juego.\n- Llenar el banco de ítems (palabras\, números\, imáge
+ nes)\, los textos del guía y las Mission Stars.\n- Probar el recorrido en
+  el celular\, con audio provisional.\n\nListo cuando: El territorio 1 se j
+ uega de principio a fin a 390 px.\n\nPara empezar\, dígale a Claude: «Re
+ toma el bloque: Matemáticas 3.°: contenido del territorio 1 (misiones\, 
+ banco de ítems\, Mission Stars)»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
@@ -953,13 +1227,20 @@ DESCRIPTION:Cambio de tema: Matemáticas 3.°: contenido del territorio 1 (
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:cartillas-20261219-1@plataforma-cartillas
+UID:cartillas-20261221-2@plataforma-cartillas
 DTSTAMP:20261121T120000Z
-DTSTART:20261219T153000Z
-DTEND:20261219T173000Z
+DTSTART:20261221T190000Z
+DTEND:20261221T210000Z
 SUMMARY:Matemáticas 3.°: materiales del docente del periodo 1 (guía\, pl
  aneador\, láminas\, fichas\, prueba)
-DESCRIPTION:Bloque 2 de 3. Plan completo: docs/plan/calendario-diciembre.md
+DESCRIPTION:Propósito: Que el docente de Matemáticas 3.° pueda dar el pe
+ riodo 1.\n\nPasos:\n- Escribir la guía y el planeador de 2 clases de 55 m
+ inutos por tema.\n- Hacer las láminas\, las fichas (carta y media carta) 
+ y la prueba del tema.\n- Pasarlo a JSON y revisarlo en Planear y en la imp
+ resión.\n\nListo cuando: Los materiales del periodo 1 se ven en Planear y
+  se imprimen bien.\n\nPara empezar\, dígale a Claude: «Retoma el bloque:
+  Matemáticas 3.°: materiales del docente del periodo 1 (guía\, planeado
+ r\, láminas\, fichas\, prueba)»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
@@ -968,27 +1249,19 @@ DESCRIPTION:Cambio de tema: Matemáticas 3.°: materiales del docente del p
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:cartillas-20261219-2@plataforma-cartillas
+UID:cartillas-20261222-0@plataforma-cartillas
 DTSTAMP:20261121T120000Z
-DTSTART:20261219T190000Z
-DTEND:20261219T210000Z
-SUMMARY:Revisión semanal: probar a 390 px\, actualizar CONTINUAR.md y publ
- icar (con permiso)
-DESCRIPTION:Bloque 3 de 3. Plan completo: docs/plan/calendario-diciembre.md
-BEGIN:VALARM
-ACTION:DISPLAY
-TRIGGER:-PT10M
-DESCRIPTION:Cambio de tema: Revisión semanal: probar a 390 px\, actualizar
-  CONTINUAR.md y publicar (con permiso)
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:cartillas-20261221-0@plataforma-cartillas
-DTSTAMP:20261121T120000Z
-DTSTART:20261221T130000Z
-DTEND:20261221T150000Z
+DTSTART:20261222T130000Z
+DTEND:20261222T150000Z
 SUMMARY:Audio e imágenes de 2.° y 3.° (las tres materias)
-DESCRIPTION:Bloque 1 de 3. Plan completo: docs/plan/calendario-diciembre.md
+DESCRIPTION:Propósito: Poner voz e imágenes definitivas a las cartillas d
+ e 2.° y 3.°.\n\nPasos:\n- Generar las voces: ElevenLabs para guías y fr
+ ases clave\, Kokoro para lo demás. Llevar la cuenta de créditos.\n- Hace
+ r las imágenes en WebP al tamaño en que se muestran.\n- Revisar que cada
+  cartilla pese menos de 2 MB en la primera carga.\n\nListo cuando: Las car
+ tillas de 2.° y 3.° tienen audio e imágenes y respetan el peso.\n\nPara
+  empezar\, dígale a Claude: «Retoma el bloque: Audio e imágenes de 2.°
+  y 3.° (las tres materias)»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
@@ -997,40 +1270,21 @@ DESCRIPTION:Cambio de tema: Audio e imágenes de 2.° y 3.° (las tres mate
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:cartillas-20261221-1@plataforma-cartillas
+UID:cartillas-20261222-1@plataforma-cartillas
 DTSTAMP:20261121T120000Z
-DTSTART:20261221T153000Z
-DTEND:20261221T173000Z
-SUMMARY:Audio e imágenes de 2.° y 3.°: revisión
-DESCRIPTION:Bloque 2 de 3. Plan completo: docs/plan/calendario-diciembre.md
-BEGIN:VALARM
-ACTION:DISPLAY
-TRIGGER:-PT10M
-DESCRIPTION:Cambio de tema: Audio e imágenes de 2.° y 3.°: revisión
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:cartillas-20261221-2@plataforma-cartillas
-DTSTAMP:20261121T120000Z
-DTSTART:20261221T190000Z
-DTEND:20261221T210000Z
-SUMMARY:Prueba de las cartillas de 2.° y 3.° en celular
-DESCRIPTION:Bloque 3 de 3. Plan completo: docs/plan/calendario-diciembre.md
-BEGIN:VALARM
-ACTION:DISPLAY
-TRIGGER:-PT10M
-DESCRIPTION:Cambio de tema: Prueba de las cartillas de 2.° y 3.° en celul
- ar
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:cartillas-20261222-0@plataforma-cartillas
-DTSTAMP:20261121T120000Z
-DTSTART:20261222T130000Z
-DTEND:20261222T150000Z
+DTSTART:20261222T153000Z
+DTEND:20261222T173000Z
 SUMMARY:Inglés 4.°: contenido del territorio 1 (misiones\, banco de ítem
  s\, Mission Stars)
-DESCRIPTION:Bloque 1 de 3. Plan completo: docs/plan/calendario-diciembre.md
+DESCRIPTION:Propósito: Dejar jugable el primer territorio de Inglés 4.°.
+ \n\nPasos:\n- Tomar de la malla de Inglés 4.° los temas del periodo 1.\n
+ - Definir 5 o 6 misiones de 3 a 5 minutos\, cada una con su plantilla de j
+ uego.\n- Llenar el banco de ítems (palabras\, números\, imágenes)\, los
+  textos del guía y las Mission Stars.\n- Probar el recorrido en el celula
+ r\, con audio provisional.\n\nListo cuando: El territorio 1 se juega de pr
+ incipio a fin a 390 px.\n\nPara empezar\, dígale a Claude: «Retoma el bl
+ oque: Inglés 4.°: contenido del territorio 1 (misiones\, banco de ítems
+ \, Mission Stars)»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
@@ -1039,13 +1293,20 @@ DESCRIPTION:Cambio de tema: Inglés 4.°: contenido del territorio 1 (misio
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:cartillas-20261222-1@plataforma-cartillas
+UID:cartillas-20261222-2@plataforma-cartillas
 DTSTAMP:20261121T120000Z
-DTSTART:20261222T153000Z
-DTEND:20261222T173000Z
+DTSTART:20261222T190000Z
+DTEND:20261222T210000Z
 SUMMARY:Inglés 4.°: materiales del docente del periodo 1 (guía\, planead
  or\, láminas\, fichas\, prueba)
-DESCRIPTION:Bloque 2 de 3. Plan completo: docs/plan/calendario-diciembre.md
+DESCRIPTION:Propósito: Que el docente de Inglés 4.° pueda dar el periodo
+  1.\n\nPasos:\n- Escribir la guía y el planeador de 2 clases de 55 minuto
+ s por tema.\n- Hacer las láminas\, las fichas (carta y media carta) y la 
+ prueba del tema.\n- Pasarlo a JSON y revisarlo en Planear y en la impresi
+ ón.\n\nListo cuando: Los materiales del periodo 1 se ven en Planear y se 
+ imprimen bien.\n\nPara empezar\, dígale a Claude: «Retoma el bloque: Ing
+ lés 4.°: materiales del docente del periodo 1 (guía\, planeador\, lámi
+ nas\, fichas\, prueba)»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
@@ -1054,13 +1315,21 @@ DESCRIPTION:Cambio de tema: Inglés 4.°: materiales del docente del period
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:cartillas-20261222-2@plataforma-cartillas
+UID:cartillas-20261223-0@plataforma-cartillas
 DTSTAMP:20261121T120000Z
-DTSTART:20261222T190000Z
-DTEND:20261222T210000Z
+DTSTART:20261223T130000Z
+DTEND:20261223T150000Z
 SUMMARY:Español 4.°: contenido del territorio 1 (misiones\, banco de íte
  ms\, Mission Stars)
-DESCRIPTION:Bloque 3 de 3. Plan completo: docs/plan/calendario-diciembre.md
+DESCRIPTION:Propósito: Dejar jugable el primer territorio de Español 4.°
+ .\n\nPasos:\n- Tomar de la malla de Español 4.° los temas del periodo 1.
+ \n- Definir 5 o 6 misiones de 3 a 5 minutos\, cada una con su plantilla de
+  juego.\n- Llenar el banco de ítems (palabras\, números\, imágenes)\, l
+ os textos del guía y las Mission Stars.\n- Probar el recorrido en el celu
+ lar\, con audio provisional.\n\nListo cuando: El territorio 1 se juega de 
+ principio a fin a 390 px.\n\nPara empezar\, dígale a Claude: «Retoma el 
+ bloque: Español 4.°: contenido del territorio 1 (misiones\, banco de ít
+ ems\, Mission Stars)»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
@@ -1069,13 +1338,20 @@ DESCRIPTION:Cambio de tema: Español 4.°: contenido del territorio 1 (misi
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:cartillas-20261223-0@plataforma-cartillas
+UID:cartillas-20261223-1@plataforma-cartillas
 DTSTAMP:20261121T120000Z
-DTSTART:20261223T130000Z
-DTEND:20261223T150000Z
+DTSTART:20261223T153000Z
+DTEND:20261223T173000Z
 SUMMARY:Español 4.°: materiales del docente del periodo 1 (guía\, planea
  dor\, láminas\, fichas\, prueba)
-DESCRIPTION:Bloque 1 de 3. Plan completo: docs/plan/calendario-diciembre.md
+DESCRIPTION:Propósito: Que el docente de Español 4.° pueda dar el period
+ o 1.\n\nPasos:\n- Escribir la guía y el planeador de 2 clases de 55 minut
+ os por tema.\n- Hacer las láminas\, las fichas (carta y media carta) y la
+  prueba del tema.\n- Pasarlo a JSON y revisarlo en Planear y en la impresi
+ ón.\n\nListo cuando: Los materiales del periodo 1 se ven en Planear y se 
+ imprimen bien.\n\nPara empezar\, dígale a Claude: «Retoma el bloque: Esp
+ añol 4.°: materiales del docente del periodo 1 (guía\, planeador\, lám
+ inas\, fichas\, prueba)»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
@@ -1084,13 +1360,21 @@ DESCRIPTION:Cambio de tema: Español 4.°: materiales del docente del perio
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:cartillas-20261223-1@plataforma-cartillas
+UID:cartillas-20261223-2@plataforma-cartillas
 DTSTAMP:20261121T120000Z
-DTSTART:20261223T153000Z
-DTEND:20261223T173000Z
+DTSTART:20261223T190000Z
+DTEND:20261223T210000Z
 SUMMARY:Matemáticas 4.°: contenido del territorio 1 (misiones\, banco de 
  ítems\, Mission Stars)
-DESCRIPTION:Bloque 2 de 3. Plan completo: docs/plan/calendario-diciembre.md
+DESCRIPTION:Propósito: Dejar jugable el primer territorio de Matemáticas 
+ 4.°.\n\nPasos:\n- Tomar de la malla de Matemáticas 4.° los temas del pe
+ riodo 1.\n- Definir 5 o 6 misiones de 3 a 5 minutos\, cada una con su plan
+ tilla de juego.\n- Llenar el banco de ítems (palabras\, números\, imáge
+ nes)\, los textos del guía y las Mission Stars.\n- Probar el recorrido en
+  el celular\, con audio provisional.\n\nListo cuando: El territorio 1 se j
+ uega de principio a fin a 390 px.\n\nPara empezar\, dígale a Claude: «Re
+ toma el bloque: Matemáticas 4.°: contenido del territorio 1 (misiones\, 
+ banco de ítems\, Mission Stars)»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
@@ -1099,13 +1383,20 @@ DESCRIPTION:Cambio de tema: Matemáticas 4.°: contenido del territorio 1 (
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:cartillas-20261223-2@plataforma-cartillas
+UID:cartillas-20261228-0@plataforma-cartillas
 DTSTAMP:20261121T120000Z
-DTSTART:20261223T190000Z
-DTEND:20261223T210000Z
+DTSTART:20261228T130000Z
+DTEND:20261228T150000Z
 SUMMARY:Matemáticas 4.°: materiales del docente del periodo 1 (guía\, pl
  aneador\, láminas\, fichas\, prueba)
-DESCRIPTION:Bloque 3 de 3. Plan completo: docs/plan/calendario-diciembre.md
+DESCRIPTION:Propósito: Que el docente de Matemáticas 4.° pueda dar el pe
+ riodo 1.\n\nPasos:\n- Escribir la guía y el planeador de 2 clases de 55 m
+ inutos por tema.\n- Hacer las láminas\, las fichas (carta y media carta) 
+ y la prueba del tema.\n- Pasarlo a JSON y revisarlo en Planear y en la imp
+ resión.\n\nListo cuando: Los materiales del periodo 1 se ven en Planear y
+  se imprimen bien.\n\nPara empezar\, dígale a Claude: «Retoma el bloque:
+  Matemáticas 4.°: materiales del docente del periodo 1 (guía\, planeado
+ r\, láminas\, fichas\, prueba)»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
@@ -1114,13 +1405,21 @@ DESCRIPTION:Cambio de tema: Matemáticas 4.°: materiales del docente del p
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:cartillas-20261226-0@plataforma-cartillas
+UID:cartillas-20261228-1@plataforma-cartillas
 DTSTAMP:20261121T120000Z
-DTSTART:20261226T130000Z
-DTEND:20261226T150000Z
+DTSTART:20261228T153000Z
+DTEND:20261228T173000Z
 SUMMARY:Inglés 5.°: contenido del territorio 1 (misiones\, banco de ítem
  s\, Mission Stars)
-DESCRIPTION:Bloque 1 de 3. Plan completo: docs/plan/calendario-diciembre.md
+DESCRIPTION:Propósito: Dejar jugable el primer territorio de Inglés 5.°.
+ \n\nPasos:\n- Tomar de la malla de Inglés 5.° los temas del periodo 1.\n
+ - Definir 5 o 6 misiones de 3 a 5 minutos\, cada una con su plantilla de j
+ uego.\n- Llenar el banco de ítems (palabras\, números\, imágenes)\, los
+  textos del guía y las Mission Stars.\n- Probar el recorrido en el celula
+ r\, con audio provisional.\n\nListo cuando: El territorio 1 se juega de pr
+ incipio a fin a 390 px.\n\nPara empezar\, dígale a Claude: «Retoma el bl
+ oque: Inglés 5.°: contenido del territorio 1 (misiones\, banco de ítems
+ \, Mission Stars)»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
@@ -1129,13 +1428,20 @@ DESCRIPTION:Cambio de tema: Inglés 5.°: contenido del territorio 1 (misio
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:cartillas-20261226-1@plataforma-cartillas
+UID:cartillas-20261228-2@plataforma-cartillas
 DTSTAMP:20261121T120000Z
-DTSTART:20261226T153000Z
-DTEND:20261226T173000Z
+DTSTART:20261228T190000Z
+DTEND:20261228T210000Z
 SUMMARY:Inglés 5.°: materiales del docente del periodo 1 (guía\, planead
  or\, láminas\, fichas\, prueba)
-DESCRIPTION:Bloque 2 de 3. Plan completo: docs/plan/calendario-diciembre.md
+DESCRIPTION:Propósito: Que el docente de Inglés 5.° pueda dar el periodo
+  1.\n\nPasos:\n- Escribir la guía y el planeador de 2 clases de 55 minuto
+ s por tema.\n- Hacer las láminas\, las fichas (carta y media carta) y la 
+ prueba del tema.\n- Pasarlo a JSON y revisarlo en Planear y en la impresi
+ ón.\n\nListo cuando: Los materiales del periodo 1 se ven en Planear y se 
+ imprimen bien.\n\nPara empezar\, dígale a Claude: «Retoma el bloque: Ing
+ lés 5.°: materiales del docente del periodo 1 (guía\, planeador\, lámi
+ nas\, fichas\, prueba)»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
@@ -1144,28 +1450,21 @@ DESCRIPTION:Cambio de tema: Inglés 5.°: materiales del docente del period
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:cartillas-20261226-2@plataforma-cartillas
+UID:cartillas-20261229-0@plataforma-cartillas
 DTSTAMP:20261121T120000Z
-DTSTART:20261226T190000Z
-DTEND:20261226T210000Z
-SUMMARY:Revisión semanal: probar a 390 px\, actualizar CONTINUAR.md y publ
- icar (con permiso)
-DESCRIPTION:Bloque 3 de 3. Plan completo: docs/plan/calendario-diciembre.md
-BEGIN:VALARM
-ACTION:DISPLAY
-TRIGGER:-PT10M
-DESCRIPTION:Cambio de tema: Revisión semanal: probar a 390 px\, actualizar
-  CONTINUAR.md y publicar (con permiso)
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:cartillas-20261228-0@plataforma-cartillas
-DTSTAMP:20261121T120000Z
-DTSTART:20261228T130000Z
-DTEND:20261228T150000Z
+DTSTART:20261229T130000Z
+DTEND:20261229T150000Z
 SUMMARY:Español 5.°: contenido del territorio 1 (misiones\, banco de íte
  ms\, Mission Stars)
-DESCRIPTION:Bloque 1 de 3. Plan completo: docs/plan/calendario-diciembre.md
+DESCRIPTION:Propósito: Dejar jugable el primer territorio de Español 5.°
+ .\n\nPasos:\n- Tomar de la malla de Español 5.° los temas del periodo 1.
+ \n- Definir 5 o 6 misiones de 3 a 5 minutos\, cada una con su plantilla de
+  juego.\n- Llenar el banco de ítems (palabras\, números\, imágenes)\, l
+ os textos del guía y las Mission Stars.\n- Probar el recorrido en el celu
+ lar\, con audio provisional.\n\nListo cuando: El territorio 1 se juega de 
+ principio a fin a 390 px.\n\nPara empezar\, dígale a Claude: «Retoma el 
+ bloque: Español 5.°: contenido del territorio 1 (misiones\, banco de ít
+ ems\, Mission Stars)»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
@@ -1174,13 +1473,20 @@ DESCRIPTION:Cambio de tema: Español 5.°: contenido del territorio 1 (misi
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:cartillas-20261228-1@plataforma-cartillas
+UID:cartillas-20261229-1@plataforma-cartillas
 DTSTAMP:20261121T120000Z
-DTSTART:20261228T153000Z
-DTEND:20261228T173000Z
+DTSTART:20261229T153000Z
+DTEND:20261229T173000Z
 SUMMARY:Español 5.°: materiales del docente del periodo 1 (guía\, planea
  dor\, láminas\, fichas\, prueba)
-DESCRIPTION:Bloque 2 de 3. Plan completo: docs/plan/calendario-diciembre.md
+DESCRIPTION:Propósito: Que el docente de Español 5.° pueda dar el period
+ o 1.\n\nPasos:\n- Escribir la guía y el planeador de 2 clases de 55 minut
+ os por tema.\n- Hacer las láminas\, las fichas (carta y media carta) y la
+  prueba del tema.\n- Pasarlo a JSON y revisarlo en Planear y en la impresi
+ ón.\n\nListo cuando: Los materiales del periodo 1 se ven en Planear y se 
+ imprimen bien.\n\nPara empezar\, dígale a Claude: «Retoma el bloque: Esp
+ añol 5.°: materiales del docente del periodo 1 (guía\, planeador\, lám
+ inas\, fichas\, prueba)»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
@@ -1189,13 +1495,21 @@ DESCRIPTION:Cambio de tema: Español 5.°: materiales del docente del perio
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:cartillas-20261228-2@plataforma-cartillas
+UID:cartillas-20261229-2@plataforma-cartillas
 DTSTAMP:20261121T120000Z
-DTSTART:20261228T190000Z
-DTEND:20261228T210000Z
+DTSTART:20261229T190000Z
+DTEND:20261229T210000Z
 SUMMARY:Matemáticas 5.°: contenido del territorio 1 (misiones\, banco de 
  ítems\, Mission Stars)
-DESCRIPTION:Bloque 3 de 3. Plan completo: docs/plan/calendario-diciembre.md
+DESCRIPTION:Propósito: Dejar jugable el primer territorio de Matemáticas 
+ 5.°.\n\nPasos:\n- Tomar de la malla de Matemáticas 5.° los temas del pe
+ riodo 1.\n- Definir 5 o 6 misiones de 3 a 5 minutos\, cada una con su plan
+ tilla de juego.\n- Llenar el banco de ítems (palabras\, números\, imáge
+ nes)\, los textos del guía y las Mission Stars.\n- Probar el recorrido en
+  el celular\, con audio provisional.\n\nListo cuando: El territorio 1 se j
+ uega de principio a fin a 390 px.\n\nPara empezar\, dígale a Claude: «Re
+ toma el bloque: Matemáticas 5.°: contenido del territorio 1 (misiones\, 
+ banco de ítems\, Mission Stars)»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
@@ -1204,13 +1518,20 @@ DESCRIPTION:Cambio de tema: Matemáticas 5.°: contenido del territorio 1 (
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:cartillas-20261229-0@plataforma-cartillas
+UID:cartillas-20261230-0@plataforma-cartillas
 DTSTAMP:20261121T120000Z
-DTSTART:20261229T130000Z
-DTEND:20261229T150000Z
+DTSTART:20261230T130000Z
+DTEND:20261230T150000Z
 SUMMARY:Matemáticas 5.°: materiales del docente del periodo 1 (guía\, pl
  aneador\, láminas\, fichas\, prueba)
-DESCRIPTION:Bloque 1 de 3. Plan completo: docs/plan/calendario-diciembre.md
+DESCRIPTION:Propósito: Que el docente de Matemáticas 5.° pueda dar el pe
+ riodo 1.\n\nPasos:\n- Escribir la guía y el planeador de 2 clases de 55 m
+ inutos por tema.\n- Hacer las láminas\, las fichas (carta y media carta) 
+ y la prueba del tema.\n- Pasarlo a JSON y revisarlo en Planear y en la imp
+ resión.\n\nListo cuando: Los materiales del periodo 1 se ven en Planear y
+  se imprimen bien.\n\nPara empezar\, dígale a Claude: «Retoma el bloque:
+  Matemáticas 5.°: materiales del docente del periodo 1 (guía\, planeado
+ r\, láminas\, fichas\, prueba)»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
@@ -1219,12 +1540,19 @@ DESCRIPTION:Cambio de tema: Matemáticas 5.°: materiales del docente del p
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:cartillas-20261229-1@plataforma-cartillas
+UID:cartillas-20261230-1@plataforma-cartillas
 DTSTAMP:20261121T120000Z
-DTSTART:20261229T153000Z
-DTEND:20261229T173000Z
+DTSTART:20261230T153000Z
+DTEND:20261230T173000Z
 SUMMARY:Audio e imágenes de 4.° y 5.° (las tres materias)
-DESCRIPTION:Bloque 2 de 3. Plan completo: docs/plan/calendario-diciembre.md
+DESCRIPTION:Propósito: Poner voz e imágenes definitivas a las cartillas d
+ e 4.° y 5.°.\n\nPasos:\n- Generar las voces: ElevenLabs para guías y fr
+ ases clave\, Kokoro para lo demás. Llevar la cuenta de créditos.\n- Hace
+ r las imágenes en WebP al tamaño en que se muestran.\n- Revisar que cada
+  cartilla pese menos de 2 MB en la primera carga.\n\nListo cuando: Las car
+ tillas de 4.° y 5.° tienen audio e imágenes y respetan el peso.\n\nPara
+  empezar\, dígale a Claude: «Retoma el bloque: Audio e imágenes de 4.°
+  y 5.° (las tres materias)»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
@@ -1233,58 +1561,23 @@ DESCRIPTION:Cambio de tema: Audio e imágenes de 4.° y 5.° (las tres mate
 END:VALARM
 END:VEVENT
 BEGIN:VEVENT
-UID:cartillas-20261229-2@plataforma-cartillas
-DTSTAMP:20261121T120000Z
-DTSTART:20261229T190000Z
-DTEND:20261229T210000Z
-SUMMARY:Audio e imágenes de 4.° y 5.°: revisión
-DESCRIPTION:Bloque 3 de 3. Plan completo: docs/plan/calendario-diciembre.md
-BEGIN:VALARM
-ACTION:DISPLAY
-TRIGGER:-PT10M
-DESCRIPTION:Cambio de tema: Audio e imágenes de 4.° y 5.°: revisión
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:cartillas-20261230-0@plataforma-cartillas
-DTSTAMP:20261121T120000Z
-DTSTART:20261230T130000Z
-DTEND:20261230T150000Z
-SUMMARY:Prueba de las cartillas de 4.° y 5.° en celular
-DESCRIPTION:Bloque 1 de 3. Plan completo: docs/plan/calendario-diciembre.md
-BEGIN:VALARM
-ACTION:DISPLAY
-TRIGGER:-PT10M
-DESCRIPTION:Cambio de tema: Prueba de las cartillas de 4.° y 5.° en celul
- ar
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
-UID:cartillas-20261230-1@plataforma-cartillas
-DTSTAMP:20261121T120000Z
-DTSTART:20261230T153000Z
-DTEND:20261230T173000Z
-SUMMARY:Colchón: terminar lo atrasado
-DESCRIPTION:Bloque 2 de 3. Plan completo: docs/plan/calendario-diciembre.md
-BEGIN:VALARM
-ACTION:DISPLAY
-TRIGGER:-PT10M
-DESCRIPTION:Cambio de tema: Colchón: terminar lo atrasado
-END:VALARM
-END:VEVENT
-BEGIN:VEVENT
 UID:cartillas-20261230-2@plataforma-cartillas
 DTSTAMP:20261121T120000Z
 DTSTART:20261230T190000Z
 DTEND:20261230T210000Z
-SUMMARY:Cierre de diciembre: publicar\, CONTINUAR.md y plan de enero (terri
- torios 2 a 4)
-DESCRIPTION:Bloque 3 de 3. Plan completo: docs/plan/calendario-diciembre.md
+SUMMARY:Cierre de diciembre: prueba en celular de 4.° y 5.°\, publicar\, 
+ CONTINUAR.md y plan de enero
+DESCRIPTION:Propósito: Cerrar diciembre.\n\nPasos:\n- Probar en celular la
+ s cartillas de 4.° y 5.°.\n- Publicar con permiso y actualizar CONTINUAR
+ .md.\n- Plan de enero: territorios 2 a 4 de cada cartilla.\n\nListo cuando
+ : Las 18 cartillas están en versión 1 y publicadas.\n\nPara empezar\, d
+ ígale a Claude: «Retoma el bloque: Cierre de diciembre: prueba en celula
+ r de 4.° y 5.°\, publicar\, CONTINUAR.md y plan de enero»
 BEGIN:VALARM
 ACTION:DISPLAY
 TRIGGER:-PT10M
-DESCRIPTION:Cambio de tema: Cierre de diciembre: publicar\, CONTINUAR.md y 
- plan de enero (territorios 2 a 4)
+DESCRIPTION:Cambio de tema: Cierre de diciembre: prueba en celular de 4.° 
+ y 5.°\, publicar\, CONTINUAR.md y plan de enero
 END:VALARM
 END:VEVENT
 END:VCALENDAR

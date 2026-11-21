@@ -1,6 +1,6 @@
 # Cómo continuar
 
-Estado al 21 nov 2026. Las reglas permanentes están en `CLAUDE.md` y el plan día por día en
+Estado al 21 nov 2026. Las reglas permanentes están en `CLAUDE.md` y el plan día por día (lunes a viernes) en
 `docs/plan/calendario-diciembre.md` (también en Google Calendar). Al empezar una sesión, leer esto,
 `CLAUDE.md` y el bloque del calendario que toca hoy.
 
@@ -49,7 +49,7 @@ año escolar.
 
 ## Lo que falta (detalle y orden en el calendario)
 
-**Plataforma (23 nov – 5 dic)**
+**Plataforma (23 nov – 4 dic)**
 1. Volverla **multicartilla**. Hoy `ingles-3` está fijo en `src/App.tsx`,
    `src/adultos/docente.ts` y `src/materiales/datos.ts`. Hace falta un catálogo por materia y grado,
    el grupo con su cartilla y que el dueño publique cartillas. Este punto bloquea todo lo demás.

@@ -18,7 +18,7 @@ Plan completo: `docs/plan/calendario-diciembre.md` (también en Google Calendar,
   Publicar: herramienta Netlify `deploy-site` y correr desde la raíz el `npx` que devuelve.
   **Solo con permiso de Manuel.**
 - Supabase `https://jpwwmzfhbdnzsvwuciqa.supabase.co`. Clave pública en `.env.example` y
-  `netlify.toml`; la secreta nunca se pide en el chat. Aplicadas las migraciones 002 y 003; **la 004 (multicartilla) está lista y falta aplicarla** (paso 12 de PASOS-MANUEL, antes de publicar el sitio que la usa). Manuel
+  `netlify.toml`; la secreta nunca se pide en el chat. Aplicadas las migraciones 002, 003 y 004 (la 004 el 23 nov). Manuel
   aplica las nuevas siguiendo `supabase/PASOS-MANUEL.md`. Prueba local: `supabase/prueba_local.sql`
   (correr una copia sin las líneas `create role`).
 - ElevenLabs: secreto del entorno (`ELEVENLABS_API_KEY=proxy-injected`); 40.000 créditos al mes.

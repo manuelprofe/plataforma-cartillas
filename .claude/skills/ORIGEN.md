@@ -6,6 +6,7 @@
 | `webapp-testing` | github.com/anthropics/skills, commit 2c5958e | Apache 2.0 | Leída completa; un script que levanta servidores locales y ejemplos de Playwright, sin llamadas a red externa |
 | `diseno-infantil` | Escrita para este proyecto | Propia | — |
 | `auditoria` | Escrita para este proyecto | Propia | — |
+| `hoy` | Escrita para este proyecto (sesión diaria con contexto corto) | Propia | — |
 | `find-skills` ("Find Skills") | github.com/vercel-labs/skills, `skills/find-skills`, commit b716f9d | MIT | Leída completa; solo instrucciones. Usa `npx skills find` (consulta el catálogo público skills.sh). **Modificada:** se añadió un bloque con las reglas del proyecto (leer antes de instalar, sin `-g`) |
 | `convert-documents-to-markdown` ("AnyDoc") | github.com/firecrawl/anydoc, `skills/convert-documents-to-markdown`, commit e56a49b | MIT | Leída completa, junto con `node/cli.js` y `node/anydoc.js`. Ejecuta `npx @firecrawl/anydoc` (binario precompilado, conversión local). Solo usa la red con `--ocr hosted`, que sube el documento a Firecrawl. **Modificada:** se añadió la prohibición de `--ocr hosted` sin permiso |
 | `claude-automation-recommender` ("Claude Code Setup") | github.com/anthropics/claude-plugins-official, `plugins/claude-code-setup`, commit b5b01ac | Apache 2.0 | Leída completa (SKILL.md y 5 referencias); solo lectura, sin scripts, no modifica archivos |

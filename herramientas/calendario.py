@@ -5,6 +5,7 @@ Genera `docs/plan/calendario-diciembre.md` (legible) y `docs/plan/calendario-dic
 (para importar en Google Calendar, con aviso 10 min antes de cada cambio de tema).
 Uso: python3 -I herramientas/calendario.py
 """
+import sys
 from datetime import date, timedelta
 from pathlib import Path
 
@@ -12,6 +13,8 @@ from calendario_detalle import detalle, texto_plano
 
 RAIZ = Path(__file__).resolve().parent.parent
 BLOQUES = [('08:00', '10:00'), ('10:30', '12:30'), ('14:00', '16:00')]  # hora de Colombia (UTC-5)
+# Días con otro horario (23 nov: la mañana no se trabajó; los tres bloques pasan a la tarde).
+HORARIO_ESPECIAL = {date(2026, 11, 23): [('14:00', '15:40'), ('15:50', '17:30'), ('17:40', '19:20')]}
 LIBRES = {date(2026, 12, 8), date(2026, 12, 24), date(2026, 12, 25)}  # festivos y Nochebuena
 
 # ---------------------------------------------------------------- Fase 1: plataforma (23 nov – 4 dic)
@@ -104,6 +107,22 @@ def ics_texto(s):
     return s.replace('\\', '\\\\').replace(',', '\\,').replace(';', '\\;')
 
 
+def bloques(d):
+    return HORARIO_ESPECIAL.get(d, BLOQUES)
+
+
+def archivo_dia(d, temas):
+    """docs/plan/dias/AAAA-MM-DD.md: lo único que una sesión necesita leer ese día."""
+    l = [f'# {DIAS[d.weekday()].capitalize()} {d.day} {MESES[d.month]}: plan del día', '',
+         'Se borra este archivo cuando los tres bloques quedan listos (ver la skill `hoy`).', '']
+    for (ini, fin), tema in zip(bloques(d), temas):
+        prop, pasos, listo = detalle(tema)
+        l += [f'## {ini}–{fin} · {tema}', '', f'**Propósito:** {prop}', '']
+        l += [f'- [ ] {x}' for x in pasos]
+        l += ['', f'**Listo cuando:** {listo}', '']
+    return '\n'.join(l)
+
+
 def plegar(linea):
     """RFC 5545: líneas de máximo 75 octetos; las siguientes empiezan con un espacio."""
     trozos, actual = [], b''
@@ -130,18 +149,10 @@ def main():
           '  jugable, materiales del periodo 1).', '',
           '| Día | 08:00–10:00 | 10:30–12:30 | 14:00–16:00 |', '| --- | --- | --- | --- |']
     for d, t in filas:
-        md.append(f'| {DIAS[d.weekday()]} {d.day} {MESES[d.month]} | ' + ' | '.join(t) + ' |')
-    md += ['', '## Qué se hace en cada bloque', '']
-    for d, t in filas:
-        md.append(f'### {DIAS[d.weekday()]} {d.day} {MESES[d.month]}')
-        md.append('')
-        for (ini, fin), tema in zip(BLOQUES, t):
-            prop, pasos, listo = detalle(tema)
-            md.append(f'**{ini}–{fin} · {tema}**  ')
-            md.append(f'Propósito: {prop}')
-            md += [f'- {x}' for x in pasos]
-            md.append(f'- *Listo cuando:* {listo}')
-            md.append('')
+        horas = '' if d not in HORARIO_ESPECIAL else ' (tarde: ' + ', '.join(f'{a}–{b}' for a, b in bloques(d)) + ')'
+        md.append(f'| {DIAS[d.weekday()]} {d.day} {MESES[d.month]}{horas} | ' + ' | '.join(t) + ' |')
+    md += ['', 'El detalle de cada día (propósito, pasos y criterio de terminado) está en `docs/plan/dias/`,',
+           'un archivo por día. Al terminar un día su archivo se borra.', '']
     md += ['## Riesgos', '',
            '- **Alcance:** 17 cartillas completas no caben en un mes. Por eso en diciembre se hace la versión 1 de',
            '  cada una y los territorios 2 a 4 quedan para enero y febrero.',
@@ -150,12 +161,19 @@ def main():
            '  Otra opción es subir de plan solo en diciembre.',
            '- **Validación pedagógica:** las mallas y los contenidos de español y matemáticas necesitan una',
            '  revisión de Manuel o de un docente de cada área antes del piloto.']
+    hoy = date.today()
+    carpeta = RAIZ / 'docs/plan/dias'
+    carpeta.mkdir(parents=True, exist_ok=True)
+    for d, t in filas:
+        destino = carpeta / f'{d}.md'
+        if d >= hoy and not ('--sin-pisar' in sys.argv and destino.exists()):
+            destino.write_text(archivo_dia(d, t), encoding='utf-8')
     (RAIZ / 'docs/plan/calendario-diciembre.md').write_text('\n'.join(md) + '\n', encoding='utf-8')
 
     ev = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//plataforma-cartillas//calendario//ES', 'CALSCALE:GREGORIAN',
           'X-WR-CALNAME:Plataforma de cartillas', 'X-WR-TIMEZONE:America/Bogota']
     for d, temas in filas:
-        for k, (tema, (ini, fin)) in enumerate(zip(temas, BLOQUES)):
+        for k, (tema, (ini, fin)) in enumerate(zip(temas, bloques(d))):
             def utc(h):
                 hh, mm = map(int, h.split(':'))
                 return f'{d:%Y%m%d}T{hh + 5:02d}{mm:02d}00Z'

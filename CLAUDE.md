@@ -73,6 +73,8 @@ Marco teórico vigente (el de la tesis): Bruner, Ausubel, Vygotsky, Ryan y Deci,
   agentes corren en modelos menores para ahorrar uso (Sonnet para construir, diseñar, revisar y
   auditar; Haiku para el líder y la investigación), fijados en `.claude/agents/`.
 - Las skills están en `.claude/skills/`. Antes de instalar una skill externa se lee completa.
+- Cada día es una sesión nueva que empieza con `/hoy`: lee `CONTINUAR.md` y solo el plan del día
+  (`docs/plan/dias/`). Al cerrar, lo terminado se borra del contexto (queda en git).
 - Todo cambio visible se comprueba en un navegador a 390 px de ancho antes de darlo por hecho.
 - El sitio anterior está en `manuelprofe/cartillaenglishadventure`; de ahí se reutilizan
   personajes, fondos, narrativa y bancos de contenido, no el código.

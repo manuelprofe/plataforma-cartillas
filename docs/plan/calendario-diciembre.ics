@@ -7,8 +7,8 @@ X-WR-TIMEZONE:America/Bogota
 BEGIN:VEVENT
 UID:cartillas-20261123-0@plataforma-cartillas
 DTSTAMP:20261121T120000Z
-DTSTART:20261123T130000Z
-DTEND:20261123T150000Z
+DTSTART:20261123T190000Z
+DTEND:20261123T204000Z
 SUMMARY:Multicartilla: catálogo por materia y grado\, grupo con su cartill
  a\, registrar_mision idempotente (migración 004)
 DESCRIPTION:Propósito: Que la base de datos sepa qué cartillas existen y 
@@ -32,8 +32,8 @@ END:VEVENT
 BEGIN:VEVENT
 UID:cartillas-20261123-1@plataforma-cartillas
 DTSTAMP:20261121T120000Z
-DTSTART:20261123T153000Z
-DTEND:20261123T173000Z
+DTSTART:20261123T205000Z
+DTEND:20261123T223000Z
 SUMMARY:Multicartilla: quitar ingles-3 fijo de App.tsx\, docente.ts y datos
  .ts
 DESCRIPTION:Propósito: Que el código cargue cualquier cartilla\, no solo 
@@ -54,8 +54,8 @@ END:VEVENT
 BEGIN:VEVENT
 UID:cartillas-20261123-2@plataforma-cartillas
 DTSTAMP:20261121T120000Z
-DTSTART:20261123T190000Z
-DTEND:20261123T210000Z
+DTSTART:20261123T224000Z
+DTEND:20261123T242000Z
 SUMMARY:Multicartilla en el estudiante: el código del grupo lleva a su car
  tilla
 DESCRIPTION:Propósito: Que cada niño llegue a la cartilla de su grupo.\n\

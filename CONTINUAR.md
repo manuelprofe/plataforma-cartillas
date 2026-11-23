@@ -1,91 +1,57 @@
 # Cómo continuar
 
-Estado al 21 nov 2026. Las reglas permanentes están en `CLAUDE.md` y el plan día por día (lunes a viernes) en
-`docs/plan/calendario-diciembre.md` (también en Google Calendar). Al empezar una sesión, leer esto,
-`CLAUDE.md` y el bloque del calendario que toca hoy.
+Cada día es una sesión nueva: escriba **/hoy** y Claude lee solo el plan del día
+(`docs/plan/dias/AAAA-MM-DD.md`). Este archivo guarda lo que sirve para todo lo que viene; lo
+terminado vive en git, no aquí. Las reglas permanentes están en `CLAUDE.md`.
 
 ## Meta
 
-Terminar la plataforma en diciembre de 2026 y dejar listas las cartillas de inglés, español y
-matemáticas de transición a quinto (18 cartillas; inglés 3 ya existe). Piloto en aula el próximo
-año escolar.
+Diciembre de 2026: plataforma terminada (hasta el 4 dic) y las cartillas de inglés, español y
+matemáticas de transición a 5.° en versión 1 (del 7 al 30 dic). Versión 1 = malla completa,
+territorio 1 jugable y materiales del periodo 1. Inglés 3 ya existe. Lunes a viernes, 6 h al día.
+Plan completo: `docs/plan/calendario-diciembre.md` (también en Google Calendar, eventos «Cartillas ·»).
 
 ## Datos de trabajo
 
-- Rama `ccr-c31d414e-rt7zgq` (`main` está atrasada; unirla solo con permiso). Sin `push --force`.
-- Sitio: https://englishlandmanuelprofe.netlify.app (Netlify `94f443a2-de53-4029-ab21-f6673073280c`).
-  Para publicar: herramienta Netlify `deploy-site` y correr desde la raíz el `npx` que devuelve.
-  **Solo con permiso de Manuel.** Última publicación: 21 nov.
-- Supabase `https://jpwwmzfhbdnzsvwuciqa.supabase.co`. La clave pública está en `.env.example` y
-  `netlify.toml`; la secreta nunca se pide en el chat. Migraciones 002 y 003 aplicadas, gancho
-  `antes_de_crear_usuario` activo, función `invitar` y SMTP con Gmail funcionando. Los pasos de
-  Manuel están en `supabase/PASOS-MANUEL.md`.
-- ElevenLabs: la clave es un secreto del entorno (en los scripts, `ELEVENLABS_API_KEY=proxy-injected`).
-  Las voces están en `herramientas/generar_voz.py`. El plan da 40.000 créditos al mes: cuidarlos,
-  porque 17 cartillas con audio los superan (ver el plan, §Riesgos).
-- Agentes en `.claude/agents/` (Sonnet/Haiku); Opus orquesta y aprueba. Si los agentes no tienen
-  cupo, Opus hace el trabajo directamente.
-- Pruebas: `npm run build`, luego `node scripts/pruebas/<nombre>.mjs` (docente, biblioteca,
-  materiales, rutas, adultos, estudiante…). Todo cambio visible se mira a 390 px.
+- Rama `ccr-c31d414e-rt7zgq` (`main` atrasada; unirla solo con permiso). Sin `push --force`.
+- Sitio https://englishlandmanuelprofe.netlify.app (Netlify `94f443a2-de53-4029-ab21-f6673073280c`).
+  Publicar: herramienta Netlify `deploy-site` y correr desde la raíz el `npx` que devuelve.
+  **Solo con permiso de Manuel.**
+- Supabase `https://jpwwmzfhbdnzsvwuciqa.supabase.co`. Clave pública en `.env.example` y
+  `netlify.toml`; la secreta nunca se pide en el chat. Aplicadas las migraciones 002 y 003. Manuel
+  aplica las nuevas siguiendo `supabase/PASOS-MANUEL.md`. Prueba local: `supabase/prueba_local.sql`
+  (correr una copia sin las líneas `create role`).
+- ElevenLabs: secreto del entorno (`ELEVENLABS_API_KEY=proxy-injected`); 40.000 créditos al mes.
+  Usar Kokoro para borradores y ElevenLabs solo para guías y frases clave.
+- Agentes en `.claude/agents/` (Sonnet/Haiku); Opus orquesta. Si no tienen cupo, Opus lo hace.
+- Pruebas: `npm run build`, luego `node scripts/pruebas/<nombre>.mjs` (estudiante, docente,
+  biblioteca, materiales, rutas, adultos…). `docente.mjs` falla a veces por una carrera de carga:
+  repetirla antes de buscar un error.
+- Calendario: `herramientas/calendario.py` genera el plan y los archivos de cada día
+  (`--sin-pisar` no sobrescribe los días ya editados). Los detalles de cada bloque están en
+  `herramientas/calendario_detalle.py`.
 
-## Lo que ya está hecho
+## Mapa del código (dónde está cada cosa)
 
-- **Estudiante** (inglés 3, Bosque de los Sonidos): mapa con movimiento suave, misiones con 4
-  plantillas de juego (`src/juegos/`: EscuchaToca, EscuchaAtrapa, Memoria, DiBrilla), faroles,
-  Mission Stars, vestidor, álbum y entrada con tarjeta (código, QR y clave de tres dibujos). Voces
-  de ElevenLabs y video de inicio de 31 s.
-- **Adultos**: entrada e invitación por correo según el rol (dueño, coordinador, docente).
-- **Docente**:
-  - grupos, niños con apodo, autorización de los padres y tarjetas imprimibles;
-  - estrellas sin red;
-  - Proyectar (telón sin datos de niños);
-  - Planear, con los materiales de escuela, colores y números (guía, planeador, láminas, fichas en
-    carta y media carta, canciones con letra);
-  - **Biblioteca**, con la historia bilingüe, recursos por tema, 20 actividades y fundamentos;
-  - guía rápida en PDF (`public/guias/guia-docentes.pdf`).
-- **Contenido**:
-  - 3 canciones Spanglish propias con letra sincronizada (`canciones/*.letra.json`);
-  - lo importado de la cartilla anterior en `biblioteca/*.json` (`herramientas/importar/`).
+- **Cartilla como datos:** `public/cartillas/ingles-3/` (`cartilla.json`, `materiales/`,
+  `biblioteca/`, `canciones/`, `voz/`, `personajes/`). Hoy la ruta `ingles-3` está fija en
+  `src/App.tsx:22`, `src/adultos/docente.ts:39` y `src/materiales/datos.ts:6`.
+- **Estudiante:** `src/estudiante.tsx`, `src/Mundo.tsx` (mapa y movimiento), `src/juegos/`
+  (plantillas: EscuchaToca, EscuchaAtrapa, Memoria, DiBrilla), `src/progreso.ts`, `src/nube.ts`,
+  `src/entrada/` (tarjeta, código, QR, clave de dibujos), `src/sinConexion.ts`.
+- **Adultos:** `src/adultos/Adultos.tsx` (rutas por rol), `Docente.tsx`, `Materiales.tsx`
+  (Planear), `Biblioteca.tsx`, `Colegio.tsx` (coordinador), `Plataforma.tsx` (dueño),
+  componentes base en `base.tsx` y `comun.tsx`.
+- **Proyectar:** `src/proyectar/Proyectar.tsx`.
+- **Base de datos:** `supabase/migraciones/` (002 esqueleto, 003 ajustes),
+  `supabase/funciones/invitar/`. `registrar_mision` está en 002 (línea ~854).
+- **Herramientas de contenido:** `herramientas/` (voces, letras sincronizadas,
+  `materiales_a_json.py`, `importar/`).
+- **Documentos de diseño y pedagogía:** `docs/diseno/esqueleto.md` (tandas 5 y 6 en §8),
+  `docs/pedagogia/` (materiales, canciones, catálogo de interfaces).
 
-## Lo que falta (detalle y orden en el calendario)
+## Para después de diciembre (sin fecha)
 
-**Plataforma (23 nov – 4 dic)**
-1. Volverla **multicartilla**. Hoy `ingles-3` está fijo en `src/App.tsx`,
-   `src/adultos/docente.ts` y `src/materiales/datos.ts`. Hace falta un catálogo por materia y grado,
-   el grupo con su cartilla y que el dueño publique cartillas. Este punto bloquea todo lo demás.
-2. Faltan plantillas de juego para matemáticas y lectura:
-   - contar y tocar;
-   - ordenar;
-   - completar la operación;
-   - armar la palabra o la sílaba.
-
-   DiBrilla debe servir también para leer en voz alta en español.
-3. Esqueleto, tandas 5 y 6 (`docs/diseno/esqueleto.md` §8): plan por grupo, avance, prueba del tema
-   y registro. Coordinador: uso y avance por grado y grupo. Dueño: colegios y cartillas.
-4. **Pantalla de canciones** en el modo estudiante (los audios y las letras ya existen).
-5. Materiales de inglés 3: cuerpo, familia y hora; rehacer las manos de números.
-6. Deudas técnicas:
-   - `solo:"docente"` para clave, guion, casillas y momento en `materiales_a_json.py`;
-   - textos fijos de `Proyectar.tsx` y `RANURAS` de `datos.ts` al JSON (regla 1);
-   - la tecla Espacio dispara dos veces en Proyectar;
-   - `registrar_mision` idempotente (migración 004);
-   - correos de Supabase en español (paso 9 de Manuel);
-   - `scripts/pruebas/docente.mjs` falla a veces por una carrera de carga.
-7. Revisor y auditor antes de cerrar la plataforma: seguridad por filas, datos de menores, peso por
-   debajo de 2 MB, y comprobar si `src/escuchar.ts` envía audio.
-
-**Cartillas (7 – 30 dic).** Cada cartilla es un paquete de datos en `public/cartillas/<materia>-<grado>/`:
-- malla basada en los DBA del MEN;
-- universo y guías;
-- 4 territorios con sus misiones;
-- materiales del docente.
-
-En diciembre cada cartilla queda con la **versión 1**: la malla completa, el primer territorio
-jugable y los materiales del primer periodo. El resto de territorios se completa en enero y febrero.
-
-**Después (sin fecha):**
-- cinemática C del puente (`docs/cinematicas/guiones.md`);
-- mapa ronda 2 (`docs/diseno/ronda-2-mapa.md`);
-- voces de vecinos y héroes;
-- probar en un Android real con micrófono y modo avión;
-- medición antes y después del piloto.
+Territorios 2 a 4 de cada cartilla; cinemática C del puente (`docs/cinematicas/guiones.md`); mapa
+ronda 2 (`docs/diseno/ronda-2-mapa.md`); voces de vecinos y héroes; medición antes y después del
+piloto; confirmar el estándar MEN citado en `docs/pedagogia/canciones-bosque.md`.

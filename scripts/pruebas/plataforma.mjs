@@ -1,5 +1,5 @@
 // Dueño, coordinador e invitaciones con Supabase simulado en memoria (no sale a la red).
-// Dueño: crea colegio, habilita la cartilla, invita, reenvía, cancela, desactiva.
+// Dueño: crea colegio, publica y habilita cartillas, invita, reenvía, cancela, desactiva.
 // Coordinador: invita docente, crea grupo, asigna docente, renueva código (sin verlo).
 // Invitado: enlace del correo (type=invite) en /adultos y en la raíz, contraseña y entrada.
 // Uso: `npm run build`, luego `node scripts/pruebas/plataforma.mjs`.
@@ -14,7 +14,11 @@ const ruta = (p) => new URL(p.url()).pathname;
 function crearBase() {
   const b = {
     colegios: [], habilitadas: [], perfiles: [], invitaciones: [], grupos: [], llamadas: [], correos: [], desde: 0,
-    versiones: [{ cartilla_id: 'ingles-3', version: '2027.1' }],
+    versiones: [{ cartilla_id: 'matematicas-1', version: '2027.1' }, { cartilla_id: 'ingles-3', version: '2027.1' }],
+    cartillas: [
+      { id: 'ingles-3', titulo: 'English Adventure Quest', materia: 'Inglés', grado: '3', publicada: true },
+      { id: 'matematicas-1', titulo: 'Cartilla de prueba', materia: 'Matemáticas', grado: '1', publicada: false },
+    ],
     aceptarCon: null,
   };
   const id = (() => { let n = 0; return (p) => `${p}-${++n}`; })();
@@ -31,10 +35,14 @@ function crearBase() {
       return { json: b.colegios };
     }
     if (t === 'colegio_cartillas') {
-      if (m === 'POST') { b.habilitadas = b.habilitadas.filter((h) => h.colegio_id !== cuerpo.colegio_id); b.habilitadas.push(cuerpo); return { status: 201, json: [cuerpo] }; }
+      if (m === 'POST') { b.habilitadas = b.habilitadas.filter((h) => h.colegio_id !== cuerpo.colegio_id || h.cartilla_id !== cuerpo.cartilla_id); b.habilitadas.push(cuerpo); return { status: 201, json: [cuerpo] }; }
       return { json: b.habilitadas };
     }
     if (t === 'cartilla_versiones') return { json: b.versiones };
+    if (t === 'cartillas') {
+      if (m === 'PATCH') { if (quien !== 'dueno') return { status: 403, json: { message: 'RLS' } }; const f = b.cartillas.find((x) => x.id === filtro); Object.assign(f, cuerpo); return { json: [{ id: f.id }] }; }
+      return { json: b.cartillas };
+    }
     if (t === 'perfiles') {
       if (m === 'PATCH') { const f = b.perfiles.find((x) => x.id === filtro); if (!f) return { json: [] }; Object.assign(f, cuerpo); return { json: [f] }; }
       return { json: b.perfiles };
@@ -124,10 +132,12 @@ try {
     comprobar(post?.cuerpo.municipio === 'Los Patios' && post.cuerpo.convenio === 'Convenio 001 de 2026' && ruta(p) === '/plataforma/colegios/col-1', `colegio creado y abierto (${ruta(p)})`);
     comprobar((await p.locator('main').textContent()).includes('Todavía no hay personas'), 'colegio nuevo: vacío de personas con qué hacer');
     await p.screenshot({ path: `${CAPTURAS}/plataforma-colegio-nuevo-390.png`, fullPage: true });
-    await p.click('button:has-text("Habilitar cartilla 2027.1")');
+    comprobar((await p.locator('.fila:has-text("Matemáticas")').count()) === 0, 'una cartilla oculta no se ofrece al colegio');
+    await p.click('.fila:has-text("Inglés") >> button:has-text("Habilitar 2027.1")');
     comprobar(!base.llamadas.some((l) => l.t === 'colegio_cartillas' && l.m === 'POST'), 'habilitar la cartilla pide confirmación antes de escribir');
+    await p.screenshot({ path: `${CAPTURAS}/plataforma-habilitar-390.png` });
     await p.click('button:has-text("Sí, habilitar")');
-    await p.waitForSelector('strong:has-text("2027.1")');
+    await p.waitForSelector('.fila:has-text("Versión 2027.1 habilitada")');
     const hab = base.llamadas.find((l) => l.t === 'colegio_cartillas' && l.m === 'POST');
     comprobar(hab?.cuerpo.cartilla_id === 'ingles-3' && hab.cuerpo.version === '2027.1' && hab.q.includes('on_conflict=colegio_id,cartilla_id'), 'habilita ingles-3 2027.1 para el colegio');
     // Invitar un docente y un coordinador.
@@ -172,7 +182,25 @@ try {
     // Lista de colegios y cuentas.
     await p.goto(url('/plataforma'));
     await p.waitForSelector('a.fila:has-text("I.E. Jorge Barco Mora")');
-    comprobar((await p.locator('a.fila').textContent()).includes('Cartilla 2027.1') && (await p.locator('a.fila').textContent()).includes('Los Patios'), 'la lista muestra municipio y cartilla habilitada');
+    comprobar((await p.locator('a.fila').textContent()).includes('1 cartilla') && (await p.locator('a.fila').textContent()).includes('Los Patios'), 'la lista muestra municipio y cuántas cartillas tiene');
+    // Cartillas: publicar la de matemáticas y habilitarla en el colegio.
+    await p.goto(url('/plataforma/cartillas'));
+    await p.waitForSelector('.fila:has-text("Matemáticas")');
+    const cat = await p.locator('main').textContent();
+    comprobar(cat.includes('2 cartillas · 1 publicada') && cat.includes('Oculta') && cat.includes('en 1 colegio'), 'Cartillas lista el catálogo con estado, versión y colegios');
+    await p.screenshot({ path: `${CAPTURAS}/plataforma-cartillas-390.png`, fullPage: true });
+    await p.click('.fila:has-text("Matemáticas") >> button:has-text("Publicar")');
+    comprobar(!base.llamadas.some((l) => l.t === 'cartillas' && l.m === 'PATCH'), 'publicar pide confirmación antes de escribir');
+    await p.click('button:has-text("Sí, publicar")');
+    await p.waitForSelector('.fila:has-text("Matemáticas") >> text=Publicada');
+    comprobar(base.cartillas[1].publicada === true, 'publicar marca la cartilla como publicada');
+    const mc = await medir(p);
+    comprobar(!mc.desborde && mc.toque >= 48, `Cartillas sin desborde a 390, toque mínimo ${Math.round(mc.toque)}`);
+    await p.goto(url('/plataforma/colegios/col-1'));
+    await p.click('.fila:has-text("Matemáticas") >> button:has-text("Habilitar 2027.1")');
+    await p.click('button:has-text("Sí, habilitar")');
+    await p.waitForSelector('.fila:has-text("Matemáticas") >> text=Versión 2027.1 habilitada');
+    comprobar(base.habilitadas.filter((h) => h.colegio_id === 'col-1').length === 2, 'el colegio queda con las dos cartillas');
     await p.goto(url('/plataforma/cuentas'));
     await p.waitForSelector('li:has-text("Rosa Pérez")');
     comprobar((await p.locator('li:has-text("Rosa Pérez")').textContent()).includes('I.E. Jorge Barco Mora'), 'Cuentas lista las invitaciones con su colegio');
@@ -198,6 +226,11 @@ try {
     await p.locator('li:has-text("Luis Mora") >> button:has-text("Desactivar")').first().click();
     comprobar((await p.locator('[role=group]').textContent()).includes('sin quien los administre'), 'desactivar un coordinador advierte que sus docentes y grupos quedan sin quien los administre');
     await p.screenshot({ path: `${CAPTURAS}/plataforma-colegio-1280.png`, fullPage: true });
+    await p.goto(url('/plataforma/cartillas'));
+    await p.waitForSelector('.fila:has-text("Matemáticas")');
+    const m1280 = await medir(p);
+    comprobar(!m1280.desborde, 'Cartillas sin desborde a 1280');
+    await p.screenshot({ path: `${CAPTURAS}/plataforma-cartillas-1280.png` });
     await c.close();
   }
 

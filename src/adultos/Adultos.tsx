@@ -608,7 +608,6 @@ const PLATAFORMA: Seccion[] = [
 ];
 
 const PAGINAS_PLATAFORMA: Record<string, { titulo: string; hueco: string; texto?: string }> = {
-  cartillas: { titulo: 'Cartillas', hueco: 'Aquí aparecerán las cartillas al subir su paquete', texto: 'Cada cartilla con sus versiones y qué versión usa cada colegio.' },
   documentos: { titulo: 'Documentos de plataforma', hueco: 'Aquí irán los documentos de la plataforma', texto: 'Autorización base, instrucciones de la tarjeta y ayuda.' },
   piloto: { titulo: 'Datos del piloto', hueco: 'Aún no hay datos para exportar', texto: 'El resumen se descargará sin apodos.' },
 };
@@ -618,7 +617,7 @@ function Plataforma({ resto, sinRed }: { resto: string[]; cuenta: Dentro; sinRed
   const datos = PAGINAS_PLATAFORMA[seccion];
   const activa = seccion === '' || seccion === 'colegios' ? '/plataforma' : `/plataforma/${seccion}`;
   const propia = datos ? null : <PaginaDueno seccion={seccion} id={id} sinRed={sinRed} />;
-  const valida = seccion === '' || seccion === 'cuentas' || (seccion === 'colegios' && id);
+  const valida = seccion === '' || seccion === 'cuentas' || seccion === 'cartillas' || (seccion === 'colegios' && id);
   return (
     <Cascaron inicio="/plataforma" fin={BOTON_SALIR} aviso={sinRed && <AvisoSinRed texto={SIN_RED_LECTURA} />} secciones={PLATAFORMA} activa={activa} nombre="Secciones de la plataforma">
       {datos ? <SeccionVacia {...datos} /> : valida ? propia : <AlInicio ruta="/plataforma" />}

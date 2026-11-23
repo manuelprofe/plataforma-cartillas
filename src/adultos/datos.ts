@@ -39,6 +39,14 @@ export interface Version {
   cartilla_id: string;
   version: string;
 }
+/** Una cartilla del catálogo (migración 004: `publicada`). */
+export interface CartillaCat {
+  id: string;
+  titulo: string;
+  materia: string | null;
+  grado: string | null;
+  publicada: boolean;
+}
 export interface Grupo {
   id: string;
   colegio_id: string;
@@ -70,6 +78,11 @@ export function estadoInvitacion(i: Invitacion, ahora = Date.now()): EstadoInvit
 
 export const listarColegios = () => leer<Colegio>('colegios', 'select=id,nombre,municipio,convenio&order=nombre.asc');
 export const listarHabilitadas = () => leer<Habilitada>('colegio_cartillas', 'select=colegio_id,cartilla_id,version');
+export const listarCartillas = () => leer<CartillaCat>('cartillas', 'select=id,titulo,materia,grado,publicada&order=materia.asc,grado.asc');
+/** "Inglés 3° · English Adventure Quest". */
+export const nombreCartilla = (c: Pick<CartillaCat, 'titulo' | 'materia' | 'grado'>) => [[c.materia, c.grado && `${c.grado}°`].filter(Boolean).join(' '), c.titulo].filter(Boolean).join(' · ');
+/** La versión más nueva de una cartilla (las versiones llegan de la más nueva a la más vieja). */
+export const ultimaVersion = (versiones: Version[], cartilla: string) => versiones.find((v) => v.cartilla_id === cartilla);
 export const listarVersiones = () => leer<Version>('cartilla_versiones', 'select=cartilla_id,version&order=version.desc');
 export const listarPersonas = () => leer<Persona>('perfiles', 'select=id,colegio_id,rol,nombre,correo,activo&order=nombre.asc');
 /** Migración 003: `lista_invitaciones()` trae lo que ve cada rol y si la invitó el dueño. */
@@ -90,6 +103,9 @@ export async function crearColegio(d: { nombre: string; municipio: string; conve
 
 export const habilitarCartilla = (colegio: string, v: Version) =>
   escribir('colegio_cartillas', 'POST', 'on_conflict=colegio_id,cartilla_id&select=colegio_id', { colegio_id: colegio, cartilla_id: v.cartilla_id, version: v.version }, true);
+
+/** Publicar u ocultar una cartilla. Oculta no se puede habilitar en más colegios; los que ya la tienen la siguen usando. */
+export const publicarCartilla = (id: string, publicada: boolean) => escribir('cartillas', 'PATCH', `id=eq.${encodeURIComponent(id)}&select=id`, { publicada });
 
 export const cancelarInvitacion = (id: string) => escribir('invitaciones', 'DELETE', `id=eq.${encodeURIComponent(id)}&aceptada=is.null&select=id`);
 

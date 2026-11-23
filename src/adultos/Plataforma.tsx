@@ -1,9 +1,10 @@
-// Dueño (/plataforma): colegios, cartilla habilitada, personas e invitaciones (esqueleto §3.2).
+// Dueño (/plataforma): colegios, cartillas (publicar, ocultar y habilitar por colegio), personas e
+// invitaciones (esqueleto §3.2).
 import { useState, type FormEvent } from 'react';
 import { navegar } from '../navegacion';
 import { Boton, Encabezado, Fila, Panel, Vacio } from './base';
 import { Campo, Cargado, Confirmar, FormInvitar, ListaInvitaciones, ListaPersonas, textoAccion, useCarga, useTitulo } from './comun';
-import { crearColegio, habilitarCartilla, listarColegios, listarHabilitadas, listarInvitaciones, listarPersonas, listarVersiones, type Colegio, type Habilitada, type Invitacion, type Persona, type Version } from './datos';
+import { crearColegio, habilitarCartilla, listarCartillas, listarColegios, listarHabilitadas, listarInvitaciones, listarPersonas, listarVersiones, nombreCartilla, publicarCartilla, ultimaVersion, type CartillaCat, type Colegio, type Habilitada, type Invitacion, type Persona, type Version } from './datos';
 
 /** Páginas del dueño que tienen datos. Devuelve null si la sección no es de este archivo. */
 export function PaginaDueno({ seccion, id, sinRed }: { seccion: string; id?: string; sinRed: boolean }) {
@@ -11,6 +12,7 @@ export function PaginaDueno({ seccion, id, sinRed }: { seccion: string; id?: str
   if (seccion === 'colegios' && id === 'nuevo') return <NuevoColegio sinRed={sinRed} />;
   if (seccion === 'colegios' && id) return <ColegioDueno id={id} sinRed={sinRed} />;
   if (seccion === 'cuentas') return <Cuentas sinRed={sinRed} />;
+  if (seccion === 'cartillas') return <Cartillas sinRed={sinRed} />;
   return null;
 }
 
@@ -42,8 +44,8 @@ function Colegios() {
           ) : (
             <Panel filas>
               {colegios.map((c) => {
-                const h = habilitadas.find((x) => x.colegio_id === c.id);
-                return <Fila key={c.id} ruta={`/plataforma/colegios/${c.id}`} icono="colegio" titulo={c.nombre} detalle={detalleColegio(c) || undefined} fin={<span className="meta">{h ? `Cartilla ${h.version}` : 'Sin cartilla'}</span>} />;
+                const n = habilitadas.filter((x) => x.colegio_id === c.id).length;
+                return <Fila key={c.id} ruta={`/plataforma/colegios/${c.id}`} icono="colegio" titulo={c.nombre} detalle={detalleColegio(c) || undefined} fin={<span className="meta">{n === 0 ? 'Sin cartilla' : n === 1 ? '1 cartilla' : `${n} cartillas`}</span>} />;
               })}
             </Panel>
           )
@@ -99,15 +101,15 @@ function NuevoColegio({ sinRed }: { sinRed: boolean }) {
   );
 }
 
-type DatosColegio = [Colegio[], Habilitada[], Version[], Persona[], Invitacion[]];
+type DatosColegio = [Colegio[], Habilitada[], Version[], Persona[], Invitacion[], CartillaCat[]];
 
 function ColegioDueno({ id, sinRed }: { id: string; sinRed: boolean }) {
-  const carga = useCarga<DatosColegio>(() => Promise.all([listarColegios(), listarHabilitadas(), listarVersiones(), listarPersonas(), listarInvitaciones()]), `colegio-${id}`);
+  const carga = useCarga<DatosColegio>(() => Promise.all([listarColegios(), listarHabilitadas(), listarVersiones(), listarPersonas(), listarInvitaciones(), listarCartillas()]), `colegio-${id}`);
   const colegio = carga.datos?.[0].find((c) => c.id === id);
   useTitulo(colegio?.nombre ?? 'Colegio');
   return (
     <Cargado carga={carga}>
-      {([colegios, habilitadas, versiones, personas, invitaciones]) => {
+      {([colegios, habilitadas, versiones, personas, invitaciones, cartillas]) => {
         const c = colegios.find((x) => x.id === id);
         if (!c)
           return (
@@ -118,16 +120,18 @@ function ColegioDueno({ id, sinRed }: { id: string; sinRed: boolean }) {
               </Panel>
             </>
           );
-        return <FichaColegio c={c} habilitada={habilitadas.find((h) => h.colegio_id === id)} versiones={versiones} personas={personas.filter((p) => p.colegio_id === id)} invitaciones={invitaciones.filter((i) => i.colegio_id === id)} sinRed={sinRed} recargar={carga.recargar} />;
+        return <FichaColegio c={c} cartillas={cartillas} habilitadas={habilitadas.filter((h) => h.colegio_id === id)} versiones={versiones} personas={personas.filter((p) => p.colegio_id === id)} invitaciones={invitaciones.filter((i) => i.colegio_id === id)} sinRed={sinRed} recargar={carga.recargar} />;
       }}
     </Cargado>
   );
 }
 
-function FichaColegio({ c, habilitada, versiones, personas, invitaciones, sinRed, recargar }: { c: Colegio; habilitada?: Habilitada; versiones: Version[]; personas: Persona[]; invitaciones: Invitacion[]; sinRed: boolean; recargar: () => void }) {
+function FichaColegio({ c, cartillas, habilitadas, versiones, personas, invitaciones, sinRed, recargar }: { c: Colegio; cartillas: CartillaCat[]; habilitadas: Habilitada[]; versiones: Version[]; personas: Persona[]; invitaciones: Invitacion[]; sinRed: boolean; recargar: () => void }) {
   const [error, setError] = useState<string>();
   const [ocupado, setOcupado] = useState(false);
   const pendientes = invitaciones.filter((i) => !i.aceptada).length;
+  // Las publicadas, más las ocultas que este colegio ya usa.
+  const visibles = cartillas.filter((k) => k.publicada || habilitadas.some((h) => h.cartilla_id === k.id));
 
   const habilitar = async (v: Version) => {
     setOcupado(true);
@@ -146,23 +150,31 @@ function FichaColegio({ c, habilitada, versiones, personas, invitaciones, sinRed
     <>
       <Encabezado titulo={c.nombre} meta={detalleColegio(c) || undefined} volver={{ ruta: '/plataforma', etiqueta: 'Colegios' }} />
 
-      <Panel titulo="Cartilla">
-        {habilitada ? (
-          <p>
-            English Adventure Quest, versión <strong>{habilitada.version}</strong> habilitada. Los docentes de este colegio la ven en su cuenta.
-          </p>
-        ) : versiones.length === 0 ? (
-          <p className="sec">No hay versiones publicadas de la cartilla. Falta cargar la versión en la base de datos.</p>
+      <Panel titulo="Cartillas" filas>
+        {visibles.length === 0 ? (
+          <div style={{ padding: 'var(--e-4)' }}>
+            <Vacio titulo="No hay cartillas publicadas" texto="Publique una cartilla y aquí podrá habilitarla para este colegio.">
+              <Boton ruta="/plataforma/cartillas">Ver cartillas</Boton>
+            </Vacio>
+          </div>
         ) : (
-          <Vacio texto="Este colegio todavía no tiene la cartilla habilitada.">
-            {versiones.map((v) => (
-              <Confirmar key={`${v.cartilla_id}-${v.version}`} principal etiqueta={`Habilitar cartilla ${v.version}`} pregunta={`¿Habilitar la versión ${v.version} para ${c.nombre}?`} si="Sí, habilitar" disabled={sinRed || ocupado} alConfirmar={() => void habilitar(v)} />
-            ))}
-          </Vacio>
+          visibles.map((k) => {
+            const h = habilitadas.find((x) => x.cartilla_id === k.id);
+            const ultima = ultimaVersion(versiones, k.id);
+            const nombre = nombreCartilla(k);
+            const detalle = h ? `Versión ${h.version} habilitada: sus docentes la ven` : ultima ? `Versión ${ultima.version} lista para habilitar` : 'Falta cargar una versión';
+            const accion =
+              ultima && (!h || h.version !== ultima.version) ? (
+                <Confirmar principal={!h} etiqueta={h ? `Pasar a ${ultima.version}` : `Habilitar ${ultima.version}`} pregunta={`¿${h ? 'Pasar' : 'Habilitar'} ${k.titulo} ${ultima.version} para ${c.nombre}?`} si={h ? 'Sí, pasar' : 'Sí, habilitar'} disabled={sinRed || ocupado} alConfirmar={() => void habilitar(ultima)} />
+              ) : undefined;
+            return <Fila key={k.id} icono="cartillas" titulo={nombre} detalle={detalle} fin={accion} />;
+          })
         )}
-        <p className="mensaje mensaje--error" role="alert">
-          {error}
-        </p>
+        {error && (
+          <p className="mensaje mensaje--error" role="alert" style={{ padding: '0 var(--e-4)' }}>
+            {error}
+          </p>
+        )}
       </Panel>
 
       <Panel titulo="Invitar por correo">
@@ -213,6 +225,79 @@ function Cuentas({ sinRed }: { sinRed: boolean }) {
               <ListaInvitaciones items={invitaciones} colegios={colegios} sinRed={sinRed} alCambiar={carga.recargar} />
             )}
           </Panel>
+        )}
+      </Cargado>
+    </>
+  );
+}
+
+// ---------------------------------------------------------------- Cartillas
+
+/** Catálogo: cada cartilla con su versión, en cuántos colegios está y si está publicada. */
+function Cartillas({ sinRed }: { sinRed: boolean }) {
+  useTitulo('Cartillas');
+  const carga = useCarga(() => Promise.all([listarCartillas(), listarVersiones(), listarHabilitadas()]), 'cartillas');
+  const [error, setError] = useState<string>();
+  const [ocupado, setOcupado] = useState(false);
+
+  const cambiar = async (k: CartillaCat, publicada: boolean) => {
+    setOcupado(true);
+    setError(undefined);
+    try {
+      await publicarCartilla(k.id, publicada);
+      carga.recargar();
+    } catch (falla) {
+      setError(textoAccion(falla));
+    } finally {
+      setOcupado(false);
+    }
+  };
+
+  const meta = carga.datos ? `${carga.datos[0].length} ${carga.datos[0].length === 1 ? 'cartilla' : 'cartillas'} · ${((n) => (n === 1 ? '1 publicada' : `${n} publicadas`))(carga.datos[0].filter((k) => k.publicada).length)}` : undefined;
+  return (
+    <>
+      <Encabezado titulo="Cartillas" meta={meta} />
+      <Cargado carga={carga}>
+        {([cartillas, versiones, habilitadas]) => (
+          <>
+            <Panel filas>
+              {cartillas.length === 0 ? (
+                <div style={{ padding: 'var(--e-4)' }}>
+                  <Vacio titulo="Todavía no hay cartillas" texto="Una cartilla aparece aquí cuando su paquete se carga en la base de datos." />
+                </div>
+              ) : (
+                cartillas.map((k) => {
+                  const ultima = ultimaVersion(versiones, k.id);
+                  const colegios = habilitadas.filter((h) => h.cartilla_id === k.id).length;
+                  const detalle = [ultima ? `Versión ${ultima.version}` : 'Sin versión cargada', colegios === 1 ? 'en 1 colegio' : `en ${colegios} colegios`].join(' · ');
+                  const accion = k.publicada ? (
+                    <Confirmar etiqueta="Ocultar" pregunta={`¿Ocultar ${k.titulo}? Los colegios que ya la tienen la siguen usando.`} si="Sí, ocultar" disabled={sinRed || ocupado} alConfirmar={() => void cambiar(k, false)} />
+                  ) : (
+                    <Confirmar principal etiqueta="Publicar" pregunta={`¿Publicar ${k.titulo}? Podrá habilitarla para cada colegio.`} si="Sí, publicar" disabled={sinRed || ocupado || !ultima} alConfirmar={() => void cambiar(k, true)} />
+                  );
+                  return (
+                    <Fila
+                      key={k.id}
+                      icono="cartillas"
+                      titulo={nombreCartilla(k)}
+                      detalle={
+                        <>
+                          <span className={k.publicada ? 'estado-cartilla estado-cartilla--publicada' : 'estado-cartilla'}>{k.publicada ? 'Publicada' : 'Oculta'}</span> · {detalle}
+                        </>
+                      }
+                      fin={accion}
+                    />
+                  );
+                })
+              )}
+              {error && (
+                <p className="mensaje mensaje--error" role="alert" style={{ padding: '0 var(--e-4)' }}>
+                  {error}
+                </p>
+              )}
+            </Panel>
+            <p className="meta">Publicada: se puede habilitar para cualquier colegio desde su ficha. Oculta: no se ofrece a más colegios, y los que ya la tienen la siguen usando.</p>
+          </>
         )}
       </Cargado>
     </>

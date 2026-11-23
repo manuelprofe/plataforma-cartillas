@@ -88,7 +88,8 @@ export async function entrar(codigo: string, estudiante: string, pin: string): P
 /**
  * Sube la cola en orden, una misión por llamada. Cada envío sale de la cola solo cuando el
  * servidor respondió; sin red se detiene y sigue la próxima vez. Las estrellas no se duplican al
- * reintentar: `registrar_mision` da completar, mejorar y autoevaluarse una sola vez por misión.
+ * reintentar: cada envío lleva su identificador y `registrar_mision` (migración 004) no suma
+ * dos veces el mismo; además da completar, mejorar y autoevaluarse una sola vez por misión.
  */
 export async function subir(): Promise<void> {
   const tocados = new Set<string>();
@@ -100,6 +101,7 @@ export async function subir(): Promise<void> {
         p_mision: envio.mision,
         p_errores: envio.errores,
         p_autoeval: envio.autoeval ?? null,
+        p_envio: envio.id,
       });
       quitarDeCola(envio.id);
       tocados.add(envio.estudiante);

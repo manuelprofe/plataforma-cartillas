@@ -29,6 +29,8 @@ grant usage on schema public to anon, authenticated;
 \i supabase/migraciones/002-esqueleto.sql
 \i supabase/migraciones/003-ajustes.sql
 \i supabase/migraciones/003-ajustes.sql
+\i supabase/migraciones/004-multicartilla.sql
+\i supabase/migraciones/004-multicartilla.sql
 
 -- Datos: dos colegios; en el uno, dos docentes y un coordinador; en el dos, un docente y un
 -- coordinador; el dueño; tres aparatos anónimos; dos adultos que llegan por invitación.
@@ -156,6 +158,7 @@ select pg_temp.debe_fallar(format('select crear_estudiante(%L, %L, %L, %L)', pg_
 -- ------------------------------------------- Aparato b1: Ana y Luis (hermanos) en el mismo celular
 select pg_temp.soy('00000000-0000-0000-0000-0000000000b1');
 select pg_temp.verificar((select count(*) from lista_grupo(lower(pg_temp.v('codigo1')))) = 3, 'la lista muestra solo a los 3 con autorización');
+select pg_temp.verificar((select bool_and(cartilla = 'ingles-3') from lista_grupo(pg_temp.v('codigo1'))), 'el código dice la cartilla del grupo');
 select pg_temp.verificar(entrar_estudiante(pg_temp.v('codigo1'), pg_temp.v('n4')::uuid, '111') = 'no-existe', 'sin autorización no entra con cuenta');
 select pg_temp.verificar(entrar_estudiante(pg_temp.v('codigo1'), pg_temp.v('ana')::uuid, '999') = 'errado', 'PIN errado responde errado');
 select pg_temp.debe_fallar(format('select registrar_mision(%L, %L, %L, 2, 3)', pg_temp.v('ana'), 'ingles-3', 'bosque-school'), 'sin entrar no se registran misiones');
@@ -167,6 +170,13 @@ select pg_temp.verificar(registrar_mision(pg_temp.v('ana')::uuid, 'ingles-3', 'b
 select pg_temp.verificar(registrar_mision(pg_temp.v('ana')::uuid, 'ingles-3', 'bosque-school', 2, 2) = 15, 'mejorar da 15');
 select pg_temp.verificar(registrar_mision(pg_temp.v('ana')::uuid, 'ingles-3', 'bosque-school', 1, 2) = 0, 'mejorar solo una vez por misión');
 select pg_temp.verificar(registrar_mision(pg_temp.v('luis')::uuid, 'ingles-3', 'bosque-school', 0) = 15, 'Luis registra su misión aparte');
+select pg_temp.verificar(registrar_mision(pg_temp.v('luis')::uuid, 'ingles-3', 'bosque-school-2', 1, null, 'envio-luis-0001') = 15, 'envío con identificador: 15');
+select pg_temp.verificar(registrar_mision(pg_temp.v('luis')::uuid, 'ingles-3', 'bosque-school-2', 1, null, 'envio-luis-0001') = 15, 'el reintento responde lo mismo');
+select pg_temp.verificar((select veces from progreso_misiones where estudiante_id = pg_temp.v('luis')::uuid and mision_id = 'bosque-school-2') = 1, 'el reintento no cuenta otra vez');
+select pg_temp.verificar((select count(*) from estrellas where estudiante_id = pg_temp.v('luis')::uuid and mision_id = 'bosque-school-2') = 1, 'el reintento no suma estrellas');
+select pg_temp.verificar(registrar_mision(pg_temp.v('luis')::uuid, 'ingles-3', 'bosque-school-2', 1, 2, 'envio-luis-0002') = 10, 'un envío nuevo de la misma misión sí cuenta');
+select pg_temp.debe_fallar(format('select registrar_mision(%L, %L, %L, 0, null, %L)', pg_temp.v('ana'), 'ingles-3', 'bosque-school-2', 'envio-luis-0001'), 'un envío de Luis no vale para Ana');
+select pg_temp.debe_fallar('select * from envios_mision', 'el aparato no lee los envíos');
 select pg_temp.debe_fallar(format('select registrar_mision(%L, %L, %L, 0, 1)', pg_temp.v('luis'), 'ingles-3', 'inventada-1'), 'no se registran misiones inventadas');
 select pg_temp.debe_fallar(format('select registrar_mision(%L, %L, %L, 0, 1)', pg_temp.v('luis'), 'otra-cartilla', 'bosque-school'), 'no se registran misiones de otra cartilla');
 select pg_temp.verificar((select estrellas from total_estrellas where estudiante_id = pg_temp.v('ana')::uuid) = 65, 'total de Ana: 10 + 15 + 25 + 15 = 65');
@@ -354,4 +364,8 @@ select pg_temp.debe_fallar('select * from grupos', 'visitante sin sesión no lee
 select pg_temp.debe_fallar('select * from cartillas', 'visitante sin sesión no lee cartillas');
 select pg_temp.debe_fallar($$select * from lista_grupo('AAAAA')$$, 'visitante sin sesión no ejecuta funciones');
 reset role;
+-- Multicartilla: cada grupo tiene su cartilla (inglés 3 por defecto) y debe existir.
+select pg_temp.verificar((select count(*) from grupos where cartilla_id = 'ingles-3') = (select count(*) from grupos), 'todos los grupos quedan con inglés 3');
+select pg_temp.verificar((select publicada from cartillas where id = 'ingles-3'), 'inglés 3 está publicada');
+select pg_temp.debe_fallar($$update grupos set cartilla_id = 'no-existe'$$, 'un grupo no apunta a una cartilla que no existe');
 \echo TODAS LAS PRUEBAS PASARON

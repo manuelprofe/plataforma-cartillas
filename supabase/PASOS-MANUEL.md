@@ -32,4 +32,16 @@ Proyecto: https://supabase.com/dashboard → proyecto `jpwwmzfhbdnzsvwuciqa`. Ha
 11. Solo si Netlify construye el sitio: en Netlify, variables `VITE_SUPABASE_URL` y
     `VITE_SUPABASE_CLAVE_PUBLICA` (valores en `.env.example`).
 
+## Migración 004 (varias cartillas)
+
+12. **SQL Editor** → New query → pegar todo `supabase/migraciones/004-multicartilla.sql` → Run.
+    Debe terminar sin error (se puede volver a correr sin daño). Hacerlo **antes** de publicar en
+    Netlify la versión que la usa: la app nueva manda un dato que la base vieja no conoce.
+13. Comprobarla con esta consulta; debe dar `true`:
+    ```sql
+    select bool_and(cartilla_id = 'ingles-3') from grupos;
+    ```
+    (Si no hay grupos todavía, da vacío: también está bien.) Si algún día se vuelve a pegar la
+    002, pegar después la 004 otra vez.
+
 Al terminar, avisar en el chat qué pasos quedaron hechos y si alguno dio error (copiar el mensaje).

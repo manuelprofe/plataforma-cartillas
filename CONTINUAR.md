@@ -15,8 +15,8 @@ Plan completo: `docs/plan/calendario-diciembre.md` (también en Google Calendar,
 
 - Rama `ccr-c31d414e-rt7zgq` (`main` atrasada; unirla solo con permiso). Sin `push --force`.
 - Sitio https://englishlandmanuelprofe.netlify.app (Netlify `94f443a2-de53-4029-ab21-f6673073280c`).
-  Publicar: herramienta Netlify `deploy-site` y correr desde la raíz el `npx` que devuelve.
-  **Solo con permiso de Manuel.**
+  Desde el 23 nov Netlify está enlazado a GitHub: **cada push a la rama se publica solo**
+  (rama de producción `ccr-c31d414e-rt7zgq`). Hacer push solo con trabajo probado.
 - Supabase `https://jpwwmzfhbdnzsvwuciqa.supabase.co`. Clave pública en `.env.example` y
   `netlify.toml`; la secreta nunca se pide en el chat. Aplicadas las migraciones 002, 003 y 004 (la 004 el 23 nov). Manuel
   aplica las nuevas siguiendo `supabase/PASOS-MANUEL.md`. Prueba local: `supabase/prueba_local.sql`

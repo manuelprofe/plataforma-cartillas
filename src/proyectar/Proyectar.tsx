@@ -203,8 +203,8 @@ function MenuTema({ tema }: { tema: string }) {
       ) : (
         <main className="telon__cuerpo telon__menu">
           <aside className="telon__guia">
-            <img src={`${base()}personajes/cosmo-wave.webp`} width="280" height="221" alt="" />
-            <p>Hoy encendemos {e.nombre.toLowerCase()}</p>
+            <img src={`${base()}${indice.guia ?? 'personajes/cosmo-wave.webp'}`} width="280" height="221" alt="" />
+            <p>Hoy aprendemos {e.nombre.toLowerCase()}</p>
           </aside>
           <div className="tarjetas">{tarjetas(e, indice)}</div>
         </main>
@@ -237,7 +237,7 @@ function tarjetas(e: EntradaTema, _indice: Indice) {
       {!tiene('laminas') && hueco('laminas', 'Láminas', `Aquí irán las láminas de ${e.nombre.toLowerCase()}`)}
       {juegos.map((j) => hueco(j, j, 'Aquí irá el juego'))}
       {!tiene('cancion') && hueco('cancion', 'Canción del tema', `Aquí irá la canción de ${e.nombre.toLowerCase()}`)}
-      {!tiene('prueba') && hueco('prueba', 'El reto de Cosmo', 'Aquí irá la prueba')}
+      {!tiene('prueba') && hueco('prueba', 'El reto', 'Aquí irá la prueba')}
       {hueco('caritas', 'Caritas', 'Aquí irá la hoja de caritas')}
     </>
   );

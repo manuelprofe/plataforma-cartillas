@@ -166,6 +166,8 @@ export interface EntradaTema {
 
 export interface Indice {
   cartilla: string;
+  /** Imagen del guía que acompaña al proyectar (ruta dentro de la cartilla). */
+  guia?: string;
   tipos: Record<string, TipoCatalogo>;
   temas: EntradaTema[];
 }

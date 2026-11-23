@@ -266,7 +266,7 @@ function Tableros(props: PropsJuego) {
         nivel.current = 0;
         ayudar(1);
       }}
-      aria-label="Pedir ayuda a Lumi"
+      aria-label="Pedir ayuda"
     >
       <img key={gesto?.n ?? 0} className={gesto ? `es-${gesto.tipo}` : ''} src={base + imagenFiesta} alt="" width="170" height="152" draggable={false} />
     </button>

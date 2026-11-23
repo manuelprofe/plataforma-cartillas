@@ -53,6 +53,8 @@ export interface Grupo {
   docente_id: string;
   nombre: string;
   grado: string;
+  /** Cartilla del grupo (migración 004). */
+  cartilla_id?: string;
 }
 export interface Cifra {
   grupo_id: string;
@@ -87,7 +89,7 @@ export const listarVersiones = () => leer<Version>('cartilla_versiones', 'select
 export const listarPersonas = () => leer<Persona>('perfiles', 'select=id,colegio_id,rol,nombre,correo,activo&order=nombre.asc');
 /** Migración 003: `lista_invitaciones()` trae lo que ve cada rol y si la invitó el dueño. */
 export const listarInvitaciones = () => rpc<Invitacion[]>('lista_invitaciones', {});
-export const listarGrupos = () => leer<Grupo>('grupos', 'select=id,colegio_id,docente_id,nombre,grado&order=nombre.asc');
+export const listarGrupos = () => leer<Grupo>('grupos', 'select=id,colegio_id,docente_id,nombre,grado,cartilla_id&order=nombre.asc');
 export const cifrasGrupos = () => rpc<Cifra[]>('cifras_grupos', {});
 
 // ---------------------------------------------------------------- Cambios
@@ -114,7 +116,10 @@ export const cambiarActivo = (persona: string, activo: boolean) => escribir('per
 /** Vuelve a enviar el correo: la función de la base renueva la invitación y el servidor manda el enlace. */
 export const reenviar = (i: Invitacion) => invitar({ correo: i.correo, nombre: i.nombre, rol: i.rol, colegio_id: i.colegio_id });
 
-export const crearGrupo = (d: { nombre: string; grado: string; docente: string }) => rpc('crear_grupo', { p_nombre: d.nombre.trim(), p_grado: d.grado, p_docente: d.docente });
+export const crearGrupo = (d: { nombre: string; grado: string; docente: string }) => rpc<Grupo>('crear_grupo', { p_nombre: d.nombre.trim(), p_grado: d.grado, p_docente: d.docente });
+
+/** Pasa un grupo a otra cartilla habilitada en su colegio (migración 005; la base lo comprueba). */
+export const cambiarCartillaGrupo = (grupo: string, cartilla: string) => escribir('grupos', 'PATCH', `id=eq.${encodeURIComponent(grupo)}&select=id`, { cartilla_id: cartilla });
 
 export const asignarDocente = (grupo: string, docente: string) => escribir('grupos', 'PATCH', `id=eq.${encodeURIComponent(grupo)}&select=id`, { docente_id: docente });
 

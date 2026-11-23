@@ -44,4 +44,10 @@ Proyecto: https://supabase.com/dashboard → proyecto `jpwwmzfhbdnzsvwuciqa`. Ha
     (Si no hay grupos todavía, da vacío: también está bien.) Si algún día se vuelve a pegar la
     002, pegar después la 004 otra vez.
 
+## Migración 005 (cambiar la cartilla de un grupo)
+
+14. **SQL Editor** → New query → pegar todo `supabase/migraciones/005-cartilla-del-grupo.sql` → Run.
+    Debe decir "Success". Sin ella, el coordinador no puede pasar un grupo a otra cartilla (solo
+    hace falta cuando un colegio tenga más de una cartilla habilitada).
+
 Al terminar, avisar en el chat qué pasos quedaron hechos y si alguno dio error (copiar el mensaje).

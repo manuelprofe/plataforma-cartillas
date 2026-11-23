@@ -31,6 +31,8 @@ grant usage on schema public to anon, authenticated;
 \i supabase/migraciones/003-ajustes.sql
 \i supabase/migraciones/004-multicartilla.sql
 \i supabase/migraciones/004-multicartilla.sql
+\i supabase/migraciones/005-cartilla-del-grupo.sql
+\i supabase/migraciones/005-cartilla-del-grupo.sql
 
 -- Datos: dos colegios; en el uno, dos docentes y un coordinador; en el dos, un docente y un
 -- coordinador; el dueño; tres aparatos anónimos; dos adultos que llegan por invitación.
@@ -257,6 +259,23 @@ select pg_temp.debe_fallar(format('select cambiar_pin(%L, %L)', pg_temp.v('ana')
 select pg_temp.verificar(mi_perfil()->>'rol' = 'coordinador' and (select count(*) from perfiles) > 1, 'mi_perfil da el propio aunque se vean varios perfiles');
 select pg_temp.debe_fallar('select codigo from grupos', 'coordinador no lee grupos.codigo');
 select pg_temp.debe_fallar('select * from lista_grupo(''AAAAA'')', 'coordinador no usa lista_grupo');
+-- Cartilla del grupo (migración 005): solo una habilitada para el colegio.
+reset role;
+insert into cartillas (id, titulo, materia, grado) values ('mate-1', 'Mate', 'Matemáticas', '1');
+insert into cartilla_versiones (cartilla_id, version) values ('mate-1', '2027.1');
+set role authenticated;
+select pg_temp.soy('00000000-0000-0000-0000-0000000000a3');
+select pg_temp.debe_fallar($$update grupos set cartilla_id = 'mate-1'$$, 'no se pasa un grupo a una cartilla no habilitada');
+reset role;
+insert into colegio_cartillas values ('10000000-0000-0000-0000-000000000001', 'mate-1', '2027.1');
+set role authenticated;
+select pg_temp.soy('00000000-0000-0000-0000-0000000000a3');
+with x as (update grupos set cartilla_id = 'mate-1' returning 1) select pg_temp.verificar((select count(*) from x) = 1, 'el coordinador pasa el grupo a otra cartilla habilitada');
+with x as (update grupos set cartilla_id = 'ingles-3' returning 1) select pg_temp.verificar((select count(*) from x) = 1, 'y lo devuelve');
+reset role;
+delete from colegio_cartillas where cartilla_id = 'mate-1';
+set role authenticated;
+select pg_temp.soy('00000000-0000-0000-0000-0000000000a3');
 select pg_temp.verificar((select not con_cifras and ninos is null from cifras_grupos() where grupo_id = pg_temp.v('grupo1')::uuid), '5 niños pero 3 con autorización: sin cifras');
 select pg_temp.soy('00000000-0000-0000-0000-0000000000a1');
 update estudiantes set autorizacion = hoy_co() where autorizacion is null;

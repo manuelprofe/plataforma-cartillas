@@ -1,6 +1,6 @@
 // Dueño, coordinador e invitaciones con Supabase simulado en memoria (no sale a la red).
 // Dueño: crea colegio, publica y habilita cartillas, invita, reenvía, cancela, desactiva.
-// Coordinador: invita docente, crea grupo, asigna docente, renueva código (sin verlo).
+// Coordinador: invita docente, crea grupo con su cartilla, asigna docente y cartilla, renueva código (sin verlo).
 // Invitado: enlace del correo (type=invite) en /adultos y en la raíz, contraseña y entrada.
 // Uso: `npm run build`, luego `node scripts/pruebas/plataforma.mjs`.
 import { chromium, servir, URL_APP, CAPTURAS, LLAVE_ADULTO, sesionAdulto, simularSupabase } from './comun.mjs';
@@ -60,7 +60,7 @@ function crearBase() {
       return { json: b.grupos };
     }
     if (t === 'rpc/crear_grupo') {
-      const f = { id: id('gr'), colegio_id: 'col-1', docente_id: cuerpo.p_docente, nombre: cuerpo.p_nombre, grado: cuerpo.p_grado };
+      const f = { id: id('gr'), colegio_id: 'col-1', docente_id: cuerpo.p_docente, nombre: cuerpo.p_nombre, grado: cuerpo.p_grado, cartilla_id: 'ingles-3' };
       b.grupos.push(f); return { json: { ...f, codigo: null } };
     }
     if (t === 'rpc/renovar_codigo') return { json: null };
@@ -246,6 +246,8 @@ try {
     const ok = new Date().toISOString();
     for (const [correo, nombre] of [['rosa@colegio.edu.co', 'Rosa Pérez'], ['marta@colegio.edu.co', 'Marta Díaz'], ['gil@colegio.edu.co', 'Inactivo Gil']]) base.invitaciones.push({ id: base.id('inv'), correo, nombre, rol: 'docente', colegio_id: 'col-1', creado: ok, aceptada: ok });
     base.invitaciones.push({ id: 'inv-d', correo: 'deldueno@colegio.edu.co', nombre: 'Del Dueño', rol: 'docente', colegio_id: 'col-1', creado: ok, aceptada: null, por: 'dueno' });
+    // El colegio tiene dos cartillas habilitadas: el coordinador elige la de cada grupo.
+    base.habilitadas.push({ colegio_id: 'col-1', cartilla_id: 'ingles-3', version: '2027.1' }, { colegio_id: 'col-1', cartilla_id: 'matematicas-1', version: '2027.1' });
     const { c, p, errores } = await abrir(navegador, base, { rol: 'coordinador' });
     await p.goto(url('/colegio'));
     await p.waitForSelector('h2:has-text("Todavía no hay grupos")');
@@ -267,19 +269,27 @@ try {
     await p.fill('#gr-nombre', '3B');
     await p.selectOption('#gr-grado', '3°');
     await p.selectOption('#gr-docente', 'u-1');
+    comprobar((await p.locator('#gr-cartilla').inputValue()) === 'ingles-3', 'el grupo nuevo empieza con la cartilla predeterminada');
+    await p.selectOption('#gr-cartilla', 'matematicas-1');
     await p.click('main button[type=submit]:has-text("Crear grupo")');
     await p.waitForSelector('li:has-text("3B") >> text=Docente: Rosa Pérez');
+    const pc = base.llamadas.find((l) => l.t === 'grupos' && l.m === 'PATCH' && l.cuerpo?.cartilla_id);
+    comprobar(pc?.cuerpo.cartilla_id === 'matematicas-1' && (await p.locator('li:has-text("3B")').textContent()).includes('Cartilla: Matemáticas 1°'), 'el grupo se crea con la cartilla elegida');
+    comprobar((await p.locator('h2:has-text("Grupos de grado 3°")').count()) === 1, 'los grupos se ordenan por grado');
     await c.setOffline(true);
     await p.waitForSelector('.aviso-red');
-    comprobar(await p.locator('li:has-text("3B") select').isDisabled(), 'sin red: "Cambiar docente" deshabilitado');
+    comprobar(await p.locator('li:has-text("3B") select[id^="doc-"]').isDisabled(), 'sin red: "Cambiar docente" deshabilitado');
     await c.setOffline(false);
     await p.waitForFunction(() => !document.querySelector('.aviso-red'));
     const cg = base.llamadas.find((l) => l.t === 'rpc/crear_grupo');
     comprobar(cg?.cuerpo.p_nombre === '3B' && cg.cuerpo.p_grado === '3°' && cg.cuerpo.p_docente === 'u-1', 'crear_grupo recibe nombre, grado y docente');
-    await p.locator('li:has-text("3B") select').selectOption('u-2');
+    await p.locator('li:has-text("3B") select[id^="doc-"]').selectOption('u-2');
     await p.waitForSelector('li:has-text("3B") >> text=Docente: Marta Díaz');
-    const pa = base.llamadas.find((l) => l.t === 'grupos' && l.m === 'PATCH');
+    const pa = base.llamadas.find((l) => l.t === 'grupos' && l.m === 'PATCH' && l.cuerpo?.docente_id);
     comprobar(pa?.cuerpo.docente_id === 'u-2' && pa.q.includes('select=id'), 'asignar otro docente cambia docente_id');
+    await p.locator('li:has-text("3B") select[id^="car-"]').selectOption('ingles-3');
+    await p.waitForSelector('li:has-text("3B") >> text=Cartilla: Inglés 3°');
+    comprobar(base.grupos.find((g) => g.nombre === '3B').cartilla_id === 'ingles-3', 'reasignar la cartilla de un grupo');
     await p.locator('li:has-text("3B") >> button:has-text("Renovar código")').click();
     await p.locator('button:has-text("Sí, renovar")').click();
     await p.waitForSelector('.mensaje--ok:has-text("Código renovado")');

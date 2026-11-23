@@ -4,7 +4,8 @@
 import { useState, type FormEvent } from 'react';
 import { Boton, Encabezado, Panel, Vacio } from './base';
 import { Campo, CampoOpciones, Cargado, Confirmar, FormInvitar, ListaInvitaciones, ListaPersonas, textoAccion, useCarga, useTitulo } from './comun';
-import { asignables, asignarDocente, cifrasGrupos, crearGrupo, listarGrupos, listarInvitaciones, listarPersonas, renovarCodigo, type Cifra, type Grupo, type Invitacion, type Persona } from './datos';
+import { asignables, asignarDocente, cambiarCartillaGrupo, cifrasGrupos, crearGrupo, listarCartillas, listarGrupos, listarHabilitadas, listarInvitaciones, listarPersonas, nombreCartilla, renovarCodigo, type CartillaCat, type Cifra, type Grupo, type Habilitada, type Invitacion, type Persona } from './datos';
+import { CARTILLA_PREDETERMINADA } from '../cartillas';
 
 const GRADOS = ['Preescolar', '1°', '2°', '3°', '4°', '5°'].map((g) => ({ valor: g, etiqueta: g === 'Preescolar' ? g : `Grado ${g}` }));
 
@@ -62,19 +63,36 @@ function FilaCifras({ g }: { g: Cifra }) {
   );
 }
 
-type Datos = [Persona[], Invitacion[], Grupo[]];
+type Datos = [Persona[], Invitacion[], Grupo[], Habilitada[], CartillaCat[]];
+type Opcion = { valor: string; etiqueta: string };
+
+/** Cartillas que el colegio puede usar en sus grupos (las habilitadas), con su nombre. */
+const opcionesCartilla = (habilitadas: Habilitada[], catalogo: CartillaCat[]): Opcion[] =>
+  habilitadas.map((h) => {
+    const c = catalogo.find((k) => k.id === h.cartilla_id);
+    return { valor: h.cartilla_id, etiqueta: c ? nombreCartilla(c) : h.cartilla_id };
+  });
+const cartillaDe = (g: Grupo) => g.cartilla_id ?? CARTILLA_PREDETERMINADA;
+/** Grados en el orden de la escuela; un grado escrito distinto va al final. */
+const ordenGrado = (g: string) => {
+  const i = GRADOS.findIndex((x) => x.valor === g);
+  return i < 0 ? GRADOS.length : i;
+};
 
 /** Docentes y grupos. */
 export function DocentesYGrupos({ sinRed }: { sinRed: boolean }) {
   useTitulo('Docentes y grupos');
-  const carga = useCarga<Datos>(() => Promise.all([listarPersonas(), listarInvitaciones(), listarGrupos()]), 'docentes');
+  const carga = useCarga<Datos>(() => Promise.all([listarPersonas(), listarInvitaciones(), listarGrupos(), listarHabilitadas(), listarCartillas()]), 'docentes');
   return (
     <>
       <Encabezado titulo="Docentes y grupos" />
       <Cargado carga={carga}>
-        {([personas, invitaciones, grupos]) => {
+        {([personas, invitaciones, grupos, habilitadas, catalogo]) => {
           const docentes = personas.filter((p) => p.rol === 'docente');
           const lista = asignables(docentes, invitaciones);
+          const cartillas = opcionesCartilla(habilitadas, catalogo);
+          const grados = [...new Set(grupos.map((g) => g.grado))].sort((a, b) => ordenGrado(a) - ordenGrado(b));
+          const nombreDe = (id: string) => cartillas.find((c) => c.valor === id)?.etiqueta ?? catalogo.find((k) => k.id === id)?.titulo ?? id;
           return (
             <>
               <Panel titulo="Docentes" filas>
@@ -97,22 +115,26 @@ export function DocentesYGrupos({ sinRed }: { sinRed: boolean }) {
                 </Panel>
               )}
 
-              <Panel titulo="Grupos" filas>
-                {grupos.length === 0 ? (
-                  <div style={{ padding: 'var(--e-4)' }}>
-                    <Vacio titulo="Todavía no hay grupos" texto="Cree el primero y asígnelo a un docente que ya haya aceptado su invitación." />
-                  </div>
-                ) : (
-                  <ul className="lista">
-                    {grupos.map((g) => (
-                      <FilaGrupo key={g.id} g={g} docentes={docentes} lista={lista} sinRed={sinRed} alCambiar={carga.recargar} />
-                    ))}
-                  </ul>
-                )}
-              </Panel>
+              {grupos.length === 0 ? (
+                <Panel titulo="Grupos">
+                  <Vacio titulo="Todavía no hay grupos" texto="Cree el primero y asígnelo a un docente que ya haya aceptado su invitación." />
+                </Panel>
+              ) : (
+                grados.map((grado) => (
+                  <Panel key={grado} titulo={`Grupos de ${GRADOS.find((x) => x.valor === grado)?.etiqueta.replace('Grado ', 'grado ') ?? grado}`} filas>
+                    <ul className="lista">
+                      {grupos
+                        .filter((g) => g.grado === grado)
+                        .map((g) => (
+                          <FilaGrupo key={g.id} g={g} docentes={docentes} lista={lista} cartillas={cartillas} nombreCartilla={nombreDe(cartillaDe(g))} sinRed={sinRed} alCambiar={carga.recargar} />
+                        ))}
+                    </ul>
+                  </Panel>
+                ))
+              )}
 
               <Panel titulo="Crear grupo">
-                <FormGrupo lista={lista} sinRed={sinRed} alListo={carga.recargar} />
+                <FormGrupo lista={lista} cartillas={cartillas} sinRed={sinRed} alListo={carga.recargar} />
               </Panel>
             </>
           );
@@ -122,7 +144,7 @@ export function DocentesYGrupos({ sinRed }: { sinRed: boolean }) {
   );
 }
 
-function FilaGrupo({ g, docentes, lista, sinRed, alCambiar }: { g: Grupo; docentes: Persona[]; lista: Persona[]; sinRed: boolean; alCambiar: () => void }) {
+function FilaGrupo({ g, docentes, lista, cartillas, nombreCartilla, sinRed, alCambiar }: { g: Grupo; docentes: Persona[]; lista: Persona[]; cartillas: Opcion[]; nombreCartilla: string; sinRed: boolean; alCambiar: () => void }) {
   const [aviso, setAviso] = useState<{ ok: boolean; texto: string }>();
   const [ocupado, setOcupado] = useState(false);
   const actual = docentes.find((d) => d.id === g.docente_id);
@@ -141,6 +163,7 @@ function FilaGrupo({ g, docentes, lista, sinRed, alCambiar }: { g: Grupo; docent
     }
   };
 
+  const opcionesCar = cartillas.some((c) => c.valor === cartillaDe(g)) ? cartillas : [{ valor: cartillaDe(g), etiqueta: nombreCartilla }, ...cartillas];
   // El docente actual va siempre en la lista para que el selector lo muestre, aunque ya no se pueda asignar.
   const opciones = [...(actual && !lista.some((d) => d.id === actual.id) ? [actual] : []), ...lista].map((d) => ({ valor: d.id, etiqueta: d.activo ? d.nombre : `${d.nombre} (desactivado)` }));
 
@@ -151,22 +174,28 @@ function FilaGrupo({ g, docentes, lista, sinRed, alCambiar }: { g: Grupo; docent
           {g.nombre} <span className="meta">· {g.grado}</span>
         </span>
         <span className="meta">Docente: {actual ? actual.nombre : 'sin asignar'}{actual && !actual.activo ? ' (desactivado: asigne a otro docente)' : ''}</span>
+        <span className="meta">Cartilla: {nombreCartilla}</span>
         <p className={`mensaje ${aviso?.ok ? 'mensaje--ok' : 'mensaje--error'}`} role={aviso?.ok ? 'status' : 'alert'}>
           {aviso?.texto}
         </p>
       </div>
       <div className="item__acciones">
         <CampoOpciones id={`doc-${g.id}`} etiqueta="Cambiar docente" disabled={sinRed || ocupado} valor={g.docente_id} opciones={opciones} alCambiar={(v) => v !== g.docente_id && void correr(() => asignarDocente(g.id, v), 'Docente cambiado.')} />
+        {/* Solo si el colegio tiene más de una cartilla habilitada (o el grupo usa una que ya no lo está). */}
+        {opcionesCar.length > 1 && (
+          <CampoOpciones id={`car-${g.id}`} etiqueta="Cambiar cartilla" disabled={sinRed || ocupado} valor={cartillaDe(g)} opciones={opcionesCar} alCambiar={(v) => v !== cartillaDe(g) && void correr(() => cambiarCartillaGrupo(g.id, v), 'Cartilla cambiada. Los niños la ven la próxima vez que entren con el código.')} />
+        )}
         <Confirmar etiqueta="Renovar código" pregunta="¿Renovar el código?" si="Sí, renovar" disabled={sinRed || ocupado} alConfirmar={() => void correr(() => renovarCodigo(g.id), 'Código renovado. El docente ve el nuevo en su grupo; los niños que ya entraron siguen dentro.')} />
       </div>
     </li>
   );
 }
 
-function FormGrupo({ lista, sinRed, alListo }: { lista: Persona[]; sinRed: boolean; alListo: () => void }) {
+function FormGrupo({ lista, cartillas, sinRed, alListo }: { lista: Persona[]; cartillas: Opcion[]; sinRed: boolean; alListo: () => void }) {
   const [nombre, setNombre] = useState('');
   const [grado, setGrado] = useState('3°');
   const [docente, setDocente] = useState('');
+  const [cartilla, setCartilla] = useState(cartillas.find((c) => c.valor === CARTILLA_PREDETERMINADA)?.valor ?? cartillas[0]?.valor ?? '');
   const [errores, setErrores] = useState<{ nombre?: string; docente?: string }>({});
   const [resultado, setResultado] = useState<{ ok: boolean; texto: string }>();
   const [enviando, setEnviando] = useState(false);
@@ -182,7 +211,9 @@ function FormGrupo({ lista, sinRed, alListo }: { lista: Persona[]; sinRed: boole
     if (nuevos.nombre || nuevos.docente) return;
     setEnviando(true);
     try {
-      await crearGrupo({ nombre, grado, docente });
+      const nuevo = await crearGrupo({ nombre, grado, docente });
+      // El grupo nace con la cartilla predeterminada; si se eligió otra, se cambia enseguida.
+      if (cartilla && nuevo?.id && cartilla !== (nuevo.cartilla_id ?? CARTILLA_PREDETERMINADA)) await cambiarCartillaGrupo(nuevo.id, cartilla);
       setResultado({ ok: true, texto: `Grupo ${nombre.trim()} creado.` });
       setNombre('');
       setDocente('');
@@ -199,6 +230,7 @@ function FormGrupo({ lista, sinRed, alListo }: { lista: Persona[]; sinRed: boole
       <Campo id="gr-nombre" etiqueta="Nombre del grupo" nombre autoComplete="off" valor={nombre} alCambiar={setNombre} error={errores.nombre} maximo={30} />
       <CampoOpciones id="gr-grado" etiqueta="Grado" valor={grado} alCambiar={setGrado} opciones={GRADOS} />
       <CampoOpciones id="gr-docente" etiqueta="Docente" valor={docente} alCambiar={setDocente} vacio="Elija un docente" opciones={lista.map((d) => ({ valor: d.id, etiqueta: d.nombre }))} error={errores.docente} />
+      {cartillas.length > 1 && <CampoOpciones id="gr-cartilla" etiqueta="Cartilla" valor={cartilla} alCambiar={setCartilla} opciones={cartillas} />}
       <Boton variante="primario" tipo="submit" disabled={enviando || sinRed}>
         {enviando ? 'Creando…' : 'Crear grupo'}
       </Boton>

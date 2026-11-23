@@ -18,7 +18,7 @@ Plan completo: `docs/plan/calendario-diciembre.md` (también en Google Calendar,
   Desde el 23 nov Netlify está enlazado a GitHub: **cada push a la rama se publica solo**
   (rama de producción `ccr-c31d414e-rt7zgq`). Hacer push solo con trabajo probado.
 - Supabase `https://jpwwmzfhbdnzsvwuciqa.supabase.co`. Clave pública en `.env.example` y
-  `netlify.toml`; la secreta nunca se pide en el chat. Aplicadas las migraciones 002, 003 y 004 (la 004 el 23 nov). Manuel
+  `netlify.toml`; la secreta nunca se pide en el chat. Aplicadas las migraciones 002, 003 y 004 (la 004 el 23 nov). **Falta aplicar la 005** (paso 14 de PASOS-MANUEL). Manuel
   aplica las nuevas siguiendo `supabase/PASOS-MANUEL.md`. Prueba local: `supabase/prueba_local.sql`
   (correr una copia sin las líneas `create role`).
 - ElevenLabs: secreto del entorno (`ELEVENLABS_API_KEY=proxy-injected`); 40.000 créditos al mes.

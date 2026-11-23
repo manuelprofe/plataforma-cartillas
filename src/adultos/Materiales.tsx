@@ -3,6 +3,7 @@
 // El plan por grupo (fechas, estado) es de la tanda 6: aquí el planeador sugerido ya se ve y se imprime.
 import { Boton, Encabezado, Fila, Hueco, Panel, Vacio } from './base';
 import { Cargado, useCarga, useTitulo } from './comun';
+import { ElegirCartilla } from './ElegirCartilla';
 import { cargarIndice, cargarMaterial, cargarTema, RANURAS, type EntradaTema, type Indice, type Material } from '../materiales/datos';
 import { CuerpoMaterial, MaterialHueco, MaterialPantalla } from '../materiales/Material';
 
@@ -19,7 +20,8 @@ export function Planear() {
   const carga = useCarga(cargarIndice, 'indice');
   return (
     <>
-      <Encabezado titulo="Planear" meta="Los seis temas del Bosque de los Sonidos, en orden" />
+      <Encabezado titulo="Planear" meta="Los temas de la cartilla, en orden" />
+      <ElegirCartilla />
       <Cargado carga={carga}>
         {(indice) => (
           <>

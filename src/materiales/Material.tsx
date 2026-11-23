@@ -6,7 +6,7 @@ import { Fragment, useEffect, useRef, useState, type ReactNode } from 'react';
 import './material.css';
 import { Boton, Encabezado, Enlace, Hueco, Panel, Fila } from '../adultos/base';
 import { Icono } from '../adultos/Icono';
-import { BASE, TIPO_NOMBRE, type Bloque, type Impresion, type ItemImagen, type Material, type Palabra, type TipoCatalogo } from './datos';
+import { base, TIPO_NOMBRE, type Bloque, type Impresion, type ItemImagen, type Material, type Palabra, type TipoCatalogo } from './datos';
 import { sonar } from './sonido';
 import { CancionPantalla, LetraImpresa } from './Cancion';
 
@@ -45,7 +45,7 @@ export function Estrellas({ n }: { n: number }) {
 }
 
 function Img({ src, alt = '', tam }: { src: string; alt?: string; tam: number }) {
-  return <img src={BASE + src} alt={alt} width={tam} height={tam} decoding="async" draggable={false} />;
+  return <img src={base() + src} alt={alt} width={tam} height={tam} decoding="async" draggable={false} />;
 }
 
 /** Lo que se ve de una palabra: su imagen, el objeto o la mano, y las estrellas si es un número. */

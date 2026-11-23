@@ -299,6 +299,8 @@ a.fila:hover, button.fila:hover { background: var(--a-fondo); }
 .boton--texto { border-color: transparent; background: none; color: var(--a-texto-2); padding: 0 var(--e-2); }
 .boton--ancho { width: 100%; }
 .boton:disabled { opacity: 0.5; cursor: default; }
+/* Elegir cartilla (docente con grupos de cartillas distintas). */
+.elegir-cartilla__actual { font-weight: 600; color: var(--a-tinta); }
 
 .acciones { display: flex; flex-wrap: wrap; gap: var(--e-3); }
 .atajos { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: var(--e-3); }

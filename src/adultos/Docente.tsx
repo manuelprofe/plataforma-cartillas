@@ -7,7 +7,7 @@ import './docente.css';
 import { navegar } from '../navegacion';
 import { Boton, Encabezado, Enlace, Fila, Hueco, Panel, Farol, Vacio } from './base';
 import { Campo, CampoOpciones, Cargado, Confirmar, textoAccion, useCarga, useTitulo } from './comun';
-import { agregarNinos, apodosDe, cambiarPin, cargarGrupos, cargarNinos, cargarPaquete, crearMiGrupo, GRADOS, hoyCo, nombreColegio, ponerAutorizacion, ponerPersonaje, reconocidosHoy, retirar, type GrupoDoc, type Nino, type Paquete } from './docente';
+import { agregarNinos, apodosDe, cambiarPin, cargarGrupos, cartillaDeGrupo, cargarNinos, cargarPaquete, crearMiGrupo, GRADOS, hoyCo, nombreColegio, ponerAutorizacion, ponerPersonaje, reconocidosHoy, retirar, type GrupoDoc, type Nino, type Paquete } from './docente';
 import { Cara, ConCortina, fechaCorta, useAhora } from './docenteComun';
 import { darEstrellas, deshacer, olvidarRechazo, useCola, VALOR, type Motivo } from './estrellas';
 import { Icono } from './Icono';
@@ -222,9 +222,11 @@ export function PaginaGrupo({ resto, sinRed }: { resto: string[]; sinRed: boolea
   const id = decodeURIComponent(resto[0]);
   const sub = resto[1] ?? '';
   const grupos = useCarga(cargarGrupos, 'grupos');
-  const paquete = useCarga(cargarPaquete, 'paquete');
   const ninos = useCarga(() => cargarNinos(id), `ninos-${id}`);
   const grupo = grupos.datos?.find((g) => g.id === id);
+  // Los personajes son los de la cartilla del grupo: se piden cuando se sabe cuál es.
+  const cartilla = grupo ? cartillaDeGrupo(grupo) : '';
+  const paquete = useCarga(() => (cartilla ? cargarPaquete(cartilla) : new Promise<Paquete>(() => {})), `paquete-${cartilla}`);
   useTitulo(grupo ? `Grupo ${grupo.nombre}` : 'Grupo');
 
   if (grupos.datos && !grupo)

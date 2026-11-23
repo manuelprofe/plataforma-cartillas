@@ -13,6 +13,7 @@ import { PaginaDueno } from './Plataforma';
 import { DocenteInicio, MisGrupos, PaginaGrupo } from './Docente';
 import { MaterialPagina, Planear, PlanTema, TemaMateriales } from './Materiales';
 import { Biblioteca } from './Biblioteca';
+import { useCartillaMateriales } from '../materiales/datos';
 import { olvidarLecturas } from './docente';
 import { iniciarCola, prepararSalida, useAvisoSalida, useCola } from './estrellas';
 
@@ -475,6 +476,7 @@ function Docente({ resto, cuenta, sinRed }: { resto: string[]; cuenta: Dentro; s
   const [seccion = '', ...mas] = resto;
   const activa = seccion === '' ? '/docente' : MAS.includes(seccion) || seccion === 'mas' ? '/docente/mas' : seccion === 'temas' ? '/docente/planear' : `/docente/${seccion}`;
   const cola = useCola();
+  const cartilla = useCartillaMateriales();
   useEffect(iniciarCola, []);
   const estado = cola.porSubir > 0 ? (
     <>
@@ -489,7 +491,8 @@ function Docente({ resto, cuenta, sinRed }: { resto: string[]; cuenta: Dentro; s
   );
   return (
     <Cascaron inicio="/docente" estado={estado} aviso={sinRed && <AvisoSinRed texto={SIN_RED_DOCENTE} />} secciones={DOCENTE} activa={activa} nombre="Secciones del docente">
-      <PaginaDocente seccion={seccion} mas={mas} cuenta={cuenta} sinRed={sinRed} />
+      {/* Al cambiar de cartilla, Planear y Biblioteca se vuelven a cargar con la nueva. */}
+      <PaginaDocente key={cartilla} seccion={seccion} mas={mas} cuenta={cuenta} sinRed={sinRed} />
     </Cascaron>
   );
 }

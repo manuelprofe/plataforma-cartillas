@@ -243,6 +243,8 @@ try {
     await foto(p, '07-sin-grupos-390');
     await p.click('main >> text=Crear un grupo');
     await p.waitForSelector('h1:has-text("Mis grupos")');
+    // La lista llega después del título: se espera a que cargue antes de leerla.
+    await p.waitForSelector('text=Todavía no tiene grupos').catch(() => {});
     comprobar((await texto(p)).includes('pídaselo a él'), 'sin grupos explica a quién pedirlo (el coordinador)');
     await p.click('button:has-text("Crear grupo")');
     comprobar((await p.locator('#grupo-nombre').inputValue()) === '' && (await texto(p)).includes('Escriba el nombre del grupo'), 'crear sin nombre pide el nombre');

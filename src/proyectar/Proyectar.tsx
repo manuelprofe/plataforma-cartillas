@@ -8,7 +8,7 @@ import { navegar, useRuta } from '../navegacion';
 import { marcarProyectando } from '../proyectando';
 import { Boton, Enlace, Hueco } from '../adultos/base';
 import { Icono, type NombreIcono } from '../adultos/Icono';
-import { BASE, cargarIndice, cargarMaterial, type EntradaTema, type Indice, type Material, type Opcion, type Palabra } from '../materiales/datos';
+import { base, cargarIndice, cargarMaterial, type EntradaTema, type Indice, type Material, type Opcion, type Palabra } from '../materiales/datos';
 import { Visual } from '../materiales/Material';
 import { resaltar, useCancion } from '../materiales/Cancion';
 import { detener, sonar } from '../materiales/sonido';
@@ -203,7 +203,7 @@ function MenuTema({ tema }: { tema: string }) {
       ) : (
         <main className="telon__cuerpo telon__menu">
           <aside className="telon__guia">
-            <img src={`${BASE}personajes/cosmo-wave.webp`} width="280" height="221" alt="" />
+            <img src={`${base()}personajes/cosmo-wave.webp`} width="280" height="221" alt="" />
             <p>Hoy encendemos {e.nombre.toLowerCase()}</p>
           </aside>
           <div className="tarjetas">{tarjetas(e, indice)}</div>
@@ -376,7 +376,7 @@ function Pantallas({ material, titulo, sub, menu }: { material: Material; titulo
             {d.iconos.length > 0 && (
               <span className="deck__iconos">
                 {d.iconos.map((x) => (
-                  <img key={x} src={BASE + x} width="120" height="120" alt="" />
+                  <img key={x} src={base() + x} width="120" height="120" alt="" />
                 ))}
               </span>
             )}

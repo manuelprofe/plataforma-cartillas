@@ -3,9 +3,49 @@
 // herramientas/materiales_a_json.py desde docs/pedagogia/materiales/*.md). No tocan el
 // almacenamiento ni Supabase: solo leen el paquete. Los usan el docente y el telón de proyectar.
 
-import { rutaCartilla } from '../cartillas';
+import { useSyncExternalStore } from 'react';
+import { CARTILLA_PREDETERMINADA, esIdCartilla, rutaCartilla } from '../cartillas';
 
-export const BASE = rutaCartilla();
+// ---------------------------------------------------------------- Cartilla que se está viendo
+
+// El docente ve los materiales de una cartilla a la vez: la de su grupo, o la que elija si tiene
+// grupos de cartillas distintas. Se recuerda en el aparato para que Proyectar (otra pestaña) abra
+// la misma.
+const LLAVE_CARTILLA = 'pc_docente_cartilla_v1';
+let actual = (() => {
+  try {
+    const v = localStorage.getItem(LLAVE_CARTILLA);
+    return esIdCartilla(v) ? v : CARTILLA_PREDETERMINADA;
+  } catch {
+    return CARTILLA_PREDETERMINADA;
+  }
+})();
+const oyentes = new Set<() => void>();
+
+export const cartillaMateriales = () => actual;
+/** Ruta (con barra final) del paquete de la cartilla que se está viendo. */
+export const base = () => rutaCartilla(actual);
+
+export function elegirCartillaMateriales(id: string) {
+  if (!esIdCartilla(id) || id === actual) return;
+  actual = id;
+  try {
+    localStorage.setItem(LLAVE_CARTILLA, id);
+  } catch {
+    // Sin almacenamiento: dura lo que dure la pestaña.
+  }
+  oyentes.forEach((f) => f());
+}
+
+export function useCartillaMateriales(): string {
+  return useSyncExternalStore(
+    (f) => {
+      oyentes.add(f);
+      return () => oyentes.delete(f);
+    },
+    () => actual,
+  );
+}
 
 export interface Palabra {
   tipo: 'palabra';
@@ -145,32 +185,39 @@ export const RANURAS = [
   { ranura: 'casa', aqui: 'la nota para la casa', tipo: 'casa', nombre: 'Nota para la casa' },
 ] as const;
 
+// Las cachés van por cartilla: cambiar de cartilla no mezcla temas.
 const cacheTemas = new Map<string, Promise<TemaDoc>>();
-let cacheIndice: Promise<Indice> | null = null;
+const cacheIndice = new Map<string, Promise<Indice>>();
 
 async function pedir<T>(ruta: string): Promise<T> {
-  const r = await fetch(BASE + ruta);
+  const r = await fetch(base() + ruta);
   if (!r.ok) throw new Error(`HTTP ${r.status}`);
   return (await r.json()) as T;
 }
 
 export function cargarIndice(): Promise<Indice> {
-  cacheIndice ??= pedir<Indice>('materiales/indice.json').catch((e) => {
-    cacheIndice = null;
-    throw e;
-  });
-  return cacheIndice;
+  const clave = actual;
+  let p = cacheIndice.get(clave);
+  if (!p) {
+    p = pedir<Indice>('materiales/indice.json').catch((e) => {
+      cacheIndice.delete(clave);
+      throw e;
+    });
+    cacheIndice.set(clave, p);
+  }
+  return p;
 }
 
 export function cargarTema(entrada: EntradaTema): Promise<TemaDoc> {
   if (!entrada.archivo) return Promise.reject(new Error('Tema sin materiales'));
-  let p = cacheTemas.get(entrada.id);
+  const clave = `${actual}/${entrada.id}`;
+  let p = cacheTemas.get(clave);
   if (!p) {
     p = pedir<TemaDoc>(entrada.archivo).catch((e) => {
-      cacheTemas.delete(entrada.id);
+      cacheTemas.delete(clave);
       throw e;
     });
-    cacheTemas.set(entrada.id, p);
+    cacheTemas.set(clave, p);
   }
   return p;
 }

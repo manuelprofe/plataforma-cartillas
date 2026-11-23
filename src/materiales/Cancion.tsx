@@ -4,7 +4,7 @@
 // No guarda nada: solo reproduce. La usan la pantalla del docente, el telón y la hoja impresa.
 import { Fragment, useEffect, useMemo, useRef, useState, type ReactNode } from 'react';
 import { Icono } from '../adultos/Icono';
-import { BASE, type LineaLetra } from './datos';
+import { base, type LineaLetra } from './datos';
 
 const ADELANTO = 0.12; // segundos: la línea se enciende un instante antes de que se oiga
 
@@ -36,7 +36,7 @@ export function useCancion(audio: string, lineas: LineaLetra[]) {
   };
 
   useEffect(() => {
-    const a = new Audio(BASE + audio);
+    const a = new Audio(base() + audio);
     a.preload = 'metadata';
     el.current = a;
     const alPlay = () => setSonando(true);

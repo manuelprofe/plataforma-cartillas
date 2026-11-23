@@ -26,8 +26,7 @@ Plan completo: `docs/plan/calendario-diciembre.md` (también en Google Calendar,
 - Agentes en `.claude/agents/` (Sonnet/Haiku); Opus orquesta. Si no tienen cupo, Opus lo hace.
 - Pruebas: copiar `.env.example` a `.env` (sin él fallan las de adultos), `npm run build`, luego
   `node scripts/pruebas/<nombre>.mjs` (estudiante, docente, biblioteca, materiales, rutas, adultos,
-  multicartilla…). `docente.mjs` falla a veces por una carrera de carga:
-  repetirla antes de buscar un error.
+  multicartilla, docente-cartillas…).
 - Calendario: `herramientas/calendario.py` genera el plan y los archivos de cada día
   (`--sin-pisar` no sobrescribe los días ya editados). Los detalles de cada bloque están en
   `herramientas/calendario_detalle.py`.
@@ -37,8 +36,10 @@ Plan completo: `docs/plan/calendario-diciembre.md` (también en Google Calendar,
 - **Cartilla como datos:** `public/cartillas/<id>/` (`cartilla.json`, `materiales/`,
   `biblioteca/`, `canciones/`, `voz/`, `personajes/`). La ruta sale de `rutaCartilla(id)` en
   `src/cartillas.ts`. El estudiante juega la cartilla de su grupo (`cartillaDe` en
-  `src/perfiles.ts`, viene de `lista_grupo`); el invitado y los adultos (docente, materiales)
-  todavía usan la predeterminada `ingles-3`. El service worker baja solo las cartillas del aparato.
+  `src/perfiles.ts`, viene de `lista_grupo`); el invitado usa la predeterminada `ingles-3`. El
+  docente ve Planear, Biblioteca y Proyectar de la cartilla elegida (`base()` y
+  `elegirCartillaMateriales` en `src/materiales/datos.ts`; selector en `src/adultos/ElegirCartilla.tsx`
+  solo si sus grupos tienen cartillas distintas). El service worker baja solo las cartillas del aparato.
 - **Estudiante:** `src/estudiante.tsx`, `src/Mundo.tsx` (mapa y movimiento), `src/juegos/`
   (plantillas: EscuchaToca, EscuchaAtrapa, Memoria, DiBrilla), `src/progreso.ts`, `src/nube.ts`,
   `src/entrada/` (tarjeta, código, QR, clave de dibujos), `src/sinConexion.ts`.

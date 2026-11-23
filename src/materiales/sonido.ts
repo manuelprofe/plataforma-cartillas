@@ -1,6 +1,6 @@
 // Reproduce el audio de una palabra del paquete (voz nativa en inglés). Una sola voz a la vez:
 // tocar otra cosa corta la anterior. No guarda nada; solo suena.
-import { BASE } from './datos';
+import { base } from './datos';
 
 let actual: HTMLAudioElement | null = null;
 let temporizador = 0;
@@ -18,7 +18,7 @@ export function detener() {
 export function sonar(ruta: string | undefined, { veces = 1, despacio = false }: { veces?: number; despacio?: boolean } = {}) {
   detener();
   if (!ruta) return;
-  const audio = new Audio(BASE + ruta);
+  const audio = new Audio(base() + ruta);
   audio.playbackRate = despacio ? 0.7 : 1;
   actual = audio;
   let faltan = veces;

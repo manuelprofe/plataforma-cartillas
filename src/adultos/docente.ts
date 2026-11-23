@@ -2,7 +2,7 @@
 // sobre los niños. Todo pasa por cuenta.ts (rpc, leer, escribir); la seguridad por filas de
 // Supabase decide qué ve y qué cambia. Nunca se guarda un PIN legible: se genera aquí, se manda
 // a la base (que guarda solo su huella) y se conserva en memoria hasta imprimir la tarjeta.
-import { rutaCartilla } from '../cartillas';
+import { CARTILLA_PREDETERMINADA, esIdCartilla, rutaCartilla } from '../cartillas';
 import { alCerrarSesion, ErrorCuenta, escribir, leer, miId, rpc } from './cuenta';
 
 export interface GrupoDoc {
@@ -11,6 +11,8 @@ export interface GrupoDoc {
   grado: string;
   colegio_id: string;
   codigo: string;
+  /** Cartilla del grupo (migración 004). */
+  cartilla_id?: string;
   /** Niños del grupo (solo el conteo: Inicio y Mis grupos nunca traen apodos). */
   ninos: number;
 }
@@ -37,25 +39,39 @@ export interface Paquete {
   heroes: Heroe[];
 }
 
-const BASE = rutaCartilla();
 /** Dirección pública a la que lleva el QR de la tarjeta (se puede cambiar con VITE_URL_PUBLICA). */
 export const URL_PUBLICA = ((import.meta.env.VITE_URL_PUBLICA as string | undefined) || 'https://englishlandmanuelprofe.netlify.app').replace(/\/+$/, '');
 
 export const GRADOS = ['Preescolar', '1°', '2°', '3°', '4°', '5°'].map((g) => ({ valor: g, etiqueta: g === 'Preescolar' ? g : `Grado ${g}` }));
 
-let paquete: Promise<Paquete> | null = null;
-export function cargarPaquete(): Promise<Paquete> {
-  paquete ??= fetch(`${BASE}cartilla.json`)
-    .then((r) => {
-      if (!r.ok) throw new ErrorCuenta('red');
-      return r.json() as Promise<{ id: string; heroes: Heroe[] }>;
-    })
-    .then((c) => ({ cartilla: c.id, base: BASE, heroes: c.heroes }))
-    .catch(() => {
-      paquete = null;
-      throw new ErrorCuenta('red');
-    });
-  return paquete;
+/** La cartilla de un grupo; la predeterminada si el grupo no la trae. */
+export const cartillaDeGrupo = (g: Pick<GrupoDoc, 'cartilla_id'>) => (esIdCartilla(g.cartilla_id) ? g.cartilla_id : CARTILLA_PREDETERMINADA);
+
+const paquetes = new Map<string, Promise<Paquete>>();
+/** Personajes de una cartilla (los de la tarjeta y las estrellas de un grupo). */
+export function cargarPaquete(cartilla: string = CARTILLA_PREDETERMINADA): Promise<Paquete> {
+  let p = paquetes.get(cartilla);
+  if (!p) {
+    const base = rutaCartilla(cartilla);
+    p = fetch(`${base}cartilla.json`)
+      .then((r) => {
+        if (!r.ok) throw new ErrorCuenta('red');
+        return r.json() as Promise<{ id: string; heroes: Heroe[] }>;
+      })
+      .then((c) => ({ cartilla: c.id, base, heroes: c.heroes }))
+      .catch(() => {
+        paquetes.delete(cartilla);
+        throw new ErrorCuenta('red');
+      });
+    paquetes.set(cartilla, p);
+  }
+  return p;
+}
+
+/** Nombre de cada cartilla para el docente ("Inglés · 3° · English Adventure Quest"). */
+export async function titulosCartillas(ids: string[]): Promise<Record<string, string>> {
+  const filas = await leer<{ id: string; titulo: string; materia: string | null; grado: string | null }>('cartillas', `select=id,titulo,materia,grado&id=in.(${ids.join(',')})`);
+  return Object.fromEntries(filas.map((c) => [c.id, [c.materia, c.grado && `${c.grado}°`, c.titulo].filter(Boolean).join(' · ')]));
 }
 
 /** Hoy en Colombia, AAAA-MM-DD (misma cuenta de fechas que `hoy_co()` en la base). */
@@ -126,7 +142,7 @@ async function leerGrupos(): Promise<GrupoDoc[]> {
   if (codigos.length === 0) return [];
   const ids = codigos.map((c) => c.grupo_id).join(',');
   const [grupos, filas] = await Promise.all([
-    leer<Omit<GrupoDoc, 'codigo' | 'ninos'>>('grupos', `select=id,nombre,grado,colegio_id&id=in.(${ids})&order=nombre.asc`),
+    leer<Omit<GrupoDoc, 'codigo' | 'ninos'>>('grupos', `select=id,nombre,grado,colegio_id,cartilla_id&id=in.(${ids})&order=nombre.asc`),
     leer<{ grupo_id: string }>('estudiantes', `select=grupo_id&grupo_id=in.(${ids})`),
   ]);
   return grupos.map((g) => ({ ...g, codigo: codigos.find((c) => c.grupo_id === g.id)?.codigo ?? '', ninos: filas.filter((f) => f.grupo_id === g.id).length }));

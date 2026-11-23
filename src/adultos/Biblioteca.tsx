@@ -4,7 +4,8 @@
 import { useEffect, useMemo, useState, type ReactNode } from 'react';
 import { Boton, Encabezado, Fila, Panel, Vacio } from './base';
 import { Cargado, useCarga, useTitulo } from './comun';
-import { BASE } from '../materiales/datos';
+import { ElegirCartilla } from './ElegirCartilla';
+import { base } from '../materiales/datos';
 import './biblioteca.css';
 
 type Idioma = 'es' | 'en';
@@ -18,14 +19,15 @@ interface Recursos { niveles: Record<string, { titulo: string; territorio: strin
 
 const cache = new Map<string, Promise<unknown>>();
 function pedir<T>(archivo: string): Promise<T> {
-  let p = cache.get(archivo);
+  const url = `${base()}biblioteca/${archivo}`;
+  let p = cache.get(url);
   if (!p) {
-    p = fetch(`${BASE}biblioteca/${archivo}`).then((r) => {
+    p = fetch(url).then((r) => {
       if (!r.ok) throw new Error(`HTTP ${r.status}`);
       return r.json();
     });
-    p.catch(() => cache.delete(archivo));
-    cache.set(archivo, p);
+    p.catch(() => cache.delete(url));
+    cache.set(url, p);
   }
   return p as Promise<T>;
 }
@@ -48,6 +50,7 @@ function Inicio() {
   return (
     <>
       <Encabezado titulo="Biblioteca" meta="Historia, recursos, actividades y fundamentos de English Adventure Quest" />
+      <ElegirCartilla />
       <Panel filas>
         <Fila ruta="/docente/biblioteca/historia" icono="documento" titulo="La historia: El cuaderno que abrió Englishland" detalle="7 escenas en español e inglés. Para leer, proyectar o imprimir." />
         <Fila ruta="/docente/biblioteca/recursos" icono="descargar" titulo="Recursos por tema" detalle="Fichas descargables, videos y juegos en línea de los cuatro niveles." />
@@ -110,7 +113,7 @@ function PaginaHistoria() {
                 <ul className="bib-personajes">
                   {h.personajes.map((p) => (
                     <li key={p.nombre}>
-                      <img src={`${BASE}personajes/${p.nombre.toLowerCase()}-wave.webp`} alt="" onError={(ev) => (ev.currentTarget.style.visibility = 'hidden')} />
+                      <img src={`${base()}personajes/${p.nombre.toLowerCase()}-wave.webp`} alt="" onError={(ev) => (ev.currentTarget.style.visibility = 'hidden')} />
                       <span><strong>{p.nombre}.</strong> {p.funcion}</span>
                     </li>
                   ))}
@@ -125,7 +128,7 @@ function PaginaHistoria() {
 }
 
 function Arte({ e }: { e: Escena }) {
-  const src = e.imagen ? BASE + e.imagen : PERSONAJE_ESCENA[e.n] ? `${BASE}personajes/${PERSONAJE_ESCENA[e.n]}.webp` : null;
+  const src = e.imagen ? base() + e.imagen : PERSONAJE_ESCENA[e.n] ? `${base()}personajes/${PERSONAJE_ESCENA[e.n]}.webp` : null;
   return src ? <img className={e.imagen ? 'bib-escena__img' : 'bib-escena__img bib-escena__img--personaje'} src={src} alt="" loading="lazy" /> : <span />;
 }
 
@@ -203,7 +206,7 @@ function PaginaRecursos({ destacar }: { destacar?: string }) {
                   {temas.map((r) => (
                     <article key={r.id} id={`tema-${r.id}`} className={`bib-tema${destacar === r.id ? ' bib-tema--destacado' : ''}`}>
                       <div className="bib-tema__cabeza">
-                        {r.imagen && <img src={BASE + r.imagen} alt="" loading="lazy" />}
+                        {r.imagen && <img src={base() + r.imagen} alt="" loading="lazy" />}
                         <div>
                           <h3>{r.tema}</h3>
                           {r.nota && <p className="sec">{r.nota}</p>}

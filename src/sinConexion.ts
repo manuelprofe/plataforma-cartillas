@@ -2,6 +2,8 @@
 // Todo es silencioso: si el navegador no lo permite (por ejemplo, dentro de un iframe con
 // sandbox) la app sigue igual, solo que necesita red. Nada de esto se muestra al niño.
 
+import { rutaCartilla } from './cartillas';
+
 /** Tiempo de cortesía tras la carga antes de bajar el paquete, para no competir con la app. */
 const ESPERA_PAQUETE_MS = 3000;
 /** Si la app estuvo oculta más que esto, al volver se pregunta si hay versión nueva. */
@@ -14,6 +16,18 @@ const OCULTA_PARA_REVISAR_MS = 30 * 60 * 1000;
  */
 let seguro = false;
 let alCambiar: () => void = () => {};
+
+/** Carpetas de las cartillas que usa este aparato; el service worker baja solo esas. */
+let carpetas: string[] = [];
+let pedirPaquetes: () => void = () => {};
+
+/** La app dice qué cartillas usa este aparato (la que se juega y las de sus niños). */
+export function fijarCartillasEnUso(ids: string[]) {
+  const nuevas = [...new Set(ids)].map((id) => rutaCartilla(id).slice(import.meta.env.BASE_URL.length)).sort();
+  if (nuevas.join() === carpetas.join()) return;
+  carpetas = nuevas;
+  pedirPaquetes();
+}
 
 export function fijarMomentoSeguro(valor: boolean) {
   seguro = valor;
@@ -81,11 +95,14 @@ async function registrar() {
 
     const listo = await sw.ready;
     window.setTimeout(() => {
-      try {
-        listo.active?.postMessage({ tipo: 'guardar-paquetes' });
-      } catch {
-        // Nada que hacer: se intenta en la próxima visita.
-      }
+      pedirPaquetes = () => {
+        try {
+          listo.active?.postMessage({ tipo: 'guardar-paquetes', carpetas: carpetas.length ? carpetas : undefined });
+        } catch {
+          // Nada que hacer: se intenta en la próxima visita.
+        }
+      };
+      pedirPaquetes();
     }, ESPERA_PAQUETE_MS);
   } catch {
     // Registro rechazado (sandbox, modo privado, origen no seguro): la app sigue con red.

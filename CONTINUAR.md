@@ -18,14 +18,15 @@ Plan completo: `docs/plan/calendario-diciembre.md` (también en Google Calendar,
   Publicar: herramienta Netlify `deploy-site` y correr desde la raíz el `npx` que devuelve.
   **Solo con permiso de Manuel.**
 - Supabase `https://jpwwmzfhbdnzsvwuciqa.supabase.co`. Clave pública en `.env.example` y
-  `netlify.toml`; la secreta nunca se pide en el chat. Aplicadas las migraciones 002 y 003. Manuel
+  `netlify.toml`; la secreta nunca se pide en el chat. Aplicadas las migraciones 002 y 003; **la 004 (multicartilla) está lista y falta aplicarla** (paso 12 de PASOS-MANUEL, antes de publicar el sitio que la usa). Manuel
   aplica las nuevas siguiendo `supabase/PASOS-MANUEL.md`. Prueba local: `supabase/prueba_local.sql`
   (correr una copia sin las líneas `create role`).
 - ElevenLabs: secreto del entorno (`ELEVENLABS_API_KEY=proxy-injected`); 40.000 créditos al mes.
   Usar Kokoro para borradores y ElevenLabs solo para guías y frases clave.
 - Agentes en `.claude/agents/` (Sonnet/Haiku); Opus orquesta. Si no tienen cupo, Opus lo hace.
-- Pruebas: `npm run build`, luego `node scripts/pruebas/<nombre>.mjs` (estudiante, docente,
-  biblioteca, materiales, rutas, adultos…). `docente.mjs` falla a veces por una carrera de carga:
+- Pruebas: copiar `.env.example` a `.env` (sin él fallan las de adultos), `npm run build`, luego
+  `node scripts/pruebas/<nombre>.mjs` (estudiante, docente, biblioteca, materiales, rutas, adultos,
+  multicartilla…). `docente.mjs` falla a veces por una carrera de carga:
   repetirla antes de buscar un error.
 - Calendario: `herramientas/calendario.py` genera el plan y los archivos de cada día
   (`--sin-pisar` no sobrescribe los días ya editados). Los detalles de cada bloque están en
@@ -33,9 +34,11 @@ Plan completo: `docs/plan/calendario-diciembre.md` (también en Google Calendar,
 
 ## Mapa del código (dónde está cada cosa)
 
-- **Cartilla como datos:** `public/cartillas/ingles-3/` (`cartilla.json`, `materiales/`,
-  `biblioteca/`, `canciones/`, `voz/`, `personajes/`). Hoy la ruta `ingles-3` está fija en
-  `src/App.tsx:22`, `src/adultos/docente.ts:39` y `src/materiales/datos.ts:6`.
+- **Cartilla como datos:** `public/cartillas/<id>/` (`cartilla.json`, `materiales/`,
+  `biblioteca/`, `canciones/`, `voz/`, `personajes/`). La ruta sale de `rutaCartilla(id)` en
+  `src/cartillas.ts`. El estudiante juega la cartilla de su grupo (`cartillaDe` en
+  `src/perfiles.ts`, viene de `lista_grupo`); el invitado y los adultos (docente, materiales)
+  todavía usan la predeterminada `ingles-3`. El service worker baja solo las cartillas del aparato.
 - **Estudiante:** `src/estudiante.tsx`, `src/Mundo.tsx` (mapa y movimiento), `src/juegos/`
   (plantillas: EscuchaToca, EscuchaAtrapa, Memoria, DiBrilla), `src/progreso.ts`, `src/nube.ts`,
   `src/entrada/` (tarjeta, código, QR, clave de dibujos), `src/sinConexion.ts`.

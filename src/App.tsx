@@ -10,8 +10,7 @@ import { Cinematica } from './Cinematica';
 import { Familia } from './Familia';
 import { callar, configurarVoz, decir, sonar } from './audio';
 import { elegirHeroe, fijarCartilla, INVITADO, marcarActividad, progresoDe, reconocerVoz, reiniciarProgreso, ultimaActividad, useActivo, useProgreso, usarPerfil } from './progreso';
-import { invitadoUsado, noEsMio, perfilDe, preguntarSiEsSuyo, prepararNube, sincronizar, sumarInvitado, usePerfiles, type Cara } from './perfiles';
-import { fijarMomentoSeguro } from './sinConexion';
+import { cartillaDe, invitadoUsado, noEsMio, perfilDe, preguntarSiEsSuyo, prepararNube, sincronizar, sumarInvitado, usePerfiles, type Cara } from './perfiles';
 import { navegar, useRuta, volver } from './navegacion';
 import { Quien } from './entrada/Quien';
 import { TarjetaCodigo, TarjetaQuien } from './entrada/Tarjeta';
@@ -19,8 +18,8 @@ import { Clave } from './entrada/Clave';
 import { Unir } from './entrada/Unir';
 import { Disco, type Paquete } from './entrada/comun';
 import { rutaCartilla } from './cartillas';
+import { fijarCartillasEnUso, fijarMomentoSeguro } from './sinConexion';
 
-const BASE = rutaCartilla();
 const MS_CORTINA = 420;
 /** Celular quieto este rato con más de un niño: al volver se pregunta otra vez quién juega. */
 const MS_QUIETO = 10 * 60_000;
@@ -81,13 +80,20 @@ function rutaDe(pantalla: Pantalla, territorio: Territorio): string {
 }
 
 export function App() {
-  const [cartilla, setCartilla] = useState<Cartilla | null>(null);
-  const [fallo, setFallo] = useState(false);
   const ruta = useRuta();
   const [cortina, setCortina] = useState<'cierra' | 'abre' | null>(null);
   const progreso = useProgreso();
   const activo = useActivo();
   const perfiles = usePerfiles();
+  // Cada niño juega la cartilla de su grupo; el invitado, la predeterminada. Mientras llega la
+  // cartilla de quien entra, no se muestra la anterior.
+  const cartillaId = cartillaDe(activo);
+  const BASE = rutaCartilla(cartillaId);
+  const [cargada, setCargada] = useState<{ id: string; datos: Cartilla } | null>(null);
+  const cartilla = cargada?.id === cartillaId ? cargada.datos : null;
+  const [fallo, setFallo] = useState(false);
+  // Niño que entró con otra cartilla: se termina su entrada cuando esa cartilla llega.
+  const [pendiente, setPendiente] = useState<Cara | null>(null);
   // Entrada con tarjeta: código del QR, caras del grupo y niño que va a escribir su PIN.
   const [codigoQR, setCodigoQR] = useState<string | undefined>();
   const [grupo, setGrupo] = useState<{ codigo: string; caras: Cara[] } | null>(null);
@@ -172,19 +178,37 @@ export function App() {
     tipoAnterior.current = pantalla.tipo;
   }, [pantalla.tipo]);
 
+  useEffect(() => () => esperas.current.forEach(clearTimeout), []);
+
   useEffect(() => {
+    let vigente = true;
+    setFallo(false);
     fetch(`${BASE}cartilla.json`)
       .then((r) => (r.ok ? r.json() : Promise.reject(r.status)))
       .then((c: Cartilla) => {
+        if (!vigente) return;
         // Progreso de antes de la opción B: las misiones de voz ya hechas reciben "pronunciar".
         fijarCartilla(c.id);
         reconocerVoz(c.territorios.flatMap((t) => t.misiones.filter((m) => m.plantilla === 'di-brilla').map((m) => m.id)));
         configurarVoz(BASE, c.voz);
-        setCartilla(c);
+        setCargada({ id: cartillaId, datos: c });
       })
-      .catch(() => setFallo(true));
-    return () => esperas.current.forEach(clearTimeout);
-  }, []);
+      .catch(() => vigente && setFallo(true));
+    return () => {
+      vigente = false;
+    };
+  }, [cartillaId, BASE]);
+
+  // El service worker guarda para jugar sin red solo las cartillas de los niños de este aparato.
+  const enUso = [cartillaId, ...perfiles.map((p) => cartillaDe(p.id))].join();
+  useEffect(() => fijarCartillasEnUso(enUso.split(',')), [enUso]);
+
+  // Llegó la cartilla del niño que estaba entrando: termina su entrada.
+  useEffect(() => {
+    if (!pendiente || !cartilla || cartillaDe(pendiente.id) !== cartillaId) return;
+    setPendiente(null);
+    seguirEntrada(pendiente);
+  });
 
   // Solo en la portada, sin cortina, puede entrar una versión nueva de la app (recarga).
   useEffect(() => fijarMomentoSeguro(pantalla.tipo === 'inicio' && !cortina), [pantalla.tipo, cortina]);
@@ -270,9 +294,15 @@ export function App() {
   /** Un niño con tarjeta entra: su personaje es el que le puso el docente (esqueleto.md §9, pregunta 1). */
   const entrarComo = (nino: Cara) => {
     cambiarA(nino.id);
+    // Su grupo usa otra cartilla: se sigue cuando llegue (efecto de abajo).
+    if (cartillaDe(nino.id) !== cartillaId) setPendiente(nino);
+    else seguirEntrada(nino);
+  };
+  function seguirEntrada(nino: Cara) {
+    if (!cartilla) return;
     if (!progresoDe(nino.id).heroe && cartilla.heroes.some((h) => h.id === nino.avatar)) elegirHeroe(nino.avatar);
     irA(preguntarSiEsSuyo(nino.id) ? { tipo: 'unir' } : destinoDe(nino.id), pantalla.tipo === 'inicio' ? 'sumar' : 'reemplazar', true);
-  };
+  }
 
   return (
     <>

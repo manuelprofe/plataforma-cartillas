@@ -15,9 +15,10 @@
 //   baja lo nuevo. Si algo que antes funcionaba sin red no se puede bajar, la instalación
 //   falla y sigue la versión anterior completa.
 // - El paquete de la cartilla se baja la primera vez en segundo plano, cuando la página lo
-//   pide, después de que la app ya se puede usar.
+//   pide, después de que la app ya se puede usar. Solo se bajan las cartillas que usa este
+//   aparato (las de los grupos de sus niños), nunca todas las de la plataforma.
 
-/** @type {{ version: string, entrada: string, armazon: Record<string, string>, cartillas: Record<string, { version: string, archivos: Record<string, string>, instalar: string[] }> }} */
+/** @type {{ version: string, entrada: string, predeterminada: string, armazon: Record<string, string>, cartillas: Record<string, { version: string, archivos: Record<string, string>, instalar: string[] }> }} */
 const CONFIG = __CONFIG__;
 
 const PREFIJO = 'cartillas-';
@@ -185,10 +186,12 @@ async function instalar() {
     const nombre = nombrePaquete(dir);
     const anteriores = await cachesAnteriores(prefijoPaquete(dir), nombre);
     const { archivos, instalar: primeros } = CONFIG.cartillas[dir];
-    // Primera instalación: solo cartilla.json y la portada; el resto se baja después,
-    // cuando la página ya se puede usar.
-    // Actualización: se copia lo que no cambió y se baja lo nuevo antes de activar.
+    // Primera instalación: solo cartilla.json y la portada de la cartilla predeterminada; el
+    // resto (y la cartilla del grupo, si es otra) se baja después, cuando la página lo pide.
+    // Actualización: se copia lo que no cambió y se baja lo nuevo antes de activar, solo de
+    // las cartillas que este aparato ya tenía.
     if (!anteriores.length) {
+      if (dir !== CONFIG.predeterminada) continue;
       const lista = Object.fromEntries(primeros.filter((r) => archivos[r]).map((r) => [r, archivos[r]]));
       await llenar(await caches.open(nombre), lista, dir, [], {}).catch(() => {});
       continue;
@@ -197,9 +200,20 @@ async function instalar() {
   }
 }
 
-/** Baja el paquete completo en segundo plano. Se detiene si el almacenamiento se llena. */
-async function guardarPaquetes() {
-  for (const dir of Object.keys(CONFIG.cartillas)) {
+/** Cartillas que este aparato ya tiene guardadas (de cualquier versión), más la predeterminada. */
+async function carpetasEnUso() {
+  const nombres = await caches.keys();
+  return Object.keys(CONFIG.cartillas).filter((dir) => dir === CONFIG.predeterminada || nombres.some((n) => n.startsWith(prefijoPaquete(dir))));
+}
+
+/**
+ * Baja en segundo plano el paquete completo de las cartillas que pide la página (las de los
+ * niños de este aparato). Se detiene si el almacenamiento se llena.
+ * @param {unknown} pedidas
+ */
+async function guardarPaquetes(pedidas) {
+  const lista = Array.isArray(pedidas) ? pedidas.filter((d) => typeof d === 'string' && CONFIG.cartillas[d]) : await carpetasEnUso();
+  for (const dir of lista) {
     const nombre = nombrePaquete(dir);
     await llenar(await caches.open(nombre), CONFIG.cartillas[dir].archivos, dir, await cachesAnteriores(prefijoPaquete(dir), nombre), {});
   }
@@ -236,7 +250,7 @@ self.addEventListener('message', (evento) => {
     evento.waitUntil(
       (async () => {
         await limpiarViejos().catch(() => {});
-        await guardarPaquetes().catch(() => {});
+        await guardarPaquetes(datos.carpetas).catch(() => {});
       })(),
     );
   } else if (datos.tipo === 'activar') {

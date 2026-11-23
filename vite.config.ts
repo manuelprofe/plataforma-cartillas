@@ -4,6 +4,7 @@ import { join, relative, resolve, sep } from 'node:path';
 import { defineConfig, type Plugin, type ResolvedConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { TRAMOS } from './src/modos.ts';
+import { CARTILLA_PREDETERMINADA } from './src/cartillas.ts';
 
 /**
  * Medios que se guardan para jugar sin conexión cuando cartilla.json los nombra. Los videos no:
@@ -97,7 +98,9 @@ function sinConexion(): Plugin {
 
       const plantilla = readFileSync(resolve(config.root, 'sw/sw.js'), 'utf8');
       const version = huellaDe(plantilla + JSON.stringify(armazon) + JSON.stringify(cartillas));
-      const codigo = plantilla.replace('__CONFIG__', JSON.stringify({ version, entrada, armazon, cartillas }));
+      const predeterminada = `cartillas/${CARTILLA_PREDETERMINADA}/`;
+      if (!cartillas[predeterminada]) throw new Error(`Falta la cartilla predeterminada ${predeterminada}.`);
+      const codigo = plantilla.replace('__CONFIG__', JSON.stringify({ version, entrada, predeterminada, armazon, cartillas }));
       writeFileSync(join(salida, 'sw.js'), codigo);
     },
   };

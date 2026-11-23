@@ -4,6 +4,7 @@
 // comprobar un PIN, subir la cola) lo hace src/nube.ts, que se importa bajo demanda: nunca
 // entra en la primera carga de `/`.
 import { useSyncExternalStore } from 'react';
+import { CARTILLA_PREDETERMINADA, esIdCartilla } from './cartillas';
 import { descartarDeCola, INVITADO, leerCola, olvidarProgreso, perfilActivo, progresoDe, sumarInvitadoA, usarPerfil } from './progreso';
 
 /** Hay dirección y clave pública de Supabase en esta copia (sin ellas, solo se juega sin tarjeta). */
@@ -15,6 +16,8 @@ export interface Cara {
   apodo: string;
   avatar: string;
   grupo: string;
+  /** Cartilla del grupo (migración 004). Sin ella, la predeterminada. */
+  cartilla?: string;
 }
 
 export interface PerfilNino extends Cara {
@@ -75,6 +78,12 @@ export function usePerfiles(): PerfilNino[] {
 }
 
 export const perfilDe = (id: string) => perfiles.find((p) => p.id === id);
+
+/** La cartilla que juega un perfil: la de su grupo; el invitado juega la predeterminada. */
+export function cartillaDe(id: string): string {
+  const c = perfilDe(id)?.cartilla;
+  return esIdCartilla(c) ? c : CARTILLA_PREDETERMINADA;
+}
 
 function actualizar(id: string, cambio: Partial<PerfilNino>) {
   guardar(perfiles.map((p) => (p.id === id ? { ...p, ...cambio } : p)));
@@ -148,7 +157,7 @@ export async function entrarConPin(nino: Cara & { codigo: string }, pin: string)
       if (r === 'ok') {
         const sal = salNueva();
         const huella = { sal, valor: await huellaDe(sal, nino.id, pin) };
-        const datos: PerfilNino = { ...guardado, id: nino.id, apodo: nino.apodo, avatar: nino.avatar, grupo: nino.grupo, codigo: nino.codigo, huella, fallos: 0, esperaHasta: undefined };
+        const datos: PerfilNino = { ...guardado, id: nino.id, apodo: nino.apodo, avatar: nino.avatar, grupo: nino.grupo, cartilla: nino.cartilla ?? guardado?.cartilla, codigo: nino.codigo, huella, fallos: 0, esperaHasta: undefined };
         guardar(guardado ? perfiles.map((p) => (p.id === nino.id ? datos : p)) : [...perfiles, datos]);
         void nube.traer(nino.id).catch(() => undefined);
       }

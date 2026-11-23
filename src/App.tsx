@@ -18,8 +18,9 @@ import { TarjetaCodigo, TarjetaQuien } from './entrada/Tarjeta';
 import { Clave } from './entrada/Clave';
 import { Unir } from './entrada/Unir';
 import { Disco, type Paquete } from './entrada/comun';
+import { rutaCartilla } from './cartillas';
 
-const BASE = `${import.meta.env.BASE_URL}cartillas/ingles-3/`;
+const BASE = rutaCartilla();
 const MS_CORTINA = 420;
 /** Celular quieto este rato con más de un niño: al volver se pregunta otra vez quién juega. */
 const MS_QUIETO = 10 * 60_000;

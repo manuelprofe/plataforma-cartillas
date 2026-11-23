@@ -2,6 +2,7 @@
 // sobre los niños. Todo pasa por cuenta.ts (rpc, leer, escribir); la seguridad por filas de
 // Supabase decide qué ve y qué cambia. Nunca se guarda un PIN legible: se genera aquí, se manda
 // a la base (que guarda solo su huella) y se conserva en memoria hasta imprimir la tarjeta.
+import { rutaCartilla } from '../cartillas';
 import { alCerrarSesion, ErrorCuenta, escribir, leer, miId, rpc } from './cuenta';
 
 export interface GrupoDoc {
@@ -36,7 +37,7 @@ export interface Paquete {
   heroes: Heroe[];
 }
 
-const BASE = `${import.meta.env.BASE_URL}cartillas/ingles-3/`;
+const BASE = rutaCartilla();
 /** Dirección pública a la que lleva el QR de la tarjeta (se puede cambiar con VITE_URL_PUBLICA). */
 export const URL_PUBLICA = ((import.meta.env.VITE_URL_PUBLICA as string | undefined) || 'https://englishlandmanuelprofe.netlify.app').replace(/\/+$/, '');
 

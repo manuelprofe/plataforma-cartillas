@@ -1,9 +1,11 @@
 // Tipos y carga de los materiales del docente (esqueleto §4). Los materiales son datos del
-// paquete de la cartilla (public/cartillas/ingles-3/materiales/*.json, generados por
+// paquete de la cartilla (public/cartillas/<id>/materiales/*.json, generados por
 // herramientas/materiales_a_json.py desde docs/pedagogia/materiales/*.md). No tocan el
 // almacenamiento ni Supabase: solo leen el paquete. Los usan el docente y el telón de proyectar.
 
-export const BASE = `${import.meta.env.BASE_URL}cartillas/ingles-3/`;
+import { rutaCartilla } from '../cartillas';
+
+export const BASE = rutaCartilla();
 
 export interface Palabra {
   tipo: 'palabra';

@@ -48,8 +48,11 @@ export interface Escena {
 export interface Mision {
   id: string;
   titulo: string;
-  /** Juego con que se practica: escuchar y tocar, atrapar lo que se oye, decir la palabra o Memory. */
-  plantilla: 'escucha-toca' | 'escucha-atrapa' | 'di-brilla' | 'memoria';
+  /**
+   * Juego con que se practica: escuchar y tocar, atrapar lo que se oye, decir la palabra,
+   * Memory, contar y tocar (cantidades) u ordenar (números, secuencias, sucesos de un cuento).
+   */
+  plantilla: 'escucha-toca' | 'escucha-atrapa' | 'di-brilla' | 'memoria' | 'contar-toca' | 'ordenar';
   icono: string;
   x: number;
   y: number;
@@ -72,6 +75,41 @@ export interface Mision {
   parejas?: number;
   /** Listen & Catch: ritmo de la caída (lo fija el contenido, no la plantilla). */
   atrapa?: AjustesAtrapa;
+  /** Contar y tocar: las rondas y cómo se cuenta en voz alta. */
+  contar?: AjustesContar;
+  /** Ordenar: cada ronda trae sus tarjetas en el orden correcto; el juego las revuelve. */
+  ordenar?: RondaOrdenar[];
+}
+
+/**
+ * Contar y tocar: en cada ronda aparecen `total` objetos iguales, la voz dice `dice` ("Toca
+ * tres manzanas") y el niño toca esa cantidad. Cada toque se cuenta en voz alta con `numeros`
+ * ("uno", "dos"…, en el idioma de la cartilla).
+ */
+export interface AjustesContar {
+  numeros: string[];
+  rondas: RondaContar[];
+}
+
+export interface RondaContar {
+  /** Imagen del objeto que se cuenta (ruta dentro del paquete). */
+  objeto: string;
+  cantidad: number;
+  total: number;
+  dice: string;
+}
+
+/** Ordenar: tarjetas con imagen, con texto corto (una cifra) o con ambos, y lo que dice la voz. */
+export interface RondaOrdenar {
+  /** Lo que pide la voz al empezar la ronda ("Ordena el cuento"). */
+  pide: string;
+  tarjetas: TarjetaOrdenar[];
+}
+
+export interface TarjetaOrdenar {
+  icono?: string;
+  texto?: string;
+  dice: string;
 }
 
 /** Memory: la segunda carta de cada pareja es un sonido (sin texto) o la palabra escrita. */

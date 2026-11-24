@@ -1,0 +1,120 @@
+/* Contar y tocar (ContarToca.tsx). Objetos de 72 px o más; el ✓ de 80 px. */
+
+.contar {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  justify-items: center;
+  gap: clamp(12px, 3dvh, 28px);
+  padding: 4px 16px max(20px, env(safe-area-inset-bottom));
+  min-height: 0;
+}
+
+.contar__oir {
+  width: 120px;
+  height: 120px;
+}
+
+.contar__mesa {
+  align-self: center;
+  width: 100%;
+  max-width: 520px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  gap: 14px 12px;
+}
+
+.contar__objeto {
+  position: relative;
+  width: 76px;
+  height: 76px;
+  display: grid;
+  place-items: center;
+  border-radius: 22px;
+  background: #fff;
+  box-shadow: 0 6px 0 rgb(36 18 63 / 0.16);
+  transform: rotate(var(--giro, 0deg));
+  transition: transform 0.15s, background 0.2s, box-shadow 0.2s;
+  animation: entrar-carta 0.35s cubic-bezier(0.2, 1.4, 0.4, 1) backwards;
+}
+
+.contar__mesa--grande .contar__objeto {
+  width: 96px;
+  height: 96px;
+  border-radius: 26px;
+}
+
+.contar__objeto img {
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.contar__objeto:active {
+  transform: rotate(var(--giro, 0deg)) translateY(4px);
+}
+
+.contar__objeto--marcado {
+  background: #fff3c4;
+  box-shadow: 0 6px 0 var(--oro-hondo), 0 0 0 4px var(--oro);
+  transform: rotate(0deg) scale(1.06);
+}
+
+.contar__objeto--bien {
+  background: #d9ffe9;
+  box-shadow: 0 6px 0 #25b56b, 0 0 0 4px #25b56b;
+  animation: celebrar 0.6s ease-out;
+}
+
+.contar__objeto--pista {
+  box-shadow: 0 6px 0 var(--oro-hondo), 0 0 0 4px var(--oro);
+  animation: brincar 0.9s ease-in-out infinite;
+}
+
+.contar__cuenta {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  min-width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  background: var(--tinta);
+  color: #fff;
+  font-size: 1.3rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.contar__listo {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: #25b56b;
+  color: #fff;
+  font-size: 2.6rem;
+  font-weight: 800;
+  box-shadow: 0 7px 0 #17844c;
+  transition: transform 0.12s, opacity 0.2s;
+}
+
+.contar__listo:active {
+  transform: translateY(5px);
+  box-shadow: 0 2px 0 #17844c;
+}
+
+.contar__listo:disabled {
+  opacity: 0.35;
+}
+
+.contar__listo--bien {
+  opacity: 1 !important;
+  animation: celebrar 0.6s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contar__objeto, .contar__objeto--pista, .contar__objeto--bien, .contar__listo--bien { animation: none; }
+}

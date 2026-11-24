@@ -1,0 +1,131 @@
+/* Ordenar (Ordenar.tsx). La fila de puestos arriba y la mesa con las tarjetas revueltas abajo. */
+
+.ordenar {
+  --tam: clamp(52px, calc((min(100vw, 560px) - 56px - (var(--n) - 1) * 8px) / var(--n)), 104px);
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  justify-items: center;
+  align-content: start;
+  gap: clamp(14px, 3.5dvh, 32px);
+  padding: 4px 16px max(20px, env(safe-area-inset-bottom));
+  min-height: 0;
+}
+
+.ordenar__oir {
+  width: 120px;
+  height: 120px;
+}
+
+.ordenar__fila {
+  list-style: none;
+  margin: 0;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 24px;
+  background: rgb(255 255 255 / 0.45);
+  transition: background 0.3s;
+}
+
+.ordenar__fila--completa {
+  background: #d9ffe9;
+  animation: celebrar 0.6s ease-out;
+}
+
+.ordenar__puesto {
+  width: var(--tam);
+  height: var(--tam);
+}
+
+.ordenar__hueco {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  border: 3px dashed rgb(36 18 63 / 0.25);
+  border-radius: 18px;
+  color: rgb(36 18 63 / 0.3);
+  font-size: 1.2rem;
+  font-weight: 800;
+}
+
+.ordenar__mesa {
+  align-self: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  max-width: 520px;
+}
+
+.ordenar__tarjeta {
+  width: max(var(--tam), 72px);
+  height: max(var(--tam), 72px);
+  display: grid;
+  place-items: center;
+  align-content: center;
+  gap: 2px;
+  padding: 6px;
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 6px 0 rgb(36 18 63 / 0.16);
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  transition: transform 0.12s;
+  animation: entrar-carta 0.35s cubic-bezier(0.2, 1.4, 0.4, 1) backwards;
+}
+
+.ordenar__mesa .ordenar__tarjeta {
+  width: 88px;
+  height: 88px;
+}
+
+.ordenar__tarjeta img {
+  width: 72%;
+  height: 72%;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+.ordenar__tarjeta strong {
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.ordenar__tarjeta--cifra strong {
+  font-size: 2.4rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+.ordenar__puesto .ordenar__tarjeta {
+  width: 100%;
+  height: 100%;
+  animation: celebrar 0.5s ease-out;
+}
+
+.ordenar__puesto .ordenar__tarjeta--cifra strong {
+  font-size: clamp(1.4rem, calc(var(--tam) * 0.4), 2.4rem);
+}
+
+.ordenar__tarjeta--arrastrando {
+  position: relative;
+  z-index: 5;
+  transition: none;
+  box-shadow: 0 14px 24px rgb(36 18 63 / 0.25);
+}
+
+.ordenar__tarjeta--no {
+  animation: temblar 0.4s;
+}
+
+.ordenar__tarjeta--pista {
+  box-shadow: 0 6px 0 var(--oro-hondo), 0 0 0 4px var(--oro);
+  animation: brincar 0.9s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ordenar__fila--completa, .ordenar__tarjeta, .ordenar__puesto .ordenar__tarjeta, .ordenar__tarjeta--no, .ordenar__tarjeta--pista { animation: none; }
+}

@@ -65,6 +65,10 @@ export interface Cifra {
   ninos: number | null;
   autorizaciones: number | null;
   practicaron_semana: number | null;
+  /** "cartilla/misión" → cuántos niños del grupo la completaron. */
+  misiones?: Record<string, number> | null;
+  /** Motivo → estrellas sumadas del grupo. */
+  estrellas?: Record<string, number> | null;
 }
 
 /** La invitación dura 14 días (`aceptar_invitacion` en la migración 002). */

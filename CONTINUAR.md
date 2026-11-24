@@ -18,7 +18,7 @@ Plan completo: `docs/plan/calendario-diciembre.md` (también en Google Calendar,
   Desde el 23 nov Netlify está enlazado a GitHub: **cada push a la rama se publica solo**
   (rama de producción `ccr-c31d414e-rt7zgq`). Hacer push solo con trabajo probado.
 - Supabase `https://jpwwmzfhbdnzsvwuciqa.supabase.co`. Clave pública en `.env.example` y
-  `netlify.toml`; la secreta nunca se pide en el chat. Aplicadas las migraciones 002, 003 y 004 (la 004 el 23 nov). **Falta aplicar la 005** (paso 14 de PASOS-MANUEL). Manuel
+  `netlify.toml`; la secreta nunca se pide en el chat. Aplicadas las migraciones 002 a 005 (la 005 el 24 nov). Manuel
   aplica las nuevas siguiendo `supabase/PASOS-MANUEL.md`. Prueba local: `supabase/prueba_local.sql`
   (correr una copia sin las líneas `create role`).
 - ElevenLabs: secreto del entorno (`ELEVENLABS_API_KEY=proxy-injected`); 40.000 créditos al mes.
@@ -41,10 +41,13 @@ Plan completo: `docs/plan/calendario-diciembre.md` (también en Google Calendar,
   `elegirCartillaMateriales` en `src/materiales/datos.ts`; selector en `src/adultos/ElegirCartilla.tsx`
   solo si sus grupos tienen cartillas distintas). El service worker baja solo las cartillas del aparato.
 - **Estudiante:** `src/estudiante.tsx`, `src/Mundo.tsx` (mapa y movimiento), `src/juegos/`
-  (plantillas: EscuchaToca, EscuchaAtrapa, Memoria, DiBrilla), `src/progreso.ts`, `src/nube.ts`,
+  (plantillas: EscuchaToca, EscuchaAtrapa, Memoria, DiBrilla, ContarToca y Ordenar; las dos
+  últimas leen `contar` y `ordenar` de la misión, tipos en `src/tipos.ts`, ejemplo de contenido
+  en `scripts/pruebas/contar-ordenar.mjs`), `src/progreso.ts`, `src/nube.ts`,
   `src/entrada/` (tarjeta, código, QR, clave de dibujos), `src/sinConexion.ts`.
 - **Adultos:** `src/adultos/Adultos.tsx` (rutas por rol), `Docente.tsx`, `Materiales.tsx`
-  (Planear), `Biblioteca.tsx`, `Colegio.tsx` (coordinador), `Plataforma.tsx` (dueño),
+  (Planear), `Biblioteca.tsx`, `Colegio.tsx` (coordinador; Uso y avance es un tablero por grado
+  con cifras de `cifras_grupos`, imprimible en una hoja), `Plataforma.tsx` (dueño),
   componentes base en `base.tsx` y `comun.tsx`.
 - **Proyectar:** `src/proyectar/Proyectar.tsx`.
 - **Base de datos:** `supabase/migraciones/` (002 esqueleto, 003 ajustes),
@@ -53,6 +56,16 @@ Plan completo: `docs/plan/calendario-diciembre.md` (también en Google Calendar,
   `materiales_a_json.py`, `importar/`).
 - **Documentos de diseño y pedagogía:** `docs/diseno/esqueleto.md` (tandas 5 y 6 en §8),
   `docs/pedagogia/` (materiales, canciones, catálogo de interfaces).
+
+## Pendientes conocidos
+
+- Identidad nueva **Cuaderno Vivo** (Goma, Cuadrito, Renglón, Postal, Garabato) reemplaza a
+  English Adventure Quest: la lleva otro hilo. No agregar contenido con Lumi, Pixie, Cosmo, Nova
+  ni la metáfora de la luz.
+- Una cartilla nueva (matemáticas, español) necesita: sus misiones en la tabla `misiones`
+  (`herramientas/misiones_sql.py`) para que `registrar_mision` las acepte, y palabras en el
+  territorio si su mapa trae luciérnagas (`Mundo.tsx` reparte palabras del territorio).
+- Proyectar y Biblioteca aún tienen encabezados fijos de English Adventure Quest.
 
 ## Para después de diciembre (sin fecha)
 

@@ -9,56 +9,105 @@ import { CARTILLA_PREDETERMINADA } from '../cartillas';
 
 const GRADOS = ['Preescolar', '1°', '2°', '3°', '4°', '5°'].map((g) => ({ valor: g, etiqueta: g === 'Preescolar' ? g : `Grado ${g}` }));
 
-/** Uso y avance: una fila por grupo, solo con cifras sumadas. */
+/** Suma los valores de un objeto de cifras ({"ingles-3/bosque-school": 4, …}). */
+const sumar = (o?: Record<string, number> | null) => Object.values(o ?? {}).reduce((a, b) => a + Number(b || 0), 0);
+const fmt = (n: number) => n.toLocaleString('es-CO');
+const etiquetaGrado = (g: string) => (g === 'Preescolar' ? g : /^\d/.test(g) ? `Grado ${g}` : g || 'Sin grado');
+
+interface Cuenta { activos: number; conCuenta: number; misiones: number; estrellas: number }
+const cuentaDe = (g: Cifra): Cuenta => ({ activos: g.practicaron_semana ?? 0, conCuenta: g.autorizaciones ?? 0, misiones: sumar(g.misiones), estrellas: sumar(g.estrellas) });
+const juntar = (cs: Cuenta[]): Cuenta => cs.reduce((a, c) => ({ activos: a.activos + c.activos, conCuenta: a.conCuenta + c.conCuenta, misiones: a.misiones + c.misiones, estrellas: a.estrellas + c.estrellas }), { activos: 0, conCuenta: 0, misiones: 0, estrellas: 0 });
+
+/**
+ * Uso y avance: un tablero por grado y, dentro, una fila por grupo. Solo cifras del grupo
+ * (niños que practicaron esta semana, misiones completadas y estrellas); los grupos de menos
+ * de 5 niños con autorización no muestran cifras. Se imprime en una hoja (base.css).
+ */
 export function UsoYAvance() {
   useTitulo('Uso y avance');
   const carga = useCarga(cifrasGrupos, 'cifras');
+  const hoy = new Date().toLocaleDateString('es-CO', { day: 'numeric', month: 'long', year: 'numeric' });
   return (
-    <>
-      <Encabezado titulo="Uso y avance" meta="Por grupo, en orden de nombre" />
+    <div className="tablero-uso">
+      <div className="cabeza-pagina">
+        <Encabezado titulo="Uso y avance" meta={`Por grado y grupo · ${hoy}`} />
+        <div className="no-imprimir">
+          <Boton icono="imprimir" onClick={() => window.print()}>Imprimir</Boton>
+        </div>
+      </div>
       <Cargado carga={carga}>
-        {(grupos) =>
-          grupos.length === 0 ? (
-            <Panel>
-              <Vacio titulo="Todavía no hay grupos" texto="Cuando sus docentes creen grupos, aquí verá el uso de la cartilla por grado. También puede crearlos usted en Docentes.">
-                <Boton ruta="/colegio/docentes">Ir a Docentes</Boton>
-              </Vacio>
-            </Panel>
-          ) : (
-            <>
-              <Panel filas>
-                <ul className="lista">
-                  {grupos.map((g) => (
-                    <FilaCifras key={g.grupo_id} g={g} />
-                  ))}
-                </ul>
+        {(grupos) => {
+          if (grupos.length === 0)
+            return (
+              <Panel>
+                <Vacio titulo="Todavía no hay grupos" texto="Cuando sus docentes creen grupos, aquí verá el uso de la cartilla por grado. También puede crearlos usted en Docentes.">
+                  <Boton ruta="/colegio/docentes">Ir a Docentes</Boton>
+                </Vacio>
               </Panel>
-              <p className="meta">Lo que viene de la app muestra solo a quienes juegan en casa. No sirve para calificar ni para comparar docentes.</p>
+            );
+          const grados = [...new Set(grupos.map((g) => g.grado))].sort((a, b) => ordenGrado(a) - ordenGrado(b) || a.localeCompare(b));
+          return (
+            <>
+              {grados.map((grado) => {
+                const delGrado = grupos.filter((g) => g.grado === grado);
+                const conCifras = delGrado.filter((g) => g.con_cifras);
+                const total = juntar(conCifras.map(cuentaDe));
+                return (
+                  <Panel key={grado} titulo={etiquetaGrado(grado)} fin={<span className="meta">{delGrado.length === 1 ? '1 grupo' : `${delGrado.length} grupos`}</span>}>
+                    {conCifras.length > 0 && delGrado.length > 1 && (
+                      <div className="tablero-uso__total">
+                        <span className="meta">Todo el grado{conCifras.length < delGrado.length ? ' (solo grupos con cifras)' : ''}</span>
+                        <Cifras c={total} />
+                      </div>
+                    )}
+                    <ul className="lista">
+                      {delGrado.map((g) => (
+                        <FilaCifras key={g.grupo_id} g={g} />
+                      ))}
+                    </ul>
+                  </Panel>
+                );
+              })}
+              <p className="meta">
+                Activos: niños que jugaron al menos una vez en los últimos 7 días. Misiones: cuántas veces un niño completó una misión por primera vez. Lo que viene de la app muestra solo a quienes juegan con cuenta; no sirve para calificar ni para comparar docentes.
+              </p>
             </>
-          )
-        }
+          );
+        }}
       </Cargado>
-    </>
+    </div>
+  );
+}
+
+function Cifras({ c }: { c: Cuenta }) {
+  return (
+    <dl className="tablero-uso__cifras">
+      <div>
+        <dt>Activos esta semana</dt>
+        <dd>
+          {fmt(c.activos)} <span className="meta">de {fmt(c.conCuenta)}</span>
+        </dd>
+      </div>
+      <div>
+        <dt>Misiones completadas</dt>
+        <dd>{fmt(c.misiones)}</dd>
+      </div>
+      <div>
+        <dt>Estrellas</dt>
+        <dd>{fmt(c.estrellas)}</dd>
+      </div>
+    </dl>
   );
 }
 
 function FilaCifras({ g }: { g: Cifra }) {
   return (
-    <li className="item">
+    <li className="item tablero-uso__grupo">
       <div className="item__texto">
-        <span>
-          {g.nombre} <span className="meta">· {g.grado}</span>
-        </span>
+        <span className="tablero-uso__nombre">{g.nombre}</span>
         <span className="meta">Docente: {g.docente}</span>
       </div>
-      {g.con_cifras ? (
-        <p className="cifras">
-          <span>{g.ninos} niños con cuenta</span>
-          <span>{g.practicaron_semana} practicaron esta semana</span>
-        </p>
-      ) : (
-        <p className="meta">No se muestran cifras: hay menos de 5 niños con autorización</p>
-      )}
+      {g.con_cifras ? <Cifras c={cuentaDe(g)} /> : <p className="meta">Sin cifras: hay menos de 5 niños con autorización</p>}
     </li>
   );
 }

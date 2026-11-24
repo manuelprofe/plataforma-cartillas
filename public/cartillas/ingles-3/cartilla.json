@@ -4361,102 +4361,102 @@
  "heroes": [
   {
    "id": "tavi",
-   "nombre": "Tavi",
+   "nombre": "Coco",
    "imagen": "personajes/heroe-1.webp",
-   "ancho": 64,
+   "ancho": 76,
    "saludo": {
-    "es": "¡Hola! Soy Tavi.",
-    "en": "Hello! I'm Tavi."
+    "es": "¡Hola! Soy Coco.",
+    "en": "Hello! I'm Coco."
    },
    "anclas": {
     "cabeza": {
-     "x": 0.49,
-     "y": 0.035,
+     "x": 0.5,
+     "y": 0.16,
      "escala": 1
     },
     "cara": {
-     "x": 0.54,
-     "y": 0.4,
-     "escala": 1
+     "x": 0.5,
+     "y": 0.47,
+     "escala": 0.95
     },
     "cuello": {
-     "x": 0.52,
-     "y": 0.535,
-     "escala": 1
+     "x": 0.5,
+     "y": 0.88,
+     "escala": 0.85
     },
     "espalda": {
      "x": 0.5,
-     "y": 0.57,
+     "y": 0.6,
      "escala": 1
     }
    },
-   "alto": 105
+   "alto": 92
   },
   {
    "id": "mika",
-   "nombre": "Mika",
+   "nombre": "Nube",
    "imagen": "personajes/heroe-2.webp",
-   "ancho": 58,
+   "ancho": 96,
    "saludo": {
-    "es": "¡Hola! Soy Mika.",
-    "en": "Hello! I'm Mika."
+    "es": "¡Hola! Soy Nube.",
+    "en": "Hello! I'm Nube."
    },
    "anclas": {
     "cabeza": {
-     "x": 0.51,
-     "y": 0.205,
-     "escala": 1
+     "x": 0.58,
+     "y": 0.04,
+     "escala": 0.85
     },
     "cara": {
-     "x": 0.49,
-     "y": 0.44,
-     "escala": 1.05
+     "x": 0.56,
+     "y": 0.36,
+     "escala": 0.85
     },
     "cuello": {
-     "x": 0.5,
-     "y": 0.585,
-     "escala": 1
+     "x": 0.56,
+     "y": 0.84,
+     "escala": 0.8
     },
     "espalda": {
-     "x": 0.52,
-     "y": 0.61,
+     "x": 0.5,
+     "y": 0.58,
      "escala": 1
     }
    },
-   "alto": 121
+   "alto": 73
   },
   {
    "id": "bruno",
-   "nombre": "Bruno",
+   "nombre": "Rulo",
    "imagen": "personajes/heroe-3.webp",
    "ancho": 64,
    "saludo": {
-    "es": "¡Hola! Soy Bruno.",
-    "en": "Hello! I'm Bruno."
+    "es": "¡Hola! Soy Rulo.",
+    "en": "Hello! I'm Rulo."
    },
    "anclas": {
     "cabeza": {
-     "x": 0.5,
-     "y": 0.035,
+     "x": 0.52,
+     "y": 0.2,
      "escala": 1
     },
     "cara": {
-     "x": 0.44,
-     "y": 0.34,
-     "escala": 1
+     "x": 0.52,
+     "y": 0.46,
+     "escala": 0.95
     },
     "cuello": {
-     "x": 0.45,
-     "y": 0.505,
-     "escala": 1
+     "x": 0.52,
+     "y": 0.74,
+     "escala": 0.9
     },
     "espalda": {
-     "x": 0.45,
-     "y": 0.53,
+     "x": 0.5,
+     "y": 0.6,
      "escala": 1
     }
    },
-   "alto": 104
+   "alto": 109
   }
  ],
  "estelas": [
@@ -4678,12 +4678,9 @@
    "¡Buen intento! Esa palabra es bonita, pero no es para saludar. Escucha otra vez. ¡Tú puedes!": "voz/es-9a56047a7b8e.mp3",
    "¡Esa es! ¡Eraser! Ya puedo borrar y volver a intentar.": "voz/es-815c52569042.mp3",
    "¡Frutas, frutas frescas! Soy Púa... pero hoy no huelo nada. ¡Nada de nada!": "voz/es-696e346f9f70.mp3",
-   "¡Hola! Soy Bruno.": "voz/es-df9a9b9cfa85.mp3",
    "¡Hola! Soy Lumi. ¿Te equivocaste alguna vez? ¡No pasa nada!": "voz/es-4537a6a69e3a.mp3",
-   "¡Hola! Soy Mika.": "voz/es-d797b577fcf5.mp3",
    "¡Hola! Soy Pixie. Y ella es Lumi: su luz nunca se apaga.": "voz/es-e4d3d5a13fc4.mp3",
    "¡Hola! Soy Pixie. ¡Qué bueno que llegaste!": "voz/es-84581697014f.mp3",
-   "¡Hola! Soy Tavi.": "voz/es-3b5f5c2fe2c1.mp3",
    "¡Hola! Soy Tito. Mi sombrero tenía un color muy bonito... ¡y olvidé cómo se llama!": "voz/es-715d5c9bc50e.mp3",
    "¡Nose! ¡Esa es! Mmm... ¡qué rico huelen mis frutas!": "voz/es-56c86ec5374f.mp3",
    "¡Pan calientito! Soy Nuez, la panadera. Quiero saludar a todos los que pasan...": "voz/es-dbee3bc060c5.mp3",

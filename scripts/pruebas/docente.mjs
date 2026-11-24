@@ -294,8 +294,8 @@ try {
     await foto(p, '10-opciones-390');
 
     // Cambiar personaje.
-    await p.click('.nino:has-text("Sara") .personaje:has-text("Bruno")');
-    await p.waitForFunction(() => document.querySelector('.nino input[type=radio]:checked')?.closest('.personaje')?.textContent?.includes('Bruno'));
+    await p.click('.nino:has-text("Sara") .personaje:has-text("Rulo")');
+    await p.waitForFunction(() => document.querySelector('.nino input[type=radio]:checked')?.closest('.personaje')?.textContent?.includes('Rulo'));
     comprobar(sara.avatar === 'bruno', 'cambiar el personaje se guarda');
     // Cambiar PIN: se genera y no se ve; ofrece imprimir la tarjeta.
     const pinAntes = base.pines.get(sara.id);

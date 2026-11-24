@@ -64,7 +64,7 @@ function crearBase() {
       b.grupos.push(f); return { json: { ...f, codigo: null } };
     }
     if (t === 'rpc/renovar_codigo') return { json: null };
-    if (t === 'rpc/cifras_grupos') return { json: b.grupos.map((g) => ({ grupo_id: g.id, nombre: g.nombre, grado: g.grado, docente: b.perfiles.find((p) => p.id === g.docente_id)?.nombre ?? '', con_cifras: g.nombre === '3A', ninos: 14, autorizaciones: 12, practicaron_semana: 9 })) };
+    if (t === 'rpc/cifras_grupos') return { json: b.grupos.map((g) => ({ grupo_id: g.id, nombre: g.nombre, grado: g.grado, docente: b.perfiles.find((p) => p.id === g.docente_id)?.nombre ?? '', con_cifras: ['3A', '1A'].includes(g.nombre), ninos: 14, autorizaciones: 12, practicaron_semana: g.nombre === '1A' ? 5 : 9, misiones: { 'ingles-3/bosque-school': 10, 'ingles-3/bosque-colors': 8 }, estrellas: { completar: 270, autoevaluar: 1100 } })) };
     if (b.caido && t === 'rpc/mi_perfil') return { abortar: true };
     if (t === 'rpc/mi_perfil' && b.aceptarCon) return { json: b.aceptado ? { rol: b.aceptarCon.rol, nombre: b.aceptarCon.nombre, colegio_id: 'col-1', activo: true } : null };
     if (t === 'rpc/aceptar_invitacion') { b.aceptado = true; return { json: b.aceptarCon.rol }; }
@@ -298,13 +298,32 @@ try {
     const m = await medir(p);
     comprobar(!m.desborde && m.toque >= 48, `docentes y grupos sin desborde a 390, toque mínimo ${Math.round(m.toque)}`);
     await p.screenshot({ path: `${CAPTURAS}/colegio-docentes-390.png`, fullPage: true });
-    // Cifras: 3A con cifras, 3B sin (menos de 5 con autorización).
-    base.grupos.push({ id: 'gr-x', colegio_id: 'col-1', docente_id: 'u-1', nombre: '3A', grado: '3°' });
+    // Tablero por grado: 3A con cifras, 3B sin (menos de 5 con autorización), 1A en otro grado.
+    base.grupos.push({ id: 'gr-x', colegio_id: 'col-1', docente_id: 'u-1', nombre: '3A', grado: '3°' }, { id: 'gr-y', colegio_id: 'col-1', docente_id: 'u-2', nombre: '1A', grado: '1°' });
     await p.goto(url('/colegio'));
     await p.waitForSelector('li:has-text("3A")');
-    const texto = await p.locator('main').textContent();
-    comprobar(texto.includes('14 niños con cuenta') && texto.includes('9 practicaron esta semana') && texto.includes('menos de 5 niños'), 'cifras por grupo; el grupo de menos de 5 no muestra cifras');
-    await p.screenshot({ path: `${CAPTURAS}/colegio-uso-390.png` });
+    const titulos = await p.locator('main h2').allTextContents();
+    comprobar(titulos.join('|') === 'Grado 1°|Grado 3°', `un tablero por grado, en orden (${titulos.join(', ')})`);
+    const fila3A = await p.locator('li:has-text("3A")').textContent();
+    comprobar(fila3A.includes('Activos esta semana') && fila3A.includes('9 de 12') && fila3A.includes('18') && fila3A.includes('1.370'), `cifras del grupo: activos, misiones y estrellas (${fila3A})`);
+    comprobar((await p.locator('li:has-text("3B")').textContent()).includes('menos de 5 niños'), 'el grupo de menos de 5 no muestra cifras');
+    const total3 = await p.locator('section:has(h2:text-is("Grado 3°")) .tablero-uso__total').textContent();
+    comprobar(total3.includes('solo grupos con cifras') && total3.includes('9 de 12'), 'el total del grado suma solo los grupos con cifras');
+    const nombresNinos = /Sara|Pao|apodo/i.test(await p.locator('main').textContent());
+    comprobar(!nombresNinos, 'el tablero no muestra nombres de niños');
+    const mu = await medir(p);
+    comprobar(!mu.desborde && mu.toque >= 48, `uso y avance sin desborde a 390, toque mínimo ${Math.round(mu.toque)}`);
+    await p.screenshot({ path: `${CAPTURAS}/colegio-uso-390.png`, fullPage: true });
+    // Se imprime en una hoja carta, sin la barra ni el botón.
+    const pdf = await p.pdf({ format: 'Letter', printBackground: true, preferCSSPageSize: true });
+    const hojas = (pdf.toString('latin1').match(/\/Type\s*\/Page[^s]/g) ?? []).length;
+    comprobar(hojas === 1, `Uso y avance se imprime en una hoja (${hojas})`);
+    await p.setViewportSize({ width: 816, height: 1056 });
+    await p.emulateMedia({ media: 'print' });
+    comprobar(!(await p.locator('button:has-text("Imprimir")').isVisible()), 'el botón Imprimir no sale en la hoja');
+    await p.screenshot({ path: `${CAPTURAS}/colegio-uso-impreso.png`, fullPage: true });
+    await p.emulateMedia({ media: 'screen' });
+    await p.setViewportSize({ width: 390, height: 844 });
     comprobar(!errores.length, `sin errores de consola ${errores.join(' | ')}`);
     await c.close();
   }

@@ -16,8 +16,8 @@ https://github.com/thewh1teagle/kokoro-onnx/releases (modelo Kokoro-82M, licenci
 Solo se generan las frases nuevas o cambiadas; las que ya no se usan se borran.
 Para cambiar de voz basta editar VOCES: el nombre del archivo depende de la voz.
 
-Voces de personajes con ElevenLabs (aprobadas por Manuel el 17 nov): las frases en español de
-Pixie, Lumi, Cosmo y Nova (y las ayudas sin personaje, que dice Lumi) se generan con ElevenLabs
+Voces de personajes con ElevenLabs: las frases en español de Goma (y las ayudas sin personaje,
+que dice Goma) se generan con ElevenLabs
 si existe la variable ELEVENLABS_API_KEY (en las sesiones en la nube basta un valor cualquiera:
 el proxy pone la clave). El vocabulario en inglés usa una voz nativa (Emma). Los vecinos y el héroe del niño siguen con
 Kokoro hasta que se aprueben voces para ellos. Con ElevenLabs no hace falta --voces mientras no
@@ -33,11 +33,8 @@ VOCES = {'es': ('ef_dora', 'es', 0.82), 'en': ('af_heart', 'en-us', 0.85)}
 # Personaje -> voz de ElevenLabs (voice_id de la biblioteca). None = frase sin personaje (ayudas).
 MODELO_EL = 'eleven_v4'
 VOCES_EL = {
-    'pixie': 'tM3tZzTqto62uc7KyCkB',   # La Profe Karen: alegre
-    'lumi': 'fSdfFSsuhxAbMOq35MJx',    # Hellen: suave y tierna
-    'cosmo': 'MXbNlTMQcU6GZQlRkXHB',   # Jorge: masculina joven
-    'nova': 'qSd0nNFPQdeWlFXiPj2l',    # Nancy: dulce y emocionada
-    None: 'fSdfFSsuhxAbMOq35MJx',      # ayudas sin personaje: Lumi
+    'goma': 'iV6xDQ4wcM3ZcXDx30GB',    # Betty: latina, de caricatura (la misma de los videos, 24 nov)
+    None: 'iV6xDQ4wcM3ZcXDx30GB',      # ayudas sin personaje: las dice Goma
 }
 # Vocabulario y frases en inglés: voz nativa estadounidense, clara y algo más lenta, para escuchar
 # y pronunciar (Emma, Bright Kids Educator).

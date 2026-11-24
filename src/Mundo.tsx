@@ -75,6 +75,8 @@ let ultimaPosicion: { x: number; y: number } | null = null;
 let luzAnterior = 0;
 // Cuánto ha crecido la luz de cada zona (0 a 1), para no repetir el encendido al volver.
 const brilloZona = new Map<string, number>();
+// Misiones cuyo color ya se destapó con su animación: al volver no se repite.
+const pintadas = new Set<string>();
 const atrapadas = new Set<number>();
 const saludadas = new Map<number, number>();
 let cargaGuardada: Palabra | null = null;
@@ -84,6 +86,7 @@ export function olvidarMundo() {
   ultimaPosicion = null;
   luzAnterior = 0;
   brilloZona.clear();
+  pintadas.clear();
   atrapadas.clear();
   saludadas.clear();
   cargaGuardada = null;
@@ -111,22 +114,74 @@ function rejillaDe(mundo: Territorio['mundo']) {
 }
 
 /** Lo que no se puede pisar aunque esté sobre el camino: troncos y las cosas de la aldea. */
-function obstaculos(mundo: Territorio['mundo']): Circulo[] {
+/** Lo que no se puede pisar: troncos, las cosas de la aldea y los atajos que aún no se abren. */
+function obstaculos(mundo: Territorio['mundo'], abiertos: string[]): Circulo[] {
   return [
     ...mundo.arboles.map((a) => ({ x: a.x, y: a.y - 6, r: 14 * a.escala + 8 })),
     ...mundo.objetos.filter((o) => o.choque > 0).map((o) => ({ x: o.x, y: o.y - o.choque * 0.45, r: o.choque })),
+    ...(mundo.atajos ?? []).filter((a) => !abiertos.includes(a.zona)).flatMap((a) => a.bloqueos),
   ];
 }
 
-// Se arma una vez por mundo y se conserva al volver de una misión.
-const caminosGuardados = new WeakMap<Territorio['mundo'], Caminos>();
-function caminosDe(mundo: Territorio['mundo']) {
-  let c = caminosGuardados.get(mundo);
+// Se arma una vez por mundo (y por atajos abiertos) y se conserva al volver de una misión.
+const caminosGuardados = new WeakMap<Territorio['mundo'], Map<string, Caminos>>();
+function caminosDe(mundo: Territorio['mundo'], abiertos: string[]) {
+  let porAtajos = caminosGuardados.get(mundo);
+  if (!porAtajos) caminosGuardados.set(mundo, (porAtajos = new Map()));
+  const clave = abiertos.join('|');
+  let c = porAtajos.get(clave);
   if (!c) {
-    c = new Caminos(rejillaDe(mundo), obstaculos(mundo), mundo.inicio);
-    caminosGuardados.set(mundo, c);
+    c = new Caminos(rejillaDe(mundo), obstaculos(mundo, abiertos), mundo.inicio);
+    porAtajos.set(clave, c);
   }
   return c;
+}
+
+/** Colores de camino por los que pasa una ruta, en orden ("azul", luego "amarillo"). */
+function coloresDeRuta(mundo: Territorio['mundo'], ruta: Punto[], abiertos: string[]) {
+  const tramos = (mundo.tramos ?? []).filter((t) => !t.zona || abiertos.includes(t.zona));
+  if (!tramos.length) return [];
+  const cerca = (x: number, y: number) => {
+    let mejor: (typeof tramos)[number] | null = null;
+    let menor = 95;
+    for (const t of tramos)
+      for (let k = 0; k < t.puntos.length - 1; k++) {
+        const [ax, ay] = t.puntos[k];
+        const [bx, by] = t.puntos[k + 1];
+        const dx = bx - ax;
+        const dy = by - ay;
+        const u = Math.max(0, Math.min(1, ((x - ax) * dx + (y - ay) * dy) / (dx * dx + dy * dy || 1)));
+        const d = Math.hypot(x - ax - u * dx, y - ay - u * dy);
+        if (d < menor) {
+          menor = d;
+          mejor = t;
+        }
+      }
+    return mejor;
+  };
+  // Se mira la ruta cada 40 px; un color cuenta si se recorre un buen trecho (no al cruzarlo).
+  const vistos: { nombre: string; color: string; largo: number }[] = [];
+  for (let k = 0; k < ruta.length - 1; k++) {
+    const a = ruta[k];
+    const b = ruta[k + 1];
+    const pasos = Math.max(1, Math.round(Math.hypot(b.x - a.x, b.y - a.y) / 40));
+    for (let i = 0; i < pasos; i++) {
+      const t = cerca(a.x + ((b.x - a.x) * i) / pasos, a.y + ((b.y - a.y) * i) / pasos);
+      if (!t) continue;
+      const ultimo = vistos[vistos.length - 1];
+      if (ultimo?.nombre === t.nombre) ultimo.largo++;
+      else vistos.push({ nombre: t.nombre, color: t.color, largo: 1 });
+    }
+  }
+  const largos = vistos.filter((v) => v.largo >= 3);
+  return largos.filter((v, i) => i === 0 || largos[i - 1].nombre !== v.nombre).map(({ nombre, color }) => ({ nombre, color }));
+}
+
+function fraseDeColores(colores: { nombre: string }[]) {
+  const n = colores.map((c) => c.nombre);
+  if (n.length === 1) return `Sigue el camino ${n[0]}.`;
+  if (n.length === 2) return `Sigue el camino ${n[0]} y después el ${n[1]}.`;
+  return `Sigue el camino ${n.slice(0, -1).join(', luego el ')} y después el ${n[n.length - 1]}.`;
 }
 
 /** Largo que queda desde cada punto de la ruta hasta el final. */
@@ -232,6 +287,20 @@ export function Mundo({ territorio, heroe, estelas, accesorios, cinematicas, ayu
     ],
     [mundo, misiones, encendidas, puertaAbierta, puerta],
   );
+  // La página se termina de colorear cuando están todas las misiones que abren la puerta.
+  const todoPintado = faroles.length > 0 && faroles.every((m) => encendidas.includes(m.id));
+  const pintada = (zona?: string) => !zona || encendidas.includes(zona);
+  useEffect(() => {
+    const t = window.setTimeout(() => encendidas.forEach((id) => pintadas.add(id)), 2600);
+    return () => clearTimeout(t);
+  }, [encendidas]);
+  // Aviso de qué color de camino seguir hasta el destino elegido.
+  const [aviso, setAviso] = useState<{ colores: { nombre: string; color: string }[]; n: number } | null>(null);
+  useEffect(() => {
+    if (!aviso) return;
+    const t = window.setTimeout(() => setAviso(null), 7000);
+    return () => clearTimeout(t);
+  }, [aviso]);
   const conLuz = (x: number, y: number) => luces.some((l) => Math.hypot(l.x - x, l.y - y) < l.radio * 0.9);
 
   const cosas = useMemo<Cosa[]>(
@@ -318,7 +387,10 @@ export function Mundo({ territorio, heroe, estelas, accesorios, cinematicas, ayu
   }, []);
 
   // Por dónde se camina: se arma una vez por mundo y solo se consulta al tocar.
-  const caminos = useMemo(() => caminosDe(mundo), [mundo]);
+  // Los atajos se abren cuando su misión ya se coloreó en la página.
+  const clave = (mundo.atajos ?? []).filter((a) => encendidas.includes(a.zona)).map((a) => a.zona).join('|');
+  const abiertos = useMemo(() => (clave ? clave.split('|') : []), [clave]);
+  const caminos = useMemo(() => caminosDe(mundo, abiertos), [mundo, abiertos]);
   const caminosRef = useRef(caminos);
   caminosRef.current = caminos;
   // Búsquedas de ensayo cuando el navegador queda libre, fuera del render.
@@ -359,7 +431,7 @@ export function Mundo({ territorio, heroe, estelas, accesorios, cinematicas, ayu
     if (!ruta || ruta.length < 2) {
       m.ruta = null;
       m.pendiente = null;
-      return;
+      return null;
     }
     m.pendiente = pendiente;
     m.ruta = ruta;
@@ -373,14 +445,14 @@ export function Mundo({ territorio, heroe, estelas, accesorios, cinematicas, ayu
       imagenGuia.current?.animate([{ transform: 'none' }, { transform: 'translateY(3px) scale(1.09, 0.88)' }, { transform: 'none' }], { duration: 170, easing: 'ease-out' });
     }
     // El aro aparece con un rebote en el destino nuevo.
-    if (arrastre) return;
+    if (arrastre) return ruta;
     if (!pendiente && !sinMovimiento() && meta.current) {
       meta.current.animate([{ scale: '0.3' }, { scale: '1.2' }, { scale: '1' }], { duration: 280, easing: 'ease-out' });
     }
     // Puntitos sobre la ruta en los viajes largos, que se apagan cuando el guía pasa.
     const puntos = rastro.current?.children;
     const total = m.resto[0];
-    if (!puntos || total < RUTA_LARGA) return;
+    if (!puntos || total < RUTA_LARGA) return ruta;
     let k = 0;
     let recorrido = 0;
     for (let t = 1; t < ruta.length && k < RASTROS; t++) {
@@ -398,6 +470,7 @@ export function Mundo({ territorio, heroe, estelas, accesorios, cinematicas, ayu
       }
       recorrido += largo;
     }
+    return ruta;
   };
   const irARef = useRef(irA);
   irARef.current = irA;
@@ -471,8 +544,11 @@ export function Mundo({ territorio, heroe, estelas, accesorios, cinematicas, ayu
     const t = window.setTimeout(() => {
       sonar('estrella');
       luzAnterior = luz;
-      setEncendidas(misiones.filter((m) => progreso.misiones[m.id]).map((m) => m.id));
-      if (hechas < misiones.length) setCharla({ lineas: escenas.despues.lineas });
+      const ahora = misiones.filter((m) => progreso.misiones[m.id]).map((m) => m.id);
+      // Si la misión nueva abrió un atajo, Goma lo cuenta; si no, el comentario de siempre.
+      const abreAtajo = (mundo.atajos ?? []).some((a) => ahora.includes(a.zona) && !encendidas.includes(a.zona));
+      setEncendidas(ahora);
+      if (hechas < misiones.length) setCharla({ lineas: (abreAtajo && escenas.atajo ? escenas.atajo : escenas.despues).lineas });
     }, 800);
     return () => clearTimeout(t);
     // Solo al montar: decide con qué recibe el mundo al niño.
@@ -978,7 +1054,25 @@ export function Mundo({ territorio, heroe, estelas, accesorios, cinematicas, ayu
     }
     sonar('salto');
     // Su punto de llegada en el camino: frente a la cosa, o lo caminable más cercano a eso.
-    irA({ x: cosa.x, y: cosa.y + (cosa.tipo === 'toma' ? 40 : 62) }, cosa.id);
+    const ruta = irA({ x: cosa.x, y: cosa.y + (cosa.tipo === 'toma' ? 40 : 62) }, cosa.id);
+    if (ruta && cosa.tipo !== 'toma') anunciarColores(ruta);
+  };
+
+  /** Dice y muestra qué camino seguir, por color, cuando el viaje es largo. */
+  const anunciarColores = (ruta: Punto[]) => {
+    const largo = ruta.reduce((s, p, i) => (i ? s + Math.hypot(p.x - ruta[i - 1].x, p.y - ruta[i - 1].y) : 0), 0);
+    const colores = coloresDeRuta(mundo, ruta, abiertos);
+    if (largo < 450 || !colores.length) return;
+    setAviso((a) => ({ colores, n: (a?.n ?? 0) + 1 }));
+    window.setTimeout(() => decir(fraseDeColores(colores), vozEspanol), 350);
+  };
+  /** Al elegir destino en una charla: la brújula apunta y se dice qué color seguir desde aquí. */
+  const elegirDestino = (id: string) => {
+    fijarDestino(id);
+    const c = cosas.find((x) => x.id === id);
+    const m = mov.current;
+    const ruta = c && caminos.ruta({ x: m.x, y: m.y }, { x: c.x, y: c.y + 62 });
+    if (ruta) window.setTimeout(() => anunciarColores(ruta), 300);
   };
 
   const cosa = (id: string) => cosas.find((c) => c.id === id)!;
@@ -1000,7 +1094,34 @@ export function Mundo({ territorio, heroe, estelas, accesorios, cinematicas, ayu
       onLostPointerCapture={soltar}
     >
       <div ref={suelo} className="mundo__suelo" style={{ width: mundo.ancho, height: mundo.alto }}>
-        <img className="mundo__mapa" src={base + mundo.mapa} alt="" draggable={false} />
+        {mundo.mapaLapiz ? (
+          <>
+            {/* Página a lápiz; cada misión terminada destapa su mancha de color. Completa, queda toda a color. */}
+            {todoPintado && <img className="mundo__mapa" src={base + mundo.mapa} alt="" draggable={false} />}
+            <img className={`mundo__mapa mundo__lapiz${todoPintado ? ' es-pintada' : ''}`} src={base + mundo.mapaLapiz} alt="" draggable={false} />
+            {(mundo.manchas ?? []).map((mc, i) =>
+              encendidas.includes(mc.zona) ? (
+                <span
+                  key={`mancha-${i}`}
+                  className={`mancha${pintadas.has(mc.zona) ? '' : ' es-nueva'}`}
+                  style={{
+                    left: mc.x - mc.r,
+                    top: mc.y - mc.r,
+                    width: mc.r * 2,
+                    height: mc.r * 2,
+                    backgroundImage: `url(${base + mundo.mapa})`,
+                    backgroundSize: `${mundo.ancho}px ${mundo.alto}px`,
+                    backgroundPosition: `${mc.r - mc.x}px ${mc.r - mc.y}px`,
+                    animationDelay: `${(i % 8) * 0.12}s`,
+                  }}
+                  aria-hidden="true"
+                />
+              ) : null,
+            )}
+          </>
+        ) : (
+          <img className="mundo__mapa" src={base + mundo.mapa} alt="" draggable={false} />
+        )}
         <canvas ref={penumbra} className="mundo__penumbra" width={Math.ceil(mundo.ancho / REDUCCION_PENUMBRA)} height={Math.ceil(mundo.alto / REDUCCION_PENUMBRA)} aria-hidden="true" />
         <div className="mundo__nubes" aria-hidden="true" />
 
@@ -1018,12 +1139,24 @@ export function Mundo({ territorio, heroe, estelas, accesorios, cinematicas, ayu
               enVista(l.x, l.y) ? (
                 <div key={`letrero-${i}`} className="letrero" style={{ left: l.x, top: l.y, zIndex: Math.round(l.y) }}>
                   <div className="letrero__tabla">
-                    {l.lleva.map((id) => {
+                    {l.lleva.map(({ mision: id, color, nombre, giro }) => {
                       const m = misiones.find((x) => x.id === id);
-                      if (!m) return null;
+                      const esPuerta = id === 'puente';
+                      if (!m && !esPuerta) return null;
+                      const titulo = m ? m.titulo : puerta.destino;
                       return (
-                        <button key={id} type="button" className={`letrero__lugar${progreso.misiones[id] ? ' es-hecha' : ''}`} onClick={() => tocarCosa(cosa(id))} aria-label={`Ir a ${m.titulo}`}>
-                          <img src={base + m.icono} alt="" width="34" height="34" draggable={false} />
+                        <button
+                          key={id}
+                          type="button"
+                          className={`letrero__lugar${m && progreso.misiones[id] ? ' es-hecha' : ''}`}
+                          style={{ borderColor: color }}
+                          onClick={() => tocarCosa(cosa(id))}
+                          aria-label={`Ir a ${titulo}: camino ${nombre}`}
+                        >
+                          <img src={base + (m ? m.icono : personajes[puerta.personaje].imagen)} alt="" width="34" height="34" draggable={false} />
+                          <span className="letrero__flecha" style={{ background: color, rotate: `${giro}deg` }} aria-hidden="true">
+                            ➜
+                          </span>
                         </button>
                       );
                     })}
@@ -1061,28 +1194,37 @@ export function Mundo({ territorio, heroe, estelas, accesorios, cinematicas, ayu
             })}
 
             {mundo.objetos.map((o, i) => {
-              if (!enVista(o.x, o.y)) return null;
+              if (!enVista(o.x, o.y) || !pintada(o.aparece)) return null;
               const encendido = conLuz(o.x, o.y);
+              const lapiz = !pintada(o.zona);
+              const nuevo = o.aparece && !pintadas.has(o.aparece);
               return (
-                <div key={i} className={`objeto${encendido ? '' : ' arbol--apagado'}${o.luz && encendido ? ' objeto--luz' : ''}`} style={{ left: o.x, top: o.y, zIndex: Math.round(o.y) }} aria-hidden="true">
+                <div
+                  key={i}
+                  className={`objeto${encendido ? '' : ' arbol--apagado'}${o.luz && encendido ? ' objeto--luz' : ''}${lapiz ? ' objeto--lapiz' : ''}${nuevo ? ' es-nuevo' : ''}`}
+                  style={{ left: o.x, top: o.y, zIndex: Math.round(o.y) }}
+                  aria-hidden="true"
+                >
                   <img src={base + o.imagen} alt="" width={o.ancho} loading="lazy" draggable={false} />
                 </div>
               );
             })}
 
-            {mundo.criaturas.map((c, i) => (
+            {mundo.criaturas.map((c, i) =>
+              !pintada(c.aparece) ? null : (
               <div
                 key={i}
                 ref={(el) => {
                   criaturas.current[i] = el;
                 }}
-                className={`criatura criatura--${c.movimiento}`}
+                className={`criatura criatura--${c.movimiento}${c.aparece && !pintadas.has(c.aparece) ? ' es-nuevo' : ''}`}
                 style={{ transform: `translate3d(${c.x}px, ${c.y}px, 0)`, zIndex: c.movimiento === 'salta' ? Math.round(c.y) : mundo.alto + 10 }}
                 aria-hidden="true"
               >
                 <img src={base + c.imagen} alt="" width={c.ancho} draggable={false} style={{ animationDelay: `${-i * 0.37}s` }} />
               </div>
-            ))}
+              ),
+            )}
 
             {mundo.luciernagas.map((l, i) =>
               atrapadas.has(i) ? null : <span key={i} className="luciernaga" style={{ left: l.x, top: l.y, zIndex: mundo.alto + 15, animationDelay: `${-i * 0.7}s` }} aria-hidden="true" />,
@@ -1276,7 +1418,7 @@ export function Mundo({ territorio, heroe, estelas, accesorios, cinematicas, ayu
       )}
       {panel === 'mapa' && (
         <MiniMapa
-          imagen={base + mundo.mapa}
+          imagen={base + (mundo.mapaLapiz && !todoPintado ? mundo.mapaLapiz : mundo.mapa)}
           ancho={mundo.ancho}
           alto={mundo.alto}
           yo={{ x: mov.current.x, y: mov.current.y, imagen: base + heroe.imagen }}
@@ -1285,6 +1427,18 @@ export function Mundo({ territorio, heroe, estelas, accesorios, cinematicas, ayu
           puente={{ x: puerta.x, y: puerta.y, abierto: puertaAbierta }}
           onCerrar={() => setPanel(null)}
         />
+      )}
+
+      {aviso && !charla && !panel && (
+        <div key={aviso.n} className="rumbo-color" role="status">
+          {aviso.colores.map((c, i) => (
+            <span key={i} className="rumbo-color__paso">
+              {i > 0 && <span aria-hidden="true">➜</span>}
+              <span className="rumbo-color__muestra" style={{ background: c.color }} aria-hidden="true" />
+              {c.nombre}
+            </span>
+          ))}
+        </div>
       )}
 
       {!charla && !panel && (
@@ -1303,7 +1457,7 @@ export function Mundo({ territorio, heroe, estelas, accesorios, cinematicas, ayu
           modo={modo}
           vozIngles={vozIngles}
           vozEspanol={vozEspanol}
-          onDestino={fijarDestino}
+          onDestino={elegirDestino}
           onCerrar={() => {
             const despues = charla.alCerrar;
             setCharla(null);

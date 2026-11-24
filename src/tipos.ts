@@ -226,6 +226,8 @@ export interface Territorio {
       rapidez: number;
       /** Palabra que regala al álbum cuando el niño se acerca. */
       palabra?: Palabra;
+      /** Misión que lo trae: no está en la página hasta que se termina. */
+      aparece?: string;
     }[];
     /** Sonido de fondo del territorio. */
     ambiente?: Ambiente;
@@ -237,7 +239,8 @@ export interface Territorio {
     /** Pistas dibujadas en el piso de los caminos; sin icono es una estrella. */
     huellas: { x: number; y: number; icono: string; mision: string }[];
     /** Casas, faroles y demás cosas de la aldea; `choque` es el radio que no se puede pisar. */
-    objetos: { imagen: string; ancho: number; x: number; y: number; choque: number; luz?: boolean }[];
+    /** `zona`: misión que la colorea (antes se ve a lápiz). `aparece`: misión que la dibuja. */
+    objetos: { imagen: string; ancho: number; x: number; y: number; choque: number; luz?: boolean; zona?: string; aparece?: string }[];
     /** Copas en primer plano, por encima de todo. */
     frente: { x: number; y: number; tipo: number }[];
     /** Cuadrícula de agua ('1' = no se puede caminar) y tamaño de cada celda. */
@@ -249,7 +252,15 @@ export interface Territorio {
     colorPenumbra: string;
     luciernagas: { x: number; y: number }[];
     /** Letreros en los cruces: cada uno muestra a qué misiones lleva y, al tocarlas, el guía va hasta allá. */
-    letreros?: { x: number; y: number; lleva: string[] }[];
+    /** `lleva`: cada lugar con el color del camino que hay que buscar y hacia dónde sale (grados). */
+    letreros?: { x: number; y: number; lleva: { mision: string; color: string; nombre: string; giro: number }[] }[];
+    /** La página a lápiz: se muestra encima de `mapa` y cada misión destapa sus manchas de color. */
+    mapaLapiz?: string;
+    manchas?: { x: number; y: number; r: number; zona: string }[];
+    /** Caminos con nombre de color, para decirle al niño cuál seguir. `zona`: atajo que abre esa misión. */
+    tramos?: { nombre: string; color: string; puntos: [number, number][]; zona?: string }[];
+    /** Atajos cerrados hasta terminar su misión: lo que los tapa mientras tanto. */
+    atajos?: { zona: string; bloqueos: { x: number; y: number; r: number }[] }[];
   };
   /** Se abre cuando brillan todos los faroles: cada misión no opcional completada enciende el suyo. */
   puerta: {

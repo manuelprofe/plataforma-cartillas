@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
 """Pinta el suelo de la página 1 de Postales: papel de cuaderno, caminos de crayola y pasto.
 
+Saca dos versiones: a color (con los atajos ya dibujados) y a lápiz (el pasto y los atajos solo
+trazados en gris). El juego muestra la de lápiz y va destapando la de color con cada misión.
+
 Usa los mismos CAMINOS y LUGARES que construir_pagina.py, así lo que se ve coincide con lo que
 se camina. Los edificios, árboles y demás van encima como piezas aparte (objetos del mundo).
 
-Uso: python3 -I herramientas/pintar_pagina.py salida.png
+Uso: python3 -I herramientas/pintar_pagina.py color.png lapiz.png
 """
 import math
 import random
@@ -14,12 +17,9 @@ from pathlib import Path
 from PIL import Image, ImageDraw, ImageFilter
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from construir_pagina import ANCHO_IMG, ALTO_IMG, CAMINOS, LUGARES  # noqa: E402
+from construir_pagina import ANCHO_IMG, ALTO_IMG, ATAJOS, CAMINOS, COLORES, LUGARES  # noqa: E402
 
-random.seed(7)
 W, H = ANCHO_IMG, ALTO_IMG
-COLOR = {'azul-arriba': (86, 150, 222), 'azul-bajada': (86, 150, 222), 'morado': (160, 120, 205), 'amarillo': (246, 199, 68),
-         'rosado': (240, 140, 160), 'naranja': (245, 160, 80), 'verde': (110, 190, 120), 'pozo': (86, 150, 222)}
 ANCHO_CAMINO = 46  # en la imagen
 
 
@@ -64,33 +64,76 @@ def crayola(capa, puntos, color, ancho):
         d.line(linea, fill=(claro if pasada % 2 else borde) + (a,), width=int(ancho * random.uniform(0.15, 0.35)), joint='curve')
 
 
-def main():
-    salida = sys.argv[1]
-    base = papel().convert('RGBA')
-    dp = ImageDraw.Draw(base, 'RGBA')
+def pasto():
+    """Manchas de pasto de cada lugar, siempre las mismas en las dos versiones."""
+    manchas = []
     for (cx, cy), r in LUGARES.values():
         x, y = p(cx, cy)
         rr = r / 1.4  # el radio de LUGARES está en el mundo
         for _ in range(140):
             ang, dist = random.uniform(0, 2 * math.pi), rr * math.sqrt(random.random())
-            px, py = x + dist * math.cos(ang), y + dist * math.sin(ang) * 0.8
             s = random.uniform(12, 30)
-            dp.ellipse([px - s, py - s * 0.7, px + s, py + s * 0.7], fill=random.choice([(140, 200, 110), (120, 185, 95), (165, 215, 130)]) + (random.randint(60, 110),))
-    # Se pinta directo sobre el papel (opaco) para que cada pasada de crayola se mezcle bien.
-    for nombre, linea in CAMINOS.items():
-        crayola(base, suave([p(*q) for q in linea]), COLOR[nombre], ANCHO_CAMINO * (0.8 if nombre == 'pozo' else 1))
-    # Raya blanca discontinua en el centro, como en el boceto.
-    dr = ImageDraw.Draw(base, 'RGBA')
-    for nombre, linea in CAMINOS.items():
-        pts = suave([p(*q) for q in linea], 24)
-        largo = 0
-        for a, b in zip(pts, pts[1:]):
-            seg = math.dist(a, b)
-            if int(largo / 22) % 2 == 0:
-                dr.line([a, b], fill=(255, 255, 255, 200), width=5)
-            largo += seg
-    base.convert('RGB').save(salida)
-    print('listo', salida)
+            manchas.append((x + dist * math.cos(ang), y + dist * math.sin(ang) * 0.8, s,
+                            random.choice([(140, 200, 110), (120, 185, 95), (165, 215, 130)]), random.randint(60, 110)))
+    return manchas
+
+
+def raya_central(d, puntos):
+    largo = 0
+    for a, b in zip(puntos, puntos[1:]):
+        if int(largo / 22) % 2 == 0:
+            d.line([a, b], fill=(255, 255, 255, 200), width=5)
+        largo += math.dist(a, b)
+
+
+def lapiz(d, puntos, ancho):
+    """Un camino aún sin pintar: dos bordes a lápiz y trazos sueltos, como un boceto."""
+    for lado in (-1, 1):
+        for pasada in range(2):
+            linea = []
+            for (x0, y0), (x1, y1) in zip(puntos, puntos[1:]):
+                n = math.hypot(x1 - x0, y1 - y0) or 1
+                nx, ny = -(y1 - y0) / n, (x1 - x0) / n
+                linea.append((x0 + nx * lado * ancho / 2 + random.uniform(-1.5, 1.5), y0 + ny * lado * ancho / 2 + random.uniform(-1.5, 1.5)))
+            d.line(linea, fill=(110, 110, 120, 120 - pasada * 50), width=2)
+    raya = 0
+    for a, b in zip(puntos, puntos[1:]):
+        if int(raya / 30) % 2 == 0:
+            d.line([a, b], fill=(140, 140, 150, 90), width=3)
+        raya += math.dist(a, b)
+
+
+def main():
+    salida_color, salida_lapiz = sys.argv[1], sys.argv[2]
+    manchas = pasto()
+    for version, salida in (('color', salida_color), ('lapiz', salida_lapiz)):
+        random.seed(11)
+        base = papel().convert('RGBA')
+        dp = ImageDraw.Draw(base, 'RGBA')
+        for x, y, s, color, alfa in manchas:
+            caja = [x - s, y - s * 0.7, x + s, y + s * 0.7]
+            if version == 'color':
+                dp.ellipse(caja, fill=color + (alfa,))
+            elif alfa > 95:
+                dp.ellipse(caja, outline=(130, 130, 138, 55), width=2)
+        # Se pinta directo sobre el papel (opaco) para que cada pasada de crayola se mezcle bien.
+        dr = ImageDraw.Draw(base, 'RGBA')
+        for nombre, linea in CAMINOS.items():
+            crayola(base, suave([p(*q) for q in linea]), COLORES[nombre][1], ANCHO_CAMINO * (0.8 if nombre == 'pozo' else 1))
+        for nombre, atajo in ATAJOS.items():
+            puntos = suave([p(*q) for q in atajo['puntos']])
+            if version == 'color':
+                crayola(base, puntos, COLORES[nombre][1], ANCHO_CAMINO * 0.9)
+            else:
+                lapiz(dr, suave([p(*q) for q in atajo['puntos']], 24), ANCHO_CAMINO * 0.9)
+        # Raya blanca discontinua en el centro, como en el boceto.
+        for linea in CAMINOS.values():
+            raya_central(dr, suave([p(*q) for q in linea], 24))
+        if version == 'color':
+            for atajo in ATAJOS.values():
+                raya_central(dr, suave([p(*q) for q in atajo['puntos']], 24))
+        base.convert('RGB').save(salida)
+        print('listo', salida)
 
 
 if __name__ == '__main__':

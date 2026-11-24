@@ -1367,8 +1367,8 @@
      {
       "imagen": "mundo/animal-1.webp",
       "ancho": 46,
-      "x": 367,
-      "y": 545,
+      "x": 688,
+      "y": 2695,
       "radio": 90,
       "movimiento": "revolotea",
       "rapidez": 0.8,
@@ -1382,8 +1382,8 @@
      {
       "imagen": "mundo/animal-2.webp",
       "ancho": 46,
-      "x": 1158,
-      "y": 473,
+      "x": 963,
+      "y": 2523,
       "radio": 90,
       "movimiento": "revolotea",
       "rapidez": 0.9,
@@ -1397,8 +1397,8 @@
      {
       "imagen": "mundo/animal-1.webp",
       "ancho": 46,
-      "x": 1961,
-      "y": 502,
+      "x": 307,
+      "y": 627,
       "radio": 90,
       "movimiento": "revolotea",
       "rapidez": 1.0,
@@ -1407,13 +1407,14 @@
        "es": "mariposa",
        "icono": "mundo/animal-1.webp",
        "pronuncia": "bá-ter-flai"
-      }
+      },
+      "aparece": "bosque-school"
      },
      {
       "imagen": "mundo/animal-2.webp",
       "ancho": 46,
-      "x": 1743,
-      "y": 1233,
+      "x": 633,
+      "y": 641,
       "radio": 90,
       "movimiento": "revolotea",
       "rapidez": 1.1,
@@ -1422,13 +1423,14 @@
        "es": "mariposa",
        "icono": "mundo/animal-2.webp",
        "pronuncia": "bá-ter-flai"
-      }
+      },
+      "aparece": "bosque-school-2"
      },
      {
       "imagen": "mundo/animal-1.webp",
       "ancho": 46,
-      "x": 665,
-      "y": 1892,
+      "x": 410,
+      "y": 727,
       "radio": 90,
       "movimiento": "revolotea",
       "rapidez": 1.2000000000000002,
@@ -1437,13 +1439,14 @@
        "es": "mariposa",
        "icono": "mundo/animal-1.webp",
        "pronuncia": "bá-ter-flai"
-      }
+      },
+      "aparece": "bosque-school-3"
      },
      {
       "imagen": "mundo/animal-3.webp",
       "ancho": 44,
-      "x": 1708,
-      "y": 2021,
+      "x": 1069,
+      "y": 555,
       "radio": 70,
       "movimiento": "zumba",
       "rapidez": 1.4,
@@ -1452,13 +1455,14 @@
        "es": "abeja",
        "icono": "mundo/animal-3.webp",
        "pronuncia": "bi"
-      }
+      },
+      "aparece": "bosque-colors"
      },
      {
       "imagen": "mundo/animal-3.webp",
       "ancho": 44,
-      "x": 1043,
-      "y": 1190,
+      "x": 1155,
+      "y": 575,
       "radio": 70,
       "movimiento": "zumba",
       "rapidez": 1.5,
@@ -1467,13 +1471,14 @@
        "es": "abeja",
        "icono": "mundo/animal-3.webp",
        "pronuncia": "bi"
-      }
+      },
+      "aparece": "bosque-colors-2"
      },
      {
       "imagen": "mundo/animal-3.webp",
       "ancho": 44,
-      "x": 401,
-      "y": 2466,
+      "x": 1401,
+      "y": 526,
       "radio": 70,
       "movimiento": "zumba",
       "rapidez": 1.5999999999999999,
@@ -1482,13 +1487,14 @@
        "es": "abeja",
        "icono": "mundo/animal-3.webp",
        "pronuncia": "bi"
-      }
+      },
+      "aparece": "bosque-colors-3"
      },
      {
       "imagen": "mundo/animal-5.webp",
       "ancho": 50,
-      "x": 2110,
-      "y": 2480,
+      "x": 1637,
+      "y": 555,
       "radio": 0,
       "movimiento": "salta",
       "rapidez": 1,
@@ -1497,13 +1503,14 @@
        "es": "rana",
        "icono": "mundo/animal-5.webp",
        "pronuncia": "frog"
-      }
+      },
+      "aparece": "bosque-numbers"
      },
      {
       "imagen": "mundo/animal-5.webp",
       "ancho": 50,
-      "x": 367,
-      "y": 631,
+      "x": 1963,
+      "y": 598,
       "radio": 0,
       "movimiento": "salta",
       "rapidez": 1,
@@ -1512,13 +1519,14 @@
        "es": "rana",
        "icono": "mundo/animal-5.webp",
        "pronuncia": "frog"
-      }
+      },
+      "aparece": "bosque-numbers-2"
      },
      {
       "imagen": "mundo/animal-5.webp",
       "ancho": 50,
-      "x": 1158,
-      "y": 559,
+      "x": 1981,
+      "y": 555,
       "radio": 0,
       "movimiento": "salta",
       "rapidez": 1,
@@ -1527,13 +1535,14 @@
        "es": "rana",
        "icono": "mundo/animal-5.webp",
        "pronuncia": "frog"
-      }
+      },
+      "aparece": "bosque-numbers-3"
      },
      {
       "imagen": "mundo/animal-6.webp",
       "ancho": 58,
-      "x": 1961,
-      "y": 588,
+      "x": 1722,
+      "y": 1257,
       "radio": 260,
       "movimiento": "planea",
       "rapidez": 0.3,
@@ -1542,13 +1551,14 @@
        "es": "pájaro",
        "icono": "mundo/animal-6.webp",
        "pronuncia": "berd"
-      }
+      },
+      "aparece": "bosque-body"
      },
      {
       "imagen": "mundo/animal-6.webp",
       "ancho": 58,
-      "x": 1743,
-      "y": 1319,
+      "x": 1774,
+      "y": 1387,
       "radio": 260,
       "movimiento": "planea",
       "rapidez": 0.26,
@@ -1557,13 +1567,14 @@
        "es": "pájaro",
        "icono": "mundo/animal-6.webp",
        "pronuncia": "berd"
-      }
+      },
+      "aparece": "bosque-body-2"
      },
      {
       "imagen": "mundo/animal-4.webp",
       "ancho": 84,
-      "x": 665,
-      "y": 1978,
+      "x": 2066,
+      "y": 1257,
       "radio": 240,
       "movimiento": "planea",
       "rapidez": 0.2,
@@ -1572,13 +1583,14 @@
        "es": "búho",
        "icono": "mundo/animal-4.webp",
        "pronuncia": "aul"
-      }
+      },
+      "aparece": "bosque-body-3"
      },
      {
       "imagen": "mundo/animal-4.webp",
       "ancho": 84,
-      "x": 1708,
-      "y": 2107,
+      "x": 399,
+      "y": 1974,
       "radio": 220,
       "movimiento": "planea",
       "rapidez": 0.18,
@@ -1587,7 +1599,88 @@
        "es": "búho",
        "icono": "mundo/animal-4.webp",
        "pronuncia": "aul"
-      }
+      },
+      "aparece": "bosque-family"
+     },
+     {
+      "imagen": "mundo/animal-3.webp",
+      "ancho": 44,
+      "x": 725,
+      "y": 2017,
+      "radio": 70,
+      "movimiento": "zumba",
+      "rapidez": 1.5,
+      "palabra": {
+       "en": "bee",
+       "es": "abeja",
+       "icono": "mundo/animal-3.webp",
+       "pronuncia": "bi"
+      },
+      "aparece": "bosque-family-2"
+     },
+     {
+      "imagen": "mundo/animal-3.webp",
+      "ancho": 44,
+      "x": 811,
+      "y": 1974,
+      "radio": 70,
+      "movimiento": "zumba",
+      "rapidez": 1.5999999999999999,
+      "palabra": {
+       "en": "bee",
+       "es": "abeja",
+       "icono": "mundo/animal-3.webp",
+       "pronuncia": "bi"
+      },
+      "aparece": "bosque-family-3"
+     },
+     {
+      "imagen": "mundo/animal-5.webp",
+      "ancho": 50,
+      "x": 1573,
+      "y": 2118,
+      "radio": 0,
+      "movimiento": "salta",
+      "rapidez": 1,
+      "palabra": {
+       "en": "frog",
+       "es": "rana",
+       "icono": "mundo/animal-5.webp",
+       "pronuncia": "frog"
+      },
+      "aparece": "bosque-time"
+     },
+     {
+      "imagen": "mundo/animal-1.webp",
+      "ancho": 46,
+      "x": 1648,
+      "y": 2118,
+      "radio": 90,
+      "movimiento": "revolotea",
+      "rapidez": 0.8,
+      "palabra": {
+       "en": "butterfly",
+       "es": "mariposa",
+       "icono": "mundo/animal-1.webp",
+       "pronuncia": "bá-ter-flai"
+      },
+      "aparece": "bosque-time-2"
+     },
+     {
+      "imagen": "mundo/animal-2.webp",
+      "ancho": 46,
+      "x": 1206,
+      "y": 1257,
+      "radio": 90,
+      "movimiento": "revolotea",
+      "rapidez": 0.9,
+      "palabra": {
+       "en": "butterfly",
+       "es": "mariposa",
+       "icono": "mundo/animal-2.webp",
+       "pronuncia": "bá-ter-flai"
+      },
+      "aparece": "bosque-pozo"
      }
     ],
     "objetos": [
@@ -1596,231 +1689,352 @@
       "ancho": 280,
       "x": 470,
       "y": 573,
-      "choque": 90
+      "choque": 90,
+      "zona": "bosque-school"
      },
      {
       "imagen": "pagina/jardin.webp",
       "ancho": 280,
       "x": 1158,
       "y": 545,
-      "choque": 90
+      "choque": 90,
+      "zona": "bosque-colors"
      },
      {
       "imagen": "pagina/piedras.webp",
       "ancho": 270,
       "x": 1857,
       "y": 559,
-      "choque": 80
+      "choque": 80,
+      "zona": "bosque-numbers"
      },
      {
       "imagen": "pagina/parque.webp",
       "ancho": 300,
       "x": 1846,
       "y": 1276,
-      "choque": 80
+      "choque": 80,
+      "zona": "bosque-body"
      },
      {
       "imagen": "pagina/casas.webp",
       "ancho": 330,
       "x": 665,
       "y": 1927,
-      "choque": 100
+      "choque": 100,
+      "zona": "bosque-family"
      },
      {
       "imagen": "pagina/torre.webp",
       "ancho": 150,
       "x": 1605,
       "y": 2107,
-      "choque": 50
+      "choque": 50,
+      "zona": "bosque-time"
      },
      {
       "imagen": "pagina/pozo.webp",
       "ancho": 150,
       "x": 1146,
       "y": 1284,
-      "choque": 45
+      "choque": 45,
+      "zona": "bosque-pozo"
      },
      {
       "imagen": "pagina/buzon.webp",
       "ancho": 90,
       "x": 321,
       "y": 2537,
-      "choque": 20
+      "choque": 20,
+      "zona": "bosque-family"
      },
      {
       "imagen": "pagina/estanque.webp",
       "ancho": 160,
-      "x": 252,
-      "y": 1634,
-      "choque": 60
+      "x": 195,
+      "y": 1749,
+      "choque": 60,
+      "zona": "bosque-family"
      },
      {
       "imagen": "pagina/banca.webp",
       "ancho": 110,
       "x": 1284,
       "y": 2595,
-      "choque": 30
+      "choque": 30,
+      "zona": "bosque-time"
      },
      {
       "imagen": "pagina/puente.webp",
       "ancho": 180,
       "x": 2178,
       "y": 1606,
-      "choque": 0
+      "choque": 0,
+      "zona": "bosque-body-3"
      },
      {
       "imagen": "pagina/arbol-1.webp",
       "ancho": 150,
       "x": 126,
       "y": 373,
-      "choque": 22
+      "choque": 22,
+      "zona": "bosque-school"
      },
      {
       "imagen": "pagina/arbol-2.webp",
       "ancho": 110,
       "x": 2190,
       "y": 272,
-      "choque": 18
+      "choque": 18,
+      "zona": "bosque-numbers-3"
      },
      {
       "imagen": "pagina/arbol-3.webp",
       "ancho": 150,
       "x": 871,
       "y": 344,
-      "choque": 22
+      "choque": 22,
+      "zona": "bosque-colors"
      },
      {
       "imagen": "pagina/arbol-1.webp",
       "ancho": 150,
       "x": 1536,
       "y": 315,
-      "choque": 22
+      "choque": 22,
+      "zona": "bosque-colors-3"
      },
      {
       "imagen": "pagina/arbol-2.webp",
       "ancho": 110,
       "x": 138,
       "y": 1290,
-      "choque": 18
+      "choque": 18,
+      "zona": "bosque-school-3"
      },
      {
       "imagen": "pagina/arbol-3.webp",
       "ancho": 150,
       "x": 2190,
       "y": 1104,
-      "choque": 22
+      "choque": 22,
+      "zona": "bosque-body-3"
      },
      {
       "imagen": "pagina/arbol-1.webp",
       "ancho": 150,
       "x": 573,
       "y": 1347,
-      "choque": 22
+      "choque": 22,
+      "zona": "bosque-school-3"
      },
      {
       "imagen": "pagina/arbol-2.webp",
       "ancho": 110,
       "x": 1513,
       "y": 1491,
-      "choque": 18
-     },
-     {
-      "imagen": "pagina/arbol-3.webp",
-      "ancho": 150,
-      "x": 2190,
-      "y": 1950,
-      "choque": 22
+      "choque": 18,
+      "zona": "bosque-body"
      },
      {
       "imagen": "pagina/arbol-2.webp",
       "ancho": 110,
       "x": 138,
       "y": 2179,
-      "choque": 18
+      "choque": 18,
+      "zona": "bosque-family"
      },
      {
       "imagen": "pagina/arbol-1.webp",
       "ancho": 150,
       "x": 1055,
       "y": 2709,
-      "choque": 22
+      "choque": 22,
+      "zona": "bosque-family-3"
      },
      {
       "imagen": "pagina/arbol-2.webp",
       "ancho": 110,
       "x": 2201,
       "y": 2351,
-      "choque": 18
+      "choque": 18,
+      "zona": "bosque-time-2"
      },
      {
       "imagen": "pagina/arbol-3.webp",
       "ancho": 150,
       "x": 573,
       "y": 1692,
-      "choque": 22
+      "choque": 22,
+      "zona": "bosque-family"
      },
      {
       "imagen": "pagina/arbol-2.webp",
       "ancho": 110,
       "x": 1582,
       "y": 1720,
-      "choque": 18
+      "choque": 18,
+      "zona": "bosque-body-2"
      },
      {
       "imagen": "pagina/arbusto.webp",
       "ancho": 110,
       "x": 275,
       "y": 602,
-      "choque": 0
+      "choque": 0,
+      "zona": "bosque-school"
      },
      {
       "imagen": "pagina/arbusto.webp",
       "ancho": 110,
       "x": 1353,
       "y": 459,
-      "choque": 0
+      "choque": 0,
+      "zona": "bosque-colors-3"
      },
      {
       "imagen": "pagina/arbusto.webp",
       "ancho": 110,
       "x": 894,
       "y": 1978,
-      "choque": 0
+      "choque": 0,
+      "zona": "bosque-family-3"
      },
      {
       "imagen": "pagina/arbusto.webp",
       "ancho": 110,
       "x": 2064,
       "y": 1390,
-      "choque": 0
+      "choque": 0,
+      "zona": "bosque-body-3"
      },
      {
       "imagen": "pagina/tulipanes.webp",
       "ancho": 80,
       "x": 757,
       "y": 573,
-      "choque": 0
+      "choque": 0,
+      "zona": "bosque-school-2"
      },
      {
       "imagen": "pagina/tulipanes.webp",
       "ancho": 80,
       "x": 1651,
       "y": 545,
-      "choque": 0
+      "choque": 0,
+      "zona": "bosque-numbers"
      },
      {
       "imagen": "pagina/tulipanes.webp",
       "ancho": 80,
       "x": 1422,
       "y": 2136,
-      "choque": 0
+      "choque": 0,
+      "zona": "bosque-time"
      },
      {
       "imagen": "pagina/tulipanes.webp",
       "ancho": 80,
       "x": 550,
       "y": 2595,
-      "choque": 0
+      "choque": 0,
+      "zona": "bosque-family-2"
+     },
+     {
+      "imagen": "pagina/tulipanes.webp",
+      "ancho": 80,
+      "x": 608,
+      "y": 588,
+      "choque": 0,
+      "aparece": "bosque-school-2"
+     },
+     {
+      "imagen": "pagina/arbusto.webp",
+      "ancho": 100,
+      "x": 321,
+      "y": 774,
+      "choque": 0,
+      "aparece": "bosque-school-3"
+     },
+     {
+      "imagen": "pagina/tulipanes.webp",
+      "ancho": 80,
+      "x": 1032,
+      "y": 545,
+      "choque": 0,
+      "aparece": "bosque-colors-2"
+     },
+     {
+      "imagen": "pagina/arbusto.webp",
+      "ancho": 100,
+      "x": 1284,
+      "y": 731,
+      "choque": 0,
+      "aparece": "bosque-colors-3"
+     },
+     {
+      "imagen": "pagina/tulipanes.webp",
+      "ancho": 80,
+      "x": 1995,
+      "y": 545,
+      "choque": 0,
+      "aparece": "bosque-numbers-2"
+     },
+     {
+      "imagen": "pagina/arbol-2.webp",
+      "ancho": 110,
+      "x": 1766,
+      "y": 459,
+      "choque": 0,
+      "aparece": "bosque-numbers-3"
+     },
+     {
+      "imagen": "pagina/banca.webp",
+      "ancho": 100,
+      "x": 1697,
+      "y": 1491,
+      "choque": 0,
+      "aparece": "bosque-body-2"
+     },
+     {
+      "imagen": "pagina/tulipanes.webp",
+      "ancho": 80,
+      "x": 1972,
+      "y": 1233,
+      "choque": 0,
+      "aparece": "bosque-body-3"
+     },
+     {
+      "imagen": "pagina/tulipanes.webp",
+      "ancho": 80,
+      "x": 504,
+      "y": 2179,
+      "choque": 0,
+      "aparece": "bosque-family-2"
+     },
+     {
+      "imagen": "pagina/banca.webp",
+      "ancho": 100,
+      "x": 803,
+      "y": 2179,
+      "choque": 0,
+      "aparece": "bosque-family-3"
+     },
+     {
+      "imagen": "pagina/tulipanes.webp",
+      "ancho": 80,
+      "x": 1743,
+      "y": 2064,
+      "choque": 0,
+      "aparece": "bosque-time-2"
+     },
+     {
+      "imagen": "pagina/tulipanes.webp",
+      "ancho": 80,
+      "x": 1250,
+      "y": 1233,
+      "choque": 0,
+      "aparece": "bosque-pozo"
      }
     ],
     "colorPenumbra": "rgb(0 0 0 / 0)",
@@ -1865,22 +2079,22 @@
       "mision": "bosque-colors"
      },
      {
-      "x": 745,
-      "y": 2329,
-      "icono": "iconos/1f44b.svg",
-      "mision": "bosque-family"
+      "x": 1697,
+      "y": 903,
+      "icono": "iconos/0033_20e3.svg",
+      "mision": "bosque-numbers"
      },
      {
-      "x": 711,
-      "y": 2165,
-      "icono": "iconos/1f44b.svg",
-      "mision": "bosque-family"
+      "x": 1949,
+      "y": 810,
+      "icono": "iconos/0033_20e3.svg",
+      "mision": "bosque-numbers"
      },
      {
-      "x": 711,
-      "y": 2165,
-      "icono": "iconos/1f44b.svg",
-      "mision": "bosque-family"
+      "x": 2100,
+      "y": 688,
+      "icono": "iconos/0033_20e3.svg",
+      "mision": "bosque-numbers"
      },
      {
       "x": 1651,
@@ -1901,40 +2115,40 @@
       "mision": "bosque-body"
      },
      {
-      "x": 1307,
-      "y": 2358,
+      "x": 745,
+      "y": 2329,
+      "icono": "iconos/1f44b.svg",
+      "mision": "bosque-family"
+     },
+     {
+      "x": 711,
+      "y": 2165,
+      "icono": "iconos/1f44b.svg",
+      "mision": "bosque-family"
+     },
+     {
+      "x": 711,
+      "y": 2165,
+      "icono": "iconos/1f44b.svg",
+      "mision": "bosque-family"
+     },
+     {
+      "x": 1204,
+      "y": 2225,
       "icono": "iconos/reloj-3.webp",
       "mision": "bosque-time"
      },
      {
-      "x": 1502,
-      "y": 2423,
+      "x": 1376,
+      "y": 2275,
       "icono": "iconos/reloj-3.webp",
       "mision": "bosque-time"
      },
      {
-      "x": 1880,
-      "y": 2556,
+      "x": 1536,
+      "y": 2255,
       "icono": "iconos/reloj-3.webp",
       "mision": "bosque-time"
-     },
-     {
-      "x": 1697,
-      "y": 903,
-      "icono": "iconos/0033_20e3.svg",
-      "mision": "bosque-numbers"
-     },
-     {
-      "x": 1949,
-      "y": 810,
-      "icono": "iconos/0033_20e3.svg",
-      "mision": "bosque-numbers"
-     },
-     {
-      "x": 2100,
-      "y": 688,
-      "icono": "iconos/0033_20e3.svg",
-      "mision": "bosque-numbers"
      }
     ],
     "caminable": {
@@ -1964,16 +2178,16 @@
       "56,3,56",
       "53,9,53",
       "52,12,27,4,20",
-      "51,14,23,9,18",
-      "23,1,26,16,21,12,16",
-      "19,9,21,18,3,1,15,14,15",
-      "18,11,20,18,1,5,12,16,14",
-      "17,13,18,26,10,17,14",
-      "16,15,17,26,10,18,4,2,7",
-      "15,17,16,26,10,18,2,5,6",
-      "15,17,16,26,9,19,2,6,5",
-      "14,19,15,26,9,19,1,7,5",
-      "14,19,15,26,9,19,1,7,5",
+      "51,14,9,3,11,9,18",
+      "23,1,26,16,6,8,7,12,16",
+      "19,9,21,18,2,14,3,14,15",
+      "18,11,20,52,14",
+      "17,13,18,53,14",
+      "16,15,17,54,4,2,7",
+      "15,17,16,54,2,5,6",
+      "15,17,16,54,2,6,5",
+      "14,19,15,26,5,23,1,7,5",
+      "14,19,15,26,8,20,1,7,5",
       "14,19,15,26,10,26,5",
       "14,19,16,24,11,25,6",
       "14,19,16,24,11,25,6",
@@ -1987,91 +2201,91 @@
       "9,23,19,15,16,20,13",
       "9,26,13,17,13,21,16",
       "9,28,5,25,9,21,18",
-      "10,58,6,21,20",
-      "12,57,4,19,23",
-      "22,48,1,18,26",
-      "29,26,4,27,29",
-      "31,21,10,23,30",
-      "34,16,13,23,29",
-      "36,14,14,23,28",
-      "43,8,14,12,1,9,28",
-      "43,9,14,9,4,9,27",
-      "44,9,14,7,6,9,26",
-      "45,8,15,4,9,9,25",
-      "45,9,28,9,24",
-      "46,9,28,13,19",
-      "47,14,22,15,17",
-      "47,15,22,15,16",
-      "46,17,21,16,15",
-      "46,18,20,17,14",
-      "45,19,19,19,13",
-      "44,21,18,19,13",
-      "44,21,17,20,13",
-      "43,22,17,21,12",
-      "43,22,17,21,12",
-      "43,21,18,21,12",
-      "42,8,1,13,18,21,12",
-      "42,8,1,12,19,21,12",
-      "42,7,3,11,19,20,13",
-      "41,8,4,8,22,19,13",
-      "41,8,7,3,24,18,14",
-      "41,7,36,17,14",
-      "41,8,36,15,15",
-      "41,9,36,13,16",
-      "41,10,36,10,18",
-      "42,10,36,7,20",
-      "43,12,33,7,20",
-      "44,14,30,7,20",
-      "45,16,27,7,20",
-      "46,16,26,8,19",
-      "47,16,25,8,19",
-      "48,16,25,7,19",
-      "51,14,24,8,18",
-      "54,12,24,7,18",
-      "57,10,23,8,17",
-      "58,10,23,7,17",
-      "59,10,22,8,16",
-      "60,10,21,8,16",
-      "30,7,24,10,20,7,17",
-      "28,11,23,9,20,7,17",
-      "26,14,23,8,20,7,17",
-      "25,16,23,7,20,7,17",
-      "25,17,21,8,20,7,17",
-      "24,19,20,7,20,8,17",
-      "23,20,20,7,20,7,18",
-      "23,20,20,7,20,7,18",
-      "23,21,19,7,8,4,6,9,18",
-      "23,21,18,8,6,9,2,10,18",
-      "23,21,18,7,6,22,18",
-      "23,21,17,8,5,22,19",
-      "23,21,15,10,4,22,20",
-      "23,20,15,11,3,21,22",
-      "24,19,13,12,4,20,23",
-      "24,18,13,12,5,19,24",
-      "25,17,12,12,6,18,25",
-      "26,15,11,12,8,17,26",
-      "27,13,11,12,9,17,26",
-      "28,11,10,12,11,16,27",
-      "31,9,8,14,11,15,27",
-      "33,7,7,15,11,14,28",
-      "33,7,5,18,11,13,28",
-      "33,7,3,22,10,10,30",
-      "33,7,1,13,2,10,11,7,31",
-      "34,19,4,11,47",
-      "34,18,5,13,45",
-      "34,16,8,16,41",
-      "33,15,11,22,34",
-      "31,15,15,24,30",
-      "29,15,19,25,27",
-      "16,8,3,15,23,26,7,4,13",
-      "15,25,26,27,3,9,10",
-      "14,24,30,26,1,11,9",
-      "13,23,38,33,8",
-      "12,23,45,28,7",
-      "12,21,51,24,7",
-      "12,19,56,21,7",
-      "12,17,60,20,6",
-      "12,17,61,19,6",
+      "9,59,6,21,20",
+      "10,59,4,19,23",
+      "10,7,5,48,1,18,26",
+      "10,7,12,26,4,27,29",
+      "10,7,14,21,10,23,30",
+      "10,7,17,16,13,23,29",
+      "10,7,19,14,14,23,28",
+      "10,7,26,8,14,12,1,9,28",
+      "10,7,26,9,14,9,4,9,27",
+      "10,8,26,9,14,7,6,9,26",
+      "11,7,27,8,15,4,9,9,25",
+      "11,7,27,9,28,9,24",
+      "11,7,28,9,28,13,19",
+      "11,7,29,14,22,15,17",
+      "11,7,29,15,22,15,16",
+      "11,7,28,17,21,16,15",
+      "11,7,28,18,20,17,14",
+      "12,7,26,19,19,19,13",
+      "12,7,25,21,18,19,13",
+      "12,7,25,21,17,20,13",
+      "12,8,23,22,17,21,12",
+      "13,7,23,22,17,21,12",
+      "13,7,23,21,18,21,12",
+      "13,7,22,8,1,13,18,21,12",
+      "13,8,21,8,1,12,19,21,12",
+      "14,7,21,7,3,11,19,22,11",
+      "14,7,20,8,4,8,22,22,10",
+      "14,7,20,8,7,3,24,23,9",
+      "14,8,19,7,36,23,8",
+      "15,7,19,8,36,23,7",
+      "15,7,19,9,36,23,6",
+      "15,7,19,10,36,10,3,10,5",
+      "15,7,20,10,36,7,6,9,5",
+      "15,7,21,12,33,7,7,8,5",
+      "15,7,22,14,30,7,8,8,4",
+      "15,7,23,16,27,7,9,7,4",
+      "16,7,23,16,26,8,8,7,4",
+      "16,7,24,16,25,8,8,8,3",
+      "16,7,25,16,25,7,9,7,3",
+      "16,7,28,14,24,8,8,7,3",
+      "16,7,31,12,24,7,8,7,3",
+      "16,8,33,10,23,8,7,7,3",
+      "16,9,33,10,23,7,7,7,3",
+      "17,9,33,10,22,8,6,7,3",
+      "18,8,34,10,21,8,6,7,3",
+      "18,9,3,7,24,10,20,7,7,7,3",
+      "19,20,23,9,20,7,6,8,3",
+      "20,20,23,8,20,7,6,7,4",
+      "21,20,23,7,20,7,6,7,4",
+      "21,21,21,8,20,7,6,7,4",
+      "22,21,20,7,20,8,6,7,4",
+      "23,20,20,7,20,7,7,7,4",
+      "23,20,20,7,20,7,7,7,4",
+      "23,21,19,7,8,4,6,9,6,7,5",
+      "23,21,18,8,6,9,2,10,6,7,5",
+      "23,21,18,7,6,22,6,7,5",
+      "23,21,17,8,5,22,7,7,5",
+      "23,21,15,10,4,22,7,8,5",
+      "23,20,15,11,3,21,9,7,6",
+      "24,19,13,12,4,20,10,7,6",
+      "24,18,13,12,5,19,11,7,6",
+      "25,17,12,12,6,18,12,7,6",
+      "26,15,11,12,8,17,12,8,6",
+      "27,13,11,12,9,17,12,7,7",
+      "28,11,10,15,8,16,13,7,7",
+      "31,9,8,40,13,7,7",
+      "33,7,7,40,13,8,7",
+      "33,7,5,42,13,7,8",
+      "33,7,3,13,1,32,11,7,8",
+      "33,7,1,13,5,31,10,7,8",
+      "34,19,8,30,8,8,8",
+      "34,18,10,15,4,11,7,7,9",
+      "34,16,32,11,6,7,9",
+      "33,15,36,10,5,7,9",
+      "31,15,39,10,3,8,9",
+      "29,15,42,10,2,7,10",
+      "16,8,3,15,45,10,1,7,10",
+      "15,25,48,17,10",
+      "14,24,51,17,9",
+      "13,23,54,17,8",
+      "12,23,56,17,7",
+      "12,21,59,16,7",
+      "12,19,61,16,7",
+      "12,17,63,17,6",
+      "12,17,63,17,6",
       "12,16,64,17,6",
       "12,16,64,17,6",
       "12,16,64,16,7",
@@ -2090,53 +2304,819 @@
     },
     "letreros": [
      {
+      "x": 608,
+      "y": 2423,
+      "lleva": [
+       {
+        "mision": "bosque-family",
+        "color": "#f5a050",
+        "nombre": "naranja",
+        "giro": -85
+       },
+       {
+        "mision": "bosque-time",
+        "color": "#a078cd",
+        "nombre": "morado",
+        "giro": -30
+       },
+       {
+        "mision": "bosque-school",
+        "color": "#f08ca0",
+        "nombre": "rosado",
+        "giro": -30
+       }
+      ]
+     },
+     {
+      "x": 1101,
+      "y": 2365,
+      "lleva": [
+       {
+        "mision": "bosque-time",
+        "color": "#a078cd",
+        "nombre": "morado",
+        "giro": -23
+       },
+       {
+        "mision": "puente",
+        "color": "#a078cd",
+        "nombre": "morado",
+        "giro": -23
+       },
+       {
+        "mision": "bosque-pozo",
+        "color": "#5696de",
+        "nombre": "azul",
+        "giro": -60
+       }
+      ]
+     },
+     {
       "x": 1009,
       "y": 1132,
       "lleva": [
-       "bosque-school",
-       "bosque-colors",
-       "bosque-numbers",
-       "bosque-body"
-      ]
-     },
-     {
-      "x": 825,
-      "y": 2423,
-      "lleva": [
-       "bosque-family",
-       "bosque-pozo"
-      ]
-     },
-     {
-      "x": 1192,
-      "y": 2265,
-      "lleva": [
-       "bosque-time",
-       "bosque-pozo"
+       {
+        "mision": "bosque-school",
+        "color": "#f08ca0",
+        "nombre": "rosado",
+        "giro": -137
+       },
+       {
+        "mision": "bosque-colors",
+        "color": "#f6c744",
+        "nombre": "amarillo",
+        "giro": -76
+       },
+       {
+        "mision": "bosque-numbers",
+        "color": "#e25c54",
+        "nombre": "rojo",
+        "giro": -67
+       }
       ]
      },
      {
       "x": 573,
       "y": 989,
       "lleva": [
-       "bosque-school"
+       {
+        "mision": "bosque-school",
+        "color": "#f08ca0",
+        "nombre": "rosado",
+        "giro": -135
+       }
       ]
      },
      {
-      "x": 1192,
-      "y": 946,
+      "x": 1215,
+      "y": 989,
       "lleva": [
-       "bosque-colors",
-       "bosque-numbers"
+       {
+        "mision": "bosque-colors",
+        "color": "#f6c744",
+        "nombre": "amarillo",
+        "giro": -113
+       },
+       {
+        "mision": "bosque-numbers",
+        "color": "#e25c54",
+        "nombre": "rojo",
+        "giro": -5
+       },
+       {
+        "mision": "bosque-body",
+        "color": "#6ebe78",
+        "nombre": "verde",
+        "giro": -5
+       }
       ]
      },
      {
       "x": 1582,
-      "y": 1032,
+      "y": 1046,
       "lleva": [
-       "bosque-body",
-       "bosque-numbers"
+       {
+        "mision": "bosque-numbers",
+        "color": "#e25c54",
+        "nombre": "rojo",
+        "giro": -53
+       },
+       {
+        "mision": "bosque-body",
+        "color": "#6ebe78",
+        "nombre": "verde",
+        "giro": 76
+       }
       ]
+     },
+     {
+      "x": 1846,
+      "y": 2150,
+      "lleva": [
+       {
+        "mision": "bosque-body",
+        "color": "#6ebe78",
+        "nombre": "verde",
+        "giro": -85
+       },
+       {
+        "mision": "puente",
+        "color": "#a078cd",
+        "nombre": "morado",
+        "giro": 95
+       }
+      ]
+     }
+    ],
+    "mapaLapiz": "fondos/pagina-1-lapiz.webp",
+    "atajos": [
+     {
+      "zona": "bosque-family-3",
+      "bloqueos": [
+       {
+        "x": 440,
+        "y": 1789,
+        "r": 85
+       },
+       {
+        "x": 275,
+        "y": 1046,
+        "r": 85
+       }
+      ]
+     },
+     {
+      "zona": "bosque-body-3",
+      "bloqueos": [
+       {
+        "x": 2102,
+        "y": 1534,
+        "r": 85
+       },
+       {
+        "x": 2059,
+        "y": 2315,
+        "r": 85
+       }
+      ]
+     },
+     {
+      "zona": "bosque-colors-3",
+      "bloqueos": [
+       {
+        "x": 1574,
+        "y": 535,
+        "r": 85
+       },
+       {
+        "x": 1574,
+        "y": 535,
+        "r": 85
+       }
+      ]
+     }
+    ],
+    "manchas": [
+     {
+      "x": 367,
+      "y": 717,
+      "r": 230,
+      "zona": "bosque-school"
+     },
+     {
+      "x": 573,
+      "y": 731,
+      "r": 230,
+      "zona": "bosque-school-2"
+     },
+     {
+      "x": 470,
+      "y": 817,
+      "r": 230,
+      "zona": "bosque-school-3"
+     },
+     {
+      "x": 1009,
+      "y": 645,
+      "r": 230,
+      "zona": "bosque-colors"
+     },
+     {
+      "x": 1215,
+      "y": 665,
+      "r": 230,
+      "zona": "bosque-colors-2"
+     },
+     {
+      "x": 1341,
+      "y": 616,
+      "r": 230,
+      "zona": "bosque-colors-3"
+     },
+     {
+      "x": 1697,
+      "y": 645,
+      "r": 230,
+      "zona": "bosque-numbers"
+     },
+     {
+      "x": 1903,
+      "y": 688,
+      "r": 230,
+      "zona": "bosque-numbers-2"
+     },
+     {
+      "x": 2041,
+      "y": 645,
+      "r": 230,
+      "zona": "bosque-numbers-3"
+     },
+     {
+      "x": 1662,
+      "y": 1347,
+      "r": 230,
+      "zona": "bosque-body"
+     },
+     {
+      "x": 1834,
+      "y": 1477,
+      "r": 230,
+      "zona": "bosque-body-2"
+     },
+     {
+      "x": 2006,
+      "y": 1347,
+      "r": 230,
+      "zona": "bosque-body-3"
+     },
+     {
+      "x": 459,
+      "y": 2064,
+      "r": 230,
+      "zona": "bosque-family"
+     },
+     {
+      "x": 665,
+      "y": 2107,
+      "r": 230,
+      "zona": "bosque-family-2"
+     },
+     {
+      "x": 871,
+      "y": 2064,
+      "r": 230,
+      "zona": "bosque-family-3"
+     },
+     {
+      "x": 1513,
+      "y": 2208,
+      "r": 230,
+      "zona": "bosque-time"
+     },
+     {
+      "x": 1708,
+      "y": 2208,
+      "r": 230,
+      "zona": "bosque-time-2"
+     },
+     {
+      "x": 1146,
+      "y": 1347,
+      "r": 170,
+      "zona": "bosque-pozo"
+     },
+     {
+      "x": 516,
+      "y": 1892,
+      "r": 120,
+      "zona": "bosque-family-3"
+     },
+     {
+      "x": 453,
+      "y": 1806,
+      "r": 120,
+      "zona": "bosque-family-3"
+     },
+     {
+      "x": 390,
+      "y": 1720,
+      "r": 120,
+      "zona": "bosque-family-3"
+     },
+     {
+      "x": 378,
+      "y": 1606,
+      "r": 120,
+      "zona": "bosque-family-3"
+     },
+     {
+      "x": 367,
+      "y": 1491,
+      "r": 120,
+      "zona": "bosque-family-3"
+     },
+     {
+      "x": 332,
+      "y": 1362,
+      "r": 120,
+      "zona": "bosque-family-3"
+     },
+     {
+      "x": 298,
+      "y": 1233,
+      "r": 120,
+      "zona": "bosque-family-3"
+     },
+     {
+      "x": 283,
+      "y": 1109,
+      "r": 120,
+      "zona": "bosque-family-3"
+     },
+     {
+      "x": 267,
+      "y": 984,
+      "r": 120,
+      "zona": "bosque-family-3"
+     },
+     {
+      "x": 252,
+      "y": 860,
+      "r": 120,
+      "zona": "bosque-family-3"
+     },
+     {
+      "x": 1995,
+      "y": 1434,
+      "r": 120,
+      "zona": "bosque-body-3"
+     },
+     {
+      "x": 2064,
+      "y": 1498,
+      "r": 120,
+      "zona": "bosque-body-3"
+     },
+     {
+      "x": 2132,
+      "y": 1563,
+      "r": 120,
+      "zona": "bosque-body-3"
+     },
+     {
+      "x": 2178,
+      "y": 1720,
+      "r": 120,
+      "zona": "bosque-body-3"
+     },
+     {
+      "x": 2163,
+      "y": 1816,
+      "r": 120,
+      "zona": "bosque-body-3"
+     },
+     {
+      "x": 2147,
+      "y": 1911,
+      "r": 120,
+      "zona": "bosque-body-3"
+     },
+     {
+      "x": 2132,
+      "y": 2007,
+      "r": 120,
+      "zona": "bosque-body-3"
+     },
+     {
+      "x": 2109,
+      "y": 2103,
+      "r": 120,
+      "zona": "bosque-body-3"
+     },
+     {
+      "x": 2087,
+      "y": 2198,
+      "r": 120,
+      "zona": "bosque-body-3"
+     },
+     {
+      "x": 2064,
+      "y": 2294,
+      "r": 120,
+      "zona": "bosque-body-3"
+     },
+     {
+      "x": 2035,
+      "y": 2408,
+      "r": 120,
+      "zona": "bosque-body-3"
+     },
+     {
+      "x": 2006,
+      "y": 2523,
+      "r": 120,
+      "zona": "bosque-body-3"
+     },
+     {
+      "x": 1330,
+      "y": 588,
+      "r": 120,
+      "zona": "bosque-colors-3"
+     },
+     {
+      "x": 1422,
+      "y": 552,
+      "r": 120,
+      "zona": "bosque-colors-3"
+     },
+     {
+      "x": 1513,
+      "y": 516,
+      "r": 120,
+      "zona": "bosque-colors-3"
+     },
+     {
+      "x": 1605,
+      "y": 544,
+      "r": 120,
+      "zona": "bosque-colors-3"
+     },
+     {
+      "x": 1697,
+      "y": 573,
+      "r": 120,
+      "zona": "bosque-colors-3"
+     }
+    ],
+    "tramos": [
+     {
+      "nombre": "azul",
+      "color": "#5696de",
+      "puntos": [
+       [
+        252,
+        860
+       ],
+       [
+        573,
+        895
+       ],
+       [
+        757,
+        969
+       ],
+       [
+        963,
+        946
+       ],
+       [
+        1146,
+        874
+       ],
+       [
+        1307,
+        946
+       ],
+       [
+        1399,
+        1055
+       ],
+       [
+        1559,
+        946
+       ]
+      ]
+     },
+     {
+      "nombre": "rojo",
+      "color": "#e25c54",
+      "puntos": [
+       [
+        1559,
+        946
+       ],
+       [
+        1834,
+        860
+       ],
+       [
+        2064,
+        760
+       ],
+       [
+        2137,
+        616
+       ]
+      ]
+     },
+     {
+      "nombre": "azul",
+      "color": "#5696de",
+      "puntos": [
+       [
+        894,
+        989
+       ],
+       [
+        1032,
+        1181
+       ],
+       [
+        940,
+        1319
+       ],
+       [
+        883,
+        1491
+       ],
+       [
+        986,
+        1606
+       ],
+       [
+        1192,
+        1677
+       ],
+       [
+        1353,
+        1835
+       ],
+       [
+        1307,
+        2050
+       ],
+       [
+        1124,
+        2179
+       ],
+       [
+        963,
+        2294
+       ],
+       [
+        757,
+        2394
+       ],
+       [
+        527,
+        2523
+       ],
+       [
+        355,
+        2615
+       ]
+      ]
+     },
+     {
+      "nombre": "morado",
+      "color": "#a078cd",
+      "puntos": [
+       [
+        1124,
+        2179
+       ],
+       [
+        1284,
+        2271
+       ],
+       [
+        1468,
+        2279
+       ],
+       [
+        1605,
+        2231
+       ]
+      ]
+     },
+     {
+      "nombre": "morado",
+      "color": "#a078cd",
+      "puntos": [
+       [
+        1605,
+        2231
+       ],
+       [
+        1743,
+        2337
+       ],
+       [
+        1880,
+        2466
+       ],
+       [
+        1972,
+        2615
+       ]
+      ]
+     },
+     {
+      "nombre": "amarillo",
+      "color": "#f6c744",
+      "puntos": [
+       [
+        1146,
+        874
+       ],
+       [
+        1296,
+        788
+       ],
+       [
+        1399,
+        674
+       ],
+       [
+        1410,
+        559
+       ]
+      ]
+     },
+     {
+      "nombre": "rosado",
+      "color": "#f08ca0",
+      "puntos": [
+       [
+        573,
+        895
+       ],
+       [
+        493,
+        751
+       ],
+       [
+        470,
+        645
+       ]
+      ]
+     },
+     {
+      "nombre": "naranja",
+      "color": "#f5a050",
+      "puntos": [
+       [
+        757,
+        2394
+       ],
+       [
+        734,
+        2265
+       ],
+       [
+        688,
+        2064
+       ]
+      ]
+     },
+     {
+      "nombre": "verde",
+      "color": "#6ebe78",
+      "puntos": [
+       [
+        1559,
+        946
+       ],
+       [
+        1743,
+        1147
+       ],
+       [
+        1834,
+        1347
+       ],
+       [
+        1823,
+        1606
+       ],
+       [
+        1903,
+        1778
+       ],
+       [
+        1869,
+        1978
+       ],
+       [
+        1743,
+        2079
+       ],
+       [
+        1639,
+        2136
+       ]
+      ]
+     },
+     {
+      "nombre": "azul",
+      "color": "#5696de",
+      "puntos": [
+       [
+        1032,
+        1181
+       ],
+       [
+        1146,
+        1276
+       ]
+      ]
+     },
+     {
+      "nombre": "celeste",
+      "color": "#78cdeb",
+      "puntos": [
+       [
+        516,
+        1892
+       ],
+       [
+        390,
+        1720
+       ],
+       [
+        367,
+        1491
+       ],
+       [
+        298,
+        1233
+       ],
+       [
+        252,
+        860
+       ]
+      ],
+      "zona": "bosque-family-3"
+     },
+     {
+      "nombre": "café",
+      "color": "#b07a4c",
+      "puntos": [
+       [
+        1995,
+        1434
+       ],
+       [
+        2132,
+        1563
+       ],
+       [
+        2178,
+        1720
+       ],
+       [
+        2132,
+        2007
+       ],
+       [
+        2064,
+        2294
+       ],
+       [
+        2006,
+        2523
+       ]
+      ],
+      "zona": "bosque-body-3"
+     },
+     {
+      "nombre": "rojo",
+      "color": "#e25c54",
+      "puntos": [
+       [
+        1330,
+        588
+       ],
+       [
+        1513,
+        516
+       ],
+       [
+        1697,
+        573
+       ]
+      ],
+      "zona": "bosque-colors-3"
      }
     ]
    },
@@ -2160,8 +3140,8 @@
       },
       {
        "quien": "goma",
-       "es": "Postal habla en inglés. Cada misión que terminas dibuja algo nuevo en la página. ¿Empezamos?",
-       "en": "Postal speaks English. Every mission you finish draws something new on the page. Shall we start?",
+       "es": "Postal habla en inglés. La página está a lápiz: cada misión que terminas la llena de color. ¿Empezamos?",
+       "en": "Postal speaks English. The page is in pencil: every mission you finish fills it with color. Shall we start?",
        "opciones": [
         {
          "es": "¡Sí, vamos!",
@@ -2186,8 +3166,8 @@
       },
       {
        "quien": "goma",
-       "es": "Sigue los dibujos del piso: cada camino te cuenta a dónde lleva.",
-       "en": "Follow the pictures on the ground: each path tells you where it goes."
+       "es": "Cada lugar tiene su camino de color. Los letreros te muestran qué color seguir.",
+       "en": "Each place has its own colored path. The signs show you which color to follow."
       },
       {
        "quien": "goma",
@@ -2205,20 +3185,20 @@
        "en": "Where do we go first? You decide.",
        "opciones": [
         {
-         "es": "A los útiles de la escuela",
-         "en": "To the school objects",
+         "es": "A los útiles de la escuela: camino rosado",
+         "en": "To the school objects: pink path",
          "icono": "iconos/1f392.svg",
          "destino": "bosque-school"
         },
         {
-         "es": "A los colores",
-         "en": "To the colors",
+         "es": "A los colores: camino amarillo",
+         "en": "To the colors: yellow path",
          "icono": "iconos/1f7e3.svg",
          "destino": "bosque-colors"
         },
         {
-         "es": "A los números",
-         "en": "To the numbers",
+         "es": "A los números: camino rojo",
+         "en": "To the numbers: red path",
          "icono": "iconos/0033_20e3.svg",
          "destino": "bosque-numbers"
         }
@@ -2230,8 +3210,8 @@
      "lineas": [
       {
        "quien": "goma",
-       "es": "¡Mira! La página tiene un dibujo nuevo. ¿A dónde vamos ahora?",
-       "en": "Look! The page has a new drawing. Where do we go now?"
+       "es": "¡Mira! Tu misión coloreó la página y llegó un amigo nuevo. ¿A dónde vamos ahora?",
+       "en": "Look! Your mission colored the page and a new friend arrived. Where do we go now?"
       }
      ]
     },
@@ -2573,6 +3553,15 @@
       }
      ],
      "luego": "elegir"
+    },
+    "atajo": {
+     "lineas": [
+      {
+       "quien": "goma",
+       "es": "¡Mira! Se coloreó un camino nuevo. ¡Ahora es más corto llegar!",
+       "en": "Look! A new path got colored. Now it's quicker to get there!"
+      }
+     ]
     }
    }
   }

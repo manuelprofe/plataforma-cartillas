@@ -3,12 +3,13 @@
 import { useEffect, useState, type FormEvent, type ReactNode } from 'react';
 import { Boton, Panel, Vacio } from './base';
 import { ErrorCuenta } from './cuenta';
+import { NOMBRE } from '../marca';
 import { cancelarInvitacion, cambiarActivo, estadoInvitacion, invitar, reenviar, type Colegio, type Invitacion, type Persona } from './datos';
 
 /** Título de la pestaña del navegador para cada pantalla. */
 export function useTitulo(titulo: string) {
   useEffect(() => {
-    document.title = `${titulo} · El Cuaderno de Goma`;
+    document.title = `${titulo} · ${NOMBRE}`;
   }, [titulo]);
 }
 

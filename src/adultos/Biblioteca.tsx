@@ -49,7 +49,7 @@ function Inicio() {
   useTitulo('Biblioteca');
   return (
     <>
-      <Encabezado titulo="Biblioteca" meta="Historia, recursos, actividades y fundamentos de El Cuaderno de Goma" />
+      <Encabezado titulo="Biblioteca" meta="Historia, recursos, actividades y fundamentos de la cartilla" />
       <ElegirCartilla />
       <Panel filas>
         <Fila ruta="/docente/biblioteca/historia" icono="documento" titulo="La historia: El cuaderno que abrió Englishland" detalle="7 escenas en español e inglés. Para leer, proyectar o imprimir." />

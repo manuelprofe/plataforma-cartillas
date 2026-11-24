@@ -1,31 +1,35 @@
 /*
- * Sistema visual de adultos y del telón (esqueleto §5). Sereno y de aula: neutros apenas
- * violeta, la tinta de la noche para la acción principal y el oro solo en el farol.
+ * Sistema visual de adultos y del telón (esqueleto §5). Sereno y de aula, como un cuaderno bien
+ * llevado: papel crema, tinta de lapicero para la acción principal y Goma solo para acompañar.
  * Baloo 2 en títulos y cifras; el texto, los botones y las tablas en la letra del sistema.
  * Este archivo solo se carga en los paquetes de adultos y de proyectar, nunca en el del niño.
  */
 :root {
-  --a-fondo: #f6f5f9;
-  --a-superficie: #ffffff;
-  --a-hundido: #eeecf3;
-  --a-linea: rgb(34 26 51 / 0.1);
-  --a-linea-fuerte: rgb(34 26 51 / 0.2);
-  --a-texto: #221a33;
-  --a-texto-2: #4f4862;
-  --a-texto-3: #6b6580;
-  --a-tinta: #2a1458;
-  --a-tinta-activa: #3b2273;
-  --a-farol: #ffcf3a;
-  --a-farol-tinta: #7a5200;
+  /* Papel de cuaderno: crema tibio, tinta de lapicero y el rosado de Goma solo como acento. */
+  --a-fondo: #f6f2e9;
+  --a-superficie: #fffdf9;
+  --a-hundido: #efe9dc;
+  --a-linea: rgb(40 34 24 / 0.11);
+  --a-linea-fuerte: rgb(40 34 24 / 0.22);
+  --a-renglon: rgb(64 112 176 / 0.12);
+  --a-texto: #1f2330;
+  --a-texto-2: #474b58;
+  --a-texto-3: #646876;
+  --a-tinta: #1f3866;
+  --a-tinta-activa: #2b4b83;
+  --a-goma: #d9577a;
+  --a-goma-suave: #fbe3ea;
+  --a-farol: #f4c443;
+  --a-farol-tinta: #6e4f00;
   --a-ok: #2d7a57;
   --a-aviso: #8a5a00;
   --a-error: #a1453a;
   --a-foco: #0f8a7b;
 
   --p-fondo: #fff8ec;
-  --p-texto: #24123f;
-  --p-marco: #170a36;
-  --p-control: #2a1458;
+  --p-texto: #1f2330;
+  --p-marco: #1a2336;
+  --p-control: #1f3866;
 
   --f-marca: 'Baloo 2 Variable', ui-rounded, system-ui, sans-serif;
   --f-texto: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
@@ -139,7 +143,10 @@ a {
   min-height: var(--toque);
   display: flex;
   align-items: center;
+  gap: var(--e-2);
+  white-space: nowrap;
 }
+.barra__marca img { width: 26px; height: auto; flex: none; transform: rotate(-6deg); }
 .barra__estado {
   margin-left: auto;
   display: flex;
@@ -328,35 +335,20 @@ a.fila:hover, button.fila:hover { background: var(--a-fondo); }
 
 /* ---------- Vacío con acción ---------- */
 
-.vacio { display: flex; flex-direction: column; gap: var(--e-3); align-items: flex-start; }
+.vacio, .vacio__texto { display: flex; flex-direction: column; gap: var(--e-3); align-items: flex-start; }
+.vacio--con-dibujo { flex-direction: row; align-items: flex-start; gap: var(--e-4); }
+.vacio__dibujo { width: 64px; height: auto; flex: none; margin-top: 2px; }
+.vacio__texto { flex: 1; min-width: 0; }
+@media (max-width: 359px) { .vacio__dibujo { display: none; } }
 
-/* ---------- Farol: la firma (estado de un tema o una clase) ---------- */
+/* ---------- Casilla: la firma (estado de un tema o una clase), como en un cuaderno ---------- */
 
-.farol { width: 14px; height: 18px; position: relative; display: inline-block; flex: none; }
-.farol::before {
-  content: '';
-  position: absolute;
-  left: 4px;
-  top: 0;
-  width: 6px;
-  height: 3px;
-  border-radius: 2px 2px 0 0;
-  background: var(--a-texto-3);
-}
-.farol::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 4px;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  border: 1.5px solid var(--a-texto-3);
-  background: transparent;
-  transition: background-color var(--m-entrada) var(--m-curva), border-color var(--m-entrada) var(--m-curva);
-}
-.farol--medio::after { background: linear-gradient(90deg, var(--a-farol) 50%, transparent 50%); border-color: var(--a-farol-tinta); }
-.farol--encendido::after { background: var(--a-farol); border-color: var(--a-farol-tinta); }
+.farol { width: 16px; height: 16px; position: relative; display: inline-block; flex: none; border: 1.5px solid var(--a-texto-3); border-radius: 4px; background: var(--a-superficie); transition: background-color var(--m-entrada) var(--m-curva), border-color var(--m-entrada) var(--m-curva); }
+.farol::after { content: ''; position: absolute; inset: 0; }
+.farol--medio { border-color: var(--a-tinta); background: linear-gradient(135deg, var(--a-goma-suave) 50%, transparent 50%); }
+.farol--medio::after { left: 3px; right: 3px; top: 6px; bottom: auto; height: 1.5px; background: var(--a-tinta); }
+.farol--encendido { border-color: var(--a-tinta); background: var(--a-tinta); }
+.farol--encendido::after { left: 4.5px; top: 1.5px; width: 4px; height: 8px; border: solid #fff; border-width: 0 2px 2px 0; transform: rotate(45deg); }
 .faroles { display: inline-flex; gap: var(--e-2); align-items: center; }
 
 /* ---------- Cortina de privacidad ---------- */
@@ -409,8 +401,15 @@ a.fila:hover, button.fila:hover { background: var(--a-fondo); }
   justify-content: center;
   padding: var(--e-5) var(--borde-pagina);
 }
-.entrada__caja { width: 100%; max-width: 400px; display: flex; flex-direction: column; gap: var(--e-5); }
-.entrada__marca { font: 600 20px/1 var(--f-marca); color: var(--a-tinta); }
+.entrada { flex-direction: column; gap: var(--e-6); background:
+  linear-gradient(90deg, transparent 31px, rgb(217 87 122 / 0.28) 31px 32.5px, transparent 32.5px),
+  repeating-linear-gradient(180deg, transparent 0 31px, var(--a-renglon) 31px 32px),
+  var(--a-fondo); }
+.entrada__caja { width: 100%; max-width: 400px; display: flex; flex-direction: column; gap: var(--e-5); padding: var(--e-5); border-radius: var(--r-panel); background: var(--a-superficie); box-shadow: 0 1px 0 var(--a-linea), 0 12px 32px rgb(40 34 24 / 0.08); }
+.entrada__dibujo { width: 72px; height: auto; margin-bottom: var(--e-2); transform: rotate(-4deg); }
+.entrada__marca { font: 600 20px/1 var(--f-marca); color: var(--a-goma); }
+.entrada__amigos { display: flex; align-items: flex-end; gap: var(--e-4); opacity: 0.9; }
+.entrada__amigos img { width: 44px; height: auto; }
 .entrada__pie { display: flex; flex-direction: column; align-items: flex-start; gap: var(--e-2); }
 
 /* Mensajes de formulario y avisos de estado. El color nunca es la única señal: siempre hay texto. */
@@ -521,3 +520,6 @@ a.fila:hover, button.fila:hover { background: var(--a-fondo); }
   .tablero-uso h1 { font-size: 20px; }
   .tablero-uso .meta { font-size: 10px; }
 }
+
+/* Dibujo de la materia en una fila (Cuadrito, Renglón, Postal). */
+.fila__personaje { width: 32px; height: 32px; object-fit: contain; flex: none; }

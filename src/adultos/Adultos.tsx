@@ -1,6 +1,7 @@
 // Paquete de adultos: entrada, docente, coordinador y dueño (esqueleto §1.5, §2 y §3).
 // Tanda 2: entrada con cuenta (correo y contraseña, recuperar, invitación) y redirección por rol.
 // Las secciones siguen con sus huecos hasta las tandas 4 a 7.
+import { dibujo, NOMBRE } from '../marca';
 import { StrictMode, useEffect, useState, useSyncExternalStore, type FormEvent, type ReactNode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { navegar, useRuta } from '../navegacion';
@@ -120,7 +121,8 @@ function CajaEntrada({ titulo, texto, alEnviar, children }: { titulo: string; te
   useTitulo(titulo);
   const cabeza = (
     <div className="encabezado">
-      <p className="entrada__marca">El Cuaderno de Goma</p>
+      <img className="entrada__dibujo" src={dibujo('goma-saludar')} alt="" width="88" height="113" />
+      <p className="entrada__marca">{NOMBRE}</p>
       <h1>{titulo}</h1>
       {texto && <p className="sec">{texto}</p>}
     </div>
@@ -138,6 +140,11 @@ function CajaEntrada({ titulo, texto, alEnviar, children }: { titulo: string; te
           {children}
         </div>
       )}
+      <div className="entrada__amigos" aria-hidden="true">
+        <img src={dibujo('cuadrito-saludar')} alt="" width="52" height="52" />
+        <img src={dibujo('renglon-saludar')} alt="" width="52" height="46" />
+        <img src={dibujo('postal-saludar')} alt="" width="52" height="57" />
+      </div>
     </main>
   );
 }

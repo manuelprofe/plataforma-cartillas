@@ -115,7 +115,7 @@ li:first-child > .estrella-fila { border-top: 0; }
   .barra-equipo { bottom: var(--e-3); }
 }
 
-.hoja-fondo { position: fixed; inset: 0; z-index: 30; display: flex; align-items: flex-end; justify-content: center; background: rgb(34 26 51 / 0.45); animation: aparecer var(--m-medio) var(--m-curva) both; }
+.hoja-fondo { position: fixed; inset: 0; z-index: 30; display: flex; align-items: flex-end; justify-content: center; background: rgb(31 35 48 / 0.45); animation: aparecer var(--m-medio) var(--m-curva) both; }
 .hoja { width: 100%; max-width: 480px; display: flex; flex-direction: column; gap: var(--e-3); padding: var(--e-4) var(--e-4) calc(var(--e-4) + env(safe-area-inset-bottom)); border-radius: var(--r-panel) var(--r-panel) 0 0; background: var(--a-superficie); animation: subir var(--m-entrada) var(--m-curva) both; }
 @media (min-width: 720px) {
   .hoja-fondo { align-items: center; }

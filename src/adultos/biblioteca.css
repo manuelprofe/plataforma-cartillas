@@ -25,7 +25,7 @@
 .bib-nivel h2 { margin: 0; }
 .bib-temas { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: var(--e-4); margin-top: var(--e-3); }
 .bib-tema { background: #fff; border: 1px solid #e3e4e8; border-radius: 14px; padding: var(--e-4); min-width: 0; }
-.bib-tema--destacado { border-color: var(--p-control, #2a1458); box-shadow: 0 0 0 2px var(--p-control, #2a1458) inset; }
+.bib-tema--destacado { border-color: var(--p-control, #1f3866); box-shadow: 0 0 0 2px var(--p-control, #1f3866) inset; }
 .bib-tema__cabeza { display: grid; grid-template-columns: 64px 1fr; gap: var(--e-3); align-items: start; }
 .bib-tema__cabeza img { width: 64px; height: 64px; object-fit: contain; }
 .bib-tema h3 { margin: 0 0 var(--e-1); }

@@ -8,6 +8,7 @@ import { Boton, Encabezado, Enlace, Hueco, Panel, Fila } from '../adultos/base';
 import { Icono } from '../adultos/Icono';
 import { base, TIPO_NOMBRE, type Bloque, type Impresion, type ItemImagen, type Material, type Palabra, type TipoCatalogo } from './datos';
 import { sonar } from './sonido';
+import { NOMBRE } from '../marca';
 import { CancionPantalla, LetraImpresa } from './Cancion';
 
 // ---------------------------------------------------------------- Piezas de imagen
@@ -504,7 +505,7 @@ function Hoja({ material, impresion, nombreTema, copia, bloques }: { material: M
   return (
     <section className="mat-hoja" data-copia={copia}>
       <header className="mat-hoja__cab">
-        <span>El Cuaderno de Goma · {nombreTema}</span>
+        <span>{NOMBRE} · {nombreTema}</span>
         {nino && <span className="mat-hoja__nombre">Nombre:</span>}
       </header>
       {material.tipo !== 'ficha' && material.tipo !== 'laminas' && <h1 className="mat-hoja__titulo">{material.titulo}</h1>}

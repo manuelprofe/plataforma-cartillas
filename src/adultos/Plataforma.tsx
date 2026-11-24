@@ -1,5 +1,6 @@
 // Dueño (/plataforma): colegios, cartillas (publicar, ocultar y habilitar por colegio), personas e
 // invitaciones (esqueleto §3.2).
+import { personajeDeMateria } from '../marca';
 import { useState, type FormEvent } from 'react';
 import { navegar } from '../navegacion';
 import { Boton, Encabezado, Fila, Panel, Vacio } from './base';
@@ -167,7 +168,7 @@ function FichaColegio({ c, cartillas, habilitadas, versiones, personas, invitaci
               ultima && (!h || h.version !== ultima.version) ? (
                 <Confirmar principal={!h} etiqueta={h ? `Pasar a ${ultima.version}` : `Habilitar ${ultima.version}`} pregunta={`¿${h ? 'Pasar' : 'Habilitar'} ${k.titulo} ${ultima.version} para ${c.nombre}?`} si={h ? 'Sí, pasar' : 'Sí, habilitar'} disabled={sinRed || ocupado} alConfirmar={() => void habilitar(ultima)} />
               ) : undefined;
-            return <Fila key={k.id} icono="cartillas" titulo={nombre} detalle={detalle} fin={accion} />;
+            return <Fila key={k.id} icono="cartillas" personaje={personajeDeMateria(k.materia)} titulo={nombre} detalle={detalle} fin={accion} />;
           })
         )}
         {error && (
@@ -279,6 +280,7 @@ function Cartillas({ sinRed }: { sinRed: boolean }) {
                     <Fila
                       key={k.id}
                       icono="cartillas"
+                      personaje={personajeDeMateria(k.materia)}
                       titulo={nombreCartilla(k)}
                       detalle={
                         <>

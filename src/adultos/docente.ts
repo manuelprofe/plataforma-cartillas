@@ -68,7 +68,7 @@ export function cargarPaquete(cartilla: string = CARTILLA_PREDETERMINADA): Promi
   return p;
 }
 
-/** Nombre de cada cartilla para el docente ("Inglés · 3° · English Adventure Quest"). */
+/** Nombre de cada cartilla para el docente ("Inglés · 3° · El Cuaderno de Goma"). */
 export async function titulosCartillas(ids: string[]): Promise<Record<string, string>> {
   const filas = await leer<{ id: string; titulo: string; materia: string | null; grado: string | null }>('cartillas', `select=id,titulo,materia,grado&id=in.(${ids.join(',')})`);
   return Object.fromEntries(filas.map((c) => [c.id, [c.materia, c.grado && `${c.grado}°`, c.titulo].filter(Boolean).join(' · ')]));

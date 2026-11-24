@@ -210,4 +210,4 @@ Vimos los números del 1 al 10: los contamos con los dedos, los escuchamos y los
 | Tres dedos y el 3 (`0033_20e3`) | three | zri |
 | Diez dedos y el 10 (`1f51f`) | ten | ten |
 
-**Invitación opcional:** cuenten juntos en inglés lo que haya a la mano: escalones, arepas en la mesa, dedos. Pueden pegar la lámina en la nevera. Si tienen celular, el niño puede jugar la cartilla English Adventure Quest, **si quieren**; no cuenta para la nota. Si no se acuerda de un número, no se corrige: se vuelve a oír juntos.
+**Invitación opcional:** cuenten juntos en inglés lo que haya a la mano: escalones, arepas en la mesa, dedos. Pueden pegar la lámina en la nevera. Si tienen celular, el niño puede jugar la cartilla El Cuaderno de Goma, **si quieren**; no cuenta para la nota. Si no se acuerda de un número, no se corrige: se vuelve a oír juntos.

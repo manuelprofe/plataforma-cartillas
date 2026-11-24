@@ -8,7 +8,7 @@ import { cancelarInvitacion, cambiarActivo, estadoInvitacion, invitar, reenviar,
 /** Título de la pestaña del navegador para cada pantalla. */
 export function useTitulo(titulo: string) {
   useEffect(() => {
-    document.title = `${titulo} · English Adventure Quest`;
+    document.title = `${titulo} · El Cuaderno de Goma`;
   }, [titulo]);
 }
 

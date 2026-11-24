@@ -207,4 +207,4 @@ Vimos los útiles del salón: jugamos a escuchar, señalar y decir en inglés. N
 | Lápiz (`270f`) | pencil | pén-sil |
 | Libro (`1f4d8`) | book | buk |
 
-**Invitación opcional:** cuando alisten la mochila por la noche, pídanle que saque cada cosa y la nombre en inglés. O peguen la lámina en la nevera. Si tienen celular, el niño puede jugar la cartilla English Adventure Quest, **si quieren**; no cuenta para la nota. Si no se acuerda de una palabra, no se corrige: se vuelve a oír juntos. Lo importante es que lo intente.
+**Invitación opcional:** cuando alisten la mochila por la noche, pídanle que saque cada cosa y la nombre en inglés. O peguen la lámina en la nevera. Si tienen celular, el niño puede jugar la cartilla El Cuaderno de Goma, **si quieren**; no cuenta para la nota. Si no se acuerda de una palabra, no se corrige: se vuelve a oír juntos. Lo importante es que lo intente.

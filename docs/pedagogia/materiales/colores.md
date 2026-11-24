@@ -210,4 +210,4 @@ Vimos los colores: los escuchamos, los señalamos, los pintamos y los cantamos. 
 | Cielo azul (círculo `1f535`) | blue | blu |
 | Sol amarillo (círculo `1f7e1`) | yellow | yé-lou |
 
-**Invitación opcional:** jueguen a "Veo, veo un color" en la casa, en la ropa, en las frutas del mercado o camino a la escuela: usted señala algo y el niño dice el color en inglés. Pueden pegar la lámina en la nevera. Si tienen celular, el niño puede jugar la cartilla English Adventure Quest, **si quieren**; no cuenta para la nota. Si no se acuerda de una palabra, no se corrige: se vuelve a oír juntos.
+**Invitación opcional:** jueguen a "Veo, veo un color" en la casa, en la ropa, en las frutas del mercado o camino a la escuela: usted señala algo y el niño dice el color en inglés. Pueden pegar la lámina en la nevera. Si tienen celular, el niño puede jugar la cartilla El Cuaderno de Goma, **si quieren**; no cuenta para la nota. Si no se acuerda de una palabra, no se corrige: se vuelve a oír juntos.

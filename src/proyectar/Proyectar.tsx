@@ -26,7 +26,7 @@ function Proyectar() {
   const ruta = useRuta().replace(/\/+$/, '') || '/proyectar';
   const [, , tema, material] = ruta.split('/');
   useEffect(() => {
-    document.title = 'Proyectar · English Adventure Quest';
+    document.title = 'Proyectar · El Cuaderno de Goma';
   }, []);
   if (tema === 'fin') return <Fin />;
   if (!tema) return <Temas />;
@@ -151,7 +151,7 @@ function SinRed({ alReintentar }: { alReintentar?: () => void }) {
 function Temas() {
   const { indice, error } = useIndice();
   return (
-    <Telon titulo="Elegir tema" sub="English Adventure Quest">
+    <Telon titulo="Elegir tema" sub="El Cuaderno de Goma">
       {error ? (
         <SinRed />
       ) : !indice ? (

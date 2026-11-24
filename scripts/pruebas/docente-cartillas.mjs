@@ -19,7 +19,7 @@ const GRUPOS = {
   g2: { id: 'g2', nombre: '1A', grado: '1°', colegio_id: 'c1', cartilla_id: 'prueba-2', codigo: 'M2N3C' },
 };
 const CARTILLAS = [
-  { id: 'ingles-3', titulo: 'English Adventure Quest', materia: 'Inglés', grado: '3' },
+  { id: 'ingles-3', titulo: 'El Cuaderno de Goma', materia: 'Inglés', grado: '3' },
   { id: 'prueba-2', titulo: 'Cartilla de prueba', materia: 'Matemáticas', grado: '1' },
 ];
 

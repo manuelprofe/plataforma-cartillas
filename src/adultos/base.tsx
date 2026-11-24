@@ -30,7 +30,7 @@ export function Barra({ inicio, estado, fin }: { inicio: string; estado?: ReactN
   return (
     <header className="barra">
       <Enlace ruta={inicio} className="barra__marca">
-        English Adventure Quest
+        El Cuaderno de Goma
       </Enlace>
       {estado && (
         <p className="barra__estado" role="status">

@@ -120,7 +120,7 @@ function CajaEntrada({ titulo, texto, alEnviar, children }: { titulo: string; te
   useTitulo(titulo);
   const cabeza = (
     <div className="encabezado">
-      <p className="entrada__marca">English Adventure Quest</p>
+      <p className="entrada__marca">El Cuaderno de Goma</p>
       <h1>{titulo}</h1>
       {texto && <p className="sec">{texto}</p>}
     </div>

@@ -504,7 +504,7 @@ function Hoja({ material, impresion, nombreTema, copia, bloques }: { material: M
   return (
     <section className="mat-hoja" data-copia={copia}>
       <header className="mat-hoja__cab">
-        <span>English Adventure Quest · {nombreTema}</span>
+        <span>El Cuaderno de Goma · {nombreTema}</span>
         {nino && <span className="mat-hoja__nombre">Nombre:</span>}
       </header>
       {material.tipo !== 'ficha' && material.tipo !== 'laminas' && <h1 className="mat-hoja__titulo">{material.titulo}</h1>}

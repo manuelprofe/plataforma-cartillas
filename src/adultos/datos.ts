@@ -85,7 +85,7 @@ export function estadoInvitacion(i: Invitacion, ahora = Date.now()): EstadoInvit
 export const listarColegios = () => leer<Colegio>('colegios', 'select=id,nombre,municipio,convenio&order=nombre.asc');
 export const listarHabilitadas = () => leer<Habilitada>('colegio_cartillas', 'select=colegio_id,cartilla_id,version');
 export const listarCartillas = () => leer<CartillaCat>('cartillas', 'select=id,titulo,materia,grado,publicada&order=materia.asc,grado.asc');
-/** "Inglés 3° · English Adventure Quest". */
+/** "Inglés 3° · El Cuaderno de Goma". */
 export const nombreCartilla = (c: Pick<CartillaCat, 'titulo' | 'materia' | 'grado'>) => [[c.materia, c.grado && `${c.grado}°`].filter(Boolean).join(' '), c.titulo].filter(Boolean).join(' · ');
 /** La versión más nueva de una cartilla (las versiones llegan de la más nueva a la más vieja). */
 export const ultimaVersion = (versiones: Version[], cartilla: string) => versiones.find((v) => v.cartilla_id === cartilla);

@@ -16,7 +16,7 @@ function crearBase() {
     colegios: [], habilitadas: [], perfiles: [], invitaciones: [], grupos: [], llamadas: [], correos: [], desde: 0,
     versiones: [{ cartilla_id: 'matematicas-1', version: '2027.1' }, { cartilla_id: 'ingles-3', version: '2027.1' }],
     cartillas: [
-      { id: 'ingles-3', titulo: 'English Adventure Quest', materia: 'Inglés', grado: '3', publicada: true },
+      { id: 'ingles-3', titulo: 'El Cuaderno de Goma', materia: 'Inglés', grado: '3', publicada: true },
       { id: 'matematicas-1', titulo: 'Cartilla de prueba', materia: 'Matemáticas', grado: '1', publicada: false },
     ],
     aceptarCon: null,

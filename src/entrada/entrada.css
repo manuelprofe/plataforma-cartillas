@@ -9,9 +9,9 @@
   gap: 16px;
   /* Contenido de 528 px como máximo, centrado; el fondo ocupa toda la ventana. */
   padding: max(16px, env(safe-area-inset-top)) max(16px, calc((100% - 528px) / 2)) max(12px, env(safe-area-inset-bottom));
-  color: var(--crema);
+  color: var(--tinta);
   font-size: 1.375rem;
-  background: radial-gradient(120% 70% at 50% 100%, #6b2fbf 0%, var(--noche) 50%, var(--noche-honda) 100%);
+  background: var(--fondo-cuaderno);
 }
 
 .nino__centro {
@@ -44,7 +44,7 @@
   font-weight: 800;
   line-height: 1.05;
   text-align: center;
-  color: var(--oro);
+  color: #d9547a;
 }
 
 .nino__barra {
@@ -159,9 +159,9 @@
 }
 
 .accion--tarjeta {
-  background: rgb(255 248 236 / 0.1);
-  border: 2px solid rgb(255 248 236 / 0.25);
-  color: var(--crema);
+  background: #fff;
+  border: 2px solid #dccfb6;
+  color: var(--tinta);
 }
 
 .accion--tarjeta .accion__ico {
@@ -185,7 +185,7 @@
   align-self: center;
   min-height: 48px;
   padding: 0 20px;
-  color: var(--crema);
+  color: var(--tinta);
   opacity: 0.6;
   font-size: 1rem;
 }
@@ -221,9 +221,9 @@
   gap: 6px;
   padding: 12px 6px;
   border-radius: 24px;
-  background: rgb(255 248 236 / 0.1);
-  border: 2px solid rgb(255 248 236 / 0.18);
-  color: var(--crema);
+  background: #fff;
+  border: 2px solid #dccfb6;
+  color: var(--tinta);
   transition: transform 0.2s cubic-bezier(0.2, 0.7, 0.2, 1), opacity 0.2s;
 }
 
@@ -320,8 +320,8 @@
   min-height: 48px;
   padding: 0 16px;
   border-radius: 999px;
-  border: 2px solid rgb(255 248 236 / 0.35);
-  color: var(--crema);
+  border: 2px solid #dccfb6;
+  color: var(--tinta);
   font-size: 1.05rem;
 }
 
@@ -409,8 +409,8 @@
   display: grid;
   place-items: center;
   border-radius: 50%;
-  background: rgb(255 248 236 / 0.12);
-  color: var(--crema);
+  background: #fff;
+  color: var(--tinta);
 }
 
 .redondo:disabled {
@@ -448,12 +448,12 @@
   display: grid;
   place-items: center;
   border-radius: 50%;
-  border: 3px dashed rgb(255 248 236 / 0.45);
+  border: 3px dashed #dccfb6;
 }
 
 .ranura--llena {
-  border: 3px solid var(--crema);
-  background: var(--crema);
+  border: 3px solid var(--tinta);
+  background: var(--tinta);
   animation: llegar 0.22s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
@@ -480,8 +480,8 @@
   display: grid;
   place-items: center;
   border-radius: 18px;
-  background: var(--crema);
-  box-shadow: 0 4px 0 rgb(23 10 54 / 0.45);
+  background: #fff;
+  box-shadow: 0 4px 0 rgb(44 42 49 / 0.25);
   transition: transform 0.1s;
 }
 

@@ -1,13 +1,19 @@
 :root {
-  --noche: #2a1458;
-  --noche-honda: #170a36;
-  --tinta: #24123f;
+  /* Cuaderno Vivo: papel crema con renglones y tinta de grafito (biblia, reglas visuales). */
+  --noche: #3d3a44;
+  --noche-honda: #2c2a31;
+  --tinta: #3a3a3a;
+  --papel: #fbf6ec;
+  --renglon: #d6e0ee;
+  --margen: #eebebe;
+  --fondo-cuaderno: linear-gradient(to right, transparent 26px, var(--margen) 26px 28px, transparent 28px),
+    repeating-linear-gradient(to bottom, transparent 0 33px, var(--renglon) 33px 35px), var(--papel);
   --crema: #fff8ec;
   --oro: #ffcf3a;
   --oro-hondo: #f2a100;
   --menta: #19c6b1;
   --rosa: #ff5fa2;
-  --sombra: 0 6px 0 rgb(23 10 54 / 0.28);
+  --sombra: 0 6px 0 rgb(44 42 49 / 0.28);
   font-family: 'Baloo 2 Variable', ui-rounded, system-ui, sans-serif;
   color: var(--tinta);
 }
@@ -26,7 +32,7 @@ body,
 }
 
 body {
-  background: var(--noche-honda);
+  background: var(--papel);
   overflow: hidden;
   overscroll-behavior: none;
   -webkit-tap-highlight-color: transparent;
@@ -63,8 +69,8 @@ img {
   gap: 4px;
   padding: 24px;
   text-align: center;
-  color: var(--crema);
-  background: radial-gradient(120% 80% at 50% 100%, #6b2fbf 0%, var(--noche) 45%, var(--noche-honda) 100%);
+  color: var(--tinta);
+  background: var(--fondo-cuaderno);
 }
 
 .inicio h1 {
@@ -72,7 +78,7 @@ img {
   font-size: clamp(2rem, 9vw, 3.4rem);
   line-height: 1;
   font-weight: 800;
-  color: var(--oro);
+  color: #d9547a;
 }
 
 .inicio p {
@@ -115,7 +121,7 @@ img {
   margin-top: 28px;
   min-height: 48px;
   padding: 0 16px;
-  color: var(--crema);
+  color: var(--tinta);
   opacity: 0.7;
   text-decoration: underline;
 }
@@ -447,7 +453,7 @@ img {
   position: fixed;
   inset: 0;
   z-index: 50;
-  background: var(--noche-honda);
+  background: var(--papel);
   pointer-events: all;
 }
 
@@ -479,7 +485,7 @@ img {
   overflow: hidden;
   /* `clip` impide que el navegador desplace el mundo al enfocar algo fuera de la pantalla. */
   overflow: clip;
-  background: var(--noche);
+  background: var(--papel);
 }
 
 .mundo__suelo {
@@ -934,7 +940,7 @@ img {
   height: 100dvh;
   display: grid;
   grid-template-rows: auto 1fr;
-  background: linear-gradient(180deg, #bfe9ff 0%, #e9d8ff 55%, #ffd9ec 100%);
+  background: var(--fondo-cuaderno);
 }
 
 .mision__barra {
@@ -967,7 +973,7 @@ img {
   width: 18px;
   height: 18px;
   border-radius: 50%;
-  background: rgb(36 18 63 / 0.18);
+  background: rgb(44 42 49 / 0.18);
   transition: background 0.3s, transform 0.3s;
 }
 
@@ -1005,7 +1011,7 @@ img {
   gap: 2px;
   border-radius: 32px;
   background: #fff;
-  box-shadow: 0 10px 0 rgb(36 18 63 / 0.16);
+  box-shadow: 0 10px 0 rgb(44 42 49 / 0.16);
   animation: entrar-carta 0.4s cubic-bezier(0.2, 1.4, 0.4, 1);
 }
 
@@ -1046,7 +1052,7 @@ img {
   place-items: center;
   border-radius: 50%;
   background: #fff;
-  box-shadow: 0 8px 0 rgb(36 18 63 / 0.16);
+  box-shadow: 0 8px 0 rgb(44 42 49 / 0.16);
   animation: latir 1.8s ease-in-out infinite;
 }
 
@@ -1079,7 +1085,7 @@ img {
   align-content: center;
   border-radius: 26px;
   background: #fff;
-  box-shadow: 0 8px 0 rgb(36 18 63 / 0.16);
+  box-shadow: 0 8px 0 rgb(44 42 49 / 0.16);
   transition: transform 0.12s, opacity 0.3s;
   animation: entrar-carta 0.35s cubic-bezier(0.2, 1.4, 0.4, 1) backwards;
 }
@@ -1153,7 +1159,7 @@ img {
   background: #fff;
   font-size: 2.8rem;
   line-height: 1;
-  box-shadow: 0 8px 0 rgb(36 18 63 / 0.16);
+  box-shadow: 0 8px 0 rgb(44 42 49 / 0.16);
   transition: transform 0.12s;
 }
 
@@ -1568,7 +1574,7 @@ img {
   border-radius: 26px;
   background: var(--crema);
   color: var(--tinta);
-  box-shadow: 0 10px 0 rgb(23 10 54 / 0.4);
+  box-shadow: 0 10px 0 rgb(44 42 49 / 0.4);
   overflow: hidden;
 }
 
@@ -1608,7 +1614,7 @@ img {
   place-items: center;
   border-radius: 50%;
   border: 4px solid #fff;
-  box-shadow: 0 0 0 2px rgb(36 18 63 / 0.25);
+  box-shadow: 0 0 0 2px rgb(44 42 49 / 0.25);
   font-size: 0.85rem;
   font-weight: 800;
   color: var(--tinta);
@@ -1672,7 +1678,7 @@ img {
   padding: 6px 4px 4px;
   border-radius: 14px;
   background: #fff;
-  box-shadow: 0 3px 0 rgb(36 18 63 / 0.14);
+  box-shadow: 0 3px 0 rgb(44 42 49 / 0.14);
   font-weight: 700;
   line-height: 1.1;
 }
@@ -1728,7 +1734,7 @@ img {
   border-radius: 50%;
   object-fit: cover;
   object-position: 50% 15%;
-  background: radial-gradient(circle, #6b2fbf, var(--noche));
+  background: var(--papel);
 }
 
 .utiles__vestidor.es-nuevo {
@@ -1752,7 +1758,8 @@ img {
   display: grid;
   place-items: center;
   border-radius: 20px;
-  background: radial-gradient(circle at 50% 60%, #6b2fbf, var(--noche));
+  background: var(--fondo-cuaderno);
+  border: 3px solid #e8dcc6;
 }
 
 .vestidor__heroe {
@@ -1775,7 +1782,7 @@ img {
   border-radius: 20px;
   background: #fff;
   border: 4px solid transparent;
-  box-shadow: 0 4px 0 rgb(36 18 63 / 0.14);
+  box-shadow: 0 4px 0 rgb(44 42 49 / 0.14);
   overflow: hidden;
 }
 
@@ -1841,7 +1848,7 @@ img {
   padding: 4px 8px;
   border-radius: 14px;
   background: #fff;
-  box-shadow: 0 3px 0 rgb(36 18 63 / 0.14);
+  box-shadow: 0 3px 0 rgb(44 42 49 / 0.14);
   font-size: 0.95rem;
   font-weight: 800;
   line-height: 1.1;
@@ -1865,7 +1872,7 @@ img {
   padding: 8px 4px;
   border-radius: 18px;
   background: #fff;
-  box-shadow: 0 4px 0 rgb(36 18 63 / 0.14);
+  box-shadow: 0 4px 0 rgb(44 42 49 / 0.14);
   font-size: 1.15rem;
   font-weight: 800;
   line-height: 1.1;
@@ -1892,7 +1899,7 @@ img {
   aspect-ratio: 1;
   border-radius: 26px;
   border: 5px solid var(--crema);
-  box-shadow: 0 10px 0 rgb(23 10 54 / 0.4);
+  box-shadow: 0 10px 0 rgb(44 42 49 / 0.4);
   overflow: hidden;
 }
 
@@ -1973,9 +1980,9 @@ img {
   align-items: center;
   gap: 12px;
   padding: max(24px, env(safe-area-inset-top)) 12px max(28px, env(safe-area-inset-bottom));
-  color: var(--crema);
+  color: var(--tinta);
   text-align: center;
-  background: radial-gradient(120% 80% at 50% 100%, #6b2fbf 0%, var(--noche) 45%, var(--noche-honda) 100%);
+  background: var(--fondo-cuaderno);
 }
 
 .elegir h1 {
@@ -2012,8 +2019,9 @@ img {
 }
 
 .elegir__heroe.es-elegido {
-  background: rgb(255 255 255 / 0.14);
+  background: #fff;
   border-color: var(--oro);
+  box-shadow: 0 6px 0 rgb(44 42 49 / 0.12);
   transform: translateY(-10px) scale(1.06);
 }
 
@@ -2135,7 +2143,7 @@ img {
   display: grid;
   justify-items: start;
   padding: 0 12px max(12px, env(safe-area-inset-bottom));
-  background: linear-gradient(to top, rgb(23 10 54 / 0.75) 40%, transparent);
+  background: linear-gradient(to top, rgb(44 42 49 / 0.75) 40%, transparent);
   cursor: default;
 }
 
@@ -2156,7 +2164,7 @@ img {
   border-radius: 26px;
   background: var(--crema);
   border: 4px solid #fff;
-  box-shadow: 0 8px 0 rgb(23 10 54 / 0.4);
+  box-shadow: 0 8px 0 rgb(44 42 49 / 0.4);
   animation: subir 0.25s ease-out;
 }
 
@@ -2186,7 +2194,7 @@ img {
   border-radius: 999px;
   background: #fff;
   font-weight: 800;
-  box-shadow: 0 3px 0 rgb(36 18 63 / 0.18);
+  box-shadow: 0 3px 0 rgb(44 42 49 / 0.18);
 }
 
 .chip[aria-pressed='true'] {
@@ -2383,7 +2391,7 @@ img {
   border-radius: 50%;
   background: #fff;
   font-size: 1.8rem;
-  box-shadow: 0 6px 0 rgb(36 18 63 / 0.16);
+  box-shadow: 0 6px 0 rgb(44 42 49 / 0.16);
 }
 
 .boton-redondo:active {
@@ -2495,13 +2503,15 @@ img {
   border-radius: 22px;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  box-shadow: 0 8px 0 rgb(36 18 63 / 0.16);
+  box-shadow: 0 8px 0 rgb(44 42 49 / 0.16);
 }
 
 .carta__dorso {
-  background: radial-gradient(circle, #5b2fa6 0 27%, transparent 28%), radial-gradient(120% 90% at 50% 0%, #4a2394, var(--noche));
-  border: 4px solid rgb(255 207 58 / 0.35);
-  color: var(--oro);
+  /* Dorso de tarjeta de cuaderno cuadriculado, con el azul de Cuadrito. */
+  background: repeating-linear-gradient(to right, transparent 0 13px, rgb(74 144 217 / 0.28) 13px 14px),
+    repeating-linear-gradient(to bottom, transparent 0 13px, rgb(74 144 217 / 0.28) 13px 14px), #f2f7fd;
+  border: 4px solid #4a90d9;
+  color: #4a90d9;
   font-size: 2.2rem;
 }
 
@@ -2553,7 +2563,7 @@ img {
 }
 
 .carta.es-pista .carta__dorso {
-  box-shadow: 0 8px 0 rgb(36 18 63 / 0.16), 0 0 0 5px var(--oro);
+  box-shadow: 0 8px 0 rgb(44 42 49 / 0.16), 0 0 0 5px var(--oro);
 }
 
 .carta.es-pista {
@@ -2620,13 +2630,12 @@ img {
 /* ---------- Listen & Catch (diseño, ronda 1, sección 2) ---------- */
 
 .mision--noche {
-  background: radial-gradient(130% 70% at 50% 110%, #3d6b4f 0 18%, transparent 40%),
-    linear-gradient(180deg, var(--noche-honda) 0%, var(--noche) 60%, #2f3f5e 100%);
-  color: var(--crema);
+  background: radial-gradient(130% 70% at 50% 110%, #b9dca0 0 18%, transparent 40%), var(--fondo-cuaderno);
+  color: var(--tinta);
 }
 
 .mision--noche .punto {
-  background: rgb(255 248 236 / 0.25);
+  background: rgb(58 58 58 / 0.18);
 }
 
 .mision--noche .punto--hecho {
@@ -2813,7 +2822,7 @@ img {
   border-radius: 50%;
   background: rgb(255 255 255 / 0.8);
   font-size: 1.5rem;
-  box-shadow: 0 4px 0 rgb(23 10 54 / 0.3);
+  box-shadow: 0 4px 0 rgb(44 42 49 / 0.3);
 }
 
 .cine__texto {
@@ -2825,7 +2834,7 @@ img {
   padding: 8px 16px;
   translate: -50% 0;
   border-radius: 16px;
-  background: rgb(23 10 54 / 0.62);
+  background: rgb(44 42 49 / 0.62);
   color: var(--crema);
   font-size: 1.1rem;
   font-weight: 600;

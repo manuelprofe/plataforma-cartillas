@@ -310,7 +310,7 @@ function Tableros(props: PropsJuego) {
                 >
                   <span className="carta__giro">
                     <span className="carta__cara carta__dorso" aria-hidden="true">
-                      ★
+                      ?
                     </span>
                     <span className="carta__cara carta__frente" aria-hidden="true">
                       {c.cara === 'imagen' ? (

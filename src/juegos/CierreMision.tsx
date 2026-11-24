@@ -26,7 +26,7 @@ const CARITAS: [string, number][] = [
 ];
 
 // Dibujo de cada reconocimiento, para que se entienda sin leer.
-const DIBUJO: Partial<Record<Premio['clave'], string>> = { completar: '🏮', pronunciar: '🗣️', mejorar: '🏅', autoevaluar: '😊' };
+const DIBUJO: Partial<Record<Premio['clave'], string>> = { completar: '🚩', pronunciar: '🗣️', mejorar: '🏅', autoevaluar: '😊' };
 
 export function CierreMision({ mision, errores, base, imagenFiesta, pronuncio = false, alRegistrar, onTerminar }: Props) {
   const [premios, setPremios] = useState<Premio[] | null>(null);

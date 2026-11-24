@@ -248,6 +248,8 @@ export interface Territorio {
     /** Color de la penumbra: cada territorio tiene su hora del día. */
     colorPenumbra: string;
     luciernagas: { x: number; y: number }[];
+    /** Letreros en los cruces: cada uno muestra a qué misiones lleva y, al tocarlas, el guía va hasta allá. */
+    letreros?: { x: number; y: number; lleva: string[] }[];
   };
   /** Se abre cuando brillan todos los faroles: cada misión no opcional completada enciende el suyo. */
   puerta: {

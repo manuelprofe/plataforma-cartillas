@@ -1014,6 +1014,25 @@ export function Mundo({ territorio, heroe, estelas, accesorios, cinematicas, ayu
               ) : null,
             )}
 
+            {(mundo.letreros ?? []).map((l, i) =>
+              enVista(l.x, l.y) ? (
+                <div key={`letrero-${i}`} className="letrero" style={{ left: l.x, top: l.y, zIndex: Math.round(l.y) }}>
+                  <div className="letrero__tabla">
+                    {l.lleva.map((id) => {
+                      const m = misiones.find((x) => x.id === id);
+                      if (!m) return null;
+                      return (
+                        <button key={id} type="button" className={`letrero__lugar${progreso.misiones[id] ? ' es-hecha' : ''}`} onClick={() => tocarCosa(cosa(id))} aria-label={`Ir a ${m.titulo}`}>
+                          <img src={base + m.icono} alt="" width="34" height="34" draggable={false} />
+                        </button>
+                      );
+                    })}
+                  </div>
+                  <span className="letrero__palo" aria-hidden="true" />
+                </div>
+              ) : null,
+            )}
+
             {mundo.arboles.map((a, i) => {
               if (!enVista(a.x, a.y)) return null;
               const tipo = mundo.tiposArbol[a.tipo];

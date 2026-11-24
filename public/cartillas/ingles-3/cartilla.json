@@ -11,8 +11,8 @@
    "guia": "goma",
    "puerta": {
     "destino": "la página 2",
-    "x": 2527,
-    "y": 1340,
+    "x": 2018,
+    "y": 2566,
     "personaje": "postal",
     "escenaCerrada": "puente-cerrado",
     "escenaAbierta": "puente-abierto"
@@ -55,8 +55,8 @@
        "pronuncia": "sí-sers"
       }
      ],
-     "x": 829,
-     "y": 672,
+     "x": 367,
+     "y": 717,
      "antes": [
       {
        "quien": "goma",
@@ -106,8 +106,8 @@
        "pronuncia": "cher"
       }
      ],
-     "x": 412,
-     "y": 204,
+     "x": 573,
+     "y": 731,
      "antes": [
       {
        "quien": "goma",
@@ -167,8 +167,8 @@
        "pronuncia": "cher"
       }
      ],
-     "x": 872,
-     "y": 797,
+     "x": 470,
+     "y": 817,
      "antes": [
       {
        "quien": "goma",
@@ -219,8 +219,8 @@
        "pronuncia": "ó-rinch"
       }
      ],
-     "x": 679,
-     "y": 1356,
+     "x": 1009,
+     "y": 645,
      "antes": [
       {
        "quien": "goma",
@@ -270,8 +270,8 @@
        "pronuncia": "uait"
       }
      ],
-     "x": 190,
-     "y": 1337,
+     "x": 1215,
+     "y": 665,
      "antes": [
       {
        "quien": "goma",
@@ -331,8 +331,8 @@
        "pronuncia": "blak"
       }
      ],
-     "x": 722,
-     "y": 1482,
+     "x": 1341,
+     "y": 616,
      "antes": [
       {
        "quien": "goma",
@@ -396,8 +396,8 @@
        "pronuncia": "faiv"
       }
      ],
-     "x": 1908,
-     "y": 642,
+     "x": 1697,
+     "y": 645,
      "antes": [
       {
        "quien": "goma",
@@ -451,8 +451,8 @@
        "pronuncia": "ten"
       }
      ],
-     "x": 2339,
-     "y": 206,
+     "x": 1903,
+     "y": 688,
      "antes": [
       {
        "quien": "goma",
@@ -520,8 +520,8 @@
        "pronuncia": "ten"
       }
      ],
-     "x": 1862,
-     "y": 769,
+     "x": 2041,
+     "y": 645,
      "antes": [
       {
        "quien": "goma",
@@ -566,8 +566,8 @@
        "pronuncia": "mauz"
       }
      ],
-     "x": 944,
-     "y": 1931,
+     "x": 1662,
+     "y": 1347,
      "antes": [
       {
        "quien": "goma",
@@ -620,8 +620,8 @@
        ]
       }
      ],
-     "x": 420,
-     "y": 2469,
+     "x": 1834,
+     "y": 1477,
      "antes": [
       {
        "quien": "goma",
@@ -681,8 +681,8 @@
        "pronuncia": "legs"
       }
      ],
-     "x": 969,
-     "y": 2045,
+     "x": 2006,
+     "y": 1347,
      "antes": [
       {
        "quien": "goma",
@@ -730,8 +730,8 @@
        ]
       }
      ],
-     "x": 1905,
-     "y": 1932,
+     "x": 459,
+     "y": 2064,
      "antes": [
       {
        "quien": "goma",
@@ -793,8 +793,8 @@
        "pronuncia": "béi-bi"
       }
      ],
-     "x": 2379,
-     "y": 2477,
+     "x": 665,
+     "y": 2107,
      "antes": [
       {
        "quien": "goma",
@@ -857,8 +857,8 @@
        "pronuncia": "gránd-mo-der"
       }
      ],
-     "x": 1881,
-     "y": 2046,
+     "x": 871,
+     "y": 2064,
      "antes": [
       {
        "quien": "goma",
@@ -945,8 +945,8 @@
        "cifra": "12:00"
       }
      ],
-     "x": 1894,
-     "y": 1223,
+     "x": 1513,
+     "y": 2208,
      "familia": {
       "tema": "la hora",
       "idea": "Cuando sea una hora en punto, pregúntele \"What time is it?\" para que responda mirando el reloj o el celular."
@@ -999,8 +999,8 @@
        "cifra": "12:00"
       }
      ],
-     "x": 2036,
-     "y": 1223,
+     "x": 1708,
+     "y": 2208,
      "familia": {
       "tema": "la hora",
       "idea": "Cuando sea una hora en punto, pregúntele \"What time is it?\" para que responda mirando el reloj o el celular."
@@ -1054,8 +1054,8 @@
       }
      ],
      "opcional": true,
-     "x": 1477,
-     "y": 1254
+     "x": 1146,
+     "y": 1347
     }
    ],
    "personajes": {
@@ -1105,31 +1105,31 @@
     "es"
    ],
    "mundo": {
-    "ancho": 2800,
+    "ancho": 2293,
     "inicio": {
-     "x": 1387,
-     "y": 1479
+     "x": 470,
+     "y": 2595
     },
     "habitantes": [
      {
       "id": "goma",
       "personaje": "goma",
-      "x": 1307,
-      "y": 1369,
+      "x": 539,
+      "y": 2494,
       "escena": "goma"
      },
      {
       "id": "postal",
       "personaje": "postal",
-      "x": 1472,
-      "y": 1384,
+      "x": 1284,
+      "y": 1347,
       "escena": "postal"
      },
      {
       "id": "caro",
       "personaje": "caro",
-      "x": 936,
-      "y": 734,
+      "x": 275,
+      "y": 912,
       "escena": "caro-listo",
       "zona": "bosque-school",
       "encargo": {
@@ -1159,8 +1159,8 @@
          "pronuncia": "rú-ler"
         }
        ],
-       "x": 642,
-       "y": 446,
+       "x": 688,
+       "y": 946,
        "escenaPide": "caro-pide",
        "escenaOtra": "caro-otra",
        "escenaGracias": "caro-gracias",
@@ -1170,8 +1170,8 @@
      {
       "id": "tito",
       "personaje": "tito",
-      "x": 786,
-      "y": 1418,
+      "x": 986,
+      "y": 831,
       "escena": "tito-listo",
       "zona": "bosque-colors",
       "encargo": {
@@ -1201,8 +1201,8 @@
          "pronuncia": "yé-lou"
         }
        ],
-       "x": 378,
-       "y": 1358,
+       "x": 1284,
+       "y": 912,
        "escenaPide": "tito-pide",
        "escenaOtra": "tito-otra",
        "escenaGracias": "tito-gracias",
@@ -1212,8 +1212,8 @@
      {
       "id": "abu",
       "personaje": "abu",
-      "x": 1798,
-      "y": 706,
+      "x": 2121,
+      "y": 745,
       "escena": "abu-listo",
       "zona": "bosque-numbers",
       "encargo": {
@@ -1247,8 +1247,8 @@
          ]
         }
        ],
-       "x": 2126,
-       "y": 414,
+       "x": 1903,
+       "y": 860,
        "escenaPide": "abu-pide",
        "escenaOtra": "abu-otra",
        "escenaGracias": "abu-gracias",
@@ -1258,8 +1258,8 @@
      {
       "id": "pua",
       "personaje": "pua",
-      "x": 1055,
-      "y": 1995,
+      "x": 2064,
+      "y": 1491,
       "escena": "pua-listo",
       "zona": "bosque-body",
       "encargo": {
@@ -1289,8 +1289,8 @@
          "pronuncia": "irs"
         }
        ],
-       "x": 658,
-       "y": 2254,
+       "x": 1811,
+       "y": 1204,
        "escenaPide": "pua-pide",
        "escenaOtra": "pua-otra",
        "escenaGracias": "pua-gracias",
@@ -1300,8 +1300,8 @@
      {
       "id": "nuez",
       "personaje": "nuez",
-      "x": 1794,
-      "y": 1996,
+      "x": 367,
+      "y": 1978,
       "escena": "nuez-listo",
       "zona": "bosque-family",
       "encargo": {
@@ -1334,8 +1334,8 @@
          "pronuncia": "gud nait"
         }
        ],
-       "x": 2110,
-       "y": 2210,
+       "x": 738,
+       "y": 2294,
        "escenaPide": "nuez-pide",
        "escenaOtra": "nuez-otra",
        "escenaGracias": "nuez-gracias",
@@ -1345,1475 +1345,30 @@
      {
       "id": "rayo",
       "personaje": "rayo",
-      "x": 2178,
-      "y": 1303,
+      "x": 1811,
+      "y": 2294,
       "escena": "rayo"
      }
     ],
-    "luciernagas": [
-     {
-      "x": 1076,
-      "y": 865
-     },
-     {
-      "x": 1708,
-      "y": 1467
-     },
-     {
-      "x": 239,
-      "y": 2587
-     },
-     {
-      "x": 1101,
-      "y": 1231
-     },
-     {
-      "x": 560,
-      "y": 2639
-     },
-     {
-      "x": 2611,
-      "y": 2542
-     },
-     {
-      "x": 243,
-      "y": 293
-     },
-     {
-      "x": 742,
-      "y": 1172
-     },
-     {
-      "x": 690,
-      "y": 840
-     },
-     {
-      "x": 943,
-      "y": 1481
-     }
-    ],
-    "mapa": "fondos/bosque-mapa.webp",
-    "alto": 2800,
-    "tiposArbol": [
-     {
-      "imagen": "mundo/arbol-1.webp",
-      "ancho": 240,
-      "alto": 246
-     },
-     {
-      "imagen": "mundo/arbol-2.webp",
-      "ancho": 240,
-      "alto": 248
-     },
-     {
-      "imagen": "mundo/arbol-3.webp",
-      "ancho": 240,
-      "alto": 304
-     },
-     {
-      "imagen": "mundo/arbol-4.webp",
-      "ancho": 240,
-      "alto": 251
-     },
-     {
-      "imagen": "mundo/arbol-5.webp",
-      "ancho": 240,
-      "alto": 259
-     },
-     {
-      "imagen": "mundo/arbol-6.webp",
-      "ancho": 240,
-      "alto": 244
-     },
-     {
-      "imagen": "mundo/arbol-7.webp",
-      "ancho": 240,
-      "alto": 306
-     },
-     {
-      "imagen": "mundo/arbol-8.webp",
-      "ancho": 240,
-      "alto": 250
-     },
-     {
-      "imagen": "mundo/arbol-9.webp",
-      "ancho": 240,
-      "alto": 247
-     }
-    ],
-    "arboles": [
-     {
-      "x": 2115,
-      "y": 97,
-      "tipo": 4,
-      "escala": 0.88
-     },
-     {
-      "x": 2617,
-      "y": 100,
-      "tipo": 0,
-      "escala": 0.85
-     },
-     {
-      "x": 563,
-      "y": 101,
-      "tipo": 0,
-      "escala": 0.74
-     },
-     {
-      "x": 1608,
-      "y": 106,
-      "tipo": 2,
-      "escala": 0.69
-     },
-     {
-      "x": 1748,
-      "y": 111,
-      "tipo": 4,
-      "escala": 0.65
-     },
-     {
-      "x": 61,
-      "y": 111,
-      "tipo": 8,
-      "escala": 0.76
-     },
-     {
-      "x": 1471,
-      "y": 118,
-      "tipo": 6,
-      "escala": 0.87
-     },
-     {
-      "x": 1172,
-      "y": 124,
-      "tipo": 1,
-      "escala": 0.66
-     },
-     {
-      "x": 227,
-      "y": 139,
-      "tipo": 3,
-      "escala": 0.83
-     },
-     {
-      "x": 2483,
-      "y": 139,
-      "tipo": 5,
-      "escala": 0.78
-     },
-     {
-      "x": 760,
-      "y": 142,
-      "tipo": 2,
-      "escala": 0.82
-     },
-     {
-      "x": 917,
-      "y": 165,
-      "tipo": 8,
-      "escala": 0.86
-     },
-     {
-      "x": 1043,
-      "y": 168,
-      "tipo": 0,
-      "escala": 0.72
-     },
-     {
-      "x": 1950,
-      "y": 173,
-      "tipo": 8,
-      "escala": 0.63
-     },
-     {
-      "x": 1322,
-      "y": 178,
-      "tipo": 6,
-      "escala": 0.88
-     },
-     {
-      "x": -13,
-      "y": 206,
-      "tipo": 6,
-      "escala": 0.78
-     },
-     {
-      "x": 1517,
-      "y": 210,
-      "tipo": 0,
-      "escala": 0.76
-     },
-     {
-      "x": 1728,
-      "y": 220,
-      "tipo": 2,
-      "escala": 0.67
-     },
-     {
-      "x": 2652,
-      "y": 222,
-      "tipo": 0,
-      "escala": 0.88
-     },
-     {
-      "x": 2149,
-      "y": 225,
-      "tipo": 1,
-      "escala": 0.77
-     },
-     {
-      "x": 1163,
-      "y": 230,
-      "tipo": 1,
-      "escala": 0.62
-     },
-     {
-      "x": 763,
-      "y": 264,
-      "tipo": 3,
-      "escala": 0.66
-     },
-     {
-      "x": 1906,
-      "y": 265,
-      "tipo": 6,
-      "escala": 0.78
-     },
-     {
-      "x": 2813,
-      "y": 277,
-      "tipo": 7,
-      "escala": 0.8
-     },
-     {
-      "x": 1440,
-      "y": 286,
-      "tipo": 2,
-      "escala": 0.72
-     },
-     {
-      "x": 931,
-      "y": 289,
-      "tipo": 7,
-      "escala": 0.76
-     },
-     {
-      "x": 1068,
-      "y": 295,
-      "tipo": 4,
-      "escala": 0.71
-     },
-     {
-      "x": 1291,
-      "y": 315,
-      "tipo": 6,
-      "escala": 0.74
-     },
-     {
-      "x": 2630,
-      "y": 333,
-      "tipo": 8,
-      "escala": 0.65
-     },
-     {
-      "x": 1776,
-      "y": 343,
-      "tipo": 6,
-      "escala": 0.64
-     },
-     {
-      "x": 4,
-      "y": 346,
-      "tipo": 0,
-      "escala": 0.84
-     },
-     {
-      "x": 1535,
-      "y": 352,
-      "tipo": 3,
-      "escala": 0.62
-     },
-     {
-      "x": 1900,
-      "y": 366,
-      "tipo": 0,
-      "escala": 0.74
-     },
-     {
-      "x": 2786,
-      "y": 374,
-      "tipo": 5,
-      "escala": 0.71
-     },
-     {
-      "x": 1208,
-      "y": 389,
-      "tipo": 7,
-      "escala": 0.66
-     },
-     {
-      "x": 1053,
-      "y": 398,
-      "tipo": 7,
-      "escala": 0.64
-     },
-     {
-      "x": 928,
-      "y": 418,
-      "tipo": 4,
-      "escala": 0.85
-     },
-     {
-      "x": 2606,
-      "y": 431,
-      "tipo": 7,
-      "escala": 0.73
-     },
-     {
-      "x": 1581,
-      "y": 454,
-      "tipo": 6,
-      "escala": 0.79
-     },
-     {
-      "x": 2736,
-      "y": 466,
-      "tipo": 4,
-      "escala": 0.73
-     },
-     {
-      "x": 1451,
-      "y": 470,
-      "tipo": 8,
-      "escala": 0.68
-     },
-     {
-      "x": 88,
-      "y": 472,
-      "tipo": 8,
-      "escala": 0.68
-     },
-     {
-      "x": 2598,
-      "y": 547,
-      "tipo": 6,
-      "escala": 0.89
-     },
-     {
-      "x": 963,
-      "y": 550,
-      "tipo": 5,
-      "escala": 0.71
-     },
-     {
-      "x": 249,
-      "y": 557,
-      "tipo": 4,
-      "escala": 0.64
-     },
-     {
-      "x": 8,
-      "y": 574,
-      "tipo": 5,
-      "escala": 0.89
-     },
-     {
-      "x": 2718,
-      "y": 595,
-      "tipo": 1,
-      "escala": 0.77
-     },
-     {
-      "x": 1477,
-      "y": 609,
-      "tipo": 8,
-      "escala": 0.81
-     },
-     {
-      "x": 210,
-      "y": 655,
-      "tipo": 8,
-      "escala": 0.68
-     },
-     {
-      "x": 2608,
-      "y": 657,
-      "tipo": 2,
-      "escala": 0.71
-     },
-     {
-      "x": 2395,
-      "y": 697,
-      "tipo": 2,
-      "escala": 0.69
-     },
-     {
-      "x": 1089,
-      "y": 706,
-      "tipo": 6,
-      "escala": 0.62
-     },
-     {
-      "x": 31,
-      "y": 708,
-      "tipo": 3,
-      "escala": 0.78
-     },
-     {
-      "x": 2240,
-      "y": 733,
-      "tipo": 1,
-      "escala": 0.81
-     },
-     {
-      "x": 1211,
-      "y": 736,
-      "tipo": 8,
-      "escala": 0.81
-     },
-     {
-      "x": 2644,
-      "y": 752,
-      "tipo": 4,
-      "escala": 0.66
-     },
-     {
-      "x": 1497,
-      "y": 756,
-      "tipo": 3,
-      "escala": 0.71
-     },
-     {
-      "x": 369,
-      "y": 767,
-      "tipo": 1,
-      "escala": 0.61
-     },
-     {
-      "x": 1629,
-      "y": 768,
-      "tipo": 5,
-      "escala": 0.72
-     },
-     {
-      "x": 240,
-      "y": 768,
-      "tipo": 2,
-      "escala": 0.7
-     },
-     {
-      "x": 1374,
-      "y": 769,
-      "tipo": 7,
-      "escala": 0.86
-     },
-     {
-      "x": 1114,
-      "y": 807,
-      "tipo": 2,
-      "escala": 0.86
-     },
-     {
-      "x": 491,
-      "y": 808,
-      "tipo": 2,
-      "escala": 0.78
-     },
-     {
-      "x": 2534,
-      "y": 810,
-      "tipo": 3,
-      "escala": 0.81
-     },
-     {
-      "x": -20,
-      "y": 822,
-      "tipo": 0,
-      "escala": 0.67
-     },
-     {
-      "x": 2167,
-      "y": 827,
-      "tipo": 5,
-      "escala": 0.76
-     },
-     {
-      "x": 2389,
-      "y": 844,
-      "tipo": 6,
-      "escala": 0.63
-     },
-     {
-      "x": 299,
-      "y": 866,
-      "tipo": 2,
-      "escala": 0.84
-     },
-     {
-      "x": 97,
-      "y": 872,
-      "tipo": 4,
-      "escala": 0.88
-     },
-     {
-      "x": 1326,
-      "y": 877,
-      "tipo": 0,
-      "escala": 0.79
-     },
-     {
-      "x": 2623,
-      "y": 890,
-      "tipo": 4,
-      "escala": 0.67
-     },
-     {
-      "x": 423,
-      "y": 892,
-      "tipo": 4,
-      "escala": 0.62
-     },
-     {
-      "x": -20,
-      "y": 933,
-      "tipo": 3,
-      "escala": 0.68
-     },
-     {
-      "x": 2489,
-      "y": 940,
-      "tipo": 8,
-      "escala": 0.62
-     },
-     {
-      "x": 2269,
-      "y": 948,
-      "tipo": 7,
-      "escala": 0.61
-     },
-     {
-      "x": 2812,
-      "y": 954,
-      "tipo": 0,
-      "escala": 0.62
-     },
-     {
-      "x": 140,
-      "y": 988,
-      "tipo": 7,
-      "escala": 0.62
-     },
-     {
-      "x": 322,
-      "y": 999,
-      "tipo": 0,
-      "escala": 0.68
-     },
-     {
-      "x": 487,
-      "y": 1028,
-      "tipo": 5,
-      "escala": 0.89
-     },
-     {
-      "x": -9,
-      "y": 1035,
-      "tipo": 2,
-      "escala": 0.9
-     },
-     {
-      "x": 2235,
-      "y": 1046,
-      "tipo": 7,
-      "escala": 0.81
-     },
-     {
-      "x": 2763,
-      "y": 1050,
-      "tipo": 6,
-      "escala": 0.61
-     },
-     {
-      "x": 2071,
-      "y": 1054,
-      "tipo": 7,
-      "escala": 0.87
-     },
-     {
-      "x": 169,
-      "y": 1089,
-      "tipo": 5,
-      "escala": 0.8
-     },
-     {
-      "x": 2372,
-      "y": 1097,
-      "tipo": 2,
-      "escala": 0.74
-     },
-     {
-      "x": 312,
-      "y": 1101,
-      "tipo": 5,
-      "escala": 0.77
-     },
-     {
-      "x": 1083,
-      "y": 1128,
-      "tipo": 4,
-      "escala": 0.84
-     },
-     {
-      "x": 2144,
-      "y": 1136,
-      "tipo": 0,
-      "escala": 0.79
-     },
-     {
-      "x": 23,
-      "y": 1143,
-      "tipo": 4,
-      "escala": 0.72
-     },
-     {
-      "x": 2804,
-      "y": 1153,
-      "tipo": 5,
-      "escala": 0.81
-     },
-     {
-      "x": 2679,
-      "y": 1181,
-      "tipo": 1,
-      "escala": 0.67
-     },
-     {
-      "x": 147,
-      "y": 1195,
-      "tipo": 8,
-      "escala": 0.82
-     },
-     {
-      "x": 278,
-      "y": 1201,
-      "tipo": 6,
-      "escala": 0.88
-     },
-     {
-      "x": 2272,
-      "y": 1203,
-      "tipo": 0,
-      "escala": 0.66
-     },
-     {
-      "x": 2423,
-      "y": 1220,
-      "tipo": 4,
-      "escala": 0.77
-     },
-     {
-      "x": 2784,
-      "y": 1254,
-      "tipo": 2,
-      "escala": 0.85
-     },
-     {
-      "x": 936,
-      "y": 1271,
-      "tipo": 3,
-      "escala": 0.74
-     },
-     {
-      "x": 21,
-      "y": 1289,
-      "tipo": 7,
-      "escala": 0.68
-     },
-     {
-      "x": -8,
-      "y": 1403,
-      "tipo": 1,
-      "escala": 0.7
-     },
-     {
-      "x": 2814,
-      "y": 1495,
-      "tipo": 4,
-      "escala": 0.86
-     },
-     {
-      "x": 2693,
-      "y": 1584,
-      "tipo": 1,
-      "escala": 0.6
-     },
-     {
-      "x": 38,
-      "y": 1600,
-      "tipo": 4,
-      "escala": 0.8
-     },
-     {
-      "x": 2091,
-      "y": 1625,
-      "tipo": 3,
-      "escala": 0.65
-     },
-     {
-      "x": 1913,
-      "y": 1630,
-      "tipo": 1,
-      "escala": 0.65
-     },
-     {
-      "x": 2210,
-      "y": 1654,
-      "tipo": 7,
-      "escala": 0.63
-     },
-     {
-      "x": 2388,
-      "y": 1669,
-      "tipo": 7,
-      "escala": 0.68
-     },
-     {
-      "x": 2752,
-      "y": 1670,
-      "tipo": 3,
-      "escala": 0.87
-     },
-     {
-      "x": 270,
-      "y": 1679,
-      "tipo": 1,
-      "escala": 0.66
-     },
-     {
-      "x": 109,
-      "y": 1724,
-      "tipo": 6,
-      "escala": 0.63
-     },
-     {
-      "x": 892,
-      "y": 1727,
-      "tipo": 4,
-      "escala": 0.76
-     },
-     {
-      "x": -17,
-      "y": 1728,
-      "tipo": 7,
-      "escala": 0.74
-     },
-     {
-      "x": 2501,
-      "y": 1741,
-      "tipo": 6,
-      "escala": 0.69
-     },
-     {
-      "x": 2262,
-      "y": 1755,
-      "tipo": 3,
-      "escala": 0.69
-     },
-     {
-      "x": 1905,
-      "y": 1756,
-      "tipo": 0,
-      "escala": 0.66
-     },
-     {
-      "x": 408,
-      "y": 1763,
-      "tipo": 0,
-      "escala": 0.66
-     },
-     {
-      "x": 137,
-      "y": 1822,
-      "tipo": 5,
-      "escala": 0.87
-     },
-     {
-      "x": 550,
-      "y": 1836,
-      "tipo": 4,
-      "escala": 0.67
-     },
-     {
-      "x": 327,
-      "y": 1837,
-      "tipo": 2,
-      "escala": 0.8
-     },
-     {
-      "x": 2412,
-      "y": 1856,
-      "tipo": 8,
-      "escala": 0.89
-     },
-     {
-      "x": 0,
-      "y": 1874,
-      "tipo": 0,
-      "escala": 0.74
-     },
-     {
-      "x": 2614,
-      "y": 1885,
-      "tipo": 0,
-      "escala": 0.79
-     },
-     {
-      "x": 2296,
-      "y": 1905,
-      "tipo": 7,
-      "escala": 0.89
-     },
-     {
-      "x": 454,
-      "y": 1914,
-      "tipo": 4,
-      "escala": 0.8
-     },
-     {
-      "x": 1382,
-      "y": 1917,
-      "tipo": 8,
-      "escala": 0.62
-     },
-     {
-      "x": 590,
-      "y": 1929,
-      "tipo": 3,
-      "escala": 0.69
-     },
-     {
-      "x": 276,
-      "y": 1937,
-      "tipo": 7,
-      "escala": 0.87
-     },
-     {
-      "x": 1221,
-      "y": 1950,
-      "tipo": 1,
-      "escala": 0.67
-     },
-     {
-      "x": 1658,
-      "y": 1964,
-      "tipo": 6,
-      "escala": 0.7
-     },
-     {
-      "x": 2475,
-      "y": 1971,
-      "tipo": 4,
-      "escala": 0.72
-     },
-     {
-      "x": 2664,
-      "y": 1977,
-      "tipo": 2,
-      "escala": 0.83
-     },
-     {
-      "x": 1511,
-      "y": 1986,
-      "tipo": 4,
-      "escala": 0.71
-     },
-     {
-      "x": 163,
-      "y": 1987,
-      "tipo": 3,
-      "escala": 0.7
-     },
-     {
-      "x": 2260,
-      "y": 2011,
-      "tipo": 7,
-      "escala": 0.77
-     },
-     {
-      "x": 398,
-      "y": 2011,
-      "tipo": 7,
-      "escala": 0.75
-     },
-     {
-      "x": 1346,
-      "y": 2018,
-      "tipo": 5,
-      "escala": 0.82
-     },
-     {
-      "x": 666,
-      "y": 2027,
-      "tipo": 2,
-      "escala": 0.63
-     },
-     {
-      "x": 27,
-      "y": 2052,
-      "tipo": 1,
-      "escala": 0.83
-     },
-     {
-      "x": 2570,
-      "y": 2062,
-      "tipo": 4,
-      "escala": 0.82
-     },
-     {
-      "x": 549,
-      "y": 2065,
-      "tipo": 7,
-      "escala": 0.75
-     },
-     {
-      "x": 1230,
-      "y": 2065,
-      "tipo": 7,
-      "escala": 0.88
-     },
-     {
-      "x": 2342,
-      "y": 2091,
-      "tipo": 1,
-      "escala": 0.72
-     },
-     {
-      "x": 2716,
-      "y": 2093,
-      "tipo": 1,
-      "escala": 0.72
-     },
-     {
-      "x": 1444,
-      "y": 2094,
-      "tipo": 7,
-      "escala": 0.63
-     },
-     {
-      "x": 340,
-      "y": 2105,
-      "tipo": 8,
-      "escala": 0.78
-     },
-     {
-      "x": 1609,
-      "y": 2112,
-      "tipo": 6,
-      "escala": 0.67
-     },
-     {
-      "x": 2469,
-      "y": 2135,
-      "tipo": 3,
-      "escala": 0.77
-     },
-     {
-      "x": 79,
-      "y": 2144,
-      "tipo": 0,
-      "escala": 0.83
-     },
-     {
-      "x": 228,
-      "y": 2153,
-      "tipo": 6,
-      "escala": 0.79
-     },
-     {
-      "x": 1176,
-      "y": 2170,
-      "tipo": 5,
-      "escala": 0.84
-     },
-     {
-      "x": 2612,
-      "y": 2177,
-      "tipo": 4,
-      "escala": 0.87
-     },
-     {
-      "x": 442,
-      "y": 2199,
-      "tipo": 4,
-      "escala": 0.69
-     },
-     {
-      "x": 2730,
-      "y": 2206,
-      "tipo": 7,
-      "escala": 0.63
-     },
-     {
-      "x": 1627,
-      "y": 2218,
-      "tipo": 1,
-      "escala": 0.6
-     },
-     {
-      "x": 12,
-      "y": 2230,
-      "tipo": 4,
-      "escala": 0.8
-     },
-     {
-      "x": 1771,
-      "y": 2235,
-      "tipo": 6,
-      "escala": 0.87
-     },
-     {
-      "x": 2501,
-      "y": 2239,
-      "tipo": 7,
-      "escala": 0.73
-     },
-     {
-      "x": 2380,
-      "y": 2252,
-      "tipo": 7,
-      "escala": 0.86
-     },
-     {
-      "x": 1262,
-      "y": 2260,
-      "tipo": 7,
-      "escala": 0.61
-     },
-     {
-      "x": 142,
-      "y": 2260,
-      "tipo": 1,
-      "escala": 0.9
-     },
-     {
-      "x": 1091,
-      "y": 2261,
-      "tipo": 0,
-      "escala": 0.84
-     },
-     {
-      "x": 2673,
-      "y": 2296,
-      "tipo": 0,
-      "escala": 0.72
-     },
-     {
-      "x": 1675,
-      "y": 2313,
-      "tipo": 8,
-      "escala": 0.77
-     },
-     {
-      "x": 1848,
-      "y": 2326,
-      "tipo": 0,
-      "escala": 0.87
-     },
-     {
-      "x": 2552,
-      "y": 2329,
-      "tipo": 2,
-      "escala": 0.84
-     },
-     {
-      "x": 35,
-      "y": 2354,
-      "tipo": 3,
-      "escala": 0.81
-     },
-     {
-      "x": 1146,
-      "y": 2359,
-      "tipo": 8,
-      "escala": 0.85
-     },
-     {
-      "x": 2789,
-      "y": 2388,
-      "tipo": 4,
-      "escala": 0.63
-     },
-     {
-      "x": 162,
-      "y": 2408,
-      "tipo": 6,
-      "escala": 0.67
-     },
-     {
-      "x": 1731,
-      "y": 2414,
-      "tipo": 4,
-      "escala": 0.68
-     },
-     {
-      "x": 1901,
-      "y": 2415,
-      "tipo": 2,
-      "escala": 0.6
-     },
-     {
-      "x": 2628,
-      "y": 2418,
-      "tipo": 2,
-      "escala": 0.78
-     },
-     {
-      "x": 1392,
-      "y": 2423,
-      "tipo": 8,
-      "escala": 0.72
-     },
-     {
-      "x": 1236,
-      "y": 2433,
-      "tipo": 8,
-      "escala": 0.88
-     },
-     {
-      "x": 970,
-      "y": 2440,
-      "tipo": 7,
-      "escala": 0.68
-     },
-     {
-      "x": 1541,
-      "y": 2460,
-      "tipo": 2,
-      "escala": 0.83
-     },
-     {
-      "x": 1084,
-      "y": 2476,
-      "tipo": 7,
-      "escala": 0.87
-     },
-     {
-      "x": 1821,
-      "y": 2492,
-      "tipo": 1,
-      "escala": 0.87
-     },
-     {
-      "x": 0,
-      "y": 2504,
-      "tipo": 5,
-      "escala": 0.75
-     },
-     {
-      "x": 860,
-      "y": 2512,
-      "tipo": 8,
-      "escala": 0.71
-     },
-     {
-      "x": 1696,
-      "y": 2522,
-      "tipo": 6,
-      "escala": 0.7
-     },
-     {
-      "x": 1226,
-      "y": 2534,
-      "tipo": 4,
-      "escala": 0.67
-     },
-     {
-      "x": 2769,
-      "y": 2539,
-      "tipo": 4,
-      "escala": 0.68
-     },
-     {
-      "x": 1448,
-      "y": 2548,
-      "tipo": 4,
-      "escala": 0.83
-     },
-     {
-      "x": 1906,
-      "y": 2570,
-      "tipo": 7,
-      "escala": 0.71
-     },
-     {
-      "x": 1112,
-      "y": 2582,
-      "tipo": 6,
-      "escala": 0.88
-     },
-     {
-      "x": 78,
-      "y": 2587,
-      "tipo": 0,
-      "escala": 0.69
-     },
-     {
-      "x": 966,
-      "y": 2596,
-      "tipo": 4,
-      "escala": 0.68
-     },
-     {
-      "x": 1634,
-      "y": 2617,
-      "tipo": 5,
-      "escala": 0.81
-     },
-     {
-      "x": 697,
-      "y": 2632,
-      "tipo": 8,
-      "escala": 0.62
-     },
-     {
-      "x": 1349,
-      "y": 2647,
-      "tipo": 2,
-      "escala": 0.75
-     },
-     {
-      "x": 1488,
-      "y": 2653,
-      "tipo": 4,
-      "escala": 0.84
-     },
-     {
-      "x": 1756,
-      "y": 2657,
-      "tipo": 1,
-      "escala": 0.65
-     },
-     {
-      "x": 856,
-      "y": 2660,
-      "tipo": 6,
-      "escala": 0.64
-     },
-     {
-      "x": 2748,
-      "y": 2675,
-      "tipo": 8,
-      "escala": 0.62
-     },
-     {
-      "x": 1921,
-      "y": 2677,
-      "tipo": 2,
-      "escala": 0.84
-     },
-     {
-      "x": 1088,
-      "y": 2678,
-      "tipo": 2,
-      "escala": 0.83
-     },
-     {
-      "x": -10,
-      "y": 2686,
-      "tipo": 4,
-      "escala": 0.68
-     },
-     {
-      "x": 2161,
-      "y": 2721,
-      "tipo": 7,
-      "escala": 0.72
-     },
-     {
-      "x": 1200,
-      "y": 2721,
-      "tipo": 8,
-      "escala": 0.61
-     },
-     {
-      "x": 1616,
-      "y": 2738,
-      "tipo": 1,
-      "escala": 0.79
-     },
-     {
-      "x": 378,
-      "y": 2752,
-      "tipo": 2,
-      "escala": 0.86
-     },
-     {
-      "x": 1014,
-      "y": 2762,
-      "tipo": 4,
-      "escala": 0.78
-     },
-     {
-      "x": 1416,
-      "y": 2763,
-      "tipo": 5,
-      "escala": 0.89
-     },
-     {
-      "x": 93,
-      "y": 2763,
-      "tipo": 5,
-      "escala": 0.7
-     },
-     {
-      "x": 805,
-      "y": 2765,
-      "tipo": 4,
-      "escala": 0.89
-     },
-     {
-      "x": 2054,
-      "y": 2772,
-      "tipo": 2,
-      "escala": 0.67
-     },
-     {
-      "x": 1930,
-      "y": 2799,
-      "tipo": 2,
-      "escala": 0.65
-     },
-     {
-      "x": 2207,
-      "y": 2817,
-      "tipo": 4,
-      "escala": 0.66
-     },
-     {
-      "x": 1249,
-      "y": 2818,
-      "tipo": 5,
-      "escala": 0.84
-     },
-     {
-      "x": 2611,
-      "y": 2843,
-      "tipo": 0,
-      "escala": 0.67
-     },
-     {
-      "x": 2794,
-      "y": 2848,
-      "tipo": 3,
-      "escala": 0.78
-     },
-     {
-      "x": 2339,
-      "y": 2849,
-      "tipo": 1,
-      "escala": 0.67
-     },
-     {
-      "x": 8,
-      "y": 2852,
-      "tipo": 4,
-      "escala": 0.64
-     },
-     {
-      "x": 139,
-      "y": 2854,
-      "tipo": 3,
-      "escala": 0.81
-     },
-     {
-      "x": 1812,
-      "y": 2856,
-      "tipo": 4,
-      "escala": 0.87
-     },
-     {
-      "x": 983,
-      "y": 2857,
-      "tipo": 8,
-      "escala": 0.86
-     },
-     {
-      "x": 851,
-      "y": 2862,
-      "tipo": 6,
-      "escala": 0.62
-     },
-     {
-      "x": 1526,
-      "y": 2864,
-      "tipo": 2,
-      "escala": 0.83
-     },
-     {
-      "x": 288,
-      "y": 2865,
-      "tipo": 6,
-      "escala": 0.74
-     },
-     {
-      "x": 2072,
-      "y": 2870,
-      "tipo": 6,
-      "escala": 0.62
-     },
-     {
-      "x": 1157,
-      "y": 2884,
-      "tipo": 3,
-      "escala": 0.83
-     },
-     {
-      "x": 537,
-      "y": 2885,
-      "tipo": 3,
-      "escala": 0.82
-     },
-     {
-      "x": 1387,
-      "y": 2887,
-      "tipo": 2,
-      "escala": 0.72
-     },
-     {
-      "x": 1695,
-      "y": 2890,
-      "tipo": 8,
-      "escala": 0.78
-     },
-     {
-      "x": 674,
-      "y": 2891,
-      "tipo": 1,
-      "escala": 0.81
-     },
-     {
-      "x": 2508,
-      "y": 2897,
-      "tipo": 7,
-      "escala": 0.8
-     }
-    ],
+    "luciernagas": [],
+    "mapa": "fondos/pagina-1.webp",
+    "alto": 2867,
+    "tiposArbol": [],
+    "arboles": [],
     "luces": [
      {
-      "x": 1387,
-      "y": 1359,
-      "radio": 480
+      "x": 1146,
+      "y": 1433,
+      "radio": 5160
      }
     ],
     "radioLuzMision": 420,
-    "ambiente": "bosque-noche",
     "criaturas": [
      {
       "imagen": "mundo/animal-1.webp",
       "ancho": 46,
-      "x": 380,
-      "y": 2289,
+      "x": 367,
+      "y": 545,
       "radio": 90,
       "movimiento": "revolotea",
       "rapidez": 0.8,
@@ -2827,8 +1382,8 @@
      {
       "imagen": "mundo/animal-2.webp",
       "ancho": 46,
-      "x": 2016,
-      "y": 784,
+      "x": 1158,
+      "y": 473,
       "radio": 90,
       "movimiento": "revolotea",
       "rapidez": 0.9,
@@ -2842,8 +1397,8 @@
      {
       "imagen": "mundo/animal-1.webp",
       "ancho": 46,
-      "x": 2256,
-      "y": 1465,
+      "x": 1961,
+      "y": 502,
       "radio": 90,
       "movimiento": "revolotea",
       "rapidez": 1.0,
@@ -2857,8 +1412,8 @@
      {
       "imagen": "mundo/animal-2.webp",
       "ancho": 46,
-      "x": 2184,
-      "y": 2452,
+      "x": 1743,
+      "y": 1233,
       "radio": 90,
       "movimiento": "revolotea",
       "rapidez": 1.1,
@@ -2872,8 +1427,8 @@
      {
       "imagen": "mundo/animal-1.webp",
       "ancho": 46,
-      "x": 2436,
-      "y": 382,
+      "x": 665,
+      "y": 1892,
       "radio": 90,
       "movimiento": "revolotea",
       "rapidez": 1.2000000000000002,
@@ -2887,8 +1442,8 @@
      {
       "imagen": "mundo/animal-3.webp",
       "ancho": 44,
-      "x": 915,
-      "y": 2202,
+      "x": 1708,
+      "y": 2021,
       "radio": 70,
       "movimiento": "zumba",
       "rapidez": 1.4,
@@ -2902,8 +1457,8 @@
      {
       "imagen": "mundo/animal-3.webp",
       "ancho": 44,
-      "x": 410,
-      "y": 433,
+      "x": 1043,
+      "y": 1190,
       "radio": 70,
       "movimiento": "zumba",
       "rapidez": 1.5,
@@ -2917,8 +1472,8 @@
      {
       "imagen": "mundo/animal-3.webp",
       "ancho": 44,
-      "x": 571,
-      "y": 1534,
+      "x": 401,
+      "y": 2466,
       "radio": 70,
       "movimiento": "zumba",
       "rapidez": 1.5999999999999999,
@@ -2932,8 +1487,8 @@
      {
       "imagen": "mundo/animal-5.webp",
       "ancho": 50,
-      "x": 1290,
-      "y": 446,
+      "x": 2110,
+      "y": 2480,
       "radio": 0,
       "movimiento": "salta",
       "rapidez": 1,
@@ -2947,8 +1502,8 @@
      {
       "imagen": "mundo/animal-5.webp",
       "ancho": 50,
-      "x": 1592,
-      "y": 839,
+      "x": 367,
+      "y": 631,
       "radio": 0,
       "movimiento": "salta",
       "rapidez": 1,
@@ -2962,8 +1517,8 @@
      {
       "imagen": "mundo/animal-5.webp",
       "ancho": 50,
-      "x": 1402,
-      "y": 2162,
+      "x": 1158,
+      "y": 559,
       "radio": 0,
       "movimiento": "salta",
       "rapidez": 1,
@@ -2977,8 +1532,8 @@
      {
       "imagen": "mundo/animal-6.webp",
       "ancho": 58,
-      "x": 887,
-      "y": 939,
+      "x": 1961,
+      "y": 588,
       "radio": 260,
       "movimiento": "planea",
       "rapidez": 0.3,
@@ -2992,8 +1547,8 @@
      {
       "imagen": "mundo/animal-6.webp",
       "ancho": 58,
-      "x": 1837,
-      "y": 1879,
+      "x": 1743,
+      "y": 1319,
       "radio": 260,
       "movimiento": "planea",
       "rapidez": 0.26,
@@ -3007,8 +1562,8 @@
      {
       "imagen": "mundo/animal-4.webp",
       "ancho": 84,
-      "x": 2007,
-      "y": 839,
+      "x": 665,
+      "y": 1978,
       "radio": 240,
       "movimiento": "planea",
       "rapidez": 0.2,
@@ -3022,8 +1577,8 @@
      {
       "imagen": "mundo/animal-4.webp",
       "ancho": 84,
-      "x": 747,
-      "y": 1919,
+      "x": 1708,
+      "y": 2107,
       "radio": 220,
       "movimiento": "planea",
       "rapidez": 0.18,
@@ -3037,734 +1592,553 @@
     ],
     "objetos": [
      {
-      "imagen": "mundo/objeto-6.webp",
-      "ancho": 105,
-      "x": 1387,
-      "y": 1254,
-      "choque": 38
+      "imagen": "pagina/escuela.webp",
+      "ancho": 280,
+      "x": 470,
+      "y": 573,
+      "choque": 90
      },
      {
-      "imagen": "mundo/objeto-8.webp",
-      "ancho": 120,
-      "x": 1537,
-      "y": 1534,
-      "choque": 26
+      "imagen": "pagina/jardin.webp",
+      "ancho": 280,
+      "x": 1158,
+      "y": 545,
+      "choque": 90
      },
      {
-      "imagen": "mundo/objeto-5.webp",
-      "ancho": 78,
-      "x": 677,
-      "y": 716,
-      "choque": 12
+      "imagen": "pagina/piedras.webp",
+      "ancho": 270,
+      "x": 1857,
+      "y": 559,
+      "choque": 80
      },
      {
-      "imagen": "mundo/objeto-4.webp",
-      "ancho": 70,
-      "x": 952,
-      "y": 621,
-      "choque": 10,
-      "luz": true
+      "imagen": "pagina/parque.webp",
+      "ancho": 300,
+      "x": 1846,
+      "y": 1276,
+      "choque": 80
      },
      {
-      "imagen": "mundo/objeto-4.webp",
-      "ancho": 70,
-      "x": 556,
-      "y": 214,
-      "choque": 10,
-      "luz": true
+      "imagen": "pagina/casas.webp",
+      "ancho": 330,
+      "x": 665,
+      "y": 1927,
+      "choque": 100
      },
      {
-      "imagen": "mundo/objeto-1.webp",
-      "ancho": 190,
-      "x": 503,
-      "y": 1280,
-      "choque": 62
-     },
-     {
-      "imagen": "mundo/objeto-4.webp",
-      "ancho": 70,
-      "x": 802,
-      "y": 1306,
-      "choque": 10,
-      "luz": true
-     },
-     {
-      "imagen": "mundo/objeto-4.webp",
-      "ancho": 70,
-      "x": 231,
-      "y": 1478,
-      "choque": 10,
-      "luz": true
-     },
-     {
-      "imagen": "mundo/objeto-3.webp",
-      "ancho": 170,
-      "x": 1736,
-      "y": 567,
-      "choque": 56
-     },
-     {
-      "imagen": "mundo/objeto-4.webp",
-      "ancho": 70,
-      "x": 2054,
-      "y": 652,
-      "choque": 10,
-      "luz": true
-     },
-     {
-      "imagen": "mundo/objeto-4.webp",
-      "ancho": 70,
-      "x": 2486,
-      "y": 216,
-      "choque": 10,
-      "luz": true
-     },
-     {
-      "imagen": "mundo/objeto-9.webp",
+      "imagen": "pagina/torre.webp",
       "ancho": 150,
-      "x": 777,
-      "y": 1859,
+      "x": 1605,
+      "y": 2107,
       "choque": 50
      },
      {
-      "imagen": "mundo/objeto-4.webp",
-      "ancho": 70,
-      "x": 801,
-      "y": 1973,
-      "choque": 10,
-      "luz": true
+      "imagen": "pagina/pozo.webp",
+      "ancho": 150,
+      "x": 1146,
+      "y": 1284,
+      "choque": 45
      },
      {
-      "imagen": "mundo/objeto-4.webp",
-      "ancho": 70,
-      "x": 582,
-      "y": 2479,
-      "choque": 10,
-      "luz": true
+      "imagen": "pagina/buzon.webp",
+      "ancho": 90,
+      "x": 321,
+      "y": 2537,
+      "choque": 20
      },
      {
-      "imagen": "mundo/objeto-2.webp",
-      "ancho": 190,
-      "x": 2086,
-      "y": 1853,
-      "choque": 62
+      "imagen": "pagina/estanque.webp",
+      "ancho": 160,
+      "x": 252,
+      "y": 1634,
+      "choque": 60
      },
      {
-      "imagen": "mundo/objeto-4.webp",
-      "ancho": 70,
-      "x": 2052,
-      "y": 1942,
-      "choque": 10,
-      "luz": true
+      "imagen": "pagina/banca.webp",
+      "ancho": 110,
+      "x": 1284,
+      "y": 2595,
+      "choque": 30
      },
      {
-      "imagen": "mundo/objeto-4.webp",
-      "ancho": 70,
-      "x": 2421,
-      "y": 2354,
-      "choque": 10,
-      "luz": true
-     },
-     {
-      "imagen": "mundo/objeto-4.webp",
-      "ancho": 70,
-      "x": 1263,
-      "y": 1200,
-      "choque": 10,
-      "luz": true
-     },
-     {
-      "imagen": "mundo/objeto-4.webp",
-      "ancho": 70,
-      "x": 1200,
-      "y": 1456,
-      "choque": 10,
-      "luz": true
-     },
-     {
-      "imagen": "mundo/objeto-5.webp",
-      "ancho": 78,
-      "x": 1561,
-      "y": 1299,
-      "choque": 12
-     },
-     {
-      "imagen": "mundo/objeto-7.webp",
-      "ancho": 70,
-      "x": 1607,
-      "y": 1742,
+      "imagen": "pagina/puente.webp",
+      "ancho": 180,
+      "x": 2178,
+      "y": 1606,
       "choque": 0
      },
      {
-      "imagen": "mundo/objeto-7.webp",
-      "ancho": 70,
-      "x": 1204,
-      "y": 924,
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 150,
+      "x": 126,
+      "y": 373,
+      "choque": 22
+     },
+     {
+      "imagen": "pagina/arbol-2.webp",
+      "ancho": 110,
+      "x": 2190,
+      "y": 272,
+      "choque": 18
+     },
+     {
+      "imagen": "pagina/arbol-3.webp",
+      "ancho": 150,
+      "x": 871,
+      "y": 344,
+      "choque": 22
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 150,
+      "x": 1536,
+      "y": 315,
+      "choque": 22
+     },
+     {
+      "imagen": "pagina/arbol-2.webp",
+      "ancho": 110,
+      "x": 138,
+      "y": 1290,
+      "choque": 18
+     },
+     {
+      "imagen": "pagina/arbol-3.webp",
+      "ancho": 150,
+      "x": 2190,
+      "y": 1104,
+      "choque": 22
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 150,
+      "x": 573,
+      "y": 1347,
+      "choque": 22
+     },
+     {
+      "imagen": "pagina/arbol-2.webp",
+      "ancho": 110,
+      "x": 1513,
+      "y": 1491,
+      "choque": 18
+     },
+     {
+      "imagen": "pagina/arbol-3.webp",
+      "ancho": 150,
+      "x": 2190,
+      "y": 1950,
+      "choque": 22
+     },
+     {
+      "imagen": "pagina/arbol-2.webp",
+      "ancho": 110,
+      "x": 138,
+      "y": 2179,
+      "choque": 18
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 150,
+      "x": 1055,
+      "y": 2709,
+      "choque": 22
+     },
+     {
+      "imagen": "pagina/arbol-2.webp",
+      "ancho": 110,
+      "x": 2201,
+      "y": 2351,
+      "choque": 18
+     },
+     {
+      "imagen": "pagina/arbol-3.webp",
+      "ancho": 150,
+      "x": 573,
+      "y": 1692,
+      "choque": 22
+     },
+     {
+      "imagen": "pagina/arbol-2.webp",
+      "ancho": 110,
+      "x": 1582,
+      "y": 1720,
+      "choque": 18
+     },
+     {
+      "imagen": "pagina/arbusto.webp",
+      "ancho": 110,
+      "x": 275,
+      "y": 602,
       "choque": 0
      },
      {
-      "imagen": "mundo/objeto-7.webp",
-      "ancho": 70,
-      "x": 1674,
-      "y": 996,
+      "imagen": "pagina/arbusto.webp",
+      "ancho": 110,
+      "x": 1353,
+      "y": 459,
       "choque": 0
      },
      {
-      "imagen": "mundo/objeto-7.webp",
-      "ancho": 70,
-      "x": 1341,
-      "y": 1027,
+      "imagen": "pagina/arbusto.webp",
+      "ancho": 110,
+      "x": 894,
+      "y": 1978,
       "choque": 0
      },
      {
-      "imagen": "mundo/objeto-7.webp",
-      "ancho": 84,
-      "x": 1399,
-      "y": 1676,
+      "imagen": "pagina/arbusto.webp",
+      "ancho": 110,
+      "x": 2064,
+      "y": 1390,
       "choque": 0
      },
      {
-      "imagen": "mundo/objeto-7.webp",
-      "ancho": 70,
-      "x": 1720,
-      "y": 1102,
+      "imagen": "pagina/tulipanes.webp",
+      "ancho": 80,
+      "x": 757,
+      "y": 573,
       "choque": 0
      },
      {
-      "imagen": "mundo/objeto-7.webp",
-      "ancho": 70,
-      "x": 1225,
-      "y": 1722,
+      "imagen": "pagina/tulipanes.webp",
+      "ancho": 80,
+      "x": 1651,
+      "y": 545,
       "choque": 0
      },
      {
-      "imagen": "mundo/objeto-7.webp",
-      "ancho": 84,
-      "x": 1868,
-      "y": 934,
+      "imagen": "pagina/tulipanes.webp",
+      "ancho": 80,
+      "x": 1422,
+      "y": 2136,
       "choque": 0
      },
      {
-      "imagen": "mundo/objeto-7.webp",
-      "ancho": 84,
-      "x": 1514,
-      "y": 1070,
-      "choque": 0
-     },
-     {
-      "imagen": "mundo/objeto-7.webp",
-      "ancho": 70,
-      "x": 1773,
-      "y": 851,
-      "choque": 0
-     },
-     {
-      "imagen": "mundo/objeto-7.webp",
-      "ancho": 70,
-      "x": 1029,
-      "y": 1756,
-      "choque": 0
-     },
-     {
-      "imagen": "mundo/objeto-7.webp",
-      "ancho": 84,
-      "x": 1164,
-      "y": 1613,
-      "choque": 0
-     },
-     {
-      "imagen": "mundo/objeto-7.webp",
-      "ancho": 70,
-      "x": 2290,
-      "y": 2319,
-      "choque": 0
-     },
-     {
-      "imagen": "mundo/objeto-7.webp",
-      "ancho": 84,
-      "x": 2049,
-      "y": 1408,
+      "imagen": "pagina/tulipanes.webp",
+      "ancho": 80,
+      "x": 550,
+      "y": 2595,
       "choque": 0
      }
     ],
-    "colorPenumbra": "rgb(16 8 46 / 0.62)",
+    "colorPenumbra": "rgb(0 0 0 / 0)",
     "celda": 20,
-    "agua": [
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000111",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000111",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001111",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001111",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001111",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000111",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-     "00000000000000000000000000000000000000000000000000000111000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-     "00000000000000000000000000000000000000000000000000000011100000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-     "00000000000000000000000000000000000000000000000000000011100000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-     "00000000000000000000000000000000000000000000000000000011110000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-     "00000000000000000000000000000000000000000000000000011111111110000000000000000000000000000000000000000000000000000000000000000000000000000000",
-     "00000000000000000000000000000000000000000000000000011111111111100000000000000000000000000000000000000000000000000000000000000000000000000000",
-     "00000000000000000000000000000000000000000000000000011111111111110000000000000000000000000000000000000000000000000000000000000000000000000000",
-     "00000000000000000000000000000000000000000000000000000111111111100000000000000000000000000000000000000000000000000000000000000000000000000000",
-     "00000000000000000000000000000000000000000000000000000011111111000000000000000000000000000000000000000000000000000000000000000000000000000000",
-     "00000000000000000000000000000000000000000000000000000001111111000000000000000000000000000000000000000000000000000000000000000000000000000000",
-     "00000000000000000000000000000000000000000000000000000011111111100000000000000000000000000000000000000000000000000000000000000000000000000000",
-     "00000000000000000000000000000000000000000000000000000111111111100000000000000000000000000000000000000000000000000000000000000000000000000000",
-     "00000000000000000000000000000000000000000000000000000111111100000000000000000000000000000000000000000000000000000000000000000000000000000000",
-     "00000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000111",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001111",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001111",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000111",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000111",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001111",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000111111",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000111111",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001111111",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000011111111",
-     "00000000000000000000000000000000000000000000000000000000000000000000000001000110000000000000000000000000000000000000000000000000000001111111",
-     "00000000000000000000000000000000000000000000000000000000000000000000000111111110000000000000000000000000000000000000000000000000000000111111",
-     "00000000000000000000000000000000000000000000000000000000000000000000000111111111000000000000000000000000000000000000000000000000000000111110",
-     "00000000000000000000000000000000000000000000000000000000000000000000000111111110000000000000000000000000000000000000000000000000000001111000",
-     "00000000000000000000000000000000000000000000000000000000000000000000111111111110000000000000000000000000000000000000000000000000001111111000",
-     "00000000000000000000000000000000000000000000000000000000000000000000001111111110000000000000000000000000000000000000000000000000011111110000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000111111110000000000000000000000000000000000000000000000000011111110000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000111100110000000000000000000000000000000000000000000000110111111100000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000111111110000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001111111110000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000111111110000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000111111110000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001111111100000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011111111100000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011111111000000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011111111000000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000111110000000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000111111000000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000111111000000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011111111000000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011111111000000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011000000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001111110000000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001111110000000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001111110000000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000111111100000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000111111100000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001111111100000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000111111100000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000111111100000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000101111100000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001111111000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001111111000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000111111100000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001111111110000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001111111111000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000111111111000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011111111101",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001111111111",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000111111111",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011111111",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001111111",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000111111",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000111111",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011111",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001111",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000111",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000111",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000111",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000011",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000001100000000000000000000000000000000000000000000000000000000000000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000001100000000000000000000000000000000000000000000000000000000000000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000011110110000000000000000000000000000000000000000000000000000000000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000111111110000000000000000000000000000000000000000000000000000000000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000111111110000000000000000000000000000000000000000000000000000000000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000111111111000000000000000000000000000000000000000000000000000000000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000111111111110000000000000000000000000000000000000000000000000000000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000100111111111110000000000000000000000000000000000000000000000000000000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000111111111100000000000000000000000000000000000000000000000000000000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000111111111100000000000000000000000000000000000000000000000000000000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000011111100000000000000000000000000000000000000000000000000000000000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000011111000000000000000000000000000000000000000000000000000000000000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000000000000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
-     "00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"
-    ],
-    "frente": [
-     {
-      "x": 1466,
-      "y": 2681,
-      "tipo": 4
-     },
-     {
-      "x": 171,
-      "y": 903,
-      "tipo": 4
-     },
-     {
-      "x": 187,
-      "y": 1860,
-      "tipo": 8
-     }
-    ],
+    "agua": [],
+    "frente": [],
     "huellas": [
      {
-      "x": 1194,
-      "y": 1038,
-      "icono": "iconos/270f.svg",
+      "x": 533,
+      "y": 823,
+      "icono": "iconos/1f392.svg",
       "mision": "bosque-school"
      },
      {
-      "x": 1186,
-      "y": 1014,
-      "icono": "iconos/eraser.webp",
+      "x": 482,
+      "y": 698,
+      "icono": "iconos/1f392.svg",
       "mision": "bosque-school"
      },
      {
-      "x": 1090,
-      "y": 926,
-      "icono": "iconos/1f4d3.svg",
+      "x": 482,
+      "y": 698,
+      "icono": "iconos/1f392.svg",
       "mision": "bosque-school"
      },
      {
-      "x": 1026,
-      "y": 894,
-      "icono": "iconos/1f4cf.svg",
-      "mision": "bosque-school"
-     },
-     {
-      "x": 962,
-      "y": 838,
-      "icono": "iconos/2702.svg",
-      "mision": "bosque-school"
-     },
-     {
-      "x": 1018,
-      "y": 1338,
-      "icono": "iconos/1f534.svg",
+      "x": 1221,
+      "y": 831,
+      "icono": "iconos/1f7e3.svg",
       "mision": "bosque-colors"
      },
      {
-      "x": 938,
-      "y": 1346,
-      "icono": "iconos/1f535.svg",
+      "x": 1347,
+      "y": 731,
+      "icono": "iconos/1f7e3.svg",
       "mision": "bosque-colors"
      },
      {
-      "x": 866,
-      "y": 1354,
-      "icono": "iconos/1f7e2.svg",
+      "x": 1404,
+      "y": 616,
+      "icono": "iconos/1f7e3.svg",
       "mision": "bosque-colors"
      },
      {
-      "x": 1586,
-      "y": 1114,
-      "icono": "iconos/0031_20e3.svg",
-      "mision": "bosque-numbers"
-     },
-     {
-      "x": 1618,
-      "y": 1090,
-      "icono": "iconos/0032_20e3.svg",
-      "mision": "bosque-numbers"
-     },
-     {
-      "x": 1714,
-      "y": 1026,
-      "icono": "iconos/0033_20e3.svg",
-      "mision": "bosque-numbers"
-     },
-     {
-      "x": 1770,
-      "y": 978,
-      "icono": "iconos/0034_20e3.svg",
-      "mision": "bosque-numbers"
-     },
-     {
-      "x": 1826,
-      "y": 894,
-      "icono": "iconos/0035_20e3.svg",
-      "mision": "bosque-numbers"
-     },
-     {
-      "x": 1186,
-      "y": 1662,
-      "icono": "iconos/1f440.svg",
-      "mision": "bosque-body"
-     },
-     {
-      "x": 1186,
-      "y": 1662,
-      "icono": "iconos/1f442.svg",
-      "mision": "bosque-body"
-     },
-     {
-      "x": 1082,
-      "y": 1798,
-      "icono": "iconos/1f443.svg",
-      "mision": "bosque-body"
-     },
-     {
-      "x": 1546,
-      "y": 1594,
+      "x": 745,
+      "y": 2329,
       "icono": "iconos/1f44b.svg",
       "mision": "bosque-family"
      },
      {
-      "x": 1602,
-      "y": 1666,
-      "icono": "iconos/1f305.svg",
+      "x": 711,
+      "y": 2165,
+      "icono": "iconos/1f44b.svg",
       "mision": "bosque-family"
      },
      {
-      "x": 1722,
-      "y": 1746,
-      "icono": "iconos/1f319.svg",
+      "x": 711,
+      "y": 2165,
+      "icono": "iconos/1f44b.svg",
       "mision": "bosque-family"
      },
      {
-      "x": 1730,
-      "y": 1750,
-      "icono": "iconos/1f64f.svg",
-      "mision": "bosque-family"
+      "x": 1651,
+      "y": 1046,
+      "icono": "iconos/1f440.svg",
+      "mision": "bosque-body"
      },
      {
-      "x": 1770,
-      "y": 1358,
-      "icono": "iconos/reloj-1.webp",
-      "mision": "bosque-time"
+      "x": 1789,
+      "y": 1247,
+      "icono": "iconos/1f440.svg",
+      "mision": "bosque-body"
      },
      {
-      "x": 1850,
-      "y": 1358,
+      "x": 1829,
+      "y": 1477,
+      "icono": "iconos/1f440.svg",
+      "mision": "bosque-body"
+     },
+     {
+      "x": 1307,
+      "y": 2358,
       "icono": "iconos/reloj-3.webp",
       "mision": "bosque-time"
      },
      {
-      "x": 1930,
-      "y": 1358,
-      "icono": "iconos/reloj-6.webp",
+      "x": 1502,
+      "y": 2423,
+      "icono": "iconos/reloj-3.webp",
       "mision": "bosque-time"
      },
      {
-      "x": 2010,
-      "y": 1358,
-      "icono": "",
-      "mision": ""
+      "x": 1880,
+      "y": 2556,
+      "icono": "iconos/reloj-3.webp",
+      "mision": "bosque-time"
      },
      {
-      "x": 2090,
-      "y": 1358,
-      "icono": "",
-      "mision": ""
+      "x": 1697,
+      "y": 903,
+      "icono": "iconos/0033_20e3.svg",
+      "mision": "bosque-numbers"
      },
      {
-      "x": 2170,
-      "y": 1358,
-      "icono": "",
-      "mision": ""
+      "x": 1949,
+      "y": 810,
+      "icono": "iconos/0033_20e3.svg",
+      "mision": "bosque-numbers"
      },
      {
-      "x": 2250,
-      "y": 1358,
-      "icono": "",
-      "mision": ""
-     },
-     {
-      "x": 2330,
-      "y": 1358,
-      "icono": "",
-      "mision": ""
+      "x": 2100,
+      "y": 688,
+      "icono": "iconos/0033_20e3.svg",
+      "mision": "bosque-numbers"
      }
     ],
     "caminable": {
      "celda": 20,
-     "ancho": 140,
-     "alto": 140,
+     "ancho": 115,
+     "alto": 144,
      "filas": [
-      "140",
-      "140",
-      "140",
-      "140",
-      "20,1,95,3,21",
-      "16,8,89,8,19",
-      "15,10,87,10,18",
-      "15,11,86,11,17",
-      "15,11,85,12,17",
-      "15,12,84,13,16",
-      "14,13,84,13,16",
-      "14,13,84,13,16",
-      "14,13,84,12,17",
-      "15,12,84,12,17",
-      "16,12,81,13,18",
-      "16,12,80,13,19",
-      "19,10,77,14,20",
-      "23,7,75,9,1,1,24",
-      "23,9,72,13,23",
-      "24,10,69,9,28",
-      "25,10,67,9,29",
-      "26,10,64,10,30",
-      "27,10,62,10,31",
-      "28,10,60,10,32",
-      "30,8,60,9,33",
-      "31,7,59,8,35",
-      "32,8,53,12,35",
-      "33,7,51,13,36",
-      "33,12,46,12,37",
-      "34,12,44,11,39",
-      "34,12,44,12,38",
-      "36,11,42,13,38",
-      "36,11,42,13,38",
-      "36,12,41,13,38",
-      "36,12,41,12,39",
-      "36,12,42,11,39",
-      "35,12,43,11,39",
-      "36,12,43,9,40",
-      "37,12,42,8,41",
-      "38,12,40,7,43",
-      "40,2,1,8,39,7,43",
-      "43,9,37,8,43",
-      "44,10,35,7,44",
-      "45,11,33,7,44",
-      "46,12,30,8,44",
-      "47,13,27,8,45",
-      "48,12,26,9,45",
-      "50,11,24,9,46",
-      "52,10,22,10,46",
-      "54,8,21,10,47",
-      "54,9,18,11,48",
-      "54,9,17,11,49",
-      "54,10,2,7,5,12,50",
-      "57,19,1,12,51",
-      "57,30,53",
-      "58,27,55",
-      "58,26,56",
-      "59,24,57",
-      "60,22,58",
-      "60,23,57",
-      "8,4,47,24,57",
-      "5,2,1,6,42,27,57",
-      "4,11,17,4,18,28,58",
-      "4,12,14,8,16,31,8,3,3,18,23",
-      "3,13,13,10,3,46,4,43,5",
-      "3,132,5",
-      "3,132,5",
-      "3,132,5",
-      "3,132,5",
-      "3,117,20",
-      "3,45,5,49,12,3,23",
-      "4,11,14,11,14,31,55",
-      "4,10,16,9,15,27,1,3,55",
-      "6,7,18,7,16,27,59",
-      "8,4,20,4,19,27,58",
-      "56,27,57",
-      "56,27,57",
-      "57,26,57",
-      "58,25,57",
-      "58,24,58",
-      "57,25,58",
-      "56,27,57",
-      "56,28,56",
-      "55,9,6,3,2,11,54",
-      "54,9,13,12,52",
-      "54,8,15,13,50",
-      "53,8,17,13,49",
-      "52,9,19,12,48",
-      "51,9,22,10,48",
-      "48,12,24,9,47",
-      "48,11,26,8,47",
-      "44,14,28,13,41",
-      "43,13,31,13,40",
-      "42,13,33,13,39",
-      "41,12,36,12,39",
-      "41,13,35,13,38",
-      "41,13,35,13,38",
-      "41,13,35,13,38",
-      "41,13,35,13,38",
-      "42,11,36,12,39",
-      "42,11,37,13,37",
-      "40,12,39,12,37",
-      "39,11,41,13,36",
-      "39,10,44,2,1,9,35",
-      "39,8,50,9,34",
-      "36,10,52,9,33",
-      "35,10,53,9,33",
-      "35,10,54,8,33",
-      "33,11,56,8,32",
-      "32,10,1,1,57,8,31",
-      "30,11,60,9,30",
-      "30,11,61,9,29",
-      "30,9,64,9,28",
-      "27,11,65,10,27",
-      "26,10,68,10,26",
-      "25,10,70,10,25",
-      "24,10,72,10,24",
-      "18,15,74,9,1,5,18",
-      "16,17,75,16,16",
-      "15,16,78,16,15",
-      "14,16,80,15,15",
-      "14,14,83,15,14",
-      "14,14,84,14,14",
-      "14,15,83,14,14",
-      "14,15,83,14,14",
-      "14,14,84,14,14",
-      "14,14,84,14,14",
-      "14,13,85,14,14",
-      "15,11,87,12,15",
-      "16,10,88,10,16",
-      "18,7,90,8,17",
-      "20,3,95,3,19",
-      "140",
-      "140",
-      "140",
-      "140",
-      "140",
-      "140",
-      "140",
-      "140"
+      "115",
+      "115",
+      "115",
+      "115",
+      "115",
+      "115",
+      "115",
+      "115",
+      "115",
+      "115",
+      "115",
+      "115",
+      "115",
+      "115",
+      "115",
+      "115",
+      "115",
+      "115",
+      "115",
+      "56,3,56",
+      "53,9,53",
+      "52,12,27,4,20",
+      "51,14,23,9,18",
+      "23,1,26,16,21,12,16",
+      "19,9,21,18,3,1,15,14,15",
+      "18,11,20,18,1,5,12,16,14",
+      "17,13,18,26,10,17,14",
+      "16,15,17,26,10,18,4,2,7",
+      "15,17,16,26,10,18,2,5,6",
+      "15,17,16,26,9,19,2,6,5",
+      "14,19,15,26,9,19,1,7,5",
+      "14,19,15,26,9,19,1,7,5",
+      "14,19,15,26,10,26,5",
+      "14,19,16,24,11,25,6",
+      "14,19,16,24,11,25,6",
+      "14,19,17,23,12,23,7",
+      "15,17,19,21,13,23,7",
+      "15,17,20,19,15,21,8",
+      "16,15,23,16,17,20,8",
+      "17,13,28,11,20,17,9",
+      "10,20,26,13,19,18,9",
+      "9,22,22,15,17,19,11",
+      "9,23,19,15,16,20,13",
+      "9,26,13,17,13,21,16",
+      "9,28,5,25,9,21,18",
+      "10,58,6,21,20",
+      "12,57,4,19,23",
+      "22,48,1,18,26",
+      "29,26,4,27,29",
+      "31,21,10,23,30",
+      "34,16,13,23,29",
+      "36,14,14,23,28",
+      "43,8,14,12,1,9,28",
+      "43,9,14,9,4,9,27",
+      "44,9,14,7,6,9,26",
+      "45,8,15,4,9,9,25",
+      "45,9,28,9,24",
+      "46,9,28,13,19",
+      "47,14,22,15,17",
+      "47,15,22,15,16",
+      "46,17,21,16,15",
+      "46,18,20,17,14",
+      "45,19,19,19,13",
+      "44,21,18,19,13",
+      "44,21,17,20,13",
+      "43,22,17,21,12",
+      "43,22,17,21,12",
+      "43,21,18,21,12",
+      "42,8,1,13,18,21,12",
+      "42,8,1,12,19,21,12",
+      "42,7,3,11,19,20,13",
+      "41,8,4,8,22,19,13",
+      "41,8,7,3,24,18,14",
+      "41,7,36,17,14",
+      "41,8,36,15,15",
+      "41,9,36,13,16",
+      "41,10,36,10,18",
+      "42,10,36,7,20",
+      "43,12,33,7,20",
+      "44,14,30,7,20",
+      "45,16,27,7,20",
+      "46,16,26,8,19",
+      "47,16,25,8,19",
+      "48,16,25,7,19",
+      "51,14,24,8,18",
+      "54,12,24,7,18",
+      "57,10,23,8,17",
+      "58,10,23,7,17",
+      "59,10,22,8,16",
+      "60,10,21,8,16",
+      "30,7,24,10,20,7,17",
+      "28,11,23,9,20,7,17",
+      "26,14,23,8,20,7,17",
+      "25,16,23,7,20,7,17",
+      "25,17,21,8,20,7,17",
+      "24,19,20,7,20,8,17",
+      "23,20,20,7,20,7,18",
+      "23,20,20,7,20,7,18",
+      "23,21,19,7,8,4,6,9,18",
+      "23,21,18,8,6,9,2,10,18",
+      "23,21,18,7,6,22,18",
+      "23,21,17,8,5,22,19",
+      "23,21,15,10,4,22,20",
+      "23,20,15,11,3,21,22",
+      "24,19,13,12,4,20,23",
+      "24,18,13,12,5,19,24",
+      "25,17,12,12,6,18,25",
+      "26,15,11,12,8,17,26",
+      "27,13,11,12,9,17,26",
+      "28,11,10,12,11,16,27",
+      "31,9,8,14,11,15,27",
+      "33,7,7,15,11,14,28",
+      "33,7,5,18,11,13,28",
+      "33,7,3,22,10,10,30",
+      "33,7,1,13,2,10,11,7,31",
+      "34,19,4,11,47",
+      "34,18,5,13,45",
+      "34,16,8,16,41",
+      "33,15,11,22,34",
+      "31,15,15,24,30",
+      "29,15,19,25,27",
+      "16,8,3,15,23,26,7,4,13",
+      "15,25,26,27,3,9,10",
+      "14,24,30,26,1,11,9",
+      "13,23,38,33,8",
+      "12,23,45,28,7",
+      "12,21,51,24,7",
+      "12,19,56,21,7",
+      "12,17,60,20,6",
+      "12,17,61,19,6",
+      "12,16,64,17,6",
+      "12,16,64,17,6",
+      "12,16,64,16,7",
+      "13,14,66,15,7",
+      "14,13,66,14,8",
+      "15,11,68,13,8",
+      "16,8,71,10,10",
+      "97,7,11",
+      "115",
+      "115",
+      "115",
+      "115",
+      "115",
+      "115"
      ]
-    }
+    },
+    "letreros": [
+     {
+      "x": 1009,
+      "y": 1132,
+      "lleva": [
+       "bosque-school",
+       "bosque-colors",
+       "bosque-numbers",
+       "bosque-body"
+      ]
+     },
+     {
+      "x": 825,
+      "y": 2423,
+      "lleva": [
+       "bosque-family",
+       "bosque-pozo"
+      ]
+     },
+     {
+      "x": 1192,
+      "y": 2265,
+      "lleva": [
+       "bosque-time",
+       "bosque-pozo"
+      ]
+     },
+     {
+      "x": 573,
+      "y": 989,
+      "lleva": [
+       "bosque-school"
+      ]
+     },
+     {
+      "x": 1192,
+      "y": 946,
+      "lleva": [
+       "bosque-colors",
+       "bosque-numbers"
+      ]
+     },
+     {
+      "x": 1582,
+      "y": 1032,
+      "lleva": [
+       "bosque-body",
+       "bosque-numbers"
+      ]
+     }
+    ]
    },
    "escenas": {
     "intro": {

@@ -1301,6 +1301,52 @@ img {
   animation: titilar 2.4s ease-in-out infinite;
 }
 
+/* Letreros de los cruces: una tabla de madera con el dibujo de cada lugar al que lleva. */
+.letrero {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translate(-50%, -100%);
+}
+
+.letrero__tabla {
+  display: flex;
+  gap: 4px;
+  padding: 5px;
+  border-radius: 10px;
+  background: #e9c48f;
+  border: 3px solid #8a5a2b;
+  box-shadow: 0 3px 0 #6b4220, 0 6px 10px rgb(60 40 20 / 0.25);
+}
+
+.letrero__lugar {
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 8px;
+  background: #fff8ea;
+  padding: 0;
+  cursor: pointer;
+}
+
+.letrero__lugar:active {
+  transform: scale(0.92);
+}
+
+.letrero__lugar.es-hecha {
+  background: #d8f0c8;
+}
+
+.letrero__palo {
+  width: 8px;
+  height: 34px;
+  background: #8a5a2b;
+  border-radius: 0 0 3px 3px;
+}
+
 /* Pistas en el piso: dicen a dónde lleva cada camino. */
 .huella {
   position: absolute;

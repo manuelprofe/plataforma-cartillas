@@ -1112,7 +1112,7 @@ export function Mundo({ territorio, heroe, estelas, accesorios, cinematicas, ayu
                     backgroundImage: `url(${base + mundo.mapa})`,
                     backgroundSize: `${mundo.ancho}px ${mundo.alto}px`,
                     backgroundPosition: `${mc.r - mc.x}px ${mc.r - mc.y}px`,
-                    animationDelay: `${(i % 8) * 0.12}s`,
+                    animationDelay: `${mc.retraso ?? (i % 8) * 0.12}s`,
                   }}
                   aria-hidden="true"
                 />

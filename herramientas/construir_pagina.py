@@ -12,6 +12,7 @@ Si cambia la imagen del mapa hay que volver a calcar CAMINOS y LUGARES.
 """
 import json
 import math
+import random
 import sys
 from collections import deque
 
@@ -111,7 +112,7 @@ APARECEN = [
     ('bosque-family-2', 'tulipanes', 80, (220, 760)), ('bosque-family-3', 'banca', 100, (350, 760)),
     ('bosque-time-2', 'tulipanes', 80, (760, 720)), ('bosque-pozo', 'tulipanes', 80, (545, 430)),
 ]
-RADIO_MANCHA = 230   # en el mundo: lo que colorea cada misión alrededor de su punto
+PASO_MANCHA = 300    # separación (y radio) de las manchas de color que cubren la página
 
 # Letreros: en cada cruce, hacia dónde queda cada lugar y el color del camino que hay que buscar.
 # 'puente' es la puerta a la página siguiente. El juego dibuja el ícono y una flecha de ese color.
@@ -276,6 +277,23 @@ def main():
     for n, a, q, c in OBJETOS:
         x, y = P(*q)
         objetos.append({'imagen': f'pagina/{n}.webp', 'ancho': a, 'x': x, 'y': y, 'choque': c, 'zona': EDIFICIO.get(n) or mision_cercana(x, y)})
+    # Bosquecitos en lo blanco entre caminos: grupos de árboles donde no estorban ni tapan nada.
+    azar = random.Random(5)
+    ocupados = [(o['x'], o['y']) for o in objetos]
+    atajos_mundo = lineas_mundo([a['puntos'] for a in ATAJOS.values()])
+    for j in range(40, 1000, 62):
+        for i in range(30, 1000, 55):
+            x, y = P(i + azar.uniform(-18, 18), j + azar.uniform(-18, 18))
+            if azar.random() > 0.62 or not (60 < x < MUNDO_ANCHO - 60 and 140 < y < MUNDO_ALTO - 30):
+                continue
+            if fuera_de_lo_base(x, y) < 70 or any(distancia_segmento(x, y, l[k], l[k + 1]) < MEDIO_CAMINO + 70 for l in atajos_mundo for k in range(len(l) - 1)):
+                continue
+            if any(math.hypot(x - ox, y - oy) < 115 for ox, oy in ocupados):
+                continue
+            n = azar.choice(['arbol-1', 'arbol-2', 'arbol-3', 'arbol-1', 'arbol-2', 'arbusto'])
+            ancho = {'arbol-1': 140, 'arbol-2': 105, 'arbol-3': 140, 'arbusto': 95}[n]
+            ocupados.append((x, y))
+            objetos.append({'imagen': f'pagina/{n}.webp', 'ancho': round(ancho * azar.uniform(0.85, 1.1)), 'x': round(x), 'y': round(y), 'choque': 0, 'zona': mision_cercana(x, y)})
     for mision, n, a, q in APARECEN:
         x, y = P(*q)
         objetos.append({'imagen': f'pagina/{n}.webp', 'ancho': a, 'x': x, 'y': y, 'choque': 0, 'aparece': mision})
@@ -297,14 +315,21 @@ def main():
         c['aparece'] = mision
 
     # Manchas de color: cada misión colorea alrededor de su punto; cada atajo, a lo largo de su línea.
-    manchas = [{'x': x, 'y': y, 'r': RADIO_MANCHA if m != 'bosque-pozo' else 170, 'zona': m} for m, (x, y) in puntos_mision.items()]
-    for a in ATAJOS.values():
-        linea = lineas_mundo([a['puntos']])[0]
-        for p0, p1 in zip(linea, linea[1:]):
-            n = max(1, round(math.dist(p0, p1) / 110))
-            for k in range(n):
-                manchas.append({'x': round(p0[0] + (p1[0] - p0[0]) * k / n), 'y': round(p0[1] + (p1[1] - p0[1]) * k / n), 'r': 120, 'zona': a['abre']})
-        manchas.append({'x': linea[-1][0], 'y': linea[-1][1], 'r': 120, 'zona': a['abre']})
+    # Manchas de color: una rejilla que cubre toda la página. Cada una es de la misión más cercana
+    # (o del atajo, si lo toca), y se destapa con un retraso según la distancia: el color se riega.
+    def zona_de(x, y):
+        for a in ATAJOS.values():
+            l = lineas_mundo([a['puntos']])[0]
+            if any(distancia_segmento(x, y, l[k], l[k + 1]) < PASO_MANCHA * 0.75 for k in range(len(l) - 1)):
+                return a['abre'], 0.4
+        m = mision_cercana(x, y)
+        return m, round(math.hypot(puntos_mision[m][0] - x, puntos_mision[m][1] - y) / 1400, 2)
+    manchas = []
+    for j in range(math.ceil(MUNDO_ALTO / PASO_MANCHA) + 1):
+        for i in range(math.ceil(MUNDO_ANCHO / PASO_MANCHA) + 1):
+            x, y = i * PASO_MANCHA, j * PASO_MANCHA
+            zona, retraso = zona_de(x, y)
+            manchas.append({'x': x, 'y': y, 'r': PASO_MANCHA, 'zona': zona, 'retraso': retraso})
 
     # Caminos con su color, para que el juego diga "sigue el camino amarillo" según la ruta.
     tramos = [{'nombre': COLORES[k][0], 'color': hex_de(COLORES[k][1]), 'puntos': [list(P(*q)) for q in v]} for k, v in CAMINOS.items()]

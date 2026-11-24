@@ -1941,6 +1941,374 @@
       "zona": "bosque-family-2"
      },
      {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 149,
+      "x": 459,
+      "y": 156,
+      "choque": 0,
+      "zona": "bosque-school"
+     },
+     {
+      "imagen": "pagina/arbol-2.webp",
+      "ancho": 114,
+      "x": 1047,
+      "y": 163,
+      "choque": 0,
+      "zona": "bosque-colors"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 129,
+      "x": 1430,
+      "y": 163,
+      "choque": 0,
+      "zona": "bosque-colors-3"
+     },
+     {
+      "imagen": "pagina/arbol-3.webp",
+      "ancho": 125,
+      "x": 1945,
+      "y": 148,
+      "choque": 0,
+      "zona": "bosque-numbers-3"
+     },
+     {
+      "imagen": "pagina/arbol-3.webp",
+      "ancho": 149,
+      "x": 679,
+      "y": 289,
+      "choque": 0,
+      "zona": "bosque-school-2"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 141,
+      "x": 1188,
+      "y": 274,
+      "choque": 0,
+      "zona": "bosque-colors-3"
+     },
+     {
+      "imagen": "pagina/arbusto.webp",
+      "ancho": 82,
+      "x": 1348,
+      "y": 273,
+      "choque": 0,
+      "zona": "bosque-colors-3"
+     },
+     {
+      "imagen": "pagina/arbusto.webp",
+      "ancho": 82,
+      "x": 1705,
+      "y": 284,
+      "choque": 0,
+      "zona": "bosque-numbers"
+     },
+     {
+      "imagen": "pagina/arbusto.webp",
+      "ancho": 94,
+      "x": 1834,
+      "y": 327,
+      "choque": 0,
+      "zona": "bosque-numbers"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 129,
+      "x": 2059,
+      "y": 279,
+      "choque": 0,
+      "zona": "bosque-numbers-3"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 151,
+      "x": 214,
+      "y": 468,
+      "choque": 0,
+      "zona": "bosque-school"
+     },
+     {
+      "imagen": "pagina/arbol-3.webp",
+      "ancho": 143,
+      "x": 703,
+      "y": 470,
+      "choque": 0,
+      "zona": "bosque-school-2"
+     },
+     {
+      "imagen": "pagina/arbol-3.webp",
+      "ancho": 152,
+      "x": 2088,
+      "y": 473,
+      "choque": 0,
+      "zona": "bosque-numbers-3"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 138,
+      "x": 1550,
+      "y": 682,
+      "choque": 0,
+      "zona": "bosque-numbers"
+     },
+     {
+      "imagen": "pagina/arbol-3.webp",
+      "ancho": 136,
+      "x": 935,
+      "y": 800,
+      "choque": 0,
+      "zona": "bosque-colors"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 131,
+      "x": 2199,
+      "y": 805,
+      "choque": 0,
+      "zona": "bosque-numbers-3"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 128,
+      "x": 84,
+      "y": 1036,
+      "choque": 0,
+      "zona": "bosque-school"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 124,
+      "x": 2230,
+      "y": 966,
+      "choque": 0,
+      "zona": "bosque-numbers-3"
+     },
+     {
+      "imagen": "pagina/arbol-2.webp",
+      "ancho": 95,
+      "x": 78,
+      "y": 1172,
+      "choque": 0,
+      "zona": "bosque-school-3"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 130,
+      "x": 439,
+      "y": 1194,
+      "choque": 0,
+      "zona": "bosque-school-3"
+     },
+     {
+      "imagen": "pagina/arbol-2.webp",
+      "ancho": 104,
+      "x": 797,
+      "y": 1195,
+      "choque": 0,
+      "zona": "bosque-pozo"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 137,
+      "x": 1443,
+      "y": 1189,
+      "choque": 0,
+      "zona": "bosque-body"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 150,
+      "x": 787,
+      "y": 1327,
+      "choque": 0,
+      "zona": "bosque-pozo"
+     },
+     {
+      "imagen": "pagina/arbol-3.webp",
+      "ancho": 143,
+      "x": 1562,
+      "y": 1336,
+      "choque": 0,
+      "zona": "bosque-body"
+     },
+     {
+      "imagen": "pagina/arbol-2.webp",
+      "ancho": 114,
+      "x": 571,
+      "y": 1565,
+      "choque": 0,
+      "zona": "bosque-family"
+     },
+     {
+      "imagen": "pagina/arbol-2.webp",
+      "ancho": 106,
+      "x": 1329,
+      "y": 1582,
+      "choque": 0,
+      "zona": "bosque-pozo"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 137,
+      "x": 64,
+      "y": 1700,
+      "choque": 0,
+      "zona": "bosque-family"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 144,
+      "x": 1724,
+      "y": 1744,
+      "choque": 0,
+      "zona": "bosque-body-2"
+     },
+     {
+      "imagen": "pagina/arbol-2.webp",
+      "ancho": 101,
+      "x": 976,
+      "y": 1853,
+      "choque": 0,
+      "zona": "bosque-family-3"
+     },
+     {
+      "imagen": "pagina/arbol-3.webp",
+      "ancho": 133,
+      "x": 1544,
+      "y": 1900,
+      "choque": 0,
+      "zona": "bosque-time"
+     },
+     {
+      "imagen": "pagina/arbol-2.webp",
+      "ancho": 103,
+      "x": 1685,
+      "y": 1869,
+      "choque": 0,
+      "zona": "bosque-time-2"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 149,
+      "x": 345,
+      "y": 2096,
+      "choque": 0,
+      "zona": "bosque-family"
+     },
+     {
+      "imagen": "pagina/arbol-2.webp",
+      "ancho": 114,
+      "x": 950,
+      "y": 2091,
+      "choque": 0,
+      "zona": "bosque-family-3"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 130,
+      "x": 480,
+      "y": 2290,
+      "choque": 0,
+      "zona": "bosque-family"
+     },
+     {
+      "imagen": "pagina/arbusto.webp",
+      "ancho": 104,
+      "x": 1179,
+      "y": 2407,
+      "choque": 0,
+      "zona": "bosque-time"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 131,
+      "x": 91,
+      "y": 2561,
+      "choque": 0,
+      "zona": "bosque-family"
+     },
+     {
+      "imagen": "pagina/arbol-3.webp",
+      "ancho": 124,
+      "x": 690,
+      "y": 2648,
+      "choque": 0,
+      "zona": "bosque-family-2"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 149,
+      "x": 977,
+      "y": 2554,
+      "choque": 0,
+      "zona": "bosque-family-3"
+     },
+     {
+      "imagen": "pagina/arbol-2.webp",
+      "ancho": 101,
+      "x": 1454,
+      "y": 2554,
+      "choque": 0,
+      "zona": "bosque-time"
+     },
+     {
+      "imagen": "pagina/arbusto.webp",
+      "ancho": 91,
+      "x": 1719,
+      "y": 2555,
+      "choque": 0,
+      "zona": "bosque-time-2"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 153,
+      "x": 605,
+      "y": 2750,
+      "choque": 0,
+      "zona": "bosque-family-2"
+     },
+     {
+      "imagen": "pagina/arbol-2.webp",
+      "ancho": 111,
+      "x": 860,
+      "y": 2826,
+      "choque": 0,
+      "zona": "bosque-family-2"
+     },
+     {
+      "imagen": "pagina/arbol-3.webp",
+      "ancho": 123,
+      "x": 1237,
+      "y": 2821,
+      "choque": 0,
+      "zona": "bosque-time"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 138,
+      "x": 1342,
+      "y": 2768,
+      "choque": 0,
+      "zona": "bosque-time"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 124,
+      "x": 1552,
+      "y": 2731,
+      "choque": 0,
+      "zona": "bosque-time"
+     },
+     {
+      "imagen": "pagina/arbol-2.webp",
+      "ancho": 100,
+      "x": 1707,
+      "y": 2802,
+      "choque": 0,
+      "zona": "bosque-time-2"
+     },
+     {
       "imagen": "pagina/tulipanes.webp",
       "ancho": 80,
       "x": 608,
@@ -2498,274 +2866,697 @@
     ],
     "manchas": [
      {
-      "x": 367,
-      "y": 717,
-      "r": 230,
-      "zona": "bosque-school"
+      "x": 0,
+      "y": 0,
+      "r": 300,
+      "zona": "bosque-school",
+      "retraso": 0.58
      },
      {
-      "x": 573,
-      "y": 731,
-      "r": 230,
-      "zona": "bosque-school-2"
+      "x": 300,
+      "y": 0,
+      "r": 300,
+      "zona": "bosque-school",
+      "retraso": 0.51
      },
      {
-      "x": 470,
-      "y": 817,
-      "r": 230,
-      "zona": "bosque-school-3"
+      "x": 600,
+      "y": 0,
+      "r": 300,
+      "zona": "bosque-school-2",
+      "retraso": 0.52
      },
      {
-      "x": 1009,
-      "y": 645,
-      "r": 230,
-      "zona": "bosque-colors"
+      "x": 900,
+      "y": 0,
+      "r": 300,
+      "zona": "bosque-colors",
+      "retraso": 0.47
      },
      {
-      "x": 1215,
-      "y": 665,
-      "r": 230,
-      "zona": "bosque-colors-2"
+      "x": 1200,
+      "y": 0,
+      "r": 300,
+      "zona": "bosque-colors-3",
+      "retraso": 0.45
      },
      {
-      "x": 1341,
-      "y": 616,
-      "r": 230,
-      "zona": "bosque-colors-3"
+      "x": 1500,
+      "y": 0,
+      "r": 300,
+      "zona": "bosque-colors-3",
+      "retraso": 0.45
      },
      {
-      "x": 1697,
-      "y": 645,
-      "r": 230,
-      "zona": "bosque-numbers"
+      "x": 1800,
+      "y": 0,
+      "r": 300,
+      "zona": "bosque-numbers",
+      "retraso": 0.47
      },
      {
-      "x": 1903,
-      "y": 688,
-      "r": 230,
-      "zona": "bosque-numbers-2"
+      "x": 2100,
+      "y": 0,
+      "r": 300,
+      "zona": "bosque-numbers-3",
+      "retraso": 0.46
      },
      {
-      "x": 2041,
-      "y": 645,
-      "r": 230,
-      "zona": "bosque-numbers-3"
+      "x": 2400,
+      "y": 0,
+      "r": 300,
+      "zona": "bosque-numbers-3",
+      "retraso": 0.53
      },
      {
-      "x": 1662,
-      "y": 1347,
-      "r": 230,
-      "zona": "bosque-body"
+      "x": 0,
+      "y": 300,
+      "r": 300,
+      "zona": "bosque-school",
+      "retraso": 0.4
      },
      {
-      "x": 1834,
-      "y": 1477,
-      "r": 230,
-      "zona": "bosque-body-2"
+      "x": 300,
+      "y": 300,
+      "r": 300,
+      "zona": "bosque-school",
+      "retraso": 0.3
      },
      {
-      "x": 2006,
-      "y": 1347,
-      "r": 230,
-      "zona": "bosque-body-3"
+      "x": 600,
+      "y": 300,
+      "r": 300,
+      "zona": "bosque-school-2",
+      "retraso": 0.31
      },
      {
-      "x": 459,
-      "y": 2064,
-      "r": 230,
-      "zona": "bosque-family"
+      "x": 900,
+      "y": 300,
+      "r": 300,
+      "zona": "bosque-colors",
+      "retraso": 0.26
      },
      {
-      "x": 665,
-      "y": 2107,
-      "r": 230,
-      "zona": "bosque-family-2"
+      "x": 1200,
+      "y": 300,
+      "r": 300,
+      "zona": "bosque-colors-3",
+      "retraso": 0.25
      },
      {
-      "x": 871,
-      "y": 2064,
-      "r": 230,
-      "zona": "bosque-family-3"
+      "x": 1500,
+      "y": 300,
+      "r": 300,
+      "zona": "bosque-colors-3",
+      "retraso": 0.4
      },
      {
-      "x": 1513,
-      "y": 2208,
-      "r": 230,
-      "zona": "bosque-time"
+      "x": 1800,
+      "y": 300,
+      "r": 300,
+      "zona": "bosque-numbers",
+      "retraso": 0.26
      },
      {
-      "x": 1708,
-      "y": 2208,
-      "r": 230,
-      "zona": "bosque-time-2"
+      "x": 2100,
+      "y": 300,
+      "r": 300,
+      "zona": "bosque-numbers-3",
+      "retraso": 0.25
      },
      {
-      "x": 1146,
-      "y": 1347,
-      "r": 170,
-      "zona": "bosque-pozo"
+      "x": 2400,
+      "y": 300,
+      "r": 300,
+      "zona": "bosque-numbers-3",
+      "retraso": 0.36
      },
      {
-      "x": 516,
-      "y": 1892,
-      "r": 120,
-      "zona": "bosque-family-3"
+      "x": 0,
+      "y": 600,
+      "r": 300,
+      "zona": "bosque-school",
+      "retraso": 0.28
      },
      {
-      "x": 453,
-      "y": 1806,
-      "r": 120,
-      "zona": "bosque-family-3"
+      "x": 300,
+      "y": 600,
+      "r": 300,
+      "zona": "bosque-school",
+      "retraso": 0.1
      },
      {
-      "x": 390,
-      "y": 1720,
-      "r": 120,
-      "zona": "bosque-family-3"
+      "x": 600,
+      "y": 600,
+      "r": 300,
+      "zona": "bosque-school-2",
+      "retraso": 0.1
      },
      {
-      "x": 378,
-      "y": 1606,
-      "r": 120,
-      "zona": "bosque-family-3"
+      "x": 900,
+      "y": 600,
+      "r": 300,
+      "zona": "bosque-colors",
+      "retraso": 0.08
      },
      {
-      "x": 367,
-      "y": 1491,
-      "r": 120,
-      "zona": "bosque-family-3"
+      "x": 1200,
+      "y": 600,
+      "r": 300,
+      "zona": "bosque-colors-3",
+      "retraso": 0.4
      },
      {
-      "x": 332,
-      "y": 1362,
-      "r": 120,
-      "zona": "bosque-family-3"
+      "x": 1500,
+      "y": 600,
+      "r": 300,
+      "zona": "bosque-colors-3",
+      "retraso": 0.4
      },
      {
-      "x": 298,
-      "y": 1233,
-      "r": 120,
-      "zona": "bosque-family-3"
+      "x": 1800,
+      "y": 600,
+      "r": 300,
+      "zona": "bosque-colors-3",
+      "retraso": 0.4
      },
      {
-      "x": 283,
-      "y": 1109,
-      "r": 120,
-      "zona": "bosque-family-3"
+      "x": 2100,
+      "y": 600,
+      "r": 300,
+      "zona": "bosque-numbers-3",
+      "retraso": 0.05
      },
      {
-      "x": 267,
-      "y": 984,
-      "r": 120,
-      "zona": "bosque-family-3"
+      "x": 2400,
+      "y": 600,
+      "r": 300,
+      "zona": "bosque-numbers-3",
+      "retraso": 0.26
      },
      {
-      "x": 252,
-      "y": 860,
-      "r": 120,
-      "zona": "bosque-family-3"
+      "x": 0,
+      "y": 900,
+      "r": 300,
+      "zona": "bosque-school",
+      "retraso": 0.29
      },
      {
-      "x": 1995,
-      "y": 1434,
-      "r": 120,
-      "zona": "bosque-body-3"
+      "x": 300,
+      "y": 900,
+      "r": 300,
+      "zona": "bosque-family-3",
+      "retraso": 0.4
      },
      {
-      "x": 2064,
-      "y": 1498,
-      "r": 120,
-      "zona": "bosque-body-3"
+      "x": 600,
+      "y": 900,
+      "r": 300,
+      "zona": "bosque-school-3",
+      "retraso": 0.11
      },
      {
-      "x": 2132,
-      "y": 1563,
-      "r": 120,
-      "zona": "bosque-body-3"
+      "x": 900,
+      "y": 900,
+      "r": 300,
+      "zona": "bosque-colors",
+      "retraso": 0.2
      },
      {
-      "x": 2178,
-      "y": 1720,
-      "r": 120,
-      "zona": "bosque-body-3"
+      "x": 1200,
+      "y": 900,
+      "r": 300,
+      "zona": "bosque-colors-2",
+      "retraso": 0.17
      },
      {
-      "x": 2163,
-      "y": 1816,
-      "r": 120,
-      "zona": "bosque-body-3"
+      "x": 1500,
+      "y": 900,
+      "r": 300,
+      "zona": "bosque-numbers",
+      "retraso": 0.23
      },
      {
-      "x": 2147,
-      "y": 1911,
-      "r": 120,
-      "zona": "bosque-body-3"
+      "x": 1800,
+      "y": 900,
+      "r": 300,
+      "zona": "bosque-numbers-2",
+      "retraso": 0.17
      },
      {
-      "x": 2132,
-      "y": 2007,
-      "r": 120,
-      "zona": "bosque-body-3"
+      "x": 2100,
+      "y": 900,
+      "r": 300,
+      "zona": "bosque-numbers-3",
+      "retraso": 0.19
      },
      {
-      "x": 2109,
-      "y": 2103,
-      "r": 120,
-      "zona": "bosque-body-3"
+      "x": 2400,
+      "y": 900,
+      "r": 300,
+      "zona": "bosque-numbers-3",
+      "retraso": 0.31
      },
      {
-      "x": 2087,
-      "y": 2198,
-      "r": 120,
-      "zona": "bosque-body-3"
+      "x": 0,
+      "y": 1200,
+      "r": 300,
+      "zona": "bosque-school-3",
+      "retraso": 0.43
      },
      {
-      "x": 2064,
-      "y": 2294,
-      "r": 120,
-      "zona": "bosque-body-3"
+      "x": 300,
+      "y": 1200,
+      "r": 300,
+      "zona": "bosque-family-3",
+      "retraso": 0.4
      },
      {
-      "x": 2035,
-      "y": 2408,
-      "r": 120,
-      "zona": "bosque-body-3"
+      "x": 600,
+      "y": 1200,
+      "r": 300,
+      "zona": "bosque-school-3",
+      "retraso": 0.29
      },
      {
-      "x": 2006,
-      "y": 2523,
-      "r": 120,
-      "zona": "bosque-body-3"
+      "x": 900,
+      "y": 1200,
+      "r": 300,
+      "zona": "bosque-pozo",
+      "retraso": 0.2
      },
      {
-      "x": 1330,
-      "y": 588,
-      "r": 120,
-      "zona": "bosque-colors-3"
+      "x": 1200,
+      "y": 1200,
+      "r": 300,
+      "zona": "bosque-pozo",
+      "retraso": 0.11
      },
      {
-      "x": 1422,
-      "y": 552,
-      "r": 120,
-      "zona": "bosque-colors-3"
+      "x": 1500,
+      "y": 1200,
+      "r": 300,
+      "zona": "bosque-body",
+      "retraso": 0.16
      },
      {
-      "x": 1513,
-      "y": 516,
-      "r": 120,
-      "zona": "bosque-colors-3"
+      "x": 1800,
+      "y": 1200,
+      "r": 300,
+      "zona": "bosque-body",
+      "retraso": 0.14
      },
      {
-      "x": 1605,
-      "y": 544,
-      "r": 120,
-      "zona": "bosque-colors-3"
+      "x": 2100,
+      "y": 1200,
+      "r": 300,
+      "zona": "bosque-body-3",
+      "retraso": 0.12
      },
      {
-      "x": 1697,
-      "y": 573,
-      "r": 120,
-      "zona": "bosque-colors-3"
+      "x": 2400,
+      "y": 1200,
+      "r": 300,
+      "zona": "bosque-body-3",
+      "retraso": 0.3
+     },
+     {
+      "x": 0,
+      "y": 1500,
+      "r": 300,
+      "zona": "bosque-family",
+      "retraso": 0.52
+     },
+     {
+      "x": 300,
+      "y": 1500,
+      "r": 300,
+      "zona": "bosque-family-3",
+      "retraso": 0.4
+     },
+     {
+      "x": 600,
+      "y": 1500,
+      "r": 300,
+      "zona": "bosque-pozo",
+      "retraso": 0.41
+     },
+     {
+      "x": 900,
+      "y": 1500,
+      "r": 300,
+      "zona": "bosque-pozo",
+      "retraso": 0.21
+     },
+     {
+      "x": 1200,
+      "y": 1500,
+      "r": 300,
+      "zona": "bosque-pozo",
+      "retraso": 0.12
+     },
+     {
+      "x": 1500,
+      "y": 1500,
+      "r": 300,
+      "zona": "bosque-body",
+      "retraso": 0.16
+     },
+     {
+      "x": 1800,
+      "y": 1500,
+      "r": 300,
+      "zona": "bosque-body-3",
+      "retraso": 0.4
+     },
+     {
+      "x": 2100,
+      "y": 1500,
+      "r": 300,
+      "zona": "bosque-body-3",
+      "retraso": 0.4
+     },
+     {
+      "x": 2400,
+      "y": 1500,
+      "r": 300,
+      "zona": "bosque-body-3",
+      "retraso": 0.3
+     },
+     {
+      "x": 0,
+      "y": 1800,
+      "r": 300,
+      "zona": "bosque-family",
+      "retraso": 0.38
+     },
+     {
+      "x": 300,
+      "y": 1800,
+      "r": 300,
+      "zona": "bosque-family-3",
+      "retraso": 0.4
+     },
+     {
+      "x": 600,
+      "y": 1800,
+      "r": 300,
+      "zona": "bosque-family-3",
+      "retraso": 0.4
+     },
+     {
+      "x": 900,
+      "y": 1800,
+      "r": 300,
+      "zona": "bosque-family-3",
+      "retraso": 0.19
+     },
+     {
+      "x": 1200,
+      "y": 1800,
+      "r": 300,
+      "zona": "bosque-family-3",
+      "retraso": 0.3
+     },
+     {
+      "x": 1500,
+      "y": 1800,
+      "r": 300,
+      "zona": "bosque-time",
+      "retraso": 0.29
+     },
+     {
+      "x": 1800,
+      "y": 1800,
+      "r": 300,
+      "zona": "bosque-body-2",
+      "retraso": 0.23
+     },
+     {
+      "x": 2100,
+      "y": 1800,
+      "r": 300,
+      "zona": "bosque-body-3",
+      "retraso": 0.4
+     },
+     {
+      "x": 2400,
+      "y": 1800,
+      "r": 300,
+      "zona": "bosque-body-3",
+      "retraso": 0.43
+     },
+     {
+      "x": 0,
+      "y": 2100,
+      "r": 300,
+      "zona": "bosque-family",
+      "retraso": 0.33
+     },
+     {
+      "x": 300,
+      "y": 2100,
+      "r": 300,
+      "zona": "bosque-family",
+      "retraso": 0.12
+     },
+     {
+      "x": 600,
+      "y": 2100,
+      "r": 300,
+      "zona": "bosque-family-3",
+      "retraso": 0.4
+     },
+     {
+      "x": 900,
+      "y": 2100,
+      "r": 300,
+      "zona": "bosque-family-3",
+      "retraso": 0.03
+     },
+     {
+      "x": 1200,
+      "y": 2100,
+      "r": 300,
+      "zona": "bosque-family-3",
+      "retraso": 0.24
+     },
+     {
+      "x": 1500,
+      "y": 2100,
+      "r": 300,
+      "zona": "bosque-time",
+      "retraso": 0.08
+     },
+     {
+      "x": 1800,
+      "y": 2100,
+      "r": 300,
+      "zona": "bosque-time-2",
+      "retraso": 0.1
+     },
+     {
+      "x": 2100,
+      "y": 2100,
+      "r": 300,
+      "zona": "bosque-body-3",
+      "retraso": 0.4
+     },
+     {
+      "x": 2400,
+      "y": 2100,
+      "r": 300,
+      "zona": "bosque-time-2",
+      "retraso": 0.5
+     },
+     {
+      "x": 0,
+      "y": 2400,
+      "r": 300,
+      "zona": "bosque-family",
+      "retraso": 0.41
+     },
+     {
+      "x": 300,
+      "y": 2400,
+      "r": 300,
+      "zona": "bosque-family",
+      "retraso": 0.27
+     },
+     {
+      "x": 600,
+      "y": 2400,
+      "r": 300,
+      "zona": "bosque-family-2",
+      "retraso": 0.21
+     },
+     {
+      "x": 900,
+      "y": 2400,
+      "r": 300,
+      "zona": "bosque-family-3",
+      "retraso": 0.24
+     },
+     {
+      "x": 1200,
+      "y": 2400,
+      "r": 300,
+      "zona": "bosque-time",
+      "retraso": 0.26
+     },
+     {
+      "x": 1500,
+      "y": 2400,
+      "r": 300,
+      "zona": "bosque-time",
+      "retraso": 0.14
+     },
+     {
+      "x": 1800,
+      "y": 2400,
+      "r": 300,
+      "zona": "bosque-time-2",
+      "retraso": 0.15
+     },
+     {
+      "x": 2100,
+      "y": 2400,
+      "r": 300,
+      "zona": "bosque-body-3",
+      "retraso": 0.4
+     },
+     {
+      "x": 2400,
+      "y": 2400,
+      "r": 300,
+      "zona": "bosque-time-2",
+      "retraso": 0.51
+     },
+     {
+      "x": 0,
+      "y": 2700,
+      "r": 300,
+      "zona": "bosque-family",
+      "retraso": 0.56
+     },
+     {
+      "x": 300,
+      "y": 2700,
+      "r": 300,
+      "zona": "bosque-family",
+      "retraso": 0.47
+     },
+     {
+      "x": 600,
+      "y": 2700,
+      "r": 300,
+      "zona": "bosque-family-2",
+      "retraso": 0.43
+     },
+     {
+      "x": 900,
+      "y": 2700,
+      "r": 300,
+      "zona": "bosque-family-3",
+      "retraso": 0.45
+     },
+     {
+      "x": 1200,
+      "y": 2700,
+      "r": 300,
+      "zona": "bosque-time",
+      "retraso": 0.42
+     },
+     {
+      "x": 1500,
+      "y": 2700,
+      "r": 300,
+      "zona": "bosque-time",
+      "retraso": 0.35
+     },
+     {
+      "x": 1800,
+      "y": 2700,
+      "r": 300,
+      "zona": "bosque-time-2",
+      "retraso": 0.36
+     },
+     {
+      "x": 2100,
+      "y": 2700,
+      "r": 300,
+      "zona": "bosque-body-3",
+      "retraso": 0.4
+     },
+     {
+      "x": 2400,
+      "y": 2700,
+      "r": 300,
+      "zona": "bosque-time-2",
+      "retraso": 0.61
+     },
+     {
+      "x": 0,
+      "y": 3000,
+      "r": 300,
+      "zona": "bosque-family",
+      "retraso": 0.74
+     },
+     {
+      "x": 300,
+      "y": 3000,
+      "r": 300,
+      "zona": "bosque-family",
+      "retraso": 0.68
+     },
+     {
+      "x": 600,
+      "y": 3000,
+      "r": 300,
+      "zona": "bosque-family-2",
+      "retraso": 0.64
+     },
+     {
+      "x": 900,
+      "y": 3000,
+      "r": 300,
+      "zona": "bosque-family-2",
+      "retraso": 0.66
+     },
+     {
+      "x": 1200,
+      "y": 3000,
+      "r": 300,
+      "zona": "bosque-time",
+      "retraso": 0.61
+     },
+     {
+      "x": 1500,
+      "y": 3000,
+      "r": 300,
+      "zona": "bosque-time",
+      "retraso": 0.57
+     },
+     {
+      "x": 1800,
+      "y": 3000,
+      "r": 300,
+      "zona": "bosque-time-2",
+      "retraso": 0.57
+     },
+     {
+      "x": 2100,
+      "y": 3000,
+      "r": 300,
+      "zona": "bosque-time-2",
+      "retraso": 0.63
+     },
+     {
+      "x": 2400,
+      "y": 3000,
+      "r": 300,
+      "zona": "bosque-time-2",
+      "retraso": 0.75
      }
     ],
     "tramos": [

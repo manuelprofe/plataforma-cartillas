@@ -256,7 +256,7 @@ export interface Territorio {
     letreros?: { x: number; y: number; lleva: { mision: string; color: string; nombre: string; giro: number }[] }[];
     /** La página a lápiz: se muestra encima de `mapa` y cada misión destapa sus manchas de color. */
     mapaLapiz?: string;
-    manchas?: { x: number; y: number; r: number; zona: string }[];
+    manchas?: { x: number; y: number; r: number; zona: string; retraso?: number }[];
     /** Caminos con nombre de color, para decirle al niño cuál seguir. `zona`: atajo que abre esa misión. */
     tramos?: { nombre: string; color: string; puntos: [number, number][]; zona?: string }[];
     /** Atajos cerrados hasta terminar su misión: lo que los tapa mientras tanto. */

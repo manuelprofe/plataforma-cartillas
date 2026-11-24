@@ -78,6 +78,22 @@ def pasto():
     return manchas
 
 
+def cesped(base):
+    """Toda la página de pasto a crayola; las rayas del cuaderno se asoman apenas."""
+    capa = Image.new('RGBA', (W, H), (146, 204, 112, 205))
+    d = ImageDraw.Draw(capa, 'RGBA')
+    azar = random.Random(3)
+    for _ in range(5200):
+        x, y = azar.uniform(0, W), azar.uniform(0, H)
+        s = azar.uniform(10, 34)
+        d.ellipse([x - s, y - s * 0.6, x + s, y + s * 0.6], fill=azar.choice([(120, 185, 92), (168, 218, 128), (132, 196, 100), (182, 226, 140)]) + (azar.randint(50, 110),))
+    for _ in range(2600):  # matitas
+        x, y = azar.uniform(0, W), azar.uniform(0, H)
+        for k in (-1, 0, 1):
+            d.line([(x + k * 4, y), (x + k * 7, y - azar.uniform(8, 15))], fill=(92, 158, 72, 150), width=2)
+    return Image.alpha_composite(base, capa)
+
+
 def raya_central(d, puntos):
     largo = 0
     for a, b in zip(puntos, puntos[1:]):
@@ -109,6 +125,8 @@ def main():
     for version, salida in (('color', salida_color), ('lapiz', salida_lapiz)):
         random.seed(11)
         base = papel().convert('RGBA')
+        if version == 'color':
+            base = cesped(base)
         dp = ImageDraw.Draw(base, 'RGBA')
         for x, y, s, color, alfa in manchas:
             caja = [x - s, y - s * 0.7, x + s, y + s * 0.7]

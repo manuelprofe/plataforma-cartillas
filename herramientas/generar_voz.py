@@ -19,8 +19,8 @@ Para cambiar de voz basta editar VOCES: el nombre del archivo depende de la voz.
 Voces de personajes con ElevenLabs: las frases en español de Goma (y las ayudas sin personaje,
 que dice Goma) se generan con ElevenLabs
 si existe la variable ELEVENLABS_API_KEY (en las sesiones en la nube basta un valor cualquiera:
-el proxy pone la clave). El vocabulario en inglés usa una voz nativa (Emma). Los vecinos y el héroe del niño siguen con
-Kokoro hasta que se aprueben voces para ellos. Con ElevenLabs no hace falta --voces mientras no
+el proxy pone la clave). El vocabulario en inglés usa una voz nativa (Emma). Goma, Postal, los vecinos y el saludo de cada héroe
+usan ElevenLabs; las demás frases del héroe siguen con Kokoro. Con ElevenLabs no hace falta --voces mientras no
 haya frases nuevas de Kokoro.
 """
 import argparse, hashlib, json, os, subprocess, sys, tempfile, urllib.request
@@ -35,6 +35,19 @@ MODELO_EL = 'eleven_v4'
 VOCES_EL = {
     'goma': 'iV6xDQ4wcM3ZcXDx30GB',    # Betty: latina, de caricatura (la misma de los videos, 24 nov)
     None: 'iV6xDQ4wcM3ZcXDx30GB',      # ayudas sin personaje: las dice Goma
+    'postal': 'XgzC6sja29Hfrswp9tbu',  # Winki: caricatura animada
+    'tito': 'WOY6pnQ1WCg0mrOZ54lM',    # Thorthugo
+    'pua': 'iFhPOZcajR7W3sDL39qJ',     # Blackie
+    'abu': 'Yb8JGzcZyW5YYzenhRCm',     # El Abuelo Charlie
+    'nuez': 'U9tZtg3uJtVgXPkvosWR',    # Kate 7
+    'caro': 'zJtOCbdQjTZt7YZtkRDP',    # Natalia
+    'rayo': 'JIfdwGbJNfJKbPNRYqP2',    # Isaak
+}
+# El saludo de cada héroe Garabato con su propia voz (aprobadas por Manuel el 24 nov).
+SALUDO_HEROE = {
+    '¡Hola! Soy Coco.': '2CGcaXd1E04jesxY7nfq',  # Fruna
+    '¡Hola! Soy Nube.': 'CPv3Zr3CQCqE4ZzuCgBP',  # Lulu
+    '¡Hola! Soy Rulo.': 'ihKwLOjVUMG4lgUI6meZ',  # Leo
 }
 # Vocabulario y frases en inglés: voz nativa estadounidense, clara y algo más lenta, para escuchar
 # y pronunciar (Emma, Bright Kids Educator).
@@ -78,6 +91,8 @@ def voz_el(idioma, texto, quien):
         return None
     if idioma == 'en':
         return VOZ_EL_INGLES
+    if texto in SALUDO_HEROE:
+        return SALUDO_HEROE[texto]
     q = quien.get(texto)
     if q is None and texto.startswith(DEL_NINO):
         return None

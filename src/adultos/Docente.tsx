@@ -9,7 +9,8 @@ import { Boton, Encabezado, Enlace, Fila, Hueco, Panel, Farol, Vacio } from './b
 import { Campo, CampoOpciones, Cargado, Confirmar, textoAccion, useCarga, useTitulo } from './comun';
 import { agregarNinos, apodosDe, cambiarPin, cargarGrupos, cartillaDeGrupo, cargarNinos, cargarPaquete, crearMiGrupo, GRADOS, hoyCo, nombreColegio, ponerAutorizacion, ponerPersonaje, reconocidosHoy, retirar, type GrupoDoc, type Nino, type Paquete } from './docente';
 import { Cara, ConCortina, fechaCorta, useAhora } from './docenteComun';
-import { darEstrellas, deshacer, olvidarRechazo, useCola, VALOR, type Motivo } from './estrellas';
+import { darEstrellas, deshacer, olvidarRechazo, useCola, type Motivo } from './estrellas';
+import { Calcomania } from '../Calcomania';
 import { Icono } from './Icono';
 import { Tarjetas, ListaEstrellas } from './Imprimibles';
 import { cargarIndice, cargarTema } from '../materiales/datos';
@@ -99,7 +100,7 @@ export function DocenteInicio({ colegioId }: { colegioId: string | null }) {
                   Proyectar
                 </Boton>
                 <Boton icono="estrella" ruta={rutaGrupo(lista[0].id, '/estrellas')}>
-                  Dar estrellas
+                  Dar calcomanías
                 </Boton>
                 <Boton icono="lista" ruta={rutaGrupo(lista[0].id)}>
                   Lista de {lista[0].nombre}
@@ -110,7 +111,7 @@ export function DocenteInicio({ colegioId }: { colegioId: string | null }) {
               </div>
               {cola.porSubir > 0 && (
                 <Panel filas>
-                  <Fila icono="subir" titulo={`${cola.porSubir} ${cola.porSubir === 1 ? 'estrella' : 'estrellas'} por subir`} detalle="Suben solas cuando hay señal" />
+                  <Fila icono="subir" titulo={`${cola.porSubir} ${cola.porSubir === 1 ? 'calcomanía' : 'calcomanías'} por subir`} detalle="Suben solas cuando hay señal" />
                 </Panel>
               )}
               {cola.rechazo && <Rechazo texto={cola.rechazo} />}
@@ -273,7 +274,7 @@ function Grupo({ grupo, ninos, paquete, sinRed, recargar }: { grupo: GrupoDoc; n
         <p className="meta">Va en la tarjeta de cada niño y en su QR. Solo muestra a los niños con autorización; para entrar hace falta además su PIN.</p>
         <div className="acciones">
           <Boton variante="primario" icono="estrella" ruta={rutaGrupo(grupo.id, '/estrellas')}>
-            Dar estrellas
+            Dar calcomanías
           </Boton>
           <Boton icono="imprimir" ruta={rutaGrupo(grupo.id, '/tarjetas')}>
             Imprimir tarjetas
@@ -377,7 +378,7 @@ function FilaNino({ n, grupo, paquete, sinRed, alCambiar }: { n: Nino; grupo: Gr
             <Boton disabled={bloqueado} onClick={() => void hacer(() => cambiarPin(n.id), { texto: 'PIN nuevo guardado. Se ve solo en la tarjeta impresa.', imprimir: true })}>
               Cambiar PIN
             </Boton>
-            <Confirmar etiqueta="Retirar del grupo" pregunta={`¿Retirar a ${n.apodo}? Se borran su progreso y sus estrellas.`} si="Sí, retirar" disabled={bloqueado} alConfirmar={() => void hacer(() => retirar(n.id))} />
+            <Confirmar etiqueta="Retirar del grupo" pregunta={`¿Retirar a ${n.apodo}? Se borran su progreso y sus calcomanías.`} si="Sí, retirar" disabled={bloqueado} alConfirmar={() => void hacer(() => retirar(n.id))} />
           </div>
           {sinRed && <p className="meta">{SIN_INTERNET} para cambiar algo de un niño.</p>}
           {aviso && (
@@ -465,12 +466,12 @@ function AgregarNinos({ grupo, ninos, paquete, sinRed, alListo, campo }: { grupo
   );
 }
 
-// ---------------------------------------------------------------- Dar estrellas
+// ---------------------------------------------------------------- Dar calcomanías
 
 const NOMBRE_MOTIVO: Record<Motivo, string> = { participar: 'participar', colaborar: 'colaborar' };
 
 function Estrellas({ grupo, ninos, paquete }: { grupo: GrupoDoc; ninos: Nino[]; paquete: Paquete }) {
-  useTitulo(`Estrellas · ${grupo.nombre}`);
+  useTitulo(`Calcomanías · ${grupo.nombre}`);
   const cola = useCola();
   const ids = ninos.map((n) => n.id);
   const hoy = useCarga(() => reconocidosHoy(ids), `hoy-${grupo.id}-${ids.length}`);
@@ -499,11 +500,11 @@ function Estrellas({ grupo, ninos, paquete }: { grupo: GrupoDoc; ninos: Nino[]; 
 
   return (
     <>
-      <Encabezado titulo={`Estrellas · ${grupo.nombre}`} meta="Toque a un niño y elija. Participar vale 10 y colaborar 15. Una estrella guardada no se quita." volver={{ ruta: rutaGrupo(grupo.id), etiqueta: `Grupo ${grupo.nombre}` }} />
+      <Encabezado titulo={`Calcomanías · ${grupo.nombre}`} meta="Toque a un niño y elija mano levantada (participar) o dos manos (colaborar). Cada una es una calcomanía, y una calcomanía pegada no se quita." volver={{ ruta: rutaGrupo(grupo.id), etiqueta: `Grupo ${grupo.nombre}` }} />
       {cola.rechazo && <Rechazo texto={cola.rechazo} />}
       {ninos.length === 0 ? (
         <Panel>
-          <Vacio titulo="Todavía no hay niños" texto="Cuando agregue niños al grupo podrá darles estrellas aquí.">
+          <Vacio titulo="Todavía no hay niños" texto="Cuando agregue niños al grupo podrá darles calcomanías aquí.">
             <Boton variante="primario" icono="crear" ruta={rutaGrupo(grupo.id)}>
               Agregar niños
             </Boton>
@@ -527,7 +528,11 @@ function Estrellas({ grupo, ninos, paquete }: { grupo: GrupoDoc; ninos: Nino[]; 
                     {reconocido(n.id) && (
                       <span className="punto" role="img" aria-label="Ya reconocido hoy" title="Ya reconocido hoy" />
                     )}
-                    {reciente && <span className="mas-estrellas">+{VALOR[reciente.motivo]}</span>}
+                    {reciente && (
+                      <span className="mas-estrellas">
+                        +<Calcomania tipo={reciente.motivo} alto={22} />
+                      </span>
+                    )}
                   </>
                 );
                 return (
@@ -602,12 +607,12 @@ function HojaEstrellas({ nino, paquete, alElegir, alCerrar }: { nino: Nino; paqu
           </h2>
         </div>
         <button type="button" ref={primero} className="boton boton--primario hoja__boton" onClick={() => alElegir('participar')}>
+          <Calcomania tipo="participar" alto={34} />
           <span>Participar</span>
-          <span className="hoja__valor">+{VALOR.participar}</span>
         </button>
         <button type="button" className="boton boton--primario hoja__boton" onClick={() => alElegir('colaborar')}>
+          <Calcomania tipo="colaborar" alto={28} />
           <span>Colaborar</span>
-          <span className="hoja__valor">+{VALOR.colaborar}</span>
         </button>
         <Boton variante="texto" ancho onClick={alCerrar}>
           Cerrar

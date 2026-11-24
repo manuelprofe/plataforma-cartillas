@@ -65,6 +65,8 @@ function sinConexion(): Plugin {
         const entra =
           ruta === 'manifest.webmanifest' ||
           ruta.startsWith('iconos-app/') ||
+          // Las calcomanías son de la plataforma (todas las cartillas las usan) y pesan poco.
+          ruta.startsWith('calcomanias/') ||
           // Del armazón se excluye el código de adultos y del telón: el celular del niño no lo
           // descarga al instalar. assets/ es caché primero, así que se guarda la primera vez que se pide.
           (/^assets\/.+\.(js|css)$/.test(ruta) && !/^assets\/(Adultos|Proyectar|base|Material)-/.test(ruta)) ||

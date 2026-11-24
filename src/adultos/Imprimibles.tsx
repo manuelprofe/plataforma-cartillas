@@ -147,7 +147,7 @@ export function ListaEstrellas({ grupo, ninos }: { grupo: GrupoDoc; ninos: Nino[
   return (
     <>
       <div className="no-imprimir">
-        <Encabezado titulo="Lista para estrellas" meta="En orden alfabético, con casillas para participar y colaborar por fecha." volver={{ ruta: rutaGrupo(grupo.id), etiqueta: `Grupo ${grupo.nombre}` }} />
+        <Encabezado titulo="Lista para calcomanías" meta="En orden alfabético, con casillas para participar y colaborar por fecha." volver={{ ruta: rutaGrupo(grupo.id), etiqueta: `Grupo ${grupo.nombre}` }} />
         {ninos.length > 0 && (
           <div className="imprimir-cabeza">
             <Boton variante="primario" icono="imprimir" onClick={() => window.print()}>
@@ -163,7 +163,7 @@ export function ListaEstrellas({ grupo, ninos }: { grupo: GrupoDoc; ninos: Nino[
       ) : (
         <div className="imprimible lista-hoja">
           <h2 className="solo-impresion">Lista del grupo {grupo.nombre} · Mission Stars</h2>
-          <p className="meta lista-hoja__ayuda">P: participar (10 estrellas). C: colaborar (15). Marque la casilla en la fecha de la clase y pase las estrellas a la plataforma después.</p>
+          <p className="meta lista-hoja__ayuda">P: participar (mano levantada). C: colaborar (dos manos). Cada casilla es una calcomanía. Marque la casilla en la fecha de la clase y páselas a la plataforma después.</p>
           <div className="lista-hoja__tabla">
             <table>
               <thead>

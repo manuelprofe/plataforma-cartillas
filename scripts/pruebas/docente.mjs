@@ -141,7 +141,7 @@ try {
     const m = await medir(p);
     comprobar(!m.desborde && m.toque >= 48, `Inicio a 390: sin desborde, toque mínimo ${Math.round(m.toque)}`);
     await foto(p, '01-inicio-390');
-    await p.click('.atajos--cuatro >> text=Dar estrellas');
+    await p.click('.atajos--cuatro >> text=Dar calcomanías');
     await p.waitForSelector('.estrella-fila');
     comprobar(ruta(p) === '/docente/grupos/g1/estrellas', 'Dar estrellas abre la lista de estrellas');
     const orden = await p.$$eval('.estrella-fila .nino__apodo', (e) => e.map((x) => x.textContent));
@@ -162,7 +162,7 @@ try {
     comprobar(toques === 2 && (await estado(p)) === '1 por subir', `una estrella en 2 toques; la barra dice "${await estado(p)}"`);
     const aviso = await p.locator('.aviso-estrella').innerText();
     comprobar(aviso.includes('Sara: participar') && aviso.includes('Deshacer'), `aviso: ${aviso.replace(/\s+/g, ' ')}`);
-    comprobar((await p.locator('.estrella-fila:has-text("Sara") .mas-estrellas').innerText()) === '+10', 'la fila de Sara muestra +10');
+    comprobar((await p.locator('.estrella-fila:has-text("Sara") .mas-estrellas img[src*="calcomanias/participar"]').count()) === 1, 'la fila de Sara muestra +calcomanía de participar');
     await foto(p, '04-aviso-390');
     comprobar(base.llamadas.length === 0, 'durante los 5 s todavía no se guardó nada');
     await p.waitForFunction(() => document.querySelector('.barra__estado')?.textContent?.includes('Todo guardado'), null, { timeout: 9000 });

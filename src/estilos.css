@@ -1134,17 +1134,29 @@ img {
 }
 
 .premio {
-  padding: 4px 28px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 20px 6px 8px;
   border-radius: 999px;
-  background: var(--noche);
-  color: var(--oro);
-  font-size: 2.2rem;
+  background: #fff;
+  border: 3px solid #e3d6bf;
+  color: var(--tinta);
+  font-size: 1.15rem;
   font-weight: 800;
   animation: entrar-carta 0.5s cubic-bezier(0.2, 1.4, 0.4, 1);
 }
 
 .premio--total {
-  font-size: 3rem;
+  font-size: 2.6rem;
+  padding-right: 28px;
+}
+
+/* Calcomanía pegada: se inclina un poquito, como pegada a mano. */
+.calcomania {
+  display: block;
+  filter: drop-shadow(0 2px 2px rgb(44 42 49 / 0.25));
+  rotate: -4deg;
 }
 
 .caritas {
@@ -3062,4 +3074,20 @@ img {
   .rumbo-color {
     animation: none;
   }
+}
+
+.vestidor__cuenta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.vestidor__falta {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.vestidor__falta .calcomania {
+  rotate: 0deg;
 }

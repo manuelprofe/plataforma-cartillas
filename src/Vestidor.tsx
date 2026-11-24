@@ -1,6 +1,7 @@
 // Vestidor: el niño toca a su personaje y le pone lo que ha abierto con sus Mission Stars.
-// Las estrellas no se gastan: cada pieza y cada estela se abre al llegar a su número y se
+// Las calcomanías no se gastan: cada pieza y cada estela se abre al llegar a su número y se
 // queda abierta. Qué piezas hay, cómo se llaman y con cuánto se abren lo dice el contenido.
+import { Calcomania } from './Calcomania';
 import { useState } from 'react';
 import type { Accesorio, Estela, Heroe, Ranura } from './tipos';
 import { sonar } from './audio';
@@ -48,7 +49,9 @@ export function Vestidor({ heroe, accesorios, estelas, estela, estrellas, puesto
     <div className="panel" role="dialog" aria-label="Vestir al personaje">
       <div className="panel__caja vestidor">
         <div className="panel__cabeza">
-          <strong aria-label={`${estrellas} estrellas`}>★ {estrellas}</strong>
+          <strong className="vestidor__cuenta" aria-label={`${estrellas} calcomanías`}>
+            <Calcomania alto={30} /> {estrellas}
+          </strong>
           <button type="button" className="panel__cerrar" onClick={onCerrar} aria-label="Cerrar">
             ✕
           </button>
@@ -70,7 +73,7 @@ export function Vestidor({ heroe, accesorios, estelas, estela, estrellas, puesto
                   type="button"
                   className={`estelas__una${estela === e.id ? ' es-elegido' : ''}${abierta ? '' : ' es-cerrada'}${tiembla === e.id ? ' es-tiembla' : ''}`}
                   aria-pressed={estela === e.id}
-                  aria-label={abierta ? `Estela ${e.id}` : `Estela ${e.id}: se abre con ${e.estrellas} estrellas`}
+                  aria-label={abierta ? `Estela ${e.id}` : `Estela ${e.id}: se abre con ${e.estrellas} calcomanías`}
                   style={{ background: `conic-gradient(${[...e.colores, e.colores[0]].join(', ')})` }}
                   onAnimationEnd={() => setTiembla(null)}
                   onClick={() => {
@@ -79,7 +82,7 @@ export function Vestidor({ heroe, accesorios, estelas, estela, estrellas, puesto
                     elegirEstela(e.id);
                   }}
                 >
-                  {!abierta && <span>★{e.estrellas}</span>}
+                  {!abierta && <span className="vestidor__falta"><Calcomania alto={14} />{e.estrellas}</span>}
                 </button>
               );
             })}
@@ -97,12 +100,12 @@ export function Vestidor({ heroe, accesorios, estelas, estela, estrellas, puesto
                     type="button"
                     className={`vestidor__una${puesta ? ' es-elegido' : ''}${abierta ? '' : ' es-cerrada'}${nueva ? ' es-nueva' : ''}${tiembla === a.id ? ' es-tiembla' : ''}`}
                     aria-pressed={puesta}
-                    aria-label={abierta ? `${a.nombre.es}${nueva ? ' (nueva)' : ''}` : `${a.nombre.es}: se abre con ${a.estrellas} estrellas`}
+                    aria-label={abierta ? `${a.nombre.es}${nueva ? ' (nueva)' : ''}` : `${a.nombre.es}: se abre con ${a.estrellas} calcomanías`}
                     onAnimationEnd={() => setTiembla(null)}
                     onClick={() => tocarPieza(a)}
                   >
                     <img src={base + a.imagen} alt="" width="72" height="72" draggable={false} />
-                    {!abierta && <span>★{a.estrellas}</span>}
+                    {!abierta && <span className="vestidor__falta"><Calcomania alto={16} />{a.estrellas}</span>}
                   </button>
                 );
               })}

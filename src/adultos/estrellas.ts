@@ -13,7 +13,8 @@ export const ESPERA_DESHACER_MS = 5000;
 const REINTENTO_MS = 15000;
 
 export type Motivo = 'participar' | 'colaborar';
-export const VALOR: Record<Motivo, number> = { participar: 10, colaborar: 15 };
+/** Cada reconocimiento del docente es una calcomanía (ya no 10 y 15 puntos). */
+export const VALOR: Record<Motivo, number> = { participar: 1, colaborar: 1 };
 
 export interface Accion {
   accion: string;

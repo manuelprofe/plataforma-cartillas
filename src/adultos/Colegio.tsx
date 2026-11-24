@@ -93,7 +93,7 @@ function Cifras({ c }: { c: Cuenta }) {
         <dd>{fmt(c.misiones)}</dd>
       </div>
       <div>
-        <dt>Estrellas</dt>
+        <dt>Calcomanías</dt>
         <dd>{fmt(c.estrellas)}</dd>
       </div>
     </dl>

@@ -253,7 +253,7 @@ try {
   await p.click('.familia__nino:has-text("Sara")');
   comprobar((await p.locator('text=Ya las reconoce').count()) === 1, 'el selector cambia al resumen de Sara');
   await p.click('.familia__nino:has-text("Thiago")');
-  comprobar((await p.locator('.familia__hoja').innerText()).includes('1 de 17 faroles'), 'el selector cambia al resumen de Thiago');
+  comprobar((await p.locator('.familia__hoja').innerText()).includes('Terminó 1 de 17 misiones'), 'el selector cambia al resumen de Thiago');
   await foto(p, '13-familia-390');
   await p.locator('.familia').evaluate((e) => e.scrollTo(0, e.scrollHeight));
   await foto(p, '14-familia-pie-390');

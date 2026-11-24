@@ -168,7 +168,7 @@ function Resumen({ cartilla, territorio, base, onVolver, onBorrar }: Props) {
 
   // Las mismas frases se muestran y se leen en voz alta.
   const frases = {
-    avance: `${territorio.nombre}. Encendió ${encendidos} de ${faroles.length} faroles y tiene ${progreso.estrellas} estrellas.`,
+    avance: `${territorio.nombre}. Terminó ${encendidos} de ${faroles.length} misiones y tiene ${progreso.estrellas} ${progreso.estrellas === 1 ? 'calcomanía' : 'calcomanías'}.`,
     vecinos: progreso.ayudados.length ? `Ayudó a ${progreso.ayudados.length === 1 ? '1 vecino' : `${progreso.ayudados.length} vecinos`}.` : '',
     dias: dias ? `Esta semana practicó ${dias === 1 ? '1 día' : `${dias} días`}.` : '',
     repaso: repetidas.length ? `Volvió a jugar ${lista(repetidas.map((m) => `"${m.titulo}"`))}${mejoradas.length ? ' y le fue mejor que la primera vez' : ''}.` : '',
@@ -176,7 +176,7 @@ function Resumen({ cartilla, territorio, base, onVolver, onBorrar }: Props) {
     sentir: `Al terminar las misiones eligió ${lista(sentir.map((n, i) => (n ? `${CARAS[i]} ${veces(n)}` : '')).filter(Boolean))}.`,
     preguntar: sentir[2] > sentir[0] ? 'Si quiere, pregúntele qué le pareció difícil.' : '',
     cierre: 'Usted no necesita saber inglés: él o ella le enseña. Cinco minutos bastan.',
-    nota: 'Las estrellas reconocen el esfuerzo en la cartilla; no son la nota.',
+    nota: 'Las calcomanías reconocen el esfuerzo en el cuaderno; no son la nota.',
   };
   const hayCaritas = sentir.some(Boolean);
 
@@ -386,7 +386,7 @@ function Resumen({ cartilla, territorio, base, onVolver, onBorrar }: Props) {
               <img src={imagenDe(progreso.heroe)} alt="" width="48" height="48" />
               <strong>Sin tarjeta</strong>
             </p>
-            <p>¿Borrar el avance de «Sin tarjeta» en este dispositivo? Se quitan las estrellas, el álbum y lo que lleva puesto el personaje. Los niños con tarjeta no se tocan. Durante 7 días se puede recuperar desde esta misma pantalla.</p>
+            <p>¿Borrar el avance de «Sin tarjeta» en este dispositivo? Se quitan las calcomanías, el álbum y lo que lleva puesto el personaje. Los niños con tarjeta no se tocan. Durante 7 días se puede recuperar desde esta misma pantalla.</p>
             <BotonSostenido ms={MS_BORRAR} className="familia__boton familia__boton--peligro" onListo={onBorrar}>
               Borrar (mantenga presionado 2 segundos)
             </BotonSostenido>

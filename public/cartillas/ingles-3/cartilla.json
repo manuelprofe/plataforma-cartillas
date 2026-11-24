@@ -4470,7 +4470,7 @@
   },
   {
    "id": "menta",
-   "estrellas": 100,
+   "estrellas": 8,
    "colores": [
     "#b6fff0",
     "#19c6b1"
@@ -4478,7 +4478,7 @@
   },
   {
    "id": "rosa",
-   "estrellas": 225,
+   "estrellas": 18,
    "colores": [
     "#ffd0e6",
     "#ff5fa2"
@@ -4486,7 +4486,7 @@
   },
   {
    "id": "arcoiris",
-   "estrellas": 350,
+   "estrellas": 28,
    "colores": [
     "#ff5f6d",
     "#ffc371",
@@ -4571,7 +4571,7 @@
     "en": "Striped scarf"
    },
    "ranura": "cuello",
-   "estrellas": 15,
+   "estrellas": 1,
    "imagen": "accesorios/bufanda.webp",
    "punto": [
     0.5,
@@ -4586,7 +4586,7 @@
     "en": "Star glasses"
    },
    "ranura": "cara",
-   "estrellas": 75,
+   "estrellas": 6,
    "imagen": "accesorios/gafas-estrella.webp",
    "punto": [
     0.43,
@@ -4601,7 +4601,7 @@
     "en": "Firefly antenna"
    },
    "ranura": "cabeza",
-   "estrellas": 150,
+   "estrellas": 12,
    "imagen": "accesorios/antena-luciernaga.webp",
    "punto": [
     0.37,
@@ -4616,7 +4616,7 @@
     "en": "Leaf cape"
    },
    "ranura": "espalda",
-   "estrellas": 250,
+   "estrellas": 20,
    "imagen": "accesorios/capa-hojas.webp",
    "punto": [
     0.5,
@@ -4631,7 +4631,7 @@
     "en": "Flower crown"
    },
    "ranura": "cabeza",
-   "estrellas": 300,
+   "estrellas": 24,
    "imagen": "accesorios/corona-flores.webp",
    "punto": [
     0.5,
@@ -4646,7 +4646,7 @@
     "en": "Rocket backpack"
    },
    "ranura": "espalda",
-   "estrellas": 375,
+   "estrellas": 30,
    "imagen": "accesorios/mochila-cohete.webp",
    "punto": [
     0.5,

@@ -2,6 +2,7 @@
 // autoevaluación con caritas. Lo comparten todas las plantillas de juego.
 // La misión se registra apenas se llega aquí: si el niño sale con ✕ o recarga sin
 // tocar una carita, no pierde lo ganado. La carita solo agrega cómo se sintió.
+import { Calcomania, CALCOMANIAS } from '../Calcomania';
 import { useEffect, useRef, useState } from 'react';
 import type { Mision } from '../tipos';
 import { fijarAutoevaluacion, registrarMision, type Premio } from '../progreso';
@@ -25,8 +26,6 @@ const CARITAS: [string, number][] = [
   ['🤔', 1],
 ];
 
-// Dibujo de cada reconocimiento, para que se entienda sin leer.
-const DIBUJO: Partial<Record<Premio['clave'], string>> = { completar: '🚩', pronunciar: '🗣️', mejorar: '🏅', autoevaluar: '😊' };
 
 export function CierreMision({ mision, errores, base, imagenFiesta, pronuncio = false, alRegistrar, onTerminar }: Props) {
   const [premios, setPremios] = useState<Premio[] | null>(null);
@@ -56,7 +55,8 @@ export function CierreMision({ mision, errores, base, imagenFiesta, pronuncio = 
           <div className="premios">
             {premios.map((p) => (
               <div className="premio" key={p.clave}>
-                <span aria-hidden="true">{DIBUJO[p.clave]}</span> ★ +{p.estrellas}
+                <Calcomania tipo={p.clave} alto={64} />
+                <span className="premio__nombre">{CALCOMANIAS[p.clave === 'anterior' ? 'completar' : p.clave].nombre}</span>
               </div>
             ))}
           </div>
@@ -72,7 +72,13 @@ export function CierreMision({ mision, errores, base, imagenFiesta, pronuncio = 
       {premios !== null && sentir !== null && (
         <>
           <div className="premio premio--total">
-            {premios.length ? `★ +${premios.reduce((a, p) => a + p.estrellas, 0)}` : '👍'}
+            {premios.length ? (
+              <>
+                <Calcomania alto={56} /> +{premios.length}
+              </>
+            ) : (
+              '👍'
+            )}
           </div>
           <button type="button" className="boton-seguir" onClick={onTerminar} aria-label="Volver al mapa">
             ➜

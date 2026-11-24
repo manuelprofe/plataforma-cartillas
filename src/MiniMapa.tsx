@@ -33,7 +33,7 @@ export function MiniMapa({ imagen, ancho, alto, yo, misiones, vecinos, puente, o
           </span>
         ))}
         <span className={`minimapa__puente${puente.abierto ? ' es-hecha' : ''}`} style={lugar(puente)}>
-          ★
+          📄
         </span>
         <span className="minimapa__yo" style={lugar(yo)}>
           <img src={yo.imagen} alt="" width="26" draggable={false} />

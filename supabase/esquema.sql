@@ -127,18 +127,12 @@ $$
       or exists (select 1 from estudiantes where id = e and puedo_ver_grupo(grupo_id))
 $$;
 
--- Criterios de Mission Stars (tabla 7 del trabajo de grado).
+-- Cada conducta reconocida vale una calcomanía de su tipo.
 create function public.valor_estrellas(motivo text) returns int
 language sql immutable as
 $$
-  select case motivo
-    when 'participar' then 10
-    when 'completar' then 15
-    when 'pronunciar' then 10
-    when 'colaborar' then 15
-    when 'mejorar' then 15
-    when 'autoevaluar' then 10
-  end
+  -- Cada conducta es una calcomanía; se cuentan por tipo, no por puntos.
+  select case when motivo in ('participar','completar','pronunciar','colaborar','mejorar','autoevaluar') then 1 end
 $$;
 
 -- ------------------------------------------------- Seguridad por filas

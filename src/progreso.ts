@@ -20,15 +20,21 @@ export interface RegistroMision {
  */
 export type Conducta = 'completar' | 'pronunciar' | 'mejorar' | 'autoevaluar' | 'participar' | 'colaborar' | 'anterior';
 
-/** Estrellas de cada conducta. No son contenido de una cartilla: son la regla de la plataforma. */
+/**
+ * Calcomanías de cada conducta: una por conducta, contadas por tipo (decisión de Manuel, 24 nov
+ * 2026, biblia de Cuaderno Vivo). Un niño de 5 años cuenta calcomanías, no suma puntos.
+ * El campo se sigue llamando `estrellas` por compatibilidad con lo guardado y con la base.
+ */
 export const ESCALA: Record<Exclude<Conducta, 'anterior'>, number> = {
-  completar: 15,
-  pronunciar: 10,
-  mejorar: 15,
-  autoevaluar: 10,
-  participar: 10,
-  colaborar: 15,
+  completar: 1,
+  pronunciar: 1,
+  mejorar: 1,
+  autoevaluar: 1,
+  participar: 1,
+  colaborar: 1,
 };
+/** Puntos de antes (10 y 15 por conducta) que equivalen a una calcomanía, para lo ya guardado. */
+const PUNTOS_POR_CALCOMANIA = 12.5;
 
 /** Un reconocimiento. El registro solo crece: nunca se borra ni se cambia una entrada. */
 export interface Estrella {
@@ -99,7 +105,12 @@ export const INVITADO = 'invitado';
 const CLAVE_ACTIVO = 'pc_activo_v1';
 const claveDe = (perfil: string) => (perfil === INVITADO ? CLAVE : `${CLAVE}:${perfil}`);
 
-const sumar = (registro: Estrella[]) => registro.reduce((a, e) => a + e.estrellas, 0);
+/**
+ * Cuántas calcomanías hay: cada reconocimiento es una, aunque se haya guardado con los puntos de
+ * antes. Lo de antes de la opción B (`anterior`) se pasa de puntos a calcomanías.
+ */
+const sumar = (registro: Estrella[]) =>
+  registro.reduce((a, e) => a + (e.conducta === 'anterior' ? Math.max(1, Math.round(e.estrellas / PUNTOS_POR_CALCOMANIA)) : 1), 0);
 /** Fecha local sin hora, AAAA-MM-DD. */
 export const diaDe = (d: Date) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
 const hoy = () => diaDe(new Date());
@@ -118,15 +129,21 @@ export function migrarV3(viejo: Partial<Progreso>): Progreso {
     if (r.mejoras) registro.push({ conducta: 'mejorar', estrellas: ESCALA.mejorar, mision, origen: 'app' });
     if (r.autoeval) registro.push({ conducta: 'autoevaluar', estrellas: ESCALA.autoevaluar, mision, origen: 'app' });
   }
-  const falta = Math.ceil((viejo.estrellas ?? 0) * CAMBIO_V3) - sumar(registro);
-  if (falta > 0) registro.push({ conducta: 'anterior', estrellas: falta, origen: 'app' });
+  // `anterior` guarda puntos de la escala de entonces; `sumar` los pasa a calcomanías.
+  const puntos = registro.length * PUNTOS_POR_CALCOMANIA;
+  const falta = Math.ceil((viejo.estrellas ?? 0) * CAMBIO_V3 - puntos);
+  if (falta >= PUNTOS_POR_CALCOMANIA / 2) registro.push({ conducta: 'anterior', estrellas: falta, origen: 'app' });
   return { ...VACIO, ...viejo, registro, estrellas: sumar(registro) };
 }
 
 function leer(perfil: string): Progreso {
   try {
     const crudo = localStorage.getItem(claveDe(perfil));
-    if (crudo) return { ...VACIO, ...JSON.parse(crudo) };
+    if (crudo) {
+      const p = { ...VACIO, ...JSON.parse(crudo) } as Progreso;
+      // Lo guardado con puntos se vuelve a contar en calcomanías.
+      return { ...p, estrellas: sumar(p.registro ?? []) };
+    }
     if (perfil !== INVITADO) return VACIO;
     const anterior = localStorage.getItem(CLAVE_V3);
     if (anterior) {

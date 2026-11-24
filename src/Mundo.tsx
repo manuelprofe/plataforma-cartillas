@@ -12,6 +12,7 @@ import { Vestidor } from './Vestidor';
 import { Figura, accesoriosPuestos } from './Figura';
 import { decirAyuda } from './juegos/ayuda';
 import { MiniMapa } from './MiniMapa';
+import { Calcomania } from './Calcomania';
 import { atenuarAmbiente, callar, decir, iniciarAmbiente, pararAmbiente, sonar } from './audio';
 import { Dialogo } from './Dialogo';
 import { Caminos, type Circulo, type Punto } from './rutas';
@@ -1275,7 +1276,7 @@ export function Mundo({ territorio, heroe, estelas, accesorios, cinematicas, ayu
                   <span className="nodo__farol">
                     <img src={base + m.icono} alt="" width="44" height="44" draggable={false} />
                   </span>
-                  {hecha && <span className="nodo__sello">{progreso.misiones[m.id].mejoras ? '🏅' : '★'}</span>}
+                  {hecha && <span className="nodo__sello">{progreso.misiones[m.id].mejoras ? '🏅' : '✓'}</span>}
                   {dormida && <span className="nodo__sello nodo__sello--dormida">💤</span>}
                   <span className="globito">{dormida ? '💤' : '▶'}</span>
                 </button>
@@ -1343,18 +1344,20 @@ export function Mundo({ territorio, heroe, estelas, accesorios, cinematicas, ayu
         ))}
       </div>
 
-      <div className="marcador" aria-label={`${progreso.estrellas} estrellas`}>
+      <div className="marcador" aria-label={`${progreso.estrellas} ${progreso.estrellas === 1 ? 'calcomanía' : 'calcomanías'}`}>
         <span className="marcador__estrella" key={progreso.estrellas}>
-          ★
+          <Calcomania alto={36} />
         </span>
         <span>{progreso.estrellas}</span>
       </div>
       <div className="lugar">
         {territorio.nombre}
-        <span className="lugar__luciernagas" aria-label={`Luciérnagas atrapadas: ${atrapadas.size}`}>
-          <i className="lugar__punto" aria-hidden="true" /> {atrapadas.size}/{mundo.luciernagas.length}
-          {restantes === 0 ? ' ✓' : ''}
-        </span>
+        {mundo.luciernagas.length > 0 && (
+          <span className="lugar__luciernagas" aria-label={`Luciérnagas atrapadas: ${atrapadas.size}`}>
+            <i className="lugar__punto" aria-hidden="true" /> {atrapadas.size}/{mundo.luciernagas.length}
+            {restantes === 0 ? ' ✓' : ''}
+          </span>
+        )}
       </div>
 
       {!charla && !panel && (

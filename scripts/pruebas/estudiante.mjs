@@ -122,7 +122,7 @@ try {
   await tocarPin(p, '123');
   await p.waitForSelector('.nino--descanso');
   const t1 = await texto(p);
-  comprobar(t1.includes('Lumi necesita un descanso') && t1.includes('Jugar mientras tanto') && !/bloque/i.test(t1), 'PIN errado 5 veces: descanso y "Jugar mientras tanto", sin "bloqueado"');
+  comprobar(t1.includes('Goma necesita un descanso') && t1.includes('Jugar mientras tanto') && !/bloque/i.test(t1), 'PIN errado 5 veces: descanso y "Jugar mientras tanto", sin "bloqueado"');
   await medir(p, 'descanso');
   await foto(p, '06-descanso-390');
   await p.click('text=¿Quién va a jugar?');

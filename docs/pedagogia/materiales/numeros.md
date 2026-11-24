@@ -1,6 +1,6 @@
 # Materiales del docente: Numbers 1 to 10 (números)
 
-**Territorio:** 1 English Explorer, Bosque de los Sonidos · **Guía:** Cosmo · **Grado:** tercero · **Estado:** borrador para compartir con docentes, sujeto a su revisión.
+**Territorio:** Postales, página 1 del Cuaderno Verde · **Guía:** Goma · **Grado:** tercero · **Estado:** borrador para compartir con docentes, sujeto a su revisión.
 **Cómo se usa:** 2 clases de 55 minutos, con proyector y sin celulares de los niños en el aula. Todo se puede imprimir (regla 9). Lo que se juega en casa es opcional y no cuenta para nada.
 **Límite:** esta secuencia fue diseñada, no medida en aula. Ninguna parte afirma que mejore el aprendizaje o la motivación; el piloto lo dirá.
 
@@ -12,7 +12,7 @@ Convención de campos: **Imagen** = archivo del paquete (carpeta `iconos/`); **A
 
 ## 1. Guía del tema (para el docente)
 
-**Tema y territorio:** Numbers 1 to 10, Bosque de los Sonidos (nivel 1).
+**Tema y territorio:** Numbers 1 to 10, Postales, página 1 del Cuaderno Verde.
 
 **Objetivo (una línea):** que el niño reconozca al oírlos, y cuente en voz alta si quiere, del one al ten, apoyado en los dedos, la cantidad y el numeral.
 
@@ -85,7 +85,7 @@ Las estrellas del docente (participar 10, colaborar 15) se marcan **en la lista 
 | 15 | **Láminas y Escucha y toca.** 5 min: láminas del 1 al 10 con su audio, mostrando los dedos. 10 min: Escucha y toca proyectado, tanda 1 a 5 y tanda 6 a 10. "Todos señalan" con el dedo o con los dedos de la mano; repetir y despacio a la mano | mirar → jugar | Láminas 1 a 10; Escucha y toca | Quién muestra los dedos correctos; quién mira al vecino (andamiaje) | Láminas impresas en el tablero; el docente dice el número y un niño toca la lámina |
 | 15 | **Ficha 1 "Escucha y señala"** en parejas | jugar | Ficha 1 impresa | Quién ayuda al compañero (colaborar) | Igual: es papel |
 | 10 | **Canción "One, two, ¡tres dedos!"** (3 min de pie: una vez solo con música y dedos, otra cantando). Luego **contar en coro** del one al ten con los dedos (7 min), sin micrófono | decir | Letra proyectada; canción | Quién se mueve o canta sin que se le pida | Sin canción: contar en coro con los dedos y tarjetas del 1 al 10 en el tablero |
-| 5 | **Cierre.** "Hoy encendimos 10 números." Hoja de caritas; invitación a contar en casa | autoevaluar | Hoja de caritas | Cómo se sienten | Igual: papel |
+| 5 | **Cierre.** "Hoy dibujamos 10 números en el cuaderno." Hoja de caritas; invitación a contar en casa | autoevaluar | Hoja de caritas | Cómo se sienten | Igual: papel |
 | 5 | Transiciones | | | | |
 
 Notas del docente: ______________________________
@@ -157,9 +157,9 @@ Formato horizontal para proyectar y media carta para imprimir. Cada lámina: num
 
 ---
 
-## 6. Prueba del tema: "El reto de Cosmo"
+## 6. Prueba del tema: "El reto de Postal"
 
-La hoja del niño **no tiene casilla de nota ni de puntaje**. La nota la decide el docente en la escala del colegio y la registra donde siempre. Nadie más la ve. La prueba no enciende faroles ni abre puertas.
+La hoja del niño **no tiene casilla de nota ni de puntaje**. La nota la decide el docente en la escala del colegio y la registra donde siempre. Nadie más la ve. La prueba no completa misiones ni abre páginas.
 
 ### Escucha (6 ítems)
 

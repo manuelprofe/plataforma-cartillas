@@ -1,6 +1,6 @@
 # Materiales del docente: School objects (útiles escolares)
 
-**Territorio:** 1 English Explorer, Bosque de los Sonidos · **Guía:** Cosmo · **Grado:** tercero · **Estado:** borrador para compartir con docentes, sujeto a su revisión.
+**Territorio:** Postales, página 1 del Cuaderno Verde · **Guía:** Goma · **Grado:** tercero · **Estado:** borrador para compartir con docentes, sujeto a su revisión.
 **Cómo se usa:** 2 clases de 55 minutos, con proyector y sin celulares de los niños en el aula. Todo se puede imprimir (regla 9). Lo que se juega en casa es opcional y no cuenta para nada.
 **Límite:** esta secuencia fue diseñada, no medida en aula. Ninguna parte afirma que mejore el aprendizaje o la motivación; el piloto lo dirá.
 
@@ -10,7 +10,7 @@ Convención de campos: **Imagen** = archivo del paquete (carpeta `iconos/`); **A
 
 ## 1. Guía del tema (para el docente)
 
-**Tema y territorio:** School objects, Bosque de los Sonidos (nivel 1).
+**Tema y territorio:** School objects, Postales, página 1 del Cuaderno Verde.
 
 **Objetivo (una línea):** que el niño reconozca al oírlas, y diga si quiere, 10 palabras de útiles escolares, apoyado en el objeto, la imagen y el gesto.
 
@@ -76,11 +76,11 @@ Las estrellas del docente (participar 10, colaborar 15) se marcan **en la lista 
 
 | Min | Momento | Ritmo | Material | Qué observar | Variante sin proyector |
 | --- | --- | --- | --- | --- | --- |
-| 5 | **Apertura.** Cuente en 30 segundos: "En Englishland las palabras perdieron su luz y vamos a encenderlas". Saque de su mochila los 10 objetos (o los que haya) y diga cada palabra una vez. No pida repetir | mirar | Objetos reales: pencil, eraser, notebook, ruler, scissors, backpack, book, pen, crayon, chair | Quién mira con atención, quién toca el objeto | Igual: no usa proyector |
+| 5 | **Apertura.** Cuente en 30 segundos: "Este cuaderno es mágico: lo que aprendemos se dibuja solo y cobra vida". Saque de su mochila los 10 objetos (o los que haya) y diga cada palabra una vez. No pida repetir | mirar | Objetos reales: pencil, eraser, notebook, ruler, scissors, backpack, book, pen, crayon, chair | Quién mira con atención, quién toca el objeto | Igual: no usa proyector |
 | 15 | **Láminas y Escucha y toca.** 4 min: láminas de las 10 palabras, una por pantalla, con su audio. 11 min: juego proyectado Escucha y toca, en dos tandas (grupo A y luego grupo B). Modo "todos señalan" con el dedo en el aire; botón de repetir y de despacio a la mano. Sin marcador por equipos | mirar → jugar | Láminas 1 a 10; juego Escucha y toca con las 10 palabras | Quién señala sin dudar, quién mira al vecino (está bien: es andamiaje), quién pide repetir | Láminas impresas pegadas en el tablero. El docente dice la palabra y un niño por turno toca la lámina; los demás señalan en el aire |
 | 15 | **Ficha 1 "Escucha y señala"** en parejas, y si queda tiempo la ficha 2 Memory | jugar | Ficha 1 impresa (media carta por pareja); ficha 2 recortada si hay tiempo | Quién ayuda al compañero (colaborar), quién se pone de acuerdo | Igual: es papel |
 | 10 | **Decir en coro** con el objeto en la mano: el docente levanta un objeto, dice la palabra y el grupo la repite si quiere; luego 5 palabras en "Di y brilla" proyectado, **sin micrófono** | decir | Objetos, o Di y brilla proyectado (pencil, eraser, notebook, book, chair) | Quién mueve los labios, quién repite en voz baja | Coro con objetos y láminas; sin juego |
-| 5 | **Cierre.** "Hoy encendimos 10 palabras." Hoja de caritas (tres caritas, el niño marca una). Anuncie la práctica de casa como invitación | autoevaluar | Hoja de caritas | Cómo se sienten; cuántos dicen "difícil" | Igual: papel |
+| 5 | **Cierre.** "Hoy dibujamos 10 palabras en el cuaderno." Hoja de caritas (tres caritas, el niño marca una). Anuncie la práctica de casa como invitación | autoevaluar | Hoja de caritas | Cómo se sienten; cuántos dicen "difícil" | Igual: papel |
 | 5 | Transiciones | | | | |
 
 Notas del docente: ______________________________
@@ -154,9 +154,9 @@ Formato horizontal para proyectar y media carta para imprimir. Cada lámina: ima
 
 ---
 
-## 6. Prueba del tema: "El reto de Cosmo"
+## 6. Prueba del tema: "El reto de Postal"
 
-La hoja del niño **no tiene casilla de nota ni de puntaje**. La nota la decide el docente en la escala del colegio y la registra donde siempre. Nadie más la ve. La prueba no enciende faroles ni abre puertas.
+La hoja del niño **no tiene casilla de nota ni de puntaje**. La nota la decide el docente en la escala del colegio y la registra donde siempre. Nadie más la ve. La prueba no completa misiones ni abre páginas.
 
 ### Escucha (6 ítems)
 

@@ -203,7 +203,7 @@ function MenuTema({ tema }: { tema: string }) {
       ) : (
         <main className="telon__cuerpo telon__menu">
           <aside className="telon__guia">
-            <img src={`${base()}${indice.guia ?? 'personajes/cosmo-wave.webp'}`} width="280" height="221" alt="" />
+            <img src={`${base()}${indice.guia ?? 'personajes/goma-senalar.webp'}`} width="280" height="320" alt="" />
             <p>Hoy aprendemos {e.nombre.toLowerCase()}</p>
           </aside>
           <div className="tarjetas">{tarjetas(e, indice)}</div>

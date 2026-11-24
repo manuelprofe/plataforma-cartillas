@@ -1126,11 +1126,11 @@ export function Mundo({ territorio, heroe, estelas, accesorios, cinematicas, ayu
               className={`puerta${puertaAbierta ? ' puerta--abierta' : ''}${cerca === 'puente' ? ' es-cerca' : ''}`}
               style={{ left: puerta.x, top: puerta.y, zIndex: Math.round(puerta.y) }}
               onClick={() => tocarCosa(cosa('puente'))}
-              aria-label={`Puente a ${puerta.destino}: ${farolesEncendidos} de ${faroles.length} faroles encendidos`}
+              aria-label={`Ir a ${puerta.destino}: ${farolesEncendidos} de ${faroles.length} misiones terminadas`}
             >
               <img src={base + personajes[puerta.personaje].imagen} alt="" width="120" height="82" draggable={false} />
               <span className="puerta__cuenta">
-                🏮 {farolesEncendidos}/{faroles.length}
+                📄 {farolesEncendidos}/{faroles.length}
               </span>
               <span className="globito">💬</span>
             </button>

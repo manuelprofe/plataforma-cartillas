@@ -107,6 +107,8 @@ export interface Personaje {
   imagen: string;
   /** Ancho con que se dibuja en el mundo. */
   ancho?: number;
+  /** Idioma en que siempre habla (Postal solo habla inglés); sin él, el que toca según el avance. */
+  idioma?: 'en';
 }
 
 /** Personaje que el niño elige para recorrer el mundo. */

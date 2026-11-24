@@ -23,7 +23,7 @@ import { fijarCartillasEnUso, fijarMomentoSeguro } from './sinConexion';
 const MS_CORTINA = 420;
 /** Celular quieto este rato con más de un niño: al volver se pregunta otra vez quién juega. */
 const MS_QUIETO = 10 * 60_000;
-const IMAGEN_FIESTA = 'personajes/lumi-celebrate.webp';
+const IMAGEN_FIESTA = 'personajes/goma-celebrar.webp';
 
 /**
  * Qué componente juega cada plantilla del contenido. Van en la carga inicial (unos 10 kB
@@ -247,7 +247,7 @@ export function App() {
       base: BASE,
       titulo: cartilla.titulo,
       heroes: cartilla.heroes,
-      lumi: cartilla.imagenes?.portada ?? 'personajes/lumi-wave.webp',
+      lumi: cartilla.imagenes?.portada ?? 'personajes/goma-saludar.webp',
       lumiFiesta: cartilla.imagenes?.fiesta ?? IMAGEN_FIESTA,
       frase,
       hablar: (clave) => {

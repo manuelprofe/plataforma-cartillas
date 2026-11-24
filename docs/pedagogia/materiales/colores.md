@@ -1,6 +1,6 @@
 # Materiales del docente: Colors (colores)
 
-**Territorio:** 1 English Explorer, Bosque de los Sonidos · **Guía:** Cosmo · **Grado:** tercero · **Estado:** borrador para compartir con docentes, sujeto a su revisión.
+**Territorio:** Postales, página 1 del Cuaderno Verde · **Guía:** Goma · **Grado:** tercero · **Estado:** borrador para compartir con docentes, sujeto a su revisión.
 **Cómo se usa:** 2 clases de 55 minutos, con proyector y sin celulares de los niños en el aula. Todo se puede imprimir (regla 9). Lo que se juega en casa es opcional y no cuenta para nada.
 **Límite:** esta secuencia fue diseñada, no medida en aula. Ninguna parte afirma que mejore el aprendizaje o la motivación; el piloto lo dirá.
 
@@ -12,7 +12,7 @@ Convención de campos: **Imagen** = archivo del paquete (carpeta `iconos/`); **A
 
 ## 1. Guía del tema (para el docente)
 
-**Tema y territorio:** Colors, Bosque de los Sonidos (nivel 1).
+**Tema y territorio:** Colors, Postales, página 1 del Cuaderno Verde.
 
 **Objetivo (una línea):** que el niño reconozca al oírlos, y diga si quiere, 10 colores en inglés, apoyado en objetos de su entorno, la imagen y el gesto.
 
@@ -81,11 +81,11 @@ Las estrellas del docente (participar 10, colaborar 15) se marcan **en la lista 
 
 | Min | Momento | Ritmo | Material | Qué observar | Variante sin proyector |
 | --- | --- | --- | --- | --- | --- |
-| 5 | **Repaso y apertura.** Repase 2 o 3 útiles escolares con los objetos. Luego: "Los colores del bosque se volvieron grises. Vamos a encenderlos." Muestre 5 objetos de colores del salón y diga el color una vez, sin pedir repetir | mirar | Objetos del salón rojo, azul, verde, amarillo, naranja | Quién mira, quién toca el objeto | Igual: no usa proyector |
+| 5 | **Repaso y apertura.** Repase 2 o 3 útiles escolares con los objetos. Luego: "Los colores de la página están en blanco. Vamos a pintarlos." Muestre 5 objetos de colores del salón y diga el color una vez, sin pedir repetir | mirar | Objetos del salón rojo, azul, verde, amarillo, naranja | Quién mira, quién toca el objeto | Igual: no usa proyector |
 | 15 | **Láminas y Escucha y toca.** 5 min: láminas de los 10 colores con su audio. 10 min: Escucha y toca proyectado, tanda A (5 colores) y tanda B. "Todos señalan" con el dedo; repetir y despacio a la mano | mirar → jugar | Láminas 1 a 10; Escucha y toca con los 10 colores | Quién señala sin dudar; quién mira al vecino (es andamiaje) | Láminas impresas en el tablero; el docente dice el color y un niño toca la lámina |
 | 15 | **Ficha 1 "Colorea lo que oyes"** en parejas | jugar | Ficha 1; 5 crayolas por pareja (si faltan, se comparten) | Quién ayuda al compañero (colaborar) | Igual: es papel |
 | 10 | **Canción "¡Red, blue, a cantar!"** (5 min, ver §2 de la canción: primera vez solo escuchar y señalar, segunda el coro). Luego **decir en coro** 5 colores señalando el objeto (5 min), sin micrófono | decir | Letra proyectada (círculo del color en cada palabra); canción | Quién se mueve o canta sin que se le pida | Sin canción: coro con láminas y el gesto del color |
-| 5 | **Cierre.** "Hoy encendimos 10 colores." Hoja de caritas; invitación a "Veo, veo un color" en casa | autoevaluar | Hoja de caritas | Cómo se sienten | Igual: papel |
+| 5 | **Cierre.** "Hoy dibujamos 10 colores en el cuaderno." Hoja de caritas; invitación a "Veo, veo un color" en casa | autoevaluar | Hoja de caritas | Cómo se sienten | Igual: papel |
 | 5 | Transiciones | | | | |
 
 Notas del docente: ______________________________
@@ -158,9 +158,9 @@ Formato horizontal para proyectar y media carta para imprimir. Cada lámina: un 
 
 ---
 
-## 6. Prueba del tema: "El reto de Cosmo"
+## 6. Prueba del tema: "El reto de Postal"
 
-La hoja del niño **no tiene casilla de nota ni de puntaje**. La nota la decide el docente en la escala del colegio y la registra donde siempre. Nadie más la ve. La prueba no enciende faroles ni abre puertas.
+La hoja del niño **no tiene casilla de nota ni de puntaje**. La nota la decide el docente en la escala del colegio y la registra donde siempre. Nadie más la ve. La prueba no completa misiones ni abre páginas.
 
 ### Escucha (6 ítems)
 

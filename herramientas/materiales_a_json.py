@@ -328,7 +328,7 @@ def construir_tema(tema, archivo, con_cancion=False):
 
     # ---- Prueba
     tit6, cuerpo6 = secs[6]
-    material("prueba", "prueba", "El reto de Cosmo", f"Prueba del tema · {nombre}", prueba_bloques(cuerpo6, contexto),
+    material("prueba", "prueba", "El reto de Postal", f"Prueba del tema · {nombre}", prueba_bloques(cuerpo6, contexto),
              impresiones=[{"nombre": "Hoja del niño (sin nota ni puntaje)", "incluye": ["item-prueba"], "oculta": ["objetivo"], "copias": 1}, {"nombre": "Clave del docente", "copias": 1}], aviso=aviso_color)
 
     # ---- Nota para la casa
@@ -343,7 +343,7 @@ def construir_tema(tema, archivo, con_cancion=False):
     # ---- Enlaces del planeador a sus materiales
     ids = {m["id"] for m in mats}
     reglas = [(r"lámina", "laminas"), (r"ficha 1", "ficha-1"), (r"ficha 2", "ficha-2"), (r"prueba", "prueba"), (r"decir en parejas|§5", "decir"), (r"nota para la casa", "casa"), (r"caritas", "caritas"), (r"canción", "cancion")]
-    nombres = {"laminas": "Láminas", "ficha-1": "Ficha 1", "ficha-2": "Ficha 2", "prueba": "El reto de Cosmo", "decir": "Decir en parejas", "casa": "Nota para la casa", "caritas": "Hoja de caritas", "cancion": "Canción"}
+    nombres = {"laminas": "Láminas", "ficha-1": "Ficha 1", "ficha-2": "Ficha 2", "prueba": "El reto de Postal", "decir": "Decir en parejas", "casa": "Nota para la casa", "caritas": "Hoja de caritas", "cancion": "Canción"}
     for m in mats:
         if m["tipo"] != "planeador":
             continue
@@ -633,9 +633,9 @@ def main():
     # Los seis temas del territorio, en orden; los que no tienen documento van como pendientes.
     orden = ["escuela", "colores", "numeros"] + [p[0] for p in PENDIENTES]
     for id_, nombre, titulo in PENDIENTES:
-        indice_temas.append({"id": id_, "nombre": nombre, "titulo": titulo, "territorio": "Bosque de los Sonidos", "estado": "pendiente", "materiales": [entrada_cancion(canciones[id_])] if canciones[id_] else []})
+        indice_temas.append({"id": id_, "nombre": nombre, "titulo": titulo, "territorio": "Postales, página 1 del Cuaderno Verde", "estado": "pendiente", "materiales": [entrada_cancion(canciones[id_])] if canciones[id_] else []})
     indice_temas.sort(key=lambda t: orden.index(t["id"]))
-    indice = {"cartilla": "ingles-3", "tipos": tipos, "temas": indice_temas}
+    indice = {"cartilla": "ingles-3", "guia": "personajes/goma-senalar.webp", "tipos": tipos, "temas": indice_temas}
     indice["version"] = hashlib.sha256(json.dumps(indice, ensure_ascii=False).encode()).hexdigest()[:10]
     (SALIDA / "indice.json").write_text(json.dumps(indice, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     print(f"Listo: {len(temas_doc)} temas y su índice en {SALIDA.relative_to(RAIZ)}")

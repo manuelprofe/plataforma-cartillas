@@ -1,5 +1,12 @@
 // Recuerdos: la cinemática ya vista queda en el álbum y se puede volver a ver; sin video no se rompe.
+import { readFileSync } from 'node:fs';
 import { chromium, servir, abrir, alMapa, foto, menorToque, conMisiones, BASE_JUGADO } from './comun.mjs';
+// Mientras la cartilla no tenga cinemática de inicio (la de Cuaderno Vivo está por hacer), no hay recuerdos que probar.
+const cartilla = JSON.parse(readFileSync(new URL('../../public/cartillas/ingles-3/cartilla.json', import.meta.url), 'utf8'));
+if (!cartilla.cinematicas?.inicio) {
+  console.log('sin cinemática de inicio en la cartilla: no hay recuerdos que probar');
+  process.exit(0);
+}
 const servidor = await servir();
 const navegador = await chromium.launch();
 try {

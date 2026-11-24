@@ -23,10 +23,10 @@ export function Dialogo({ lineas, luego, escenas, personajes, base, modo, vozIng
   const [verOtro, setVerOtro] = useState(false);
 
   const linea = actual.lineas[indice];
-  const enIngles = modo !== 'es';
+  const personaje = personajes[linea.quien];
+  const enIngles = modo !== 'es' || personaje.idioma === 'en';
   const principal = enIngles ? linea.en : linea.es;
   const otro = enIngles ? linea.es : linea.en;
-  const personaje = personajes[linea.quien];
 
   const hablar = () => decir(principal, enIngles ? vozIngles : vozEspanol);
 

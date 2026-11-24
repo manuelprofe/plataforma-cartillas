@@ -7,13 +7,13 @@
  "territorios": [
   {
    "id": "bosque",
-   "nombre": "Bosque de los Sonidos",
-   "guia": "cosmo",
+   "nombre": "Postales · Página 1",
+   "guia": "goma",
    "puerta": {
-    "destino": "Valle de las Palabras",
+    "destino": "la página 2",
     "x": 2527,
     "y": 1340,
-    "personaje": "nova",
+    "personaje": "postal",
     "escenaCerrada": "puente-cerrado",
     "escenaAbierta": "puente-abierto"
    },
@@ -59,9 +59,9 @@
      "y": 672,
      "antes": [
       {
-       "quien": "cosmo",
-       "es": "Aquí se apagaron los útiles de la escuela. Escucha y toca el correcto.",
-       "en": "The school things lost their light here. Listen and tap the right one."
+       "quien": "goma",
+       "es": "Aquí faltan los útiles de la escuela. Escucha y toca el correcto.",
+       "en": "The school things are missing here. Listen and tap the right one."
       }
      ],
      "familia": {
@@ -110,7 +110,7 @@
      "y": 204,
      "antes": [
       {
-       "quien": "cosmo",
+       "quien": "goma",
        "es": "¡Mira! Hay más cosas del salón flotando. Atrapa la que escuches.",
        "en": "Look! More classroom things are floating. Catch the one you hear."
       }
@@ -171,7 +171,7 @@
      "y": 797,
      "antes": [
       {
-       "quien": "cosmo",
+       "quien": "goma",
        "es": "Ahora tú le das voz a las palabras. Escucha, y cuando quieras, dila. ¡Cada intento cuenta!",
        "en": "Now you give the words a voice. Listen, and when you're ready, say it. Every try counts!"
       }
@@ -223,9 +223,9 @@
      "y": 1356,
      "antes": [
       {
-       "quien": "cosmo",
-       "es": "Los colores del bosque se volvieron grises. ¡Vamos a encenderlos!",
-       "en": "The colors of the forest turned gray. Let's light them up!"
+       "quien": "goma",
+       "es": "Los colores de la página están en blanco. ¡Vamos a pintarlos!",
+       "en": "The colors on the page are blank. Let's paint them!"
       }
      ],
      "familia": {
@@ -274,7 +274,7 @@
      "y": 1337,
      "antes": [
       {
-       "quien": "cosmo",
+       "quien": "goma",
        "es": "Cinco colores más vuelan por el aire. Escucha y atrapa el que te digo.",
        "en": "Five more colors are flying. Listen and catch the one I say."
       }
@@ -335,9 +335,9 @@
      "y": 1482,
      "antes": [
       {
-       "quien": "cosmo",
-       "es": "¡Tu voz enciende los colores! Escucha cada uno y dilo como te salga.",
-       "en": "Your voice lights up the colors! Listen to each one and say it your way."
+       "quien": "goma",
+       "es": "¡Tu voz pinta los colores! Escucha cada uno y dilo como te salga.",
+       "en": "Your voice paints the colors! Listen to each one and say it your way."
       }
      ],
      "familia": {
@@ -400,9 +400,9 @@
      "y": 642,
      "antes": [
       {
-       "quien": "cosmo",
-       "es": "Los números se escondieron entre los árboles. Empecemos del uno al cinco.",
-       "en": "The numbers are hiding in the trees. Let's count from one to five."
+       "quien": "goma",
+       "es": "Los números se escondieron entre los dibujos. Empecemos del uno al cinco.",
+       "en": "The numbers are hiding in the drawings. Let's count from one to five."
       }
      ],
      "familia": {
@@ -455,7 +455,7 @@
      "y": 206,
      "antes": [
       {
-       "quien": "cosmo",
+       "quien": "goma",
        "es": "¡Ya llegas al cinco! Ahora atrapa del seis al diez.",
        "en": "You can count to five! Now catch six to ten."
       }
@@ -524,7 +524,7 @@
      "y": 769,
      "antes": [
       {
-       "quien": "cosmo",
+       "quien": "goma",
        "es": "Abu quiere oírte contar. Escucha el número y dilo tú.",
        "en": "Abu wants to hear you count. Listen to the number and say it."
       }
@@ -570,7 +570,7 @@
      "y": 1931,
      "antes": [
       {
-       "quien": "cosmo",
+       "quien": "goma",
        "es": "Mira tu cara: ojos, orejas, nariz y boca. Cuando oigas una, tócatela tú también.",
        "en": "Look at your face: eyes, ears, nose and mouth. When you hear one, touch it too!"
       }
@@ -624,7 +624,7 @@
      "y": 2469,
      "antes": [
       {
-       "quien": "cosmo",
+       "quien": "goma",
        "es": "Ahora el resto del cuerpo: cabeza, brazos, manos, piernas y pies. ¡Atrápalos!",
        "en": "Now the rest of the body: head, arms, hands, legs and feet. Catch them!"
       }
@@ -685,7 +685,7 @@
      "y": 2045,
      "antes": [
       {
-       "quien": "cosmo",
+       "quien": "goma",
        "es": "Púa quiere oírte nombrar el cuerpo. Escucha y dilo en voz alta.",
        "en": "Púa wants to hear you name the body. Listen and say it out loud."
       }
@@ -734,7 +734,7 @@
      "y": 1932,
      "antes": [
       {
-       "quien": "cosmo",
+       "quien": "goma",
        "es": "Aquí aprendemos a saludar y a dar las gracias.",
        "en": "Here we learn to say hello and thank you."
       }
@@ -797,7 +797,7 @@
      "y": 2477,
      "antes": [
       {
-       "quien": "cosmo",
+       "quien": "goma",
        "es": "En cada casa vive una familia distinta. Escucha y atrapa a cada persona.",
        "en": "Every home has a different family. Listen and catch each person."
       }
@@ -861,9 +861,9 @@
      "y": 2046,
      "antes": [
       {
-       "quien": "cosmo",
-       "es": "Vamos a saludar a la familia del bosque. Escucha y dilo tú.",
-       "en": "Let's say hello to the forest family. Listen and say it."
+       "quien": "goma",
+       "es": "Vamos a saludar a la familia de la página. Escucha y dilo tú.",
+       "en": "Let's say hello to the family on the page. Listen and say it."
       }
      ],
      "familia": {
@@ -953,9 +953,9 @@
      },
      "antes": [
       {
-       "quien": "cosmo",
-       "es": "El reloj del bosque se detuvo. Escucha la hora y toca el reloj correcto.",
-       "en": "The forest clock stopped. Listen to the time and tap the right clock."
+       "quien": "goma",
+       "es": "El reloj de la página se detuvo. Escucha la hora y toca el reloj correcto.",
+       "en": "The clock on the page stopped. Listen to the time and tap the right clock."
       }
      ]
     },
@@ -1048,7 +1048,7 @@
      "parejas": 4,
      "antes": [
       {
-       "quien": "lumi",
+       "quien": "goma",
        "es": "Este es el pozo de los recuerdos. Gira dos cartas y busca las que van juntas.",
        "en": "This is the memory well. Flip two cards and find the ones that go together."
       }
@@ -1059,24 +1059,16 @@
     }
    ],
    "personajes": {
-    "cosmo": {
-     "nombre": "Cosmo",
-     "imagen": "personajes/cosmo-wave.webp",
+    "goma": {
+     "nombre": "Goma",
+     "imagen": "personajes/goma-saludar.webp",
      "ancho": 96
     },
-    "pixie": {
-     "nombre": "Pixie",
-     "imagen": "personajes/pixie-wave.webp",
-     "ancho": 96
-    },
-    "lumi": {
-     "nombre": "Lumi",
-     "imagen": "personajes/lumi-wave.webp",
-     "ancho": 96
-    },
-    "nova": {
-     "nombre": "Nova",
-     "imagen": "personajes/nova-ready.webp"
+    "postal": {
+     "nombre": "Postal",
+     "imagen": "personajes/postal-saludar.webp",
+     "ancho": 96,
+     "idioma": "en"
     },
     "tito": {
      "nombre": "Tito",
@@ -1120,18 +1112,18 @@
     },
     "habitantes": [
      {
-      "id": "pixie",
-      "personaje": "pixie",
+      "id": "goma",
+      "personaje": "goma",
       "x": 1307,
       "y": 1369,
-      "escena": "intro"
+      "escena": "goma"
      },
      {
-      "id": "cosmo",
-      "personaje": "cosmo",
+      "id": "postal",
+      "personaje": "postal",
       "x": 1472,
       "y": 1384,
-      "escena": "cosmo"
+      "escena": "postal"
      },
      {
       "id": "caro",
@@ -1356,13 +1348,6 @@
       "x": 2178,
       "y": 1303,
       "escena": "rayo"
-     },
-     {
-      "id": "lumi",
-      "personaje": "lumi",
-      "x": 1725,
-      "y": 1654,
-      "escena": "lumi"
      }
     ],
     "luciernagas": [
@@ -3785,24 +3770,24 @@
     "intro": {
      "lineas": [
       {
-       "quien": "pixie",
-       "es": "¡Hola! Soy Pixie. ¡Qué bueno que llegaste!",
-       "en": "Hello! I'm Pixie. I'm so happy you're here!"
+       "quien": "goma",
+       "es": "¡Hola! Soy Goma. Este cuaderno es mágico: lo que aprendes aquí cobra vida.",
+       "en": "Hi! I'm Goma. This notebook is magic: what you learn here comes to life."
       },
       {
-       "quien": "pixie",
-       "es": "Englishland se está apagando. Las palabras perdieron su luz.",
-       "en": "Englishland is fading. The words lost their light."
+       "quien": "goma",
+       "es": "Esta es la primera página de Postales. Aquí aprendemos inglés.",
+       "en": "This is the first page of Postcards. Here we learn English."
       },
       {
-       "quien": "cosmo",
-       "es": "Yo soy Cosmo. Este es mi hogar: el Bosque de los Sonidos.",
-       "en": "I'm Cosmo. This is my home: the Forest of Sounds."
+       "quien": "postal",
+       "es": "¡Hola, amigo! Soy Postal.",
+       "en": "Hello, friend! I'm Postal."
       },
       {
-       "quien": "cosmo",
-       "es": "Cada palabra que aprendes enciende un farol. ¿Me ayudas?",
-       "en": "Every word you learn lights a lantern. Will you help me?",
+       "quien": "goma",
+       "es": "Postal habla en inglés. Cada misión que terminas dibuja algo nuevo en la página. ¿Empezamos?",
+       "en": "Postal speaks English. Every mission you finish draws something new on the page. Shall we start?",
        "opciones": [
         {
          "es": "¡Sí, vamos!",
@@ -3821,19 +3806,19 @@
     "ayuda": {
      "lineas": [
       {
-       "quien": "cosmo",
+       "quien": "goma",
        "es": "Toca la pantalla y caminas hasta tu dedo. ¡Puedes ir a donde quieras!",
        "en": "Touch the screen and you walk to your finger. You can go anywhere!"
       },
       {
-       "quien": "pixie",
+       "quien": "goma",
        "es": "Sigue los dibujos del piso: cada camino te cuenta a dónde lleva.",
        "en": "Follow the pictures on the ground: each path tells you where it goes."
       },
       {
-       "quien": "pixie",
-       "es": "Los vecinos del bosque perdieron sus palabras. ¡Ayúdalos a encontrarlas!",
-       "en": "The forest neighbors lost their words. Help them find them!"
+       "quien": "goma",
+       "es": "Los vecinos de esta página perdieron sus palabras. ¡Ayúdalos a encontrarlas!",
+       "en": "The neighbors on this page lost their words. Help them find them!"
       }
      ],
      "luego": "elegir"
@@ -3841,7 +3826,7 @@
     "elegir": {
      "lineas": [
       {
-       "quien": "cosmo",
+       "quien": "goma",
        "es": "¿A dónde vamos primero? Tú decides.",
        "en": "Where do we go first? You decide.",
        "opciones": [
@@ -3867,97 +3852,58 @@
       }
      ]
     },
-    "lumi": {
-     "lineas": [
-      {
-       "quien": "lumi",
-       "es": "¡Hola! Soy Lumi. ¿Te equivocaste alguna vez? ¡No pasa nada!",
-       "en": "Hello! I'm Lumi. Did you make a mistake? That's okay!"
-      },
-      {
-       "quien": "lumi",
-       "es": "Equivocarse es parte de aprender. Dilo conmigo.",
-       "en": "Mistakes help us learn. Say it with me.",
-       "opciones": [
-        {
-         "es": "I can do it!",
-         "en": "I can do it!"
-        },
-        {
-         "es": "I try again!",
-         "en": "I try again!"
-        }
-       ]
-      },
-      {
-       "quien": "lumi",
-       "es": "¡Así se dice! Sigue explorando.",
-       "en": "That's right! Keep exploring."
-      }
-     ]
-    },
     "despues": {
      "lineas": [
       {
-       "quien": "cosmo",
-       "es": "¡Mira! El bosque tiene más luz. ¿A dónde vamos ahora?",
-       "en": "Look! The forest has more light. Where do we go now?"
+       "quien": "goma",
+       "es": "¡Mira! La página tiene un dibujo nuevo. ¿A dónde vamos ahora?",
+       "en": "Look! The page has a new drawing. Where do we go now?"
       }
      ]
     },
     "puente-cerrado": {
      "lineas": [
       {
-       "quien": "nova",
-       "es": "Soy Nova. Este puente lleva al Valle de las Palabras.",
-       "en": "I'm Nova. This bridge goes to the Valley of Words."
+       "quien": "postal",
+       "es": "¡Hola, amigo! ¡Pronto, la página siguiente!",
+       "en": "Hello, friend! Next page, soon!"
       },
       {
-       "quien": "nova",
-       "es": "Cuando todos los faroles del bosque brillen, el puente se encenderá.",
-       "en": "When all the forest lanterns shine, the bridge will light up."
+       "quien": "goma",
+       "es": "Cuando termines todas las misiones de esta página, Postal la voltea y aparece la siguiente.",
+       "en": "When you finish all the missions on this page, Postal turns it and the next one appears."
       }
      ]
     },
     "puente-abierto": {
      "lineas": [
       {
-       "quien": "nova",
-       "es": "¡Lo lograste! Todos los faroles brillan y el puente se encendió.",
-       "en": "You did it! All the lanterns shine and the bridge lit up."
+       "quien": "postal",
+       "es": "¡Lo lograste! ¡Muy bien, amigo!",
+       "en": "You did it! Great job, friend!"
       },
       {
-       "quien": "nova",
-       "es": "El Valle de las Palabras abrirá muy pronto. ¡Te espero!",
-       "en": "The Valley of Words opens very soon. I'll wait for you!"
+       "quien": "goma",
+       "es": "¡La página está llena! La página 2 se abre muy pronto. ¡Te esperamos!",
+       "en": "The page is full! Page 2 opens very soon. We'll wait for you!"
       }
      ]
-    },
-    "cosmo": {
-     "lineas": [
-      {
-       "quien": "cosmo",
-       "es": "¡Qué bueno verte! Hay faroles por encender y vecinos que necesitan ayuda.",
-       "en": "Good to see you! There are lanterns to light and neighbors who need help."
-      }
-     ],
-     "luego": "elegir"
     },
     "dormida": {
      "lineas": [
       {
-       "quien": "cosmo",
-       "es": "Este farol todavía duerme. Despierta cuando enciendas el que está antes en este camino.",
-       "en": "This lantern is still asleep. It wakes up when you light the one before it on this path."
+       "quien": "goma",
+       "es": "Este dibujo todavía está en blanco. Se dibuja cuando termines el que está antes en este camino.",
+       "en": "This drawing is still blank. It gets drawn when you finish the one before it on this path."
       }
      ]
     },
     "pozo-dormido": {
      "lineas": [
       {
-       "quien": "lumi",
-       "es": "Enciende cualquier farol de un camino y el pozo despertará.",
-       "en": "Light any lantern on a path and the well will wake up."
+       "quien": "goma",
+       "es": "Termina cualquier misión de un camino y el pozo despertará.",
+       "en": "Finish any mission on a path and the well will wake up."
       }
      ]
     },
@@ -3965,18 +3911,18 @@
      "lineas": [
       {
        "quien": "rayo",
-       "es": "¡Correo, correo! Soy Rayo. Llevo cartas al Valle de las Palabras...",
-       "en": "Mail, mail! I'm Rayo. I carry letters to the Valley of Words..."
+       "es": "¡Correo, correo! Soy Rayo. Llevo cartas a la página siguiente...",
+       "en": "Mail, mail! I'm Rayo. I carry letters to the next page..."
       },
       {
        "quien": "rayo",
-       "es": "...pero siempre llego tarde: el reloj del bosque se apagó y el puente también.",
-       "en": "...but I'm always late: the forest clock went dark, and so did the bridge."
+       "es": "...pero siempre llego tarde: el reloj de la página se detuvo.",
+       "en": "...but I'm always late: the clock on this page stopped."
       },
       {
        "quien": "rayo",
-       "es": "Enciende todos los faroles del bosque y el puente se encenderá.",
-       "en": "Light all the forest lanterns and the bridge will light up."
+       "es": "Termina todas las misiones de la página y Postal la voltea.",
+       "en": "Finish all the missions on the page and Postal will turn it."
       }
      ]
     },
@@ -4053,8 +3999,8 @@
      "lineas": [
       {
        "quien": "tito",
-       "es": "¡Red! ¡Mi sombrero es red! ¡Mira cómo brilla!",
-       "en": "Red! My hat is red! Look how it shines!"
+       "es": "¡Red! ¡Mi sombrero es red! ¡Qué bonito se ve!",
+       "en": "Red! My hat is red! It looks so nice!"
       },
       {
        "quien": "tito",
@@ -4076,8 +4022,8 @@
      "lineas": [
       {
        "quien": "abu",
-       "es": "Buenas, Explorer. Soy Abu. Llevo cien años contando las piedras del camino...",
-       "en": "Good day, Explorer. I'm Abu. I've counted the stones on this path for a hundred years..."
+       "es": "Buenas, amigo. Soy Abu. Llevo cien años contando las piedras del camino...",
+       "en": "Good day, friend. I'm Abu. I've counted the stones on this path for a hundred years..."
       },
       {
        "quien": "abu",
@@ -4191,8 +4137,8 @@
      "lineas": [
       {
        "quien": "nuez",
-       "es": "¡Hello! ¡Hello, hello! ¡Ya puedo saludar a todo el bosque!",
-       "en": "Hello! Hello, hello! Now I can greet the whole forest!"
+       "es": "¡Hello! ¡Hello, hello! ¡Ya puedo saludar a todos!",
+       "en": "Hello! Hello, hello! Now I can greet everyone!"
       },
       {
        "quien": "nuez",
@@ -4205,10 +4151,54 @@
      "lineas": [
       {
        "quien": "nuez",
-       "es": "¡Hello, Explorer! ¿Ves? Ya no se me olvida.",
-       "en": "Hello, Explorer! See? I never forget it now."
+       "es": "¡Hello, friend! ¿Ves? Ya no se me olvida.",
+       "en": "Hello, friend! See? I never forget it now."
       }
      ]
+    },
+    "goma": {
+     "lineas": [
+      {
+       "quien": "goma",
+       "es": "¿Te equivocaste? ¡No pasa nada! Soy un borrador: borrar no es perder, es mejorar.",
+       "en": "Did you make a mistake? That's okay! I'm an eraser: erasing isn't losing, it's getting better."
+      },
+      {
+       "quien": "goma",
+       "es": "Equivocarse es parte de aprender. Dilo conmigo.",
+       "en": "Mistakes help us learn. Say it with me.",
+       "opciones": [
+        {
+         "es": "I can do it!",
+         "en": "I can do it!"
+        },
+        {
+         "es": "I try again!",
+         "en": "I try again!"
+        }
+       ]
+      },
+      {
+       "quien": "goma",
+       "es": "¡Así se dice! Sigue explorando.",
+       "en": "That's right! Keep exploring."
+      }
+     ]
+    },
+    "postal": {
+     "lineas": [
+      {
+       "quien": "postal",
+       "es": "¡Hola, amigo! ¡Qué bueno verte!",
+       "en": "Hello, friend! Good to see you!"
+      },
+      {
+       "quien": "goma",
+       "es": "Hay misiones por dibujar y vecinos que necesitan ayuda.",
+       "en": "There are missions to draw and neighbors who need help."
+      }
+     ],
+     "luego": "elegir"
     }
    }
   }
@@ -4367,12 +4357,12 @@
    "en": "Look, over here."
   },
   "atrapa-inicio": {
-   "es": "Atrapa la luz que te digo.",
-   "en": "Catch the light I say."
+   "es": "Atrapa la palabra que te digo.",
+   "en": "Catch the word I say."
   },
   "vestidor-pronto": {
-   "es": "¡Pronto! Sigue encendiendo el bosque.",
-   "en": "Soon! Keep lighting up the forest."
+   "es": "¡Pronto! Sigue llenando la página.",
+   "en": "Soon! Keep filling the page."
   },
   "entrada-quien": {
    "es": "¿Quién va a jugar?",
@@ -4391,24 +4381,24 @@
    "en": "Not those. Try again, calmly"
   },
   "entrada-descanso": {
-   "es": "Lumi necesita un descanso. Busca tu tarjeta o pídele ayuda a un adulto",
-   "en": "Lumi needs a rest. Find your card or ask a grown-up for help"
+   "es": "Goma necesita un descanso. Busca tu tarjeta o pídele ayuda a un adulto",
+   "en": "Goma needs a rest. Find your card or ask a grown-up for help"
   },
   "entrada-ayuda": {
-   "es": "Lumi necesita un descanso. Pídele ayuda a tu profe",
-   "en": "Lumi needs a rest. Ask your teacher for help"
+   "es": "Goma necesita un descanso. Pídele ayuda a tu profe",
+   "en": "Goma needs a rest. Ask your teacher for help"
   },
   "entrada-hola": {
-   "es": "¡Hola! Vamos al bosque",
-   "en": "Hello! Let's go to the forest"
+   "es": "¡Hola! Vamos al cuaderno",
+   "en": "Hello! Let's go to the notebook"
   },
   "entrada-unir": {
    "es": "¿Este camino lo recorriste tú?",
    "en": "Did you walk this path?"
   },
   "entrada-contadas": {
-   "es": "Lumi contó tus estrellas",
-   "en": "Lumi counted your stars"
+   "es": "Goma sumó tu avance",
+   "en": "Goma added up your progress"
   },
   "entrada-sin-red": {
    "es": "Para usar tu tarjeta hace falta internet una vez. Mientras tanto, ¡a jugar!",
@@ -4416,57 +4406,8 @@
   }
  },
  "imagenes": {
-  "portada": "personajes/lumi-wave.webp",
-  "fiesta": "personajes/lumi-celebrate.webp"
- },
- "cinematicas": {
-  "inicio": {
-   "vista": "cine-inicio",
-   "titulo": "Así empezó todo",
-   "videos": {
-    "vertical": "videos/inicio-bosque-9x16.mp4",
-    "horizontal": "videos/inicio-bosque-16x9.mp4"
-   },
-   "poster": "videos/inicio-bosque-poster.webp",
-   "lineas": [
-    {
-     "t": 0.3,
-     "quien": "pixie",
-     "es": "Esta es Englishland. Aquí cada cosa tiene una palabra… y cada palabra brilla.",
-     "en": "This is Englishland. Here everything has a word… and every word shines."
-    },
-    {
-     "t": 8.2,
-     "quien": "pixie",
-     "es": "Un día, las palabras se fueron volando… y el bosque empezó a perder su color.",
-     "en": "One day, the words flew away… and the forest began to lose its color."
-    },
-    {
-     "t": 15.4,
-     "quien": "pixie",
-     "es": "¡Hola! Soy Pixie. Y ella es Lumi: su luz nunca se apaga.",
-     "en": "Hi! I'm Pixie. And this is Lumi: her light never goes out."
-    },
-    {
-     "t": 21.0,
-     "quien": "lumi",
-     "es": "¡Hola!",
-     "en": "Hi!"
-    },
-    {
-     "t": 22.6,
-     "quien": "pixie",
-     "es": "Escucha, juega y habla en inglés: cada palabra devuelve la luz.",
-     "en": "Listen, play and speak English: every word brings the light back."
-    },
-    {
-     "t": 28.9,
-     "quien": "lumi",
-     "es": "¡Vamos juntos!",
-     "en": "Let's go together!"
-    }
-   ]
-  }
+  "portada": "personajes/goma-saludar.webp",
+  "fiesta": "personajes/goma-celebrar.webp"
  },
  "accesorios": [
   {
@@ -4563,34 +4504,9 @@
  "voz": {
   "es": {
    "...pero olvidé cómo se saluda. La palabra se fue por este camino. ¿Me la traes?": "voz/es-7212536b7edd.mp3",
-   "...pero siempre llego tarde: el reloj del bosque se apagó y el puente también.": "voz/es-be642e8366db.mp3",
    "...y hoy se me perdió un número. Está más adelante. Escucha bien cuál es.": "voz/es-e9edfa23990e.mp3",
-   "Abu quiere oírte contar. Escucha el número y dilo tú.": "voz/es-ca151a8ae82d.mp3",
-   "Ahora el resto del cuerpo: cabeza, brazos, manos, piernas y pies. ¡Atrápalos!": "voz/es-cc8379930e67.mp3",
-   "Ahora tú le das voz a las palabras. Escucha, y cuando quieras, dila. ¡Cada intento cuenta!": "voz/es-9ac73dcb7012.mp3",
-   "Aquí aprendemos a saludar y a dar las gracias.": "voz/es-96a9cdfc0447.mp3",
-   "Aquí se apagaron los útiles de la escuela. Escucha y toca el correcto.": "voz/es-7f80e9f23b63.mp3",
-   "Atrapa la luz que te digo.": "voz/es-75b54b7891e8.mp3",
-   "Buenas, Explorer. Soy Abu. Llevo cien años contando las piedras del camino...": "voz/es-46b41b0f3699.mp3",
-   "Busca tu cara": "voz/es-13dd32cda87b.mp3",
-   "Cada palabra que aprendes enciende un farol. ¿Me ayudas?": "voz/es-98427b4c3658.mp3",
-   "Cinco colores más vuelan por el aire. Escucha y atrapa el que te digo.": "voz/es-c1e203261641.mp3",
    "Con mi nose huelo las frutas. ¿Y tú, qué hueles?": "voz/es-9c11eaa99db0.mp3",
-   "Cuando todos los faroles del bosque brillen, el puente se encenderá.": "voz/es-d1a0a4170e0a.mp3",
-   "El Valle de las Palabras abrirá muy pronto. ¡Te espero!": "voz/es-5e9bb336197b.mp3",
-   "El reloj del bosque se detuvo. Escucha la hora y toca el reloj correcto.": "voz/es-28c9d522738f.mp3",
-   "En cada casa vive una familia distinta. Escucha y atrapa a cada persona.": "voz/es-922c013fd2af.mp3",
-   "Enciende cualquier farol de un camino y el pozo despertará.": "voz/es-41c7911d0f19.mp3",
-   "Enciende todos los faroles del bosque y el puente se encenderá.": "voz/es-0acaf2b4f69a.mp3",
-   "Englishland se está apagando. Las palabras perdieron su luz.": "voz/es-dadcbb44ded3.mp3",
-   "Equivocarse es parte de aprender. Dilo conmigo.": "voz/es-8f092db59b23.mp3",
    "Eraser, eraser... la repito despacito para que no se me vuelva a caer.": "voz/es-98402263ea1a.mp3",
-   "Esas no son. Prueba otra vez con calma": "voz/es-ead31decda5d.mp3",
-   "Escucha bien: cada dibujo tiene su palabra.": "voz/es-e207808e2472.mp3",
-   "Escucha, juega y habla en inglés: cada palabra devuelve la luz.": "voz/es-0dc3a2dff4c6.mp3",
-   "Esta es Englishland. Aquí cada cosa tiene una palabra… y cada palabra brilla.": "voz/es-d3f478b6d6e0.mp3",
-   "Este es el pozo de los recuerdos. Gira dos cartas y busca las que van juntas.": "voz/es-4475d5f4a19f.mp3",
-   "Este farol todavía duerme. Despierta cuando enciendas el que está antes en este camino.": "voz/es-99f53415c851.mp3",
    "Está más adelante, en este camino. Escucha cuál es y tráemela, ¿sí?": "voz/es-d9259ac14d95.mp3",
    "Guárdalo en tu álbum. Un número nunca sobra.": "voz/es-8822bddd7764.mp3",
    "Hooola... Soy Caro. Voy despacito, despacito... y se me cayó una palabra de la mochila.": "voz/es-308c5cd0a861.mp3",
@@ -4598,38 +4514,16 @@
    "I try again!": "voz/es-3c201b51fd2e.mp3",
    "La guardé en tu álbum. ¡Gracias por tomarte tu tiempo conmigo!": "voz/es-0f2022c094be.mp3",
    "La palabra rodó por este camino. Escúchala y tráemela, por favor.": "voz/es-cf48217be42e.mp3",
-   "Los colores del bosque se volvieron grises. ¡Vamos a encenderlos!": "voz/es-49521d401f11.mp3",
-   "Los números se escondieron entre los árboles. Empecemos del uno al cinco.": "voz/es-8bfc6c01496b.mp3",
-   "Los vecinos del bosque perdieron sus palabras. ¡Ayúdalos a encontrarlas!": "voz/es-93cfe5d606a8.mp3",
-   "Lumi contó tus estrellas": "voz/es-3b52d2993b22.mp3",
-   "Lumi necesita un descanso. Busca tu tarjeta o pídele ayuda a un adulto": "voz/es-ad71e0e2d769.mp3",
-   "Lumi necesita un descanso. Pídele ayuda a tu profe": "voz/es-9549dfafaddf.mp3",
-   "Mira tu cara: ojos, orejas, nariz y boca. Cuando oigas una, tócatela tú también.": "voz/es-a3cfe32c79da.mp3",
-   "Mira, por aquí.": "voz/es-4c6efd1c8074.mp3",
    "Mmm, ese es otro número. Los sabios también se equivocan. Escucha de nuevo, con calma.": "voz/es-c6c5d54052f1.mp3",
    "Mmm... esa no es. ¡No pasa nada! Yo también me equivoco. Escucha otra vez.": "voz/es-eba6d5d3520a.mp3",
    "One, two, three... ¿cuentas conmigo?": "voz/es-8ba54e4c02a7.mp3",
-   "Para usar tu tarjeta hace falta internet una vez. Mientras tanto, ¡a jugar!": "voz/es-d3592f6bf46c.mp3",
-   "Púa quiere oírte nombrar el cuerpo. Escucha y dilo en voz alta.": "voz/es-fedd20f476e9.mp3",
    "Queda en tu álbum. Y cuando vuelvan todas las palabras, haré una fiesta con pan.": "voz/es-129cefbab277.mp3",
    "Se me perdió la palabra de lo que uso para oler. ¿Me la buscas en este camino?": "voz/es-053a5147a8ef.mp3",
-   "Sigue los dibujos del piso: cada camino te cuenta a dónde lleva.": "voz/es-89cbc24fa81a.mp3",
-   "Soy Nova. Este puente lleva al Valle de las Palabras.": "voz/es-fa048345417c.mp3",
-   "Toca la pantalla y caminas hasta tu dedo. ¡Puedes ir a donde quieras!": "voz/es-aa97ae66a7ca.mp3",
-   "Toca tus tres dibujos": "voz/es-32176c46a38f.mp3",
    "Toma, va para tu álbum. ¡Y gracias por ayudarme!": "voz/es-d13d2211f138.mp3",
-   "Un día, las palabras se fueron volando… y el bosque empezó a perder su color.": "voz/es-bdb2114adb5d.mp3",
-   "Vamos a saludar a la familia del bosque. Escucha y dilo tú.": "voz/es-418613f5b940.mp3",
    "Ya está en tu álbum. ¡Escuchaste con mucha atención!": "voz/es-d589da8136ee.mp3",
-   "Yo soy Cosmo. Este es mi hogar: el Bosque de los Sonidos.": "voz/es-13b994385a30.mp3",
-   "¡Así se dice! Sigue explorando.": "voz/es-2cceb1354d04.mp3",
    "¡Buen intento! Esa palabra es bonita, pero no es para saludar. Escucha otra vez. ¡Tú puedes!": "voz/es-9a56047a7b8e.mp3",
-   "¡Correo, correo! Soy Rayo. Llevo cartas al Valle de las Palabras...": "voz/es-bbe3b1000cbb.mp3",
    "¡Esa es! ¡Eraser! Ya puedo borrar y volver a intentar.": "voz/es-815c52569042.mp3",
    "¡Frutas, frutas frescas! Soy Púa... pero hoy no huelo nada. ¡Nada de nada!": "voz/es-696e346f9f70.mp3",
-   "¡Hello! ¡Hello, hello! ¡Ya puedo saludar a todo el bosque!": "voz/es-6cf875b49b94.mp3",
-   "¡Hello, Explorer! ¿Ves? Ya no se me olvida.": "voz/es-f0c7c5898889.mp3",
-   "¡Hola!": "voz/es-6e1bf0f0b8da.mp3",
    "¡Hola! Soy Bruno.": "voz/es-df9a9b9cfa85.mp3",
    "¡Hola! Soy Lumi. ¿Te equivocaste alguna vez? ¡No pasa nada!": "voz/es-4537a6a69e3a.mp3",
    "¡Hola! Soy Mika.": "voz/es-d797b577fcf5.mp3",
@@ -4637,29 +4531,15 @@
    "¡Hola! Soy Pixie. ¡Qué bueno que llegaste!": "voz/es-84581697014f.mp3",
    "¡Hola! Soy Tavi.": "voz/es-3b5f5c2fe2c1.mp3",
    "¡Hola! Soy Tito. Mi sombrero tenía un color muy bonito... ¡y olvidé cómo se llama!": "voz/es-715d5c9bc50e.mp3",
-   "¡Hola! Vamos al bosque": "voz/es-208adb33462b.mp3",
-   "¡Iguales! Ahora tú.": "voz/es-efdb66abde5d.mp3",
-   "¡Lo lograste! Todos los faroles brillan y el puente se encendió.": "voz/es-c4d4848f96c3.mp3",
-   "¡Mira! El bosque tiene más luz. ¿A dónde vamos ahora?": "voz/es-326bd5389959.mp3",
-   "¡Mira! Hay más cosas del salón flotando. Atrapa la que escuches.": "voz/es-096f7f33f63e.mp3",
    "¡Nose! ¡Esa es! Mmm... ¡qué rico huelen mis frutas!": "voz/es-56c86ec5374f.mp3",
    "¡Pan calientito! Soy Nuez, la panadera. Quiero saludar a todos los que pasan...": "voz/es-dbee3bc060c5.mp3",
-   "¡Pronto! Sigue encendiendo el bosque.": "voz/es-3938aec4e5dd.mp3",
-   "¡Qué bueno verte! Hay faroles por encender y vecinos que necesitan ayuda.": "voz/es-8c5a68a8226e.mp3",
    "¡Rayo necesita saber la hora! Él pregunta \"What time is it?\" y tú le dices la hora.": "voz/es-a25f73d4c453.mp3",
    "¡Red como mi sombrero! Cuando lo veas, acuérdate de mí.": "voz/es-9c78c14155ae.mp3",
-   "¡Red! ¡Mi sombrero es red! ¡Mira cómo brilla!": "voz/es-40f3b3917751.mp3",
    "¡Sí, vamos!": "voz/es-a38f9e903854.mp3",
    "¡Three! One, two, three... ¡ya puedo seguir contando!": "voz/es-ea81926318fe.mp3",
-   "¡Tu voz enciende los colores! Escucha cada uno y dilo como te salga.": "voz/es-926a6d3ded0a.mp3",
    "¡Uy! Ese no es el color de mi sombrero. ¡No pasa nada! Escucha otra vez y prueba otro.": "voz/es-c2cb19bce99b.mp3",
    "¡Uy, con eso no huelo! No importa: escucha otra vez y prueba con otra.": "voz/es-bb438d7b951e.mp3",
-   "¡Vamos juntos!": "voz/es-70eda5590ac6.mp3",
-   "¡Ya llegas al cinco! Ahora atrapa del seis al diez.": "voz/es-66eb5ddbd9b8.mp3",
-   "¿A dónde vamos primero? Tú decides.": "voz/es-274a6412fce0.mp3",
-   "¿Cómo me muevo?": "voz/es-b62f91ad0a41.mp3",
-   "¿Este camino lo recorriste tú?": "voz/es-9f0f9dffd8f1.mp3",
-   "¿Quién va a jugar?": "voz/es-7dec87913832.mp3"
+   "¿Cómo me muevo?": "voz/es-b62f91ad0a41.mp3"
   },
   "en": {
    "It's nine o'clock.": "voz/en-06960f91b4e2.mp3",

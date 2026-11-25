@@ -337,12 +337,278 @@
    "bloques": [
     {
      "t": "parrafo",
-     "texto": "Por qué la cartilla de inglés de 3.° es como es: el marco legal, los referentes del MEN que la sostienen y el enfoque pedagógico."
+     "texto": "Por qué la cartilla de inglés de 3.° es como es: la base teórica que la sostiene, los conceptos con los que se trabaja, el marco legal y los referentes curriculares del MEN."
+    },
+    {
+     "t": "titulo",
+     "n": 2,
+     "texto": "Base teórica"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Esta base teórica viene del trabajo de grado del autor de la cartilla, sobre gamificación para la enseñanza del inglés en grado tercero. Articula la teoría del aprendizaje y la instrucción de Bruner, el aprendizaje significativo de Ausubel, la perspectiva sociocultural de Vygotsky, la teoría de la autodeterminación de Ryan y Deci, los planteamientos de Krashen sobre la adquisición de una lengua extranjera y los aportes de Kapp sobre gamificación, junto con las metodologías activas. Después de cada teoría se explica cómo se ve en El Cuaderno de Goma."
     },
     {
      "t": "titulo",
      "n": 3,
-     "texto": "Marco legal"
+     "texto": "Bruner: aprendizaje por descubrimiento y currículo en espiral"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Bruner (1966) concibe la enseñanza como un proceso orientado a favorecer el desarrollo intelectual mediante situaciones en las que el estudiante participa activamente en la construcción del conocimiento, desde esta perspectiva, aprender no significa únicamente recibir información, sino explorar, relacionarla y reorganizarla mediante procesos progresivos de comprensión."
+    },
+    {
+     "t": "parrafo",
+     "texto": "Este planteamiento transforma el papel tradicional del docente, ya que, en lugar de limitarse a transmitir contenidos terminados, su función consiste en organizar experiencias, formular preguntas, proporcionar apoyos y orientar la exploración para que el estudiante avance hacia niveles de comprensión que difícilmente alcanzaría mediante la repetición mecánica."
+    },
+    {
+     "t": "parrafo",
+     "texto": "De manera complementaria, Bruner (1960) propone organizar el currículo de forma progresiva, retomando conceptos fundamentales con niveles crecientes de profundidad, esta concepción del currículo en espiral permite que un contenido abordado inicialmente de manera concreta sea recuperado mediante representaciones, relaciones y formas de utilización más complejas."
+    },
+    {
+     "t": "parrafo",
+     "texto": "Aplicado a la enseñanza del inglés en educación primaria, este principio implica que el reconocimiento de una palabra constituye sólo un primer momento del aprendizaje, que posteriormente, el estudiante puede escucharla, asociarla con imágenes o acciones, emplearla en frases y, de manera progresiva, incorporar en intercambios comunicativos sencillos."
+    },
+    {
+     "t": "parrafo",
+     "texto": "En el cuaderno: Cada palabra se escucha primero, luego se asocia a una imagen o a un gesto, después se dice en una frase y al final se usa en una tarea con propósito: son las fases enactiva, icónica y simbólica del banco de actividades. Los temas vuelven en espiral: el cuerpo de la ruta de entrada regresa en el periodo 1 como síntomas y consejos, y la hora regresa en el periodo 2 para hablar de los deberes."
+    },
+    {
+     "t": "titulo",
+     "n": 3,
+     "texto": "Ausubel: aprendizaje significativo"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Ausubel (2000) explica que el aprendizaje significativo ocurre cuando la nueva información puede relacionarse de manera sustantiva con conocimientos relevantes que ya forman parte de la estructura cognitiva del estudiante. Por esta razón, aquello que el alumno conoce previamente constituye una condición importante para la incorporación de nuevos aprendizajes."
+    },
+    {
+     "t": "parrafo",
+     "texto": "Esta perspectiva permite diferenciar el aprendizaje significativo de la memorización mecánica, puesto que, un estudiante puede recordar temporalmente listas de vocabulario en inglés sin comprender suficientemente su utilización; en cambio, las posibilidades de apropiación aumentan cuando las palabras y expresiones se relacionan con objetos, experiencias y situaciones que poseen significado dentro de su cotidianidad."
+    },
+    {
+     "t": "parrafo",
+     "texto": "En este marco, contenidos relacionados con objetos escolares, colores, partes del cuerpo, emociones, alimentos, animales, lugares y rutinas ofrecen referentes cercanos a la experiencia infantil, tales elementos pueden convertirse en puntos de anclaje para incorporar vocabulario y estructuras comunicativas en inglés de manera progresiva, concluyendo así, que la propuesta didáctica parte de contextos reconocibles antes de avanzar hacia construcciones lingüísticas de mayor complejidad, por lo que, la gamificación adquiere valor pedagógico en la medida en que contribuye a organizar estas relaciones y no cuando se limita a incorporar recompensas sobre actividades descontextualizadas."
+    },
+    {
+     "t": "parrafo",
+     "texto": "En el cuaderno: La ruta de entrada parte de lo que el niño ya tiene a la mano en el salón (útiles, colores, números) y cada periodo ancla el inglés en situaciones de su vida en Los Patios: cuidarse del dengue, las normas del curso, el barrio y el río, la tableta de la casa. La guía de cada tema conecta las palabras con el entorno antes de pedir que se usen."
+    },
+    {
+     "t": "titulo",
+     "n": 3,
+     "texto": "Vygotsky: mediación y zona de desarrollo próximo"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Vygotsky (1978) plantea que el aprendizaje y el desarrollo se encuentran estrechamente relacionados con la interacción social y con las herramientas culturales disponibles en el entorno. Desde esta perspectiva, el conocimiento no se construye únicamente mediante procesos individuales, pues la participación de otras personas puede ampliar las posibilidades de actuación y comprensión del estudiante."
+    },
+    {
+     "t": "parrafo",
+     "texto": "Uno de los conceptos centrales de esta teoría es la zona de desarrollo próximo, mediante la cual se diferencia aquello que el estudiante puede realizar de manera independiente de aquello que puede alcanzar con acompañamiento, esta concepción atribuye a la mediación docente una función esencial dentro del proceso educativo."
+    },
+    {
+     "t": "parrafo",
+     "texto": "Su aplicación resulta especialmente pertinente para la enseñanza de una lengua extranjera, dado que la comunicación implica interacción y el uso de actividades como diálogos, juegos de rol, preguntas y respuestas, retos cooperativos y prácticas entre compañeros, ya que, pueden generar oportunidades para utilizar el inglés con diferentes niveles de apoyo."
+    },
+    {
+     "t": "parrafo",
+     "texto": "La perspectiva sociocultural también permite comprender la heterogeneidad del aula desde las diferencias en conocimiento, confianza, ritmo y formas de participación. En consecuencia, la enseñanza requiere oportunidades variadas, acompañamiento y espacios de colaboración que permitan a los estudiantes aproximarse progresivamente a los contenidos."
+    },
+    {
+     "t": "parrafo",
+     "texto": "La propuesta gamificada recoge este principio mediante la incorporación de retos individuales y colaborativos, actividades mediadas por el docente y situaciones en las que los estudiantes pueden interactuar y apoyarse entre sí. De esta manera, el juego se concibe como una estructura para favorecer la participación y la interacción, no únicamente como un recurso de entretenimiento o competencia."
+    },
+    {
+     "t": "parrafo",
+     "texto": "En el cuaderno: Dentro del cuaderno, Postal es el mediador: modela la lengua con voz, imagen y gesto, y la pista aparece solo después del segundo intento, cuando el niño la necesita. En el aula, las actividades en parejas, los juegos proyectados para todo el grupo y la calcomanía de trabajar con otros hacen visible la colaboración. El docente sigue siendo el mediador principal."
+    },
+    {
+     "t": "titulo",
+     "n": 3,
+     "texto": "Ryan y Deci: teoría de la autodeterminación"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Ryan y Deci (2000) sostienen que la motivación se encuentra relacionada con tres necesidades psicológicas fundamentales: autonomía, competencia y relación con los demás. La satisfacción de estas necesidades puede favorecer formas de motivación más autónomas y sostenibles, mientras que su frustración puede relacionarse con desinterés y menor disposición para participar."
+    },
+    {
+     "t": "parrafo",
+     "texto": "La autonomía se refiere a la posibilidad de experimentar cierto grado de elección y participación; la competencia, a la percepción de poseer capacidades para afrontar y superar retos; y la relación, a la experiencia de sentirse integrado y apoyado por otras personas dentro de una actividad determinada."
+    },
+    {
+     "t": "parrafo",
+     "texto": "Desde este enfoque, una estrategia pedagógica puede ofrecer mejores condiciones motivacionales cuando plantea retos alcanzables, permite reconocer avances, genera oportunidades de participación y favorece relaciones positivas entre estudiantes y docentes."
+    },
+    {
+     "t": "parrafo",
+     "texto": "Por ello, los sistemas de puntos o recompensas utilizados en gamificación requieren una función pedagógica claramente definida, cuando se convierten en la única razón para participar, existe el riesgo de desplazar el interés hacia la obtención del premio y reducir el valor de la experiencia de aprendizaje."
+    },
+    {
+     "t": "parrafo",
+     "texto": "En el cuaderno: Las calcomanías reconocen conductas (participar, terminar una misión, intentar decirlo en voz alta, trabajar con otros, corregir y mejorar, pensar en lo que aprendí), nunca se quitan y no abren páginas: el avance depende de terminar las misiones. El Garabato que dibuja cada niño le da autonomía; los retos cortos y alcanzables, competencia; el trabajo en pareja y el docente que reconoce, relación con los demás."
+    },
+    {
+     "t": "titulo",
+     "n": 3,
+     "texto": "Práctica pedagógica y metodologías activas"
+    },
+    {
+     "t": "parrafo",
+     "texto": "La práctica pedagógica constituye el espacio en el que los referentes teóricos se concretan mediante decisiones relacionadas con la planificación, las actividades, los recursos, la mediación y la evaluación. Una innovación educativa, por tanto, no depende únicamente de disponer de herramientas novedosas, sino de la manera en que el docente las articula con los propósitos formativos y las necesidades del contexto."
+    },
+    {
+     "t": "parrafo",
+     "texto": "Peralta Lara y Guamán Gómez (2020) señalan que las metodologías activas desplazan el énfasis exclusivo en la transmisión de contenidos y conceden una mayor participación al estudiante, este cambio implica que el docente asuma funciones de mediador, facilitador y orientador del proceso de aprendizaje."
+    },
+    {
+     "t": "parrafo",
+     "texto": "La participación activa no supone, sin embargo, ausencia de orientación, tanto la exploración planteada por Bruner como la mediación propuesta desde Vygotsky requieren ambientes intencionalmente organizados en los que existan metas, secuencias, apoyos y oportunidades para revisar el desempeño."
+    },
+    {
+     "t": "parrafo",
+     "texto": "Esta consideración adquiere especial importancia en contextos donde el tiempo destinado a la asignatura y la disponibilidad tecnológica pueden ser limitados. Por esta razón, la propuesta contempla recursos y actividades susceptibles de ser seleccionados y adaptados de acuerdo con las condiciones del aula y las posibilidades de acceso."
+    },
+    {
+     "t": "parrafo",
+     "texto": "La transformación de la práctica pedagógica se comprende, entonces, como una reorganización intencional de las experiencias de aprendizaje, no consiste simplemente en sustituir una actividad tradicional por un juego, sino en modificar la manera de plantear retos, acompañar al estudiante, ofrecer retroalimentación y promover su participación."
+    },
+    {
+     "t": "parrafo",
+     "texto": "En el cuaderno: La plataforma apoya al docente y no lo reemplaza: el planeador de clase, las láminas, las fichas y los juegos para proyectar se eligen según el tiempo, el tema y los recursos del aula, y todo tiene versión para imprimir cuando no hay proyector ni conexión."
+    },
+    {
+     "t": "titulo",
+     "n": 3,
+     "texto": "Krashen: entrada comprensible y filtro afectivo"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Krashen (1982) propone que la adquisición de una segunda lengua se favorece cuando el estudiante recibe información lingüística comprensible que se encuentra ligeramente por encima de su nivel actual, este planteamiento concede especial importancia a la calidad y a la comprensibilidad de las experiencias de exposición al idioma."
+    },
+    {
+     "t": "parrafo",
+     "texto": "Dentro de su modelo, la hipótesis del filtro afectivo permite considerar la influencia de factores relacionados con la motivación, la confianza y la ansiedad, cuando el estudiante experimenta altos niveles de inseguridad o temor frente al uso de una lengua extranjera, pueden verse limitadas las condiciones para aprovechar las oportunidades de interacción lingüística."
+    },
+    {
+     "t": "parrafo",
+     "texto": "Este aporte resulta relevante, debido a la importancia que adquieren la seguridad frente a la pronunciación, el temor al error y la disposición para participar oralmente, tales condiciones permiten comprender que el aprendizaje de una lengua extranjera posee una dimensión cognitiva, pero también afectiva y social."
+    },
+    {
+     "t": "parrafo",
+     "texto": "En consecuencia, aumentar únicamente la cantidad de vocabulario o ejercicios no garantiza por sí mismo mejores condiciones para aprender. También resulta necesario propiciar ambientes en los que el estudiante pueda ensayar, equivocarse, recibir orientación y volver a intentarlo sin asociar el error con una experiencia negativa."
+    },
+    {
+     "t": "parrafo",
+     "texto": "Desde esta perspectiva, la gamificación ofrece posibilidades para estructurar actividades de pronunciación y comunicación mediante misiones, diálogos guiados, juegos cooperativos y situaciones contextualizadas en las que el intento forme parte de la dinámica de aprendizaje, por su parte, la narrativa puede contribuir a presentar el error como una oportunidad de avance y no únicamente como una respuesta incorrecta."
+    },
+    {
+     "t": "parrafo",
+     "texto": "La progresión por niveles se relaciona igualmente con este principio, pues permite graduar el contenido lingüístico, por ejemplo, las primeras actividades pueden centrarse en vocabulario y expresiones comprensibles, mientras que las etapas posteriores incorporan frases, preguntas y diálogos sencillos de acuerdo con las posibilidades de los estudiantes."
+    },
+    {
+     "t": "parrafo",
+     "texto": "En el cuaderno: Postal habla solo inglés, pero siempre con imagen, gesto y voz que lo hacen comprensible. Equivocarse no quita nada: la opción tocada se apaga, Goma anima y la voz repite; la práctica de voz es privada, no se graba y premia el intento. El lema del cuaderno lo resume: borrar no es perder, es mejorar."
+    },
+    {
+     "t": "titulo",
+     "n": 3,
+     "texto": "Kapp: la gamificación como estrategia didáctica"
+    },
+    {
+     "t": "parrafo",
+     "texto": "Kapp (2012) define la gamificación a partir de la incorporación intencional de mecánicas, elementos estéticos y pensamiento de juego para involucrar a las personas, motivar la acción, promover el aprendizaje y facilitar la resolución de problemas."
+    },
+    {
+     "t": "parrafo",
+     "texto": "Esta concepción permite diferenciar la gamificación del simple uso de juegos en el aula, permitiendo incorporar ocasionalmente una actividad lúdica o asignar puntos a ejercicios previamente existentes, ya que, no implica necesariamente que se haya diseñado una experiencia pedagógica gamificada."
+    },
+    {
+     "t": "parrafo",
+     "texto": "Kapp (2012) identifica elementos como objetivos, reglas, cooperación o competencia, retroalimentación, niveles, estructuras de recompensa, narrativa y posibilidad de volver a intentar, su utilidad educativa depende de que estos componentes sean seleccionados y organizados de acuerdo con los contenidos, las características de los estudiantes y los propósitos de aprendizaje."
+    },
+    {
+     "t": "parrafo",
+     "texto": "De manera complementaria, García-Casaus et al. (2020) señalan que la incorporación de mecánicas y dinámicas de juego ofrece posibilidades para transformar la experiencia educativa y favorecer una participación más activa del alumnado. No obstante, estos recursos requieren integración con la planificación pedagógica y no deben funcionar como elementos aislados."
+    },
+    {
+     "t": "parrafo",
+     "texto": "La relación entre los planteamientos de Kapp y la teoría de Ryan y Deci introduce una consideración importante respecto al uso de recompensas, aunque estas pueden funcionar como elementos visibles de progreso, una propuesta educativa requiere también favorecer la autonomía, la percepción de competencia, la curiosidad, la cooperación y el sentido de logro."
+    },
+    {
+     "t": "parrafo",
+     "texto": "En el cuaderno: El Cuaderno de Goma integra una narrativa común (un cuaderno en blanco que se dibuja solo a medida que el niño aprende), páginas que se abren al terminar las misiones, retos cortos, retroalimentación inmediata, la posibilidad de volver a intentar y calcomanías por conducta. Cada mecánica responde a una finalidad pedagógica; no hay tablas de posiciones ni pantallas de perder."
+    },
+    {
+     "t": "titulo",
+     "n": 2,
+     "texto": "Conceptos clave"
+    },
+    {
+     "t": "item",
+     "texto": "Aprendizaje. El aprendizaje se entiende como un proceso mediante el cual las personas adquieren o modifican conocimientos, habilidades, capacidades y formas de actuación a partir de la experiencia, la observación y la enseñanza. En este proceso intervienen tanto la interacción con el entorno como las experiencias educativas desarrolladas en distintos contextos (Vega et al., 2019)."
+    },
+    {
+     "t": "item",
+     "texto": "Motivación. La motivación comprende los procesos que orientan, activan y sostienen la conducta hacia determinadas actividades o metas, en el ámbito educativo, Ryan y Deci (2000) señalan que su calidad se relaciona especialmente con la satisfacción de las necesidades de autonomía, competencia y relación con los demás."
+    },
+    {
+     "t": "item",
+     "texto": "Participación estudiantil. La participación estudiantil comprende la intervención activa del estudiante en las actividades y dinámicas del proceso educativo, también puede manifestarse mediante la realización de tareas, la interacción con docentes y compañeros, la formulación y respuesta de preguntas, la cooperación y la disposición para involucrarse en las experiencias propuestas en el aula. Desde la perspectiva del compromiso escolar, la participación constituye una manifestación conductual de la vinculación del estudiante con las actividades académicas (Fredricks et al., 2004)."
+    },
+    {
+     "t": "item",
+     "texto": "Compromiso estudiantil. El compromiso estudiantil se refiere al grado de vinculación del estudiante con las experiencias de aprendizaje y comprende dimensiones conductuales, emocionales y cognitivas. Fredricks et al. (2004) señala que este concepto incluye la participación en las actividades académicas, las respuestas afectivas hacia el aprendizaje y la inversión de esfuerzo y estrategias cognitivas para comprender y desarrollar las tareas propuestas."
+    },
+    {
+     "t": "item",
+     "texto": "Práctica pedagógica. La práctica pedagógica comprende las acciones, saberes, modelos, relaciones y formas de enseñanza que se desarrollan dentro de las instituciones educativas. Para Zuluaga (1999), esta noción integra los modelos pedagógicos utilizados, los saberes que circulan en la enseñanza, las características institucionales y las funciones asumidas por los sujetos participantes del proceso educativo."
+    },
+    {
+     "t": "item",
+     "texto": "Estrategia didáctica. Una estrategia didáctica corresponde a la organización intencional de métodos, técnicas y actividades mediante las cuales docentes y estudiantes orientan sus acciones para alcanzar determinados propósitos de enseñanza y aprendizaje, estas estrategias deben considerar las características de los participantes, el contexto educativo, los recursos disponibles y las metas formativas establecidas (Feo, 2010)."
+    },
+    {
+     "t": "item",
+     "texto": "Gamificación. La gamificación consiste en la utilización de mecánicas, elementos estéticos y formas de pensamiento propias de los juegos dentro de contextos que no son juegos, con propósitos cómo involucrar a las personas, motivar la acción, promover el aprendizaje y favorecer la resolución de problemas (Kapp, 2012)."
+    },
+    {
+     "t": "item",
+     "texto": "Mecánicas de juego. Las mecánicas de juego corresponden a las reglas, acciones y estructuras que organizan la participación dentro de una experiencia lúdica, en contextos educativos pueden incluir elementos como retos, niveles, retroalimentación, puntos, recompensas, cooperación, competencia y progresión, siempre que se articulen con los objetivos de aprendizaje (Kapp, 2012)."
+    },
+    {
+     "t": "item",
+     "texto": "Enseñanza del inglés como lengua extranjera. La enseñanza del inglés como lengua extranjera comprende los procesos pedagógicos dirigidos al desarrollo progresivo de habilidades para comprender y utilizar el idioma en contextos donde este no constituye la lengua habitual de comunicación social. En Colombia, los Estándares Básicos de Competencias en Lenguas Extranjeras orientan su enseñanza hacia el desarrollo de habilidades relacionadas con la escucha, la lectura, la escritura y la comunicación oral (Ministerio de Educación Nacional [MEN], 2006)."
+    },
+    {
+     "t": "item",
+     "texto": "Contexto escolar. El contexto escolar comprende el conjunto de condiciones sociales, culturales, familiares, económicas e institucionales que rodean el proceso educativo y que pueden influir en las experiencias de enseñanza y aprendizaje. Estas condiciones permiten comprender que la participación y las dinámicas educativas no dependen exclusivamente de lo ocurrido dentro del aula (Zavala León et al., 2024)."
+    },
+    {
+     "t": "titulo",
+     "n": 2,
+     "texto": "Marco legal y referentes internacionales"
+    },
+    {
+     "t": "item",
+     "texto": "Declaración Universal de los Derechos Humanos, artículo 26: toda persona tiene derecho a la educación, orientada al pleno desarrollo de la personalidad (ONU, 1948)."
+    },
+    {
+     "t": "item",
+     "texto": "Convención sobre los Derechos del Niño, incorporada por la Ley 12 de 1991, artículos 28 y 29: educación en condiciones de igualdad y orientada al desarrollo de las aptitudes y capacidades del niño."
+    },
+    {
+     "t": "item",
+     "texto": "Constitución Política de Colombia: artículo 27 (libertad de enseñanza y aprendizaje), artículo 44 (la educación como derecho fundamental de los niños y prevalencia de sus derechos), artículo 67 (la educación como derecho y servicio público con función social) y artículo 68 (idoneidad ética y pedagógica de quienes enseñan)."
+    },
+    {
+     "t": "item",
+     "texto": "Decreto 1075 de 2015, Único Reglamentario del Sector Educación: los colegios organizan su currículo según su PEI y los referentes del MEN. No prescribe la gamificación; usarla es una decisión pedagógica que debe ser coherente con el currículo. Por eso la cartilla apoya el plan de estudios institucional y no lo reemplaza."
+    },
+    {
+     "t": "titulo",
+     "n": 3,
+     "texto": "Leyes de educación, bilingüismo y datos"
     },
     {
      "t": "item",
@@ -444,7 +710,89 @@
    "bloques": [
     {
      "t": "parrafo",
-     "texto": "Referencias de la cartilla de inglés de 3.° en normas APA 7. Las referencias del trabajo de grado se agregarán cuando esté disponible su versión final."
+     "texto": "Referencias de la cartilla de inglés de 3.° en normas APA 7: primero las de la base teórica y después las del pensum y los referentes curriculares."
+    },
+    {
+     "t": "titulo",
+     "n": 2,
+     "texto": "Base teórica y marco legal"
+    },
+    {
+     "t": "item",
+     "texto": "Ausubel, D. P. (2000). The acquisition and retention of knowledge: A cognitive view. Kluwer Academic Publishers. https://link.springer.com/book/10.1007/978-94-015-9454-7"
+    },
+    {
+     "t": "item",
+     "texto": "Bruner, J. S. (1960). The process of education. Harvard University Press. https://doi.org/10.4159/9780674028999"
+    },
+    {
+     "t": "item",
+     "texto": "Bruner, J. S. (1966). Toward a theory of instruction. Harvard University Press."
+    },
+    {
+     "t": "item",
+     "texto": "Congreso de Colombia. (1991, 22 de enero). Ley 12 de 1991, por medio de la cual se aprueba la Convención sobre los Derechos del Niño adoptada por la Asamblea General de las Naciones Unidas el 20 de noviembre de 1989. https://www.funcionpublica.gov.co/eva/gestornormativo/norma.php?i=10579"
+    },
+    {
+     "t": "item",
+     "texto": "Constitución Política de Colombia [Const.]. (1991). Artículo 27. https://www.secretariasenado.gov.co/constitucion-politica"
+    },
+    {
+     "t": "item",
+     "texto": "Decreto 1075 de 2015. Por medio del cual se expide el Decreto Único Reglamentario del Sector Educación. 26 de mayo de 2015."
+    },
+    {
+     "t": "item",
+     "texto": "Feo, R. J. (2010). Orientaciones básicas para el diseño de estrategias didácticas. Tendencias Pedagógicas, (16), 220–236. https://doi.org/10.15366/tp2010.16.012"
+    },
+    {
+     "t": "item",
+     "texto": "Fredricks, J. A., Blumenfeld, P. C., & Paris, A. H. (2004). School engagement: Potential of the concept, state of the evidence. Review of Educational Research, 74(1), 59–109. https://doi.org/10.3102/00346543074001059"
+    },
+    {
+     "t": "item",
+     "texto": "García-Casaus, F., Cara-Muñoz, J. F., Martínez-Sánchez, J. A., & Cara-Muñoz, M. M. (2020). La gamificación en el proceso de enseñanza-aprendizaje: Una aproximación teórica. Logía: Educación Física y Deporte, 1(1), 16–24. https://dialnet.unirioja.es/servlet/articulo?codigo=7643607"
+    },
+    {
+     "t": "item",
+     "texto": "Kapp, K. M. (2012). The gamification of learning and instruction: Game-based methods and strategies for training and education. Pfeiffer. https://www.researchgate.net/publication/273947281_The_gamification_of_learning_and_instruction_Game-based_methods_and_strategies_for_training_and_education_San_Francisco_CA_Pfeiffer"
+    },
+    {
+     "t": "item",
+     "texto": "Krashen, S. D. (1982). Principles and practice in second language acquisition. Pergamon Press. https://www.sdkrashen.com/content/books/principles_and_practice.pdf"
+    },
+    {
+     "t": "item",
+     "texto": "Organización de las Naciones Unidas. (1948, 10 de diciembre). Declaración Universal de los Derechos Humanos. https://www.un.org/es/about-us/universal-declaration-of-human-rights"
+    },
+    {
+     "t": "item",
+     "texto": "Peralta Lara, D. C., & Guamán Gómez, V. J. (2020). Metodologías activas para la enseñanza y aprendizaje de los estudios sociales. Sociedad & Tecnología, 3(2), 2–10. https://doi.org/10.51247/st.v3i2.62"
+    },
+    {
+     "t": "item",
+     "texto": "Ryan, R. M., & Deci, E. L. (2000). Self-determination theory and the facilitation of intrinsic motivation, social development, and well-being. American Psychologist, 55(1), 68–78. https://doi.org/10.1037/0003-066X.55.1.68"
+    },
+    {
+     "t": "item",
+     "texto": "Vega, N., Flores-Jiménez, R., Flores-Jiménez, I., Hurtado-Vega, B., & Rodríguez-Martínez, J. S. (2019). Teorías del aprendizaje. XIKUA Boletín Científico de la Escuela Superior de Tlahuelilpan, 7(14), 51–53. https://doi.org/10.29057/xikua.v7i14.4359"
+    },
+    {
+     "t": "item",
+     "texto": "Vygotsky, L. S. (1978). Mind in society: The development of higher psychological processes. Harvard University Press. https://www.per-central.org/items/detail.cfm?ID=16145"
+    },
+    {
+     "t": "item",
+     "texto": "Zavala León, A., Pacheco Celaya, Á., & López Ibarra, D. L. (2024). Impacto del contexto social en el rendimiento académico del alumno [Ponencia]. En Memoria electrónica del XVII Congreso Nacional de Investigación Educativa. Consejo Mexicano de Investigación Educativa. https://www.comie.org.mx/congreso/memoriaelectronica/v17/doc/1311.pdf"
+    },
+    {
+     "t": "item",
+     "texto": "Zuluaga Garcés, O. L. (1999). Pedagogía e historia: La historicidad de la pedagogía, la enseñanza, un objeto de saber. Editorial Universidad de Antioquia."
+    },
+    {
+     "t": "titulo",
+     "n": 2,
+     "texto": "Pensum y referentes curriculares"
     },
     {
      "t": "item",
@@ -489,31 +837,6 @@
     {
      "t": "item",
      "texto": "Cambridge Assessment English. (2018). Pre A1 Starters, A1 Movers and A2 Flyers: Word list picture book. Cambridge University Press & Assessment."
-    },
-    {
-     "t": "titulo",
-     "n": 2,
-     "texto": "Teoría pedagógica"
-    },
-    {
-     "t": "item",
-     "texto": "Bruner, J. (1966). Toward a theory of instruction. Harvard University Press."
-    },
-    {
-     "t": "item",
-     "texto": "Kapp, K. M. (2012). The gamification of learning and instruction: Game-based methods and strategies for training and education. Pfeiffer."
-    },
-    {
-     "t": "item",
-     "texto": "Krashen, S. D. (1982). Principles and practice in second language acquisition. Pergamon Press."
-    },
-    {
-     "t": "item",
-     "texto": "Ryan, R. M. y Deci, E. L. (2000). Self-determination theory and the facilitation of intrinsic motivation, social development, and well-being. American Psychologist, 55(1), 68-78. https://doi.org/10.1037/0003-066X.55.1.68"
-    },
-    {
-     "t": "item",
-     "texto": "Vygotsky, L. S. (1978). Mind in society: The development of higher psychological processes. Harvard University Press."
     }
    ]
   }

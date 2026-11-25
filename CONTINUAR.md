@@ -41,9 +41,11 @@ Plan completo: `docs/plan/calendario-diciembre.md` (también en Google Calendar,
   `elegirCartillaMateriales` en `src/materiales/datos.ts`; selector en `src/adultos/ElegirCartilla.tsx`
   solo si sus grupos tienen cartillas distintas). El service worker baja solo las cartillas del aparato.
 - **Estudiante:** `src/estudiante.tsx`, `src/Mundo.tsx` (mapa y movimiento), `src/juegos/`
-  (plantillas: EscuchaToca, EscuchaAtrapa, Memoria, DiBrilla, ContarToca y Ordenar; las dos
-  últimas leen `contar` y `ordenar` de la misión, tipos en `src/tipos.ts`, ejemplo de contenido
-  en `scripts/pruebas/contar-ordenar.mjs`), `src/progreso.ts`, `src/nube.ts`,
+  (plantillas: EscuchaToca, EscuchaAtrapa, Memoria, DiBrilla, ContarToca, Ordenar, Operacion y
+  Silabas; leen `contar`, `ordenar`, `operacion` y `silabas` de la misión, tipos en
+  `src/tipos.ts`, ejemplos de contenido en `scripts/pruebas/contar-ordenar.mjs` y
+  `operacion-silabas-leer.mjs`. DiBrilla sirve en español: con la voz `es-*` usa `palabra.es`, y
+  con `leer: true` la palabra se ve escrita desde el principio para leerla en voz alta), `src/progreso.ts`, `src/nube.ts`,
   `src/entrada/` (tarjeta, código, QR, clave de dibujos), `src/sinConexion.ts`.
 - **Adultos:** `src/adultos/Adultos.tsx` (rutas por rol), `Docente.tsx`, `Materiales.tsx`
   (Planear), `Biblioteca.tsx`, `Colegio.tsx` (coordinador; Uso y avance es un tablero por grado
@@ -66,6 +68,9 @@ Plan completo: `docs/plan/calendario-diciembre.md` (también en Google Calendar,
   (`herramientas/misiones_sql.py`) para que `registrar_mision` las acepte, y palabras en el
   territorio si su mapa trae luciérnagas (`Mundo.tsx` reparte palabras del territorio).
 - Proyectar y Biblioteca aún tienen encabezados fijos de English Adventure Quest.
+- Voz (revisado el 25 nov): la plataforma no graba ni guarda audio; el navegador convierte la voz
+  en texto. Donde el aparato tiene el modelo local se usa (`processLocally`); si no, Chrome envía
+  el audio a su servicio en línea para transcribirlo. Conviene decirlo en el aviso a las familias.
 
 ## Para después de diciembre (sin fecha)
 

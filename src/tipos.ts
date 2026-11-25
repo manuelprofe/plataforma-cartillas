@@ -50,9 +50,10 @@ export interface Mision {
   titulo: string;
   /**
    * Juego con que se practica: escuchar y tocar, atrapar lo que se oye, decir la palabra,
-   * Memory, contar y tocar (cantidades) u ordenar (números, secuencias, sucesos de un cuento).
+   * Memory, contar y tocar (cantidades), ordenar (números, secuencias, sucesos de un cuento),
+   * completar la operación (sumas y restas) o armar la palabra con sus sílabas.
    */
-  plantilla: 'escucha-toca' | 'escucha-atrapa' | 'di-brilla' | 'memoria' | 'contar-toca' | 'ordenar';
+  plantilla: 'escucha-toca' | 'escucha-atrapa' | 'di-brilla' | 'memoria' | 'contar-toca' | 'ordenar' | 'operacion' | 'silabas';
   icono: string;
   x: number;
   y: number;
@@ -79,6 +80,51 @@ export interface Mision {
   contar?: AjustesContar;
   /** Ordenar: cada ronda trae sus tarjetas en el orden correcto; el juego las revuelve. */
   ordenar?: RondaOrdenar[];
+  /** Completar la operación: niveles por rango numérico y cómo se dicen las cuentas. */
+  operacion?: AjustesOperacion;
+  /** Armar la palabra: cada ronda es una palabra con su imagen, partida en sílabas. */
+  silabas?: RondaSilabas[];
+  /**
+   * Di y brilla para leer en voz alta: la palabra se ve escrita desde el principio y la voz no
+   * la dice antes; el niño la lee y puede tocarla para oírla. Sin esto, se escucha y se repite.
+   */
+  leer?: boolean;
+}
+
+/**
+ * Completar la operación: el juego arma cada cuenta dentro del rango del nivel, la muestra con
+ * objetos (hasta 10) o con bloques de diez, y con cifras; el niño elige el resultado entre 3.
+ * En las frases, {a}, {b} y {c} se cambian por los números ("{a} más {b} es {c}").
+ */
+export interface AjustesOperacion {
+  /** Lo que dice la voz al empezar cada cuenta, por signo. */
+  pregunta: { '+': string; '-': string };
+  /** Lo que dice al resolverla, por signo. */
+  respuesta: { '+': string; '-': string };
+  niveles: NivelOperacion[];
+}
+
+export interface NivelOperacion {
+  signo: '+' | '-';
+  /** Rango del número mayor de la cuenta: el resultado de la suma o el primero de la resta. */
+  desde: number;
+  hasta: number;
+  rondas: number;
+  /** Imagen del objeto que se cuenta. Si un número pasa de 10, se usan bloques de diez. */
+  objeto?: string;
+}
+
+/**
+ * Armar la palabra: se oye la palabra (`dice`) y se ve su imagen; el niño toca las sílabas en
+ * orden. Cada sílaba suena al tocarla. `sobran` son sílabas de más que se mezclan con las buenas.
+ */
+export interface RondaSilabas {
+  icono: string;
+  dice: string;
+  partes: string[];
+  sobran?: string[];
+  /** Cómo debe sonar cada sílaba si la voz la lee mal ("ca" → "ca"); por defecto, la sílaba. */
+  suenan?: string[];
 }
 
 /**

@@ -1,0 +1,167 @@
+/* Completar la operación (Operacion.tsx). Opciones de 88 px; cifras grandes para proyectar. */
+
+.operacion {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  justify-items: center;
+  gap: clamp(12px, 3dvh, 28px);
+  padding: 4px 16px max(20px, env(safe-area-inset-bottom));
+  min-height: 0;
+}
+
+.operacion__oir {
+  width: 110px;
+  height: 110px;
+}
+
+.operacion__pizarra {
+  align-self: center;
+  width: 100%;
+  max-width: 520px;
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+  padding: 18px 12px;
+  border-radius: 26px;
+  background: #fff;
+  box-shadow: 0 6px 0 rgb(36 18 63 / 0.16);
+  animation: entrar-carta 0.35s cubic-bezier(0.2, 1.4, 0.4, 1) backwards;
+}
+
+.operacion__lado {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.operacion__grupo {
+  display: grid;
+  gap: 4px;
+  justify-content: center;
+}
+
+.operacion__grupo img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  pointer-events: none;
+}
+
+/* En la resta, los que se van quedan a lápiz, tachados. */
+.operacion__se-va {
+  opacity: 0.3;
+  filter: grayscale(1);
+  background: linear-gradient(to top right, transparent 46%, #d33 46%, #d33 54%, transparent 54%);
+}
+
+.operacion__grupo--bloques {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+}
+
+.operacion__diez {
+  width: 10px;
+  height: 64px;
+  border-radius: 3px;
+  background: repeating-linear-gradient(to top, #4f8df5 0 5.4px, #2f6ad6 5.4px 6.4px);
+}
+
+.operacion__unos {
+  display: grid;
+  grid-template-columns: repeat(3, 10px);
+  gap: 3px;
+  margin-left: 4px;
+}
+
+.operacion__uno {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  background: #f5a524;
+}
+
+.operacion__lado--quita .operacion__diez,
+.operacion__lado--quita .operacion__uno {
+  background: #bbb;
+}
+
+.operacion__cifras {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: clamp(2rem, 9vw, 3rem);
+  font-weight: 800;
+  color: var(--tinta);
+  font-variant-numeric: tabular-nums;
+}
+
+.operacion__signo {
+  color: #e2563b;
+}
+
+.operacion__signo--chico {
+  font-size: 2rem;
+  font-weight: 800;
+}
+
+.operacion__hueco {
+  min-width: 1.6em;
+  padding: 0 0.2em;
+  text-align: center;
+  border-radius: 14px;
+  border: 3px dashed var(--oro-hondo);
+}
+
+.operacion__hueco--lleno {
+  border-style: solid;
+  border-color: #25b56b;
+  background: #d9ffe9;
+  animation: celebrar 0.6s ease-out;
+}
+
+.operacion__opciones {
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+}
+
+.operacion__opcion {
+  min-width: 88px;
+  height: 88px;
+  padding: 0 10px;
+  border-radius: 24px;
+  background: #fff3c4;
+  color: var(--tinta);
+  font-size: 2.2rem;
+  font-weight: 800;
+  box-shadow: 0 7px 0 var(--oro-hondo);
+  transition: transform 0.12s, opacity 0.2s;
+}
+
+.operacion__opcion:active {
+  transform: translateY(5px);
+  box-shadow: 0 2px 0 var(--oro-hondo);
+}
+
+.operacion__opcion--apagada {
+  opacity: 0.35;
+}
+
+.operacion__opcion--pista {
+  box-shadow: 0 7px 0 var(--oro-hondo), 0 0 0 5px var(--oro);
+  animation: brincar 0.9s ease-in-out infinite;
+}
+
+.operacion__opcion--bien {
+  background: #d9ffe9;
+  box-shadow: 0 7px 0 #17844c, 0 0 0 5px #25b56b;
+  animation: celebrar 0.6s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .operacion__pizarra, .operacion__hueco--lleno, .operacion__opcion--pista, .operacion__opcion--bien { animation: none; }
+}

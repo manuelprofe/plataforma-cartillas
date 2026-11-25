@@ -4,11 +4,13 @@
 // Lo que oye el reconocedor no cuenta como tropiezo (falla con voces de niños y con ruido):
 // solo lo que escribe y no le sale queda para repasar.
 // Si no hay micrófono, puede escribirla o decirla en voz alta y tocar la mano.
+// Sirve en inglés (escuchar y repetir) y en español; con `mision.leer` es lectura en voz alta:
+// la palabra se ve escrita desde el principio y la voz solo la dice si el niño toca la carta.
 import { useEffect, useRef, useState, type FormEvent } from 'react';
 import type { PropsJuego } from '../tipos';
 import { anotarPractica } from '../progreso';
 import { callar, decir, sonar } from '../audio';
-import { comparaEscrito, escuchar, hayMicrofono, seOyo } from '../escuchar';
+import { comparaEscrito, escuchar, hayMicrofono, lengua, palabraMeta, seOyo } from '../escuchar';
 import { CierreMision } from './CierreMision';
 import { mezclar } from './mezclar';
 
@@ -54,17 +56,23 @@ export function DiBrilla({ mision, base, idiomaVoz, imagenFiesta, onTerminar, on
   const micro = hayMicrofono() && !sinMicroAhora;
 
   const palabra = rondas[indice];
+  const idioma = lengua(idiomaVoz);
+  // Lo que se dice o se lee: la palabra en el idioma de la voz de la cartilla.
+  const meta = palabra ? palabraMeta(palabra, idiomaVoz) : '';
+  const leer = Boolean(mision.leer);
   // Después de intentarlo una vez, ya puede seguir.
   const intento = estado !== 'listo' && estado !== 'escuchando' && estado !== 'silencio' && estado !== 'escribir';
   // Después del intento se revela cómo se escribe, como modelo.
-  const mostrarEscrita = intento;
+  const mostrarEscrita = intento || leer;
 
   useEffect(() => detener, []);
 
   useEffect(() => {
     if (fin || !palabra) return;
+    // Para leer, la voz no se adelanta: el niño lee primero.
+    if (leer) return;
     // Si el contenido trae la frase completa ("It's three o'clock."), se dice como modelo.
-    const t = luego(() => decir(palabra.frase ?? palabra.en, idiomaVoz), 400);
+    const t = luego(() => decir(palabra.frase ?? meta, idiomaVoz), 400);
     return () => clearTimeout(t);
   }, [indice, fin, palabra, idiomaVoz]);
 
@@ -89,7 +97,7 @@ export function DiBrilla({ mision, base, idiomaVoz, imagenFiesta, onTerminar, on
       setEstado('listo');
     }
     sonar('toque');
-    decir(palabra.en, idiomaVoz);
+    decir(meta, idiomaVoz);
   };
 
   const hablar = () => {
@@ -108,14 +116,14 @@ export function DiBrilla({ mision, base, idiomaVoz, imagenFiesta, onTerminar, on
       } else if (r.tipo === 'silencio') {
         sonar('salto');
         setEstado('silencio');
-      } else if (seOyo(r.frases, palabra)) {
+      } else if (seOyo(r.frases, palabra, idiomaVoz)) {
         brillar();
       } else {
         // Dijo algo: se celebra el intento y se le vuelve a modelar la palabra.
         // No cuenta como tropiezo: el reconocedor se equivoca con niños y con ruido.
         sonar('salto');
         setEstado('intento');
-        luego(() => decir(palabra.en, idiomaVoz), 600);
+        luego(() => decir(meta, idiomaVoz), 600);
       }
     });
   };
@@ -124,7 +132,7 @@ export function DiBrilla({ mision, base, idiomaVoz, imagenFiesta, onTerminar, on
 
   const revisarEscrito = (e: FormEvent) => {
     e.preventDefault();
-    const r = comparaEscrito(escrito, palabra.en);
+    const r = comparaEscrito(escrito, meta, idiomaVoz);
     if (r === 'otra' && !escrito.trim()) return;
     detener();
     if (r === 'bien') brillar();
@@ -133,7 +141,7 @@ export function DiBrilla({ mision, base, idiomaVoz, imagenFiesta, onTerminar, on
       costo();
       setEstado(r);
     }
-    decir(palabra.en, idiomaVoz);
+    decir(meta, idiomaVoz);
   };
 
   const seguir = () => {
@@ -166,15 +174,16 @@ export function DiBrilla({ mision, base, idiomaVoz, imagenFiesta, onTerminar, on
 
       {!fin && palabra && (
         <main className={`decir decir--${estado}`}>
-          <button type="button" className="carta-grande decir__carta" key={palabra.en} onClick={oir} aria-label={mostrarEscrita ? `Escuchar ${palabra.en}` : 'Escuchar la palabra'}>
+          <button type="button" className="carta-grande decir__carta" key={palabra.en} onClick={oir} aria-label={mostrarEscrita ? `Escuchar ${meta}` : 'Escuchar la palabra'}>
             <img src={base + palabra.icono} alt="" width="150" height="150" draggable={false} />
             {/* Antes de intentarlo solo se ve cómo suena: si estuviera escrita, escribirla no sería reto. */}
             {mostrarEscrita || !palabra.pronuncia ? (
-              <strong lang="en">{palabra.en}</strong>
+              <strong lang={idioma} className={leer ? 'decir__leer' : undefined}>{meta}</strong>
             ) : (
               <strong className="decir__suena">{palabra.pronuncia}</strong>
             )}
-            <small>{palabra.es}</small>
+            {/* En inglés, la traducción como apoyo; en español sería la misma palabra. */}
+            {idioma === 'en' && <small>{palabra.es}</small>}
             <span className="carta-grande__oir" aria-hidden="true">🔊</span>
             {estado === 'brilla' && <span className="decir__brillo" aria-hidden="true" />}
           </button>
@@ -191,7 +200,7 @@ export function DiBrilla({ mision, base, idiomaVoz, imagenFiesta, onTerminar, on
               <input
                 ref={campo}
                 className="escribir__campo"
-                lang="en"
+                lang={idioma}
                 value={escrito}
                 onChange={(e) => setEscrito(e.target.value)}
                 autoComplete="off"
@@ -209,11 +218,11 @@ export function DiBrilla({ mision, base, idiomaVoz, imagenFiesta, onTerminar, on
           ) : (
             <div className="decir__botones">
               {micro ? (
-                <button type="button" className={`microfono${estado === 'escuchando' ? ' es-escuchando' : ''}`} onClick={hablar} aria-label="Toca y di la palabra">
+                <button type="button" className={`microfono${estado === 'escuchando' ? ' es-escuchando' : ''}`} onClick={hablar} aria-label={leer ? 'Toca y lee la palabra' : 'Toca y di la palabra'}>
                   🎤
                 </button>
               ) : (
-                <button type="button" className="microfono microfono--mano" onClick={loDije} aria-label="Ya la dije en voz alta">
+                <button type="button" className="microfono microfono--mano" onClick={loDije} aria-label={leer ? 'Ya la leí en voz alta' : 'Ya la dije en voz alta'}>
                   🗣️
                 </button>
               )}

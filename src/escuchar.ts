@@ -39,7 +39,8 @@ const Clase: ClaseReconocedor | undefined =
       (window as unknown as Record<string, ClaseReconocedor | undefined>).webkitSpeechRecognition);
 
 let negado = false;
-let local: Promise<boolean> | null = null;
+// Se pregunta una vez por idioma: un modelo de inglés en el aparato no sirve para español.
+const local = new Map<string, Promise<boolean>>();
 
 /** Si vale la pena mostrar el botón del micrófono. */
 export function hayMicrofono(): boolean {
@@ -49,14 +50,18 @@ export function hayMicrofono(): boolean {
 // Donde el navegador puede reconocer la voz dentro del propio dispositivo, se prefiere:
 // así la voz del niño no sale del celular.
 function puedeLocal(idioma: string): Promise<boolean> {
-  local ??= (async () => {
-    try {
-      return (await Clase?.available?.({ langs: [idioma], processLocally: true })) === 'available';
-    } catch {
-      return false;
-    }
-  })();
-  return local;
+  let r = local.get(idioma);
+  if (!r) {
+    r = (async () => {
+      try {
+        return (await Clase?.available?.({ langs: [idioma], processLocally: true })) === 'available';
+      } catch {
+        return false;
+      }
+    })();
+    local.set(idioma, r);
+  }
+  return r;
 }
 
 export type Oido = { tipo: 'oido'; frases: string[] } | { tipo: 'silencio' } | { tipo: 'sin-micro' };
@@ -145,29 +150,48 @@ export function escuchar(idioma: string, alTerminar: (r: Oido) => void): () => v
 
 // ---------- Comparar lo dicho o escrito con la palabra ----------
 
-const CIFRAS: Record<string, string> = {
-  '0': 'zero', '1': 'one', '2': 'two', '3': 'three', '4': 'four', '5': 'five', '6': 'six',
-  '7': 'seven', '8': 'eight', '9': 'nine', '10': 'ten', '11': 'eleven', '12': 'twelve',
+const CIFRAS: Record<string, Record<string, string>> = {
+  en: {
+    '0': 'zero', '1': 'one', '2': 'two', '3': 'three', '4': 'four', '5': 'five', '6': 'six',
+    '7': 'seven', '8': 'eight', '9': 'nine', '10': 'ten', '11': 'eleven', '12': 'twelve',
+  },
+  es: {
+    '0': 'cero', '1': 'uno', '2': 'dos', '3': 'tres', '4': 'cuatro', '5': 'cinco', '6': 'seis',
+    '7': 'siete', '8': 'ocho', '9': 'nueve', '10': 'diez', '11': 'once', '12': 'doce',
+  },
 };
 
-/** Minúsculas, sin tildes ni signos, con las cifras escritas en letras y "7:00" como "seven oclock". */
-export function normalizar(texto: string): string {
+/** 'es' o 'en' según la voz de la cartilla ('es-CO' → 'es'). */
+export const lengua = (idioma: string): 'es' | 'en' => (idioma.toLowerCase().startsWith('es') ? 'es' : 'en');
+
+/**
+ * La palabra que se dice o se lee, en el idioma de la voz: en inglés `en`; en una cartilla
+ * de español, `es` (allí `en` es solo una traducción opcional).
+ */
+export const palabraMeta = (palabra: Palabra, idioma: string): string => (lengua(idioma) === 'es' ? palabra.es : palabra.en);
+
+/**
+ * Minúsculas, sin tildes ni signos, con las cifras escritas en letras del idioma ("3" → "three"
+ * o "tres") y, en inglés, "7:00" como "seven oclock".
+ */
+export function normalizar(texto: string, idioma = 'en'): string {
+  const cifras = CIFRAS[lengua(idioma)];
   return texto
     .toLowerCase()
-    .replace(/\b(\d{1,2}):00\b/g, '$1 oclock')
+    .replace(/\b(\d{1,2}):00\b/g, lengua(idioma) === 'en' ? '$1 oclock' : '$1')
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '')
     .replace(/[\u2019'`\u00b4]/g, '')
     .replace(/[^a-z0-9 ]+/g, ' ')
     .split(/\s+/)
     .filter(Boolean)
-    .map((w) => CIFRAS[w] ?? w)
+    .map((w) => cifras[w] ?? w)
     .join(' ');
 }
 
 /** Si la frase contiene la meta como palabras seguidas, con o sin espacios entre ellas. */
-function contiene(frase: string, meta: string): boolean {
-  const palabras = normalizar(frase).split(' ');
+function contiene(frase: string, meta: string, idioma: string): boolean {
+  const palabras = normalizar(frase, idioma).split(' ');
   const pegada = meta.replace(/ /g, '');
   for (let i = 0; i < palabras.length; i++) {
     let junto = '';
@@ -184,9 +208,9 @@ function contiene(frase: string, meta: string): boolean {
  * También vale junta o separada ("grand mother", "thankyou") y las variantes que el
  * contenido declare en `aceptar`.
  */
-export function seOyo(frases: string[], palabra: Palabra): boolean {
-  const metas = [palabra.en, ...(palabra.aceptar ?? [])].map(normalizar).filter(Boolean);
-  return frases.some((f) => metas.some((m) => contiene(f, m)));
+export function seOyo(frases: string[], palabra: Palabra, idioma = 'en'): boolean {
+  const metas = [palabraMeta(palabra, idioma), ...(palabra.aceptar ?? [])].map((m) => normalizar(m, idioma)).filter(Boolean);
+  return frases.some((f) => metas.some((m) => contiene(f, m, idioma)));
 }
 
 function distancia(a: string, b: string): number {
@@ -204,9 +228,9 @@ function distancia(a: string, b: string): number {
 }
 
 /** 'bien' si está igual, 'casi' si le falta o sobra una letra (dos en palabras largas). */
-export function comparaEscrito(escrito: string, palabra: string): 'bien' | 'casi' | 'otra' {
-  const a = normalizar(escrito).replace(/ /g, '');
-  const b = normalizar(palabra).replace(/ /g, '');
+export function comparaEscrito(escrito: string, palabra: string, idioma = 'en'): 'bien' | 'casi' | 'otra' {
+  const a = normalizar(escrito, idioma).replace(/ /g, '');
+  const b = normalizar(palabra, idioma).replace(/ /g, '');
   if (!a) return 'otra';
   if (a === b) return 'bien';
   const margen = b.length >= 8 ? 2 : b.length >= 4 ? 1 : 0;

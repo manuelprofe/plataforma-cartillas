@@ -6,6 +6,8 @@ import { EscuchaAtrapa } from './juegos/EscuchaAtrapa';
 import { DiBrilla } from './juegos/DiBrilla';
 import { ContarToca } from './juegos/ContarToca';
 import { Ordenar } from './juegos/Ordenar';
+import { Operacion } from './juegos/Operacion';
+import { Silabas } from './juegos/Silabas';
 import { Memoria } from './juegos/Memoria';
 import { ElegirHeroe } from './ElegirHeroe';
 import { Cinematica } from './Cinematica';
@@ -38,6 +40,8 @@ const JUEGOS: Record<Mision['plantilla'], ComponentType<PropsJuego>> = {
   memoria: Memoria,
   'contar-toca': ContarToca,
   ordenar: Ordenar,
+  operacion: Operacion,
+  silabas: Silabas,
 };
 
 type Pantalla =

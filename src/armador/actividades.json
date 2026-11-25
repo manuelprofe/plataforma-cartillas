@@ -1,0 +1,159 @@
+{
+  "nota": "Plantillas de actividades del armador (aprobadas por Manuel el 25 nov 2026). {tema} y {palabras} se llenan con el tema elegido. minutos: duración sugerida según la clase de 45, 55 o 90 min.",
+  "actividades": [
+    {
+      "id": "escalera", "nombre": "La escalera", "fase": "desarrollo", "usa": "laminas",
+      "paraQue": "Reconocer y nombrar las palabras del tema en orden, subiendo de a un peldaño.",
+      "necesita": "Cinta de enmascarar para 6 a 10 peldaños en el piso o el tablero; una lámina por peldaño",
+      "pasos": ["Pegue una lámina de {tema} en cada peldaño ({palabras}).", "Un niño se para abajo; el grupo dice en coro la lámina del primer peldaño y el niño sube.", "Así hasta arriba. Si nadie la recuerda, usted la dice, el grupo la repite y se sigue subiendo.", "Arriba, el niño elige al compañero del siguiente turno. Cada tres turnos, cambie una lámina de lugar."],
+      "dice": "Esta escalera sube con palabras. Si la decimos juntos, subimos un escalón.",
+      "minutos": { "45": 8, "55": 10, "90": 15 },
+      "sinProyector": "Es de papel y piso; no necesita nada más.",
+      "conProyector": "Se proyecta la escalera con las láminas; el niño sube en el piso mientras usted avanza la lámina en pantalla.",
+      "observar": "Quién nombra sin ayuda; quién solo repite"
+    },
+    {
+      "id": "bingo", "nombre": "Bingo de láminas", "fase": "desarrollo", "usa": "laminas",
+      "paraQue": "Reconocer al oír: usted dice, el niño encuentra y marca.",
+      "necesita": "Un cartón de 3 × 3 dibujos por pareja (distintos entre sí); 9 tapas o granos de maíz por pareja",
+      "pasos": ["Entregue un cartón por pareja.", "Diga una palabra de {tema} y muéstrela en la lámina ({palabras}).", "La pareja que la tenga pone una tapa encima.", "Con 3 en línea dicen \"¡Bingo!\" y leen sus tres palabras; todos siguen hasta llenar el cartón.", "En la segunda ronda, diga la palabra sin mostrar la lámina."],
+      "dice": "Escuchen, busquen y tapen. Cuando tengan tres en fila, me las dicen.",
+      "minutos": { "45": 10, "55": 12, "90": 20 },
+      "sinProyector": "Muestre la lámina impresa en lugar de proyectarla.",
+      "conProyector": "La lámina que se canta sale grande en pantalla con su audio.",
+      "observar": "Qué parejas tapan sin mirar a las demás; qué palabras se confunden"
+    },
+    {
+      "id": "memoria", "nombre": "Memoria", "fase": "desarrollo", "usa": "laminas",
+      "paraQue": "Asociar dos cosas que van juntas: dibujo y palabra, cantidad y número.",
+      "necesita": "Un juego de 12 fichas recortadas (6 parejas) por grupo de 4 niños",
+      "pasos": ["Los 4 niños ponen las fichas boca abajo, revueltas.", "Por turnos, cada uno voltea dos fichas y dice en voz alta lo que ve.", "Si son pareja, se las lleva; si no, las vuelve a tapar.", "Al final cada uno dice una pareja que se llevó."],
+      "dice": "Volteen dos y díganlas en voz alta. Si son pareja, se las llevan.",
+      "minutos": { "45": 10, "55": 12, "90": 18 },
+      "sinProyector": "Es de papel; no necesita nada más.",
+      "conProyector": "Un tablero de 12 fichas en pantalla: el grupo dice dos números de ficha y usted las voltea.",
+      "observar": "Quién dice en voz alta lo que voltea; quién ayuda al que se le olvida"
+    },
+    {
+      "id": "simon", "nombre": "Simón dice", "fase": "inicio", "usa": null,
+      "paraQue": "Comprender una orden y responder con el cuerpo, sin tener que hablar todavía.",
+      "necesita": "Nada; opcional, láminas pegadas en las paredes",
+      "pasos": ["Todos de pie; usted es Simón.", "\"Simón dice: toquen…\" con una palabra de {tema} ({palabras}). Todos lo hacen.", "Si da la orden sin decir \"Simón dice\", se quedan quietos. El que se mueve se ríe y sigue: nadie sale.", "Después de 6 órdenes, un niño pasa a ser Simón."],
+      "dice": "Solo se mueven si escuchan \"Simón dice\".",
+      "minutos": { "45": 5, "55": 5, "90": 8 },
+      "sinProyector": "No lo necesita.",
+      "conProyector": "Cada orden sale en pantalla con su lámina, para quien aún no la entiende de oído.",
+      "observar": "Quién responde sin mirar a los demás; quién necesita el gesto"
+    },
+    {
+      "id": "relevos", "nombre": "Carrera de relevos", "fase": "desarrollo", "usa": "laminas",
+      "paraQue": "Responder rápido y trabajar en equipo; cada uno aporta una parte.",
+      "necesita": "Tarjetas boca abajo en una mesa al frente; tiza para el tablero",
+      "pasos": ["Arme 4 filas con el mismo número de niños.", "El primero de cada fila camina (no corre) a la mesa, voltea una tarjeta de {tema} y la dice o la resuelve en el tablero.", "Vuelve, toca la mano del siguiente y se hace al final de la fila.", "Al terminar, el grupo revisa en coro el tablero. Se celebra a todas las filas, no a la primera."],
+      "dice": "Caminando, sin correr. Su fila los ayuda si se les olvida.",
+      "minutos": { "45": 8, "55": 10, "90": 15 },
+      "sinProyector": "Es de tablero y papel.",
+      "conProyector": "La tarjeta de cada turno sale en pantalla; al final se proyectan las respuestas para revisar en coro.",
+      "observar": "Quién resuelve solo; quién recibe ayuda de su fila y luego lo intenta"
+    },
+    {
+      "id": "mimica", "nombre": "Mímica", "fase": "desarrollo", "usa": "laminas",
+      "paraQue": "Representar el significado con el cuerpo; el grupo adivina y dice la palabra.",
+      "necesita": "Tarjetas con dibujo del tema en una bolsa",
+      "pasos": ["Un niño saca una tarjeta de {tema} y la mira sin mostrarla.", "La representa sin hablar.", "El grupo levanta la mano y dice qué es; el que acierta saca la siguiente.", "Si nadie adivina en un minuto, muestra la tarjeta y todos la dicen en coro."],
+      "dice": "Sin palabras, solo con el cuerpo. Los demás adivinan.",
+      "minutos": { "45": 8, "55": 10, "90": 12 },
+      "sinProyector": "No lo necesita.",
+      "conProyector": "Solo el niño que actúa mira la pantalla; al adivinar, la lámina se muestra a todos con su audio.",
+      "observar": "Quién se anima a pasar; quién dice la palabra correcta al adivinar"
+    },
+    {
+      "id": "ordena", "nombre": "Ordena la fila", "fase": "desarrollo", "usa": null,
+      "paraQue": "Ordenar: números, sílabas, pasos de una historia o de una rutina.",
+      "necesita": "Tarjetas grandes (media hoja) con un número, sílaba o dibujo cada una",
+      "pasos": ["Reparta una tarjeta de {tema} a 5 a 8 niños, que pasan al frente.", "Sin hablar, se ordenan en fila mostrando su tarjeta.", "El resto dice si está bien o quién debe moverse.", "En orden, el grupo lo lee en coro. Pasa otro equipo."],
+      "dice": "Sin hablar, se ordenan. Los de los puestos son los jueces.",
+      "minutos": { "45": 8, "55": 10, "90": 15 },
+      "sinProyector": "Es de papel.",
+      "conProyector": "Las tarjetas desordenadas salen en pantalla; después, un toque muestra el orden correcto.",
+      "observar": "Quién sabe dónde va sin ayuda; quién corrige y explica por qué"
+    },
+    {
+      "id": "proyectado", "nombre": "Juego proyectado", "fase": "desarrollo", "usa": "juego",
+      "paraQue": "Practicar con imagen y sonido de la plataforma, todo el grupo a la vez.",
+      "necesita": "Computador o celular conectado al televisor o video beam; la plataforma en Proyectar",
+      "pasos": ["Abra el juego de {tema} en Proyectar.", "El juego dice la palabra; el grupo la señala en la pantalla con el dedo.", "Un niño pasa y la toca (o usted la toca por él).", "Cada ronda pasa un niño distinto; el grupo ayuda en coro."],
+      "dice": "Todos señalan. Uno pasa a tocarla.",
+      "minutos": { "45": 10, "55": 15, "90": 20 },
+      "sinProyector": "Cámbielo por el Bingo de láminas o La escalera, con las mismas palabras.",
+      "conProyector": "Es el juego mismo.",
+      "observar": "Quién señala antes de que el juego lo muestre; qué palabras se demoran"
+    },
+    {
+      "id": "tingo", "nombre": "Tingo tingo tango", "fase": "desarrollo", "usa": "laminas",
+      "paraQue": "Responder en voz alta una pregunta del tema, al azar y con emoción, sin que nadie pierda.",
+      "necesita": "Una pelota de papel o un borrador; láminas o tarjetas del tema",
+      "pasos": ["Los niños se pasan la pelota en sus puestos o en círculo.", "Usted, de espaldas, dice \"tingo, tingo…\" y en algún momento \"¡tango!\".", "Quien tiene la pelota dice la lámina de {tema} que usted muestra ({palabras}).", "Si no sabe, elige a un amigo y lo dicen juntos. Nadie sale.", "El que respondió pasa a decir \"tingo, tango\"."],
+      "dice": "Al que le caiga el tango, responde. Si no sabe, pide ayuda a un amigo.",
+      "minutos": { "45": 8, "55": 10, "90": 15 },
+      "sinProyector": "Muestre la lámina impresa.",
+      "conProyector": "Al \"¡tango!\" aparece en pantalla una lámina al azar, con su audio.",
+      "observar": "Quién responde solo; quién pide ayuda y luego lo dice"
+    },
+    {
+      "id": "tienda", "nombre": "La tienda", "fase": "desarrollo", "usa": "laminas",
+      "paraQue": "Usar el tema en una situación real: saludar, pedir, contar y pagar.",
+      "necesita": "\"Productos\" (láminas u objetos) con precio; billetes y monedas de papel",
+      "pasos": ["Arme 3 o 4 tiendas en las mesas, con 2 tenderos cada una; los productos son de {tema}.", "Los demás compran en parejas, con un poco de dinero de papel.", "El comprador saluda, pide el producto por su nombre y paga.", "El tendero cuenta el dinero y da las vueltas.", "Cada 3 minutos se cambian los papeles."],
+      "dice": "Para comprar hay que saludar, pedir por el nombre y pagar justo.",
+      "minutos": { "45": 12, "55": 15, "90": 25 },
+      "sinProyector": "Todo es de papel.",
+      "conProyector": "En pantalla, la tienda con productos y precios, y el diálogo modelo que se repite antes de empezar.",
+      "observar": "Quién pide por el nombre; quién cuenta bien el dinero y las vueltas"
+    },
+    {
+      "id": "veoveo", "nombre": "Veo veo", "fase": "inicio", "usa": null,
+      "paraQue": "Describir y adivinar con pistas: color, forma, cantidad, primera letra.",
+      "necesita": "Nada; el salón mismo o láminas pegadas en el tablero",
+      "pasos": ["Diga: \"Veo, veo.\" El grupo responde: \"¿Qué ves?\"", "\"Una cosita…\" \"¿De qué color?\" (o ¿con qué letra?, ¿cuántas hay?)", "Dé la pista con una palabra de {tema}; el grupo busca y adivina.", "Quien adivina pone la siguiente pista."],
+      "dice": "Busquen con los ojos, no se paren. Levantan la mano para decir.",
+      "minutos": { "45": 5, "55": 6, "90": 10 },
+      "sinProyector": "Es con el salón.",
+      "conProyector": "Una escena llena de objetos del tema; el objeto adivinado se resalta.",
+      "observar": "Quién usa las palabras del tema para dar pistas"
+    },
+    {
+      "id": "golosa", "nombre": "La golosa", "fase": "desarrollo", "usa": null,
+      "paraQue": "Contar, saltar y decir en orden; el cuerpo aprende la secuencia.",
+      "necesita": "Golosa pintada con tiza en el patio o con cinta en el salón; una tapa",
+      "pasos": ["En cada casilla va una palabra de {tema} ({palabras}).", "El niño tira la tapa y salta diciendo en voz alta cada casilla que pisa.", "Recoge la tapa al volver. Si pisa raya, lo intenta de nuevo; no sale.", "Juegan en grupos de 6, una golosa por grupo si hay espacio."],
+      "dice": "Cada casilla que pisan, la dicen.",
+      "minutos": { "45": 10, "55": 12, "90": 20 },
+      "sinProyector": "Es de patio.",
+      "conProyector": "Antes de salir, la golosa se muestra en pantalla y el grupo dice las casillas en coro.",
+      "observar": "Quién dice la secuencia sin mirar; quién se salta una casilla"
+    },
+    {
+      "id": "telefono", "nombre": "Teléfono roto", "fase": "cierre", "usa": null,
+      "paraQue": "Escuchar con atención y pronunciar bien una palabra o frase.",
+      "necesita": "Tarjetas con una palabra o frase corta",
+      "pasos": ["Arme filas de 6 a 8 niños.", "Muestre una tarjeta de {tema} al primero de cada fila.", "Cada uno la dice en secreto al oído del siguiente.", "El último la dice en voz alta; se compara con la tarjeta.", "Todo el grupo la repite bien."],
+      "dice": "Despacio y al oído. Al final vemos si llegó igual.",
+      "minutos": { "45": 6, "55": 8, "90": 12 },
+      "sinProyector": "Tarjetas de papel.",
+      "conProyector": "Al final se muestra la palabra con su audio para que todos la oigan bien dicha.",
+      "observar": "Qué sonidos se pierden en el camino"
+    },
+    {
+      "id": "stop", "nombre": "Stop (Basta)", "fase": "desarrollo", "usa": null, "desdeGrado": 2,
+      "paraQue": "Escribir palabras del tema con una letra dada.",
+      "necesita": "Una hoja con columnas por pareja (por ejemplo: nombre, animal, fruta, color, cosa)",
+      "pasos": ["Diga una letra.", "Cada pareja escribe una palabra por columna que empiece con esa letra.", "La primera pareja que llena la fila dice \"¡Stop!\" y todos sueltan el lápiz.", "Se leen en voz alta; cada palabra correcta suma un punto a la pareja. No se publican puntajes."],
+      "dice": "Escriban lo que se les ocurra con la letra; en la primera ronda no importa la ortografía.",
+      "minutos": { "45": 10, "55": 12, "90": 18 },
+      "sinProyector": "La hoja impresa o copiada en el cuaderno.",
+      "conProyector": "La letra sale al azar en pantalla con un contador; al final se proyectan ejemplos de cada columna.",
+      "observar": "Quién escribe sin copiar; qué sonidos y letras se confunden"
+    }
+  ]
+}

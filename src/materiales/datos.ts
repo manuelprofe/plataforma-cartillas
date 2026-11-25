@@ -150,6 +150,8 @@ export interface Material {
   avisoColor?: string;
   /** Solo planeadores: lo que va en las filas de referentes del formato. */
   referentes?: Referentes;
+  /** Planeación armada por el docente: ya trae su duración; no se reparte ni se elige otra. */
+  duracionFija?: boolean;
   bloques: Bloque[];
 }
 

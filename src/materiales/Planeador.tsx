@@ -101,7 +101,7 @@ function Lista({ items, falta }: { items?: string[]; falta: string }) {
 export function FormatoPlaneador({ material: original, nombreTema, rutaMaterial, impreso, otros, temaId }: { material: Material; nombreTema: string; rutaMaterial?: (id: string) => string; impreso?: boolean; otros?: EntradaTema['materiales']; temaId?: string }) {
   const quien = useQuien();
   const duracion = useDuracion();
-  const material = ajustarDuracion(original, duracion);
+  const material = original.duracionFija ? original : ajustarDuracion(original, duracion);
   const { docente, colegio, identidad, area, grado } = quien;
   const color1 = identidad?.color_1 ?? COLOR_1;
   const color2 = identidad?.color_2 ?? COLOR_2;
@@ -180,6 +180,7 @@ export function FormatoPlaneador({ material: original, nombreTema, rutaMaterial,
     <div className="plan-formato" style={{ '--plan-color-1': color1, '--plan-color-2': color2, '--plan-tinta-1': tintaSobre(color1) } as CSSProperties}>
       {!impreso && (
         <div className="plan-acciones no-imprimir">
+          {!original.duracionFija && (
           <div className="plan-duracion" role="group" aria-label="Duración de la clase">
             <span className="plan-duracion__et">Duración</span>
             {DURACIONES.map((d) => (
@@ -188,6 +189,7 @@ export function FormatoPlaneador({ material: original, nombreTema, rutaMaterial,
               </button>
             ))}
           </div>
+          )}
           <Boton icono="descargar" onClick={() => void import('./word').then((w) => w.descargarPlaneador({ material, nombreTema, docente, colegio, identidad, area: material.referentes?.area ?? area, grado: material.referentes?.grado ?? grado }))}>
             Descargar en Word
           </Boton>

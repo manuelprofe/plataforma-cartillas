@@ -23,6 +23,10 @@
 
 .bib-nivel { margin-top: var(--e-6); }
 .bib-nivel h2 { margin: 0; }
+.bib-pensum { display: grid; grid-template-columns: max-content 1fr; gap: var(--e-1) var(--e-3); margin: var(--e-3) 0 0; max-width: 72ch; line-height: 1.5; }
+.bib-pensum dt { font-weight: 600; }
+.bib-pensum dd { margin: 0; }
+@media (max-width: 480px) { .bib-pensum { grid-template-columns: 1fr; } .bib-pensum dd { margin-bottom: var(--e-2); } }
 .bib-temas { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: var(--e-4); margin-top: var(--e-3); }
 .bib-tema { background: #fff; border: 1px solid #e3e4e8; border-radius: 14px; padding: var(--e-4); min-width: 0; }
 .bib-tema--destacado { border-color: var(--p-control, #1f3866); box-shadow: 0 0 0 2px var(--p-control, #1f3866) inset; }

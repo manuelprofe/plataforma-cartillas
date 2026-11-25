@@ -26,11 +26,12 @@ try {
     await p.getByRole('link', { name: /^Biblioteca/ }).first().click();
     await p.waitForURL(/\/docente\/biblioteca$/);
     comprobar(true, `${ancho}: Inicio lleva a la biblioteca`);
-    await p.waitForSelector('a[href$="/doc/mission-stars"]');
+    await p.waitForSelector('a[href$="/doc/calcomanias"]');
     comprobar(await p.getByText(/La historia: .+/).isVisible() && (await p.locator('a[href*="/docente/biblioteca/doc/"]').count()) === 4, `${ancho}: la portada toma la historia y los fundamentos de la cartilla`);
     await p.screenshot({ path: `${CAPTURAS}/bib-${ancho}-inicio.png`, fullPage: true });
 
     await ir('/docente/biblioteca/historia');
+    comprobar((await p.locator('.bib-personajes img').count()) === 5 && (await p.locator('.bib-escena img').count()) === 7, `${ancho}: personajes del cuaderno con su imagen`);
     const escenas = await p.locator('.bib-escena').count();
     comprobar(escenas === 7, `${ancho}: historia con 7 escenas (${escenas})`);
     const tituloEs = await p.locator('.bib-escena h2').first().textContent();
@@ -48,6 +49,9 @@ try {
     await ir('/docente/biblioteca/recursos');
     const temas = await p.locator('.bib-tema').count();
     comprobar(temas >= 15, `${ancho}: recursos con ${temas} temas`);
+    const periodos = await p.locator('.bib-nivel h2').allTextContents();
+    comprobar(periodos.length === 5 && periodos[0].startsWith('Ruta de entrada') && periodos[4].startsWith('Periodo 4'), `${ancho}: recursos por periodo del pensum (${periodos.join(' / ')})`);
+    comprobar((await p.locator('.bib-pensum').count()) === 5, `${ancho}: cada periodo trae meta, qué se ve y evidencia`);
     comprobar(await p.locator('.bib-enlaces a').count() > 10, `${ancho}: hay fichas y juegos enlazados`);
     comprobar(!(await desborda(p)), `${ancho}: recursos sin desborde`);
     // Videos de YouTube dentro de la página: miniatura primero; al tocarla, el reproductor.
@@ -70,7 +74,14 @@ try {
     comprobar(!(await desborda(p)), `${ancho}: actividades sin desborde`);
     await p.screenshot({ path: `${CAPTURAS}/bib-${ancho}-actividades.png` });
 
-    for (const d of ['niveles', 'mission-stars', 'fundamentacion', 'referencias']) {
+    // Nada de la estructura anterior (la de la tesis) en la biblioteca.
+    for (const r of ['/docente/biblioteca', '/docente/biblioteca/historia', '/docente/biblioteca/recursos', '/docente/biblioteca/actividades']) {
+      await ir(r);
+      const viejo = (await p.locator('main, body').first().innerText()).match(/Englishland|English Explorer|Word Builder|Sentence Hero|Bosque de los Sonidos|Mission Stars|Pixie|Lumi|Cosmo/);
+      comprobar(!viejo, `${ancho}: ${r} sin rastros de la estructura anterior${viejo ? ` (${viejo[0]})` : ''}`);
+    }
+
+    for (const d of ['pensum', 'calcomanias', 'fundamentacion', 'referencias']) {
       await ir(`/docente/biblioteca/doc/${d}`);
       const n = await p.locator('.bib-doc p, .bib-doc li').count();
       comprobar(n > 5 && !(await desborda(p)), `${ancho}: documento ${d} (${n} bloques)`);

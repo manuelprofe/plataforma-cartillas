@@ -31,7 +31,7 @@ Convención de campos: **Imagen** = archivo del paquete (carpeta `iconos/`); **A
 | nine | `iconos/0039_20e3` | palabra x2 | nain | nueve | B |
 | ten | `iconos/1f51f` | palabra x2 | ten | diez | B |
 
-**Frases modelo** (solo vocabulario del Bosque; la instrucción siempre va en español):
+**Frases modelo** (solo vocabulario del tema; la instrucción siempre va en español):
 - El número solo, claro y una vez: "three", mostrando tres dedos.
 - La secuencia contada con los dedos: "one, two, three, four, five" y "six, seven, eight, nine, ten".
 - Dentro de una frase en español, al final: "Llevo cien años contando piedras: one, two, three" (Abu, el vecino del camino).
@@ -75,7 +75,7 @@ Habitante del camino: Abu. **Canción del tema:** "One, two, ¡tres dedos!" (let
 ## 2. Planeador
 
 Hora tipo (§0 de la ronda 2): 5 saludo y repaso · 15 juego de aula · 15 ficha o prueba · 10 decir · 5 cierre · 5 transiciones. Suman 55.
-Las estrellas del docente (participar 10, colaborar 15) se marcan **en la lista impresa del grupo**. Nunca se quitan.
+Las calcomanías del docente (participar y trabajar con otros) se marcan **en la lista impresa del grupo**. Nunca se quitan.
 
 ### Clase 1: mirar y jugar
 
@@ -152,7 +152,7 @@ Formato horizontal para proyectar y media carta para imprimir. Cada lámina: num
 - **Consigna (se proyecta):** "Uno muestra los dedos. El otro dice el número." Ícono: mano (`1f64c`).
 - **Frases modelo:** el número solo ("seven") y la secuencia "one, two, three".
 - **Cómo se turnan:** A muestra con los dedos un número del 1 al 10 (con las dos manos para el 6 al 10); B lo dice en inglés. Si B no quiere decir, señala el numeral en una tarjeta. Luego cambian. Después, los dos cuentan juntos del one al ten.
-- **Qué hace el docente al pasar:** escucha de cerca sin interrumpir; repite bien lo que oyó mal, sin nombrar el error; marca en la lista de cotejo las conductas; da la estrella de colaborar (15) a la pareja que se ayuda. No obliga a hablar al que no quiere.
+- **Qué hace el docente al pasar:** escucha de cerca sin interrumpir; repite bien lo que oyó mal, sin nombrar el error; marca en la lista de cotejo las conductas; da la calcomanía de trabajar con otros a la pareja que se ayuda. No obliga a hablar al que no quiere.
 - **Marco:** Vygotsky (el compañero es la ayuda) y Ryan y Deci (relación: no juega solo).
 
 ---

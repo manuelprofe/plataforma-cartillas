@@ -49,7 +49,7 @@ export function Unir({ paquete, heroe, misiones, onSi, onNo, onListo }: Props) {
       <Globo paquete={paquete} clave={sumando ? 'entrada-contadas' : 'entrada-unir'} imagen={sumando ? paquete.lumiFiesta : undefined} />
       <div className="nino__centro">
         <Disco paquete={paquete} avatar={heroe} className="disco--grande disco--borde" />
-        <ul className="faroles" aria-label={`${misiones.length} faroles encendidos`}>
+        <ul className="faroles" aria-label={`${misiones.length} ${misiones.length === 1 ? 'misión terminada' : 'misiones terminadas'}`}>
           {misiones.slice(0, MAX_FAROLES).map((m, i) => (
             <li key={m.id} className="farol-chico" style={{ transitionDelay: `${i * 25}ms` }}>
               <img src={paquete.base + m.icono} alt="" width="32" height="32" />

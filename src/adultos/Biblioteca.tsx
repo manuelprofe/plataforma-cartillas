@@ -1,6 +1,6 @@
-// Biblioteca del docente: el contenido de la cartilla anterior (historia, recursos por tema,
-// banco de actividades y documentos), leído del paquete de la cartilla (`biblioteca/*.json`,
-// generado por herramientas/importar/importar_biblioteca.py). Nada de contenido escrito aquí.
+// Biblioteca del docente: la historia del cuaderno, los recursos por tema y periodo, el banco de
+// actividades y los fundamentos (pensum, calcomanías, referencias), leídos del paquete de la
+// cartilla (`biblioteca/*.json`, que se editan a mano). Nada de contenido escrito aquí.
 import { useEffect, useMemo, useState, type ReactNode } from 'react';
 import { Boton, Encabezado, Fila, Panel, Vacio } from './base';
 import { Cargado, useCarga, useTitulo } from './comun';
@@ -10,7 +10,7 @@ import './biblioteca.css';
 
 type Idioma = 'es' | 'en';
 interface Escena { n: number; imagen?: string | null; es: { titulo: string; parrafos: string[] }; en?: { titulo: string; parrafos: string[] }; palabras: string[] }
-interface Historia { titulo: string; en_titulo: string; intro: string; escenas: Escena[]; personajes: { nombre: string; funcion: string }[] }
+interface Historia { titulo: string; en_titulo: string; intro: string; escenas: Escena[]; personajes: { nombre: string; funcion: string; imagen?: string }[] }
 interface BloqueDoc { t: 'titulo' | 'parrafo' | 'item'; n?: number; texto: string }
 interface Documentos { documentos: { id: string; titulo: string; bloques: BloqueDoc[] }[] }
 interface Actividad { nombre: string; nivel: string; nivel_nombre: string; tema: string; estilo: string; recurso: string; adaptacion: string; dba: string; estandar: string; fases: { enactiva?: string; iconica?: string; simbolica?: string } }
@@ -45,7 +45,7 @@ export function Biblioteca({ resto }: { resto: string[] }) {
 }
 
 // Iconos de los documentos de fundamentos que se conocen; los demás llevan el de documento.
-const ICONO_DOC: Record<string, 'cartillas' | 'estrella'> = { niveles: 'cartillas', 'mission-stars': 'estrella' };
+const ICONO_DOC: Record<string, 'cartillas' | 'estrella'> = { pensum: 'cartillas', calcomanias: 'estrella' };
 
 function Inicio() {
   useTitulo('Biblioteca');
@@ -63,7 +63,7 @@ function Inicio() {
           <>
             <Panel filas>
               <Fila ruta="/docente/biblioteca/historia" icono="documento" titulo={`La historia: ${historia.titulo}`} detalle={`${historia.escenas.length} escenas${historia.escenas.some((e) => e.en) ? ' en español e inglés' : ''}. Para leer, proyectar o imprimir.`} />
-              <Fila ruta="/docente/biblioteca/recursos" icono="descargar" titulo="Recursos por tema" detalle="Fichas descargables, videos y juegos en línea por nivel." />
+              <Fila ruta="/docente/biblioteca/recursos" icono="descargar" titulo="Recursos por tema" detalle="Fichas, videos y juegos en línea, por periodo del pensum de 3.°." />
               <Fila ruta="/docente/biblioteca/actividades" icono="lista" titulo="Banco de actividades" detalle={`${actividades.actividades.length} actividades con sus fases enactiva, icónica y simbólica.`} />
             </Panel>
             <Panel titulo="Fundamentos" filas>
@@ -125,7 +125,7 @@ function PaginaHistoria() {
                 <ul className="bib-personajes">
                   {h.personajes.map((p) => (
                     <li key={p.nombre}>
-                      <img src={`${base()}personajes/${p.nombre.toLowerCase()}-wave.webp`} alt="" onError={(ev) => (ev.currentTarget.style.visibility = 'hidden')} />
+                      <img src={base() + (p.imagen ?? `personajes/${p.nombre.toLowerCase()}-saludar.webp`)} alt="" onError={(ev) => (ev.currentTarget.style.visibility = 'hidden')} />
                       <span><strong>{p.nombre}.</strong> {p.funcion}</span>
                     </li>
                   ))}
@@ -144,7 +144,7 @@ function Arte({ e }: { e: Escena }) {
   return src ? <img className={e.imagen ? 'bib-escena__img' : 'bib-escena__img bib-escena__img--personaje'} src={src} alt="" loading="lazy" /> : <span />;
 }
 
-/** Resalta las palabras mágicas de la escena dentro del párrafo. */
+/** Resalta las palabras en inglés de la escena dentro del párrafo. */
 function conPalabras(texto: string, palabras: string[]): ReactNode {
   const lista = palabras.filter((p) => p.length > 1).sort((a, b) => b.length - a.length);
   if (!lista.length) return texto;
@@ -247,6 +247,13 @@ function PaginaRecursos({ destacar }: { destacar?: string }) {
               <section key={clave} className="bib-nivel">
                 <h2>{nivel.titulo}</h2>
                 <p className="meta">{nivel.territorio}</p>
+                {(nivel.importancia || nivel.pensum || nivel.evidencia) && (
+                  <dl className="bib-pensum">
+                    {nivel.importancia && (<><dt>Meta</dt><dd>{nivel.importancia}</dd></>)}
+                    {nivel.pensum && (<><dt>Qué se ve</dt><dd>{nivel.pensum}</dd></>)}
+                    {nivel.evidencia && (<><dt>Evidencia</dt><dd>{nivel.evidencia}</dd></>)}
+                  </dl>
+                )}
                 <div className="bib-temas">
                   {temas.map((r) => (
                     <article key={r.id} id={`tema-${r.id}`} className={`bib-tema${destacar === r.id ? ' bib-tema--destacado' : ''}`}>

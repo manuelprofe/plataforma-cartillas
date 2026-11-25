@@ -199,7 +199,7 @@ try {
     comprobar(base.estrellas.filter((e) => e.estudiante_id === 's4' && e.motivo === 'participar').length === 1, 'al reintentar, la estrella sube una sola vez');
     base.fallas = [{ status: 400, json: { code: 'P0001', message: 'No tienes acceso a uno de estos estudiantes' } }];
     await darUna(p, 'Leo', 'Participar');
-    await p.waitForFunction(() => document.body.innerText.includes('No se pudo guardar una estrella'), null, { timeout: 9000 });
+    await p.waitForFunction(() => document.body.innerText.includes('No se pudo guardar una calcomanía'), null, { timeout: 9000 });
     comprobar(!(await texto(p)).includes('No tienes acceso') && (await cola(p)).length === 0, 'un rechazo de la base descarta la acción y avisa con texto fijo');
 
     // 2. Modo avión: 3 estrellas, "3 por subir", suben una sola vez al volver la red (aun con una respuesta perdida).
@@ -376,7 +376,7 @@ try {
     await p.click('nav >> text=Más');
     await p.click('main button:has-text("Salir"), main a:has-text("Salir"), main >> text=Salir');
     await p.waitForSelector('h1:has-text("Entrar")');
-    comprobar((await texto(p)).includes('Tiene 2 estrellas sin subir; entre de nuevo con su cuenta para subirlas'), 'al salir con estrellas pendientes la entrada avisa');
+    comprobar((await texto(p)).includes('Tiene 2 calcomanías sin subir; entre de nuevo con su cuenta para subirlas'), 'al salir con estrellas pendientes la entrada avisa');
     comprobar((await p.evaluate(() => localStorage.getItem('pc_docente_lectura_v1'))) === null, 'al salir se borra la copia de grupos y apodos');
     b.caida = false;
     await p.fill('#correo', 'docenteb@prueba.co');

@@ -2,8 +2,8 @@
  "actividades": [
   {
    "nombre": "Picture Bingo",
-   "nivel": "n1",
-   "nivel_nombre": "N1 · English Explorer",
+   "nivel": "entrada",
+   "nivel_nombre": "Ruta de entrada",
    "tema": "School Objects",
    "estilo": "Visual",
    "recurso": "Flashcard + Cartón Bingo",
@@ -18,8 +18,8 @@
   },
   {
    "nombre": "Color Finder Race",
-   "nivel": "n1",
-   "nivel_nombre": "N1 · English Explorer",
+   "nivel": "entrada",
+   "nivel_nombre": "Ruta de entrada",
    "tema": "Colors",
    "estilo": "Visual",
    "recurso": "Flashcard + Plantilla Cubo",
@@ -34,8 +34,8 @@
   },
   {
    "nombre": "Song and Fill",
-   "nivel": "n1",
-   "nivel_nombre": "N1 · English Explorer",
+   "nivel": "entrada",
+   "nivel_nombre": "Ruta de entrada",
    "tema": "Numbers",
    "estilo": "Auditory",
    "recurso": "Flashcards + Guía Canción",
@@ -49,9 +49,25 @@
    }
   },
   {
+   "nombre": "Whispering Challenge",
+   "nivel": "entrada",
+   "nivel_nombre": "Ruta de entrada",
+   "tema": "Clothes",
+   "estilo": "Auditory",
+   "recurso": "Flashcards",
+   "adaptacion": "Animals, Food",
+   "dba": "Desarrollar la comprensión y la producción oral en inglés mediante la transmisión precisa de frases en cadena, poniendo a prueba la escucha activa y la pronunciación.",
+   "estandar": "Transmite vocabulario de prendas de vestir en inglés de forma oral.",
+   "fases": {
+    "enactiva": "<ol><li>Muestre flashcards del tema a trabajar: animals, clothes, colors.</li><li>Señale cada imagen y diga el nombre en voz alta. Los estudiantes repiten al unísono.</li></ol>",
+    "iconica": "<ol><li>Forme una fila de 4–5 estudiantes frente al grupo.</li><li>\"I like the blue jacket.\" / \"I like dogs.\" El docente susurra la frase al primer estudiante.</li><li>El estudiante susurra la misma frase al siguiente, y así sucesivamente.</li><li>El último estudiante dice la frase en voz alta.</li></ol>",
+    "simbolica": "<ol><li>Divida la clase en equipos de 4–5 estudiantes.</li><li>El docente susurra la frase al primer estudiante de cada equipo. El mensaje pasa de oído en oído.</li><li>El último estudiante dice la frase en voz alta. El docente revela la frase original.</li><li>El equipo gana puntos según la precisión de la frase final.</li></ol>"
+   }
+  },
+  {
    "nombre": "Simon Says",
-   "nivel": "n1",
-   "nivel_nombre": "N1 · English Explorer",
+   "nivel": "p1",
+   "nivel_nombre": "Periodo 1 · Salud y vida",
    "tema": "Body Parts",
    "estilo": "Auditory",
    "recurso": "Flashcards",
@@ -65,9 +81,57 @@
    }
   },
   {
+   "nombre": "Memory Match",
+   "nivel": "p1",
+   "nivel_nombre": "Periodo 1 · Salud y vida",
+   "tema": "Food",
+   "estilo": "Visual",
+   "recurso": "Flashcards",
+   "adaptacion": "—",
+   "dba": "Desarrollar el reconocimiento visual y la asociación entre la imagen y la palabra escrita del vocabulario de alimentos, mediante un juego de memoria por parejas.",
+   "estandar": "Empareja imágenes de alimentos con sus nombres en inglés.",
+   "fases": {
+    "enactiva": "<ol><li>Coloque todas las tarjetas boca arriba (imágenes + palabras) en el tablero o en una mesa grande.</li><li>Pida a los estudiantes que solo observen, sin tocar.</li><li>\"What is this?\" / \"Is this Milk or Pizza?\" Señale algunas tarjetas y pregunte.</li><li>Trabaje con 6–8 alimentos: rice, pasta, eggs, fish, milk, pizza.</li></ol>",
+    "iconica": "<ol><li>Pegue las flashcards en el tablero. Señale imagen y palabra al mismo tiempo: \"Repeat: Fish!\"</li><li>Retire las palabras escritas y deje solo las imágenes.</li><li>Señale rápidamente diferentes alimentos para verificar el reconocimiento visual.</li></ol>",
+    "simbolica": "<ol><li>Prepare parejas de tarjetas: una con la imagen del alimento y una con la palabra escrita. Use 6, 8 o 10 parejas según el nivel del grupo.</li><li>Mezcle todas las tarjetas y colóquelas boca abajo en una mesa o en el piso.</li><li>Reglas: giran 2 tarjetas — si coinciden (imagen + palabra) las conservan; si no, las dejan boca abajo. Cada vez que giran una tarjeta dicen el nombre del alimento en voz alta.</li><li>Gana el estudiante o grupo que acumule más parejas.</li></ol>"
+   }
+  },
+  {
+   "nombre": "Relay Race",
+   "nivel": "p1",
+   "nivel_nombre": "Periodo 1 · Salud y vida",
+   "tema": "Food & Numbers",
+   "estilo": "Kinesthetic",
+   "recurso": "Flashcards + Cesta",
+   "adaptacion": "Clothes",
+   "dba": "Desarrollar el vocabulario de alimentos y números en inglés mediante una carrera de relevos en la que los estudiantes buscan, identifican y cuantifican tarjetas en movimiento.",
+   "estandar": "Asocia cantidades con nombres de alimentos en inglés mediante actividad física.",
+   "fases": {
+    "enactiva": "<ol><li>Muestre flashcards de alimentos y números.</li><li>Señale cada imagen y diga el nombre en voz alta. Los estudiantes repiten al unísono.</li></ol>",
+    "iconica": "<ol><li>Muestre una cesta con varias flashcards mezcladas (alimentos repetidos).</li><li>El docente modela un turno: corre hasta la cesta, busca una tarjeta y regresa.</li><li>\"I found ONE apple.\" Muestra la tarjeta. Los estudiantes repiten al unísono: \"ONE APPLE!\"</li></ol>",
+    "simbolica": "<ol><li>Forme equipos de 4–5 estudiantes.</li><li>\"Get the APPLE! Go, go, go!\" Explique la misión: buscar y traer la tarjeta del alimento anunciado.</li><li>El primer estudiante corre a la cesta, busca la tarjeta indicada y regresa. El siguiente hace lo mismo.</li><li>Cuando todos hayan participado, el equipo clasifica sus tarjetas por tipo de alimento.</li><li>\"We found FOUR apples.\" / \"We found TWO breads.\" Cada equipo anuncia sus resultados al unísono.</li></ol>"
+   }
+  },
+  {
+   "nombre": "Order Race",
+   "nivel": "p1",
+   "nivel_nombre": "Periodo 1 · Salud y vida",
+   "tema": "Verb To Be",
+   "estilo": "Kinesthetic",
+   "recurso": "Tarjetas de días + Calendario",
+   "adaptacion": "—",
+   "dba": "Desarrollar el reconocimiento, la pronunciación y la secuencia correcta de los días de la semana en inglés mediante una carrera de ordenamiento progresiva.",
+   "estandar": "Produce los días de la semana en inglés y los ordena cronológicamente.",
+   "fases": {
+    "enactiva": "<ol><li>Entregue tarjetas físicas con los días de la semana: Monday, Tuesday, Wednesday…</li><li>Los estudiantes exploran las tarjetas y proponen un posible orden.</li><li>\"Check again!\" No corrija de inmediato; deje que experimenten.</li></ol>",
+    "iconica": "<ol><li>Muestre en el tablero un calendario con colores asignados a cada día: Monday = rojo, Sunday = azul.</li><li>Los estudiantes comparan su orden con el modelo del tablero.</li><li>\"After Monday… what comes next?\" Practique la pronunciación de cada día.</li></ol>",
+    "simbolica": "<ol><li>Borre el tablero y revuelva las tarjetas de cada grupo.</li><li>\"You have one minute! Put the days in order!\"</li><li>\"Day #1 is Monday.\" Pida a cada grupo que lea su orden en voz alta.</li><li>Variante: pida el orden inverso para aumentar el nivel de dificultad.</li></ol>"
+   }
+  },
+  {
    "nombre": "Human Clock",
-   "nivel": "n1",
-   "nivel_nombre": "N1 · English Explorer",
+   "nivel": "p2",
+   "nivel_nombre": "Periodo 2 · Convivencia y paz",
    "tema": "What time is it?",
    "estilo": "Kinesthetic",
    "recurso": "Flashcards de Relojes",
@@ -82,8 +146,8 @@
   },
   {
    "nombre": "Listen and Draw",
-   "nivel": "n2",
-   "nivel_nombre": "N2 · Word Builder",
+   "nivel": "p2",
+   "nivel_nombre": "Periodo 2 · Convivencia y paz",
    "tema": "Emotions",
    "estilo": "Auditory",
    "recurso": "Flashcards",
@@ -97,73 +161,9 @@
    }
   },
   {
-   "nombre": "Memory Match",
-   "nivel": "n2",
-   "nivel_nombre": "N2 · Word Builder",
-   "tema": "Food",
-   "estilo": "Visual",
-   "recurso": "Flashcards",
-   "adaptacion": "—",
-   "dba": "Desarrollar el reconocimiento visual y la asociación entre la imagen y la palabra escrita del vocabulario de alimentos, mediante un juego de memoria por parejas.",
-   "estandar": "Empareja imágenes de alimentos con sus nombres en inglés.",
-   "fases": {
-    "enactiva": "<ol><li>Coloque todas las tarjetas boca arriba (imágenes + palabras) en el tablero o en una mesa grande.</li><li>Pida a los estudiantes que solo observen, sin tocar.</li><li>\"What is this?\" / \"Is this Milk or Pizza?\" Señale algunas tarjetas y pregunte.</li><li>Trabaje con 6–8 alimentos: rice, pasta, eggs, fish, milk, pizza.</li></ol>",
-    "iconica": "<ol><li>Pegue las flashcards en el tablero. Señale imagen y palabra al mismo tiempo: \"Repeat: Fish!\"</li><li>Retire las palabras escritas y deje solo las imágenes.</li><li>Señale rápidamente diferentes alimentos para verificar el reconocimiento visual.</li></ol>",
-    "simbolica": "<ol><li>Prepare parejas de tarjetas: una con la imagen del alimento y una con la palabra escrita. Use 6, 8 o 10 parejas según el nivel del grupo.</li><li>Mezcle todas las tarjetas y colóquelas boca abajo en una mesa o en el piso.</li><li>Reglas: giran 2 tarjetas — si coinciden (imagen + palabra) las conservan; si no, las dejan boca abajo. Cada vez que giran una tarjeta dicen el nombre del alimento en voz alta.</li><li>Gana el estudiante o grupo que acumule más parejas.</li></ol>"
-   }
-  },
-  {
-   "nombre": "Whispering Challenge",
-   "nivel": "n2",
-   "nivel_nombre": "N2 · Word Builder",
-   "tema": "Clothes",
-   "estilo": "Auditory",
-   "recurso": "Flashcards",
-   "adaptacion": "Animals, Food",
-   "dba": "Desarrollar la comprensión y la producción oral en inglés mediante la transmisión precisa de frases en cadena, poniendo a prueba la escucha activa y la pronunciación.",
-   "estandar": "Transmite vocabulario de prendas de vestir en inglés de forma oral.",
-   "fases": {
-    "enactiva": "<ol><li>Muestre flashcards del tema a trabajar: animals, clothes, colors.</li><li>Señale cada imagen y diga el nombre en voz alta. Los estudiantes repiten al unísono.</li></ol>",
-    "iconica": "<ol><li>Forme una fila de 4–5 estudiantes frente al grupo.</li><li>\"I like the blue jacket.\" / \"I like dogs.\" El docente susurra la frase al primer estudiante.</li><li>El estudiante susurra la misma frase al siguiente, y así sucesivamente.</li><li>El último estudiante dice la frase en voz alta.</li></ol>",
-    "simbolica": "<ol><li>Divida la clase en equipos de 4–5 estudiantes.</li><li>El docente susurra la frase al primer estudiante de cada equipo. El mensaje pasa de oído en oído.</li><li>El último estudiante dice la frase en voz alta. El docente revela la frase original.</li><li>El equipo gana puntos según la precisión de la frase final.</li></ol>"
-   }
-  },
-  {
-   "nombre": "Relay Race",
-   "nivel": "n2",
-   "nivel_nombre": "N2 · Word Builder",
-   "tema": "Food & Numbers",
-   "estilo": "Kinesthetic",
-   "recurso": "Flashcards + Cesta",
-   "adaptacion": "Clothes",
-   "dba": "Desarrollar el vocabulario de alimentos y números en inglés mediante una carrera de relevos en la que los estudiantes buscan, identifican y cuantifican tarjetas en movimiento.",
-   "estandar": "Asocia cantidades con nombres de alimentos en inglés mediante actividad física.",
-   "fases": {
-    "enactiva": "<ol><li>Muestre flashcards de alimentos y números.</li><li>Señale cada imagen y diga el nombre en voz alta. Los estudiantes repiten al unísono.</li></ol>",
-    "iconica": "<ol><li>Muestre una cesta con varias flashcards mezcladas (alimentos repetidos).</li><li>El docente modela un turno: corre hasta la cesta, busca una tarjeta y regresa.</li><li>\"I found ONE apple.\" Muestra la tarjeta. Los estudiantes repiten al unísono: \"ONE APPLE!\"</li></ol>",
-    "simbolica": "<ol><li>Forme equipos de 4–5 estudiantes.</li><li>\"Get the APPLE! Go, go, go!\" Explique la misión: buscar y traer la tarjeta del alimento anunciado.</li><li>El primer estudiante corre a la cesta, busca la tarjeta indicada y regresa. El siguiente hace lo mismo.</li><li>Cuando todos hayan participado, el equipo clasifica sus tarjetas por tipo de alimento.</li><li>\"We found FOUR apples.\" / \"We found TWO breads.\" Cada equipo anuncia sus resultados al unísono.</li></ol>"
-   }
-  },
-  {
-   "nombre": "Sound Safari",
-   "nivel": "n2",
-   "nivel_nombre": "N2 · Word Builder",
-   "tema": "Animals",
-   "estilo": "Auditory",
-   "recurso": "Flashcards + Audio",
-   "adaptacion": "—",
-   "dba": "Desarrollar la comprensión auditiva del vocabulario de animales en inglés mediante la escucha de sonidos reales, con progresión hacia la producción oral entre pares.",
-   "estandar": "Reconoce el vocabulario de animales al escuchar sus sonidos onomatopéyicos.",
-   "fases": {
-    "enactiva": "<ol><li>Pida a los estudiantes que cierren los ojos.</li><li>Reproduzca sonidos reales de animales en su hábitat natural.</li><li>\"What animal is this?\" Pregunte después de cada sonido.</li><li>\"DOG!\" / \"COW!\" / \"DUCK!\" Los estudiantes responden al unísono.</li></ol>",
-    "iconica": "<ol><li>Entregue una tarjeta de animal a cada estudiante.</li><li>\"DOG. Repeat together: DOG.\" Muestre una tarjeta grande en el tablero.</li><li>Reproduzca el sonido del animal. Los estudiantes con esa tarjeta la levantan y dicen el nombre al unísono.</li><li>Repita con cada animal.</li></ol>",
-    "simbolica": "<ol><li>\"Show me the lion! Where is the lion?\" — \"The lion is here.\" Modele la actividad.</li><li>\"What sound does a cat make?\" / \"A cat says Meow!\" Los estudiantes se preguntan entre sí.</li></ol>"
-   }
-  },
-  {
    "nombre": "Sentence Strip Puzzle",
-   "nivel": "n3",
-   "nivel_nombre": "N3 · Sentence Hero",
+   "nivel": "p2",
+   "nivel_nombre": "Periodo 2 · Convivencia y paz",
    "tema": "Daily Routine",
    "estilo": "Visual",
    "recurso": "Flashcards + Tiras de cartulina",
@@ -178,8 +178,8 @@
   },
   {
    "nombre": "Board Game Bottle",
-   "nivel": "n3",
-   "nivel_nombre": "N3 · Sentence Hero",
+   "nivel": "p2",
+   "nivel_nombre": "Periodo 2 · Convivencia y paz",
    "tema": "WH Questions",
    "estilo": "Social",
    "recurso": "Plantilla tablero + Dado",
@@ -194,8 +194,8 @@
   },
   {
    "nombre": "Charades",
-   "nivel": "n3",
-   "nivel_nombre": "N3 · Sentence Hero",
+   "nivel": "p2",
+   "nivel_nombre": "Periodo 2 · Convivencia y paz",
    "tema": "Verbs",
    "estilo": "Kinesthetic",
    "recurso": "Flashcards de Verbos",
@@ -209,41 +209,25 @@
    }
   },
   {
-   "nombre": "Order Race",
-   "nivel": "n3",
-   "nivel_nombre": "N3 · Sentence Hero",
-   "tema": "Verb To Be",
-   "estilo": "Kinesthetic",
-   "recurso": "Tarjetas de días + Calendario",
+   "nombre": "Sound Safari",
+   "nivel": "p3",
+   "nivel_nombre": "Periodo 3 · Medioambiente",
+   "tema": "Animals",
+   "estilo": "Auditory",
+   "recurso": "Flashcards + Audio",
    "adaptacion": "—",
-   "dba": "Desarrollar el reconocimiento, la pronunciación y la secuencia correcta de los días de la semana en inglés mediante una carrera de ordenamiento progresiva.",
-   "estandar": "Produce los días de la semana en inglés y los ordena cronológicamente.",
+   "dba": "Desarrollar la comprensión auditiva del vocabulario de animales en inglés mediante la escucha de sonidos reales, con progresión hacia la producción oral entre pares.",
+   "estandar": "Reconoce el vocabulario de animales al escuchar sus sonidos onomatopéyicos.",
    "fases": {
-    "enactiva": "<ol><li>Entregue tarjetas físicas con los días de la semana: Monday, Tuesday, Wednesday…</li><li>Los estudiantes exploran las tarjetas y proponen un posible orden.</li><li>\"Check again!\" No corrija de inmediato; deje que experimenten.</li></ol>",
-    "iconica": "<ol><li>Muestre en el tablero un calendario con colores asignados a cada día: Monday = rojo, Sunday = azul.</li><li>Los estudiantes comparan su orden con el modelo del tablero.</li><li>\"After Monday… what comes next?\" Practique la pronunciación de cada día.</li></ol>",
-    "simbolica": "<ol><li>Borre el tablero y revuelva las tarjetas de cada grupo.</li><li>\"You have one minute! Put the days in order!\"</li><li>\"Day #1 is Monday.\" Pida a cada grupo que lea su orden en voz alta.</li><li>Variante: pida el orden inverso para aumentar el nivel de dificultad.</li></ol>"
-   }
-  },
-  {
-   "nombre": "Action Cards Challenge",
-   "nivel": "n3",
-   "nivel_nombre": "N3 · Sentence Hero",
-   "tema": "Can / Can't",
-   "estilo": "Kinesthetic",
-   "recurso": "Flashcards de Acciones",
-   "adaptacion": "—",
-   "dba": "Desarrollar la comprensión y producción de las estructuras 'Can you…?' / 'Yes, I can' / 'No, I can't' mediante tarjetas de acción y producción oral y escrita.",
-   "estandar": "Usa can / can't para hablar sobre lo que puede y no puede hacer.",
-   "fases": {
-    "enactiva": "<ol><li>Muestre una tarjeta con una acción: jump, listen, smell, hug.</li><li>\"Can you jump?\" Pregunte a los estudiantes.</li><li>\"Yes, I can\" + realizan la acción. \"No, I can't\" + sin acción. No corrija todo de inmediato.</li></ol>",
-    "iconica": "<ol><li>Muestre flashcards con las acciones: run, clap, dance.</li><li>El docente realiza la acción de la flashcard y los estudiantes la repiten. Ej.: el docente aplaude (clap) y los estudiantes aplauden también.</li></ol>",
-    "simbolica": "<ol><li>Inicie la dinámica con los estudiantes de pie.</li><li>\"Can you jump?\" Los estudiantes responden con la acción correspondiente.</li><li>Mini escritura: los estudiantes escriben 2–3 cosas que pueden o no pueden hacer. Ej.: \"I can dance.\" / \"I can't sing.\"</li></ol>"
+    "enactiva": "<ol><li>Pida a los estudiantes que cierren los ojos.</li><li>Reproduzca sonidos reales de animales en su hábitat natural.</li><li>\"What animal is this?\" Pregunte después de cada sonido.</li><li>\"DOG!\" / \"COW!\" / \"DUCK!\" Los estudiantes responden al unísono.</li></ol>",
+    "iconica": "<ol><li>Entregue una tarjeta de animal a cada estudiante.</li><li>\"DOG. Repeat together: DOG.\" Muestre una tarjeta grande en el tablero.</li><li>Reproduzca el sonido del animal. Los estudiantes con esa tarjeta la levantan y dicen el nombre al unísono.</li><li>Repita con cada animal.</li></ol>",
+    "simbolica": "<ol><li>\"Show me the lion! Where is the lion?\" — \"The lion is here.\" Modele la actividad.</li><li>\"What sound does a cat make?\" / \"A cat says Meow!\" Los estudiantes se preguntan entre sí.</li></ol>"
    }
   },
   {
    "nombre": "Spot the Difference",
-   "nivel": "n4",
-   "nivel_nombre": "N4 · English Communicator",
+   "nivel": "p3",
+   "nivel_nombre": "Periodo 3 · Medioambiente",
    "tema": "There is / There are",
    "estilo": "Visual",
    "recurso": "Plantilla dos imágenes",
@@ -258,8 +242,8 @@
   },
   {
    "nombre": "My Town Map",
-   "nivel": "n4",
-   "nivel_nombre": "N4 · English Communicator",
+   "nivel": "p3",
+   "nivel_nombre": "Periodo 3 · Medioambiente",
    "tema": "Places in Town",
    "estilo": "Visual",
    "recurso": "Flashcards + Plantilla Mapa",
@@ -274,8 +258,8 @@
   },
   {
    "nombre": "Letter to a Friend",
-   "nivel": "n4",
-   "nivel_nombre": "N4 · English Communicator",
+   "nivel": "p3",
+   "nivel_nombre": "Periodo 3 · Medioambiente",
    "tema": "Adjectives",
    "estilo": "Literacy",
    "recurso": "Plantilla carta + Worksheet",
@@ -289,25 +273,9 @@
    }
   },
   {
-   "nombre": "Speed Dating",
-   "nivel": "n4",
-   "nivel_nombre": "N4 · English Communicator",
-   "tema": "Dialogues",
-   "estilo": "Social",
-   "recurso": "Tarjetas de preguntas",
-   "adaptacion": "—",
-   "dba": "Desarrollar la fluidez oral en inglés mediante conversaciones cortas y rotativas con distintos compañeros, practicando preguntas y respuestas básicas en un contexto comunicativo real.",
-   "estandar": "Sostiene un diálogo corto en inglés usando expresiones de saludo y presentación.",
-   "fases": {
-    "enactiva": "<ol><li>Coloque dos círculos de sillas frente a frente: círculo interno y círculo externo.</li><li>\"You will talk with many friends. One minute each partner.\"</li><li>\"Start talking!\" Los estudiantes se sientan frente a frente y comienzan saludando al dar la señal.</li></ol>",
-    "iconica": "<ol><li>Coloque en el tablero tarjetas grandes con las preguntas: 👋 \"Hello! What's your name?\" / 😀 \"How are you?\" / 🎨 \"What's your favorite color?\" / 🐶 \"Do you have a pet?\" / 🍕 \"What's your favorite food?\"</li><li>Modele visualmente cómo debe verse la conversación: pregunta → respuesta → turno del compañero.</li></ol>",
-    "simbolica": "<ol><li>Los estudiantes rotan y hablan con al menos 5 compañeros, haciendo un mínimo de 3 preguntas por ronda.</li><li>\"My partner has a small dog.\" / \"Her favorite color is blue.\" Al finalizar las rondas, cada estudiante escribe un registro de lo que aprendió sobre un compañero.</li></ol>"
-   }
-  },
-  {
    "nombre": "What's in Your Backpack",
-   "nivel": "n4",
-   "nivel_nombre": "N4 · English Communicator",
+   "nivel": "p3",
+   "nivel_nombre": "Periodo 3 · Medioambiente",
    "tema": "There is / There are",
    "estilo": "Kinesthetic",
    "recurso": "Flashcards de Objetos",
@@ -318,6 +286,38 @@
     "enactiva": "<ol><li>\"Take your backpack and come to the front.\" Un estudiante pasa al frente con su mochila, la abre y saca 2–4 objetos.</li><li>\"Notebook!\" / \"Pencil!\" Los demás observan y nombran los objetos en coro.</li></ol>",
     "iconica": "<ol><li>El docente muestra flashcards de los objetos: pencil, notebook, marker.</li><li>\"That is a pencil.\" Un estudiante pasa al tablero, dibuja un objeto y los demás dicen el nombre.</li><li>Otro estudiante pasa al tablero y escribe la palabra correspondiente al objeto dibujado.</li></ol>",
     "simbolica": "<ol><li>\"In my backpack there are 3 notebooks.\" / \"There is a small eraser.\" Cada estudiante pasa al frente con su mochila y dice 2–3 frases.</li><li>Los estudiantes realizan una mini escritura de los objetos que mencionaron en su presentación.</li></ol>"
+   }
+  },
+  {
+   "nombre": "Action Cards Challenge",
+   "nivel": "p4",
+   "nivel_nombre": "Periodo 4 · Aldea global",
+   "tema": "Can / Can't",
+   "estilo": "Kinesthetic",
+   "recurso": "Flashcards de Acciones",
+   "adaptacion": "—",
+   "dba": "Desarrollar la comprensión y producción de las estructuras 'Can you…?' / 'Yes, I can' / 'No, I can't' mediante tarjetas de acción y producción oral y escrita.",
+   "estandar": "Usa can / can't para hablar sobre lo que puede y no puede hacer.",
+   "fases": {
+    "enactiva": "<ol><li>Muestre una tarjeta con una acción: jump, listen, smell, hug.</li><li>\"Can you jump?\" Pregunte a los estudiantes.</li><li>\"Yes, I can\" + realizan la acción. \"No, I can't\" + sin acción. No corrija todo de inmediato.</li></ol>",
+    "iconica": "<ol><li>Muestre flashcards con las acciones: run, clap, dance.</li><li>El docente realiza la acción de la flashcard y los estudiantes la repiten. Ej.: el docente aplaude (clap) y los estudiantes aplauden también.</li></ol>",
+    "simbolica": "<ol><li>Inicie la dinámica con los estudiantes de pie.</li><li>\"Can you jump?\" Los estudiantes responden con la acción correspondiente.</li><li>Mini escritura: los estudiantes escriben 2–3 cosas que pueden o no pueden hacer. Ej.: \"I can dance.\" / \"I can't sing.\"</li></ol>"
+   }
+  },
+  {
+   "nombre": "Speed Dating",
+   "nivel": "p4",
+   "nivel_nombre": "Periodo 4 · Aldea global",
+   "tema": "Dialogues",
+   "estilo": "Social",
+   "recurso": "Tarjetas de preguntas",
+   "adaptacion": "—",
+   "dba": "Desarrollar la fluidez oral en inglés mediante conversaciones cortas y rotativas con distintos compañeros, practicando preguntas y respuestas básicas en un contexto comunicativo real.",
+   "estandar": "Sostiene un diálogo corto en inglés usando expresiones de saludo y presentación.",
+   "fases": {
+    "enactiva": "<ol><li>Coloque dos círculos de sillas frente a frente: círculo interno y círculo externo.</li><li>\"You will talk with many friends. One minute each partner.\"</li><li>\"Start talking!\" Los estudiantes se sientan frente a frente y comienzan saludando al dar la señal.</li></ol>",
+    "iconica": "<ol><li>Coloque en el tablero tarjetas grandes con las preguntas: 👋 \"Hello! What's your name?\" / 😀 \"How are you?\" / 🎨 \"What's your favorite color?\" / 🐶 \"Do you have a pet?\" / 🍕 \"What's your favorite food?\"</li><li>Modele visualmente cómo debe verse la conversación: pregunta → respuesta → turno del compañero.</li></ol>",
+    "simbolica": "<ol><li>Los estudiantes rotan y hablan con al menos 5 compañeros, haciendo un mínimo de 3 preguntas por ronda.</li><li>\"My partner has a small dog.\" / \"Her favorite color is blue.\" Al finalizar las rondas, cada estudiante escribe un registro de lo que aprendió sobre un compañero.</li></ol>"
    }
   }
  ]

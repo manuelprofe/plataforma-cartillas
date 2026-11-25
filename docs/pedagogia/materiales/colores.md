@@ -31,7 +31,7 @@ Convención de campos: **Imagen** = archivo del paquete (carpeta `iconos/`); **A
 | black | `iconos/color-black-borde` | palabra x2 | blak | negro | B |
 | white | `iconos/color-white-borde` | palabra x2 | uait | blanco | B |
 
-**Frases modelo** (solo vocabulario del Bosque; la instrucción siempre va en español):
+**Frases modelo** (solo vocabulario del tema; la instrucción siempre va en español):
 - El color solo, claro y una vez: "red".
 - Con el objeto en la mano o señalado, sin traducir enseguida: señala el cielo y dice "blue".
 - En la clase 2, si ya dominan útiles escolares: "a red pencil", "a blue book", "a green eraser" (usa palabras de los dos temas anteriores; es opcional).
@@ -75,7 +75,7 @@ Habitante del camino: Tito. **Canción del tema:** "¡Red, blue, a cantar!" (let
 ## 2. Planeador
 
 Hora tipo (§0 de la ronda 2): 5 saludo y repaso · 15 juego de aula · 15 ficha o prueba · 10 decir · 5 cierre · 5 transiciones. Suman 55.
-Las estrellas del docente (participar 10, colaborar 15) se marcan **en la lista impresa del grupo**. Nunca se quitan.
+Las calcomanías del docente (participar y trabajar con otros) se marcan **en la lista impresa del grupo**. Nunca se quitan.
 
 ### Clase 1: mirar y jugar
 
@@ -153,7 +153,7 @@ Formato horizontal para proyectar y media carta para imprimir. Cada lámina: un 
 - **Consigna (se proyecta):** "Uno señala un objeto de este salón. El otro dice el color." Ícono: ojo (`1f440`).
 - **Frases modelo:** el color solo ("green") y "a red pencil", "a blue book" (opcional).
 - **Cómo se turnan:** el niño A señala un objeto del salón (cuaderno, mochila, camiseta, pasto por la ventana). B dice el color en inglés. Si B no quiere decir, señala el color en la lámina que tienen a la mano. Luego cambian.
-- **Qué hace el docente al pasar:** escucha de cerca sin interrumpir; repite bien lo que oyó mal, sin nombrar el error; marca en la lista de cotejo las conductas; da la estrella de colaborar (15) a la pareja que se ayuda. No obliga a hablar al que no quiere.
+- **Qué hace el docente al pasar:** escucha de cerca sin interrumpir; repite bien lo que oyó mal, sin nombrar el error; marca en la lista de cotejo las conductas; da la calcomanía de trabajar con otros a la pareja que se ayuda. No obliga a hablar al que no quiere.
 - **Marco:** Vygotsky (el compañero es la ayuda) y Ryan y Deci (relación: no juega solo).
 
 ---

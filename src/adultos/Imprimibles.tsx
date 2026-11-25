@@ -162,7 +162,7 @@ export function ListaEstrellas({ grupo, ninos }: { grupo: GrupoDoc; ninos: Nino[
         </Panel>
       ) : (
         <div className="imprimible lista-hoja">
-          <h2 className="solo-impresion">Lista del grupo {grupo.nombre} · Mission Stars</h2>
+          <h2 className="solo-impresion">Lista del grupo {grupo.nombre} · Calcomanías</h2>
           <p className="meta lista-hoja__ayuda">P: participar (mano levantada). C: colaborar (dos manos). Cada casilla es una calcomanía. Marque la casilla en la fecha de la clase y páselas a la plataforma después.</p>
           <div className="lista-hoja__tabla">
             <table>

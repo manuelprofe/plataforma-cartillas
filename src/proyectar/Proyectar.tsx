@@ -159,7 +159,7 @@ function Temas() {
         <Cargando />
       ) : (
         <main className="telon__cuerpo">
-          <p className="telon__lead">Bosque de los Sonidos</p>
+          {indice.temas[0]?.territorio && <p className="telon__lead">{indice.temas[0].territorio.split(",")[0]}</p>}
           <div className="tarjetas">
             {indice.temas.map((t) => {
               const abre = t.estado === 'listo' || t.materiales.length > 0;

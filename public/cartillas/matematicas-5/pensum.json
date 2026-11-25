@@ -1,0 +1,307 @@
+{
+ "cartilla": "matematicas-5",
+ "materia": "Matemáticas",
+ "grado": 5,
+ "gradoNombre": "5.°",
+ "guia": "Cuadrito",
+ "titulo": "El cuaderno de Cuadrito · 5.°",
+ "fuente": "Contenidos programáticos de Matemáticas · Versión 1 · 24 de noviembre de 2026",
+ "proposito": "cerrar la primaria con números naturales y racionales bien comprendidos, potenciación, proporcionalidad, área y volumen, plano cartesiano y estadística con media y mediana. Cierra el grupo de grados 4.°–5.° de los Estándares y es grado evaluado por Saber 5.°.",
+ "dba": [
+  {
+   "id": "1",
+   "texto": "Interpreta y utiliza los números naturales y racionales en su representación fraccionaria para formular y resolver problemas aditivos, multiplicativos y que involucren operaciones de potenciación."
+  },
+  {
+   "id": "2",
+   "texto": "Describe y desarrolla estrategias (algoritmos, propiedades de las operaciones básicas y sus relaciones) para hacer estimaciones y cálculos al solucionar problemas de potenciación."
+  },
+  {
+   "id": "3",
+   "texto": "Compara y ordena números fraccionarios a través de diversas interpretaciones, recursos y representaciones."
+  },
+  {
+   "id": "4",
+   "texto": "Justifica relaciones entre superficie y volumen, respecto a dimensiones de figuras y sólidos, y elige las unidades apropiadas según el tipo de medición (directa e indirecta), los instrumentos y los procedimientos."
+  },
+  {
+   "id": "5",
+   "texto": "Explica las relaciones entre el perímetro y el área de diferentes figuras (variaciones en el perímetro no implican variaciones en el área y viceversa) a partir de mediciones, superposición de figuras, cálculo, entre otras."
+  },
+  {
+   "id": "6",
+   "texto": "Identifica y describe propiedades que caracterizan un cuerpo en términos de la bidimensionalidad y la tridimensionalidad y resuelve problemas en relación con la composición y descomposición de las formas."
+  },
+  {
+   "id": "7",
+   "texto": "Resuelve y propone situaciones en las que es necesario describir y localizar la posición y la trayectoria de un objeto con referencia al plano cartesiano."
+  },
+  {
+   "id": "8",
+   "texto": "Describe e interpreta variaciones de dependencia entre cantidades y las representa por medio de gráficas."
+  },
+  {
+   "id": "9",
+   "texto": "Utiliza operaciones no convencionales, encuentra propiedades y resuelve ecuaciones en donde están involucradas."
+  },
+  {
+   "id": "10",
+   "texto": "Formula preguntas que requieren comparar dos grupos de datos, para lo cual recolecta, organiza y usa tablas de frecuencia, gráficos de barras, circulares, de línea, entre otros. Analiza la información presentada y comunica los resultados."
+  },
+  {
+   "id": "11",
+   "texto": "Utiliza la media y la mediana para resolver problemas en los que se requiere presentar o resumir el comportamiento de un conjunto de datos."
+  },
+  {
+   "id": "12",
+   "texto": "Predice la posibilidad de ocurrencia de un evento simple a partir de la relación entre los elementos del espacio muestral y los elementos del evento definido."
+  }
+ ],
+ "ebc": "Estándares Básicos de Competencias en Matemáticas (MEN, 2006), por pensamiento.",
+ "unidades": [
+  {
+   "id": "u1",
+   "numero": 1,
+   "titulo": "Naturales, potencias y primos",
+   "periodo": {
+    "4": 1,
+    "3": 1
+   },
+   "temas": [
+    "millones",
+    "potenciación (cuadrados y cubos)",
+    "números primos y compuestos",
+    "descomposición en factores primos",
+    "mínimo común múltiplo y máximo común divisor en problemas"
+   ],
+   "dba": [
+    "1",
+    "2"
+   ],
+   "pensamientos": [
+    "Numérico"
+   ],
+   "desempenos": [
+    "calcula potencias y las relaciona con áreas de cuadrados y volúmenes de cubos",
+    "descompone un número en factores primos",
+    "usa MCM y MCD para resolver problemas"
+   ],
+   "juegos": "escucha-atrapa (\"atrapa los primos\"); memoria (potencia ↔ valor); di-brilla.",
+   "analogo": "criba de Eratóstenes en tabla del 100; cubos de cartulina."
+  },
+  {
+   "id": "u2",
+   "numero": 2,
+   "titulo": "Operaciones y estrategias",
+   "periodo": {
+    "4": 1,
+    "3": 1
+   },
+   "temas": [
+    "las cuatro operaciones con naturales",
+    "orden de las operaciones",
+    "propiedades para calcular mejor",
+    "estimación y verificación",
+    "problemas de varios pasos"
+   ],
+   "dba": [
+    "1",
+    "2"
+   ],
+   "pensamientos": [
+    "Numérico"
+   ],
+   "desempenos": [
+    "resuelve operaciones combinadas respetando el orden",
+    "justifica estrategias con propiedades",
+    "verifica si un resultado es razonable"
+   ],
+   "juegos": "ordenar (pasos de una operación combinada); [plantilla nueva: completar la operación].",
+   "analogo": "fichas de problemas tipo Saber."
+  },
+  {
+   "id": "u3",
+   "numero": 3,
+   "titulo": "Fracciones y decimales",
+   "periodo": {
+    "4": 2,
+    "3": 1
+   },
+   "temas": [
+    "comparar y ordenar fracciones en la recta",
+    "suma y resta con distinto denominador",
+    "multiplicación de fracciones",
+    "decimales hasta milésimas y sus cuatro operaciones sencillas",
+    "relación fracción–decimal"
+   ],
+   "dba": [
+    "1",
+    "3"
+   ],
+   "pensamientos": [
+    "Numérico"
+   ],
+   "desempenos": [
+    "ordena fracciones y decimales y los ubica en la recta",
+    "opera con fracciones y decimales en problemas",
+    "pasa de fracción a decimal"
+   ],
+   "juegos": "ordenar; memoria (fracción ↔ decimal); [plantilla nueva: recta numérica].",
+   "analogo": "tiras de fracciones; recibos con decimales."
+  },
+  {
+   "id": "u4",
+   "numero": 4,
+   "titulo": "Proporcionalidad",
+   "periodo": {
+    "4": 2,
+    "3": 2
+   },
+   "temas": [
+    "razones",
+    "tablas de proporcionalidad directa (recetas, precios, escalas)",
+    "proporcionalidad inversa en situaciones sencillas",
+    "porcentaje como introducción (50 %, 25 %, 10 %)"
+   ],
+   "dba": [
+    "1",
+    "8",
+    "4",
+    "5"
+   ],
+   "pensamientos": [
+    "Variacional",
+    "Numérico"
+   ],
+   "desempenos": [
+    "completa tablas de proporcionalidad y explica la regla",
+    "usa escalas en planos",
+    "reconoce cuándo una relación no es proporcional"
+   ],
+   "juegos": "memoria (cantidad ↔ precio); [plantilla nueva: completar la operación].",
+   "analogo": "recetas para el curso; plano del colegio a escala."
+  },
+  {
+   "id": "u5",
+   "numero": 5,
+   "titulo": "Perímetro, área y volumen",
+   "periodo": {
+    "4": 3,
+    "3": 2
+   },
+   "temas": [
+    "perímetro y área de triángulos, paralelogramos y figuras compuestas",
+    "volumen con cubos unidad",
+    "cm², m², cm³",
+    "relaciones entre perímetro y área",
+    "superficie y volumen de cajas"
+   ],
+   "dba": [
+    "4",
+    "5"
+   ],
+   "pensamientos": [
+    "Métrico"
+   ],
+   "desempenos": [
+    "calcula áreas de figuras compuestas",
+    "explica que cambiar el perímetro no siempre cambia el área",
+    "calcula el volumen de una caja con cubos y con medidas"
+   ],
+   "juegos": "escucha-toca (\"toca la de mayor volumen\"); [plantillas nuevas: cuadrícula y plano, medir y comparar].",
+   "analogo": "cajas de cartón, cubos de 1 cm."
+  },
+  {
+   "id": "u6",
+   "numero": 6,
+   "titulo": "Cuerpos y plano cartesiano",
+   "periodo": {
+    "4": 3,
+    "3": 2
+   },
+   "temas": [
+    "prismas y pirámides, sus desarrollos y elementos",
+    "composición y descomposición de figuras",
+    "plano cartesiano en el primer cuadrante",
+    "coordenadas y trayectorias"
+   ],
+   "dba": [
+    "6",
+    "7"
+   ],
+   "pensamientos": [
+    "Espacial"
+   ],
+   "desempenos": [
+    "relaciona cuerpos con sus desarrollos planos",
+    "ubica y nombra puntos con coordenadas",
+    "describe trayectorias en el plano"
+   ],
+   "juegos": "escucha-toca (el punto dicho); memoria (cuerpo ↔ desarrollo); [plantilla nueva: cuadrícula y plano].",
+   "analogo": "batalla naval en papel cuadriculado."
+  },
+  {
+   "id": "u7",
+   "numero": 7,
+   "titulo": "Variación y operaciones nuevas",
+   "periodo": {
+    "4": 4,
+    "3": 3
+   },
+   "temas": [
+    "dependencia entre cantidades en tablas y gráficas",
+    "patrones numéricos y gráficos",
+    "operaciones no convencionales (inventar una operación \"★\" y descubrir sus propiedades)",
+    "ecuaciones sencillas con valores desconocidos"
+   ],
+   "dba": [
+    "8",
+    "9"
+   ],
+   "pensamientos": [
+    "Variacional"
+   ],
+   "desempenos": [
+    "describe con tablas y gráficas cómo cambia una cantidad respecto a otra",
+    "aplica y explora una operación inventada",
+    "halla el valor desconocido en una igualdad"
+   ],
+   "juegos": "ordenar (completar el patrón); [plantilla nueva: completar la operación].",
+   "analogo": "máquinas de entrada y salida en papel."
+  },
+  {
+   "id": "u8",
+   "numero": 8,
+   "titulo": "Estadística y probabilidad",
+   "periodo": {
+    "4": 4,
+    "3": 3
+   },
+   "temas": [
+    "preguntas que comparan dos grupos",
+    "tablas de frecuencia",
+    "barras, líneas y gráficos circulares",
+    "media y mediana",
+    "espacio muestral",
+    "probabilidad de eventos simples (casos favorables sobre posibles)",
+    "juegos justos"
+   ],
+   "dba": [
+    "10",
+    "11",
+    "12"
+   ],
+   "pensamientos": [
+    "Aleatorio"
+   ],
+   "desempenos": [
+    "elige el gráfico adecuado para sus datos",
+    "calcula e interpreta media y mediana",
+    "enumera resultados posibles y asigna una probabilidad",
+    "argumenta si un juego es justo"
+   ],
+   "juegos": "escucha-toca (el gráfico que responde la pregunta); [plantilla nueva: gráfico vivo].",
+   "analogo": "ruletas, dados y encuesta comparando dos cursos."
+  }
+ ]
+}

@@ -56,6 +56,11 @@ Plan completo: `docs/plan/calendario-diciembre.md` (también en Google Calendar,
 - **Proyectar:** `src/proyectar/Proyectar.tsx`.
 - **Base de datos:** `supabase/migraciones/` (002 esqueleto, 003 ajustes),
   `supabase/funciones/invitar/`. `registrar_mision` está en 002 (línea ~854).
+- **Pensum (25 nov):** mallas fuente en `docs/pedagogia/pensum/*.md` (copia en la carpeta del proyecto,
+  `contenidos/`). `python3 herramientas/pensum_a_json.py` escribe `public/cartillas/<materia>-<grado>/pensum.json`
+  (grado 0 = transición) y `public/cartillas/catalogo.json`. Lo leen el armador (materia, grado, tema → DBA y
+  desempeños) y la Biblioteca (`/docente/biblioteca/pensum`); código en `src/pensum/`. Las 17 carpetas nuevas aún no
+  tienen `cartilla.json` (paso 2: territorio 1 jugable). Migración 009 da de alta las 17 sin publicar.
 - **Herramientas de contenido:** `herramientas/` (voces, letras sincronizadas,
   `materiales_a_json.py`, `importar/`).
 - **Documentos de diseño y pedagogía:** `docs/diseno/esqueleto.md` (tandas 5 y 6 en §8),

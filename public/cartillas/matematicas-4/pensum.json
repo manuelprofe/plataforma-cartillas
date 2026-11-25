@@ -1,0 +1,295 @@
+{
+ "cartilla": "matematicas-4",
+ "materia": "Matemáticas",
+ "grado": 4,
+ "gradoNombre": "4.°",
+ "guia": "Cuadrito",
+ "titulo": "El cuaderno de Cuadrito · 4.°",
+ "fuente": "Contenidos programáticos de Matemáticas · Versión 1 · 24 de noviembre de 2026",
+ "proposito": "operar con naturales grandes, comprender las fracciones en sus cuatro sentidos (parte-todo, cociente, razón y operador), pasar a los decimales, medir magnitudes nuevas (masa, capacidad, temperatura) y transformar figuras. Estándares 4.°–5.° (MEN, 2006).",
+ "dba": [
+  {
+   "id": "1",
+   "texto": "Interpreta las fracciones como razón, relación parte todo, cociente y operador en diferentes contextos."
+  },
+  {
+   "id": "2",
+   "texto": "Describe y justifica diferentes estrategias para representar, operar y hacer estimaciones con números naturales y números racionales (fraccionarios), expresados como fracción o como decimal."
+  },
+  {
+   "id": "3",
+   "texto": "Establece relaciones mayor que, menor que, igual que y relaciones multiplicativas entre números racionales en sus formas de fracción o decimal."
+  },
+  {
+   "id": "4",
+   "texto": "Caracteriza y compara atributos medibles de los objetos (densidad, dureza, viscosidad, masa, capacidad de los recipientes, temperatura) con respecto a procedimientos, instrumentos y unidades de medición; y con respecto a las necesidades a las que responden."
+  },
+  {
+   "id": "5",
+   "texto": "Elige instrumentos y unidades estandarizadas y no estandarizadas para estimar y medir longitud, área, volumen, capacidad, peso y masa, duración, rapidez, temperatura, y a partir de ellos hace los cálculos necesarios para resolver problemas."
+  },
+  {
+   "id": "6",
+   "texto": "Identifica, describe y representa figuras bidimensionales y tridimensionales, y establece relaciones entre ellas."
+  },
+  {
+   "id": "7",
+   "texto": "Identifica los movimientos realizados a una figura en el plano respecto a una posición o eje (rotación, traslación y simetría) y las modificaciones que pueden sufrir las formas (ampliación-reducción)."
+  },
+  {
+   "id": "8",
+   "texto": "Identifica, documenta e interpreta variaciones de dependencia entre cantidades en diferentes fenómenos (en las matemáticas y en otras ciencias) y los representa por medio de gráficas."
+  },
+  {
+   "id": "9",
+   "texto": "Identifica patrones en secuencias (aditivas o multiplicativas) y los utiliza para establecer generalizaciones aritméticas o algebraicas."
+  },
+  {
+   "id": "10",
+   "texto": "Recopila y organiza datos en tablas de doble entrada y los representa en gráficos de barras agrupadas o gráficos de líneas, para dar respuesta a una pregunta planteada. Interpreta la información y comunica sus conclusiones."
+  },
+  {
+   "id": "11",
+   "texto": "Comprende y explica, usando vocabulario adecuado, la diferencia entre una situación aleatoria y una determinística y predice, en una situación de la vida cotidiana, la presencia o no del azar."
+  }
+ ],
+ "ebc": "Estándares Básicos de Competencias en Matemáticas (MEN, 2006), por pensamiento.",
+ "unidades": [
+  {
+   "id": "u1",
+   "numero": 1,
+   "titulo": "Naturales y operaciones",
+   "periodo": {
+    "4": 1,
+    "3": 1
+   },
+   "temas": [
+    "números hasta 999.999",
+    "valor posicional y redondeo",
+    "suma, resta, multiplicación por dos cifras y división por una y dos cifras",
+    "estimación",
+    "problemas con varias operaciones"
+   ],
+   "dba": [
+    "2"
+   ],
+   "pensamientos": [
+    "Numérico"
+   ],
+   "desempenos": [
+    "representa, compara y opera con números mayores que 10.000",
+    "estima resultados antes de calcular",
+    "resuelve problemas de varios pasos y verifica"
+   ],
+   "juegos": "di-brilla (leer números grandes); ordenar; escucha-atrapa (el resultado estimado).",
+   "analogo": "facturas, datos de población del municipio."
+  },
+  {
+   "id": "u2",
+   "numero": 2,
+   "titulo": "Múltiplos, divisores y secuencias",
+   "periodo": {
+    "4": 1,
+    "3": 1
+   },
+   "temas": [
+    "múltiplos y divisores",
+    "criterios de divisibilidad por 2, 3, 5 y 10",
+    "secuencias aditivas y multiplicativas",
+    "predecir un término lejano"
+   ],
+   "dba": [
+    "2",
+    "9"
+   ],
+   "pensamientos": [
+    "Numérico",
+    "Variacional"
+   ],
+   "desempenos": [
+    "halla múltiplos y divisores",
+    "aplica criterios de divisibilidad",
+    "describe la regla de una secuencia y predice el término 10 o 20"
+   ],
+   "juegos": "escucha-atrapa (\"atrapa los múltiplos de 3\"); ordenar (completar la secuencia).",
+   "analogo": "tabla del 100 para colorear múltiplos."
+  },
+  {
+   "id": "u3",
+   "numero": 3,
+   "titulo": "Fracciones en cuatro sentidos",
+   "periodo": {
+    "4": 2,
+    "3": 1
+   },
+   "temas": [
+    "fracción como parte-todo, como cociente (repartir 3 panes entre 4), como razón (3 de cada 5) y como operador (2/3 de 12)",
+    "fracciones propias e impropias",
+    "número mixto"
+   ],
+   "dba": [
+    "1"
+   ],
+   "pensamientos": [
+    "Numérico"
+   ],
+   "desempenos": [
+    "interpreta una fracción según el contexto",
+    "calcula la fracción de una cantidad",
+    "representa una fracción en figuras, colecciones y la recta"
+   ],
+   "juegos": "contar-toca (\"toca 2/3 de las fichas\"); memoria (fracción ↔ situación); [plantillas nuevas: partir y pintar, recta numérica].",
+   "analogo": "regletas, tiras de fracciones."
+  },
+  {
+   "id": "u4",
+   "numero": 4,
+   "titulo": "Comparar y operar fracciones",
+   "periodo": {
+    "4": 2,
+    "3": 2
+   },
+   "temas": [
+    "fracciones equivalentes",
+    "comparar y ordenar fracciones",
+    "suma y resta con igual denominador y con denominadores sencillos"
+   ],
+   "dba": [
+    "2",
+    "3"
+   ],
+   "pensamientos": [
+    "Numérico"
+   ],
+   "desempenos": [
+    "construye fracciones equivalentes",
+    "justifica cuál fracción es mayor",
+    "suma y resta fracciones en problemas"
+   ],
+   "juegos": "ordenar (fracciones de menor a mayor); memoria (fracciones equivalentes).",
+   "analogo": "tiras de fracciones, dominó de equivalencias."
+  },
+  {
+   "id": "u5",
+   "numero": 5,
+   "titulo": "Decimales",
+   "periodo": {
+    "4": 3,
+    "3": 2
+   },
+   "temas": [
+    "décimas y centésimas desde fracciones con denominador 10 y 100",
+    "el dinero y las medidas como decimales",
+    "comparar y ordenar",
+    "suma y resta de decimales"
+   ],
+   "dba": [
+    "2",
+    "3"
+   ],
+   "pensamientos": [
+    "Numérico"
+   ],
+   "desempenos": [
+    "pasa de fracción decimal a número decimal y al revés",
+    "compara decimales",
+    "suma y resta decimales en problemas de dinero y medida"
+   ],
+   "juegos": "ordenar; memoria (fracción decimal ↔ decimal); [plantilla nueva: recta numérica].",
+   "analogo": "cuadrícula de 100; dinero didáctico."
+  },
+  {
+   "id": "u6",
+   "numero": 6,
+   "titulo": "Magnitudes y medición",
+   "periodo": {
+    "4": 3,
+    "3": 2
+   },
+   "temas": [
+    "masa (g, kg, libra, arroba), capacidad (mL, L, galón), temperatura, duración y rapidez",
+    "conversiones sencillas",
+    "área y perímetro de rectángulos y cuadrados en cm²"
+   ],
+   "dba": [
+    "4",
+    "5"
+   ],
+   "pensamientos": [
+    "Métrico"
+   ],
+   "desempenos": [
+    "elige instrumento y unidad para medir",
+    "convierte entre unidades del sistema métrico",
+    "calcula áreas y perímetros en problemas"
+   ],
+   "juegos": "escucha-toca (el instrumento adecuado); memoria (equivalencias); [plantilla nueva: medir y comparar].",
+   "analogo": "receta de cocina con medidas; termómetro."
+  },
+  {
+   "id": "u7",
+   "numero": 7,
+   "titulo": "Geometría y movimientos",
+   "periodo": {
+    "4": 4,
+    "3": 3
+   },
+   "temas": [
+    "ángulos (recto, agudo, obtuso) y transportador",
+    "rectas paralelas y perpendiculares",
+    "triángulos y cuadriláteros",
+    "desarrollos planos de cuerpos",
+    "traslación, rotación, simetría, ampliación y reducción"
+   ],
+   "dba": [
+    "6",
+    "7"
+   ],
+   "pensamientos": [
+    "Espacial"
+   ],
+   "desempenos": [
+    "mide y clasifica ángulos",
+    "relaciona un cuerpo con su desarrollo plano",
+    "aplica traslaciones, giros y simetrías a una figura",
+    "amplía o reduce una figura en cuadrícula"
+   ],
+   "juegos": "memoria (cuerpo ↔ desarrollo plano); escucha-toca (la figura simétrica); [plantilla nueva: cuadrícula y plano].",
+   "analogo": "armar cuerpos con desarrollos de cartulina; espejo para simetría."
+  },
+  {
+   "id": "u8",
+   "numero": 8,
+   "titulo": "Variación, datos y azar",
+   "periodo": {
+    "4": 4,
+    "3": 3
+   },
+   "temas": [
+    "dependencia entre cantidades (más tiempo, más agua) en tablas y gráficas",
+    "encuestas",
+    "tablas de doble entrada",
+    "barras agrupadas y gráficos de línea",
+    "moda y rango",
+    "situaciones aleatorias y deterministas"
+   ],
+   "dba": [
+    "8",
+    "10",
+    "11"
+   ],
+   "pensamientos": [
+    "Variacional",
+    "Aleatorio"
+   ],
+   "desempenos": [
+    "registra en una tabla cómo cambia una cantidad y lo grafica",
+    "construye e interpreta gráficos de barras y de línea",
+    "halla moda y rango",
+    "distingue lo que depende del azar"
+   ],
+   "juegos": "escucha-toca (\"¿azar o seguro?\"); [plantilla nueva: gráfico vivo].",
+   "analogo": "registro del clima del mes; encuesta de recreo."
+  }
+ ]
+}

@@ -1,0 +1,294 @@
+{
+ "cartilla": "matematicas-2",
+ "materia": "Matemáticas",
+ "grado": 2,
+ "gradoNombre": "2.°",
+ "guia": "Cuadrito",
+ "titulo": "El cuaderno de Cuadrito · 2.°",
+ "fuente": "Contenidos programáticos de Matemáticas · Versión 1 · 24 de noviembre de 2026",
+ "proposito": "dominar el sistema de numeración hasta 999, sumar y restar con reagrupación, iniciar la multiplicación y el reparto, medir con unidades convencionales y leer datos con escala.",
+ "dba": [
+  {
+   "id": "1",
+   "texto": "Interpreta, propone y resuelve problemas aditivos (de composición, transformación y relación) que involucren la cantidad en una colección, la medida de magnitudes (longitud, peso, capacidad y duración de eventos) y problemas multiplicativos sencillos."
+  },
+  {
+   "id": "2",
+   "texto": "Utiliza diferentes estrategias para calcular (agrupar, representar elementos en colecciones, etc.) o estimar el resultado de una suma y resta, multiplicación o reparto equitativo."
+  },
+  {
+   "id": "3",
+   "texto": "Utiliza el Sistema de Numeración Decimal para comparar, ordenar y establecer diferentes relaciones entre dos o más secuencias de números con ayuda de diferentes recursos."
+  },
+  {
+   "id": "4",
+   "texto": "Compara y explica características que se pueden medir, en el proceso de resolución de problemas relativos a longitud, superficie, velocidad, peso o duración de los eventos, entre otros."
+  },
+  {
+   "id": "5",
+   "texto": "Utiliza patrones, unidades e instrumentos convencionales y no convencionales en procesos de medición, cálculo y estimación de magnitudes como longitud, peso, capacidad y tiempo."
+  },
+  {
+   "id": "6",
+   "texto": "Clasifica, describe y representa objetos del entorno a partir de sus propiedades geométricas para establecer relaciones entre las formas bidimensionales y tridimensionales."
+  },
+  {
+   "id": "7",
+   "texto": "Describe desplazamientos y referencia la posición de un objeto mediante nociones de horizontalidad, verticalidad, paralelismo y perpendicularidad en la solución de problemas."
+  },
+  {
+   "id": "8",
+   "texto": "Propone e identifica patrones y utiliza propiedades de los números y de las operaciones para calcular valores desconocidos en expresiones aritméticas."
+  },
+  {
+   "id": "9",
+   "texto": "Opera sobre secuencias numéricas para encontrar números u operaciones faltantes y utiliza las propiedades de las operaciones en contextos escolares o extraescolares."
+  },
+  {
+   "id": "10",
+   "texto": "Clasifica y organiza datos, los representa utilizando tablas de conteo, pictogramas con escalas y gráficos de puntos, comunica los resultados obtenidos para responder preguntas sencillas."
+  },
+  {
+   "id": "11",
+   "texto": "Explica, a partir de la experiencia, la posibilidad de ocurrencia o no de un evento cotidiano y el resultado lo utiliza para predecir la ocurrencia de otros eventos."
+  }
+ ],
+ "ebc": "Estándares Básicos de Competencias en Matemáticas (MEN, 2006), por pensamiento.",
+ "unidades": [
+  {
+   "id": "u1",
+   "numero": 1,
+   "titulo": "Números hasta 999",
+   "periodo": {
+    "4": 1,
+    "3": 1
+   },
+   "temas": [
+    "centenas, decenas y unidades",
+    "lectura y escritura",
+    "comparar y ordenar",
+    "secuencias de 2, 5, 10 y 100 hacia adelante y hacia atrás",
+    "números que faltan en una secuencia"
+   ],
+   "dba": [
+    "3",
+    "9"
+   ],
+   "pensamientos": [
+    "Numérico",
+    "Variacional"
+   ],
+   "desempenos": [
+    "compara y ordena números hasta 999",
+    "completa secuencias y explica la regla",
+    "descompone un número de tres cifras"
+   ],
+   "juegos": "ordenar; escucha-atrapa; di-brilla (leer números de tres cifras).",
+   "analogo": "bloques base 10 de cartulina; tablero de valor posicional."
+  },
+  {
+   "id": "u2",
+   "numero": 2,
+   "titulo": "Sumas y restas llevando",
+   "periodo": {
+    "4": 1,
+    "3": 1
+   },
+   "temas": [
+    "suma y resta con reagrupación hasta 999",
+    "estimación",
+    "problemas de composición, transformación y relación (comparar \"cuántos más\")",
+    "cálculo mental"
+   ],
+   "dba": [
+    "1",
+    "2"
+   ],
+   "pensamientos": [
+    "Numérico"
+   ],
+   "desempenos": [
+    "resuelve problemas aditivos de los tres tipos",
+    "estima antes de calcular y compara",
+    "explica el \"préstamo\" con material"
+   ],
+   "juegos": "escucha-atrapa (el resultado); memoria (operación ↔ resultado); [plantilla nueva: completar la operación].",
+   "analogo": "dinero didáctico; fichas de problemas."
+  },
+  {
+   "id": "u3",
+   "numero": 3,
+   "titulo": "Multiplicar como sumar repetido",
+   "periodo": {
+    "4": 2,
+    "3": 1
+   },
+   "temas": [
+    "grupos iguales, suma repetida y arreglos rectangulares",
+    "tablas del 2, 3, 4, 5 y 10",
+    "doble y triple",
+    "patrones en las tablas"
+   ],
+   "dba": [
+    "1",
+    "2",
+    "8"
+   ],
+   "pensamientos": [
+    "Numérico",
+    "Variacional"
+   ],
+   "desempenos": [
+    "representa una multiplicación con grupos iguales y con un arreglo",
+    "dice de memoria las tablas del 2, 5 y 10",
+    "encuentra patrones en una tabla"
+   ],
+   "juegos": "contar-toca (\"toca 3 grupos de 4\"); di-brilla (decir la tabla); memoria (arreglo ↔ producto).",
+   "analogo": "cuadrícula para pintar arreglos; canción de las tablas."
+  },
+  {
+   "id": "u4",
+   "numero": 4,
+   "titulo": "Líneas y desplazamientos",
+   "periodo": {
+    "4": 2,
+    "3": 2
+   },
+   "temas": [
+    "líneas horizontales, verticales, paralelas y perpendiculares en el entorno",
+    "desplazamientos en cuadrícula (adelante, atrás, giros)"
+   ],
+   "dba": [
+    "7"
+   ],
+   "pensamientos": [
+    "Espacial"
+   ],
+   "desempenos": [
+    "identifica líneas paralelas, verticales y perpendiculares en objetos reales",
+    "describe y sigue recorridos en una cuadrícula"
+   ],
+   "juegos": "escucha-toca (la línea dicha); [plantilla nueva: cuadrícula y plano].",
+   "analogo": "juego de la cuadrícula en el piso con cinta."
+  },
+  {
+   "id": "u5",
+   "numero": 5,
+   "titulo": "Medir y el dinero",
+   "periodo": {
+    "4": 3,
+    "3": 2
+   },
+   "temas": [
+    "metro y centímetro con regla",
+    "kilogramo y gramo con balanza",
+    "litro",
+    "hora y media hora",
+    "calendario",
+    "monedas y billetes colombianos, vueltas"
+   ],
+   "dba": [
+    "4",
+    "5",
+    "1"
+   ],
+   "pensamientos": [
+    "Métrico"
+   ],
+   "desempenos": [
+    "mide con regla y expresa en cm",
+    "elige la unidad adecuada para medir algo",
+    "lee la hora y media hora",
+    "paga y da vueltas con dinero didáctico"
+   ],
+   "juegos": "escucha-toca (el reloj de la hora dicha; la moneda dicha); memoria (precio ↔ monedas); [plantilla nueva: reloj].",
+   "analogo": "metro de modistería, balanza, tienda del salón."
+  },
+  {
+   "id": "u6",
+   "numero": 6,
+   "titulo": "Figuras y cuerpos",
+   "periodo": {
+    "4": 3,
+    "3": 2
+   },
+   "temas": [
+    "polígonos por número de lados",
+    "lados y vértices",
+    "caras, aristas y vértices de cuerpos",
+    "relación entre figura y cuerpo (las caras del cubo son cuadrados)"
+   ],
+   "dba": [
+    "6"
+   ],
+   "pensamientos": [
+    "Espacial"
+   ],
+   "desempenos": [
+    "clasifica figuras por número de lados",
+    "cuenta caras, aristas y vértices",
+    "relaciona cuerpos con las figuras de sus caras"
+   ],
+   "juegos": "memoria (cuerpo ↔ figura de sus caras); escucha-toca.",
+   "analogo": "construir cuerpos con palillos y plastilina."
+  },
+  {
+   "id": "u7",
+   "numero": 7,
+   "titulo": "Más tablas y repartos",
+   "periodo": {
+    "4": 4,
+    "3": 3
+   },
+   "temas": [
+    "tablas del 6 al 9",
+    "reparto equitativo (iniciación a la división)",
+    "números o signos que faltan (`__ + 5 = 12`, `4 __ 3 = 12`)",
+    "propiedades: cambiar el orden no cambia el resultado"
+   ],
+   "dba": [
+    "2",
+    "8",
+    "9"
+   ],
+   "pensamientos": [
+    "Numérico",
+    "Variacional"
+   ],
+   "desempenos": [
+    "reparte colecciones en partes iguales y dice cuánto queda a cada uno",
+    "encuentra el número o la operación que falta",
+    "usa la propiedad conmutativa para calcular más fácil"
+   ],
+   "juegos": "contar-toca (repartir); escucha-atrapa (el producto); [plantilla nueva: completar la operación].",
+   "analogo": "repartir fichas en platos; dominó de tablas."
+  },
+  {
+   "id": "u8",
+   "numero": 8,
+   "titulo": "Datos y posibilidad",
+   "periodo": {
+    "4": 4,
+    "3": 3
+   },
+   "temas": [
+    "tablas de conteo, pictogramas con escala (un dibujo = 2 o 5) y gráficos de puntos",
+    "seguro, posible, imposible"
+   ],
+   "dba": [
+    "10",
+    "11"
+   ],
+   "pensamientos": [
+    "Aleatorio"
+   ],
+   "desempenos": [
+    "construye y lee pictogramas con escala",
+    "responde preguntas con base en los datos",
+    "dice si un evento cotidiano es seguro, posible o imposible y lo explica"
+   ],
+   "juegos": "escucha-toca (\"¿seguro, posible o imposible?\"); [plantilla nueva: gráfico vivo].",
+   "analogo": "bolsa con fichas de colores para sacar al azar."
+  }
+ ]
+}

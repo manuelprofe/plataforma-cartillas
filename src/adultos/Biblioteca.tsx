@@ -6,6 +6,7 @@ import { Boton, Encabezado, Fila, Panel, Vacio } from './base';
 import { Cargado, useCarga, useTitulo } from './comun';
 import { ElegirCartilla } from './ElegirCartilla';
 import { base } from '../materiales/datos';
+import { PaginaPensum } from '../pensum/PaginaPensum';
 import './biblioteca.css';
 
 type Idioma = 'es' | 'en';
@@ -37,6 +38,7 @@ const VOLVER = { ruta: '/docente/biblioteca', etiqueta: 'Biblioteca' };
 /** Rutas /docente/biblioteca[/…]. */
 export function Biblioteca({ resto }: { resto: string[] }) {
   const [parte, id] = resto;
+  if (parte === 'pensum') return <PaginaPensum />;
   if (parte === 'historia') return <PaginaHistoria />;
   if (parte === 'recursos') return <PaginaRecursos destacar={id} />;
   if (parte === 'actividades') return <PaginaActividades />;
@@ -57,6 +59,9 @@ function Inicio() {
   return (
     <>
       <Encabezado titulo="Biblioteca" meta="Historia, recursos, actividades y fundamentos de la cartilla" />
+      <Panel filas>
+        <Fila ruta="/docente/biblioteca/pensum" icono="cartillas" titulo="Pensum del año" detalle="Matemáticas, español e inglés de transición a 5.°: temas por periodo, DBA y desempeños." />
+      </Panel>
       <ElegirCartilla />
       <Cargado carga={carga}>
         {([historia, actividades, docs]) => (

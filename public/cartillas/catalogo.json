@@ -1,0 +1,166 @@
+{
+ "cartillas": [
+  {
+   "id": "matematicas-0",
+   "materia": "Matemáticas",
+   "grado": 0,
+   "gradoNombre": "Transición",
+   "guia": "Cuadrito",
+   "titulo": "El cuaderno de Cuadrito · Transición",
+   "unidades": 8
+  },
+  {
+   "id": "matematicas-1",
+   "materia": "Matemáticas",
+   "grado": 1,
+   "gradoNombre": "1.°",
+   "guia": "Cuadrito",
+   "titulo": "El cuaderno de Cuadrito · 1.°",
+   "unidades": 8
+  },
+  {
+   "id": "matematicas-2",
+   "materia": "Matemáticas",
+   "grado": 2,
+   "gradoNombre": "2.°",
+   "guia": "Cuadrito",
+   "titulo": "El cuaderno de Cuadrito · 2.°",
+   "unidades": 8
+  },
+  {
+   "id": "matematicas-3",
+   "materia": "Matemáticas",
+   "grado": 3,
+   "gradoNombre": "3.°",
+   "guia": "Cuadrito",
+   "titulo": "El cuaderno de Cuadrito · 3.°",
+   "unidades": 8
+  },
+  {
+   "id": "matematicas-4",
+   "materia": "Matemáticas",
+   "grado": 4,
+   "gradoNombre": "4.°",
+   "guia": "Cuadrito",
+   "titulo": "El cuaderno de Cuadrito · 4.°",
+   "unidades": 8
+  },
+  {
+   "id": "matematicas-5",
+   "materia": "Matemáticas",
+   "grado": 5,
+   "gradoNombre": "5.°",
+   "guia": "Cuadrito",
+   "titulo": "El cuaderno de Cuadrito · 5.°",
+   "unidades": 8
+  },
+  {
+   "id": "espanol-0",
+   "materia": "Español",
+   "grado": 0,
+   "gradoNombre": "Transición",
+   "guia": "Renglón",
+   "titulo": "El cuaderno de Renglón · Transición",
+   "unidades": 12
+  },
+  {
+   "id": "espanol-1",
+   "materia": "Español",
+   "grado": 1,
+   "gradoNombre": "1.°",
+   "guia": "Renglón",
+   "titulo": "El cuaderno de Renglón · 1.°",
+   "unidades": 12
+  },
+  {
+   "id": "espanol-2",
+   "materia": "Español",
+   "grado": 2,
+   "gradoNombre": "2.°",
+   "guia": "Renglón",
+   "titulo": "El cuaderno de Renglón · 2.°",
+   "unidades": 12
+  },
+  {
+   "id": "espanol-3",
+   "materia": "Español",
+   "grado": 3,
+   "gradoNombre": "3.°",
+   "guia": "Renglón",
+   "titulo": "El cuaderno de Renglón · 3.°",
+   "unidades": 12
+  },
+  {
+   "id": "espanol-4",
+   "materia": "Español",
+   "grado": 4,
+   "gradoNombre": "4.°",
+   "guia": "Renglón",
+   "titulo": "El cuaderno de Renglón · 4.°",
+   "unidades": 12
+  },
+  {
+   "id": "espanol-5",
+   "materia": "Español",
+   "grado": 5,
+   "gradoNombre": "5.°",
+   "guia": "Renglón",
+   "titulo": "El cuaderno de Renglón · 5.°",
+   "unidades": 12
+  },
+  {
+   "id": "ingles-0",
+   "materia": "Inglés",
+   "grado": 0,
+   "gradoNombre": "Transición",
+   "guia": "Postal",
+   "titulo": "El cuaderno de Postal · Transición",
+   "unidades": 4
+  },
+  {
+   "id": "ingles-1",
+   "materia": "Inglés",
+   "grado": 1,
+   "gradoNombre": "1.°",
+   "guia": "Postal",
+   "titulo": "El cuaderno de Postal · 1.°",
+   "unidades": 4
+  },
+  {
+   "id": "ingles-2",
+   "materia": "Inglés",
+   "grado": 2,
+   "gradoNombre": "2.°",
+   "guia": "Postal",
+   "titulo": "El cuaderno de Postal · 2.°",
+   "unidades": 4
+  },
+  {
+   "id": "ingles-3",
+   "materia": "Inglés",
+   "grado": 3,
+   "gradoNombre": "3.°",
+   "guia": "Postal",
+   "titulo": "El cuaderno de Postal · 3.°",
+   "unidades": 4
+  },
+  {
+   "id": "ingles-4",
+   "materia": "Inglés",
+   "grado": 4,
+   "gradoNombre": "4.°",
+   "guia": "Postal",
+   "titulo": "El cuaderno de Postal · 4.°",
+   "unidades": 4
+  },
+  {
+   "id": "ingles-5",
+   "materia": "Inglés",
+   "grado": 5,
+   "gradoNombre": "5.°",
+   "guia": "Postal",
+   "titulo": "El cuaderno de Postal · 5.°",
+   "unidades": 4
+  }
+ ]
+}

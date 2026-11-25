@@ -34,7 +34,7 @@ try {
     const armar = async (d, n) => {
       await p.getByRole('group', { name: 'Duración de la clase' }).getByRole('button', { name: `${d} min` }).click();
       await p.getByRole('group', { name: 'Cuántas actividades' }).getByRole('button', { name: String(n), exact: true }).click();
-      await p.getByRole('group', { name: 'Tema' }).getByRole('button', { name: 'Colores' }).click();
+      await p.getByRole('group', { name: 'Temas con láminas' }).getByRole('button', { name: 'Colores' }).click();
       await p.getByRole('button', { name: 'Usar las sugeridas' }).click();
     };
     // Validación: sin tema no arma.
@@ -64,6 +64,7 @@ try {
     comprobar(!m2.desborde, `${ancho}: planeación armada sin desborde`);
     await p.screenshot({ path: `${CAPTURAS}/armada-${ancho}.png` });
 
+
     if (ancho === 1280) {
       const [dl] = await Promise.all([p.waitForEvent('download'), p.getByRole('button', { name: 'Descargar en Word' }).first().click()]);
       await dl.saveAs(`${CAPTURAS}/armada.docx`);
@@ -92,6 +93,43 @@ try {
       await p.waitForURL(/\/armar$/);
       comprobar(await p.locator('.fila', { hasText: 'Colores · 90 min' }).count() === 0, 'borrar quita la planeación de la lista');
     }
+    // Tema del pensum de otra materia y grado: DBA y desempeños pasan solos.
+    await p.goto(url('/docente/planear/armar'));
+    await p.getByRole('group', { name: 'Materia' }).getByRole('button', { name: 'Matemáticas' }).click();
+    await p.getByRole('group', { name: 'Grado' }).getByRole('button', { name: 'Transición' }).click();
+    await p.waitForSelector('text=Periodo 4');
+    comprobar(await p.getByRole('group', { name: 'Temas con láminas' }).count() === 0, `${ancho}: matemáticas transición no muestra los temas con láminas de inglés`);
+    comprobar(await p.locator('.armar-temas .boton').count() === 8, `${ancho}: matemáticas transición trae sus 8 unidades`);
+    comprobar(await p.locator('.armar-actividad', { hasText: 'Stop' }).count() === 0, `${ancho}: en transición no aparece Stop`);
+    await p.getByRole('button', { name: 'U5 · Las familias del 10 al 100' }).click();
+    await p.getByRole('button', { name: 'Usar las sugeridas' }).click();
+    const m3 = await medir();
+    comprobar(!m3.desborde && m3.toque >= 48, `${ancho}: armador con pensum sin desborde, toque mínimo ${Math.round(m3.toque)}`);
+    await p.screenshot({ path: `${CAPTURAS}/armador-pensum-${ancho}.png`, fullPage: true });
+    await p.getByRole('button', { name: 'Armar planeación' }).click();
+    await p.waitForSelector('.plan-membrete');
+    const hoja = await p.locator('main').textContent();
+    comprobar(/Determina la cantidad de objetos/.test(hoja) && /T-3c/.test(hoja), `${ancho}: la planeación trae el DBA con su texto`);
+    comprobar(/cuenta en voz alta hasta 100/.test(hoja), `${ancho}: la planeación trae los desempeños de la unidad`);
+    comprobar(/Matemáticas/.test(hoja) && /Transición/.test(hoja), `${ancho}: encabezado con área y grado del pensum`);
+    comprobar(!/Láminas impresas/.test(hoja), `${ancho}: sin láminas, la apertura no las pide`);
+    await p.screenshot({ path: `${CAPTURAS}/armada-pensum-${ancho}.png`, fullPage: true });
+    // Pensum del año en la Biblioteca.
+    await p.goto(url('/docente/biblioteca'));
+    await p.getByRole('link', { name: /Pensum del año/ }).click();
+    await p.getByRole('group', { name: 'Materia' }).getByRole('button', { name: 'Español' }).click();
+    await p.getByRole('group', { name: 'Grado' }).getByRole('button', { name: '1.°' }).click();
+    await p.waitForSelector('text=Español · 1.°');
+    comprobar(await p.locator('.pensum__unidad').count() === 12 && await p.locator('.pensum__periodo h3').count() === 5, `${ancho}: español 1.° muestra 12 unidades en 4 periodos y los DBA`);
+    const m4 = await medir();
+    comprobar(!m4.desborde && m4.toque >= 48, `${ancho}: pensum sin desborde, toque mínimo ${Math.round(m4.toque)}`);
+    await p.screenshot({ path: `${CAPTURAS}/pensum-${ancho}.png` });
+    await p.getByRole('group', { name: 'Materia' }).getByRole('button', { name: 'Inglés' }).click();
+    await p.waitForSelector('text=Inglés · 1.°');
+    comprobar(await p.locator('.pensum__unidad').count() === 4, `${ancho}: inglés 1.° muestra sus 4 periodos`);
+    // Vuelve a dejar la cartilla de los grupos para lo que sigue.
+    await p.getByRole('group', { name: 'Grado' }).getByRole('button', { name: '3.°' }).click();
+
     await c.close();
   }
   comprobar(errores.length === 0, `sin errores (${errores.join(' | ')})`);

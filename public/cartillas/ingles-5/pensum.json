@@ -1,0 +1,173 @@
+{
+ "cartilla": "ingles-5",
+ "materia": "Inglés",
+ "grado": 5,
+ "gradoNombre": "5.°",
+ "guia": "Postal",
+ "titulo": "El cuaderno de Postal · 5.°",
+ "fuente": "Contenidos programáticos de Inglés · Versión 1 · 24 de noviembre de 2026",
+ "proposito": "Nivel principiante A1.1.",
+ "dba": [
+  {
+   "id": "1",
+   "texto": "Comprende información general y específica en un texto narrativo corto sobre temas conocidos y de interés."
+  },
+  {
+   "id": "2",
+   "texto": "Produce un texto narrativo oral y/o escrito, corto y sencillo, que responde al \"¿qué?, ¿quién?, ¿cuándo? y ¿dónde?\" de un evento o anécdota."
+  },
+  {
+   "id": "3",
+   "texto": "Intercambia información sobre hábitos, gustos y preferencias acerca de temas conocidos, siguiendo modelos provistos por el profesor."
+  },
+  {
+   "id": "4",
+   "texto": "Explica causas y consecuencias de una situación a través de oraciones simples de manera oral y escrita siguiendo un modelo establecido."
+  }
+ ],
+ "ebc": "Estándares Básicos de Competencias en Lenguas Extranjeras: Inglés (MEN, 2006).",
+ "unidades": [
+  {
+   "id": "p1",
+   "numero": 1,
+   "titulo": "Respeto mi cuerpo",
+   "eje": "Salud y vida",
+   "periodo": {
+    "4": 1,
+    "3": 1
+   },
+   "meta": "proponer en inglés, a través de lenguaje sencillo, acciones para el cuidado de su cuerpo y sus relaciones con los demás.",
+   "funciones": [
+    "describir su rutina y pasatiempos",
+    "decir la hora completa",
+    "poner límites y pedir disculpas"
+   ],
+   "temas": [
+    "repaso de la hora en punto (3.°) y del cuerpo",
+    "rutina wake up, have a bath, brush my teeth, tidy my room, go to the park",
+    "la hora half past, a quarter past, a quarter to",
+    "relaciones uncle, aunt, cousin, best friend",
+    "límites Stop it! I don't like it. I'm sorry. Excuse me."
+   ],
+   "gramatica": "pronombres posesivos mine, yours, his, hers, ours, theirs; preguntas what, where, who; adverbios de frecuencia y have to (repaso). What time do you wake up? I always wake up at half past six. We have to wash our hands before we eat. This is mine. Stop it, I don't like it.",
+   "dba": [
+    "3",
+    "2"
+   ],
+   "desempenos": [
+    "saber reconoce la hora y vocabulario de rutinas",
+    "saber hacer describe su rutina con horas y dice un límite con respeto",
+    "saber ser se respeta a sí mismo y a los demás."
+   ],
+   "juegos": "escucha-toca (relojes con half past / quarter); ordenar (rutina con horas); di-brilla (frases de límite y disculpa); memoria (pronombre posesivo-dibujo).",
+   "analogo": "Body care campaign, folletos de cuidado del cuerpo.",
+   "fuente": "MEN, 2016b, pp. 217-221."
+  },
+  {
+   "id": "p2",
+   "numero": 2,
+   "titulo": "Cuido mi lenguaje",
+   "eje": "Convivencia y paz",
+   "periodo": {
+    "4": 2,
+    "3": 2
+   },
+   "meta": "reconocer y expresar en inglés acciones positivas para construir un ambiente de paz con sus semejantes a través del lenguaje.",
+   "funciones": [
+    "describir personas con respeto",
+    "rechazar el maltrato",
+    "pedir disculpas",
+    "dar opinión"
+   ],
+   "temas": [
+    "repaso de descripciones (4.°)",
+    "sinónimos y contrarios pretty = beautiful, thin = slim, clever = smart, kind / rude, polite / impolite",
+    "rechazo Stop it! Cut it out. That's not funny. That's bullying.",
+    "disculpa It was not my intention. Sorry if I offended you. You are right, sorry."
+   ],
+   "gramatica": "plurales irregulares man / men, woman / women, child / children; presente simple (repaso). In my opinion, that was not funny. Hey Marcela, that's not funny.",
+   "dba": [
+    "3",
+    "4"
+   ],
+   "desempenos": [
+    "saber reconoce palabras que discriminan y expresiones de rechazo y disculpa",
+    "saber hacer produce un texto corto describiendo a un compañero con respeto",
+    "saber ser valora a todas las personas."
+   ],
+   "juegos": "escucha-toca (¿respetuoso o no?); memoria (sinónimos); di-brilla (frases de disculpa); ordenar (diálogo de resolución de un conflicto).",
+   "analogo": "Language for peace, exposición de caricaturas en inglés.",
+   "fuente": "MEN, 2016b, pp. 224-227."
+  },
+  {
+   "id": "p3",
+   "numero": 3,
+   "titulo": "Todos somos iguales",
+   "eje": "Medioambiente y sociedad",
+   "periodo": {
+    "4": 3,
+    "3": 3
+   },
+   "meta": "establecer comparaciones sencillas en inglés y apreciar semejanzas y diferencias entre las comunidades de su ciudad o municipio.",
+   "funciones": [
+    "comparar lugares y comunidades",
+    "hablar de pasatiempos",
+    "dar opiniones"
+   ],
+   "temas": [
+    "city, country, town, urban, rural, tourist",
+    "big, small, clean, dirty, old, modern, quiet, noisy",
+    "culture, religion, gender",
+    "pasatiempos What do you do in your free time?"
+   ],
+   "gramatica": "comparativos y superlativos, también de dos sílabas e irregulares (better, the best, the worst). Cúcuta is bigger than Los Patios. The country is quieter than the city. It is the most modern building in town.",
+   "dba": [
+    "4",
+    "3"
+   ],
+   "desempenos": [
+    "saber reconoce comparativos y superlativos",
+    "saber hacer escribe un párrafo corto comparando dos lugares que conoce",
+    "saber ser respeta las diferencias y los contextos sociales."
+   ],
+   "juegos": "escucha-toca (¿cuál es el más grande?); ordenar (frase comparativa); di-brilla (comparaciones); memoria (adjetivo-contrario).",
+   "analogo": "folleto turístico \"Mi municipio\" (Los Patios) con comparaciones.",
+   "fuente": "MEN, 2016b, p. 233."
+  },
+  {
+   "id": "p4",
+   "numero": 4,
+   "titulo": "Estamos bien informados",
+   "eje": "Una aldea global",
+   "periodo": {
+    "4": 4,
+    "3": 3
+   },
+   "meta": "narrar y comprender relatos sencillos y valorar la información recibida por distintos medios de comunicación.",
+   "funciones": [
+    "narrar un hecho pasado",
+    "contar cómo era antes",
+    "decir preferencias de medios"
+   ],
+   "temas": [
+    "repaso de first, then, next, last (1.°) y tecnología (3.°)",
+    "medios TV, radio, newspaper, news, documentary, cartoon",
+    "para narrar One day…, When I was younger…, Then…, Finally…"
+   ],
+   "gramatica": "pasado simple de verbos regulares; used to; preguntas con did. What did you do last Saturday? I walked around the park. My grandparents did not have computers; they listened to the radio.",
+   "dba": [
+    "1",
+    "2",
+    "4"
+   ],
+   "desempenos": [
+    "saber reconoce el pasado simple regular y conectores de narración",
+    "saber hacer produce una anécdota corta que responde qué, quién, cuándo y dónde",
+    "saber ser valora la información de distintas fuentes."
+   ],
+   "juegos": "ordenar (sucesos de un cuento o noticia); escucha-toca (¿quién, dónde, cuándo?); di-brilla (frases en pasado); memoria (presente-pasado del verbo).",
+   "analogo": "noticiero del curso: cada grupo graba (en clase, no en la plataforma) una noticia del colegio o una historia tradicional de la región, como sugiere el DBA 2.",
+   "fuente": "MEN, 2016a, p. 24; MEN, 2016b, p. 239."
+  }
+ ]
+}

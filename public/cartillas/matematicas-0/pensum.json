@@ -1,0 +1,265 @@
+{
+ "cartilla": "matematicas-0",
+ "materia": "Matemáticas",
+ "grado": 0,
+ "gradoNombre": "Transición",
+ "guia": "Cuadrito",
+ "titulo": "El cuaderno de Cuadrito · Transición",
+ "fuente": "Contenidos programáticos de Matemáticas · Versión 1 · 24 de noviembre de 2026",
+ "proposito": "",
+ "dba": [
+  {
+   "id": "3",
+   "texto": "Las niñas y los niños disfrutan aprender; exploran y se relacionan con el mundo para comprenderlo y construirlo."
+  },
+  {
+   "id": "T-3a",
+   "texto": "Construye nociones de espacio, tiempo y medida a través de experiencias cotidianas."
+  },
+  {
+   "id": "T-3b",
+   "texto": "Compara, ordena, clasifica objetos e identifica patrones de acuerdo con diferentes criterios."
+  },
+  {
+   "id": "T-3c",
+   "texto": "Determina la cantidad de objetos que conforman una colección, al establecer relaciones de correspondencia y acciones de juntar y separar."
+  }
+ ],
+ "ebc": "",
+ "unidades": [
+  {
+   "id": "u1",
+   "numero": 1,
+   "titulo": "Mi cuerpo en el espacio",
+   "periodo": {
+    "4": 1,
+    "3": 1
+   },
+   "temas": [
+    "arriba/abajo, dentro/fuera, delante/detrás, cerca/lejos, encima/debajo, a partir del propio cuerpo",
+    "recorridos cortos en el salón"
+   ],
+   "dba": [
+    "T-3a"
+   ],
+   "pensamientos": [
+    "Espacial"
+   ],
+   "desempenos": [
+    "se ubica y ubica objetos usando arriba, abajo, dentro, fuera, cerca y lejos",
+    "sigue una instrucción de posición en una ronda o juego",
+    "describe con gestos o palabras dónde está un objeto"
+   ],
+   "juegos": "escucha-toca (\"toca el pájaro que está arriba\"); di-brilla (decir dónde está).",
+   "analogo": "rondas, caja con objetos, lámina para pegar."
+  },
+  {
+   "id": "u2",
+   "numero": 2,
+   "titulo": "Mirar, comparar y agrupar",
+   "periodo": {
+    "4": 1,
+    "3": 1
+   },
+   "temas": [
+    "atributos: color, tamaño (grande/pequeño), forma, textura",
+    "igual y diferente",
+    "agrupar por un atributo",
+    "conteo con percepción global de 1 a 3 (sin contar uno a uno)"
+   ],
+   "dba": [
+    "T-3b",
+    "T-3c"
+   ],
+   "pensamientos": [
+    "Aleatorio",
+    "Variacional"
+   ],
+   "desempenos": [
+    "agrupa objetos por un atributo y dice por qué",
+    "encuentra el objeto que no pertenece al grupo",
+    "reconoce de un vistazo colecciones de 1, 2 y 3"
+   ],
+   "juegos": "escucha-toca (\"toca todos los rojos\"); memoria (parejas iguales).",
+   "analogo": "tapas, botones y semillas para clasificar en cajas de huevos."
+  },
+  {
+   "id": "u3",
+   "numero": 3,
+   "titulo": "Los números del 1 al 10",
+   "periodo": {
+    "4": 2,
+    "3": 1
+   },
+   "temas": [
+    "conteo uno a uno hasta 10, correspondencia uno a uno, el último número dicho dice cuántos hay (cardinal), el número en la vida (edad, dedos, puerta), grafía del 1 al 10 como dibujo, no como requisito"
+   ],
+   "dba": [
+    "T-3c"
+   ],
+   "pensamientos": [
+    "Numérico"
+   ],
+   "desempenos": [
+    "cuenta colecciones hasta 10 señalando cada objeto una vez",
+    "muestra con los dedos la cantidad que oye",
+    "relaciona el número dicho con su colección"
+   ],
+   "juegos": "contar-toca (\"toca 4 estrellas\"); memoria (número ↔ puntos); di-brilla (contar en voz alta).",
+   "analogo": "tarjetas número-puntos; collar de cuentas."
+  },
+  {
+   "id": "u4",
+   "numero": 4,
+   "titulo": "Formas que me rodean",
+   "periodo": {
+    "4": 2,
+    "3": 2
+   },
+   "temas": [
+    "círculo, cuadrado, triángulo y rectángulo en objetos del entorno",
+    "redondo/con puntas",
+    "rueda y caja (primeras ideas de sólidos)",
+    "armar figuras con piezas"
+   ],
+   "dba": [
+    "T-3a",
+    "T-3b"
+   ],
+   "pensamientos": [
+    "Espacial"
+   ],
+   "desempenos": [
+    "encuentra figuras en objetos de su casa y su salón",
+    "arma una figura con piezas",
+    "clasifica por forma"
+   ],
+   "juegos": "escucha-toca (\"toca el círculo\"); memoria (figura ↔ objeto real con esa forma).",
+   "analogo": "figuras de cartón, plastilina, tangram sencillo."
+  },
+  {
+   "id": "u5",
+   "numero": 5,
+   "titulo": "Las familias del 10 al 100",
+   "periodo": {
+    "4": 3,
+    "3": 2
+   },
+   "temas": [
+    "la familia del 10 (11 a 19: \"diez y uno, diez y dos…\")",
+    "contar de 10 en 10 hasta 100",
+    "las familias del 20, 30… hasta el 100 en conteo oral",
+    "comparar colecciones: más, menos, igual",
+    "primero, segundo, último",
+    "patrones AB (rojo-azul-rojo…)"
+   ],
+   "dba": [
+    "T-3b",
+    "T-3c"
+   ],
+   "pensamientos": [
+    "Numérico",
+    "Variacional"
+   ],
+   "desempenos": [
+    "cuenta en voz alta hasta 100, de uno en uno y de diez en diez",
+    "reconoce que 11 a 19 son \"diez y algo más\"",
+    "compara dos colecciones y dice dónde hay más o menos",
+    "continúa un patrón de dos elementos"
+   ],
+   "juegos": "contar-toca (grupos de 10); ordenar (las decenas del 10 al 100; continuar el patrón); escucha-atrapa (\"atrapa el 17\").",
+   "analogo": "tabla del 100 en la pared; atados de 10 palitos; bingo de cantidades.",
+   "nota": "en transición el 100 se cuenta y se canta; no se exige escribirlo ni operar con números grandes (decisión de Manuel, 25 nov 2026)."
+  },
+  {
+   "id": "u6",
+   "numero": 6,
+   "titulo": "Juntar y quitar",
+   "periodo": {
+    "4": 3,
+    "3": 2
+   },
+   "temas": [
+    "agregar y quitar con objetos, muy suave y siempre hasta 10",
+    "\"llegan 2 más\", \"se van 3\"",
+    "repartir para que todos tengan lo mismo",
+    "cuento matemático"
+   ],
+   "dba": [
+    "T-3c"
+   ],
+   "pensamientos": [
+    "Numérico"
+   ],
+   "desempenos": [
+    "resuelve con objetos o dibujos situaciones de agregar y quitar",
+    "explica cómo lo hizo",
+    "reparte una colección en partes iguales con apoyo"
+   ],
+   "juegos": "contar-toca (\"hay 3 manzanas, llegan 2: toca cuántas hay ahora\"); memoria (situación dibujada ↔ cantidad).",
+   "analogo": "tienda del salón con objetos reales."
+  },
+  {
+   "id": "u7",
+   "numero": 7,
+   "titulo": "Medir y ordenar",
+   "periodo": {
+    "4": 4,
+    "3": 3
+   },
+   "temas": [
+    "largo/corto, alto/bajo, pesado/liviano, lleno/vacío",
+    "medir con pasos, palmas, cuerdas",
+    "series de menor a mayor (seriación)"
+   ],
+   "dba": [
+    "T-3a",
+    "T-3b"
+   ],
+   "pensamientos": [
+    "Métrico"
+   ],
+   "desempenos": [
+    "compara dos objetos por su longitud, peso o capacidad",
+    "mide con una unidad del cuerpo y dice cuántas veces cabe",
+    "ordena 3 a 5 objetos por tamaño"
+   ],
+   "juegos": "ordenar (del más corto al más largo); escucha-toca (\"toca el más pesado\").",
+   "analogo": "medir el salón con pasos; balanza de ganchos."
+  },
+  {
+   "id": "u8",
+   "numero": 8,
+   "titulo": "El tiempo, patrones y datos",
+   "periodo": {
+    "4": 4,
+    "3": 3
+   },
+   "temas": [
+    "antes, ahora y después",
+    "día y noche",
+    "días de la semana como rutina",
+    "patrones ABC y AAB",
+    "\"¿qué fruta nos gusta más?\" con objetos o pictograma de objetos reales",
+    "contar los días de clase hasta 100 en el calendario del aula"
+   ],
+   "dba": [
+    "T-3a",
+    "T-3b",
+    "T-3c"
+   ],
+   "pensamientos": [
+    "Métrico",
+    "Variacional",
+    "Aleatorio"
+   ],
+   "desempenos": [
+    "ordena tres escenas de su día",
+    "continúa patrones de tres elementos",
+    "dice cuál grupo tiene más en un pictograma de objetos"
+   ],
+   "juegos": "ordenar (secuencia del día); di-brilla (días de la semana); escucha-toca (\"¿cuál fruta tiene más votos?\").",
+   "analogo": "calendario de aula, pictograma con fichas pegadas."
+  }
+ ]
+}

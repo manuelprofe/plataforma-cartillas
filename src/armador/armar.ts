@@ -4,7 +4,7 @@
 // palabras del tema. Las planeaciones se guardan en este aparato y solo las ve quien las hizo.
 import { useSyncExternalStore } from 'react';
 import { repartir, type Duracion } from '../materiales/duracion';
-import type { Bloque, Material, TemaDoc } from '../materiales/datos';
+import type { Bloque, Material, Referentes, TemaDoc } from '../materiales/datos';
 import datos from './actividades.json';
 
 export interface Actividad {
@@ -42,6 +42,14 @@ export interface Plan {
   nombreTema: string;
   duracion: Duracion;
   actividades: string[];
+  /** `pensum`: el tema es una unidad del pensum de la cartilla (sin láminas propias todavía). */
+  fuente?: 'pensum';
+}
+
+/** Lo que una unidad del pensum pone en la planeación cuando el tema no trae palabras ni láminas. */
+export interface DelPensum {
+  palabras: string;
+  referentes: Referentes;
 }
 
 type Momento = Extract<Bloque, { tipo: 'momento' }>;
@@ -60,8 +68,8 @@ function llenar(t: string, tema: TemaDoc, palabras: string) {
 }
 
 /** El planeador de una planeación armada, listo para el formato único. */
-export function armarMaterial(plan: Plan, tema: TemaDoc): Material {
-  const palabras = palabrasDe(tema, plan.cartilla);
+export function armarMaterial(plan: Plan, tema: TemaDoc, pensum?: DelPensum): Material {
+  const palabras = pensum?.palabras ?? palabrasDe(tema, plan.cartilla);
   const existe = (id: string) => tema.materiales.some((m) => m.id === id);
   const laminas = existe(`${tema.id}-laminas`) ? [{ id: `${tema.id}-laminas`, texto: 'Láminas' }] : undefined;
   const elegidas = plan.actividades.map((id) => ACTIVIDADES.find((a) => a.id === id)).filter((a): a is Actividad => !!a);
@@ -82,11 +90,13 @@ export function armarMaterial(plan: Plan, tema: TemaDoc): Material {
       tipo: 'momento',
       fase: 'inicio',
       minutos: apertura,
-      momento: `**Apertura.** Salude y cuente qué se aprende hoy: ${tema.nombre.toLowerCase()}. Muestre las láminas (${palabras}) y diga cada una una vez; el grupo escucha y señala.`,
+      momento: laminas || !pensum
+        ? `**Apertura.** Salude y cuente qué se aprende hoy: ${tema.nombre.toLowerCase()}. Muestre las láminas (${palabras}) y diga cada una una vez; el grupo escucha y señala.`
+        : `**Apertura.** Salude y cuente qué se aprende hoy: ${tema.nombre.toLowerCase()}. Muestre con objetos del salón o dibujos en el tablero (${palabras}) y pregunte qué saben; el grupo mira, escucha y señala.`,
       ritmo: 'mirar',
-      material: `Láminas de ${tema.nombre.toLowerCase()}`,
+      material: laminas || !pensum ? `Láminas de ${tema.nombre.toLowerCase()}` : 'Objetos del salón o dibujos en el tablero',
       observar: 'Quién mira y señala sin que se le pida',
-      sinProyector: 'Láminas impresas en el tablero',
+      sinProyector: laminas || !pensum ? 'Láminas impresas en el tablero' : 'Igual: no usa proyector',
       enlaces: laminas,
     },
     ...elegidas.map(
@@ -106,16 +116,16 @@ export function armarMaterial(plan: Plan, tema: TemaDoc): Material {
       tipo: 'momento',
       fase: 'cierre',
       minutos: cierre,
-      momento: `**Cierre.** Repasen en coro tres palabras de hoy. Cada niño muestra con la mano cómo se sintió (arriba, en medio, abajo) y dice qué le gustó.`,
+      momento: `**Cierre.** Repasen en coro ${pensum ? 'lo que aprendieron hoy' : 'tres palabras de hoy'}. Cada niño muestra con la mano cómo se sintió (arriba, en medio, abajo) y dice qué le gustó.`,
       ritmo: 'autoevaluar',
-      material: 'Láminas del tema',
-      observar: 'Cómo se sienten; qué palabra recuerdan',
+      material: pensum ? 'Nada' : 'Láminas del tema',
+      observar: pensum ? 'Cómo se sienten; qué recuerdan del tema' : 'Cómo se sienten; qué palabra recuerdan',
       sinProyector: 'Igual: no usa proyector',
     },
   ];
   if (transiciones) momentos.splice(momentos.length - 1, 0, { tipo: 'momento', minutos: transiciones, momento: '**Transiciones.**', ritmo: '', material: '', observar: '', sinProyector: '' });
 
-  const referentes = tema.materiales.find((m) => m.tipo === 'planeador' && m.referentes)?.referentes;
+  const referentes = pensum?.referentes ?? tema.materiales.find((m) => m.tipo === 'planeador' && m.referentes)?.referentes;
   return {
     id: plan.id,
     tipo: 'planeador',

@@ -50,4 +50,11 @@ Proyecto: https://supabase.com/dashboard → proyecto `jpwwmzfhbdnzsvwuciqa`. Ha
     Debe decir "Success". Sin ella, el coordinador no puede pasar un grupo a otra cartilla (solo
     hace falta cuando un colegio tenga más de una cartilla habilitada).
 
+## Migración 009 (catálogo completo de cartillas)
+
+15. **SQL Editor** → New query → pegar todo `supabase/migraciones/009-catalogo-cartillas.sql` → Run.
+    Da de alta las 17 cartillas nuevas (matemáticas, español e inglés de transición a 5.°) **sin
+    publicar**. No las publique todavía desde el modo dueño: se publican cuando su territorio 1 sea
+    jugable. Comprobarla con `select count(*) from cartillas;` (debe dar 18).
+
 Al terminar, avisar en el chat qué pasos quedaron hechos y si alguno dio error (copiar el mensaje).

@@ -1,0 +1,406 @@
+{
+ "cartilla": "espanol-3",
+ "materia": "Español",
+ "grado": 3,
+ "gradoNombre": "3.°",
+ "guia": "Renglón",
+ "titulo": "El cuaderno de Renglón · 3.°",
+ "fuente": "Contenidos programáticos de Español · Versión 1 · 24 de noviembre de 2026",
+ "proposito": "Leer y escribir textos con sentido completo: narrar con estructura, comprender lo que no está dicho (inferir) y escribir cuidando la gramática y la ortografía. Cierra el ciclo 1.° a 3.° y lo evalúa Saber 3.°.",
+ "dba": [
+  {
+   "id": "1",
+   "texto": "Comprende las funciones que cumplen los medios de comunicación propios de su contexto."
+  },
+  {
+   "id": "2",
+   "texto": "Comprende que algunos escritos y manifestaciones artísticas pueden estar compuestos por texto, sonido e imágenes."
+  },
+  {
+   "id": "3",
+   "texto": "Reconoce algunas características de los textos narrativos, tales como el concepto de narrador y estructura narrativa, a partir de la recreación y disfrute de los mismos."
+  },
+  {
+   "id": "4",
+   "texto": "Escribe textos literarios coherentes, atendiendo a las características textuales e integrando sus saberes e intereses."
+  },
+  {
+   "id": "5",
+   "texto": "Identifica el papel del emisor y el receptor y sus propósitos comunicativos en una situación específica."
+  },
+  {
+   "id": "6",
+   "texto": "Interpreta el contenido y la estructura del texto, respondiendo preguntas de orden inferencial y crítico."
+  },
+  {
+   "id": "7",
+   "texto": "Produce textos orales breves de diferente tipo ajustando el volumen, el tono de la voz, los movimientos corporales y los gestos, al tema y a la situación comunicativa."
+  },
+  {
+   "id": "8",
+   "texto": "Produce textos verbales y no verbales en los que tiene en cuenta aspectos gramaticales y ortográficos."
+  }
+ ],
+ "ebc": "Estándares Básicos de Competencias del Lenguaje (MEN, 2006), metas al terminar 3.°.",
+ "periodos": {
+  "1": "Narrar historias",
+  "2": "Leer entre líneas",
+  "3": "Palabras, sonidos y poemas",
+  "4": "Texto, imagen y voz"
+ },
+ "unidades": [
+  {
+   "id": "u1",
+   "numero": 1,
+   "titulo": "La comunicación",
+   "periodo": {
+    "4": 1,
+    "3": 1
+   },
+   "temas": [
+    "Emisor, receptor, mensaje",
+    "intención de quien habla",
+    "adivinar quién habla por su voz"
+   ],
+   "dba": [
+    "5"
+   ],
+   "factores": [
+    {
+     "id": "F5",
+     "nombre": "Ética de la comunicación",
+     "texto": "Identifico los principales elementos y roles de la comunicación para enriquecer procesos comunicativos auténticos."
+    }
+   ],
+   "desempenos": [
+    "Identifica quién comunica, a quién y para qué."
+   ],
+   "juegos": "escucha-toca, en el aula"
+  },
+  {
+   "id": "u2",
+   "numero": 2,
+   "titulo": "El narrador y la estructura del cuento",
+   "periodo": {
+    "4": 1,
+    "3": 1
+   },
+   "temas": [
+    "Quién cuenta la historia",
+    "inicio, nudo, desenlace",
+    "ficción y no ficción"
+   ],
+   "dba": [
+    "3"
+   ],
+   "factores": [
+    {
+     "id": "F3",
+     "nombre": "Literatura",
+     "texto": "Comprendo textos literarios para propiciar el desarrollo de mi capacidad creativa y lúdica."
+    }
+   ],
+   "desempenos": [
+    "Identifica la voz que narra y ordena la estructura de un cuento."
+   ],
+   "juegos": "ordenar, escucha-toca (¿real o inventado?)"
+  },
+  {
+   "id": "u3",
+   "numero": 3,
+   "titulo": "Escribo cuentos",
+   "periodo": {
+    "4": 1,
+    "3": 1
+   },
+   "temas": [
+    "Plan del cuento (personaje, lugar, problema, solución)",
+    "crear personajes"
+   ],
+   "dba": [
+    "4"
+   ],
+   "factores": [
+    {
+     "id": "F1",
+     "nombre": "Producción textual",
+     "texto": "Produzco textos orales que responden a distintos propósitos comunicativos. Produzco textos escritos que responden a diversas necesidades comunicativas."
+    },
+    {
+     "id": "F3",
+     "nombre": "Literatura",
+     "texto": "Comprendo textos literarios para propiciar el desarrollo de mi capacidad creativa y lúdica."
+    }
+   ],
+   "desempenos": [
+    "Escribe un cuento corto a partir de un plan."
+   ],
+   "juegos": "ordenar (plan del cuento), en el aula"
+  },
+  {
+   "id": "u4",
+   "numero": 4,
+   "titulo": "Comprensión inferencial",
+   "periodo": {
+    "4": 2,
+    "3": 1
+   },
+   "temas": [
+    "Lo que dice y lo que no dice el texto",
+    "significado de palabras por el contexto",
+    "idea principal"
+   ],
+   "dba": [
+    "6"
+   ],
+   "factores": [
+    {
+     "id": "F2",
+     "nombre": "Comprensión e interpretación textual",
+     "texto": "Comprendo textos que tienen diferentes formatos y finalidades."
+    }
+   ],
+   "desempenos": [
+    "Responde preguntas literales e inferenciales y deduce palabras desconocidas."
+   ],
+   "juegos": "escucha-toca (¿qué palabra significa?), en el aula"
+  },
+  {
+   "id": "u5",
+   "numero": 5,
+   "titulo": "La oración y sus partes",
+   "periodo": {
+    "4": 2,
+    "3": 2
+   },
+   "temas": [
+    "Sujeto y predicado",
+    "sustantivo, adjetivo y verbo",
+    "concordancia verbal"
+   ],
+   "dba": [
+    "8"
+   ],
+   "factores": [
+    {
+     "id": "F1",
+     "nombre": "Producción textual",
+     "texto": "Produzco textos orales que responden a distintos propósitos comunicativos. Produzco textos escritos que responden a diversas necesidades comunicativas."
+    }
+   ],
+   "desempenos": [
+    "Identifica sujeto y predicado y escribe oraciones con concordancia."
+   ],
+   "juegos": "ordenar (armar oración), memoria (sustantivo, adjetivo, verbo), escucha-atrapa"
+  },
+  {
+   "id": "u6",
+   "numero": 6,
+   "titulo": "Mitos y leyendas de Colombia",
+   "periodo": {
+    "4": 2,
+    "3": 2
+   },
+   "temas": [
+    "Leyendas de la región (Norte de Santander y otras)",
+    "lo real y lo fantástico"
+   ],
+   "dba": [
+    "3",
+    "6"
+   ],
+   "factores": [
+    {
+     "id": "F3",
+     "nombre": "Literatura",
+     "texto": "Comprendo textos literarios para propiciar el desarrollo de mi capacidad creativa y lúdica."
+    }
+   ],
+   "desempenos": [
+    "Compara un mito y una leyenda y cuenta una de su región."
+   ],
+   "juegos": "ordenar, en el aula, di-brilla"
+  },
+  {
+   "id": "u7",
+   "numero": 7,
+   "titulo": "Diptongo, hiato y triptongo",
+   "periodo": {
+    "4": 3,
+    "3": 2
+   },
+   "temas": [
+    "Golpes de voz",
+    "sílaba tónica",
+    "clasificación por número de sílabas"
+   ],
+   "dba": [
+    "8"
+   ],
+   "factores": [
+    {
+     "id": "F1",
+     "nombre": "Producción textual",
+     "texto": "Produzco textos orales que responden a distintos propósitos comunicativos. Produzco textos escritos que responden a diversas necesidades comunicativas."
+    }
+   ],
+   "desempenos": [
+    "Segmenta palabras con diptongo e hiato y ubica la sílaba tónica."
+   ],
+   "juegos": "contar-toca (golpes de voz), escucha-toca, escucha-atrapa"
+  },
+  {
+   "id": "u8",
+   "numero": 8,
+   "titulo": "Ortografía de 3.°",
+   "periodo": {
+    "4": 3,
+    "3": 2
+   },
+   "temas": [
+    "c, s, z",
+    "c, k, qu",
+    "g y j",
+    "mayúsculas",
+    "punto y coma básicos"
+   ],
+   "dba": [
+    "8"
+   ],
+   "factores": [
+    {
+     "id": "F1",
+     "nombre": "Producción textual",
+     "texto": "Produzco textos orales que responden a distintos propósitos comunicativos. Produzco textos escritos que responden a diversas necesidades comunicativas."
+    }
+   ],
+   "desempenos": [
+    "Escribe correctamente palabras con c, s, z, k y qu en sus textos."
+   ],
+   "juegos": "memoria, escucha-atrapa, escucha-toca"
+  },
+  {
+   "id": "u9",
+   "numero": 9,
+   "titulo": "La poesía",
+   "periodo": {
+    "4": 3,
+    "3": 3
+   },
+   "temas": [
+    "Verso, estrofa, rima",
+    "declamar con entonación",
+    "juegos de palabras con sílaba inicial y final"
+   ],
+   "dba": [
+    "3",
+    "7"
+   ],
+   "factores": [
+    {
+     "id": "F3",
+     "nombre": "Literatura",
+     "texto": "Comprendo textos literarios para propiciar el desarrollo de mi capacidad creativa y lúdica."
+    },
+    {
+     "id": "F1",
+     "nombre": "Producción textual",
+     "texto": "Produzco textos orales que responden a distintos propósitos comunicativos. Produzco textos escritos que responden a diversas necesidades comunicativas."
+    }
+   ],
+   "desempenos": [
+    "Identifica versos, estrofas y rimas y declama un poema."
+   ],
+   "juegos": "contar-toca (versos), di-brilla (declamar), escucha-atrapa (rimas)"
+  },
+  {
+   "id": "u10",
+   "numero": 10,
+   "titulo": "La historieta y el afiche",
+   "periodo": {
+    "4": 4,
+    "3": 3
+   },
+   "temas": [
+    "Viñetas, globos, onomatopeyas",
+    "texto y gráfico juntos",
+    "manifestaciones artísticas colombianas"
+   ],
+   "dba": [
+    "2"
+   ],
+   "factores": [
+    {
+     "id": "F4",
+     "nombre": "Medios de comunicación y otros sistemas simbólicos",
+     "texto": "Reconozco los medios de comunicación masiva y caracterizo la información que difunden. Comprendo la información que circula a través de algunos sistemas de comunicación no verbal."
+    }
+   ],
+   "desempenos": [
+    "Interpreta una historieta y crea una con texto e imágenes."
+   ],
+   "juegos": "ordenar (viñetas), en el aula"
+  },
+  {
+   "id": "u11",
+   "numero": 11,
+   "titulo": "Medios de mi entorno",
+   "periodo": {
+    "4": 4,
+    "3": 3
+   },
+   "temas": [
+    "Periódico, noticiero, vallas, internet",
+    "comparar información de distintos medios"
+   ],
+   "dba": [
+    "1"
+   ],
+   "factores": [
+    {
+     "id": "F4",
+     "nombre": "Medios de comunicación y otros sistemas simbólicos",
+     "texto": "Reconozco los medios de comunicación masiva y caracterizo la información que difunden. Comprendo la información que circula a través de algunos sistemas de comunicación no verbal."
+    }
+   ],
+   "desempenos": [
+    "Explica la función de los medios de su comunidad."
+   ],
+   "juegos": "escucha-toca, en el aula"
+  },
+  {
+   "id": "u12",
+   "numero": 12,
+   "titulo": "Hablo en público",
+   "periodo": {
+    "4": 4,
+    "3": 3
+   },
+   "temas": [
+    "El diálogo (saludo, tema, desarrollo, despedida), la exposición corta, el volumen y los gestos",
+    "la carta de opinión sobre un problema del entorno"
+   ],
+   "dba": [
+    "7",
+    "8",
+    "5"
+   ],
+   "factores": [
+    {
+     "id": "F1",
+     "nombre": "Producción textual",
+     "texto": "Produzco textos orales que responden a distintos propósitos comunicativos. Produzco textos escritos que responden a diversas necesidades comunicativas."
+    },
+    {
+     "id": "F5",
+     "nombre": "Ética de la comunicación",
+     "texto": "Identifico los principales elementos y roles de la comunicación para enriquecer procesos comunicativos auténticos."
+    }
+   ],
+   "desempenos": [
+    "Prepara y presenta un diálogo o exposición; escribe una carta o afiche sobre un problema de su entorno."
+   ],
+   "juegos": "di-brilla, ordenar (partes del diálogo), en el aula"
+  }
+ ]
+}

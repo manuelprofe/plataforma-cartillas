@@ -1,0 +1,306 @@
+{
+ "cartilla": "matematicas-3",
+ "materia": "Matemáticas",
+ "grado": 3,
+ "gradoNombre": "3.°",
+ "guia": "Cuadrito",
+ "titulo": "El cuaderno de Cuadrito · 3.°",
+ "fuente": "Contenidos programáticos de Matemáticas · Versión 1 · 24 de noviembre de 2026",
+ "proposito": "resolver problemas aditivos y multiplicativos, iniciar la división y las fracciones comunes, medir y estimar, relacionar área y perímetro, y leer gráficos de barras. Cierra el grupo de grados 1.°–3.° de los Estándares y es grado evaluado por Saber 3.°. DBA V.2 de 3.°: 1 a 11.",
+ "dba": [
+  {
+   "id": "1",
+   "texto": "Interpreta, formula y resuelve problemas aditivos de composición, transformación y comparación en diferentes contextos; y multiplicativos, directos e inversos, en diferentes contextos."
+  },
+  {
+   "id": "2",
+   "texto": "Propone, desarrolla y justifica estrategias para hacer estimaciones y cálculos con operaciones básicas en la solución de problemas."
+  },
+  {
+   "id": "3",
+   "texto": "Establece comparaciones entre cantidades y expresiones que involucran operaciones y relaciones aditivas y multiplicativas y sus representaciones numéricas."
+  },
+  {
+   "id": "4",
+   "texto": "Describe y argumenta posibles relaciones entre los valores del área y el perímetro de figuras planas (especialmente cuadriláteros)."
+  },
+  {
+   "id": "5",
+   "texto": "Realiza estimaciones y mediciones de volumen, capacidad, longitud, área, peso de objetos o la duración de eventos como parte del proceso para resolver diferentes problemas."
+  },
+  {
+   "id": "6",
+   "texto": "Describe y representa formas bidimensionales y tridimensionales de acuerdo con las propiedades geométricas."
+  },
+  {
+   "id": "7",
+   "texto": "Formula y resuelve problemas que se relacionan con la posición, la dirección y el movimiento de objetos en el entorno."
+  },
+  {
+   "id": "8",
+   "texto": "Describe y representa los aspectos que cambian y permanecen constantes en secuencias y en otras situaciones de variación."
+  },
+  {
+   "id": "9",
+   "texto": "Argumenta sobre situaciones numéricas, geométricas y enunciados verbales en los que aparecen datos desconocidos para definir sus posibles valores según el contexto."
+  },
+  {
+   "id": "10",
+   "texto": "Lee e interpreta información contenida en tablas de frecuencia, gráficos de barras y/o pictogramas con escala, para formular y resolver preguntas de situaciones de su entorno."
+  },
+  {
+   "id": "11",
+   "texto": "Plantea y resuelve preguntas sobre la posibilidad de ocurrencia de situaciones aleatorias cotidianas y cuantifica la posibilidad de ocurrencia de eventos simples en una escala cualitativa (mayor, menor e igual)."
+  }
+ ],
+ "ebc": "Estándares Básicos de Competencias en Matemáticas (MEN, 2006), por pensamiento.",
+ "unidades": [
+  {
+   "id": "u1",
+   "numero": 1,
+   "titulo": "Números hasta 9.999",
+   "periodo": {
+    "4": 1,
+    "3": 1
+   },
+   "temas": [
+    "unidades de mil",
+    "valor posicional",
+    "comparar, ordenar y redondear a la decena y la centena",
+    "lectura de números hasta 99.999 en contexto (precios, distancias)"
+   ],
+   "dba": [
+    "2",
+    "3"
+   ],
+   "pensamientos": [
+    "Numérico"
+   ],
+   "desempenos": [
+    "compone y descompone números de cuatro cifras",
+    "redondea para estimar",
+    "compara cantidades en precios reales"
+   ],
+   "juegos": "ordenar; di-brilla (leer números grandes); escucha-atrapa.",
+   "analogo": "tablero de valor posicional; recibos y facturas."
+  },
+  {
+   "id": "u2",
+   "numero": 2,
+   "titulo": "Problemas aditivos",
+   "periodo": {
+    "4": 1,
+    "3": 1
+   },
+   "temas": [
+    "suma y resta con números hasta 9.999",
+    "problemas de composición, transformación y comparación",
+    "estrategias propias y algoritmo",
+    "datos que faltan en un problema"
+   ],
+   "dba": [
+    "1",
+    "2",
+    "9"
+   ],
+   "pensamientos": [
+    "Numérico",
+    "Variacional"
+   ],
+   "desempenos": [
+    "identifica qué tipo de problema es y lo resuelve",
+    "justifica su estrategia",
+    "propone valores posibles cuando falta un dato"
+   ],
+   "juegos": "memoria (problema dibujado ↔ operación); ordenar (pasos para resolver); [plantilla nueva: completar la operación].",
+   "analogo": "fichas de problemas del barrio y la tienda."
+  },
+  {
+   "id": "u3",
+   "numero": 3,
+   "titulo": "Multiplicación",
+   "periodo": {
+    "4": 2,
+    "3": 1
+   },
+   "temas": [
+    "tablas hasta el 9 con comprensión",
+    "multiplicar por una cifra",
+    "multiplicar por 10, 100 y 1.000",
+    "dobles, triples, mitades",
+    "problemas multiplicativos directos"
+   ],
+   "dba": [
+    "1",
+    "2",
+    "3"
+   ],
+   "pensamientos": [
+    "Numérico"
+   ],
+   "desempenos": [
+    "multiplica por una cifra y explica el algoritmo con descomposición",
+    "multiplica abreviadamente por 10 y 100",
+    "resuelve problemas de grupos iguales"
+   ],
+   "juegos": "di-brilla (tablas); escucha-atrapa (el producto); memoria (multiplicación ↔ arreglo).",
+   "analogo": "cuadrícula, juego de cartas de tablas."
+  },
+  {
+   "id": "u4",
+   "numero": 4,
+   "titulo": "División",
+   "periodo": {
+    "4": 2,
+    "3": 2
+   },
+   "temas": [
+    "división como reparto y como agrupamiento",
+    "relación con la multiplicación",
+    "división exacta e inexacta (residuo) por una cifra",
+    "problemas multiplicativos inversos"
+   ],
+   "dba": [
+    "1",
+    "2"
+   ],
+   "pensamientos": [
+    "Numérico"
+   ],
+   "desempenos": [
+    "resuelve repartos y explica qué significa el residuo",
+    "usa la multiplicación para comprobar una división",
+    "distingue cuándo dividir y cuándo multiplicar"
+   ],
+   "juegos": "contar-toca (repartir); escucha-atrapa (el cociente).",
+   "analogo": "repartir semillas en vasos."
+  },
+  {
+   "id": "u5",
+   "numero": 5,
+   "titulo": "Fracciones comunes",
+   "periodo": {
+    "4": 3,
+    "3": 2
+   },
+   "temas": [
+    "medio, tercio, cuarto y octavo de una unidad (pizza, cinta) y de una colección",
+    "fracciones en el dinero (medio peso, un cuarto)",
+    "comparar fracciones sencillas con dibujos"
+   ],
+   "dba": [
+    "3",
+    "1",
+    "3"
+   ],
+   "pensamientos": [
+    "Numérico",
+    "Métrico"
+   ],
+   "desempenos": [
+    "representa medios, tercios y cuartos en figuras y colecciones",
+    "compara fracciones con dibujos",
+    "usa fracciones para describir medidas"
+   ],
+   "juegos": "contar-toca (\"toca la mitad\"); memoria (fracción ↔ dibujo); [plantilla nueva: partir y pintar].",
+   "analogo": "doblado de papel; regletas."
+  },
+  {
+   "id": "u6",
+   "numero": 6,
+   "titulo": "Medir y estimar",
+   "periodo": {
+    "4": 3,
+    "3": 2
+   },
+   "temas": [
+    "metro, centímetro y milímetro",
+    "kilogramo y gramo",
+    "litro",
+    "horas y minutos",
+    "estimar antes de medir",
+    "capacidad y volumen empacando objetos"
+   ],
+   "dba": [
+    "5"
+   ],
+   "pensamientos": [
+    "Métrico"
+   ],
+   "desempenos": [
+    "estima y luego mide longitudes, pesos y capacidades",
+    "lee la hora en reloj de manecillas",
+    "calcula duraciones sencillas"
+   ],
+   "juegos": "escucha-toca (el reloj; la unidad adecuada); ordenar (de menor a mayor duración); [plantilla nueva: medir y comparar].",
+   "analogo": "metro, balanza, recipientes, reloj de cartón."
+  },
+  {
+   "id": "u7",
+   "numero": 7,
+   "titulo": "Área y perímetro",
+   "periodo": {
+    "4": 4,
+    "3": 3
+   },
+   "temas": [
+    "perímetro como contorno",
+    "área como recubrimiento con cuadrados",
+    "área y perímetro del rectángulo",
+    "figuras con igual perímetro y distinta área"
+   ],
+   "dba": [
+    "4"
+   ],
+   "pensamientos": [
+    "Métrico",
+    "Espacial"
+   ],
+   "desempenos": [
+    "distingue cuándo medir el borde y cuándo la superficie",
+    "calcula el perímetro y el área de un rectángulo en cuadritos",
+    "explica por qué dos figuras con igual perímetro pueden tener distinta área"
+   ],
+   "juegos": "escucha-toca (\"toca la de mayor área\"); [plantilla nueva: cuadrícula y plano].",
+   "analogo": "geoplano, papel cuadriculado."
+  },
+  {
+   "id": "u8",
+   "numero": 8,
+   "titulo": "Formas, movimiento, datos y azar",
+   "periodo": {
+    "4": 4,
+    "3": 3
+   },
+   "temas": [
+    "cuadriláteros y triángulos",
+    "ángulos como giros",
+    "caras de los cuerpos",
+    "ubicación y recorridos en cuadrícula",
+    "secuencias: qué cambia y qué se queda",
+    "tablas de frecuencia y gráficos de barras",
+    "más probable, menos probable, igual de probable"
+   ],
+   "dba": [
+    "6",
+    "7",
+    "8",
+    "10",
+    "11"
+   ],
+   "pensamientos": [
+    "Espacial",
+    "Variacional",
+    "Aleatorio"
+   ],
+   "desempenos": [
+    "describe figuras y cuerpos por sus propiedades",
+    "da y sigue instrucciones de posición y giro",
+    "lee gráficos de barras y responde preguntas",
+    "ordena eventos del más al menos probable"
+   ],
+   "juegos": "ordenar (secuencias, eventos por probabilidad); escucha-toca; [plantillas nuevas: gráfico vivo, cuadrícula y plano].",
+   "analogo": "encuesta del curso; dados y ruletas."
+  }
+ ]
+}

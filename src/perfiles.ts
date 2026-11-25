@@ -7,6 +7,20 @@ import { useSyncExternalStore } from 'react';
 import { CARTILLA_PREDETERMINADA, esIdCartilla } from './cartillas';
 import { descartarDeCola, INVITADO, leerCola, olvidarProgreso, perfilActivo, progresoDe, sumarInvitadoA, usarPerfil } from './progreso';
 
+// Vista previa de una cartilla que aún no está publicada: `/?cartilla=matematicas-0` la abre como
+// invitado en esta pestaña (sin cuenta, sin datos). Sirve para que el dueño la pruebe antes de
+// publicarla; los niños con perfil siempre juegan la de su grupo.
+const CARTILLA_PRUEBA = (() => {
+  try {
+    const pedida = new URLSearchParams(location.search).get('cartilla');
+    if (esIdCartilla(pedida)) sessionStorage.setItem('pc_cartilla_prueba', pedida);
+    const v = sessionStorage.getItem('pc_cartilla_prueba');
+    return esIdCartilla(v) ? v : null;
+  } catch {
+    return null;
+  }
+})();
+
 /** Hay dirección y clave pública de Supabase en esta copia (sin ellas, solo se juega sin tarjeta). */
 export const hayNube = Boolean(import.meta.env.VITE_SUPABASE_URL && import.meta.env.VITE_SUPABASE_CLAVE_PUBLICA);
 
@@ -82,7 +96,7 @@ export const perfilDe = (id: string) => perfiles.find((p) => p.id === id);
 /** La cartilla que juega un perfil: la de su grupo; el invitado juega la predeterminada. */
 export function cartillaDe(id: string): string {
   const c = perfilDe(id)?.cartilla;
-  return esIdCartilla(c) ? c : CARTILLA_PREDETERMINADA;
+  return esIdCartilla(c) ? c : id === INVITADO ? CARTILLA_PRUEBA ?? CARTILLA_PREDETERMINADA : CARTILLA_PREDETERMINADA;
 }
 
 function actualizar(id: string, cambio: Partial<PerfilNino>) {

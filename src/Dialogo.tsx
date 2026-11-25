@@ -74,7 +74,8 @@ export function Dialogo({ lineas, luego, escenas, personajes, base, modo, vozIng
             <button type="button" className="chip" onClick={hablar} aria-label="Escuchar otra vez">
               🔊
             </button>
-            {modo !== 'mixto' && (
+            {/* Sin traducción (cartilla en un solo idioma) no hay nada que mostrar en el otro. */}
+            {modo !== 'mixto' && otro !== principal && (
               <button type="button" className="chip" onClick={() => setVerOtro(!verOtro)} aria-pressed={verOtro}>
                 {enIngles ? 'ES' : 'EN'}
               </button>
@@ -84,7 +85,7 @@ export function Dialogo({ lineas, luego, escenas, personajes, base, modo, vozIng
         <p className="dialogo__texto" lang={enIngles ? 'en' : 'es'}>
           {principal}
         </p>
-        {(modo === 'mixto' || verOtro) && (
+        {(modo === 'mixto' || verOtro) && otro !== principal && (
           <p className="dialogo__apoyo" lang={enIngles ? 'es' : 'en'}>
             {otro}
           </p>

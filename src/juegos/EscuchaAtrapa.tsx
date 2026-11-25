@@ -365,8 +365,8 @@ function Atrapa(props: PropsJuego) {
         <main className="mirar">
           <button type="button" className="carta-grande" key={objetivo.en} onClick={repetir} aria-label={`Escuchar ${objetivo.en}`}>
             <img src={base + objetivo.icono} alt="" width="160" height="160" draggable={false} />
-            <strong lang="en">{objetivo.en}</strong>
-            <small>{objetivo.es}</small>
+            <strong lang={idiomaVoz}>{objetivo.en}</strong>
+            {objetivo.es !== objetivo.en && <small>{objetivo.es}</small>}
             <span className="carta-grande__oir" aria-hidden="true">
               🔊
             </span>

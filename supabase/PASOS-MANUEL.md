@@ -57,4 +57,10 @@ Proyecto: https://supabase.com/dashboard → proyecto `jpwwmzfhbdnzsvwuciqa`. Ha
     publicar**. No las publique todavía desde el modo dueño: se publican cuando su territorio 1 sea
     jugable. Comprobarla con `select count(*) from cartillas;` (debe dar 18).
 
+## Migración 010 (misiones de matemáticas de transición)
+
+16. **SQL Editor** → New query → pegar todo `supabase/migraciones/010-misiones-matematicas-0.sql` → Run.
+    Deja en la base las 18 misiones de la página 1 de Cuadrito (transición), para que el progreso de
+    los niños se guarde cuando la cartilla se publique. No la publica.
+
 Al terminar, avisar en el chat qué pasos quedaron hechos y si alguno dio error (copiar el mensaje).

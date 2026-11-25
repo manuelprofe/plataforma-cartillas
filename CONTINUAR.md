@@ -59,8 +59,14 @@ Plan completo: `docs/plan/calendario-diciembre.md` (también en Google Calendar,
 - **Pensum (25 nov):** mallas fuente en `docs/pedagogia/pensum/*.md` (copia en la carpeta del proyecto,
   `contenidos/`). `python3 herramientas/pensum_a_json.py` escribe `public/cartillas/<materia>-<grado>/pensum.json`
   (grado 0 = transición) y `public/cartillas/catalogo.json`. Lo leen el armador (materia, grado, tema → DBA y
-  desempeños) y la Biblioteca (`/docente/biblioteca/pensum`); código en `src/pensum/`. Las 17 carpetas nuevas aún no
-  tienen `cartilla.json` (paso 2: territorio 1 jugable). Migración 009 da de alta las 17 sin publicar.
+  desempeños) y la Biblioteca (`/docente/biblioteca/pensum`); código en `src/pensum/`. Migración 009 (aplicada) da de alta las 17 sin publicar.
+- **Cartillas nuevas jugables (paso 2):** el contenido de cada una vive en `docs/pedagogia/cartillas/<id>.json`
+  y `python3 -I herramientas/cartilla_desde_molde.py <ese json>` la arma sobre la página 1 de `ingles-3`
+  (misma geometría, ids nuevos, escenas propias, iconos SVG compuestos con Twemoji). Lista: `matematicas-0`
+  (periodo 1, U1 y U2; voz del navegador hasta correr `generar_voz.py`). Vista previa sin publicar:
+  `/?cartilla=<id>` (invitado). Falta para publicarla: su `materiales/indice.json` y `biblioteca/` (el docente
+  de un grupo con esa cartilla los pide) y la migración de misiones (010 para matematicas-0, pendiente de Manuel).
+  Siguen: español transición, inglés transición, luego 1.°.
 - **Herramientas de contenido:** `herramientas/` (voces, letras sincronizadas,
   `materiales_a_json.py`, `importar/`).
 - **Documentos de diseño y pedagogía:** `docs/diseno/esqueleto.md` (tandas 5 y 6 en §8),

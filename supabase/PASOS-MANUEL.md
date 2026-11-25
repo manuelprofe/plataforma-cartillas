@@ -63,4 +63,9 @@ Proyecto: https://supabase.com/dashboard → proyecto `jpwwmzfhbdnzsvwuciqa`. Ha
     Deja en la base las 18 misiones de la página 1 de Cuadrito (transición), para que el progreso de
     los niños se guarde cuando la cartilla se publique. No la publica.
 
+## Migración 011 (misiones de español de transición)
+
+17. **SQL Editor** → New query → pegar todo `supabase/migraciones/011-misiones-espanol-0.sql` → Run.
+    Igual que la 010, para la página 1 de Renglón (transición). No la publica.
+
 Al terminar, avisar en el chat qué pasos quedaron hechos y si alguno dio error (copiar el mensaje).

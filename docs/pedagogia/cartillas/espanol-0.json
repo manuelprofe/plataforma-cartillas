@@ -1,0 +1,210 @@
+{
+  "_nota": "Contenido del territorio 1 (periodo 1: Yo hablo, yo escucho) de El cuaderno de Renglón · Transición. Malla: U1 Mi nombre y yo, U2 Sonidos de mi mundo, U3 Rondas, arrullos y canciones (DBA 7, 8 y 10 de transición). Todo con voz e imagen, sin leer. Las rondas son de la tradición oral (dominio público). Se arma con herramientas/cartilla_desde_molde.py.",
+  "id": "espanol-0",
+  "molde": "ingles-3",
+  "titulo": "El cuaderno de Renglón · Transición",
+  "materia": "Español",
+  "grado": "0",
+  "idiomaVoz": "es-CO",
+  "guia": { "id": "renglon", "nombre": "Renglón", "imagen": "personajes/renglon-saludar.webp", "fiesta": "personajes/renglon-celebrar.webp" },
+  "territorio": "Renglón · Página 1",
+
+  "iconos": {
+    "adios": [{ "e": "1f44b", "x": 1, "y": 3, "t": 19 }, { "e": "1f6b6", "x": 17, "y": 11, "t": 19 }],
+    "buenos-dias": [{ "e": "1f305", "x": 2, "y": 2, "t": 32 }],
+    "buenas-noches": [{ "e": "1f319", "x": 2, "y": 2, "t": 32 }]
+  },
+
+  "palabras": {
+    "hola": { "es": "hola", "icono": "iconos/1f44b.svg", "frase": "¡Hola! Así saludo al llegar." },
+    "adios": { "es": "adiós", "icono": "iconos/adios.svg", "frase": "¡Adiós! Así me despido al irme.", "aceptar": ["adios", "chao", "chau"] },
+    "buenosdias": { "es": "buenos días", "icono": "iconos/buenos-dias.svg", "frase": "Buenos días: así saludo en la mañana.", "aceptar": ["buen día", "buenos dias"] },
+    "buenasnoches": { "es": "buenas noches", "icono": "iconos/buenas-noches.svg", "frase": "Buenas noches: así me despido antes de dormir." },
+    "gracias": { "es": "gracias", "icono": "iconos/1f64f.svg", "frase": "Gracias: así digo cuando me ayudan." },
+
+    "perro": { "es": "guau guau", "icono": "iconos/1f415.svg", "frase": "El perro hace guau guau.", "aceptar": ["guau", "wow wow", "wow"] },
+    "gato": { "es": "miau", "icono": "iconos/1f408.svg", "frase": "El gato hace miau.", "aceptar": ["miau miau", "mia"] },
+    "vaca": { "es": "muu", "icono": "iconos/1f404.svg", "frase": "La vaca hace muu.", "aceptar": ["mu", "muuu"] },
+    "pato": { "es": "cuac cuac", "icono": "iconos/1f986.svg", "frase": "El pato hace cuac cuac.", "aceptar": ["cuac", "cuá cuá", "quack"] },
+    "pollito": { "es": "pío pío", "icono": "iconos/1f424.svg", "frase": "El pollito hace pío pío.", "aceptar": ["pio pio", "pío"] },
+    "gallo": { "es": "quiquiriquí", "icono": "iconos/1f413.svg", "frase": "El gallo hace quiquiriquí.", "aceptar": ["quiquiriqui", "kikiriki"] },
+
+    "telefono": { "es": "rin rin", "icono": "iconos/260e.svg", "frase": "El teléfono hace rin rin.", "aceptar": ["ring ring", "rin"] },
+    "reloj": { "es": "tic tac", "icono": "iconos/23f0.svg", "frase": "El reloj hace tic tac.", "aceptar": ["tic tac tic tac", "tictac"] },
+    "campana": { "es": "din don", "icono": "iconos/1f514.svg", "frase": "La campana hace din don.", "aceptar": ["ding dong", "din dón"] },
+    "tambor": { "es": "pum pum", "icono": "iconos/1f941.svg", "frase": "El tambor hace pum pum.", "aceptar": ["pum", "bum bum"] },
+    "aplausos": { "es": "plas plas", "icono": "iconos/1f44f.svg", "frase": "Las manos hacen plas plas.", "aceptar": ["plas", "plaz plaz"] },
+    "carro": { "es": "pi pi", "icono": "iconos/1f697.svg", "frase": "El carro hace pi pi.", "aceptar": ["pipí", "pii pii", "bip bip"] },
+
+    "pollitos": { "es": "los pollitos", "icono": "iconos/1f425.svg", "frase": "Los pollitos dicen pío, pío, pío." },
+    "arroz": { "es": "arroz con leche", "icono": "iconos/1f35a.svg", "frase": "Arroz con leche, me quiero casar." },
+    "patio": { "es": "el patio de mi casa", "icono": "iconos/1f3e1.svg", "frase": "El patio de mi casa es particular." },
+    "lluvia": { "es": "que llueva", "icono": "iconos/2614.svg", "frase": "Que llueva, que llueva, la vieja está en la cueva." },
+    "aserrin": { "es": "aserrín, aserrán", "icono": "iconos/1fab5.svg", "frase": "Aserrín, aserrán, los maderos de San Juan.", "aceptar": ["aserrín aserrán", "aserrin aserran"] },
+
+    "tito": { "es": "Tito", "icono": "personajes/vecino-1.webp", "frase": "Él es Tito." },
+    "pua": { "es": "Púa", "icono": "personajes/vecino-2.webp", "frase": "Ella es Púa.", "aceptar": ["pua"] },
+    "abu": { "es": "Abu", "icono": "personajes/vecino-3.webp", "frase": "Él es Abu." },
+    "nuez": { "es": "Nuez", "icono": "personajes/vecino-4.webp", "frase": "Ella es Nuez.", "aceptar": ["nues"] },
+    "caro": { "es": "Caro", "icono": "personajes/vecino-5.webp", "frase": "Ella es Caro." },
+    "rayo": { "es": "Rayo", "icono": "personajes/vecino-6.webp", "frase": "Él es Rayo." },
+
+    "llover": { "es": "plic plic", "icono": "iconos/1f327.svg", "frase": "La lluvia hace plic plic.", "aceptar": ["plic", "plip plip"] },
+    "abeja": { "es": "bzz", "icono": "iconos/1f41d.svg", "frase": "La abeja hace bzz.", "aceptar": ["bzzz", "zzz", "bss"] },
+    "rana": { "es": "croac", "icono": "iconos/1f438.svg", "frase": "La rana hace croac.", "aceptar": ["croac croac", "croá"] },
+    "buho": { "es": "uh uh", "icono": "iconos/1f989.svg", "frase": "El búho hace uh uh.", "aceptar": ["uh", "uu uu"] },
+    "viento": { "es": "fiu fiu", "icono": "iconos/1f32c.svg", "frase": "El viento hace fiu fiu.", "aceptar": ["fiu", "shhh"] }
+  },
+
+  "zonas": {
+    "bosque-school": {
+      "id": "renglon-saludos",
+      "familia": { "tema": "saludar y despedirse", "idea": "Al llegar y al salir de casa, salúdense y despídanse mirándose a los ojos. Si su hijo lo dice primero, celébrelo." },
+      "misiones": [
+        { "titulo": "¿Cómo saludo?", "plantilla": "escucha-toca", "icono": "iconos/1f44b.svg", "palabras": ["hola", "adios", "buenosdias", "buenasnoches", "gracias"], "antes": "Escucha la palabra y toca el dibujo que va con ella." },
+        { "titulo": "Saluda tú", "plantilla": "di-brilla", "icono": "iconos/buenos-dias.svg", "palabras": ["hola", "adios", "buenosdias", "buenasnoches", "gracias"], "antes": "Ahora tú lo dices. Escucha y dilo con tu voz cuando quieras. ¡Cada intento cuenta!" },
+        { "titulo": "Parejas de saludos", "plantilla": "memoria", "icono": "iconos/1f64f.svg", "palabras": ["hola", "adios", "buenosdias", "gracias"], "formas": ["imagen-sonido"], "parejas": 4, "antes": "Gira dos cartas: busca el dibujo y lo que se dice." }
+      ]
+    },
+    "bosque-colors": {
+      "id": "renglon-animales",
+      "familia": { "tema": "los sonidos de los animales", "idea": "Jueguen a adivinar: uno hace el sonido de un animal y el otro dice cuál es. Si tienen un perro o un gato cerca, escúchenlo juntos en silencio." },
+      "misiones": [
+        { "titulo": "¿Quién hace así?", "plantilla": "escucha-toca", "icono": "iconos/1f415.svg", "palabras": ["perro", "gato", "vaca", "pato", "pollito", "gallo"], "antes": "Escucha el sonido y toca el animal que lo hace." },
+        { "titulo": "Atrapa el animal", "plantilla": "escucha-atrapa", "icono": "iconos/1f986.svg", "palabras": ["perro", "gato", "vaca", "pato", "pollito", "gallo"], "antes": "Los animales pasan volando. Atrapa el que hace el sonido que escuchas." },
+        { "titulo": "Haz como el animal", "plantilla": "di-brilla", "icono": "iconos/1f413.svg", "palabras": ["perro", "gato", "vaca", "pato", "pollito", "gallo"], "antes": "Escucha y haz el sonido con tu voz. ¡Cada intento cuenta!" }
+      ]
+    },
+    "bosque-numbers": {
+      "id": "renglon-cosas",
+      "familia": { "tema": "los sonidos de las cosas", "idea": "Siéntense un minuto en silencio y cuenten qué cosas suenan en la casa: el reloj, la olla, un carro en la calle. Luego imítenlas." },
+      "misiones": [
+        { "titulo": "¿Qué suena?", "plantilla": "escucha-toca", "icono": "iconos/1f514.svg", "palabras": ["telefono", "reloj", "campana", "tambor", "aplausos", "carro"], "antes": "Escucha el sonido y toca la cosa que suena así." },
+        { "titulo": "Parejas de sonidos", "plantilla": "memoria", "icono": "iconos/23f0.svg", "palabras": ["telefono", "reloj", "campana", "tambor"], "formas": ["imagen-sonido"], "parejas": 4, "antes": "Gira dos cartas: busca el dibujo y su sonido." },
+        { "titulo": "Atrapa lo que suena", "plantilla": "escucha-atrapa", "icono": "iconos/1f941.svg", "palabras": ["telefono", "reloj", "campana", "tambor", "aplausos", "carro"], "antes": "Atrapa la cosa que hace el sonido que escuchas." }
+      ]
+    },
+    "bosque-body": {
+      "id": "renglon-rondas",
+      "familia": { "tema": "rondas y canciones de siempre", "idea": "Canten juntos una ronda que usted cantaba de niño (Los pollitos, Arroz con leche, El patio de mi casa) y hagan los gestos con las manos." },
+      "misiones": [
+        { "titulo": "¿Qué ronda es?", "plantilla": "escucha-toca", "icono": "iconos/1f425.svg", "palabras": ["pollitos", "arroz", "patio", "lluvia", "aserrin"], "antes": "Escucha el nombre de la ronda y toca su dibujo." },
+        { "titulo": "Canta conmigo", "plantilla": "di-brilla", "icono": "iconos/1f3e1.svg", "palabras": ["pollitos", "arroz", "patio", "lluvia", "aserrin"], "antes": "Escucha el nombre de la ronda y dilo tú. Si te la sabes, ¡cántala! Cada intento cuenta." },
+        { "titulo": "Atrapa la ronda", "plantilla": "escucha-atrapa", "icono": "iconos/1f35a.svg", "palabras": ["pollitos", "arroz", "patio", "lluvia", "aserrin"], "antes": "Atrapa el dibujo de la ronda que escuchas." }
+      ]
+    },
+    "bosque-family": {
+      "id": "renglon-nombres",
+      "familia": { "tema": "mi nombre y el de mis compañeros", "idea": "Pregúntele los nombres de sus compañeros de clase y salúdenlos juntos en voz alta: «¡Hola, Sara!». Escriba su nombre en una hoja y que lo decore." },
+      "misiones": [
+        { "titulo": "¿Quién es?", "plantilla": "escucha-toca", "icono": "personajes/vecino-1.webp", "palabras": ["tito", "pua", "abu", "nuez", "caro", "rayo"], "antes": "Estos son los vecinos de la página. Escucha el nombre y toca a quien se llama así." },
+        { "titulo": "Cara y nombre", "plantilla": "memoria", "icono": "personajes/vecino-5.webp", "palabras": ["tito", "pua", "abu", "caro"], "formas": ["imagen-sonido"], "parejas": 4, "antes": "Gira dos cartas: busca la cara y su nombre." },
+        { "titulo": "Saluda a cada vecino", "plantilla": "di-brilla", "icono": "personajes/vecino-3.webp", "palabras": ["tito", "pua", "abu", "nuez", "caro", "rayo"], "antes": "Saluda a cada vecino por su nombre. ¡Cada intento cuenta!" }
+      ]
+    },
+    "bosque-time": {
+      "id": "renglon-naturaleza",
+      "familia": { "tema": "escuchar en silencio", "idea": "Salgan al patio o a la ventana, cierren los ojos un ratico y cuenten lo que oyen: pájaros, lluvia, viento. Luego imiten los sonidos." },
+      "misiones": [
+        { "titulo": "Escucha la naturaleza", "plantilla": "escucha-toca", "icono": "iconos/1f438.svg", "palabras": ["llover", "abeja", "rana", "buho", "viento"], "antes": "Cierra los ojos, escucha el sonido y toca el dibujo." },
+        { "titulo": "Suena como la naturaleza", "plantilla": "di-brilla", "icono": "iconos/1f989.svg", "palabras": ["llover", "abeja", "rana", "buho", "viento"], "antes": "Escucha y hazlo con tu voz. ¡Cada intento cuenta!" }
+      ]
+    }
+  },
+
+  "ayudas": {
+    "memoria-pista1": "Escucha bien: cada dibujo tiene su sonido.",
+    "atrapa-inicio": "Atrapa el dibujo que te digo."
+  },
+
+  "pozo": { "id": "renglon-pozo", "titulo": "El pozo de los sonidos", "antes": "Este es el pozo de los recuerdos. Gira dos cartas y busca las que van juntas." },
+
+  "encargos": {
+    "caro": { "pide": "hola", "opciones": ["adios", "hola", "gracias"] },
+    "tito": { "pide": "perro", "opciones": ["gato", "perro", "vaca"] },
+    "abu": { "pide": "reloj", "opciones": ["campana", "reloj", "tambor"] },
+    "pua": { "pide": "pollitos", "opciones": ["arroz", "pollitos", "patio"] },
+    "nuez": { "pide": "rayo", "opciones": ["tito", "rayo", "caro"] }
+  },
+
+  "escenas": {
+    "intro": [
+      ["goma", "¡Hola! Soy Goma. Este cuaderno es mágico: lo que aprendes aquí cobra vida."],
+      ["goma", "Esta es la primera página de Renglón. Aquí jugamos con las palabras, los sonidos y las canciones."],
+      ["renglon", "¡Hola! Soy Renglón. Me encanta escuchar, hablar y cantar."],
+      ["goma", "La página está a lápiz: cada misión que terminas la llena de color. ¿Empezamos?", [["¡Sí, vamos!", "elegir"], ["¿Cómo me muevo?", "ayuda"]]]
+    ],
+    "ayuda": [
+      ["goma", "Toca la pantalla y caminas hasta tu dedo. ¡Puedes ir a donde quieras!"],
+      ["goma", "Cada lugar tiene su camino de color. Los letreros te muestran qué color seguir."],
+      ["goma", "Los vecinos de esta página perdieron algo. ¡Ayúdalos a encontrarlo!"]
+    ],
+    "elegir": [
+      ["goma", "¿A dónde vamos primero? Tú decides.", [["Los saludos: camino rosado", "@bosque-school", "iconos/1f44b.svg"], ["Los animales que suenan: camino amarillo", "@bosque-colors", "iconos/1f415.svg"], ["Las cosas que suenan: camino rojo", "@bosque-numbers", "iconos/1f514.svg"]]]
+    ],
+    "despues": [["goma", "¡Mira! Tu misión coloreó la página y llegó un amigo nuevo. ¿A dónde vamos ahora?"]],
+    "puente-cerrado": [
+      ["renglon", "¡Hola! ¡Pronto, la página siguiente!"],
+      ["goma", "Cuando termines todas las misiones de esta página, Renglón la voltea y aparece la siguiente."]
+    ],
+    "puente-abierto": [
+      ["renglon", "¡Lo lograste! ¡Escuchaste, hablaste y cantaste muy bien!"],
+      ["goma", "¡La página está llena! La página 2 se abre muy pronto. ¡Te esperamos!"]
+    ],
+    "dormida": [["goma", "Este dibujo todavía está en blanco. Se dibuja cuando termines el que está antes en este camino."]],
+    "pozo-dormido": [["goma", "Termina cualquier misión de un camino y el pozo despertará."]],
+    "rayo": [
+      ["rayo", "¡Correo, correo! Soy Rayo. Llevo cartas a la página siguiente..."],
+      ["rayo", "...y siempre saludo a todos: ¡hola, hola, hola!"],
+      ["rayo", "Termina todas las misiones de la página y Renglón la voltea."]
+    ],
+    "caro-pide": [
+      ["caro", "Hooola... Soy Caro. Voy despacito, despacito... y se me perdió una palabra muy importante."],
+      ["caro", "Es la que digo al llegar, cuando saludo. Está más adelante, en este camino. ¿Me la traes?"]
+    ],
+    "caro-otra": [["caro", "Mmm... esa no es. ¡No pasa nada! Yo también me equivoco. ¿Qué digo cuando llego?"]],
+    "caro-gracias": [["caro", "¡Esa es! ¡Hola! Ya puedo saludar a todos."], ["caro", "La guardé en tu álbum. ¡Gracias por tomarte tu tiempo conmigo!"]],
+    "caro-listo": [["caro", "Hola, hola... ¿me saludas tú también?"]],
+    "tito-pide": [
+      ["tito", "¡Hola, hola! Soy Tito. Mi perro se escondió y no lo encuentro."],
+      ["tito", "Hace guau guau. Búscalo por este camino, ¿sí?"]
+    ],
+    "tito-otra": [["tito", "¡Uy, ese no hace guau guau! Escucha otra vez, sin afán."]],
+    "tito-gracias": [["tito", "¡Guau guau! ¡Ahí estaba mi perro! ¡Gracias, amigo!"], ["tito", "Lo guardé en tu álbum."]],
+    "tito-listo": [["tito", "Guau guau... ¿tú sabes cómo hace el gato?"]],
+    "abu-pide": [
+      ["abu", "Buenas, amigo. Soy Abu. Llevo cien años escuchando los sonidos de esta página..."],
+      ["abu", "...y hoy se me perdió mi reloj. Hace tic tac. Está más adelante. Escucha con calma."]
+    ],
+    "abu-otra": [["abu", "Mmm, eso suena distinto. Los sabios también se equivocan. Busca el que hace tic tac."]],
+    "abu-gracias": [["abu", "¡Tic tac, tic tac! Mi reloj otra vez."], ["abu", "Guárdalo en tu álbum. Escuchar con calma es un tesoro."]],
+    "abu-listo": [["abu", "Tic tac, tic tac... ¿oyes qué más suena por aquí?"]],
+    "pua-pide": [
+      ["pua", "¡Hola! Soy Púa. Me encanta cantar rondas, pero se me olvidó una..."],
+      ["pua", "Es la de los pollitos que dicen pío, pío, pío. Está por este camino. ¿Me la traes?"]
+    ],
+    "pua-otra": [["pua", "Esa es otra ronda, ¡también es bonita! Pero busco la de los pollitos."]],
+    "pua-gracias": [["pua", "¡Los pollitos dicen pío, pío, pío! ¡Gracias!"], ["pua", "La guardé en tu álbum. ¿La cantamos juntos?"]],
+    "pua-listo": [["pua", "Pío, pío, pío... ¡qué bonito es cantar!"]],
+    "nuez-pide": [
+      ["nuez", "¡Hola! Soy Nuez. Estoy buscando a mi amigo para jugar..."],
+      ["nuez", "...se llama Rayo. ¿Me ayudas a encontrarlo? Está más adelante."]
+    ],
+    "nuez-otra": [["nuez", "Ese es otro vecino, ¡qué bueno conocerlo! Pero busco a Rayo."]],
+    "nuez-gracias": [["nuez", "¡Rayo! ¡Ahí está! Gracias por ayudarme."], ["nuez", "Lo guardé en tu álbum. ¡Ahora todos somos amigos!"]],
+    "nuez-listo": [["nuez", "Yo soy Nuez. ¿Y tú cómo te llamas?"]],
+    "goma": [
+      ["goma", "¿Te equivocaste? ¡No pasa nada! Soy un borrador: borrar no es perder, es mejorar."],
+      ["goma", "Equivocarse es parte de aprender. Dilo conmigo.", [["¡Yo puedo!"], ["¡Lo intento otra vez!"]]],
+      ["goma", "¡Así se dice! Sigue explorando."]
+    ],
+    "renglon": {
+      "lineas": [
+        ["renglon", "¡Hola! ¡Qué bueno verte! Escucha: esta página está llena de sonidos."],
+        ["goma", "Hay misiones por dibujar y vecinos que necesitan ayuda."]
+      ],
+      "luego": "elegir"
+    },
+    "atajo": [["goma", "¡Mira! Se coloreó un camino nuevo. ¡Ahora es más corto llegar!"]]
+  }
+}

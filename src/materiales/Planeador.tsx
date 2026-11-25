@@ -3,12 +3,14 @@
 // estándares y desempeños) y la clase por momentos (inicio, desarrollo, cierre) con su tiempo,
 // actividades, recursos y evaluación. En celular las filas se apilan; impreso cabe en carta.
 // El contenido sale del documento del material; aquí solo se acomoda.
-import { useEffect, useState, type ReactNode } from 'react';
+import { useEffect, useState, type CSSProperties, type ReactNode } from 'react';
 import { Enlace } from '../adultos/base';
 import { Icono } from '../adultos/Icono';
 import { leer, useCuenta } from '../adultos/cuenta';
 import { cartillaMateriales } from './datos';
-import { nombreColegio } from '../adultos/docente';
+import { identidadColegio, type IdentidadColegio } from '../adultos/docente';
+import { COLOR_1, COLOR_2, tintaSobre } from '../adultos/Identidad';
+import { Boton } from '../adultos/base';
 import type { Bloque, EntradaTema, Fase, Material } from './datos';
 import { Texto } from './Material';
 import './planeador.css';
@@ -41,12 +43,12 @@ export function fases(momentos: Momento[]): Fase[] {
 function useQuien() {
   const cuenta = useCuenta();
   const perfil = cuenta.tipo === 'dentro' ? cuenta.perfil : undefined;
-  const [colegio, setColegio] = useState<string | null>(null);
+  const [identidad, setIdentidad] = useState<IdentidadColegio | null>(null);
   const colegioId = perfil?.colegio_id ?? null;
   useEffect(() => {
     let vigente = true;
-    nombreColegio(colegioId)
-      .then((n) => vigente && setColegio(n))
+    identidadColegio(colegioId)
+      .then((n) => vigente && setIdentidad(n))
       .catch(() => {});
     return () => {
       vigente = false;
@@ -65,7 +67,7 @@ function useQuien() {
       vigente = false;
     };
   }, [id, perfil]);
-  return { docente: perfil?.rol === 'docente' ? perfil.nombre : undefined, colegio, area: cartilla.materia ?? undefined, grado: cartilla.grado ? `${cartilla.grado}.°` : undefined };
+  return { docente: perfil?.rol === 'docente' ? perfil.nombre : undefined, colegio: identidad?.nombre ?? null, identidad, area: cartilla.materia ?? undefined, grado: cartilla.grado ? `${cartilla.grado}.°` : undefined };
 }
 
 function Celda({ etiqueta, children, ancha }: { etiqueta: string; children?: ReactNode; ancha?: boolean }) {
@@ -96,7 +98,10 @@ function Lista({ items, falta }: { items?: string[]; falta: string }) {
  * el enlace al telón. Sin ellos, cada recurso abre su hoja.
  */
 export function FormatoPlaneador({ material, nombreTema, rutaMaterial, impreso, otros, temaId }: { material: Material; nombreTema: string; rutaMaterial?: (id: string) => string; impreso?: boolean; otros?: EntradaTema['materiales']; temaId?: string }) {
-  const { docente, colegio, area, grado } = useQuien();
+  const quien = useQuien();
+  const { docente, colegio, identidad, area, grado } = quien;
+  const color1 = identidad?.color_1 ?? COLOR_1;
+  const color2 = identidad?.color_2 ?? COLOR_2;
   const ref = material.referentes ?? {};
   const momentos = material.bloques.filter((b): b is Momento => b.tipo === 'momento');
   const fase = fases(momentos);
@@ -169,7 +174,21 @@ export function FormatoPlaneador({ material, nombreTema, rutaMaterial, impreso, 
   };
 
   return (
-    <div className="plan-formato">
+    <div className="plan-formato" style={{ '--plan-color-1': color1, '--plan-color-2': color2, '--plan-tinta-1': tintaSobre(color1) } as CSSProperties}>
+      {!impreso && (
+        <div className="plan-acciones no-imprimir">
+          <Boton icono="descargar" onClick={() => void import('./word').then((w) => w.descargarPlaneador({ material, nombreTema, docente, colegio, identidad, area: material.referentes?.area ?? area, grado: material.referentes?.grado ?? grado }))}>
+            Descargar en Word
+          </Boton>
+        </div>
+      )}
+      <div className="plan-membrete">
+        {identidad?.escudo ? <img src={identidad.escudo} alt="" className="plan-membrete__escudo" /> : <span className="plan-membrete__escudo plan-membrete__escudo--hueco">Escudo</span>}
+        <div className="plan-membrete__texto">
+          <span className="plan-membrete__colegio">{colegio || 'Institución educativa'}</span>
+          <span className="plan-membrete__titulo">Planeador de clase</span>
+        </div>
+      </div>
       <div className="plan-cab" role="group" aria-label="Datos de la clase">
         <Celda etiqueta="Institución">{colegio}</Celda>
         <Celda etiqueta="Docente">{docente}</Celda>
@@ -219,6 +238,7 @@ export function FormatoPlaneador({ material, nombreTema, rutaMaterial, impreso, 
             <th scope="col">Actividades</th>
             <th scope="col">Recursos</th>
             <th scope="col">Evaluación: qué observar</th>
+            <th scope="col">Sin proyector</th>
           </tr>
         </thead>
         <tbody>
@@ -248,13 +268,9 @@ export function FormatoPlaneador({ material, nombreTema, rutaMaterial, impreso, 
                 <td data-etiqueta="Recursos">
                   {enlaces(m)}
                   {m.material && <span className="plan-material">{m.material}</span>}
-                  {m.sinProyector && (
-                    <span className="plan-sin">
-                      <em>Sin proyector:</em> {m.sinProyector}
-                    </span>
-                  )}
                 </td>
                 <td data-etiqueta="Evaluación: qué observar">{m.observar}</td>
+                <td data-etiqueta="Sin proyector" className="plan-sin">{m.sinProyector}</td>
               </tr>
             );
           })}
@@ -275,15 +291,25 @@ export function FormatoPlaneador({ material, nombreTema, rutaMaterial, impreso, 
               </td>
             </tr>
           )}
-          {notas && (
-            <tr>
-              <th scope="row">{notas.etiqueta}</th>
-              <td>
-                <span className="plan-raya" />
-                <span className="plan-raya" />
-              </td>
-            </tr>
-          )}
+          <tr>
+            <th scope="row">Adaptaciones (ritmos y necesidades educativas)</th>
+            <td>
+              <span className="plan-raya" />
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">{notas?.etiqueta ?? 'Notas del docente'}</th>
+            <td>
+              <span className="plan-raya" />
+              <span className="plan-raya" />
+            </td>
+          </tr>
+          <tr>
+            <th scope="row">Firma del docente</th>
+            <td>
+              <span className="plan-raya" />
+            </td>
+          </tr>
         </tbody>
       </table>
     </div>

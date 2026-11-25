@@ -169,9 +169,31 @@ export async function reconocidosHoy(ids: string[]): Promise<Set<string>> {
 }
 
 export async function nombreColegio(id: string | null): Promise<string | null> {
-  if (!id) return null;
-  const filas = await leer<{ nombre: string }>('colegios', `select=nombre&id=eq.${encodeURIComponent(id)}`);
-  return filas[0]?.nombre ?? null;
+  return (await identidadColegio(id))?.nombre ?? null;
+}
+
+/** Nombre, escudo (PNG en data URL) y colores del colegio, para el encabezado de sus impresos. */
+export interface IdentidadColegio {
+  nombre: string;
+  escudo: string | null;
+  color_1: string | null;
+  color_2: string | null;
+}
+const identidades = new Map<string, Promise<IdentidadColegio | null>>();
+export function identidadColegio(id: string | null, fresca = false): Promise<IdentidadColegio | null> {
+  if (!id) return Promise.resolve(null);
+  let p = fresca ? undefined : identidades.get(id);
+  if (!p) {
+    p = leer<IdentidadColegio>('colegios', `select=nombre,escudo,color_1,color_2&id=eq.${encodeURIComponent(id)}`).then((f) => f[0] ?? null);
+    p.catch(() => identidades.delete(id));
+    identidades.set(id, p);
+  }
+  return p;
+}
+/** Guarda escudo y colores (dueño, o coordinador de ese colegio: lo decide `identidad_colegio`). */
+export async function guardarIdentidad(id: string, d: { escudo: string | null; color_1: string; color_2: string }) {
+  await rpc('identidad_colegio', { p_colegio: id, p_escudo: d.escudo, p_color_1: d.color_1.toLowerCase(), p_color_2: d.color_2.toLowerCase() });
+  identidades.delete(id);
 }
 
 // ---------------------------------------------------------------- Cambios

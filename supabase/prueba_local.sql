@@ -33,6 +33,8 @@ grant usage on schema public to anon, authenticated;
 \i supabase/migraciones/004-multicartilla.sql
 \i supabase/migraciones/005-cartilla-del-grupo.sql
 \i supabase/migraciones/005-cartilla-del-grupo.sql
+\i supabase/migraciones/008-identidad-colegio.sql
+\i supabase/migraciones/008-identidad-colegio.sql
 
 -- Datos: dos colegios; en el uno, dos docentes y un coordinador; en el dos, un docente y un
 -- coordinador; el dueño; tres aparatos anónimos; dos adultos que llegan por invitación.
@@ -387,4 +389,18 @@ reset role;
 select pg_temp.verificar((select count(*) from grupos where cartilla_id = 'ingles-3') = (select count(*) from grupos), 'todos los grupos quedan con inglés 3');
 select pg_temp.verificar((select publicada from cartillas where id = 'ingles-3'), 'inglés 3 está publicada');
 select pg_temp.debe_fallar($$update grupos set cartilla_id = 'no-existe'$$, 'un grupo no apunta a una cartilla que no existe');
+-- Identidad del colegio (008): el coordinador cambia la del suyo, no la de otro; el docente no.
+set role authenticated;
+select pg_temp.soy('00000000-0000-0000-0000-0000000000a3');
+select identidad_colegio('10000000-0000-0000-0000-000000000001', 'data:image/png;base64,AAAA', '#1F3866', '#F5C542');
+select pg_temp.verificar((select color_1 from colegios where id = '10000000-0000-0000-0000-000000000001') = '#1f3866', 'el coordinador pone escudo y colores a su colegio');
+select pg_temp.debe_fallar($$select identidad_colegio('10000000-0000-0000-0000-000000000002', null, '#000000', '#ffffff')$$, 'el coordinador no cambia otro colegio');
+select pg_temp.soy('00000000-0000-0000-0000-0000000000a1');
+select pg_temp.verificar((select escudo from colegios where id = '10000000-0000-0000-0000-000000000001') like 'data:image/png%', 'el docente lee el escudo de su colegio');
+select pg_temp.debe_fallar($$select identidad_colegio('10000000-0000-0000-0000-000000000001', null, '#000000', '#ffffff')$$, 'el docente no cambia la identidad');
+select pg_temp.soy('00000000-0000-0000-0000-0000000000d0');
+select pg_temp.debe_fallar($$select identidad_colegio('10000000-0000-0000-0000-000000000002', 'data:image/jpeg;base64,AAAA', '#000000', '#ffffff')$$, 'el escudo solo se guarda como PNG');
+select pg_temp.debe_fallar($$select identidad_colegio('10000000-0000-0000-0000-000000000002', null, 'rojo', '#ffffff')$$, 'los colores van en hexadecimal');
+select identidad_colegio('10000000-0000-0000-0000-000000000002', null, '#000000', '#ffffff');
+reset role;
 \echo TODAS LAS PRUEBAS PASARON

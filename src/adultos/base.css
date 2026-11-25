@@ -523,3 +523,17 @@ a.fila:hover, button.fila:hover { background: var(--a-fondo); }
 
 /* Dibujo de la materia en una fila (Cuadrito, Renglón, Postal). */
 .fila__personaje { width: 32px; height: 32px; object-fit: contain; flex: none; }
+
+/* Escudo y colores del colegio (Identidad.tsx). */
+.identidad-muestra { display: grid; grid-template-columns: 56px 1fr; gap: var(--e-3); align-items: center; position: relative; padding: var(--e-3); margin: var(--e-3) 0; border: 2px solid; border-radius: var(--r-tarjeta); background: var(--a-superficie); overflow: hidden; }
+.identidad-muestra img, .identidad-muestra__hueco { width: 56px; height: 56px; object-fit: contain; }
+.identidad-muestra__hueco { display: grid; place-items: center; border: 1px dashed var(--a-linea-fuerte); border-radius: 8px; font-size: 12px; color: var(--a-texto-3); }
+.identidad-muestra div { display: flex; flex-direction: column; min-width: 0; overflow-wrap: anywhere; }
+.identidad-muestra strong { font: 600 var(--t-h3) / var(--l-h3) var(--f-marca); }
+.identidad-muestra span { color: var(--a-texto-2); }
+.identidad-muestra .identidad-muestra__raya { position: absolute; left: 0; right: 0; bottom: 0; height: 6px; }
+.identidad-campos { display: flex; flex-wrap: wrap; align-items: center; gap: var(--e-3); margin-bottom: var(--e-4); }
+.identidad-subir { position: relative; cursor: pointer; }
+.identidad-subir input { position: absolute; inset: -1px; opacity: 0; cursor: pointer; }
+.identidad-color { display: inline-flex; align-items: center; gap: var(--e-2); min-height: var(--toque); font-weight: 500; cursor: pointer; }
+.identidad-color input { width: 48px; height: 48px; padding: 2px; border: 1px solid var(--a-linea-fuerte); border-radius: 10px; background: var(--a-superficie); cursor: pointer; }

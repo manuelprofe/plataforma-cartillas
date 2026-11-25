@@ -1,6 +1,7 @@
 // Paquete de adultos: entrada, docente, coordinador y dueño (esqueleto §1.5, §2 y §3).
 // Tanda 2: entrada con cuenta (correo y contraseña, recuperar, invitación) y redirección por rol.
 // Las secciones siguen con sus huecos hasta las tandas 4 a 7.
+import { IdentidadColegio } from './Identidad';
 import { dibujo, NOMBRE } from '../marca';
 import { StrictMode, useEffect, useState, useSyncExternalStore, type FormEvent, type ReactNode } from 'react';
 import { createRoot } from 'react-dom/client';
@@ -592,7 +593,12 @@ function Colegio({ resto, cuenta, sinRed }: { resto: string[]; cuenta: Dentro; s
       pagina = <SeccionVacia titulo="Cierre del año" hueco="Aquí irá el cierre del año escolar" texto="Explicará qué se borra al cerrar el año y pedirá escribir el año para confirmar." />;
       break;
     case 'cuenta':
-      pagina = <MiCuenta cuenta={cuenta} />;
+      pagina = (
+        <>
+          <MiCuenta cuenta={cuenta} />
+          {cuenta.perfil.colegio_id && <IdentidadColegio colegioId={cuenta.perfil.colegio_id} sinRed={sinRed} />}
+        </>
+      );
       break;
     default:
       pagina = <AlInicio ruta="/colegio" />;

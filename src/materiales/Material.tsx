@@ -510,7 +510,7 @@ function Hoja({ material, impresion, nombreTema, copia, bloques }: { material: M
         <span>{NOMBRE} · {nombreTema}</span>
         {nino && <span className="mat-hoja__nombre">Nombre:</span>}
       </header>
-      {material.tipo === 'planeador' ? <h1 className="mat-hoja__titulo">Planeador de clase</h1> : material.tipo !== 'ficha' && material.tipo !== 'laminas' && <h1 className="mat-hoja__titulo">{material.titulo}</h1>}
+      {material.tipo !== 'planeador' && material.tipo !== 'ficha' && material.tipo !== 'laminas' && <h1 className="mat-hoja__titulo">{material.titulo}</h1>}
       {material.avisoColor && <p className="mat-hoja__aviso">{material.avisoColor}</p>}
       <div className="mat-hoja__cuerpo">
         {material.tipo === 'planeador' ? <FormatoPlaneador material={material} nombreTema={nombreTema} impreso /> : <Bloques bloques={bloques} ctx={ctx} />}

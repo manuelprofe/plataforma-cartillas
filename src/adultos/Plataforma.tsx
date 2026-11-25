@@ -1,5 +1,6 @@
 // Dueño (/plataforma): colegios, cartillas (publicar, ocultar y habilitar por colegio), personas e
 // invitaciones (esqueleto §3.2).
+import { IdentidadColegio } from './Identidad';
 import { personajeDeMateria } from '../marca';
 import { useState, type FormEvent } from 'react';
 import { navegar } from '../navegacion';
@@ -177,6 +178,8 @@ function FichaColegio({ c, cartillas, habilitadas, versiones, personas, invitaci
           </p>
         )}
       </Panel>
+
+      <IdentidadColegio colegioId={c.id} sinRed={sinRed} />
 
       <Panel titulo="Invitar por correo">
         <p className="sec">La persona recibe un enlace, crea su contraseña y entra a la parte que le corresponde.</p>

@@ -5,6 +5,7 @@ import { Boton, Encabezado, Fila, Hueco, Panel, Vacio } from './base';
 import { Cargado, useCarga, useTitulo } from './comun';
 import { ElegirCartilla } from './ElegirCartilla';
 import { cargarIndice, cargarMaterial, cargarTema, RANURAS, type EntradaTema, type Indice, type Material } from '../materiales/datos';
+import { useDuracion } from '../materiales/duracion';
 import { CuerpoMaterial, MaterialHueco, MaterialPantalla } from '../materiales/Material';
 
 const rutaTema = (t: string, id = '') => `/docente/temas/${encodeURIComponent(t)}${id ? `/${encodeURIComponent(id)}` : ''}`;
@@ -17,6 +18,7 @@ const nombreClase = (m: Material) => m.titulo;
 
 export function Planear() {
   useTitulo('Planear');
+  const duracion = useDuracion();
   const carga = useCarga(cargarIndice, 'indice');
   return (
     <>
@@ -27,7 +29,7 @@ export function Planear() {
           <>
             <Panel titulo="Plan y planeador de cada tema" filas>
               {indice.temas.map((t) => (
-                <Fila key={t.id} ruta={rutaPlan(t.id)} icono="planear" tenue={t.estado === 'pendiente'} titulo={t.nombre} detalle={t.estado === 'listo' ? `${t.titulo} · 2 clases de 55 minutos` : 'Aquí irá'} />
+                <Fila key={t.id} ruta={rutaPlan(t.id)} icono="planear" tenue={t.estado === 'pendiente'} titulo={t.nombre} detalle={t.estado === 'listo' ? `${t.titulo} · 2 clases de ${duracion} minutos` : 'Aquí irá'} />
               ))}
             </Panel>
             <Panel titulo="Materiales por tema" filas>

@@ -13,6 +13,7 @@ import { COLOR_1, COLOR_2, tintaSobre } from '../adultos/Identidad';
 import { Boton } from '../adultos/base';
 import type { Bloque, EntradaTema, Fase, Material } from './datos';
 import { Texto } from './Material';
+import { ajustarDuracion, DURACIONES, elegirDuracion, useDuracion } from './duracion';
 import './planeador.css';
 
 type Momento = Extract<Bloque, { tipo: 'momento' }>;
@@ -97,8 +98,10 @@ function Lista({ items, falta }: { items?: string[]; falta: string }) {
  * `otros`: los materiales del tema según el índice, para saber qué se proyecta y qué se imprime; `temaId` arma
  * el enlace al telón. Sin ellos, cada recurso abre su hoja.
  */
-export function FormatoPlaneador({ material, nombreTema, rutaMaterial, impreso, otros, temaId }: { material: Material; nombreTema: string; rutaMaterial?: (id: string) => string; impreso?: boolean; otros?: EntradaTema['materiales']; temaId?: string }) {
+export function FormatoPlaneador({ material: original, nombreTema, rutaMaterial, impreso, otros, temaId }: { material: Material; nombreTema: string; rutaMaterial?: (id: string) => string; impreso?: boolean; otros?: EntradaTema['materiales']; temaId?: string }) {
   const quien = useQuien();
+  const duracion = useDuracion();
+  const material = ajustarDuracion(original, duracion);
   const { docente, colegio, identidad, area, grado } = quien;
   const color1 = identidad?.color_1 ?? COLOR_1;
   const color2 = identidad?.color_2 ?? COLOR_2;
@@ -177,6 +180,14 @@ export function FormatoPlaneador({ material, nombreTema, rutaMaterial, impreso, 
     <div className="plan-formato" style={{ '--plan-color-1': color1, '--plan-color-2': color2, '--plan-tinta-1': tintaSobre(color1) } as CSSProperties}>
       {!impreso && (
         <div className="plan-acciones no-imprimir">
+          <div className="plan-duracion" role="group" aria-label="Duración de la clase">
+            <span className="plan-duracion__et">Duración</span>
+            {DURACIONES.map((d) => (
+              <button key={d} type="button" className="boton boton--secundario" aria-pressed={duracion === d} onClick={() => elegirDuracion(d)}>
+                {d} min
+              </button>
+            ))}
+          </div>
           <Boton icono="descargar" onClick={() => void import('./word').then((w) => w.descargarPlaneador({ material, nombreTema, docente, colegio, identidad, area: material.referentes?.area ?? area, grado: material.referentes?.grado ?? grado }))}>
             Descargar en Word
           </Boton>

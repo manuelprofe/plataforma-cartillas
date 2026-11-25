@@ -3,7 +3,10 @@
    momento (inicio, desarrollo, cierre) marcado al lado. */
 
 .plan-formato { display: flex; flex-direction: column; gap: var(--e-4); --plan-borde: 1px solid var(--a-linea-fuerte); }
-.plan-acciones { display: flex; justify-content: flex-end; }
+.plan-acciones { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--e-3); }
+.plan-duracion { display: flex; flex-wrap: wrap; align-items: center; gap: var(--e-2); }
+.plan-duracion__et { font-weight: 600; color: var(--a-texto-2); margin-right: var(--e-1); }
+.plan-duracion .boton { min-width: 0; padding-inline: var(--e-3); }
 
 /* Membrete con la identidad del colegio: escudo, nombre y sus dos colores. */
 .plan-membrete { display: grid; grid-template-columns: 56px 1fr; gap: var(--e-3); align-items: center; padding: var(--e-3); border: 2px solid var(--plan-color-1); border-bottom-width: 6px; border-bottom-color: var(--plan-color-2); border-radius: var(--r-tarjeta); background: var(--a-superficie); }

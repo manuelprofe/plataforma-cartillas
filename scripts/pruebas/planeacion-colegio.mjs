@@ -92,6 +92,42 @@ try {
       const paginas = Number(/Pages:\s+(\d+)/.exec(execSync(`pdfinfo "${CAPTURAS}/planeador.pdf"`).toString())[1]);
       comprobar(paginas <= 2, `el Word del planeador ocupa ${paginas} hoja(s) carta`);
       execSync(`pdftoppm -png -r 60 -f 1 -l 1 "${CAPTURAS}/planeador.pdf" "${CAPTURAS}/planeador-word"`);
+
+      // Duraciones fijas: 45, 55 y 90 min; los minutos se reparten y siempre suman el total.
+      const sumaMin = () => p.locator('.plan-clase').first().evaluate((t) => [...t.querySelectorAll('td.plan-min')].reduce((a, td) => a + parseInt(td.textContent), 0));
+      const durCelda = () => p.locator('.plan-celda', { hasText: 'Duración' }).first().textContent();
+      for (const d of [45, 90, 55]) {
+        await p.getByRole('button', { name: `${d} min` }).first().click();
+        const suma = await sumaMin();
+        const trans = Number(/incluye (\d+)/.exec(await durCelda())?.[1] ?? 0);
+        comprobar((await durCelda()).includes(`${d} min`) && suma + trans === d, `duración ${d}: la celda dice ${d} min y los momentos suman ${suma} + ${trans} de transiciones`);
+        if (d === 90) {
+          const [dl] = await Promise.all([p.waitForEvent('download'), p.getByRole('button', { name: 'Descargar en Word' }).first().click()]);
+          await dl.saveAs(`${CAPTURAS}/planeador-90.docx`);
+          const t = execSync(`python3 -c "import docx,sys; d=docx.Document(sys.argv[1]); print(' '.join(c.text for r in d.tables[1].rows for c in r.cells))" "${CAPTURAS}/planeador-90.docx"`).toString();
+          comprobar(t.includes('90 min'), 'duración 90: el Word también dice 90 min');
+        }
+      }
+      comprobar(await p.evaluate(() => localStorage.getItem('cuaderno.duracion-clase')) === '55', 'la duración elegida se recuerda en el aparato');
+      // Impreso desde la hoja del material (botón Imprimir), con la duración guardada.
+      for (const d of [45, 90]) {
+        await p.evaluate((v) => localStorage.setItem('cuaderno.duracion-clase', String(v)), d);
+        for (const id of ['colores-planeador-1', 'colores-planeador-2']) {
+          await p.goto(url(`/docente/temas/colores/${id}`));
+          await p.waitForSelector('.mat-pantalla h1');
+          await p.getByRole('button', { name: 'Imprimir' }).click();
+          await p.emulateMedia({ media: 'print' });
+          await p.pdf({ path: `${CAPTURAS}/${id}-${d}.pdf`, format: 'Letter', preferCSSPageSize: true });
+          await p.emulateMedia({ media: 'screen' });
+          const pg = Number(/Pages:\s+(\d+)/.exec(execSync(`pdfinfo "${CAPTURAS}/${id}-${d}.pdf"`).toString())[1]);
+          const txt = execSync(`pdftotext -layout "${CAPTURAS}/${id}-${d}.pdf" -`).toString();
+          comprobar(pg <= (d === 90 ? 2 : 1) && txt.includes(`${d} min`), `${id} a ${d} min: impreso en ${pg} hoja(s) y dice ${d} min`);
+        }
+      }
+      await p.evaluate(() => localStorage.removeItem('cuaderno.duracion-clase'));
+    } else {
+      const toque = await p.locator('.plan-duracion button').evaluateAll((bs) => Math.min(...bs.map((b) => b.getBoundingClientRect().height)));
+      comprobar(toque >= 48, `${ancho}: botones de duración de ${toque} px de alto`);
     }
     await c.close();
   }

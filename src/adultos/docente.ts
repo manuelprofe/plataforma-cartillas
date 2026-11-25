@@ -40,7 +40,7 @@ export interface Paquete {
 }
 
 /** Dirección pública a la que lleva el QR de la tarjeta (se puede cambiar con VITE_URL_PUBLICA). */
-export const URL_PUBLICA = ((import.meta.env.VITE_URL_PUBLICA as string | undefined) || 'https://englishlandmanuelprofe.netlify.app').replace(/\/+$/, '');
+export const URL_PUBLICA = ((import.meta.env.VITE_URL_PUBLICA as string | undefined) || 'https://cuadernodegoma.pages.dev').replace(/\/+$/, '');
 
 export const GRADOS = ['Preescolar', '1°', '2°', '3°', '4°', '5°'].map((g) => ({ valor: g, etiqueta: g === 'Preescolar' ? g : `Grado ${g}` }));
 

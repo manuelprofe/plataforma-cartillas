@@ -14,9 +14,11 @@ Plan completo: `docs/plan/calendario-diciembre.md` (también en Google Calendar,
 ## Datos de trabajo
 
 - Rama `ccr-c31d414e-rt7zgq` (`main` atrasada; unirla solo con permiso). Sin `push --force`.
-- Sitio https://englishlandmanuelprofe.netlify.app (Netlify `94f443a2-de53-4029-ab21-f6673073280c`).
-  Desde el 23 nov Netlify está enlazado a GitHub: **cada push a la rama se publica solo**
-  (rama de producción `ccr-c31d414e-rt7zgq`). Hacer push solo con trabajo probado.
+- Sitio https://cuadernodegoma.pages.dev (Cloudflare Pages, proyecto `cuadernodegoma`, cuenta
+  elcuadernodegoma@gmail.com), desde el 25 nov 2026. **Cada push a la rama se publica solo**
+  (rama de producción `ccr-c31d414e-rt7zgq`, `npm run build:cloudflare`, salida `dist`). Hacer push
+  solo con trabajo probado. Netlify (englishlandmanuelprofe.netlify.app) quedó con la versión del
+  24 nov: se pausó al agotar los créditos gratis.
 - Supabase `https://jpwwmzfhbdnzsvwuciqa.supabase.co`. Clave pública en `.env.example` y
   `netlify.toml`; la secreta nunca se pide en el chat. Aplicadas las migraciones 002 a 005 (la 005 el 24 nov). Manuel
   aplica las nuevas siguiendo `supabase/PASOS-MANUEL.md`. Prueba local: `supabase/prueba_local.sql`

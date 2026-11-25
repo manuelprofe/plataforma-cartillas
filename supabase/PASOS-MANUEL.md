@@ -24,8 +24,8 @@ Proyecto: https://supabase.com/dashboard → proyecto `jpwwmzfhbdnzsvwuciqa`. Ha
    Es lo que impide que alguien use un correo invitado que no es suyo.
 7. **Edge Functions → Deploy a new function → Via Editor**: nombre `invitar`, pegar
    `supabase/funciones/invitar/index.ts`, dejar "Verify JWT" activado → Deploy.
-8. **Authentication → URL Configuration**: Site URL `https://englishlandmanuelprofe.netlify.app`;
-   en Redirect URLs agregar `https://englishlandmanuelprofe.netlify.app/adultos/**`.
+8. **Authentication → URL Configuration**: Site URL `https://cuadernodegoma.pages.dev`;
+   en Redirect URLs agregar `https://cuadernodegoma.pages.dev/adultos/**`.
 9. **Authentication → Email Templates**: pasar al español "Invite user" y "Reset password".
 10. **Authentication → SMTP Settings**: configurar un correo propio (el de Supabase envía muy pocos
     por hora). Puede esperar hasta antes del piloto.

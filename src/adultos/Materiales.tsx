@@ -73,7 +73,7 @@ export function PlanTema({ tema }: { tema: string }) {
                 {planeadores.map((m) => (
                   <section key={m.id} className="plan-clase">
                     <h2 className="h3">{m.titulo}</h2>
-                    <CuerpoMaterial material={m} rutaMaterial={(id) => rutaTema(entrada.id, id)} />
+                    <CuerpoMaterial material={m} nombreTema={entrada.nombre} otros={entrada.materiales} temaId={entrada.id} rutaMaterial={(id) => rutaTema(entrada.id, id)} />
                     <div className="mat-acciones">
                       <Boton icono="imprimir" ruta={rutaTema(entrada.id, m.id)}>
                         Abrir para imprimir
@@ -81,7 +81,7 @@ export function PlanTema({ tema }: { tema: string }) {
                     </div>
                   </section>
                 ))}
-                <Hueco titulo="Aquí irán las fechas de sus clases" texto="Cuando elija el tema de un grupo, la clase 1 y la clase 2 llevarán su fecha y su farol." />
+                <Hueco titulo="Aquí irán las fechas de sus clases" texto="Cuando elija el tema de un grupo, la clase 1 y la clase 2 llevarán su fecha y su casilla de avance." />
               </>
             ) : (
               <Hueco titulo={`Aquí irá el plan de ${entrada.nombre.toLowerCase()}`} texto="Llega con la próxima versión de la cartilla. Traerá:" trae={indice.tipos.planeador?.trae} />

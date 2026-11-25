@@ -33,7 +33,6 @@ function pedir<T>(archivo: string): Promise<T> {
 }
 
 const VOLVER = { ruta: '/docente/biblioteca', etiqueta: 'Biblioteca' };
-const PERSONAJE_ESCENA: Record<number, string> = { 2: 'pixie-wave', 3: 'pixie-wave', 4: 'lumi-wave', 5: 'cosmo-point', 6: 'nova-ready', 7: 'lumi-celebrate' };
 
 /** Rutas /docente/biblioteca[/…]. */
 export function Biblioteca({ resto }: { resto: string[] }) {
@@ -45,23 +44,36 @@ export function Biblioteca({ resto }: { resto: string[] }) {
   return <Inicio />;
 }
 
+// Iconos de los documentos de fundamentos que se conocen; los demás llevan el de documento.
+const ICONO_DOC: Record<string, 'cartillas' | 'estrella'> = { niveles: 'cartillas', 'mission-stars': 'estrella' };
+
 function Inicio() {
   useTitulo('Biblioteca');
+  // Títulos y cantidades salen del paquete de la cartilla elegida, no de aquí.
+  const carga = useCarga(
+    () => Promise.all([pedir<Historia>('historia.json'), pedir<{ actividades: Actividad[] }>('actividades.json'), pedir<Documentos>('documentos.json')]),
+    base(),
+  );
   return (
     <>
       <Encabezado titulo="Biblioteca" meta="Historia, recursos, actividades y fundamentos de la cartilla" />
       <ElegirCartilla />
-      <Panel filas>
-        <Fila ruta="/docente/biblioteca/historia" icono="documento" titulo="La historia: El cuaderno que abrió Englishland" detalle="7 escenas en español e inglés. Para leer, proyectar o imprimir." />
-        <Fila ruta="/docente/biblioteca/recursos" icono="descargar" titulo="Recursos por tema" detalle="Fichas descargables, videos y juegos en línea de los cuatro niveles." />
-        <Fila ruta="/docente/biblioteca/actividades" icono="lista" titulo="Banco de actividades" detalle="20 actividades con sus fases enactiva, icónica y simbólica." />
-      </Panel>
-      <Panel titulo="Fundamentos" filas>
-        <Fila ruta="/docente/biblioteca/doc/niveles" icono="cartillas" titulo="Niveles y pensum" detalle="Objetivos, DBA, evidencias y matriz de saberes." />
-        <Fila ruta="/docente/biblioteca/doc/mission-stars" icono="estrella" titulo="Sistema Mission Stars" />
-        <Fila ruta="/docente/biblioteca/doc/fundamentacion" icono="documento" titulo="Fundamentación teórica" />
-        <Fila ruta="/docente/biblioteca/doc/referencias" icono="documento" titulo="Referencias bibliográficas" />
-      </Panel>
+      <Cargado carga={carga}>
+        {([historia, actividades, docs]) => (
+          <>
+            <Panel filas>
+              <Fila ruta="/docente/biblioteca/historia" icono="documento" titulo={`La historia: ${historia.titulo}`} detalle={`${historia.escenas.length} escenas${historia.escenas.some((e) => e.en) ? ' en español e inglés' : ''}. Para leer, proyectar o imprimir.`} />
+              <Fila ruta="/docente/biblioteca/recursos" icono="descargar" titulo="Recursos por tema" detalle="Fichas descargables, videos y juegos en línea por nivel." />
+              <Fila ruta="/docente/biblioteca/actividades" icono="lista" titulo="Banco de actividades" detalle={`${actividades.actividades.length} actividades con sus fases enactiva, icónica y simbólica.`} />
+            </Panel>
+            <Panel titulo="Fundamentos" filas>
+              {docs.documentos.map((d) => (
+                <Fila key={d.id} ruta={`/docente/biblioteca/doc/${d.id}`} icono={ICONO_DOC[d.id] ?? 'documento'} titulo={d.titulo} />
+              ))}
+            </Panel>
+          </>
+        )}
+      </Cargado>
       <Panel titulo="Guía rápida para docentes">
         <p>Cómo activar la cuenta, crear el grupo, imprimir tarjetas y usar los materiales, en dos páginas.</p>
         <div className="atajos">
@@ -128,7 +140,7 @@ function PaginaHistoria() {
 }
 
 function Arte({ e }: { e: Escena }) {
-  const src = e.imagen ? base() + e.imagen : PERSONAJE_ESCENA[e.n] ? `${base()}personajes/${PERSONAJE_ESCENA[e.n]}.webp` : null;
+  const src = e.imagen ? base() + e.imagen : null;
   return src ? <img className={e.imagen ? 'bib-escena__img' : 'bib-escena__img bib-escena__img--personaje'} src={src} alt="" loading="lazy" /> : <span />;
 }
 
@@ -180,7 +192,40 @@ function Telon({ h, idioma, n, ir }: { h: Historia; idioma: Idioma; n: number; i
 
 // ---------------------------------------------------------------- Recursos por tema
 
-const idVideo = (url: string) => /[?&]v=([\w-]{6,})/.exec(url)?.[1] ?? /youtu\.be\/([\w-]{6,})/.exec(url)?.[1];
+// Acepta youtube.com/watch?v=, youtu.be/, /shorts/ y /embed/.
+const idVideo = (url: string) => /[?&]v=([\w-]{6,})/.exec(url)?.[1] ?? /(?:youtu\.be\/|\/shorts\/|\/embed\/)([\w-]{6,})/.exec(url)?.[1];
+/**
+ * Video de YouTube dentro de la página, en un cuadrito 16:9. Al principio es solo la miniatura
+ * (liviana); el reproductor se carga al tocarla, desde youtube-nocookie.com (sin cookies hasta
+ * que se reproduce). Se reproduce en YouTube, así que suma vistas al canal. Para cambiar un
+ * video basta con cambiar su enlace en `biblioteca/recursos.json`.
+ */
+function VideoYoutube({ url, id }: { url: string; id: string }) {
+  const [abierto, setAbierto] = useState(false);
+  if (abierto) {
+    return (
+      <div className="bib-video">
+        <iframe
+          src={`https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&playsinline=1`}
+          title="Video de YouTube"
+          allow="autoplay; encrypted-media; picture-in-picture; fullscreen"
+          allowFullScreen
+          referrerPolicy="strict-origin-when-cross-origin"
+        />
+      </div>
+    );
+  }
+  return (
+    <div className="bib-video">
+      <button type="button" className="bib-video__portada" onClick={() => setAbierto(true)} aria-label="Ver el video aquí">
+        <img src={`https://i.ytimg.com/vi/${id}/hqdefault.jpg`} alt="" loading="lazy" />
+        <span className="bib-video__play" aria-hidden="true">▶</span>
+      </button>
+      <a className="bib-video__fuera" href={url} target="_blank" rel="noopener">Abrir en YouTube</a>
+    </div>
+  );
+}
+
 const nombreArchivo = (url: string) => decodeURIComponent(url.split('/').pop() ?? url).replace(/\.pdf$/i, '').replace(/[-_]+/g, ' ');
 
 function PaginaRecursos({ destacar }: { destacar?: string }) {
@@ -192,7 +237,7 @@ function PaginaRecursos({ destacar }: { destacar?: string }) {
   return (
     <>
       <Encabezado titulo="Recursos por tema" volver={VOLVER} />
-      <p className="sec">Recursos externos seleccionados: fichas descargables (British Council), videos de YouTube y juegos en línea. Se abren en una pestaña nueva; revíselos antes de proyectarlos.</p>
+      <p className="sec">Recursos seleccionados: fichas descargables (British Council), videos de YouTube que se ven aquí mismo y juegos en línea. Revíselos antes de proyectarlos.</p>
       <Cargado carga={carga}>
         {(d) =>
           Object.entries(d.niveles).map(([clave, nivel]) => {
@@ -218,10 +263,11 @@ function PaginaRecursos({ destacar }: { destacar?: string }) {
                             const vid = idVideo(v);
                             return (
                               <li key={v}>
-                                <a href={v} target="_blank" rel="noopener">
-                                  {vid && <img src={`https://i.ytimg.com/vi/${vid}/mqdefault.jpg`} alt="" loading="lazy" />}
-                                  <span>Video en YouTube</span>
-                                </a>
+                                {vid ? (
+                                  <VideoYoutube url={v} id={vid} />
+                                ) : (
+                                  <a href={v} target="_blank" rel="noopener">Ver el video</a>
+                                )}
                               </li>
                             );
                           })}

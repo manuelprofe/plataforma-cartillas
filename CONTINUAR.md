@@ -67,7 +67,9 @@ Plan completo: `docs/plan/calendario-diciembre.md` (también en Google Calendar,
 - Una cartilla nueva (matemáticas, español) necesita: sus misiones en la tabla `misiones`
   (`herramientas/misiones_sql.py`) para que `registrar_mision` las acepte, y palabras en el
   territorio si su mapa trae luciérnagas (`Mundo.tsx` reparte palabras del territorio).
-- Proyectar y Biblioteca aún tienen encabezados fijos de English Adventure Quest.
+- Videos de la Biblioteca: se ven incrustados de YouTube (miniatura y, al tocarla, el reproductor
+  de youtube-nocookie; suman vistas al canal). Para cambiar uno por un capítulo propio basta con
+  poner su enlace (watch, youtu.be o shorts) en `biblioteca/recursos.json`, campo `videos`.
 - Voz (revisado el 25 nov): la plataforma no graba ni guarda audio; el navegador convierte la voz
   en texto. Donde el aparato tiene el modelo local se usa (`processLocally`); si no, Chrome envía
   el audio a su servicio en línea para transcribirlo. Conviene decirlo en el aviso a las familias.

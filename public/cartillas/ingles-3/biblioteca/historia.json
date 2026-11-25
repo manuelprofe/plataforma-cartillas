@@ -30,7 +30,7 @@
   },
   {
    "n": 2,
-   "imagen": null,
+   "imagen": "personajes/pixie-wave.webp",
    "es": {
     "titulo": "Pixie aparece",
     "parrafos": [
@@ -51,7 +51,7 @@
   },
   {
    "n": 3,
-   "imagen": null,
+   "imagen": "personajes/pixie-wave.webp",
    "es": {
     "titulo": "Englishland se apaga",
     "parrafos": [
@@ -98,7 +98,7 @@
   },
   {
    "n": 5,
-   "imagen": null,
+   "imagen": "personajes/cosmo-point.webp",
    "es": {
     "titulo": "Los cuatro territorios",
     "parrafos": [
@@ -123,7 +123,7 @@
   },
   {
    "n": 6,
-   "imagen": null,
+   "imagen": "personajes/nova-ready.webp",
    "es": {
     "titulo": "Mission Stars",
     "parrafos": [
@@ -151,7 +151,7 @@
   },
   {
    "n": 7,
-   "imagen": null,
+   "imagen": "personajes/lumi-celebrate.webp",
    "es": {
     "titulo": "La aventura comienza",
     "parrafos": [

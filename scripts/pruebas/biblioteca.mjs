@@ -14,6 +14,7 @@ try {
     const c = await nav.newContext({ viewport: { width: ancho, height: 844 }, serviceWorkers: 'block', locale: 'es-CO' });
     await c.addInitScript(([k, v]) => localStorage.setItem(k, v), [LLAVE_ADULTO, JSON.stringify(sesionAdulto('docente', { perfil: { rol: 'docente', nombre: 'Profe', colegio_id: 'c1' } }))]);
     await c.route('**/i.ytimg.com/**', (r) => r.abort());
+    await c.route('**/www.youtube-nocookie.com/**', (r) => r.fulfill({ status: 200, contentType: 'text/html', body: '<p>video</p>' }));
     await simularSupabase(c, async (u) => (u.pathname === '/rest/v1/rpc/mi_perfil' ? { json: { rol: 'docente', nombre: 'Profe', colegio_id: 'c1', activo: true } } : u.pathname.startsWith('/rest/v1/') ? { json: [] } : null));
     const p = await c.newPage();
     const errores = [];
@@ -25,6 +26,8 @@ try {
     await p.getByRole('link', { name: /^Biblioteca/ }).first().click();
     await p.waitForURL(/\/docente\/biblioteca$/);
     comprobar(true, `${ancho}: Inicio lleva a la biblioteca`);
+    await p.waitForSelector('a[href$="/doc/mission-stars"]');
+    comprobar(await p.getByText(/La historia: .+/).isVisible() && (await p.locator('a[href*="/docente/biblioteca/doc/"]').count()) === 4, `${ancho}: la portada toma la historia y los fundamentos de la cartilla`);
     await p.screenshot({ path: `${CAPTURAS}/bib-${ancho}-inicio.png`, fullPage: true });
 
     await ir('/docente/biblioteca/historia');
@@ -47,6 +50,14 @@ try {
     comprobar(temas >= 15, `${ancho}: recursos con ${temas} temas`);
     comprobar(await p.locator('.bib-enlaces a').count() > 10, `${ancho}: hay fichas y juegos enlazados`);
     comprobar(!(await desborda(p)), `${ancho}: recursos sin desborde`);
+    // Videos de YouTube dentro de la página: miniatura primero; al tocarla, el reproductor.
+    const portadas = await p.locator('.bib-video__portada').count();
+    comprobar(portadas >= 10 && !(await p.locator('.bib-video iframe').count()), `${ancho}: ${portadas} videos como miniatura, sin cargar reproductores`);
+    await p.locator('.bib-video__portada').first().click();
+    const src = await p.locator('.bib-video iframe').first().getAttribute('src');
+    comprobar(/^https:\/\/www\.youtube-nocookie\.com\/embed\/[\w-]+\?autoplay=1/.test(src ?? ''), `${ancho}: al tocar, el video se ve aquí (${src})`);
+    comprobar(!(await desborda(p)), `${ancho}: video abierto sin desborde`);
+    await p.screenshot({ path: `${CAPTURAS}/bib-${ancho}-video.png` });
     await p.screenshot({ path: `${CAPTURAS}/bib-${ancho}-recursos.png` });
 
     await ir('/docente/biblioteca/actividades');

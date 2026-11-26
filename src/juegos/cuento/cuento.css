@@ -1,0 +1,215 @@
+/* Cuento vivo (Cuento.tsx): página de libro con su dibujo grande y el texto en letra clara;
+   preguntas con tarjetas de 96 px o más. */
+
+.cuento {
+  --cu-tinta: #3a3a3a;
+  grid-template-columns: minmax(0, 1fr);
+  overflow: hidden;
+}
+
+.cuento__repasar {
+  margin-left: auto;
+  flex: none;
+  width: 56px;
+  height: 56px;
+  border-radius: 18px;
+  background: #fff;
+  border: 3px solid var(--cu-tinta);
+  font-size: 1.6rem;
+}
+
+.cuento__pagina {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: minmax(0, 1fr) auto auto;
+  justify-items: center;
+  gap: 14px;
+  padding: 4px 16px max(18px, env(safe-area-inset-bottom));
+  min-height: 0;
+  animation: cu-pasa 0.3s ease-out;
+}
+
+@keyframes cu-pasa {
+  from {
+    transform: translateX(24px) rotate(1deg);
+    opacity: 0;
+  }
+}
+
+.cuento__dibujo {
+  height: 100%;
+  max-height: 420px;
+  max-width: 100%;
+  min-height: 0;
+  aspect-ratio: 1;
+  padding: 18px;
+  border-radius: 28px;
+  background: #fff;
+  border: 3px solid var(--cu-tinta);
+  box-shadow: 8px 8px 0 #e6dcc6;
+}
+
+.cuento__dibujo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.cuento__texto {
+  margin: 0;
+  max-width: min(420px, 100%);
+  text-align: center;
+  font-size: clamp(1.25rem, 5.4vw, 1.6rem);
+  line-height: 1.35;
+  font-weight: 700;
+  color: var(--cu-tinta);
+}
+
+.cuento__pasar {
+  display: flex;
+  gap: 18px;
+}
+
+.cuento__boton {
+  width: 72px;
+  height: 72px;
+  border-radius: 22px;
+  background: #fff;
+  border: 3px solid var(--cu-tinta);
+  box-shadow: 0 6px 0 rgb(44 42 49 / 0.25);
+  font-size: 1.8rem;
+  font-weight: 900;
+}
+
+.cuento__boton:disabled {
+  opacity: 0.35;
+}
+
+.cuento__boton--seguir {
+  width: 104px;
+  background: var(--oro);
+}
+
+.cuento__boton--listo {
+  animation: latir 1.4s ease-in-out infinite;
+}
+
+.cuento__pregunta {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-content: start;
+  justify-items: center;
+  gap: 14px;
+  padding: 4px 16px max(18px, env(safe-area-inset-bottom));
+  overflow-y: auto;
+}
+
+.cuento__dice {
+  margin: 0;
+  max-width: min(420px, 100%);
+  text-align: center;
+  font-size: clamp(1.15rem, 5vw, 1.45rem);
+  font-weight: 800;
+}
+
+.cuento__opciones {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(96px, 1fr));
+  gap: 12px;
+  width: min(100%, 440px);
+}
+
+.cuento__opcion,
+.cuento__escena {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 4px;
+  padding: 10px;
+  min-height: 96px;
+  border-radius: 22px;
+  background: #fff;
+  border: 3px solid var(--cu-tinta);
+  box-shadow: 0 6px 0 rgb(44 42 49 / 0.2);
+  font-weight: 800;
+}
+
+.cuento__opcion img {
+  width: 72px;
+  height: 72px;
+}
+
+.cuento__opcion--bien {
+  background: #d8f6ef;
+  border-color: var(--menta);
+}
+
+.cuento__opcion--no {
+  animation: cu-no 0.35s;
+}
+
+@keyframes cu-no {
+  25% {
+    transform: translateX(-6px);
+  }
+  75% {
+    transform: translateX(6px);
+  }
+}
+
+.cuento__opcion--pista {
+  box-shadow: 0 0 0 5px var(--oro), 0 6px 0 rgb(44 42 49 / 0.2);
+  animation: latir 1s ease-in-out infinite;
+}
+
+.cuento__ordenar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 12px;
+  width: min(100%, 440px);
+}
+
+.cuento__escena img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: contain;
+}
+
+.cuento__escena--puesta {
+  background: #fff7d6;
+}
+
+.cuento__numero {
+  position: absolute;
+  top: -12px;
+  left: -10px;
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--oro);
+  border: 3px solid var(--cu-tinta);
+  font-size: 1.3rem;
+  font-weight: 900;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cuento__pagina,
+  .cuento__boton--listo,
+  .cuento__opcion--pista {
+    animation: none;
+  }
+}
+
+/* Con el libro a la derecha, los puntos no necesitan el contrapeso del ✕. */
+.cuento .puntos {
+  padding-right: 0;
+  min-width: 0;
+  gap: 6px;
+}
+
+.cuento .punto {
+  width: 14px;
+  height: 14px;
+}

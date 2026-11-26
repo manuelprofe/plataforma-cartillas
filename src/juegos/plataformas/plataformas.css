@@ -440,3 +440,9 @@
     animation: none;
   }
 }
+
+/* Con ↺ a la derecha, los puntos no necesitan el contrapeso del ✕. */
+.plataformas .puntos {
+  padding-right: 0;
+  min-width: 0;
+}

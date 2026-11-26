@@ -51,10 +51,11 @@ export interface Mision {
   /**
    * Juego con que se practica: escuchar y tocar, atrapar lo que se oye, decir la palabra,
    * Memory, contar y tocar (cantidades), ordenar (números, secuencias, sucesos de un cuento),
-   * completar la operación (sumas y restas), armar la palabra con sus sílabas o el juego de
-   * plataformas de matemáticas (saltar, empujar cajas y abrir puertas razonando).
+   * completar la operación (sumas y restas), armar la palabra con sus sílabas, el juego de
+   * plataformas de matemáticas (saltar, empujar cajas y abrir puertas razonando) o el cuento
+   * vivo de español (escuchar o leer un cuento y mostrar que se entendió).
    */
-  plantilla: 'escucha-toca' | 'escucha-atrapa' | 'di-brilla' | 'memoria' | 'contar-toca' | 'ordenar' | 'operacion' | 'silabas' | 'plataformas';
+  plantilla: 'escucha-toca' | 'escucha-atrapa' | 'di-brilla' | 'memoria' | 'contar-toca' | 'ordenar' | 'operacion' | 'silabas' | 'plataformas' | 'cuento';
   icono: string;
   x: number;
   y: number;
@@ -87,6 +88,8 @@ export interface Mision {
   silabas?: RondaSilabas[];
   /** Plataformas: los niveles de la misión, cada uno con su mapa y los retos de sus puertas. */
   plataformas?: NivelPlataformas[];
+  /** Cuento vivo: las páginas del cuento y las preguntas que se hacen al terminarlo. */
+  cuento?: AjustesCuento;
   /**
    * Di y brilla para leer en voz alta: la palabra se ve escrita desde el principio y la voz no
    * la dice antes; el niño la lee y puede tocarla para oírla. Sin esto, se escucha y se repite.
@@ -185,6 +188,20 @@ export interface NivelPlataformas {
   /** Retos de las puertas, en el orden en que aparecen de izquierda a derecha. */
   retos?: RetoPuerta[];
 }
+
+/**
+ * Cuento vivo (español, transición a 2.°): se escucha o se lee un cuento corto página por página
+ * y luego se muestra que se entendió: quién, qué pasó, en qué orden, qué sintió o qué viene después.
+ */
+export interface AjustesCuento {
+  paginas: { imagen: string; texto: string }[];
+  preguntas: PreguntaCuento[];
+}
+
+export type PreguntaCuento =
+  | { tipo: 'elegir'; dice: string; opciones: { imagen: string; texto?: string }[]; correcta: number; bien?: string }
+  /** Ordenar: las imágenes llegan en el orden del cuento y el juego las revuelve. */
+  | { tipo: 'ordenar'; dice: string; imagenes: string[]; bien?: string };
 
 /** Reto que abre una puerta: la voz pregunta, se pueden mostrar objetos y el niño elige. */
 export interface RetoPuerta {

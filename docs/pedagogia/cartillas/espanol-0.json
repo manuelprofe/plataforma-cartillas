@@ -12,7 +12,12 @@
   "iconos": {
     "adios": [{ "e": "1f44b", "x": 1, "y": 3, "t": 19 }, { "e": "1f6b6", "x": 17, "y": 11, "t": 19 }],
     "buenos-dias": [{ "e": "1f305", "x": 2, "y": 2, "t": 32 }],
-    "buenas-noches": [{ "e": "1f319", "x": 2, "y": 2, "t": 32 }]
+    "buenas-noches": [{ "e": "1f319", "x": 2, "y": 2, "t": 32 }],
+    "cuento-1": [{"rect": [0, 27, 36, 9], "fill": "#cfe8b4"}, {"e": "2600", "x": 27, "y": 1, "t": 8}, {"e": "1f337", "x": 2, "y": 19, "t": 8}, {"e": "1f33c", "x": 26, "y": 20, "t": 7}, {"e": "1f424", "x": 12, "y": 16, "t": 12}],
+    "cuento-2": [{"rect": [0, 27, 36, 9], "fill": "#cfe8b4"}, {"e": "1f98b", "x": 22, "y": 3, "t": 10}, {"e": "1f424", "x": 4, "y": 17, "t": 11}, {"e": "1f337", "x": 29, "y": 20, "t": 6}],
+    "cuento-3": [{"rect": [0, 27, 36, 9], "fill": "#cfe8b4"}, {"e": "1f333", "x": 0, "y": 5, "t": 15}, {"e": "1f333", "x": 21, "y": 4, "t": 15}, {"e": "1f424", "x": 12, "y": 17, "t": 11}, {"e": "1f4a7", "x": 23, "y": 17, "t": 4}],
+    "cuento-4": [{"rect": [0, 27, 36, 9], "fill": "#cfe8b4"}, {"e": "1f424", "x": 2, "y": 17, "t": 10}, {"e": "1f3b6", "x": 12, "y": 9, "t": 8}, {"e": "1f414", "x": 20, "y": 12, "t": 15}],
+    "cuento-5": [{"rect": [0, 27, 36, 9], "fill": "#cfe8b4"}, {"e": "1f414", "x": 3, "y": 10, "t": 17}, {"e": "1f424", "x": 19, "y": 17, "t": 11}, {"e": "2764", "x": 17, "y": 3, "t": 7}]
   },
 
   "palabras": {
@@ -61,7 +66,22 @@
       "id": "renglon-saludos",
       "familia": { "tema": "saludar y despedirse", "idea": "Al llegar y al salir de casa, salúdense y despídanse mirándose a los ojos. Si su hijo lo dice primero, celébrelo." },
       "misiones": [
-        { "titulo": "¿Cómo saludo?", "plantilla": "escucha-toca", "icono": "iconos/1f44b.svg", "palabras": ["hola", "adios", "buenosdias", "buenasnoches", "gracias"], "antes": "Escucha la palabra y toca el dibujo que va con ella." },
+        { "titulo": "El pollito perdido", "plantilla": "cuento", "icono": "iconos/cuento-1.svg", "palabras": ["hola"], "antes": "Te voy a contar un cuento. Escucha bien, que después te pregunto.",
+          "cuento": {
+            "paginas": [
+              {"imagen": "iconos/cuento-1.svg", "texto": "Pío, el pollito, sale a pasear al jardín."},
+              {"imagen": "iconos/cuento-2.svg", "texto": "Pío ve una mariposa y la sigue, la sigue... ¡muy lejos!"},
+              {"imagen": "iconos/cuento-3.svg", "texto": "Pío mira a su alrededor. Está solo y tiene miedo."},
+              {"imagen": "iconos/cuento-4.svg", "texto": "Pío llama fuerte: ¡pío, pío! Mamá gallina lo escucha."},
+              {"imagen": "iconos/cuento-5.svg", "texto": "Mamá gallina corre, lo encuentra y lo abraza. ¡Qué alegría!"}
+            ],
+            "preguntas": [
+              {"tipo": "elegir", "dice": "¿Quién se perdió en el cuento?", "opciones": [{"imagen": "iconos/1f408.svg", "texto": "el gato"}, {"imagen": "iconos/1f424.svg", "texto": "el pollito"}, {"imagen": "iconos/1f415.svg", "texto": "el perro"}], "correcta": 1, "bien": "¡Sí! Pío, el pollito."},
+              {"tipo": "elegir", "dice": "¿Qué siguió Pío?", "opciones": [{"imagen": "iconos/1f41f.svg", "texto": "un pez"}, {"imagen": "iconos/26bd.svg", "texto": "una pelota"}, {"imagen": "iconos/1f98b.svg", "texto": "una mariposa"}], "correcta": 2, "bien": "¡Una mariposa!"},
+              {"tipo": "ordenar", "dice": "Toca los dibujos en orden: ¿qué pasó primero, después y al final?", "imagenes": ["iconos/cuento-1.svg", "iconos/cuento-2.svg", "iconos/cuento-5.svg"], "bien": "¡Así pasó el cuento!"},
+              {"tipo": "elegir", "dice": "¿Cómo se sintió Pío cuando mamá lo encontró?", "opciones": [{"imagen": "iconos/1f622.svg", "texto": "triste"}, {"imagen": "iconos/1f604.svg", "texto": "feliz"}, {"imagen": "iconos/1f620.svg", "texto": "enojado"}], "correcta": 1, "bien": "¡Feliz! Por eso se abrazaron."}
+            ]
+          } },
         { "titulo": "Saluda tú", "plantilla": "di-brilla", "icono": "iconos/buenos-dias.svg", "palabras": ["hola", "adios", "buenosdias", "buenasnoches", "gracias"], "antes": "Ahora tú lo dices. Escucha y dilo con tu voz cuando quieras. ¡Cada intento cuenta!" },
         { "titulo": "Parejas de saludos", "plantilla": "memoria", "icono": "iconos/1f64f.svg", "palabras": ["hola", "adios", "buenosdias", "gracias"], "formas": ["imagen-sonido"], "parejas": 4, "antes": "Gira dos cartas: busca el dibujo y lo que se dice." }
       ]
@@ -114,7 +134,9 @@
 
   "ayudas": {
     "memoria-pista1": "Escucha bien: cada dibujo tiene su sonido.",
-    "atrapa-inicio": "Atrapa el dibujo que te digo."
+    "atrapa-inicio": "Atrapa el dibujo que te digo.",
+    "cuento-preguntas": "Ahora cuéntame qué recuerdas del cuento.",
+    "cuento-otra-vez": "Casi. Si quieres, toca el libro para ver el cuento otra vez."
   },
 
   "pozo": { "id": "renglon-pozo", "titulo": "El pozo de los sonidos", "antes": "Este es el pozo de los recuerdos. Gira dos cartas y busca las que van juntas." },

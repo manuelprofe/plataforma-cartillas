@@ -33,9 +33,10 @@ const IMAGEN_FIESTA = 'personajes/goma-celebrar.webp';
  * Qué componente juega cada plantilla del contenido. Van en la carga inicial (unos 10 kB
  * comprimidos entre los cuatro): así abrir un juego sin conexión nunca deja la pantalla en blanco.
  */
-// El de plataformas es más grande y va aparte: el trabajador sin conexión lo guarda al instalar
+// Los de plataformas y cuento van aparte: el trabajador sin conexión lo guarda al instalar
 // (todo assets/ del niño entra al armazón), así que también abre sin red.
 const Plataformas = lazy(() => import('./juegos/plataformas/Plataformas').then((m) => ({ default: m.Plataformas })));
+const Cuento = lazy(() => import('./juegos/cuento/Cuento').then((m) => ({ default: m.Cuento })));
 
 const JUEGOS: Record<Mision['plantilla'], ComponentType<PropsJuego>> = {
   'escucha-toca': EscuchaToca,
@@ -47,6 +48,7 @@ const JUEGOS: Record<Mision['plantilla'], ComponentType<PropsJuego>> = {
   operacion: Operacion,
   silabas: Silabas,
   plataformas: Plataformas,
+  cuento: Cuento,
 };
 
 type Pantalla =

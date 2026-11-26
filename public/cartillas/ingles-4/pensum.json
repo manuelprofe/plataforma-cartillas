@@ -1,0 +1,170 @@
+{
+ "cartilla": "ingles-4",
+ "materia": "Inglés",
+ "grado": 4,
+ "gradoNombre": "4.°",
+ "guia": "Postal",
+ "titulo": "El cuaderno de Postal · 4.°",
+ "fuente": "Contenidos programáticos de Inglés · Versión 1 · 24 de noviembre de 2026",
+ "proposito": "Nivel principiante A1.1.",
+ "dba": [
+  {
+   "id": "1",
+   "texto": "Comprende la idea general y algunos detalles en un texto informativo corto y sencillo sobre temas conocidos y de interés."
+  },
+  {
+   "id": "2",
+   "texto": "Pregunta y responde, de forma oral o escrita, interrogantes relacionados con el \"quién, cuándo y dónde\", después de leer o escuchar un texto corto y sencillo siempre que el tema le sea conocido."
+  },
+  {
+   "id": "3",
+   "texto": "Intercambia opiniones sencillas sobre un tema de interés, a través de oraciones simples y conocidas."
+  },
+  {
+   "id": "4",
+   "texto": "Compara características básicas de personas, objetos y lugares de su escuela y comunidad, a través de oraciones simples."
+  }
+ ],
+ "ebc": "Estándares Básicos de Competencias en Lenguas Extranjeras: Inglés (MEN, 2006).",
+ "unidades": [
+  {
+   "id": "p1",
+   "numero": 1,
+   "titulo": "Cuido mi alimentación",
+   "eje": "Salud y vida",
+   "periodo": {
+    "4": 1,
+    "3": 1
+   },
+   "meta": "reconocer y explicar con oraciones simples las consecuencias del consumo de sustancias dañinas para la salud y hacer recomendaciones.",
+   "funciones": [
+    "explicar causas y efectos",
+    "recomendar",
+    "deletrear palabras"
+   ],
+   "temas": [
+    "repaso de alimentos sanos (2.°) y causa-consecuencia (3.°)",
+    "sugar, salt, fat, candy, fast food, sausage, soda, fried food, caffeine",
+    "headache, obesity, diabetes, heart problems",
+    "el alfabeto y el deletreo How do you spell…?"
+   ],
+   "gramatica": "must, should, have to; conectores and, but, because. Sugar is bad for your health because it can cause diabetes. You must not drink too many sodas. You should eat more fruit.",
+   "dba": [
+    "1",
+    "2"
+   ],
+   "desempenos": [
+    "saber reconoce alimentos dañinos y sus efectos",
+    "saber hacer lee un texto informativo corto y responde quién, cuándo y dónde; escribe dos recomendaciones",
+    "saber ser se interesa por su salud y la de otros."
+   ],
+   "juegos": "escucha-atrapa (sano o no sano); memoria imagen-palabra escrita; di-brilla (deletreo y frases de consejo); ordenar (armar la oración Sugar can cause… palabra por palabra). Para deletrear hace falta una plantilla nueva (ver sección 10).",
+   "analogo": "folleto \"Comer bien en el recreo\" con revisión de la tienda escolar.",
+   "fuente": "MEN, 2016b, pp. 187-189."
+  },
+  {
+   "id": "p2",
+   "numero": 2,
+   "titulo": "Me gusta dialogar",
+   "eje": "Convivencia y paz",
+   "periodo": {
+    "4": 2,
+    "3": 2
+   },
+   "meta": "expresar acuerdos y desacuerdos en conversaciones muy sencillas en inglés, mostrando respeto por la opinión de los demás.",
+   "funciones": [
+    "dar y pedir opinión",
+    "estar de acuerdo o no",
+    "pedir disculpas",
+    "describir personalidad"
+   ],
+   "temas": [
+    "apariencia tall, short, slim, curly, straight (ver ajuste 1)",
+    "personalidad nice, clever, friendly, outgoing, shy, hardworking, easygoing",
+    "cortesía please, thank you, excuse me, sorry, May I have…?"
+   ],
+   "gramatica": "preguntas What do you think about…? What is he like?; I think that…, In my opinion…, I agree / I disagree. Luis is nice and clever. I think she is a very good friend. Sorry, I think this is mine.",
+   "dba": [
+    "3",
+    "4"
+   ],
+   "desempenos": [
+    "saber reconoce expresiones de opinión y cortesía",
+    "saber hacer sostiene un intercambio de tres turnos dando su opinión",
+    "saber ser respeta las opiniones distintas."
+   ],
+   "juegos": "escucha-toca (¿de acuerdo o en desacuerdo?, con caritas); di-brilla (frases de cortesía); ordenar (ordenar un diálogo corto); memoria (adjetivo de personalidad-situación).",
+   "analogo": "\"Rincón del diálogo\": juego de roles para resolver conflictos del salón.",
+   "fuente": "MEN, 2016b, pp. 187, 197."
+  },
+  {
+   "id": "p3",
+   "numero": 3,
+   "titulo": "Cuidemos nuestro mundo",
+   "eje": "Medioambiente y sociedad",
+   "periodo": {
+    "4": 3,
+    "3": 3
+   },
+   "meta": "comparar de manera sencilla en inglés prácticas que inciden positiva y negativamente en el medio ambiente.",
+   "funciones": [
+    "comparar",
+    "proponer soluciones",
+    "expresar preocupación"
+   ],
+   "temas": [
+    "repaso de consumo sostenible (1.°) y medio ambiente (3.°)",
+    "habitat, ecosystem, plants, clouds, pollution, smog, ozone layer",
+    "worried, scared, disappointed, hopeful."
+   ],
+   "gramatica": "comparativos de una sílaba (bigger, cleaner than); should / shouldn't; Let's…; oraciones con when. This river is cleaner than that one. Let's reuse plastic bottles. We should close the tap when we brush our teeth. I am worried about the animals.",
+   "dba": [
+    "4",
+    "3"
+   ],
+   "desempenos": [
+    "saber reconoce vocabulario ambiental y comparativos",
+    "saber hacer compara dos lugares de su comunidad y propone una acción",
+    "saber ser se interesa por el medio ambiente."
+   ],
+   "juegos": "escucha-toca (¿cuál es más grande o más limpio?); ordenar (frase comparativa); di-brilla (Let's recycle); escucha-atrapa (acciones que ayudan).",
+   "analogo": "huerta o jardín escolar con rótulos y diario en inglés (Plant a garden, del MEN).",
+   "fuente": "MEN, 2016a, p. 23; MEN, 2016b, pp. 187, 205."
+  },
+  {
+   "id": "p4",
+   "numero": 4,
+   "titulo": "Vivo en una aldea global",
+   "eje": "Una aldea global",
+   "periodo": {
+    "4": 4,
+    "3": 3
+   },
+   "meta": "describir de manera sencilla en inglés cómo sus acciones y las de su comunidad afectan el mundo.",
+   "funciones": [
+    "describir lo que la gente está haciendo",
+    "decir causas y consecuencias",
+    "dar opinión sobre acciones de otros"
+   ],
+   "temas": [
+    "repaso de causa-consecuencia",
+    "sweep, clean, dust, throw away, study",
+    "global village, connection, affect, neighbor, community."
+   ],
+   "gramatica": "presente continuo afirmativo, negativo y pregunta; conectores and, but, because. What are you doing? I am sweeping the classroom. This man is cleaning the river. My garbage affects my neighbors.",
+   "dba": [
+    "2",
+    "4",
+    "1"
+   ],
+   "desempenos": [
+    "saber reconoce el presente continuo",
+    "saber hacer describe una imagen de su comunidad diciendo quién hace qué y dónde",
+    "saber ser se interesa por las consecuencias de sus acciones."
+   ],
+   "juegos": "escucha-toca (¿quién está barriendo?); di-brilla (I am cleaning…); ordenar (pregunta What are you doing? y su respuesta); memoria (acción-dibujo).",
+   "analogo": "cartelera \"Mi comunidad conectada con el mundo\" con fotos o dibujos y pies de foto.",
+   "fuente": "MEN, 2016b, pp. 187, 211."
+  }
+ ]
+}

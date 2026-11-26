@@ -6,6 +6,7 @@ import { Fila, Panel } from './base';
 import { useCarga } from './comun';
 import { cargarGrupos, cartillaDeGrupo, titulosCartillas } from './docente';
 import { elegirCartillaMateriales, useCartillaMateriales } from '../materiales/datos';
+import { personajeDeMateria } from '../marca';
 
 export function ElegirCartilla() {
   const actual = useCartillaMateriales();
@@ -31,6 +32,7 @@ export function ElegirCartilla() {
           <Fila
             key={id}
             icono="cartillas"
+            personaje={carga.datos?.titulos[id] ? personajeDeMateria(carga.datos.titulos[id]) : undefined}
             titulo={carga.datos?.titulos[id] ?? id}
             fin={id === actual ? <span className="elegir-cartilla__actual">Viendo</span> : undefined}
             alTocar={id === actual ? undefined : () => elegirCartillaMateriales(id)}

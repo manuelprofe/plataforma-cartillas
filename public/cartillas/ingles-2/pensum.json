@@ -1,0 +1,174 @@
+{
+ "cartilla": "ingles-2",
+ "materia": "Inglés",
+ "grado": 2,
+ "gradoNombre": "2.°",
+ "guia": "Postal",
+ "titulo": "El cuaderno de Postal · 2.°",
+ "fuente": "Contenidos programáticos de Inglés · Versión 1 · 24 de noviembre de 2026",
+ "proposito": "Nivel preparatorio pre-A1.",
+ "dba": [
+  {
+   "id": "1",
+   "texto": "Expresa ideas sencillas sobre temas estudiados, usando palabras y frases."
+  },
+  {
+   "id": "2",
+   "texto": "Comprende la secuencia de una historia corta y sencilla sobre temas familiares, y la cuenta nuevamente a partir de ilustraciones y palabras conocidas."
+  },
+  {
+   "id": "3",
+   "texto": "Intercambia información personal como su nombre, edad y procedencia con compañeros y profesores, usando frases sencillas, siguiendo modelos provistos por el docente."
+  },
+  {
+   "id": "4",
+   "texto": "Menciona aspectos culturales propios de su entorno, usando vocabulario y expresiones conocidas."
+  }
+ ],
+ "ebc": "Estándares Básicos de Competencias en Lenguas Extranjeras: Inglés (MEN, 2006).",
+ "unidades": [
+  {
+   "id": "p1",
+   "numero": 1,
+   "titulo": "Tengo hábitos sanos",
+   "eje": "Salud y vida",
+   "periodo": {
+    "4": 1,
+    "3": 1
+   },
+   "meta": "identificar y expresar de manera sencilla en inglés algunos beneficios del ejercicio y de una dieta balanceada.",
+   "funciones": [
+    "decir alimentos y deportes que le gustan",
+    "describir su dieta",
+    "preguntar por gustos"
+   ],
+   "temas": [
+    "frutas apple, pear, grapes, mango, plum, guava, banana, passion fruit, blackberry",
+    "verduras tomato, onion, pepper, beans, cucumber, lettuce, cabbage, carrot",
+    "comidas rice, soup, meat, chicken, fish, juice, water",
+    "deportes soccer, swimming, basketball, volleyball, cycling",
+    "walking, jogging",
+    "números 71-100."
+   ],
+   "gramatica": "presente simple con I y we; like / don't like; have to / need to. I like mangoes. I don't like lettuce. I drink passion fruit juice. We need to eat fruits and vegetables. What is your favorite food? Do you like soccer?",
+   "dba": [
+    "1",
+    "3"
+   ],
+   "desempenos": [
+    "saber reconoce alimentos y deportes",
+    "saber hacer dice qué come y qué deporte practica",
+    "saber ser se preocupa por comer sano y moverse."
+   ],
+   "juegos": "escucha-toca (frutas, verduras, deportes); escucha-atrapa (\"atrapa solo las frutas\"); memoria (alimento-palabra); di-brilla (I like bananas); contar-toca (How many apples?, hasta 100 por decenas).",
+   "analogo": "\"plato saludable\" con recortes y encuesta de gustos del curso. Imprimible: plato vacío y tarjetas de alimentos.",
+   "fuente": "MEN, 2016b, pp. 119-121."
+  },
+  {
+   "id": "p2",
+   "numero": 2,
+   "titulo": "Conozco mis derechos",
+   "eje": "Convivencia y paz",
+   "periodo": {
+    "4": 2,
+    "3": 2
+   },
+   "meta": "identificar y mencionar en inglés los derechos más importantes de los niños y niñas en su familia y colegio.",
+   "funciones": [
+    "decir información personal (nombre, edad, de dónde es)",
+    "decir lo que puede y no puede hacer",
+    "nombrar sus derechos"
+   ],
+   "temas": [
+    "classmates, teacher, principal, study, do homework",
+    "ocio go to the park, go to the river, play with friends",
+    "repaso de adjetivos de apariencia",
+    "what, who, where",
+    "derechos education, protection, love, play, health."
+   ],
+   "gramatica": "can / can't; preguntas wh. Where are you from? I am from Los Patios. I have the right to education. I can play. I like to play with my toys.",
+   "dba": [
+    "3",
+    "1"
+   ],
+   "desempenos": [
+    "saber reconoce palabras de derechos y preguntas wh",
+    "saber hacer se presenta con nombre, edad y procedencia",
+    "saber ser respeta los derechos de los demás."
+   ],
+   "juegos": "escucha-toca (derechos ilustrados); di-brilla (I am from…); memoria (derecho-dibujo); ordenar (armar la frase I have the right to… con tarjetas-imagen).",
+   "analogo": "mural \"Our rights\" y entrevistas en parejas con modelo. Imprimible: tarjeta de presentación personal.",
+   "fuente": "MEN, 2016b, pp. 119, 129."
+  },
+  {
+   "id": "p3",
+   "numero": 3,
+   "titulo": "Valoro nuestra biodiversidad",
+   "eje": "Medioambiente y sociedad",
+   "periodo": {
+    "4": 3,
+    "3": 3
+   },
+   "meta": "distinguir y describir en inglés algunas características y la importancia de otros seres vivos en su entorno.",
+   "funciones": [
+    "describir animales (tamaño, dónde viven, qué pueden hacer)",
+    "dar instrucciones de cuidado"
+   ],
+   "temas": [
+    "animales cat, dog, bird, parrot, iguana, bee, fish, cow, bat, tiger, lion, giraffe (más los de la región)",
+    "wild, domestic, water, land",
+    "hábitats forest, sea, river, savannah, house",
+    "verbos fly, jump, run, swim, hunt, protect",
+    "fast, slow, big, small, endangered."
+   ],
+   "gramatica": "can / can't (repaso); presente simple con they; should / shouldn't. Can a fish swim? Yes, it can. Parrots live in the forest. They shouldn't live in houses. Take care of animals.",
+   "dba": [
+    "1",
+    "2"
+   ],
+   "desempenos": [
+    "saber reconoce animales y hábitats",
+    "saber hacer describe un animal con dos o tres frases",
+    "saber ser muestra interés por cuidar a los seres vivos."
+   ],
+   "juegos": "escucha-toca (animal-hábitat); escucha-atrapa (animales); memoria (animal-sonido); di-brilla (A fish can swim); ordenar (cuento corto sobre un animal, DBA 2).",
+   "analogo": "ficha \"mi animal de la región\" con dibujo y tres frases modeladas. Imprimible: mapa de hábitats para pegar animales.",
+   "fuente": "MEN, 2016b, pp. 119, 137."
+  },
+  {
+   "id": "p4",
+   "numero": 4,
+   "titulo": "Reconozco otras culturas",
+   "eje": "Una aldea global",
+   "periodo": {
+    "4": 4,
+    "3": 3
+   },
+   "meta": "describir en lenguaje sencillo en inglés diferencias culturales (tradiciones y festividades) entre comunidades y mostrar respeto por ellas.",
+   "funciones": [
+    "nombrar celebraciones",
+    "decir fechas",
+    "describir lo que otros están haciendo"
+   ],
+   "temas": [
+    "celebraciones de Colombia Christmas, New Year, Holy Week, carnival, festival (agregar las de la región)",
+    "candles, kite, cake, food, music, dance, parade, costume",
+    "meses y fechas",
+    "when."
+   ],
+   "gramatica": "presente continuo; preguntas con do / does; in / on para fechas. They are dancing. She is flying a kite. When is your birthday? It's on June 30th. Do you fly kites in August? Yes, we do.",
+   "dba": [
+    "4",
+    "1"
+   ],
+   "desempenos": [
+    "saber reconoce vocabulario de celebraciones y fechas",
+    "saber hacer dice qué se celebra y cuándo",
+    "saber ser valora las tradiciones de distintas comunidades."
+   ],
+   "juegos": "escucha-toca (celebraciones); ordenar (meses del año; fechas de cumpleaños del curso); di-brilla (My birthday is in…); memoria (fiesta-objeto).",
+   "analogo": "calendario de cumpleaños del curso y muestra de fiestas regionales. Imprimible: calendario.",
+   "fuente": "MEN, 2016b, pp. 119, 143."
+  }
+ ]
+}

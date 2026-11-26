@@ -24,8 +24,8 @@ Proyecto: https://supabase.com/dashboard → proyecto `jpwwmzfhbdnzsvwuciqa`. Ha
    Es lo que impide que alguien use un correo invitado que no es suyo.
 7. **Edge Functions → Deploy a new function → Via Editor**: nombre `invitar`, pegar
    `supabase/funciones/invitar/index.ts`, dejar "Verify JWT" activado → Deploy.
-8. **Authentication → URL Configuration**: Site URL `https://englishlandmanuelprofe.netlify.app`;
-   en Redirect URLs agregar `https://englishlandmanuelprofe.netlify.app/adultos/**`.
+8. **Authentication → URL Configuration**: Site URL `https://cuadernodegoma.pages.dev`;
+   en Redirect URLs agregar `https://cuadernodegoma.pages.dev/adultos/**`.
 9. **Authentication → Email Templates**: pasar al español "Invite user" y "Reset password".
 10. **Authentication → SMTP Settings**: configurar un correo propio (el de Supabase envía muy pocos
     por hora). Puede esperar hasta antes del piloto.
@@ -49,5 +49,28 @@ Proyecto: https://supabase.com/dashboard → proyecto `jpwwmzfhbdnzsvwuciqa`. Ha
 14. **SQL Editor** → New query → pegar todo `supabase/migraciones/005-cartilla-del-grupo.sql` → Run.
     Debe decir "Success". Sin ella, el coordinador no puede pasar un grupo a otra cartilla (solo
     hace falta cuando un colegio tenga más de una cartilla habilitada).
+
+## Migración 009 (catálogo completo de cartillas)
+
+15. **SQL Editor** → New query → pegar todo `supabase/migraciones/009-catalogo-cartillas.sql` → Run.
+    Da de alta las 17 cartillas nuevas (matemáticas, español e inglés de transición a 5.°) **sin
+    publicar**. No las publique todavía desde el modo dueño: se publican cuando su territorio 1 sea
+    jugable. Comprobarla con `select count(*) from cartillas;` (debe dar 18).
+
+## Migración 010 (misiones de matemáticas de transición)
+
+16. **SQL Editor** → New query → pegar todo `supabase/migraciones/010-misiones-matematicas-0.sql` → Run.
+    Deja en la base las 18 misiones de la página 1 de Cuadrito (transición), para que el progreso de
+    los niños se guarde cuando la cartilla se publique. No la publica.
+
+## Migración 011 (misiones de español de transición)
+
+17. **SQL Editor** → New query → pegar todo `supabase/migraciones/011-misiones-espanol-0.sql` → Run.
+    Igual que la 010, para la página 1 de Renglón (transición). No la publica.
+
+## Migración 012 (misiones de inglés de transición)
+
+18. **SQL Editor** → New query → pegar todo `supabase/migraciones/012-misiones-ingles-0.sql` → Run.
+    Igual que la 010, para la página 1 de Postal (inglés de transición). No la publica.
 
 Al terminar, avisar en el chat qué pasos quedaron hechos y si alguno dio error (copiar el mensaje).

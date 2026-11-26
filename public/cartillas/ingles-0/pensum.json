@@ -1,0 +1,186 @@
+{
+ "cartilla": "ingles-0",
+ "materia": "Inglés",
+ "grado": 0,
+ "gradoNombre": "Transición",
+ "guia": "Postal",
+ "titulo": "El cuaderno de Postal · Transición",
+ "fuente": "Contenidos programáticos de Inglés · Versión 1 · 24 de noviembre de 2026",
+ "proposito": "Nivel preparatorio pre-A1.",
+ "dba": [
+  {
+   "id": "1",
+   "texto": "Reconoce instrucciones sencillas relacionadas con su entorno inmediato, y responde a ellas de manera no verbal."
+  },
+  {
+   "id": "2",
+   "texto": "Asocia imágenes con sonidos de palabras relacionadas con su casa y salón de clases."
+  },
+  {
+   "id": "3",
+   "texto": "Identifica, repite y utiliza palabras asociadas con su entorno inmediato (casa y salón de clase)."
+  },
+  {
+   "id": "4",
+   "texto": "Comprende y responde preguntas muy sencillas sobre sus datos personales, tales como su nombre, edad y su familia."
+  }
+ ],
+ "ebc": "",
+ "unidades": [
+  {
+   "id": "p1",
+   "numero": 1,
+   "titulo": "Juego y aprendo sobre mi cuerpo",
+   "eje": "Salud y vida",
+   "periodo": {
+    "4": 1,
+    "3": 1
+   },
+   "meta": "seguir normas en inglés de cuidado propio y hacia los demás al participar en juegos individuales y grupales.",
+   "funciones": [
+    "saludar y decir el nombre",
+    "nombrar partes del cuerpo",
+    "seguir órdenes con el cuerpo",
+    "decir su juguete o juego favorito"
+   ],
+   "temas": [
+    "face, eyes, mouth, nose; head, shoulders, knees, toes",
+    "colores red, yellow, blue",
+    "formas circle, triangle, square",
+    "big, small, round",
+    "números 1-3",
+    "juguetes ball, doll, bike, car",
+    "acciones jump, run, play, push, pull",
+    "parque swing, see-saw, playground."
+   ],
+   "gramatica": "Hello! Good morning. My name is… I am a boy / a girl. Touch your… Let's play! Be careful! My favorite toy is… Jump three times.",
+   "dba": [
+    "1",
+    "3",
+    "4"
+   ],
+   "desempenos": [
+    "saber reconoce las partes principales del cuerpo cuando las oye",
+    "saber hacer toca o señala la parte que se nombra y sigue órdenes dichas despacio",
+    "saber ser cuida su cuerpo y el de los demás en el juego."
+   ],
+   "juegos": "escucha-toca (partes del cuerpo, juguetes); memoria imagen-sonido (cuerpo); contar-toca (1 a 3); di-brilla (saludo y My name is…); escucha-atrapa (colores, ya en la segunda mitad).",
+   "analogo": "Simon says y la canción tradicional Head, shoulders, knees and toes (dominio público) grabada con voz propia. Imprimible: cara para completar y títere de bolsa de papel (MEN, 2016b, pp. 249-250).",
+   "fuente": "MEN, 2016b, pp. 46-47."
+  },
+  {
+   "id": "p2",
+   "numero": 2,
+   "titulo": "Comparto mis emociones",
+   "eje": "Convivencia y paz",
+   "periodo": {
+    "4": 2,
+    "3": 2
+   },
+   "meta": "expresar estados de ánimo en inglés y asociarlos con situaciones de su entorno familiar y con sus emociones.",
+   "funciones": [
+    "decir cómo se siente",
+    "preguntar a otro cómo está",
+    "seguir instrucciones del salón"
+   ],
+   "temas": [
+    "happy, excited, surprised, sad, scared, tired",
+    "colores nuevos green, orange, purple (repaso red, yellow, blue)",
+    "números 4-5",
+    "up, down",
+    "materiales playdough, clay, paint, paper."
+   ],
+   "gramatica": "How are you? I am happy. How do you feel today? I feel sad. Are you tired? Yes, I am / No, I'm not. Órdenes del salón: Stand up, sit down, color, listen, look.",
+   "dba": [
+    "1",
+    "3"
+   ],
+   "desempenos": [
+    "saber reconoce las palabras de emociones al oírlas",
+    "saber hacer dice cómo se siente con una frase aprendida y responde How are you?",
+    "saber ser respeta el espacio y los sentimientos de los demás."
+   ],
+   "juegos": "escucha-toca (caras con emociones); di-brilla (I am happy); memoria (emoción-sonido); contar-toca (1 a 5); escucha-atrapa (colores).",
+   "analogo": "\"termómetro de emociones\" al inicio de la clase y canción tradicional If you're happy and you know it. Imprimible: tarjetas de emociones para colgar.",
+   "fuente": "MEN, 2016b, pp. 56-57."
+  },
+  {
+   "id": "p3",
+   "numero": 3,
+   "titulo": "¡Puedo cuidar mi mundo!",
+   "eje": "Medioambiente y sociedad",
+   "periodo": {
+    "4": 3,
+    "3": 3
+   },
+   "meta": "reconocer, visual y oralmente en inglés, acciones sencillas para el cuidado del medio ambiente en su casa y salón de clase.",
+   "funciones": [
+    "nombrar animales y lo que pueden hacer",
+    "nombrar partes de la casa y lugares del colegio",
+    "decir lo que le gusta",
+    "decir lo que ve"
+   ],
+   "temas": [
+    "animales domésticos dog, cat, rabbit, fish, turtle, cow, bull, goat, donkey y salvajes jaguar, snake, pink dolphin, monkey, parrot, bird (el MEN pide usar los del entorno: agregar los de Norte de Santander)",
+    "wild, domestic",
+    "naturaleza tree, leaf, flower, fruit, sea",
+    "casa living room, kitchen, bedroom, bathroom",
+    "colegio classroom, patio, office, playground",
+    "left, right",
+    "acciones jump, fly, crawl, eat, swim, grow",
+    "números 6-8."
+   ],
+   "gramatica": "A bird can fly. I can't swim. What's that? I like… / I don't like… I see two dogs. Pick up the trash. Throw garbage in the can.",
+   "dba": [
+    "2",
+    "3"
+   ],
+   "desempenos": [
+    "saber reconoce de oído animales y elementos de la naturaleza",
+    "saber hacer dice qué puede o no puede hacer un animal con can / can't",
+    "saber ser bota la basura en la caneca y trabaja con otros para cuidar el salón."
+   ],
+   "juegos": "escucha-toca (animales, partes de la casa); escucha-atrapa (animales); memoria (animal-sonido); contar-toca (6 a 8: I see six trees); di-brilla (A bird can fly).",
+   "analogo": "recorrido por el colegio recogiendo basura con órdenes en inglés; cuento ilustrado del ciclo de la oruga. Imprimible: lámina de la casa para señalar.",
+   "fuente": "MEN, 2016b, pp. 66-67."
+  },
+  {
+   "id": "p4",
+   "numero": 4,
+   "titulo": "Me reconozco como miembro de una comunidad",
+   "eje": "Una aldea global",
+   "periodo": {
+    "4": 4,
+    "3": 3
+   },
+   "meta": "mencionar en inglés su rol actual y futuro dentro de la comunidad, reconociendo su identidad cultural.",
+   "funciones": [
+    "presentar a su familia",
+    "decir su edad",
+    "decir qué quiere ser",
+    "nombrar celebraciones",
+    "decir el mes de su cumpleaños"
+   ],
+   "temas": [
+    "familia grandfather, grandmother, mom, dad, sister, brother",
+    "oficios teacher, farmer, driver, doctor, nurse, police officer, cook, seller, student (ver ajuste 2)",
+    "celebraciones birthday, Christmas, music, party, dinner (agregar las de la región)",
+    "meses January-December",
+    "números 9-10."
+   ],
+   "gramatica": "This is my mom. How old are you? I am 5 years old. I want to be a doctor. I am a student. My birthday is in November. My family likes Christmas.",
+   "dba": [
+    "4",
+    "2"
+   ],
+   "desempenos": [
+    "saber reconoce de oído miembros de la familia y oficios",
+    "saber hacer responde su nombre, edad y qué quiere ser",
+    "saber ser valora las costumbres de su familia y las de sus compañeros."
+   ],
+   "juegos": "escucha-toca (familia, oficios); di-brilla (I want to be a…); memoria (oficio-herramienta); contar-toca (9 y 10, edades); ordenar (meses, con apoyo de audio, solo como juego de escucha).",
+   "analogo": "juego de roles \"el pueblo\" con disfraces de oficios; árbol familiar dibujado. Imprimible: árbol familiar y tarjetas de oficios.",
+   "fuente": "MEN, 2016b, pp. 76-77."
+  }
+ ]
+}

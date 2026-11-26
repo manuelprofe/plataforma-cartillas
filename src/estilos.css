@@ -2345,6 +2345,13 @@ img {
   letter-spacing: 0.02em;
 }
 
+/* Para leer en voz alta: la palabra escrita, grande y en minúscula, es el reto. */
+.carta-grande .decir__leer {
+  margin: 6px 0 2px;
+  font-size: 3.2rem;
+  letter-spacing: 0.03em;
+}
+
 .decir__eco {
   min-height: 52px;
   font-size: 2.6rem;

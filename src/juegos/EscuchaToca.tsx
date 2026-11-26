@@ -110,8 +110,9 @@ export function EscuchaToca({ mision, base, idiomaVoz, imagenGuia, imagenFiesta,
           <button type="button" className="carta-grande" key={objetivo.en} onClick={repetir} aria-label={`Escuchar ${objetivo.en}`}>
             <img src={base + objetivo.icono} alt="" width="160" height="160" draggable={false} />
             {objetivo.cifra && <span className="carta-grande__cifra">{objetivo.cifra}</span>}
-            <strong>{objetivo.en}</strong>
-            <small>{objetivo.es}</small>
+            <strong lang={idiomaVoz}>{objetivo.en}</strong>
+            {/* En una cartilla en español la palabra ya está en su idioma: no se repite. */}
+            {objetivo.es !== objetivo.en && <small>{objetivo.es}</small>}
             <span className="carta-grande__oir" aria-hidden="true">🔊</span>
           </button>
           <button type="button" className="boton-seguir" onClick={siguienteCarta} aria-label="Siguiente">

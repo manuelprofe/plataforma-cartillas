@@ -1,0 +1,396 @@
+{
+ "cartilla": "espanol-4",
+ "materia": "Español",
+ "grado": 4,
+ "gradoNombre": "4.°",
+ "guia": "Renglón",
+ "titulo": "El cuaderno de Renglón · 4.°",
+ "fuente": "Contenidos programáticos de Español · Versión 1 · 24 de noviembre de 2026",
+ "proposito": "Leer para aprender y escribir con un plan: organizar información, producir textos según el público y crear textos literarios con figuras del lenguaje.",
+ "dba": [
+  {
+   "id": "1",
+   "texto": "Analiza la información presentada por los diferentes medios de comunicación con los cuales interactúa."
+  },
+  {
+   "id": "2",
+   "texto": "Escribe textos a partir de información dispuesta en imágenes, fotografías, manifestaciones artísticas o conversaciones cotidianas."
+  },
+  {
+   "id": "3",
+   "texto": "Crea textos literarios en los que articula lecturas previas e impresiones sobre un tema o situación."
+  },
+  {
+   "id": "4",
+   "texto": "Construye textos poéticos, empleando algunas figuras literarias."
+  },
+  {
+   "id": "5",
+   "texto": "Interpreta el tono del discurso de su interlocutor, a partir de las características de la voz, del ritmo, de las pausas y de la entonación."
+  },
+  {
+   "id": "6",
+   "texto": "Organiza la información que encuentra en los textos que lee, utilizando técnicas para el procesamiento de la información que le facilitan el proceso de comprensión e interpretación textual."
+  },
+  {
+   "id": "7",
+   "texto": "Participa en espacios de discusión en los que adapta sus emisiones a los requerimientos de la situación comunicativa."
+  },
+  {
+   "id": "8",
+   "texto": "Produce textos atendiendo a elementos como el tipo de público al que va dirigido, el contexto de circulación, sus saberes previos y la diversidad de formatos de la que dispone para su presentación."
+  }
+ ],
+ "ebc": "Estándares Básicos de Competencias del Lenguaje (MEN, 2006), metas al terminar 5.°.",
+ "periodos": {
+  "1": "Leer para aprender",
+  "2": "Crear historias",
+  "3": "Poesía y voz",
+  "4": "Informar y discutir"
+ },
+ "unidades": [
+  {
+   "id": "u1",
+   "numero": 1,
+   "titulo": "Tipos de texto y su intención",
+   "periodo": {
+    "4": 1,
+    "3": 1
+   },
+   "temas": [
+    "Narrativo, informativo, instructivo, descriptivo",
+    "para qué se escribió cada uno"
+   ],
+   "dba": [
+    "6"
+   ],
+   "factores": [
+    {
+     "id": "F2",
+     "nombre": "Comprensión e interpretación textual",
+     "texto": "Comprendo diversos tipos de texto, utilizando algunas estrategias de búsqueda, organización y almacenamiento de la información."
+    }
+   ],
+   "desempenos": [
+    "Identifica la intención y la estructura de un texto."
+   ],
+   "juegos": "escucha-toca (¿qué tipo de texto?), memoria"
+  },
+  {
+   "id": "u2",
+   "numero": 2,
+   "titulo": "Organizo la información",
+   "periodo": {
+    "4": 1,
+    "3": 1
+   },
+   "temas": [
+    "Idea principal y secundarias",
+    "subrayar, resumir, cuadros y esquemas sencillos",
+    "línea de tiempo"
+   ],
+   "dba": [
+    "6",
+    "2"
+   ],
+   "factores": [
+    {
+     "id": "F2",
+     "nombre": "Comprensión e interpretación textual",
+     "texto": "Comprendo diversos tipos de texto, utilizando algunas estrategias de búsqueda, organización y almacenamiento de la información."
+    }
+   ],
+   "desempenos": [
+    "Organiza la información de un texto en un esquema o línea de tiempo."
+   ],
+   "juegos": "ordenar (línea de tiempo), en el aula"
+  },
+  {
+   "id": "u3",
+   "numero": 3,
+   "titulo": "El párrafo y los conectores",
+   "periodo": {
+    "4": 1,
+    "3": 1
+   },
+   "temas": [
+    "Párrafo con idea central",
+    "conectores de orden (primero, luego, finalmente) y de causa"
+   ],
+   "dba": [
+    "8"
+   ],
+   "factores": [
+    {
+     "id": "F1",
+     "nombre": "Producción textual",
+     "texto": "Produzco textos orales, en situaciones comunicativas que permiten evidenciar el uso significativo de la entonación y la pertinencia articulatoria. Produzco textos escritos que responden a diversas necesidades comunicativas y que siguen un procedimiento estratégico para su elaboración."
+    }
+   ],
+   "desempenos": [
+    "Escribe párrafos con conectores."
+   ],
+   "juegos": "ordenar (párrafos), escucha-atrapa (conectores)"
+  },
+  {
+   "id": "u4",
+   "numero": 4,
+   "titulo": "Narrador y personajes",
+   "periodo": {
+    "4": 2,
+    "3": 1
+   },
+   "temas": [
+    "Narrador y personajes, tiempo y espacio",
+    "crear una nueva historia a partir de un cuento leído"
+   ],
+   "dba": [
+    "3"
+   ],
+   "factores": [
+    {
+     "id": "F3",
+     "nombre": "Literatura",
+     "texto": "Elaboro hipótesis de lectura acerca de las relaciones entre los elementos constitutivos de un texto literario, y entre éste y el contexto."
+    }
+   ],
+   "desempenos": [
+    "Crea una historia nueva a partir de una lectura y le da voz a cada personaje."
+   ],
+   "juegos": "ordenar, en el aula"
+  },
+  {
+   "id": "u5",
+   "numero": 5,
+   "titulo": "Clases de palabras",
+   "periodo": {
+    "4": 2,
+    "3": 2
+   },
+   "temas": [
+    "Sustantivos (comunes, propios, colectivos), adjetivos, pronombres personales, verbo (tiempos presente, pasado y futuro)"
+   ],
+   "dba": [
+    "8"
+   ],
+   "factores": [
+    {
+     "id": "F1",
+     "nombre": "Producción textual",
+     "texto": "Produzco textos orales, en situaciones comunicativas que permiten evidenciar el uso significativo de la entonación y la pertinencia articulatoria. Produzco textos escritos que responden a diversas necesidades comunicativas y que siguen un procedimiento estratégico para su elaboración."
+    }
+   ],
+   "desempenos": [
+    "Usa pronombres y tiempos verbales con coherencia."
+   ],
+   "juegos": "memoria, escucha-atrapa, escucha-toca"
+  },
+  {
+   "id": "u6",
+   "numero": 6,
+   "titulo": "La tilde",
+   "periodo": {
+    "4": 2,
+    "3": 2
+   },
+   "temas": [
+    "Agudas, graves y esdrújulas",
+    "sílaba tónica y regla de la tilde"
+   ],
+   "dba": [
+    "8"
+   ],
+   "factores": [
+    {
+     "id": "F1",
+     "nombre": "Producción textual",
+     "texto": "Produzco textos orales, en situaciones comunicativas que permiten evidenciar el uso significativo de la entonación y la pertinencia articulatoria. Produzco textos escritos que responden a diversas necesidades comunicativas y que siguen un procedimiento estratégico para su elaboración."
+    }
+   ],
+   "desempenos": [
+    "Marca la tilde en palabras agudas, graves y esdrújulas."
+   ],
+   "juegos": "escucha-atrapa (clasificar), memoria, escucha-toca"
+  },
+  {
+   "id": "u7",
+   "numero": 7,
+   "titulo": "Figuras literarias",
+   "periodo": {
+    "4": 3,
+    "3": 2
+   },
+   "temas": [
+    "Comparación o símil, metáfora, personificación",
+    "la realidad como inspiración"
+   ],
+   "dba": [
+    "4"
+   ],
+   "factores": [
+    {
+     "id": "F3",
+     "nombre": "Literatura",
+     "texto": "Elaboro hipótesis de lectura acerca de las relaciones entre los elementos constitutivos de un texto literario, y entre éste y el contexto."
+    }
+   ],
+   "desempenos": [
+    "Reconoce y usa símil, metáfora y personificación."
+   ],
+   "juegos": "memoria (figura y ejemplo), escucha-toca"
+  },
+  {
+   "id": "u8",
+   "numero": 8,
+   "titulo": "Escribo y declamo poemas",
+   "periodo": {
+    "4": 3,
+    "3": 2
+   },
+   "temas": [
+    "Caligramas, poemas a objetos y animales",
+    "entonación para expresar emociones"
+   ],
+   "dba": [
+    "4"
+   ],
+   "factores": [
+    {
+     "id": "F3",
+     "nombre": "Literatura",
+     "texto": "Elaboro hipótesis de lectura acerca de las relaciones entre los elementos constitutivos de un texto literario, y entre éste y el contexto."
+    },
+    {
+     "id": "F1",
+     "nombre": "Producción textual",
+     "texto": "Produzco textos orales, en situaciones comunicativas que permiten evidenciar el uso significativo de la entonación y la pertinencia articulatoria. Produzco textos escritos que responden a diversas necesidades comunicativas y que siguen un procedimiento estratégico para su elaboración."
+    }
+   ],
+   "desempenos": [
+    "Escribe un poema o caligrama y lo declama."
+   ],
+   "juegos": "di-brilla (declamar), en el aula"
+  },
+  {
+   "id": "u9",
+   "numero": 9,
+   "titulo": "El tono de la voz",
+   "periodo": {
+    "4": 3,
+    "3": 3
+   },
+   "temas": [
+    "Ritmo, pausas, entonación",
+    "estado de ánimo de quien habla",
+    "signos de interrogación y exclamación"
+   ],
+   "dba": [
+    "5",
+    "8"
+   ],
+   "factores": [
+    {
+     "id": "F1",
+     "nombre": "Producción textual",
+     "texto": "Produzco textos orales, en situaciones comunicativas que permiten evidenciar el uso significativo de la entonación y la pertinencia articulatoria. Produzco textos escritos que responden a diversas necesidades comunicativas y que siguen un procedimiento estratégico para su elaboración."
+    },
+    {
+     "id": "F5",
+     "nombre": "Ética de la comunicación",
+     "texto": "Conozco y analizo los elementos, roles, relaciones y reglas básicas de la comunicación, para inferir las intenciones y expectativas de mis interlocutores y hacer más eficaces mis procesos comunicativos."
+    }
+   ],
+   "desempenos": [
+    "Interpreta el tono de un mensaje oral y usa ¿? y ¡! en sus escritos."
+   ],
+   "juegos": "escucha-toca (¿cómo se siente?), di-brilla"
+  },
+  {
+   "id": "u10",
+   "numero": 10,
+   "titulo": "La noticia",
+   "periodo": {
+    "4": 4,
+    "3": 3
+   },
+   "temas": [
+    "Qué, quién, cuándo, dónde, cómo",
+    "la misma noticia en radio y televisión"
+   ],
+   "dba": [
+    "1"
+   ],
+   "factores": [
+    {
+     "id": "F4",
+     "nombre": "Medios de comunicación y otros sistemas simbólicos",
+     "texto": "Caracterizo los medios de comunicación masiva y selecciono la información que emiten, para utilizarla en la creación de nuevos textos. Caracterizo el funcionamiento de algunos códigos no verbales con miras a su uso en situaciones comunicativas auténticas."
+    }
+   ],
+   "desempenos": [
+    "Compara una noticia en dos medios y responde las preguntas básicas."
+   ],
+   "juegos": "ordenar (partes de la noticia), escucha-toca, en el aula"
+  },
+  {
+   "id": "u11",
+   "numero": 11,
+   "titulo": "Imagen y texto",
+   "periodo": {
+    "4": 4,
+    "3": 3
+   },
+   "temas": [
+    "Historieta, afiche, fotografía y canción",
+    "escribir a partir de imágenes"
+   ],
+   "dba": [
+    "2"
+   ],
+   "factores": [
+    {
+     "id": "F4",
+     "nombre": "Medios de comunicación y otros sistemas simbólicos",
+     "texto": "Caracterizo los medios de comunicación masiva y selecciono la información que emiten, para utilizarla en la creación de nuevos textos. Caracterizo el funcionamiento de algunos códigos no verbales con miras a su uso en situaciones comunicativas auténticas."
+    }
+   ],
+   "desempenos": [
+    "Escribe un texto a partir de una imagen o fotografía."
+   ],
+   "juegos": "ordenar (viñetas), en el aula"
+  },
+  {
+   "id": "u12",
+   "numero": 12,
+   "titulo": "La tertulia y la exposición",
+   "periodo": {
+    "4": 4,
+    "3": 3
+   },
+   "temas": [
+    "Turnos, ideas propias, respeto por las del otro",
+    "texto para un público (folleto turístico de Los Patios o del municipio)"
+   ],
+   "dba": [
+    "7",
+    "8"
+   ],
+   "factores": [
+    {
+     "id": "F1",
+     "nombre": "Producción textual",
+     "texto": "Produzco textos orales, en situaciones comunicativas que permiten evidenciar el uso significativo de la entonación y la pertinencia articulatoria. Produzco textos escritos que responden a diversas necesidades comunicativas y que siguen un procedimiento estratégico para su elaboración."
+    },
+    {
+     "id": "F5",
+     "nombre": "Ética de la comunicación",
+     "texto": "Conozco y analizo los elementos, roles, relaciones y reglas básicas de la comunicación, para inferir las intenciones y expectativas de mis interlocutores y hacer más eficaces mis procesos comunicativos."
+    }
+   ],
+   "desempenos": [
+    "Participa en una tertulia y produce un texto pensado para un público."
+   ],
+   "juegos": "en el aula"
+  }
+ ]
+}

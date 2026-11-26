@@ -1,0 +1,416 @@
+{
+ "cartilla": "espanol-5",
+ "materia": "Español",
+ "grado": 5,
+ "gradoNombre": "5.°",
+ "guia": "Renglón",
+ "titulo": "El cuaderno de Renglón · 5.°",
+ "fuente": "Contenidos programáticos de Español · Versión 1 · 24 de noviembre de 2026",
+ "proposito": "Leer críticamente y argumentar: comprender lo explícito y lo implícito, distinguir géneros literarios, opinar con razones y escribir con plan. Cierra la primaria y lo evalúa Saber 5.°.",
+ "dba": [
+  {
+   "id": "1",
+   "texto": "Utiliza la información que recibe de los medios de comunicación para participar en espacios discursivos de opinión."
+  },
+  {
+   "id": "2",
+   "texto": "Interpreta mensajes directos e indirectos en algunas imágenes, símbolos o gestos."
+  },
+  {
+   "id": "3",
+   "texto": "Comprende los roles que asumen los personajes en las obras literarias y su relación con la temática y la época en las que estas se desarrollan."
+  },
+  {
+   "id": "4",
+   "texto": "Reconoce en la lectura de los distintos géneros literarios diferentes posibilidades de recrear y ampliar su visión de mundo."
+  },
+  {
+   "id": "5",
+   "texto": "Comprende el sentido global de los mensajes, a partir de la relación entre la información explícita e implícita."
+  },
+  {
+   "id": "6",
+   "texto": "Identifica la intención comunicativa de los textos con los que interactúa a partir del análisis de su contenido y estructura."
+  },
+  {
+   "id": "7",
+   "texto": "Construye textos orales atendiendo a los contextos de uso, a los posibles interlocutores y a las líneas temáticas pertinentes con el propósito comunicativo en el que se enmarca el discurso."
+  },
+  {
+   "id": "8",
+   "texto": "Produce textos verbales y no verbales a partir de los planes textuales que elabora según la tipología a desarrollar."
+  }
+ ],
+ "ebc": "Estándares Básicos de Competencias del Lenguaje (MEN, 2006), metas al terminar 5.°.",
+ "periodos": {
+  "1": "Los géneros literarios",
+  "2": "Comprender y organizar",
+  "3": "Opinar con razones",
+  "4": "Medios, imagen y producción"
+ },
+ "unidades": [
+  {
+   "id": "u1",
+   "numero": 1,
+   "titulo": "Narrativo, lírico y dramático",
+   "periodo": {
+    "4": 1,
+    "3": 1
+   },
+   "temas": [
+    "Características y ejemplos de cada género",
+    "semejanzas y diferencias"
+   ],
+   "dba": [
+    "4"
+   ],
+   "factores": [
+    {
+     "id": "F3",
+     "nombre": "Literatura",
+     "texto": "Elaboro hipótesis de lectura acerca de las relaciones entre los elementos constitutivos de un texto literario, y entre éste y el contexto."
+    }
+   ],
+   "desempenos": [
+    "Clasifica textos por género y explica por qué."
+   ],
+   "juegos": "escucha-atrapa (clasificar), memoria, escucha-toca"
+  },
+  {
+   "id": "u2",
+   "numero": 2,
+   "titulo": "Autor, narrador y personajes",
+   "periodo": {
+    "4": 1,
+    "3": 1
+   },
+   "temas": [
+    "Diferencia entre autor y narrador",
+    "tipos de narrador",
+    "roles de los personajes y época de la obra"
+   ],
+   "dba": [
+    "3"
+   ],
+   "factores": [
+    {
+     "id": "F3",
+     "nombre": "Literatura",
+     "texto": "Elaboro hipótesis de lectura acerca de las relaciones entre los elementos constitutivos de un texto literario, y entre éste y el contexto."
+    }
+   ],
+   "desempenos": [
+    "Distingue autor y narrador y explica el papel de un personaje."
+   ],
+   "juegos": "escucha-toca, ordenar, en el aula"
+  },
+  {
+   "id": "u3",
+   "numero": 3,
+   "titulo": "El teatro",
+   "periodo": {
+    "4": 1,
+    "3": 1
+   },
+   "temas": [
+    "Guion, diálogos, acotaciones",
+    "montar una escena corta"
+   ],
+   "dba": [
+    "4",
+    "7"
+   ],
+   "factores": [
+    {
+     "id": "F3",
+     "nombre": "Literatura",
+     "texto": "Elaboro hipótesis de lectura acerca de las relaciones entre los elementos constitutivos de un texto literario, y entre éste y el contexto."
+    },
+    {
+     "id": "F1",
+     "nombre": "Producción textual",
+     "texto": "Produzco textos orales, en situaciones comunicativas que permiten evidenciar el uso significativo de la entonación y la pertinencia articulatoria. Produzco textos escritos que responden a diversas necesidades comunicativas y que siguen un procedimiento estratégico para su elaboración."
+    }
+   ],
+   "desempenos": [
+    "Lee y representa un guion con entonación y gestos."
+   ],
+   "juegos": "di-brilla, ordenar (escenas), en el aula"
+  },
+  {
+   "id": "u4",
+   "numero": 4,
+   "titulo": "Lo explícito y lo implícito",
+   "periodo": {
+    "4": 2,
+    "3": 1
+   },
+   "temas": [
+    "Inferencias, intención del autor, propósito del texto",
+    "preguntas tipo Saber"
+   ],
+   "dba": [
+    "5",
+    "6"
+   ],
+   "factores": [
+    {
+     "id": "F2",
+     "nombre": "Comprensión e interpretación textual",
+     "texto": "Comprendo diversos tipos de texto, utilizando algunas estrategias de búsqueda, organización y almacenamiento de la información."
+    }
+   ],
+   "desempenos": [
+    "Responde preguntas literales, inferenciales y críticas."
+   ],
+   "juegos": "escucha-toca, en el aula"
+  },
+  {
+   "id": "u5",
+   "numero": 5,
+   "titulo": "Esquemas y mapas mentales",
+   "periodo": {
+    "4": 2,
+    "3": 2
+   },
+   "temas": [
+    "Jerarquizar ideas",
+    "resumen",
+    "fuentes de información"
+   ],
+   "dba": [
+    "6",
+    "8"
+   ],
+   "factores": [
+    {
+     "id": "F2",
+     "nombre": "Comprensión e interpretación textual",
+     "texto": "Comprendo diversos tipos de texto, utilizando algunas estrategias de búsqueda, organización y almacenamiento de la información."
+    }
+   ],
+   "desempenos": [
+    "Organiza un texto en un mapa mental y escribe su resumen."
+   ],
+   "juegos": "ordenar (jerarquía), en el aula"
+  },
+  {
+   "id": "u6",
+   "numero": 6,
+   "titulo": "Gramática para escribir mejor",
+   "periodo": {
+    "4": 2,
+    "3": 2
+   },
+   "temas": [
+    "Clases de palabras completas",
+    "oración simple y compuesta",
+    "conectores de contraste y conclusión",
+    "prefijos y sufijos"
+   ],
+   "dba": [
+    "8"
+   ],
+   "factores": [
+    {
+     "id": "F1",
+     "nombre": "Producción textual",
+     "texto": "Produzco textos orales, en situaciones comunicativas que permiten evidenciar el uso significativo de la entonación y la pertinencia articulatoria. Produzco textos escritos que responden a diversas necesidades comunicativas y que siguen un procedimiento estratégico para su elaboración."
+    }
+   ],
+   "desempenos": [
+    "Usa conectores y forma palabras con prefijos y sufijos."
+   ],
+   "juegos": "memoria (prefijo y significado), escucha-atrapa, ordenar"
+  },
+  {
+   "id": "u7",
+   "numero": 7,
+   "titulo": "El texto de opinión",
+   "periodo": {
+    "4": 3,
+    "3": 2
+   },
+   "temas": [
+    "Tesis, razones y conclusión",
+    "hecho y opinión"
+   ],
+   "dba": [
+    "6",
+    "8"
+   ],
+   "factores": [
+    {
+     "id": "F1",
+     "nombre": "Producción textual",
+     "texto": "Produzco textos orales, en situaciones comunicativas que permiten evidenciar el uso significativo de la entonación y la pertinencia articulatoria. Produzco textos escritos que responden a diversas necesidades comunicativas y que siguen un procedimiento estratégico para su elaboración."
+    },
+    {
+     "id": "F2",
+     "nombre": "Comprensión e interpretación textual",
+     "texto": "Comprendo diversos tipos de texto, utilizando algunas estrategias de búsqueda, organización y almacenamiento de la información."
+    }
+   ],
+   "desempenos": [
+    "Distingue hecho de opinión y escribe un párrafo de opinión con razones."
+   ],
+   "juegos": "escucha-toca (¿hecho u opinión?), ordenar, en el aula"
+  },
+  {
+   "id": "u8",
+   "numero": 8,
+   "titulo": "Mesa redonda, panel, foro y debate",
+   "periodo": {
+    "4": 3,
+    "3": 2
+   },
+   "temas": [
+    "Estructura de cada uno",
+    "pedir y ceder la palabra",
+    "respeto por la idea del otro"
+   ],
+   "dba": [
+    "7",
+    "5"
+   ],
+   "factores": [
+    {
+     "id": "F1",
+     "nombre": "Producción textual",
+     "texto": "Produzco textos orales, en situaciones comunicativas que permiten evidenciar el uso significativo de la entonación y la pertinencia articulatoria. Produzco textos escritos que responden a diversas necesidades comunicativas y que siguen un procedimiento estratégico para su elaboración."
+    },
+    {
+     "id": "F5",
+     "nombre": "Ética de la comunicación",
+     "texto": "Conozco y analizo los elementos, roles, relaciones y reglas básicas de la comunicación, para inferir las intenciones y expectativas de mis interlocutores y hacer más eficaces mis procesos comunicativos."
+    }
+   ],
+   "desempenos": [
+    "Participa en un debate con argumentos y respeta los turnos."
+   ],
+   "juegos": "en el aula"
+  },
+  {
+   "id": "u9",
+   "numero": 9,
+   "titulo": "Ortografía y puntuación de 5.°",
+   "periodo": {
+    "4": 3,
+    "3": 3
+   },
+   "temas": [
+    "Coma, punto y coma, dos puntos, comillas",
+    "tilde diacrítica y en hiatos"
+   ],
+   "dba": [
+    "8"
+   ],
+   "factores": [
+    {
+     "id": "F1",
+     "nombre": "Producción textual",
+     "texto": "Produzco textos orales, en situaciones comunicativas que permiten evidenciar el uso significativo de la entonación y la pertinencia articulatoria. Produzco textos escritos que responden a diversas necesidades comunicativas y que siguen un procedimiento estratégico para su elaboración."
+    }
+   ],
+   "desempenos": [
+    "Puntúa y tilda correctamente un texto propio."
+   ],
+   "juegos": "escucha-atrapa, memoria, escucha-toca"
+  },
+  {
+   "id": "u10",
+   "numero": 10,
+   "titulo": "Medios y publicidad",
+   "periodo": {
+    "4": 4,
+    "3": 3
+   },
+   "temas": [
+    "Noticia y reportaje",
+    "publicidad y mensajes indirectos",
+    "emoticones, gestos y símbolos en redes"
+   ],
+   "dba": [
+    "1",
+    "2"
+   ],
+   "factores": [
+    {
+     "id": "F4",
+     "nombre": "Medios de comunicación y otros sistemas simbólicos",
+     "texto": "Caracterizo los medios de comunicación masiva y selecciono la información que emiten, para utilizarla en la creación de nuevos textos. Caracterizo el funcionamiento de algunos códigos no verbales con miras a su uso en situaciones comunicativas auténticas."
+    }
+   ],
+   "desempenos": [
+    "Analiza un anuncio y explica su mensaje directo e indirecto."
+   ],
+   "juegos": "escucha-toca, memoria (símbolo y mensaje), en el aula"
+  },
+  {
+   "id": "u11",
+   "numero": 11,
+   "titulo": "El noticiero escolar",
+   "periodo": {
+    "4": 4,
+    "3": 3
+   },
+   "temas": [
+    "Planear, escribir y presentar noticias del colegio",
+    "articular con claridad y leer con fluidez"
+   ],
+   "dba": [
+    "7",
+    "8"
+   ],
+   "factores": [
+    {
+     "id": "F1",
+     "nombre": "Producción textual",
+     "texto": "Produzco textos orales, en situaciones comunicativas que permiten evidenciar el uso significativo de la entonación y la pertinencia articulatoria. Produzco textos escritos que responden a diversas necesidades comunicativas y que siguen un procedimiento estratégico para su elaboración."
+    },
+    {
+     "id": "F4",
+     "nombre": "Medios de comunicación y otros sistemas simbólicos",
+     "texto": "Caracterizo los medios de comunicación masiva y selecciono la información que emiten, para utilizarla en la creación de nuevos textos. Caracterizo el funcionamiento de algunos códigos no verbales con miras a su uso en situaciones comunicativas auténticas."
+    }
+   ],
+   "desempenos": [
+    "Produce y presenta una noticia oral a partir de un plan."
+   ],
+   "juegos": "di-brilla (lectura fluida), ordenar (plan de la noticia), en el aula"
+  },
+  {
+   "id": "u12",
+   "numero": 12,
+   "titulo": "Mi proyecto de escritura",
+   "periodo": {
+    "4": 4,
+    "3": 3
+   },
+   "temas": [
+    "Plan textual completo (tipo de texto, propósito, público, borrador, revisión, versión final)",
+    "antología o periódico del curso"
+   ],
+   "dba": [
+    "8",
+    "4"
+   ],
+   "factores": [
+    {
+     "id": "F1",
+     "nombre": "Producción textual",
+     "texto": "Produzco textos orales, en situaciones comunicativas que permiten evidenciar el uso significativo de la entonación y la pertinencia articulatoria. Produzco textos escritos que responden a diversas necesidades comunicativas y que siguen un procedimiento estratégico para su elaboración."
+    },
+    {
+     "id": "F3",
+     "nombre": "Literatura",
+     "texto": "Elaboro hipótesis de lectura acerca de las relaciones entre los elementos constitutivos de un texto literario, y entre éste y el contexto."
+    }
+   ],
+   "desempenos": [
+    "Escribe un texto completo siguiendo un plan y lo corrige."
+   ],
+   "juegos": "en el aula (proyecto imprimible)"
+  }
+ ]
+}

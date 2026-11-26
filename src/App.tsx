@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState, type ComponentType } from 'react';
+import { lazy, Suspense, useEffect, useMemo, useRef, useState, type ComponentType } from 'react';
 import type { Cartilla, Mision, Palabra, PropsJuego, Territorio } from './tipos';
 import { Mundo, olvidarMundo } from './Mundo';
 import { EscuchaToca } from './juegos/EscuchaToca';
@@ -6,6 +6,8 @@ import { EscuchaAtrapa } from './juegos/EscuchaAtrapa';
 import { DiBrilla } from './juegos/DiBrilla';
 import { ContarToca } from './juegos/ContarToca';
 import { Ordenar } from './juegos/Ordenar';
+import { Operacion } from './juegos/Operacion';
+import { Silabas } from './juegos/Silabas';
 import { Memoria } from './juegos/Memoria';
 import { ElegirHeroe } from './ElegirHeroe';
 import { Cinematica } from './Cinematica';
@@ -31,6 +33,13 @@ const IMAGEN_FIESTA = 'personajes/goma-celebrar.webp';
  * Qué componente juega cada plantilla del contenido. Van en la carga inicial (unos 10 kB
  * comprimidos entre los cuatro): así abrir un juego sin conexión nunca deja la pantalla en blanco.
  */
+// Los de plataformas y cuento van aparte: el trabajador sin conexión lo guarda al instalar
+// (todo assets/ del niño entra al armazón), así que también abre sin red.
+const Plataformas = lazy(() => import('./juegos/plataformas/Plataformas').then((m) => ({ default: m.Plataformas })));
+const Camino = lazy(() => import('./mundos/Camino').then((m) => ({ default: m.Camino })));
+const Biblioteca = lazy(() => import('./mundos/Biblioteca').then((m) => ({ default: m.Biblioteca })));
+const Cuento = lazy(() => import('./juegos/cuento/Cuento').then((m) => ({ default: m.Cuento })));
+
 const JUEGOS: Record<Mision['plantilla'], ComponentType<PropsJuego>> = {
   'escucha-toca': EscuchaToca,
   'escucha-atrapa': EscuchaAtrapa,
@@ -38,6 +47,10 @@ const JUEGOS: Record<Mision['plantilla'], ComponentType<PropsJuego>> = {
   memoria: Memoria,
   'contar-toca': ContarToca,
   ordenar: Ordenar,
+  operacion: Operacion,
+  silabas: Silabas,
+  plataformas: Plataformas,
+  cuento: Cuento,
 };
 
 type Pantalla =
@@ -429,24 +442,46 @@ export function App() {
           <Disco paquete={paquete} avatar={activo === INVITADO ? progreso.heroe : (perfilDe(activo)?.avatar ?? progreso.heroe)} />
         </button>
       )}
-      {pantalla.tipo === 'mapa' && heroe && (
+      {pantalla.tipo === 'mapa' && heroe && cartilla.vista && (
+        <Suspense fallback={null}>
+          {(() => {
+            const Vista = cartilla.vista.tipo === 'camino' ? Camino : Biblioteca;
+            return (
+              <Vista
+                territorio={territorio}
+                heroe={heroe}
+                etapas={cartilla.vista.etapas}
+                estelas={cartilla.estelas}
+                accesorios={cartilla.accesorios ?? []}
+                base={BASE}
+                voz={cartilla.idiomaVoz}
+                onEntrar={(indice) => irA({ tipo: 'mision', indice })}
+              />
+            );
+          })()}
+        </Suspense>
+      )}
+      {pantalla.tipo === 'mapa' && heroe && !cartilla.vista && (
         <Mundo territorio={territorio} heroe={heroe} estelas={cartilla.estelas} accesorios={cartilla.accesorios ?? []} cinematicas={cartilla.cinematicas ?? {}} ayudas={cartilla.ayudas ?? {}} base={BASE} vozIngles={cartilla.idiomaVoz} vozEspanol={cartilla.idiomaHistoria} onEntrar={(indice) => irA({ tipo: 'mision', indice })} />
       )}
 
       {mision && Juego && (
-        <Juego
-          key={mision.id}
-          mision={mision}
-          base={BASE}
-          idiomaVoz={cartilla.idiomaVoz}
-          imagenGuia={territorio.personajes[territorio.guia].imagen}
-          imagenFiesta={cartilla.imagenes?.fiesta ?? IMAGEN_FIESTA}
-          ayudas={cartilla.ayudas ?? {}}
-          modo={modo}
-          vozHistoria={cartilla.idiomaHistoria}
-          onTerminar={() => irA({ tipo: 'mapa' }, 'volver')}
-          onSalir={() => irA({ tipo: 'mapa' }, 'volver')}
-        />
+        <Suspense fallback={<div className="mision" />}>
+          <Juego
+            key={mision.id}
+            mision={mision}
+            base={BASE}
+            idiomaVoz={cartilla.idiomaVoz}
+            imagenGuia={territorio.personajes[territorio.guia].imagen}
+            imagenFiesta={cartilla.imagenes?.fiesta ?? IMAGEN_FIESTA}
+            ayudas={cartilla.ayudas ?? {}}
+            modo={modo}
+            vozHistoria={cartilla.idiomaHistoria}
+            imagenHeroe={heroe?.imagen}
+            onTerminar={() => irA({ tipo: 'mapa' }, 'volver')}
+            onSalir={() => irA({ tipo: 'mapa' }, 'volver')}
+          />
+        </Suspense>
       )}
 
       {cortina && <div className={`cortina cortina--${cortina}`} aria-hidden="true" />}

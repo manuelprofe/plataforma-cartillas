@@ -4,6 +4,7 @@ import type { MouseEvent, ReactNode } from 'react';
 import './base.css';
 import { navegar } from '../navegacion';
 import { Icono, type NombreIcono } from './Icono';
+import { dibujo, NOMBRE, type Personaje } from '../marca';
 
 /** Enlace real (se puede abrir en otra pestaña) que navega sin recargar dentro del mismo modo. */
 export function Enlace({ ruta, className, children, actual }: { ruta: string; className?: string; children: ReactNode; actual?: boolean }) {
@@ -30,7 +31,8 @@ export function Barra({ inicio, estado, fin }: { inicio: string; estado?: ReactN
   return (
     <header className="barra">
       <Enlace ruta={inicio} className="barra__marca">
-        El Cuaderno de Goma
+        <img src={dibujo('goma-saludar')} alt="" width="26" height="33" />
+        {NOMBRE}
       </Enlace>
       {estado && (
         <p className="barra__estado" role="status">
@@ -103,10 +105,11 @@ export function Panel({ titulo, fin, filas, children }: { titulo?: string; fin?:
 }
 
 /** Fila de 56 px. Con `ruta` es un enlace con flecha; con `alTocar`, un botón; sin ninguno, solo muestra. */
-export function Fila({ ruta, alTocar, icono, titulo, detalle, fin, tenue }: { ruta?: string; alTocar?: () => void; icono?: NombreIcono; titulo: ReactNode; detalle?: ReactNode; fin?: ReactNode; tenue?: boolean }) {
+/** `personaje` pone un dibujo pequeño en lugar del ícono (la materia de una cartilla). */
+export function Fila({ ruta, alTocar, icono, personaje, titulo, detalle, fin, tenue }: { ruta?: string; alTocar?: () => void; icono?: NombreIcono; personaje?: Personaje; titulo: ReactNode; detalle?: ReactNode; fin?: ReactNode; tenue?: boolean }) {
   const dentro = (
     <>
-      {icono && <Icono nombre={icono} />}
+      {personaje ? <img className="fila__personaje" src={dibujo(personaje)} alt="" width="32" height="32" /> : icono && <Icono nombre={icono} />}
       <span className="fila__texto">
         <span>{titulo}</span>
         {detalle && <span className="meta">{detalle}</span>}
@@ -180,12 +183,16 @@ export function Hueco({ titulo, texto, trae, children }: { titulo: string; texto
 }
 
 /** Texto de un estado vacío con su acción (esqueleto §2.2). */
-export function Vacio({ titulo, texto, children }: { titulo?: string; texto: ReactNode; children?: ReactNode }) {
+/** Vacío con acción. Goma señala qué hacer; `personaje={null}` lo quita (pantallas muy chicas). */
+export function Vacio({ titulo, texto, children, personaje = 'goma-senalar' }: { titulo?: string; texto: ReactNode; children?: ReactNode; personaje?: Personaje | null }) {
   return (
-    <div className="vacio">
-      {titulo && <h2 className="h3">{titulo}</h2>}
-      <p className="sec">{texto}</p>
-      {children}
+    <div className={personaje ? 'vacio vacio--con-dibujo' : 'vacio'}>
+      {personaje && <img className="vacio__dibujo" src={dibujo(personaje)} alt="" width="72" height="82" loading="lazy" />}
+      <div className="vacio__texto">
+        {titulo && <h2 className="h3">{titulo}</h2>}
+        <p className="sec">{texto}</p>
+        {children}
+      </div>
     </div>
   );
 }

@@ -1,0 +1,4996 @@
+{
+ "id": "espanol-0",
+ "titulo": "El cuaderno de Renglón · Transición",
+ "materia": "Español",
+ "grado": "0",
+ "idiomaVoz": "es-CO",
+ "territorios": [
+  {
+   "id": "bosque",
+   "nombre": "Renglón · Página 1",
+   "guia": "renglon",
+   "puerta": {
+    "destino": "la página 2",
+    "x": 2018,
+    "y": 2566,
+    "personaje": "renglon",
+    "escenaCerrada": "puente-cerrado",
+    "escenaAbierta": "puente-abierto"
+   },
+   "misiones": [
+    {
+     "id": "renglon-saludos",
+     "titulo": "El pollito perdido",
+     "plantilla": "cuento",
+     "icono": "iconos/cuento-1.svg",
+     "palabras": [
+      {
+       "es": "hola",
+       "icono": "iconos/1f44b.svg",
+       "frase": "¡Hola! Así saludo al llegar.",
+       "en": "hola"
+      }
+     ],
+     "x": 367,
+     "y": 717,
+     "antes": [
+      {
+       "quien": "renglon",
+       "es": "Te voy a contar un cuento. Escucha bien, que después te pregunto.",
+       "en": "Te voy a contar un cuento. Escucha bien, que después te pregunto."
+      }
+     ],
+     "familia": {
+      "tema": "saludar y despedirse",
+      "idea": "Al llegar y al salir de casa, salúdense y despídanse mirándose a los ojos. Si su hijo lo dice primero, celébrelo."
+     },
+     "cuento": {
+      "paginas": [
+       {
+        "imagen": "iconos/cuento-1.svg",
+        "texto": "Pío, el pollito, sale a pasear al jardín."
+       },
+       {
+        "imagen": "iconos/cuento-2.svg",
+        "texto": "Pío ve una mariposa y la sigue, la sigue... ¡muy lejos!"
+       },
+       {
+        "imagen": "iconos/cuento-3.svg",
+        "texto": "Pío mira a su alrededor. Está solo y tiene miedo."
+       },
+       {
+        "imagen": "iconos/cuento-4.svg",
+        "texto": "Pío llama fuerte: ¡pío, pío! Mamá gallina lo escucha."
+       },
+       {
+        "imagen": "iconos/cuento-5.svg",
+        "texto": "Mamá gallina corre, lo encuentra y lo abraza. ¡Qué alegría!"
+       }
+      ],
+      "preguntas": [
+       {
+        "tipo": "elegir",
+        "dice": "¿Quién se perdió en el cuento?",
+        "opciones": [
+         {
+          "imagen": "iconos/1f408.svg",
+          "texto": "el gato"
+         },
+         {
+          "imagen": "iconos/1f424.svg",
+          "texto": "el pollito"
+         },
+         {
+          "imagen": "iconos/1f415.svg",
+          "texto": "el perro"
+         }
+        ],
+        "correcta": 1,
+        "bien": "¡Sí! Pío, el pollito."
+       },
+       {
+        "tipo": "elegir",
+        "dice": "¿Qué siguió Pío?",
+        "opciones": [
+         {
+          "imagen": "iconos/1f41f.svg",
+          "texto": "un pez"
+         },
+         {
+          "imagen": "iconos/26bd.svg",
+          "texto": "una pelota"
+         },
+         {
+          "imagen": "iconos/1f98b.svg",
+          "texto": "una mariposa"
+         }
+        ],
+        "correcta": 2,
+        "bien": "¡Una mariposa!"
+       },
+       {
+        "tipo": "ordenar",
+        "dice": "Toca los dibujos en orden: ¿qué pasó primero, después y al final?",
+        "imagenes": [
+         "iconos/cuento-1.svg",
+         "iconos/cuento-2.svg",
+         "iconos/cuento-5.svg"
+        ],
+        "bien": "¡Así pasó el cuento!"
+       },
+       {
+        "tipo": "elegir",
+        "dice": "¿Cómo se sintió Pío cuando mamá lo encontró?",
+        "opciones": [
+         {
+          "imagen": "iconos/1f622.svg",
+          "texto": "triste"
+         },
+         {
+          "imagen": "iconos/1f604.svg",
+          "texto": "feliz"
+         },
+         {
+          "imagen": "iconos/1f620.svg",
+          "texto": "enojado"
+         }
+        ],
+        "correcta": 1,
+        "bien": "¡Feliz! Por eso se abrazaron."
+       }
+      ]
+     }
+    },
+    {
+     "id": "renglon-saludos-2",
+     "titulo": "Saluda tú",
+     "plantilla": "di-brilla",
+     "icono": "iconos/buenos-dias.svg",
+     "palabras": [
+      {
+       "es": "hola",
+       "icono": "iconos/1f44b.svg",
+       "frase": "¡Hola! Así saludo al llegar.",
+       "en": "hola"
+      },
+      {
+       "es": "adiós",
+       "icono": "iconos/adios.svg",
+       "frase": "¡Adiós! Así me despido al irme.",
+       "aceptar": [
+        "adios",
+        "chao",
+        "chau"
+       ],
+       "en": "adiós"
+      },
+      {
+       "es": "buenos días",
+       "icono": "iconos/buenos-dias.svg",
+       "frase": "Buenos días: así saludo en la mañana.",
+       "aceptar": [
+        "buen día",
+        "buenos dias"
+       ],
+       "en": "buenos días"
+      },
+      {
+       "es": "buenas noches",
+       "icono": "iconos/buenas-noches.svg",
+       "frase": "Buenas noches: así me despido antes de dormir.",
+       "en": "buenas noches"
+      },
+      {
+       "es": "gracias",
+       "icono": "iconos/1f64f.svg",
+       "frase": "Gracias: así digo cuando me ayudan.",
+       "en": "gracias"
+      }
+     ],
+     "x": 573,
+     "y": 731,
+     "antes": [
+      {
+       "quien": "renglon",
+       "es": "Ahora tú lo dices. Escucha y dilo con tu voz cuando quieras. ¡Cada intento cuenta!",
+       "en": "Ahora tú lo dices. Escucha y dilo con tu voz cuando quieras. ¡Cada intento cuenta!"
+      }
+     ],
+     "familia": {
+      "tema": "saludar y despedirse",
+      "idea": "Al llegar y al salir de casa, salúdense y despídanse mirándose a los ojos. Si su hijo lo dice primero, celébrelo."
+     },
+     "requiere": "renglon-saludos"
+    },
+    {
+     "id": "renglon-saludos-3",
+     "titulo": "Parejas de saludos",
+     "plantilla": "memoria",
+     "icono": "iconos/1f64f.svg",
+     "palabras": [
+      {
+       "es": "hola",
+       "icono": "iconos/1f44b.svg",
+       "frase": "¡Hola! Así saludo al llegar.",
+       "en": "hola"
+      },
+      {
+       "es": "adiós",
+       "icono": "iconos/adios.svg",
+       "frase": "¡Adiós! Así me despido al irme.",
+       "aceptar": [
+        "adios",
+        "chao",
+        "chau"
+       ],
+       "en": "adiós"
+      },
+      {
+       "es": "buenos días",
+       "icono": "iconos/buenos-dias.svg",
+       "frase": "Buenos días: así saludo en la mañana.",
+       "aceptar": [
+        "buen día",
+        "buenos dias"
+       ],
+       "en": "buenos días"
+      },
+      {
+       "es": "gracias",
+       "icono": "iconos/1f64f.svg",
+       "frase": "Gracias: así digo cuando me ayudan.",
+       "en": "gracias"
+      }
+     ],
+     "x": 470,
+     "y": 817,
+     "antes": [
+      {
+       "quien": "renglon",
+       "es": "Gira dos cartas: busca el dibujo y lo que se dice.",
+       "en": "Gira dos cartas: busca el dibujo y lo que se dice."
+      }
+     ],
+     "familia": {
+      "tema": "saludar y despedirse",
+      "idea": "Al llegar y al salir de casa, salúdense y despídanse mirándose a los ojos. Si su hijo lo dice primero, celébrelo."
+     },
+     "requiere": "renglon-saludos-2",
+     "formas": [
+      "imagen-sonido"
+     ],
+     "parejas": 4
+    },
+    {
+     "id": "renglon-animales",
+     "titulo": "¿Quién hace así?",
+     "plantilla": "escucha-toca",
+     "icono": "iconos/1f415.svg",
+     "palabras": [
+      {
+       "es": "guau guau",
+       "icono": "iconos/1f415.svg",
+       "frase": "El perro hace guau guau.",
+       "aceptar": [
+        "guau",
+        "wow wow",
+        "wow"
+       ],
+       "en": "guau guau"
+      },
+      {
+       "es": "miau",
+       "icono": "iconos/1f408.svg",
+       "frase": "El gato hace miau.",
+       "aceptar": [
+        "miau miau",
+        "mia"
+       ],
+       "en": "miau"
+      },
+      {
+       "es": "muu",
+       "icono": "iconos/1f404.svg",
+       "frase": "La vaca hace muu.",
+       "aceptar": [
+        "mu",
+        "muuu"
+       ],
+       "en": "muu"
+      },
+      {
+       "es": "cuac cuac",
+       "icono": "iconos/1f986.svg",
+       "frase": "El pato hace cuac cuac.",
+       "aceptar": [
+        "cuac",
+        "cuá cuá",
+        "quack"
+       ],
+       "en": "cuac cuac"
+      },
+      {
+       "es": "pío pío",
+       "icono": "iconos/1f424.svg",
+       "frase": "El pollito hace pío pío.",
+       "aceptar": [
+        "pio pio",
+        "pío"
+       ],
+       "en": "pío pío"
+      },
+      {
+       "es": "quiquiriquí",
+       "icono": "iconos/1f413.svg",
+       "frase": "El gallo hace quiquiriquí.",
+       "aceptar": [
+        "quiquiriqui",
+        "kikiriki"
+       ],
+       "en": "quiquiriquí"
+      }
+     ],
+     "x": 1009,
+     "y": 645,
+     "antes": [
+      {
+       "quien": "renglon",
+       "es": "Escucha el sonido y toca el animal que lo hace.",
+       "en": "Escucha el sonido y toca el animal que lo hace."
+      }
+     ],
+     "familia": {
+      "tema": "los sonidos de los animales",
+      "idea": "Jueguen a adivinar: uno hace el sonido de un animal y el otro dice cuál es. Si tienen un perro o un gato cerca, escúchenlo juntos en silencio."
+     }
+    },
+    {
+     "id": "renglon-animales-2",
+     "titulo": "¿Quién hace ese ruido?",
+     "plantilla": "cuento",
+     "icono": "iconos/ruido-4.svg",
+     "palabras": [
+      {
+       "es": "guau guau",
+       "icono": "iconos/1f415.svg",
+       "frase": "El perro hace guau guau.",
+       "aceptar": [
+        "guau",
+        "wow wow",
+        "wow"
+       ],
+       "en": "guau guau"
+      },
+      {
+       "es": "miau",
+       "icono": "iconos/1f408.svg",
+       "frase": "El gato hace miau.",
+       "aceptar": [
+        "miau miau",
+        "mia"
+       ],
+       "en": "miau"
+      }
+     ],
+     "x": 1215,
+     "y": 665,
+     "antes": [
+      {
+       "quien": "renglon",
+       "es": "Este cuento pasa de noche. Escucha bien los sonidos.",
+       "en": "Este cuento pasa de noche. Escucha bien los sonidos."
+      }
+     ],
+     "familia": {
+      "tema": "los sonidos de los animales",
+      "idea": "Jueguen a adivinar: uno hace el sonido de un animal y el otro dice cuál es. Si tienen un perro o un gato cerca, escúchenlo juntos en silencio."
+     },
+     "requiere": "renglon-animales",
+     "cuento": {
+      "paginas": [
+       {
+        "imagen": "iconos/ruido-1.svg",
+        "texto": "Es de noche. Lola no puede dormir: algo hace ruido."
+       },
+       {
+        "imagen": "iconos/ruido-2.svg",
+        "texto": "¿Será el perro? No, el perro está dormido."
+       },
+       {
+        "imagen": "iconos/ruido-3.svg",
+        "texto": "¿Será el gato? No, el gato toma leche."
+       },
+       {
+        "imagen": "iconos/ruido-4.svg",
+        "texto": "¡Cri, cri! Era un grillo en la ventana."
+       },
+       {
+        "imagen": "iconos/ruido-5.svg",
+        "texto": "Lola sonríe y le dice: buenas noches, grillo."
+       }
+      ],
+      "preguntas": [
+       {
+        "tipo": "elegir",
+        "dice": "¿Quién hacía el ruido?",
+        "opciones": [
+         {
+          "imagen": "iconos/1f415.svg",
+          "texto": "el perro"
+         },
+         {
+          "imagen": "iconos/1f997.svg",
+          "texto": "el grillo"
+         },
+         {
+          "imagen": "iconos/1f408.svg",
+          "texto": "el gato"
+         }
+        ],
+        "correcta": 1,
+        "bien": "¡El grillo! Cri, cri."
+       },
+       {
+        "tipo": "elegir",
+        "dice": "¿Qué hacía el gato?",
+        "opciones": [
+         {
+          "imagen": "iconos/1f4a4.svg",
+          "texto": "dormía"
+         },
+         {
+          "imagen": "iconos/1f95b.svg",
+          "texto": "tomaba leche"
+         },
+         {
+          "imagen": "iconos/1f3b6.svg",
+          "texto": "cantaba"
+         }
+        ],
+        "correcta": 1,
+        "bien": "¡Tomaba leche!"
+       },
+       {
+        "tipo": "ordenar",
+        "dice": "Toca los dibujos en orden: ¿qué pasó primero, después y al final?",
+        "imagenes": [
+         "iconos/ruido-1.svg",
+         "iconos/ruido-4.svg",
+         "iconos/ruido-5.svg"
+        ],
+        "bien": "¡Así pasó el cuento!"
+       },
+       {
+        "tipo": "elegir",
+        "dice": "¿Cuándo pasó el cuento: de día o de noche?",
+        "opciones": [
+         {
+          "imagen": "iconos/2600.svg",
+          "texto": "de día"
+         },
+         {
+          "imagen": "iconos/1f319.svg",
+          "texto": "de noche"
+         }
+        ],
+        "correcta": 1,
+        "bien": "¡De noche! Por eso Lola quería dormir."
+       }
+      ]
+     }
+    },
+    {
+     "id": "renglon-animales-3",
+     "titulo": "Haz como el animal",
+     "plantilla": "di-brilla",
+     "icono": "iconos/1f413.svg",
+     "palabras": [
+      {
+       "es": "guau guau",
+       "icono": "iconos/1f415.svg",
+       "frase": "El perro hace guau guau.",
+       "aceptar": [
+        "guau",
+        "wow wow",
+        "wow"
+       ],
+       "en": "guau guau"
+      },
+      {
+       "es": "miau",
+       "icono": "iconos/1f408.svg",
+       "frase": "El gato hace miau.",
+       "aceptar": [
+        "miau miau",
+        "mia"
+       ],
+       "en": "miau"
+      },
+      {
+       "es": "muu",
+       "icono": "iconos/1f404.svg",
+       "frase": "La vaca hace muu.",
+       "aceptar": [
+        "mu",
+        "muuu"
+       ],
+       "en": "muu"
+      },
+      {
+       "es": "cuac cuac",
+       "icono": "iconos/1f986.svg",
+       "frase": "El pato hace cuac cuac.",
+       "aceptar": [
+        "cuac",
+        "cuá cuá",
+        "quack"
+       ],
+       "en": "cuac cuac"
+      },
+      {
+       "es": "pío pío",
+       "icono": "iconos/1f424.svg",
+       "frase": "El pollito hace pío pío.",
+       "aceptar": [
+        "pio pio",
+        "pío"
+       ],
+       "en": "pío pío"
+      },
+      {
+       "es": "quiquiriquí",
+       "icono": "iconos/1f413.svg",
+       "frase": "El gallo hace quiquiriquí.",
+       "aceptar": [
+        "quiquiriqui",
+        "kikiriki"
+       ],
+       "en": "quiquiriquí"
+      }
+     ],
+     "x": 1341,
+     "y": 616,
+     "antes": [
+      {
+       "quien": "renglon",
+       "es": "Escucha y haz el sonido con tu voz. ¡Cada intento cuenta!",
+       "en": "Escucha y haz el sonido con tu voz. ¡Cada intento cuenta!"
+      }
+     ],
+     "familia": {
+      "tema": "los sonidos de los animales",
+      "idea": "Jueguen a adivinar: uno hace el sonido de un animal y el otro dice cuál es. Si tienen un perro o un gato cerca, escúchenlo juntos en silencio."
+     },
+     "requiere": "renglon-animales-2"
+    },
+    {
+     "id": "renglon-cosas",
+     "titulo": "¿Qué suena?",
+     "plantilla": "escucha-toca",
+     "icono": "iconos/1f514.svg",
+     "palabras": [
+      {
+       "es": "rin rin",
+       "icono": "iconos/260e.svg",
+       "frase": "El teléfono hace rin rin.",
+       "aceptar": [
+        "ring ring",
+        "rin"
+       ],
+       "en": "rin rin"
+      },
+      {
+       "es": "tic tac",
+       "icono": "iconos/23f0.svg",
+       "frase": "El reloj hace tic tac.",
+       "aceptar": [
+        "tic tac tic tac",
+        "tictac"
+       ],
+       "en": "tic tac"
+      },
+      {
+       "es": "din don",
+       "icono": "iconos/1f514.svg",
+       "frase": "La campana hace din don.",
+       "aceptar": [
+        "ding dong",
+        "din dón"
+       ],
+       "en": "din don"
+      },
+      {
+       "es": "pum pum",
+       "icono": "iconos/1f941.svg",
+       "frase": "El tambor hace pum pum.",
+       "aceptar": [
+        "pum",
+        "bum bum"
+       ],
+       "en": "pum pum"
+      },
+      {
+       "es": "plas plas",
+       "icono": "iconos/1f44f.svg",
+       "frase": "Las manos hacen plas plas.",
+       "aceptar": [
+        "plas",
+        "plaz plaz"
+       ],
+       "en": "plas plas"
+      },
+      {
+       "es": "pi pi",
+       "icono": "iconos/1f697.svg",
+       "frase": "El carro hace pi pi.",
+       "aceptar": [
+        "pipí",
+        "pii pii",
+        "bip bip"
+       ],
+       "en": "pi pi"
+      }
+     ],
+     "x": 1697,
+     "y": 645,
+     "antes": [
+      {
+       "quien": "renglon",
+       "es": "Escucha el sonido y toca la cosa que suena así.",
+       "en": "Escucha el sonido y toca la cosa que suena así."
+      }
+     ],
+     "familia": {
+      "tema": "los sonidos de las cosas",
+      "idea": "Siéntense un minuto en silencio y cuenten qué cosas suenan en la casa: el reloj, la olla, un carro en la calle. Luego imítenlas."
+     }
+    },
+    {
+     "id": "renglon-cosas-2",
+     "titulo": "Parejas de sonidos",
+     "plantilla": "memoria",
+     "icono": "iconos/23f0.svg",
+     "palabras": [
+      {
+       "es": "rin rin",
+       "icono": "iconos/260e.svg",
+       "frase": "El teléfono hace rin rin.",
+       "aceptar": [
+        "ring ring",
+        "rin"
+       ],
+       "en": "rin rin"
+      },
+      {
+       "es": "tic tac",
+       "icono": "iconos/23f0.svg",
+       "frase": "El reloj hace tic tac.",
+       "aceptar": [
+        "tic tac tic tac",
+        "tictac"
+       ],
+       "en": "tic tac"
+      },
+      {
+       "es": "din don",
+       "icono": "iconos/1f514.svg",
+       "frase": "La campana hace din don.",
+       "aceptar": [
+        "ding dong",
+        "din dón"
+       ],
+       "en": "din don"
+      },
+      {
+       "es": "pum pum",
+       "icono": "iconos/1f941.svg",
+       "frase": "El tambor hace pum pum.",
+       "aceptar": [
+        "pum",
+        "bum bum"
+       ],
+       "en": "pum pum"
+      }
+     ],
+     "x": 1903,
+     "y": 688,
+     "antes": [
+      {
+       "quien": "renglon",
+       "es": "Gira dos cartas: busca el dibujo y su sonido.",
+       "en": "Gira dos cartas: busca el dibujo y su sonido."
+      }
+     ],
+     "familia": {
+      "tema": "los sonidos de las cosas",
+      "idea": "Siéntense un minuto en silencio y cuenten qué cosas suenan en la casa: el reloj, la olla, un carro en la calle. Luego imítenlas."
+     },
+     "requiere": "renglon-cosas",
+     "formas": [
+      "imagen-sonido"
+     ],
+     "parejas": 4
+    },
+    {
+     "id": "renglon-cosas-3",
+     "titulo": "Atrapa lo que suena",
+     "plantilla": "escucha-atrapa",
+     "icono": "iconos/1f941.svg",
+     "palabras": [
+      {
+       "es": "rin rin",
+       "icono": "iconos/260e.svg",
+       "frase": "El teléfono hace rin rin.",
+       "aceptar": [
+        "ring ring",
+        "rin"
+       ],
+       "en": "rin rin"
+      },
+      {
+       "es": "tic tac",
+       "icono": "iconos/23f0.svg",
+       "frase": "El reloj hace tic tac.",
+       "aceptar": [
+        "tic tac tic tac",
+        "tictac"
+       ],
+       "en": "tic tac"
+      },
+      {
+       "es": "din don",
+       "icono": "iconos/1f514.svg",
+       "frase": "La campana hace din don.",
+       "aceptar": [
+        "ding dong",
+        "din dón"
+       ],
+       "en": "din don"
+      },
+      {
+       "es": "pum pum",
+       "icono": "iconos/1f941.svg",
+       "frase": "El tambor hace pum pum.",
+       "aceptar": [
+        "pum",
+        "bum bum"
+       ],
+       "en": "pum pum"
+      },
+      {
+       "es": "plas plas",
+       "icono": "iconos/1f44f.svg",
+       "frase": "Las manos hacen plas plas.",
+       "aceptar": [
+        "plas",
+        "plaz plaz"
+       ],
+       "en": "plas plas"
+      },
+      {
+       "es": "pi pi",
+       "icono": "iconos/1f697.svg",
+       "frase": "El carro hace pi pi.",
+       "aceptar": [
+        "pipí",
+        "pii pii",
+        "bip bip"
+       ],
+       "en": "pi pi"
+      }
+     ],
+     "x": 2041,
+     "y": 645,
+     "antes": [
+      {
+       "quien": "renglon",
+       "es": "Atrapa la cosa que hace el sonido que escuchas.",
+       "en": "Atrapa la cosa que hace el sonido que escuchas."
+      }
+     ],
+     "familia": {
+      "tema": "los sonidos de las cosas",
+      "idea": "Siéntense un minuto en silencio y cuenten qué cosas suenan en la casa: el reloj, la olla, un carro en la calle. Luego imítenlas."
+     },
+     "requiere": "renglon-cosas-2",
+     "atrapa": {
+      "cruceInicio": 6,
+      "cruceFinal": 4.5,
+      "distractores": [
+       2,
+       2,
+       3
+      ]
+     }
+    },
+    {
+     "id": "renglon-rondas",
+     "titulo": "¿Qué ronda es?",
+     "plantilla": "escucha-toca",
+     "icono": "iconos/1f425.svg",
+     "palabras": [
+      {
+       "es": "los pollitos",
+       "icono": "iconos/1f425.svg",
+       "frase": "Los pollitos dicen pío, pío, pío.",
+       "en": "los pollitos"
+      },
+      {
+       "es": "arroz con leche",
+       "icono": "iconos/1f35a.svg",
+       "frase": "Arroz con leche, me quiero casar.",
+       "en": "arroz con leche"
+      },
+      {
+       "es": "el patio de mi casa",
+       "icono": "iconos/1f3e1.svg",
+       "frase": "El patio de mi casa es particular.",
+       "en": "el patio de mi casa"
+      },
+      {
+       "es": "que llueva",
+       "icono": "iconos/2614.svg",
+       "frase": "Que llueva, que llueva, la vieja está en la cueva.",
+       "en": "que llueva"
+      },
+      {
+       "es": "aserrín, aserrán",
+       "icono": "iconos/1fab5.svg",
+       "frase": "Aserrín, aserrán, los maderos de San Juan.",
+       "aceptar": [
+        "aserrín aserrán",
+        "aserrin aserran"
+       ],
+       "en": "aserrín, aserrán"
+      }
+     ],
+     "x": 1662,
+     "y": 1347,
+     "antes": [
+      {
+       "quien": "renglon",
+       "es": "Escucha el nombre de la ronda y toca su dibujo.",
+       "en": "Escucha el nombre de la ronda y toca su dibujo."
+      }
+     ],
+     "familia": {
+      "tema": "rondas y canciones de siempre",
+      "idea": "Canten juntos una ronda que usted cantaba de niño (Los pollitos, Arroz con leche, El patio de mi casa) y hagan los gestos con las manos."
+     }
+    },
+    {
+     "id": "renglon-rondas-2",
+     "titulo": "Canta conmigo",
+     "plantilla": "di-brilla",
+     "icono": "iconos/1f3e1.svg",
+     "palabras": [
+      {
+       "es": "los pollitos",
+       "icono": "iconos/1f425.svg",
+       "frase": "Los pollitos dicen pío, pío, pío.",
+       "en": "los pollitos"
+      },
+      {
+       "es": "arroz con leche",
+       "icono": "iconos/1f35a.svg",
+       "frase": "Arroz con leche, me quiero casar.",
+       "en": "arroz con leche"
+      },
+      {
+       "es": "el patio de mi casa",
+       "icono": "iconos/1f3e1.svg",
+       "frase": "El patio de mi casa es particular.",
+       "en": "el patio de mi casa"
+      },
+      {
+       "es": "que llueva",
+       "icono": "iconos/2614.svg",
+       "frase": "Que llueva, que llueva, la vieja está en la cueva.",
+       "en": "que llueva"
+      },
+      {
+       "es": "aserrín, aserrán",
+       "icono": "iconos/1fab5.svg",
+       "frase": "Aserrín, aserrán, los maderos de San Juan.",
+       "aceptar": [
+        "aserrín aserrán",
+        "aserrin aserran"
+       ],
+       "en": "aserrín, aserrán"
+      }
+     ],
+     "x": 1834,
+     "y": 1477,
+     "antes": [
+      {
+       "quien": "renglon",
+       "es": "Escucha el nombre de la ronda y dilo tú. Si te la sabes, ¡cántala! Cada intento cuenta.",
+       "en": "Escucha el nombre de la ronda y dilo tú. Si te la sabes, ¡cántala! Cada intento cuenta."
+      }
+     ],
+     "familia": {
+      "tema": "rondas y canciones de siempre",
+      "idea": "Canten juntos una ronda que usted cantaba de niño (Los pollitos, Arroz con leche, El patio de mi casa) y hagan los gestos con las manos."
+     },
+     "requiere": "renglon-rondas"
+    },
+    {
+     "id": "renglon-rondas-3",
+     "titulo": "Atrapa la ronda",
+     "plantilla": "escucha-atrapa",
+     "icono": "iconos/1f35a.svg",
+     "palabras": [
+      {
+       "es": "los pollitos",
+       "icono": "iconos/1f425.svg",
+       "frase": "Los pollitos dicen pío, pío, pío.",
+       "en": "los pollitos"
+      },
+      {
+       "es": "arroz con leche",
+       "icono": "iconos/1f35a.svg",
+       "frase": "Arroz con leche, me quiero casar.",
+       "en": "arroz con leche"
+      },
+      {
+       "es": "el patio de mi casa",
+       "icono": "iconos/1f3e1.svg",
+       "frase": "El patio de mi casa es particular.",
+       "en": "el patio de mi casa"
+      },
+      {
+       "es": "que llueva",
+       "icono": "iconos/2614.svg",
+       "frase": "Que llueva, que llueva, la vieja está en la cueva.",
+       "en": "que llueva"
+      },
+      {
+       "es": "aserrín, aserrán",
+       "icono": "iconos/1fab5.svg",
+       "frase": "Aserrín, aserrán, los maderos de San Juan.",
+       "aceptar": [
+        "aserrín aserrán",
+        "aserrin aserran"
+       ],
+       "en": "aserrín, aserrán"
+      }
+     ],
+     "x": 2006,
+     "y": 1347,
+     "antes": [
+      {
+       "quien": "renglon",
+       "es": "Atrapa el dibujo de la ronda que escuchas.",
+       "en": "Atrapa el dibujo de la ronda que escuchas."
+      }
+     ],
+     "familia": {
+      "tema": "rondas y canciones de siempre",
+      "idea": "Canten juntos una ronda que usted cantaba de niño (Los pollitos, Arroz con leche, El patio de mi casa) y hagan los gestos con las manos."
+     },
+     "requiere": "renglon-rondas-2",
+     "atrapa": {
+      "cruceInicio": 6,
+      "cruceFinal": 4.5,
+      "distractores": [
+       2,
+       2,
+       3
+      ]
+     }
+    },
+    {
+     "id": "renglon-nombres",
+     "titulo": "¿Quién es?",
+     "plantilla": "escucha-toca",
+     "icono": "personajes/vecino-1.webp",
+     "palabras": [
+      {
+       "es": "Tito",
+       "icono": "personajes/vecino-1.webp",
+       "frase": "Él es Tito.",
+       "en": "Tito"
+      },
+      {
+       "es": "Púa",
+       "icono": "personajes/vecino-2.webp",
+       "frase": "Ella es Púa.",
+       "aceptar": [
+        "pua"
+       ],
+       "en": "Púa"
+      },
+      {
+       "es": "Abu",
+       "icono": "personajes/vecino-3.webp",
+       "frase": "Él es Abu.",
+       "en": "Abu"
+      },
+      {
+       "es": "Nuez",
+       "icono": "personajes/vecino-4.webp",
+       "frase": "Ella es Nuez.",
+       "aceptar": [
+        "nues"
+       ],
+       "en": "Nuez"
+      },
+      {
+       "es": "Caro",
+       "icono": "personajes/vecino-5.webp",
+       "frase": "Ella es Caro.",
+       "en": "Caro"
+      },
+      {
+       "es": "Rayo",
+       "icono": "personajes/vecino-6.webp",
+       "frase": "Él es Rayo.",
+       "en": "Rayo"
+      }
+     ],
+     "x": 459,
+     "y": 2064,
+     "antes": [
+      {
+       "quien": "renglon",
+       "es": "Estos son los vecinos de la página. Escucha el nombre y toca a quien se llama así.",
+       "en": "Estos son los vecinos de la página. Escucha el nombre y toca a quien se llama así."
+      }
+     ],
+     "familia": {
+      "tema": "mi nombre y el de mis compañeros",
+      "idea": "Pregúntele los nombres de sus compañeros de clase y salúdenlos juntos en voz alta: «¡Hola, Sara!». Escriba su nombre en una hoja y que lo decore."
+     }
+    },
+    {
+     "id": "renglon-nombres-2",
+     "titulo": "Cara y nombre",
+     "plantilla": "memoria",
+     "icono": "personajes/vecino-5.webp",
+     "palabras": [
+      {
+       "es": "Tito",
+       "icono": "personajes/vecino-1.webp",
+       "frase": "Él es Tito.",
+       "en": "Tito"
+      },
+      {
+       "es": "Púa",
+       "icono": "personajes/vecino-2.webp",
+       "frase": "Ella es Púa.",
+       "aceptar": [
+        "pua"
+       ],
+       "en": "Púa"
+      },
+      {
+       "es": "Abu",
+       "icono": "personajes/vecino-3.webp",
+       "frase": "Él es Abu.",
+       "en": "Abu"
+      },
+      {
+       "es": "Caro",
+       "icono": "personajes/vecino-5.webp",
+       "frase": "Ella es Caro.",
+       "en": "Caro"
+      }
+     ],
+     "x": 665,
+     "y": 2107,
+     "antes": [
+      {
+       "quien": "renglon",
+       "es": "Gira dos cartas: busca la cara y su nombre.",
+       "en": "Gira dos cartas: busca la cara y su nombre."
+      }
+     ],
+     "familia": {
+      "tema": "mi nombre y el de mis compañeros",
+      "idea": "Pregúntele los nombres de sus compañeros de clase y salúdenlos juntos en voz alta: «¡Hola, Sara!». Escriba su nombre en una hoja y que lo decore."
+     },
+     "requiere": "renglon-nombres",
+     "formas": [
+      "imagen-sonido"
+     ],
+     "parejas": 4
+    },
+    {
+     "id": "renglon-nombres-3",
+     "titulo": "Saluda a cada vecino",
+     "plantilla": "di-brilla",
+     "icono": "personajes/vecino-3.webp",
+     "palabras": [
+      {
+       "es": "Tito",
+       "icono": "personajes/vecino-1.webp",
+       "frase": "Él es Tito.",
+       "en": "Tito"
+      },
+      {
+       "es": "Púa",
+       "icono": "personajes/vecino-2.webp",
+       "frase": "Ella es Púa.",
+       "aceptar": [
+        "pua"
+       ],
+       "en": "Púa"
+      },
+      {
+       "es": "Abu",
+       "icono": "personajes/vecino-3.webp",
+       "frase": "Él es Abu.",
+       "en": "Abu"
+      },
+      {
+       "es": "Nuez",
+       "icono": "personajes/vecino-4.webp",
+       "frase": "Ella es Nuez.",
+       "aceptar": [
+        "nues"
+       ],
+       "en": "Nuez"
+      },
+      {
+       "es": "Caro",
+       "icono": "personajes/vecino-5.webp",
+       "frase": "Ella es Caro.",
+       "en": "Caro"
+      },
+      {
+       "es": "Rayo",
+       "icono": "personajes/vecino-6.webp",
+       "frase": "Él es Rayo.",
+       "en": "Rayo"
+      }
+     ],
+     "x": 871,
+     "y": 2064,
+     "antes": [
+      {
+       "quien": "renglon",
+       "es": "Saluda a cada vecino por su nombre. ¡Cada intento cuenta!",
+       "en": "Saluda a cada vecino por su nombre. ¡Cada intento cuenta!"
+      }
+     ],
+     "familia": {
+      "tema": "mi nombre y el de mis compañeros",
+      "idea": "Pregúntele los nombres de sus compañeros de clase y salúdenlos juntos en voz alta: «¡Hola, Sara!». Escriba su nombre en una hoja y que lo decore."
+     },
+     "requiere": "renglon-nombres-2"
+    },
+    {
+     "id": "renglon-naturaleza",
+     "titulo": "Escucha la naturaleza",
+     "plantilla": "escucha-toca",
+     "icono": "iconos/1f438.svg",
+     "palabras": [
+      {
+       "es": "plic plic",
+       "icono": "iconos/1f327.svg",
+       "frase": "La lluvia hace plic plic.",
+       "aceptar": [
+        "plic",
+        "plip plip"
+       ],
+       "en": "plic plic"
+      },
+      {
+       "es": "bzz",
+       "icono": "iconos/1f41d.svg",
+       "frase": "La abeja hace bzz.",
+       "aceptar": [
+        "bzzz",
+        "zzz",
+        "bss"
+       ],
+       "en": "bzz"
+      },
+      {
+       "es": "croac",
+       "icono": "iconos/1f438.svg",
+       "frase": "La rana hace croac.",
+       "aceptar": [
+        "croac croac",
+        "croá"
+       ],
+       "en": "croac"
+      },
+      {
+       "es": "uh uh",
+       "icono": "iconos/1f989.svg",
+       "frase": "El búho hace uh uh.",
+       "aceptar": [
+        "uh",
+        "uu uu"
+       ],
+       "en": "uh uh"
+      },
+      {
+       "es": "fiu fiu",
+       "icono": "iconos/1f32c.svg",
+       "frase": "El viento hace fiu fiu.",
+       "aceptar": [
+        "fiu",
+        "shhh"
+       ],
+       "en": "fiu fiu"
+      }
+     ],
+     "x": 1513,
+     "y": 2208,
+     "antes": [
+      {
+       "quien": "renglon",
+       "es": "Cierra los ojos, escucha el sonido y toca el dibujo.",
+       "en": "Cierra los ojos, escucha el sonido y toca el dibujo."
+      }
+     ],
+     "familia": {
+      "tema": "escuchar en silencio",
+      "idea": "Salgan al patio o a la ventana, cierren los ojos un ratico y cuenten lo que oyen: pájaros, lluvia, viento. Luego imiten los sonidos."
+     }
+    },
+    {
+     "id": "renglon-naturaleza-2",
+     "titulo": "Suena como la naturaleza",
+     "plantilla": "di-brilla",
+     "icono": "iconos/1f989.svg",
+     "palabras": [
+      {
+       "es": "plic plic",
+       "icono": "iconos/1f327.svg",
+       "frase": "La lluvia hace plic plic.",
+       "aceptar": [
+        "plic",
+        "plip plip"
+       ],
+       "en": "plic plic"
+      },
+      {
+       "es": "bzz",
+       "icono": "iconos/1f41d.svg",
+       "frase": "La abeja hace bzz.",
+       "aceptar": [
+        "bzzz",
+        "zzz",
+        "bss"
+       ],
+       "en": "bzz"
+      },
+      {
+       "es": "croac",
+       "icono": "iconos/1f438.svg",
+       "frase": "La rana hace croac.",
+       "aceptar": [
+        "croac croac",
+        "croá"
+       ],
+       "en": "croac"
+      },
+      {
+       "es": "uh uh",
+       "icono": "iconos/1f989.svg",
+       "frase": "El búho hace uh uh.",
+       "aceptar": [
+        "uh",
+        "uu uu"
+       ],
+       "en": "uh uh"
+      },
+      {
+       "es": "fiu fiu",
+       "icono": "iconos/1f32c.svg",
+       "frase": "El viento hace fiu fiu.",
+       "aceptar": [
+        "fiu",
+        "shhh"
+       ],
+       "en": "fiu fiu"
+      }
+     ],
+     "x": 1708,
+     "y": 2208,
+     "antes": [
+      {
+       "quien": "renglon",
+       "es": "Escucha y hazlo con tu voz. ¡Cada intento cuenta!",
+       "en": "Escucha y hazlo con tu voz. ¡Cada intento cuenta!"
+      }
+     ],
+     "familia": {
+      "tema": "escuchar en silencio",
+      "idea": "Salgan al patio o a la ventana, cierren los ojos un ratico y cuenten lo que oyen: pájaros, lluvia, viento. Luego imiten los sonidos."
+     },
+     "requiere": "renglon-naturaleza"
+    },
+    {
+     "id": "renglon-pozo",
+     "titulo": "El pozo de los sonidos",
+     "plantilla": "memoria",
+     "icono": "mundo/objeto-6.webp",
+     "palabras": [],
+     "palabrasDe": [
+      "renglon-saludos",
+      "renglon-saludos-2",
+      "renglon-animales",
+      "renglon-animales-2",
+      "renglon-cosas",
+      "renglon-cosas-2",
+      "renglon-rondas",
+      "renglon-rondas-2",
+      "renglon-nombres",
+      "renglon-nombres-2",
+      "renglon-naturaleza"
+     ],
+     "requiereAlguna": [
+      "renglon-saludos",
+      "renglon-animales",
+      "renglon-cosas",
+      "renglon-rondas",
+      "renglon-nombres"
+     ],
+     "escenaDormida": "pozo-dormido",
+     "formas": [
+      "imagen-sonido"
+     ],
+     "parejas": 4,
+     "antes": [
+      {
+       "quien": "goma",
+       "es": "Este es el pozo de los recuerdos. Gira dos cartas y busca las que van juntas.",
+       "en": "Este es el pozo de los recuerdos. Gira dos cartas y busca las que van juntas."
+      }
+     ],
+     "opcional": true,
+     "x": 1146,
+     "y": 1347
+    }
+   ],
+   "personajes": {
+    "goma": {
+     "nombre": "Goma",
+     "imagen": "personajes/goma-saludar.webp",
+     "ancho": 96
+    },
+    "tito": {
+     "nombre": "Tito",
+     "imagen": "personajes/vecino-1.webp",
+     "ancho": 78
+    },
+    "pua": {
+     "nombre": "Púa",
+     "imagen": "personajes/vecino-2.webp",
+     "ancho": 78
+    },
+    "abu": {
+     "nombre": "Abu",
+     "imagen": "personajes/vecino-3.webp",
+     "ancho": 82
+    },
+    "nuez": {
+     "nombre": "Nuez",
+     "imagen": "personajes/vecino-4.webp",
+     "ancho": 82
+    },
+    "caro": {
+     "nombre": "Caro",
+     "imagen": "personajes/vecino-5.webp",
+     "ancho": 88
+    },
+    "rayo": {
+     "nombre": "Rayo",
+     "imagen": "personajes/vecino-6.webp",
+     "ancho": 84
+    },
+    "renglon": {
+     "nombre": "Renglón",
+     "imagen": "personajes/renglon-saludar.webp",
+     "ancho": 96
+    }
+   },
+   "idiomaPorAvance": [
+    "es"
+   ],
+   "mundo": {
+    "ancho": 2293,
+    "inicio": {
+     "x": 470,
+     "y": 2595
+    },
+    "habitantes": [
+     {
+      "id": "goma",
+      "personaje": "goma",
+      "x": 539,
+      "y": 2494,
+      "escena": "goma"
+     },
+     {
+      "id": "renglon",
+      "personaje": "renglon",
+      "x": 1284,
+      "y": 1347,
+      "escena": "renglon"
+     },
+     {
+      "id": "caro",
+      "personaje": "caro",
+      "x": 275,
+      "y": 912,
+      "escena": "caro-listo",
+      "zona": "renglon-saludos",
+      "encargo": {
+       "pide": {
+        "es": "hola",
+        "icono": "iconos/1f44b.svg",
+        "frase": "¡Hola! Así saludo al llegar.",
+        "en": "hola"
+       },
+       "opciones": [
+        {
+         "es": "adiós",
+         "icono": "iconos/adios.svg",
+         "frase": "¡Adiós! Así me despido al irme.",
+         "aceptar": [
+          "adios",
+          "chao",
+          "chau"
+         ],
+         "en": "adiós"
+        },
+        {
+         "es": "hola",
+         "icono": "iconos/1f44b.svg",
+         "frase": "¡Hola! Así saludo al llegar.",
+         "en": "hola"
+        },
+        {
+         "es": "gracias",
+         "icono": "iconos/1f64f.svg",
+         "frase": "Gracias: así digo cuando me ayudan.",
+         "en": "gracias"
+        }
+       ],
+       "x": 688,
+       "y": 946,
+       "escenaPide": "caro-pide",
+       "escenaOtra": "caro-otra",
+       "escenaGracias": "caro-gracias",
+       "escenaListo": "caro-listo"
+      }
+     },
+     {
+      "id": "tito",
+      "personaje": "tito",
+      "x": 986,
+      "y": 831,
+      "escena": "tito-listo",
+      "zona": "renglon-animales",
+      "encargo": {
+       "pide": {
+        "es": "guau guau",
+        "icono": "iconos/1f415.svg",
+        "frase": "El perro hace guau guau.",
+        "aceptar": [
+         "guau",
+         "wow wow",
+         "wow"
+        ],
+        "en": "guau guau"
+       },
+       "opciones": [
+        {
+         "es": "miau",
+         "icono": "iconos/1f408.svg",
+         "frase": "El gato hace miau.",
+         "aceptar": [
+          "miau miau",
+          "mia"
+         ],
+         "en": "miau"
+        },
+        {
+         "es": "guau guau",
+         "icono": "iconos/1f415.svg",
+         "frase": "El perro hace guau guau.",
+         "aceptar": [
+          "guau",
+          "wow wow",
+          "wow"
+         ],
+         "en": "guau guau"
+        },
+        {
+         "es": "muu",
+         "icono": "iconos/1f404.svg",
+         "frase": "La vaca hace muu.",
+         "aceptar": [
+          "mu",
+          "muuu"
+         ],
+         "en": "muu"
+        }
+       ],
+       "x": 1284,
+       "y": 912,
+       "escenaPide": "tito-pide",
+       "escenaOtra": "tito-otra",
+       "escenaGracias": "tito-gracias",
+       "escenaListo": "tito-listo"
+      }
+     },
+     {
+      "id": "abu",
+      "personaje": "abu",
+      "x": 2121,
+      "y": 745,
+      "escena": "abu-listo",
+      "zona": "renglon-cosas",
+      "encargo": {
+       "pide": {
+        "es": "tic tac",
+        "icono": "iconos/23f0.svg",
+        "frase": "El reloj hace tic tac.",
+        "aceptar": [
+         "tic tac tic tac",
+         "tictac"
+        ],
+        "en": "tic tac"
+       },
+       "opciones": [
+        {
+         "es": "din don",
+         "icono": "iconos/1f514.svg",
+         "frase": "La campana hace din don.",
+         "aceptar": [
+          "ding dong",
+          "din dón"
+         ],
+         "en": "din don"
+        },
+        {
+         "es": "tic tac",
+         "icono": "iconos/23f0.svg",
+         "frase": "El reloj hace tic tac.",
+         "aceptar": [
+          "tic tac tic tac",
+          "tictac"
+         ],
+         "en": "tic tac"
+        },
+        {
+         "es": "pum pum",
+         "icono": "iconos/1f941.svg",
+         "frase": "El tambor hace pum pum.",
+         "aceptar": [
+          "pum",
+          "bum bum"
+         ],
+         "en": "pum pum"
+        }
+       ],
+       "x": 1903,
+       "y": 860,
+       "escenaPide": "abu-pide",
+       "escenaOtra": "abu-otra",
+       "escenaGracias": "abu-gracias",
+       "escenaListo": "abu-listo"
+      }
+     },
+     {
+      "id": "pua",
+      "personaje": "pua",
+      "x": 2064,
+      "y": 1491,
+      "escena": "pua-listo",
+      "zona": "renglon-rondas",
+      "encargo": {
+       "pide": {
+        "es": "los pollitos",
+        "icono": "iconos/1f425.svg",
+        "frase": "Los pollitos dicen pío, pío, pío.",
+        "en": "los pollitos"
+       },
+       "opciones": [
+        {
+         "es": "arroz con leche",
+         "icono": "iconos/1f35a.svg",
+         "frase": "Arroz con leche, me quiero casar.",
+         "en": "arroz con leche"
+        },
+        {
+         "es": "los pollitos",
+         "icono": "iconos/1f425.svg",
+         "frase": "Los pollitos dicen pío, pío, pío.",
+         "en": "los pollitos"
+        },
+        {
+         "es": "el patio de mi casa",
+         "icono": "iconos/1f3e1.svg",
+         "frase": "El patio de mi casa es particular.",
+         "en": "el patio de mi casa"
+        }
+       ],
+       "x": 1811,
+       "y": 1204,
+       "escenaPide": "pua-pide",
+       "escenaOtra": "pua-otra",
+       "escenaGracias": "pua-gracias",
+       "escenaListo": "pua-listo"
+      }
+     },
+     {
+      "id": "nuez",
+      "personaje": "nuez",
+      "x": 367,
+      "y": 1978,
+      "escena": "nuez-listo",
+      "zona": "renglon-nombres",
+      "encargo": {
+       "pide": {
+        "es": "Rayo",
+        "icono": "personajes/vecino-6.webp",
+        "frase": "Él es Rayo.",
+        "en": "Rayo"
+       },
+       "opciones": [
+        {
+         "es": "Tito",
+         "icono": "personajes/vecino-1.webp",
+         "frase": "Él es Tito.",
+         "en": "Tito"
+        },
+        {
+         "es": "Rayo",
+         "icono": "personajes/vecino-6.webp",
+         "frase": "Él es Rayo.",
+         "en": "Rayo"
+        },
+        {
+         "es": "Caro",
+         "icono": "personajes/vecino-5.webp",
+         "frase": "Ella es Caro.",
+         "en": "Caro"
+        }
+       ],
+       "x": 738,
+       "y": 2294,
+       "escenaPide": "nuez-pide",
+       "escenaOtra": "nuez-otra",
+       "escenaGracias": "nuez-gracias",
+       "escenaListo": "nuez-listo"
+      }
+     },
+     {
+      "id": "rayo",
+      "personaje": "rayo",
+      "x": 1811,
+      "y": 2294,
+      "escena": "rayo"
+     }
+    ],
+    "luciernagas": [],
+    "mapa": "fondos/pagina-1.webp",
+    "alto": 2867,
+    "tiposArbol": [],
+    "arboles": [],
+    "luces": [
+     {
+      "x": 1146,
+      "y": 1433,
+      "radio": 5160
+     }
+    ],
+    "radioLuzMision": 420,
+    "criaturas": [
+     {
+      "imagen": "mundo/animal-1.webp",
+      "ancho": 46,
+      "x": 688,
+      "y": 2695,
+      "radio": 90,
+      "movimiento": "revolotea",
+      "rapidez": 0.8,
+      "palabra": {
+       "en": "mariposa",
+       "es": "mariposa",
+       "icono": "mundo/animal-1.webp",
+       "pronuncia": "bá-ter-flai"
+      }
+     },
+     {
+      "imagen": "mundo/animal-2.webp",
+      "ancho": 46,
+      "x": 963,
+      "y": 2523,
+      "radio": 90,
+      "movimiento": "revolotea",
+      "rapidez": 0.9,
+      "palabra": {
+       "en": "mariposa",
+       "es": "mariposa",
+       "icono": "mundo/animal-2.webp",
+       "pronuncia": "bá-ter-flai"
+      }
+     },
+     {
+      "imagen": "mundo/animal-1.webp",
+      "ancho": 46,
+      "x": 307,
+      "y": 627,
+      "radio": 90,
+      "movimiento": "revolotea",
+      "rapidez": 1.0,
+      "palabra": {
+       "en": "mariposa",
+       "es": "mariposa",
+       "icono": "mundo/animal-1.webp",
+       "pronuncia": "bá-ter-flai"
+      },
+      "aparece": "renglon-saludos"
+     },
+     {
+      "imagen": "mundo/animal-2.webp",
+      "ancho": 46,
+      "x": 633,
+      "y": 641,
+      "radio": 90,
+      "movimiento": "revolotea",
+      "rapidez": 1.1,
+      "palabra": {
+       "en": "mariposa",
+       "es": "mariposa",
+       "icono": "mundo/animal-2.webp",
+       "pronuncia": "bá-ter-flai"
+      },
+      "aparece": "renglon-saludos-2"
+     },
+     {
+      "imagen": "mundo/animal-1.webp",
+      "ancho": 46,
+      "x": 410,
+      "y": 727,
+      "radio": 90,
+      "movimiento": "revolotea",
+      "rapidez": 1.2000000000000002,
+      "palabra": {
+       "en": "mariposa",
+       "es": "mariposa",
+       "icono": "mundo/animal-1.webp",
+       "pronuncia": "bá-ter-flai"
+      },
+      "aparece": "renglon-saludos-3"
+     },
+     {
+      "imagen": "mundo/animal-3.webp",
+      "ancho": 44,
+      "x": 1069,
+      "y": 555,
+      "radio": 70,
+      "movimiento": "zumba",
+      "rapidez": 1.4,
+      "palabra": {
+       "en": "abeja",
+       "es": "abeja",
+       "icono": "mundo/animal-3.webp",
+       "pronuncia": "bi"
+      },
+      "aparece": "renglon-animales"
+     },
+     {
+      "imagen": "mundo/animal-3.webp",
+      "ancho": 44,
+      "x": 1155,
+      "y": 575,
+      "radio": 70,
+      "movimiento": "zumba",
+      "rapidez": 1.5,
+      "palabra": {
+       "en": "abeja",
+       "es": "abeja",
+       "icono": "mundo/animal-3.webp",
+       "pronuncia": "bi"
+      },
+      "aparece": "renglon-animales-2"
+     },
+     {
+      "imagen": "mundo/animal-3.webp",
+      "ancho": 44,
+      "x": 1401,
+      "y": 526,
+      "radio": 70,
+      "movimiento": "zumba",
+      "rapidez": 1.5999999999999999,
+      "palabra": {
+       "en": "abeja",
+       "es": "abeja",
+       "icono": "mundo/animal-3.webp",
+       "pronuncia": "bi"
+      },
+      "aparece": "renglon-animales-3"
+     },
+     {
+      "imagen": "mundo/animal-5.webp",
+      "ancho": 50,
+      "x": 1637,
+      "y": 555,
+      "radio": 0,
+      "movimiento": "salta",
+      "rapidez": 1,
+      "palabra": {
+       "en": "rana",
+       "es": "rana",
+       "icono": "mundo/animal-5.webp",
+       "pronuncia": "frog"
+      },
+      "aparece": "renglon-cosas"
+     },
+     {
+      "imagen": "mundo/animal-5.webp",
+      "ancho": 50,
+      "x": 1963,
+      "y": 598,
+      "radio": 0,
+      "movimiento": "salta",
+      "rapidez": 1,
+      "palabra": {
+       "en": "rana",
+       "es": "rana",
+       "icono": "mundo/animal-5.webp",
+       "pronuncia": "frog"
+      },
+      "aparece": "renglon-cosas-2"
+     },
+     {
+      "imagen": "mundo/animal-5.webp",
+      "ancho": 50,
+      "x": 1981,
+      "y": 555,
+      "radio": 0,
+      "movimiento": "salta",
+      "rapidez": 1,
+      "palabra": {
+       "en": "rana",
+       "es": "rana",
+       "icono": "mundo/animal-5.webp",
+       "pronuncia": "frog"
+      },
+      "aparece": "renglon-cosas-3"
+     },
+     {
+      "imagen": "mundo/animal-6.webp",
+      "ancho": 58,
+      "x": 1722,
+      "y": 1257,
+      "radio": 260,
+      "movimiento": "planea",
+      "rapidez": 0.3,
+      "palabra": {
+       "en": "pájaro",
+       "es": "pájaro",
+       "icono": "mundo/animal-6.webp",
+       "pronuncia": "berd"
+      },
+      "aparece": "renglon-rondas"
+     },
+     {
+      "imagen": "mundo/animal-6.webp",
+      "ancho": 58,
+      "x": 1774,
+      "y": 1387,
+      "radio": 260,
+      "movimiento": "planea",
+      "rapidez": 0.26,
+      "palabra": {
+       "en": "pájaro",
+       "es": "pájaro",
+       "icono": "mundo/animal-6.webp",
+       "pronuncia": "berd"
+      },
+      "aparece": "renglon-rondas-2"
+     },
+     {
+      "imagen": "mundo/animal-4.webp",
+      "ancho": 84,
+      "x": 2066,
+      "y": 1257,
+      "radio": 240,
+      "movimiento": "planea",
+      "rapidez": 0.2,
+      "palabra": {
+       "en": "búho",
+       "es": "búho",
+       "icono": "mundo/animal-4.webp",
+       "pronuncia": "aul"
+      },
+      "aparece": "renglon-rondas-3"
+     },
+     {
+      "imagen": "mundo/animal-4.webp",
+      "ancho": 84,
+      "x": 399,
+      "y": 1974,
+      "radio": 220,
+      "movimiento": "planea",
+      "rapidez": 0.18,
+      "palabra": {
+       "en": "búho",
+       "es": "búho",
+       "icono": "mundo/animal-4.webp",
+       "pronuncia": "aul"
+      },
+      "aparece": "renglon-nombres"
+     },
+     {
+      "imagen": "mundo/animal-3.webp",
+      "ancho": 44,
+      "x": 725,
+      "y": 2017,
+      "radio": 70,
+      "movimiento": "zumba",
+      "rapidez": 1.5,
+      "palabra": {
+       "en": "abeja",
+       "es": "abeja",
+       "icono": "mundo/animal-3.webp",
+       "pronuncia": "bi"
+      },
+      "aparece": "renglon-nombres-2"
+     },
+     {
+      "imagen": "mundo/animal-3.webp",
+      "ancho": 44,
+      "x": 811,
+      "y": 1974,
+      "radio": 70,
+      "movimiento": "zumba",
+      "rapidez": 1.5999999999999999,
+      "palabra": {
+       "en": "abeja",
+       "es": "abeja",
+       "icono": "mundo/animal-3.webp",
+       "pronuncia": "bi"
+      },
+      "aparece": "renglon-nombres-3"
+     },
+     {
+      "imagen": "mundo/animal-5.webp",
+      "ancho": 50,
+      "x": 1573,
+      "y": 2118,
+      "radio": 0,
+      "movimiento": "salta",
+      "rapidez": 1,
+      "palabra": {
+       "en": "rana",
+       "es": "rana",
+       "icono": "mundo/animal-5.webp",
+       "pronuncia": "frog"
+      },
+      "aparece": "renglon-naturaleza"
+     },
+     {
+      "imagen": "mundo/animal-1.webp",
+      "ancho": 46,
+      "x": 1648,
+      "y": 2118,
+      "radio": 90,
+      "movimiento": "revolotea",
+      "rapidez": 0.8,
+      "palabra": {
+       "en": "mariposa",
+       "es": "mariposa",
+       "icono": "mundo/animal-1.webp",
+       "pronuncia": "bá-ter-flai"
+      },
+      "aparece": "renglon-naturaleza-2"
+     },
+     {
+      "imagen": "mundo/animal-2.webp",
+      "ancho": 46,
+      "x": 1206,
+      "y": 1257,
+      "radio": 90,
+      "movimiento": "revolotea",
+      "rapidez": 0.9,
+      "palabra": {
+       "en": "mariposa",
+       "es": "mariposa",
+       "icono": "mundo/animal-2.webp",
+       "pronuncia": "bá-ter-flai"
+      },
+      "aparece": "renglon-pozo"
+     }
+    ],
+    "objetos": [
+     {
+      "imagen": "pagina/escuela.webp",
+      "ancho": 280,
+      "x": 470,
+      "y": 573,
+      "choque": 90,
+      "zona": "renglon-saludos"
+     },
+     {
+      "imagen": "pagina/jardin.webp",
+      "ancho": 280,
+      "x": 1158,
+      "y": 545,
+      "choque": 90,
+      "zona": "renglon-animales"
+     },
+     {
+      "imagen": "pagina/piedras.webp",
+      "ancho": 270,
+      "x": 1857,
+      "y": 559,
+      "choque": 80,
+      "zona": "renglon-cosas"
+     },
+     {
+      "imagen": "pagina/parque.webp",
+      "ancho": 300,
+      "x": 1846,
+      "y": 1276,
+      "choque": 80,
+      "zona": "renglon-rondas"
+     },
+     {
+      "imagen": "pagina/casas.webp",
+      "ancho": 330,
+      "x": 665,
+      "y": 1927,
+      "choque": 100,
+      "zona": "renglon-nombres"
+     },
+     {
+      "imagen": "pagina/torre.webp",
+      "ancho": 150,
+      "x": 1605,
+      "y": 2107,
+      "choque": 50,
+      "zona": "renglon-naturaleza"
+     },
+     {
+      "imagen": "pagina/pozo.webp",
+      "ancho": 150,
+      "x": 1146,
+      "y": 1284,
+      "choque": 45,
+      "zona": "renglon-pozo"
+     },
+     {
+      "imagen": "pagina/buzon.webp",
+      "ancho": 90,
+      "x": 321,
+      "y": 2537,
+      "choque": 20,
+      "zona": "renglon-nombres"
+     },
+     {
+      "imagen": "pagina/estanque.webp",
+      "ancho": 160,
+      "x": 195,
+      "y": 1749,
+      "choque": 60,
+      "zona": "renglon-nombres"
+     },
+     {
+      "imagen": "pagina/banca.webp",
+      "ancho": 110,
+      "x": 1284,
+      "y": 2595,
+      "choque": 30,
+      "zona": "renglon-naturaleza"
+     },
+     {
+      "imagen": "pagina/puente.webp",
+      "ancho": 180,
+      "x": 2178,
+      "y": 1606,
+      "choque": 0,
+      "zona": "renglon-rondas-3"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 150,
+      "x": 126,
+      "y": 373,
+      "choque": 22,
+      "zona": "renglon-saludos"
+     },
+     {
+      "imagen": "pagina/arbol-2.webp",
+      "ancho": 110,
+      "x": 2190,
+      "y": 272,
+      "choque": 18,
+      "zona": "renglon-cosas-3"
+     },
+     {
+      "imagen": "pagina/arbol-3.webp",
+      "ancho": 150,
+      "x": 871,
+      "y": 344,
+      "choque": 22,
+      "zona": "renglon-animales"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 150,
+      "x": 1536,
+      "y": 315,
+      "choque": 22,
+      "zona": "renglon-animales-3"
+     },
+     {
+      "imagen": "pagina/arbol-2.webp",
+      "ancho": 110,
+      "x": 138,
+      "y": 1290,
+      "choque": 18,
+      "zona": "renglon-saludos-3"
+     },
+     {
+      "imagen": "pagina/arbol-3.webp",
+      "ancho": 150,
+      "x": 2190,
+      "y": 1104,
+      "choque": 22,
+      "zona": "renglon-rondas-3"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 150,
+      "x": 573,
+      "y": 1347,
+      "choque": 22,
+      "zona": "renglon-saludos-3"
+     },
+     {
+      "imagen": "pagina/arbol-2.webp",
+      "ancho": 110,
+      "x": 1513,
+      "y": 1491,
+      "choque": 18,
+      "zona": "renglon-rondas"
+     },
+     {
+      "imagen": "pagina/arbol-2.webp",
+      "ancho": 110,
+      "x": 138,
+      "y": 2179,
+      "choque": 18,
+      "zona": "renglon-nombres"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 150,
+      "x": 1055,
+      "y": 2709,
+      "choque": 22,
+      "zona": "renglon-nombres-3"
+     },
+     {
+      "imagen": "pagina/arbol-2.webp",
+      "ancho": 110,
+      "x": 2201,
+      "y": 2351,
+      "choque": 18,
+      "zona": "renglon-naturaleza-2"
+     },
+     {
+      "imagen": "pagina/arbol-3.webp",
+      "ancho": 150,
+      "x": 573,
+      "y": 1692,
+      "choque": 22,
+      "zona": "renglon-nombres"
+     },
+     {
+      "imagen": "pagina/arbol-2.webp",
+      "ancho": 110,
+      "x": 1582,
+      "y": 1720,
+      "choque": 18,
+      "zona": "renglon-rondas-2"
+     },
+     {
+      "imagen": "pagina/arbusto.webp",
+      "ancho": 110,
+      "x": 275,
+      "y": 602,
+      "choque": 0,
+      "zona": "renglon-saludos"
+     },
+     {
+      "imagen": "pagina/arbusto.webp",
+      "ancho": 110,
+      "x": 1353,
+      "y": 459,
+      "choque": 0,
+      "zona": "renglon-animales-3"
+     },
+     {
+      "imagen": "pagina/arbusto.webp",
+      "ancho": 110,
+      "x": 894,
+      "y": 1978,
+      "choque": 0,
+      "zona": "renglon-nombres-3"
+     },
+     {
+      "imagen": "pagina/arbusto.webp",
+      "ancho": 110,
+      "x": 2064,
+      "y": 1390,
+      "choque": 0,
+      "zona": "renglon-rondas-3"
+     },
+     {
+      "imagen": "pagina/tulipanes.webp",
+      "ancho": 80,
+      "x": 757,
+      "y": 573,
+      "choque": 0,
+      "zona": "renglon-saludos-2"
+     },
+     {
+      "imagen": "pagina/tulipanes.webp",
+      "ancho": 80,
+      "x": 1651,
+      "y": 545,
+      "choque": 0,
+      "zona": "renglon-cosas"
+     },
+     {
+      "imagen": "pagina/tulipanes.webp",
+      "ancho": 80,
+      "x": 1422,
+      "y": 2136,
+      "choque": 0,
+      "zona": "renglon-naturaleza"
+     },
+     {
+      "imagen": "pagina/tulipanes.webp",
+      "ancho": 80,
+      "x": 550,
+      "y": 2595,
+      "choque": 0,
+      "zona": "renglon-nombres-2"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 149,
+      "x": 459,
+      "y": 156,
+      "choque": 0,
+      "zona": "renglon-saludos"
+     },
+     {
+      "imagen": "pagina/arbol-2.webp",
+      "ancho": 114,
+      "x": 1047,
+      "y": 163,
+      "choque": 0,
+      "zona": "renglon-animales"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 129,
+      "x": 1430,
+      "y": 163,
+      "choque": 0,
+      "zona": "renglon-animales-3"
+     },
+     {
+      "imagen": "pagina/arbol-3.webp",
+      "ancho": 125,
+      "x": 1945,
+      "y": 148,
+      "choque": 0,
+      "zona": "renglon-cosas-3"
+     },
+     {
+      "imagen": "pagina/arbol-3.webp",
+      "ancho": 149,
+      "x": 679,
+      "y": 289,
+      "choque": 0,
+      "zona": "renglon-saludos-2"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 141,
+      "x": 1188,
+      "y": 274,
+      "choque": 0,
+      "zona": "renglon-animales-3"
+     },
+     {
+      "imagen": "pagina/arbusto.webp",
+      "ancho": 82,
+      "x": 1348,
+      "y": 273,
+      "choque": 0,
+      "zona": "renglon-animales-3"
+     },
+     {
+      "imagen": "pagina/arbusto.webp",
+      "ancho": 82,
+      "x": 1705,
+      "y": 284,
+      "choque": 0,
+      "zona": "renglon-cosas"
+     },
+     {
+      "imagen": "pagina/arbusto.webp",
+      "ancho": 94,
+      "x": 1834,
+      "y": 327,
+      "choque": 0,
+      "zona": "renglon-cosas"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 129,
+      "x": 2059,
+      "y": 279,
+      "choque": 0,
+      "zona": "renglon-cosas-3"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 151,
+      "x": 214,
+      "y": 468,
+      "choque": 0,
+      "zona": "renglon-saludos"
+     },
+     {
+      "imagen": "pagina/arbol-3.webp",
+      "ancho": 143,
+      "x": 703,
+      "y": 470,
+      "choque": 0,
+      "zona": "renglon-saludos-2"
+     },
+     {
+      "imagen": "pagina/arbol-3.webp",
+      "ancho": 152,
+      "x": 2088,
+      "y": 473,
+      "choque": 0,
+      "zona": "renglon-cosas-3"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 138,
+      "x": 1550,
+      "y": 682,
+      "choque": 0,
+      "zona": "renglon-cosas"
+     },
+     {
+      "imagen": "pagina/arbol-3.webp",
+      "ancho": 136,
+      "x": 935,
+      "y": 800,
+      "choque": 0,
+      "zona": "renglon-animales"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 131,
+      "x": 2199,
+      "y": 805,
+      "choque": 0,
+      "zona": "renglon-cosas-3"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 128,
+      "x": 84,
+      "y": 1036,
+      "choque": 0,
+      "zona": "renglon-saludos"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 124,
+      "x": 2230,
+      "y": 966,
+      "choque": 0,
+      "zona": "renglon-cosas-3"
+     },
+     {
+      "imagen": "pagina/arbol-2.webp",
+      "ancho": 95,
+      "x": 78,
+      "y": 1172,
+      "choque": 0,
+      "zona": "renglon-saludos-3"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 130,
+      "x": 439,
+      "y": 1194,
+      "choque": 0,
+      "zona": "renglon-saludos-3"
+     },
+     {
+      "imagen": "pagina/arbol-2.webp",
+      "ancho": 104,
+      "x": 797,
+      "y": 1195,
+      "choque": 0,
+      "zona": "renglon-pozo"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 137,
+      "x": 1443,
+      "y": 1189,
+      "choque": 0,
+      "zona": "renglon-rondas"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 150,
+      "x": 787,
+      "y": 1327,
+      "choque": 0,
+      "zona": "renglon-pozo"
+     },
+     {
+      "imagen": "pagina/arbol-3.webp",
+      "ancho": 143,
+      "x": 1562,
+      "y": 1336,
+      "choque": 0,
+      "zona": "renglon-rondas"
+     },
+     {
+      "imagen": "pagina/arbol-2.webp",
+      "ancho": 114,
+      "x": 571,
+      "y": 1565,
+      "choque": 0,
+      "zona": "renglon-nombres"
+     },
+     {
+      "imagen": "pagina/arbol-2.webp",
+      "ancho": 106,
+      "x": 1329,
+      "y": 1582,
+      "choque": 0,
+      "zona": "renglon-pozo"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 137,
+      "x": 64,
+      "y": 1700,
+      "choque": 0,
+      "zona": "renglon-nombres"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 144,
+      "x": 1724,
+      "y": 1744,
+      "choque": 0,
+      "zona": "renglon-rondas-2"
+     },
+     {
+      "imagen": "pagina/arbol-2.webp",
+      "ancho": 101,
+      "x": 976,
+      "y": 1853,
+      "choque": 0,
+      "zona": "renglon-nombres-3"
+     },
+     {
+      "imagen": "pagina/arbol-3.webp",
+      "ancho": 133,
+      "x": 1544,
+      "y": 1900,
+      "choque": 0,
+      "zona": "renglon-naturaleza"
+     },
+     {
+      "imagen": "pagina/arbol-2.webp",
+      "ancho": 103,
+      "x": 1685,
+      "y": 1869,
+      "choque": 0,
+      "zona": "renglon-naturaleza-2"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 149,
+      "x": 345,
+      "y": 2096,
+      "choque": 0,
+      "zona": "renglon-nombres"
+     },
+     {
+      "imagen": "pagina/arbol-2.webp",
+      "ancho": 114,
+      "x": 950,
+      "y": 2091,
+      "choque": 0,
+      "zona": "renglon-nombres-3"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 130,
+      "x": 480,
+      "y": 2290,
+      "choque": 0,
+      "zona": "renglon-nombres"
+     },
+     {
+      "imagen": "pagina/arbusto.webp",
+      "ancho": 104,
+      "x": 1179,
+      "y": 2407,
+      "choque": 0,
+      "zona": "renglon-naturaleza"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 131,
+      "x": 91,
+      "y": 2561,
+      "choque": 0,
+      "zona": "renglon-nombres"
+     },
+     {
+      "imagen": "pagina/arbol-3.webp",
+      "ancho": 124,
+      "x": 690,
+      "y": 2648,
+      "choque": 0,
+      "zona": "renglon-nombres-2"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 149,
+      "x": 977,
+      "y": 2554,
+      "choque": 0,
+      "zona": "renglon-nombres-3"
+     },
+     {
+      "imagen": "pagina/arbol-2.webp",
+      "ancho": 101,
+      "x": 1454,
+      "y": 2554,
+      "choque": 0,
+      "zona": "renglon-naturaleza"
+     },
+     {
+      "imagen": "pagina/arbusto.webp",
+      "ancho": 91,
+      "x": 1719,
+      "y": 2555,
+      "choque": 0,
+      "zona": "renglon-naturaleza-2"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 153,
+      "x": 605,
+      "y": 2750,
+      "choque": 0,
+      "zona": "renglon-nombres-2"
+     },
+     {
+      "imagen": "pagina/arbol-2.webp",
+      "ancho": 111,
+      "x": 860,
+      "y": 2826,
+      "choque": 0,
+      "zona": "renglon-nombres-2"
+     },
+     {
+      "imagen": "pagina/arbol-3.webp",
+      "ancho": 123,
+      "x": 1237,
+      "y": 2821,
+      "choque": 0,
+      "zona": "renglon-naturaleza"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 138,
+      "x": 1342,
+      "y": 2768,
+      "choque": 0,
+      "zona": "renglon-naturaleza"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 124,
+      "x": 1552,
+      "y": 2731,
+      "choque": 0,
+      "zona": "renglon-naturaleza"
+     },
+     {
+      "imagen": "pagina/arbol-2.webp",
+      "ancho": 100,
+      "x": 1707,
+      "y": 2802,
+      "choque": 0,
+      "zona": "renglon-naturaleza-2"
+     },
+     {
+      "imagen": "pagina/tulipanes.webp",
+      "ancho": 80,
+      "x": 608,
+      "y": 588,
+      "choque": 0,
+      "aparece": "renglon-saludos-2"
+     },
+     {
+      "imagen": "pagina/arbusto.webp",
+      "ancho": 100,
+      "x": 321,
+      "y": 774,
+      "choque": 0,
+      "aparece": "renglon-saludos-3"
+     },
+     {
+      "imagen": "pagina/tulipanes.webp",
+      "ancho": 80,
+      "x": 1032,
+      "y": 545,
+      "choque": 0,
+      "aparece": "renglon-animales-2"
+     },
+     {
+      "imagen": "pagina/arbusto.webp",
+      "ancho": 100,
+      "x": 1284,
+      "y": 731,
+      "choque": 0,
+      "aparece": "renglon-animales-3"
+     },
+     {
+      "imagen": "pagina/tulipanes.webp",
+      "ancho": 80,
+      "x": 1995,
+      "y": 545,
+      "choque": 0,
+      "aparece": "renglon-cosas-2"
+     },
+     {
+      "imagen": "pagina/arbol-2.webp",
+      "ancho": 110,
+      "x": 1766,
+      "y": 459,
+      "choque": 0,
+      "aparece": "renglon-cosas-3"
+     },
+     {
+      "imagen": "pagina/banca.webp",
+      "ancho": 100,
+      "x": 1697,
+      "y": 1491,
+      "choque": 0,
+      "aparece": "renglon-rondas-2"
+     },
+     {
+      "imagen": "pagina/tulipanes.webp",
+      "ancho": 80,
+      "x": 1972,
+      "y": 1233,
+      "choque": 0,
+      "aparece": "renglon-rondas-3"
+     },
+     {
+      "imagen": "pagina/tulipanes.webp",
+      "ancho": 80,
+      "x": 504,
+      "y": 2179,
+      "choque": 0,
+      "aparece": "renglon-nombres-2"
+     },
+     {
+      "imagen": "pagina/banca.webp",
+      "ancho": 100,
+      "x": 803,
+      "y": 2179,
+      "choque": 0,
+      "aparece": "renglon-nombres-3"
+     },
+     {
+      "imagen": "pagina/tulipanes.webp",
+      "ancho": 80,
+      "x": 1743,
+      "y": 2064,
+      "choque": 0,
+      "aparece": "renglon-naturaleza-2"
+     },
+     {
+      "imagen": "pagina/tulipanes.webp",
+      "ancho": 80,
+      "x": 1250,
+      "y": 1233,
+      "choque": 0,
+      "aparece": "renglon-pozo"
+     }
+    ],
+    "colorPenumbra": "rgb(0 0 0 / 0)",
+    "celda": 20,
+    "agua": [],
+    "frente": [],
+    "huellas": [
+     {
+      "x": 533,
+      "y": 823,
+      "icono": "iconos/cuento-1.svg",
+      "mision": "renglon-saludos"
+     },
+     {
+      "x": 482,
+      "y": 698,
+      "icono": "iconos/cuento-1.svg",
+      "mision": "renglon-saludos"
+     },
+     {
+      "x": 482,
+      "y": 698,
+      "icono": "iconos/cuento-1.svg",
+      "mision": "renglon-saludos"
+     },
+     {
+      "x": 1221,
+      "y": 831,
+      "icono": "iconos/1f415.svg",
+      "mision": "renglon-animales"
+     },
+     {
+      "x": 1347,
+      "y": 731,
+      "icono": "iconos/1f415.svg",
+      "mision": "renglon-animales"
+     },
+     {
+      "x": 1404,
+      "y": 616,
+      "icono": "iconos/1f415.svg",
+      "mision": "renglon-animales"
+     },
+     {
+      "x": 1697,
+      "y": 903,
+      "icono": "iconos/1f514.svg",
+      "mision": "renglon-cosas"
+     },
+     {
+      "x": 1949,
+      "y": 810,
+      "icono": "iconos/1f514.svg",
+      "mision": "renglon-cosas"
+     },
+     {
+      "x": 2100,
+      "y": 688,
+      "icono": "iconos/1f514.svg",
+      "mision": "renglon-cosas"
+     },
+     {
+      "x": 1651,
+      "y": 1046,
+      "icono": "iconos/1f425.svg",
+      "mision": "renglon-rondas"
+     },
+     {
+      "x": 1789,
+      "y": 1247,
+      "icono": "iconos/1f425.svg",
+      "mision": "renglon-rondas"
+     },
+     {
+      "x": 1829,
+      "y": 1477,
+      "icono": "iconos/1f425.svg",
+      "mision": "renglon-rondas"
+     },
+     {
+      "x": 745,
+      "y": 2329,
+      "icono": "personajes/vecino-1.webp",
+      "mision": "renglon-nombres"
+     },
+     {
+      "x": 711,
+      "y": 2165,
+      "icono": "personajes/vecino-1.webp",
+      "mision": "renglon-nombres"
+     },
+     {
+      "x": 711,
+      "y": 2165,
+      "icono": "personajes/vecino-1.webp",
+      "mision": "renglon-nombres"
+     },
+     {
+      "x": 1204,
+      "y": 2225,
+      "icono": "iconos/1f438.svg",
+      "mision": "renglon-naturaleza"
+     },
+     {
+      "x": 1376,
+      "y": 2275,
+      "icono": "iconos/1f438.svg",
+      "mision": "renglon-naturaleza"
+     },
+     {
+      "x": 1536,
+      "y": 2255,
+      "icono": "iconos/1f438.svg",
+      "mision": "renglon-naturaleza"
+     }
+    ],
+    "caminable": {
+     "celda": 20,
+     "ancho": 115,
+     "alto": 144,
+     "filas": [
+      "115",
+      "115",
+      "115",
+      "115",
+      "115",
+      "115",
+      "115",
+      "115",
+      "115",
+      "115",
+      "115",
+      "115",
+      "115",
+      "115",
+      "115",
+      "115",
+      "115",
+      "115",
+      "115",
+      "56,3,56",
+      "53,9,53",
+      "52,12,27,4,20",
+      "51,14,9,3,11,9,18",
+      "23,1,26,16,6,8,7,12,16",
+      "19,9,21,18,2,14,3,14,15",
+      "18,11,20,52,14",
+      "17,13,18,53,14",
+      "16,15,17,54,4,2,7",
+      "15,17,16,54,2,5,6",
+      "15,17,16,54,2,6,5",
+      "14,19,15,26,5,23,1,7,5",
+      "14,19,15,26,8,20,1,7,5",
+      "14,19,15,26,10,26,5",
+      "14,19,16,24,11,25,6",
+      "14,19,16,24,11,25,6",
+      "14,19,17,23,12,23,7",
+      "15,17,19,21,13,23,7",
+      "15,17,20,19,15,21,8",
+      "16,15,23,16,17,20,8",
+      "17,13,28,11,20,17,9",
+      "10,20,26,13,19,18,9",
+      "9,22,22,15,17,19,11",
+      "9,23,19,15,16,20,13",
+      "9,26,13,17,13,21,16",
+      "9,28,5,25,9,21,18",
+      "9,59,6,21,20",
+      "10,59,4,19,23",
+      "10,7,5,48,1,18,26",
+      "10,7,12,26,4,27,29",
+      "10,7,14,21,10,23,30",
+      "10,7,17,16,13,23,29",
+      "10,7,19,14,14,23,28",
+      "10,7,26,8,14,12,1,9,28",
+      "10,7,26,9,14,9,4,9,27",
+      "10,8,26,9,14,7,6,9,26",
+      "11,7,27,8,15,4,9,9,25",
+      "11,7,27,9,28,9,24",
+      "11,7,28,9,28,13,19",
+      "11,7,29,14,22,15,17",
+      "11,7,29,15,22,15,16",
+      "11,7,28,17,21,16,15",
+      "11,7,28,18,20,17,14",
+      "12,7,26,19,19,19,13",
+      "12,7,25,21,18,19,13",
+      "12,7,25,21,17,20,13",
+      "12,8,23,22,17,21,12",
+      "13,7,23,22,17,21,12",
+      "13,7,23,21,18,21,12",
+      "13,7,22,8,1,13,18,21,12",
+      "13,8,21,8,1,12,19,21,12",
+      "14,7,21,7,3,11,19,22,11",
+      "14,7,20,8,4,8,22,22,10",
+      "14,7,20,8,7,3,24,23,9",
+      "14,8,19,7,36,23,8",
+      "15,7,19,8,36,23,7",
+      "15,7,19,9,36,23,6",
+      "15,7,19,10,36,10,3,10,5",
+      "15,7,20,10,36,7,6,9,5",
+      "15,7,21,12,33,7,7,8,5",
+      "15,7,22,14,30,7,8,8,4",
+      "15,7,23,16,27,7,9,7,4",
+      "16,7,23,16,26,8,8,7,4",
+      "16,7,24,16,25,8,8,8,3",
+      "16,7,25,16,25,7,9,7,3",
+      "16,7,28,14,24,8,8,7,3",
+      "16,7,31,12,24,7,8,7,3",
+      "16,8,33,10,23,8,7,7,3",
+      "16,9,33,10,23,7,7,7,3",
+      "17,9,33,10,22,8,6,7,3",
+      "18,8,34,10,21,8,6,7,3",
+      "18,9,3,7,24,10,20,7,7,7,3",
+      "19,20,23,9,20,7,6,8,3",
+      "20,20,23,8,20,7,6,7,4",
+      "21,20,23,7,20,7,6,7,4",
+      "21,21,21,8,20,7,6,7,4",
+      "22,21,20,7,20,8,6,7,4",
+      "23,20,20,7,20,7,7,7,4",
+      "23,20,20,7,20,7,7,7,4",
+      "23,21,19,7,8,4,6,9,6,7,5",
+      "23,21,18,8,6,9,2,10,6,7,5",
+      "23,21,18,7,6,22,6,7,5",
+      "23,21,17,8,5,22,7,7,5",
+      "23,21,15,10,4,22,7,8,5",
+      "23,20,15,11,3,21,9,7,6",
+      "24,19,13,12,4,20,10,7,6",
+      "24,18,13,12,5,19,11,7,6",
+      "25,17,12,12,6,18,12,7,6",
+      "26,15,11,12,8,17,12,8,6",
+      "27,13,11,12,9,17,12,7,7",
+      "28,11,10,15,8,16,13,7,7",
+      "31,9,8,40,13,7,7",
+      "33,7,7,40,13,8,7",
+      "33,7,5,42,13,7,8",
+      "33,7,3,13,1,32,11,7,8",
+      "33,7,1,13,5,31,10,7,8",
+      "34,19,8,30,8,8,8",
+      "34,18,10,15,4,11,7,7,9",
+      "34,16,32,11,6,7,9",
+      "33,15,36,10,5,7,9",
+      "31,15,39,10,3,8,9",
+      "29,15,42,10,2,7,10",
+      "16,8,3,15,45,10,1,7,10",
+      "15,25,48,17,10",
+      "14,24,51,17,9",
+      "13,23,54,17,8",
+      "12,23,56,17,7",
+      "12,21,59,16,7",
+      "12,19,61,16,7",
+      "12,17,63,17,6",
+      "12,17,63,17,6",
+      "12,16,64,17,6",
+      "12,16,64,17,6",
+      "12,16,64,16,7",
+      "13,14,66,15,7",
+      "14,13,66,14,8",
+      "15,11,68,13,8",
+      "16,8,71,10,10",
+      "97,7,11",
+      "115",
+      "115",
+      "115",
+      "115",
+      "115",
+      "115"
+     ]
+    },
+    "letreros": [
+     {
+      "x": 608,
+      "y": 2423,
+      "lleva": [
+       {
+        "mision": "renglon-nombres",
+        "color": "#f5a050",
+        "nombre": "naranja",
+        "giro": -85
+       },
+       {
+        "mision": "renglon-naturaleza",
+        "color": "#a078cd",
+        "nombre": "morado",
+        "giro": -30
+       },
+       {
+        "mision": "renglon-saludos",
+        "color": "#f08ca0",
+        "nombre": "rosado",
+        "giro": -30
+       }
+      ]
+     },
+     {
+      "x": 1101,
+      "y": 2365,
+      "lleva": [
+       {
+        "mision": "renglon-naturaleza",
+        "color": "#a078cd",
+        "nombre": "morado",
+        "giro": -23
+       },
+       {
+        "mision": "puente",
+        "color": "#a078cd",
+        "nombre": "morado",
+        "giro": -23
+       },
+       {
+        "mision": "renglon-pozo",
+        "color": "#5696de",
+        "nombre": "azul",
+        "giro": -60
+       }
+      ]
+     },
+     {
+      "x": 1009,
+      "y": 1132,
+      "lleva": [
+       {
+        "mision": "renglon-saludos",
+        "color": "#f08ca0",
+        "nombre": "rosado",
+        "giro": -137
+       },
+       {
+        "mision": "renglon-animales",
+        "color": "#f6c744",
+        "nombre": "amarillo",
+        "giro": -76
+       },
+       {
+        "mision": "renglon-cosas",
+        "color": "#e25c54",
+        "nombre": "rojo",
+        "giro": -67
+       }
+      ]
+     },
+     {
+      "x": 573,
+      "y": 989,
+      "lleva": [
+       {
+        "mision": "renglon-saludos",
+        "color": "#f08ca0",
+        "nombre": "rosado",
+        "giro": -135
+       }
+      ]
+     },
+     {
+      "x": 1215,
+      "y": 989,
+      "lleva": [
+       {
+        "mision": "renglon-animales",
+        "color": "#f6c744",
+        "nombre": "amarillo",
+        "giro": -113
+       },
+       {
+        "mision": "renglon-cosas",
+        "color": "#e25c54",
+        "nombre": "rojo",
+        "giro": -5
+       },
+       {
+        "mision": "renglon-rondas",
+        "color": "#6ebe78",
+        "nombre": "verde",
+        "giro": -5
+       }
+      ]
+     },
+     {
+      "x": 1582,
+      "y": 1046,
+      "lleva": [
+       {
+        "mision": "renglon-cosas",
+        "color": "#e25c54",
+        "nombre": "rojo",
+        "giro": -53
+       },
+       {
+        "mision": "renglon-rondas",
+        "color": "#6ebe78",
+        "nombre": "verde",
+        "giro": 76
+       }
+      ]
+     },
+     {
+      "x": 1846,
+      "y": 2150,
+      "lleva": [
+       {
+        "mision": "renglon-rondas",
+        "color": "#6ebe78",
+        "nombre": "verde",
+        "giro": -85
+       },
+       {
+        "mision": "puente",
+        "color": "#a078cd",
+        "nombre": "morado",
+        "giro": 95
+       }
+      ]
+     }
+    ],
+    "mapaLapiz": "fondos/pagina-1-lapiz.webp",
+    "atajos": [
+     {
+      "zona": "renglon-nombres-3",
+      "bloqueos": [
+       {
+        "x": 440,
+        "y": 1789,
+        "r": 85
+       },
+       {
+        "x": 275,
+        "y": 1046,
+        "r": 85
+       }
+      ]
+     },
+     {
+      "zona": "renglon-rondas-3",
+      "bloqueos": [
+       {
+        "x": 2102,
+        "y": 1534,
+        "r": 85
+       },
+       {
+        "x": 2059,
+        "y": 2315,
+        "r": 85
+       }
+      ]
+     },
+     {
+      "zona": "renglon-animales-3",
+      "bloqueos": [
+       {
+        "x": 1574,
+        "y": 535,
+        "r": 85
+       },
+       {
+        "x": 1574,
+        "y": 535,
+        "r": 85
+       }
+      ]
+     }
+    ],
+    "manchas": [
+     {
+      "x": 0,
+      "y": 0,
+      "r": 300,
+      "zona": "renglon-saludos",
+      "retraso": 0.58
+     },
+     {
+      "x": 300,
+      "y": 0,
+      "r": 300,
+      "zona": "renglon-saludos",
+      "retraso": 0.51
+     },
+     {
+      "x": 600,
+      "y": 0,
+      "r": 300,
+      "zona": "renglon-saludos-2",
+      "retraso": 0.52
+     },
+     {
+      "x": 900,
+      "y": 0,
+      "r": 300,
+      "zona": "renglon-animales",
+      "retraso": 0.47
+     },
+     {
+      "x": 1200,
+      "y": 0,
+      "r": 300,
+      "zona": "renglon-animales-3",
+      "retraso": 0.45
+     },
+     {
+      "x": 1500,
+      "y": 0,
+      "r": 300,
+      "zona": "renglon-animales-3",
+      "retraso": 0.45
+     },
+     {
+      "x": 1800,
+      "y": 0,
+      "r": 300,
+      "zona": "renglon-cosas",
+      "retraso": 0.47
+     },
+     {
+      "x": 2100,
+      "y": 0,
+      "r": 300,
+      "zona": "renglon-cosas-3",
+      "retraso": 0.46
+     },
+     {
+      "x": 2400,
+      "y": 0,
+      "r": 300,
+      "zona": "renglon-cosas-3",
+      "retraso": 0.53
+     },
+     {
+      "x": 0,
+      "y": 300,
+      "r": 300,
+      "zona": "renglon-saludos",
+      "retraso": 0.4
+     },
+     {
+      "x": 300,
+      "y": 300,
+      "r": 300,
+      "zona": "renglon-saludos",
+      "retraso": 0.3
+     },
+     {
+      "x": 600,
+      "y": 300,
+      "r": 300,
+      "zona": "renglon-saludos-2",
+      "retraso": 0.31
+     },
+     {
+      "x": 900,
+      "y": 300,
+      "r": 300,
+      "zona": "renglon-animales",
+      "retraso": 0.26
+     },
+     {
+      "x": 1200,
+      "y": 300,
+      "r": 300,
+      "zona": "renglon-animales-3",
+      "retraso": 0.25
+     },
+     {
+      "x": 1500,
+      "y": 300,
+      "r": 300,
+      "zona": "renglon-animales-3",
+      "retraso": 0.4
+     },
+     {
+      "x": 1800,
+      "y": 300,
+      "r": 300,
+      "zona": "renglon-cosas",
+      "retraso": 0.26
+     },
+     {
+      "x": 2100,
+      "y": 300,
+      "r": 300,
+      "zona": "renglon-cosas-3",
+      "retraso": 0.25
+     },
+     {
+      "x": 2400,
+      "y": 300,
+      "r": 300,
+      "zona": "renglon-cosas-3",
+      "retraso": 0.36
+     },
+     {
+      "x": 0,
+      "y": 600,
+      "r": 300,
+      "zona": "renglon-saludos",
+      "retraso": 0.28
+     },
+     {
+      "x": 300,
+      "y": 600,
+      "r": 300,
+      "zona": "renglon-saludos",
+      "retraso": 0.1
+     },
+     {
+      "x": 600,
+      "y": 600,
+      "r": 300,
+      "zona": "renglon-saludos-2",
+      "retraso": 0.1
+     },
+     {
+      "x": 900,
+      "y": 600,
+      "r": 300,
+      "zona": "renglon-animales",
+      "retraso": 0.08
+     },
+     {
+      "x": 1200,
+      "y": 600,
+      "r": 300,
+      "zona": "renglon-animales-3",
+      "retraso": 0.4
+     },
+     {
+      "x": 1500,
+      "y": 600,
+      "r": 300,
+      "zona": "renglon-animales-3",
+      "retraso": 0.4
+     },
+     {
+      "x": 1800,
+      "y": 600,
+      "r": 300,
+      "zona": "renglon-animales-3",
+      "retraso": 0.4
+     },
+     {
+      "x": 2100,
+      "y": 600,
+      "r": 300,
+      "zona": "renglon-cosas-3",
+      "retraso": 0.05
+     },
+     {
+      "x": 2400,
+      "y": 600,
+      "r": 300,
+      "zona": "renglon-cosas-3",
+      "retraso": 0.26
+     },
+     {
+      "x": 0,
+      "y": 900,
+      "r": 300,
+      "zona": "renglon-saludos",
+      "retraso": 0.29
+     },
+     {
+      "x": 300,
+      "y": 900,
+      "r": 300,
+      "zona": "renglon-nombres-3",
+      "retraso": 0.4
+     },
+     {
+      "x": 600,
+      "y": 900,
+      "r": 300,
+      "zona": "renglon-saludos-3",
+      "retraso": 0.11
+     },
+     {
+      "x": 900,
+      "y": 900,
+      "r": 300,
+      "zona": "renglon-animales",
+      "retraso": 0.2
+     },
+     {
+      "x": 1200,
+      "y": 900,
+      "r": 300,
+      "zona": "renglon-animales-2",
+      "retraso": 0.17
+     },
+     {
+      "x": 1500,
+      "y": 900,
+      "r": 300,
+      "zona": "renglon-cosas",
+      "retraso": 0.23
+     },
+     {
+      "x": 1800,
+      "y": 900,
+      "r": 300,
+      "zona": "renglon-cosas-2",
+      "retraso": 0.17
+     },
+     {
+      "x": 2100,
+      "y": 900,
+      "r": 300,
+      "zona": "renglon-cosas-3",
+      "retraso": 0.19
+     },
+     {
+      "x": 2400,
+      "y": 900,
+      "r": 300,
+      "zona": "renglon-cosas-3",
+      "retraso": 0.31
+     },
+     {
+      "x": 0,
+      "y": 1200,
+      "r": 300,
+      "zona": "renglon-saludos-3",
+      "retraso": 0.43
+     },
+     {
+      "x": 300,
+      "y": 1200,
+      "r": 300,
+      "zona": "renglon-nombres-3",
+      "retraso": 0.4
+     },
+     {
+      "x": 600,
+      "y": 1200,
+      "r": 300,
+      "zona": "renglon-saludos-3",
+      "retraso": 0.29
+     },
+     {
+      "x": 900,
+      "y": 1200,
+      "r": 300,
+      "zona": "renglon-pozo",
+      "retraso": 0.2
+     },
+     {
+      "x": 1200,
+      "y": 1200,
+      "r": 300,
+      "zona": "renglon-pozo",
+      "retraso": 0.11
+     },
+     {
+      "x": 1500,
+      "y": 1200,
+      "r": 300,
+      "zona": "renglon-rondas",
+      "retraso": 0.16
+     },
+     {
+      "x": 1800,
+      "y": 1200,
+      "r": 300,
+      "zona": "renglon-rondas",
+      "retraso": 0.14
+     },
+     {
+      "x": 2100,
+      "y": 1200,
+      "r": 300,
+      "zona": "renglon-rondas-3",
+      "retraso": 0.12
+     },
+     {
+      "x": 2400,
+      "y": 1200,
+      "r": 300,
+      "zona": "renglon-rondas-3",
+      "retraso": 0.3
+     },
+     {
+      "x": 0,
+      "y": 1500,
+      "r": 300,
+      "zona": "renglon-nombres",
+      "retraso": 0.52
+     },
+     {
+      "x": 300,
+      "y": 1500,
+      "r": 300,
+      "zona": "renglon-nombres-3",
+      "retraso": 0.4
+     },
+     {
+      "x": 600,
+      "y": 1500,
+      "r": 300,
+      "zona": "renglon-pozo",
+      "retraso": 0.41
+     },
+     {
+      "x": 900,
+      "y": 1500,
+      "r": 300,
+      "zona": "renglon-pozo",
+      "retraso": 0.21
+     },
+     {
+      "x": 1200,
+      "y": 1500,
+      "r": 300,
+      "zona": "renglon-pozo",
+      "retraso": 0.12
+     },
+     {
+      "x": 1500,
+      "y": 1500,
+      "r": 300,
+      "zona": "renglon-rondas",
+      "retraso": 0.16
+     },
+     {
+      "x": 1800,
+      "y": 1500,
+      "r": 300,
+      "zona": "renglon-rondas-3",
+      "retraso": 0.4
+     },
+     {
+      "x": 2100,
+      "y": 1500,
+      "r": 300,
+      "zona": "renglon-rondas-3",
+      "retraso": 0.4
+     },
+     {
+      "x": 2400,
+      "y": 1500,
+      "r": 300,
+      "zona": "renglon-rondas-3",
+      "retraso": 0.3
+     },
+     {
+      "x": 0,
+      "y": 1800,
+      "r": 300,
+      "zona": "renglon-nombres",
+      "retraso": 0.38
+     },
+     {
+      "x": 300,
+      "y": 1800,
+      "r": 300,
+      "zona": "renglon-nombres-3",
+      "retraso": 0.4
+     },
+     {
+      "x": 600,
+      "y": 1800,
+      "r": 300,
+      "zona": "renglon-nombres-3",
+      "retraso": 0.4
+     },
+     {
+      "x": 900,
+      "y": 1800,
+      "r": 300,
+      "zona": "renglon-nombres-3",
+      "retraso": 0.19
+     },
+     {
+      "x": 1200,
+      "y": 1800,
+      "r": 300,
+      "zona": "renglon-nombres-3",
+      "retraso": 0.3
+     },
+     {
+      "x": 1500,
+      "y": 1800,
+      "r": 300,
+      "zona": "renglon-naturaleza",
+      "retraso": 0.29
+     },
+     {
+      "x": 1800,
+      "y": 1800,
+      "r": 300,
+      "zona": "renglon-rondas-2",
+      "retraso": 0.23
+     },
+     {
+      "x": 2100,
+      "y": 1800,
+      "r": 300,
+      "zona": "renglon-rondas-3",
+      "retraso": 0.4
+     },
+     {
+      "x": 2400,
+      "y": 1800,
+      "r": 300,
+      "zona": "renglon-rondas-3",
+      "retraso": 0.43
+     },
+     {
+      "x": 0,
+      "y": 2100,
+      "r": 300,
+      "zona": "renglon-nombres",
+      "retraso": 0.33
+     },
+     {
+      "x": 300,
+      "y": 2100,
+      "r": 300,
+      "zona": "renglon-nombres",
+      "retraso": 0.12
+     },
+     {
+      "x": 600,
+      "y": 2100,
+      "r": 300,
+      "zona": "renglon-nombres-3",
+      "retraso": 0.4
+     },
+     {
+      "x": 900,
+      "y": 2100,
+      "r": 300,
+      "zona": "renglon-nombres-3",
+      "retraso": 0.03
+     },
+     {
+      "x": 1200,
+      "y": 2100,
+      "r": 300,
+      "zona": "renglon-nombres-3",
+      "retraso": 0.24
+     },
+     {
+      "x": 1500,
+      "y": 2100,
+      "r": 300,
+      "zona": "renglon-naturaleza",
+      "retraso": 0.08
+     },
+     {
+      "x": 1800,
+      "y": 2100,
+      "r": 300,
+      "zona": "renglon-naturaleza-2",
+      "retraso": 0.1
+     },
+     {
+      "x": 2100,
+      "y": 2100,
+      "r": 300,
+      "zona": "renglon-rondas-3",
+      "retraso": 0.4
+     },
+     {
+      "x": 2400,
+      "y": 2100,
+      "r": 300,
+      "zona": "renglon-naturaleza-2",
+      "retraso": 0.5
+     },
+     {
+      "x": 0,
+      "y": 2400,
+      "r": 300,
+      "zona": "renglon-nombres",
+      "retraso": 0.41
+     },
+     {
+      "x": 300,
+      "y": 2400,
+      "r": 300,
+      "zona": "renglon-nombres",
+      "retraso": 0.27
+     },
+     {
+      "x": 600,
+      "y": 2400,
+      "r": 300,
+      "zona": "renglon-nombres-2",
+      "retraso": 0.21
+     },
+     {
+      "x": 900,
+      "y": 2400,
+      "r": 300,
+      "zona": "renglon-nombres-3",
+      "retraso": 0.24
+     },
+     {
+      "x": 1200,
+      "y": 2400,
+      "r": 300,
+      "zona": "renglon-naturaleza",
+      "retraso": 0.26
+     },
+     {
+      "x": 1500,
+      "y": 2400,
+      "r": 300,
+      "zona": "renglon-naturaleza",
+      "retraso": 0.14
+     },
+     {
+      "x": 1800,
+      "y": 2400,
+      "r": 300,
+      "zona": "renglon-naturaleza-2",
+      "retraso": 0.15
+     },
+     {
+      "x": 2100,
+      "y": 2400,
+      "r": 300,
+      "zona": "renglon-rondas-3",
+      "retraso": 0.4
+     },
+     {
+      "x": 2400,
+      "y": 2400,
+      "r": 300,
+      "zona": "renglon-naturaleza-2",
+      "retraso": 0.51
+     },
+     {
+      "x": 0,
+      "y": 2700,
+      "r": 300,
+      "zona": "renglon-nombres",
+      "retraso": 0.56
+     },
+     {
+      "x": 300,
+      "y": 2700,
+      "r": 300,
+      "zona": "renglon-nombres",
+      "retraso": 0.47
+     },
+     {
+      "x": 600,
+      "y": 2700,
+      "r": 300,
+      "zona": "renglon-nombres-2",
+      "retraso": 0.43
+     },
+     {
+      "x": 900,
+      "y": 2700,
+      "r": 300,
+      "zona": "renglon-nombres-3",
+      "retraso": 0.45
+     },
+     {
+      "x": 1200,
+      "y": 2700,
+      "r": 300,
+      "zona": "renglon-naturaleza",
+      "retraso": 0.42
+     },
+     {
+      "x": 1500,
+      "y": 2700,
+      "r": 300,
+      "zona": "renglon-naturaleza",
+      "retraso": 0.35
+     },
+     {
+      "x": 1800,
+      "y": 2700,
+      "r": 300,
+      "zona": "renglon-naturaleza-2",
+      "retraso": 0.36
+     },
+     {
+      "x": 2100,
+      "y": 2700,
+      "r": 300,
+      "zona": "renglon-rondas-3",
+      "retraso": 0.4
+     },
+     {
+      "x": 2400,
+      "y": 2700,
+      "r": 300,
+      "zona": "renglon-naturaleza-2",
+      "retraso": 0.61
+     },
+     {
+      "x": 0,
+      "y": 3000,
+      "r": 300,
+      "zona": "renglon-nombres",
+      "retraso": 0.74
+     },
+     {
+      "x": 300,
+      "y": 3000,
+      "r": 300,
+      "zona": "renglon-nombres",
+      "retraso": 0.68
+     },
+     {
+      "x": 600,
+      "y": 3000,
+      "r": 300,
+      "zona": "renglon-nombres-2",
+      "retraso": 0.64
+     },
+     {
+      "x": 900,
+      "y": 3000,
+      "r": 300,
+      "zona": "renglon-nombres-2",
+      "retraso": 0.66
+     },
+     {
+      "x": 1200,
+      "y": 3000,
+      "r": 300,
+      "zona": "renglon-naturaleza",
+      "retraso": 0.61
+     },
+     {
+      "x": 1500,
+      "y": 3000,
+      "r": 300,
+      "zona": "renglon-naturaleza",
+      "retraso": 0.57
+     },
+     {
+      "x": 1800,
+      "y": 3000,
+      "r": 300,
+      "zona": "renglon-naturaleza-2",
+      "retraso": 0.57
+     },
+     {
+      "x": 2100,
+      "y": 3000,
+      "r": 300,
+      "zona": "renglon-naturaleza-2",
+      "retraso": 0.63
+     },
+     {
+      "x": 2400,
+      "y": 3000,
+      "r": 300,
+      "zona": "renglon-naturaleza-2",
+      "retraso": 0.75
+     }
+    ],
+    "tramos": [
+     {
+      "nombre": "azul",
+      "color": "#5696de",
+      "puntos": [
+       [
+        252,
+        860
+       ],
+       [
+        573,
+        895
+       ],
+       [
+        757,
+        969
+       ],
+       [
+        963,
+        946
+       ],
+       [
+        1146,
+        874
+       ],
+       [
+        1307,
+        946
+       ],
+       [
+        1399,
+        1055
+       ],
+       [
+        1559,
+        946
+       ]
+      ]
+     },
+     {
+      "nombre": "rojo",
+      "color": "#e25c54",
+      "puntos": [
+       [
+        1559,
+        946
+       ],
+       [
+        1834,
+        860
+       ],
+       [
+        2064,
+        760
+       ],
+       [
+        2137,
+        616
+       ]
+      ]
+     },
+     {
+      "nombre": "azul",
+      "color": "#5696de",
+      "puntos": [
+       [
+        894,
+        989
+       ],
+       [
+        1032,
+        1181
+       ],
+       [
+        940,
+        1319
+       ],
+       [
+        883,
+        1491
+       ],
+       [
+        986,
+        1606
+       ],
+       [
+        1192,
+        1677
+       ],
+       [
+        1353,
+        1835
+       ],
+       [
+        1307,
+        2050
+       ],
+       [
+        1124,
+        2179
+       ],
+       [
+        963,
+        2294
+       ],
+       [
+        757,
+        2394
+       ],
+       [
+        527,
+        2523
+       ],
+       [
+        355,
+        2615
+       ]
+      ]
+     },
+     {
+      "nombre": "morado",
+      "color": "#a078cd",
+      "puntos": [
+       [
+        1124,
+        2179
+       ],
+       [
+        1284,
+        2271
+       ],
+       [
+        1468,
+        2279
+       ],
+       [
+        1605,
+        2231
+       ]
+      ]
+     },
+     {
+      "nombre": "morado",
+      "color": "#a078cd",
+      "puntos": [
+       [
+        1605,
+        2231
+       ],
+       [
+        1743,
+        2337
+       ],
+       [
+        1880,
+        2466
+       ],
+       [
+        1972,
+        2615
+       ]
+      ]
+     },
+     {
+      "nombre": "amarillo",
+      "color": "#f6c744",
+      "puntos": [
+       [
+        1146,
+        874
+       ],
+       [
+        1296,
+        788
+       ],
+       [
+        1399,
+        674
+       ],
+       [
+        1410,
+        559
+       ]
+      ]
+     },
+     {
+      "nombre": "rosado",
+      "color": "#f08ca0",
+      "puntos": [
+       [
+        573,
+        895
+       ],
+       [
+        493,
+        751
+       ],
+       [
+        470,
+        645
+       ]
+      ]
+     },
+     {
+      "nombre": "naranja",
+      "color": "#f5a050",
+      "puntos": [
+       [
+        757,
+        2394
+       ],
+       [
+        734,
+        2265
+       ],
+       [
+        688,
+        2064
+       ]
+      ]
+     },
+     {
+      "nombre": "verde",
+      "color": "#6ebe78",
+      "puntos": [
+       [
+        1559,
+        946
+       ],
+       [
+        1743,
+        1147
+       ],
+       [
+        1834,
+        1347
+       ],
+       [
+        1823,
+        1606
+       ],
+       [
+        1903,
+        1778
+       ],
+       [
+        1869,
+        1978
+       ],
+       [
+        1743,
+        2079
+       ],
+       [
+        1639,
+        2136
+       ]
+      ]
+     },
+     {
+      "nombre": "azul",
+      "color": "#5696de",
+      "puntos": [
+       [
+        1032,
+        1181
+       ],
+       [
+        1146,
+        1276
+       ]
+      ]
+     },
+     {
+      "nombre": "celeste",
+      "color": "#78cdeb",
+      "puntos": [
+       [
+        516,
+        1892
+       ],
+       [
+        390,
+        1720
+       ],
+       [
+        367,
+        1491
+       ],
+       [
+        298,
+        1233
+       ],
+       [
+        252,
+        860
+       ]
+      ],
+      "zona": "renglon-nombres-3"
+     },
+     {
+      "nombre": "café",
+      "color": "#b07a4c",
+      "puntos": [
+       [
+        1995,
+        1434
+       ],
+       [
+        2132,
+        1563
+       ],
+       [
+        2178,
+        1720
+       ],
+       [
+        2132,
+        2007
+       ],
+       [
+        2064,
+        2294
+       ],
+       [
+        2006,
+        2523
+       ]
+      ],
+      "zona": "renglon-rondas-3"
+     },
+     {
+      "nombre": "rojo",
+      "color": "#e25c54",
+      "puntos": [
+       [
+        1330,
+        588
+       ],
+       [
+        1513,
+        516
+       ],
+       [
+        1697,
+        573
+       ]
+      ],
+      "zona": "renglon-animales-3"
+     }
+    ]
+   },
+   "escenas": {
+    "intro": {
+     "lineas": [
+      {
+       "quien": "goma",
+       "es": "¡Hola! Soy Goma. Este cuaderno es mágico: lo que aprendes aquí cobra vida.",
+       "en": "¡Hola! Soy Goma. Este cuaderno es mágico: lo que aprendes aquí cobra vida."
+      },
+      {
+       "quien": "goma",
+       "es": "Esta es la primera página de Renglón. Aquí jugamos con las palabras, los sonidos y las canciones.",
+       "en": "Esta es la primera página de Renglón. Aquí jugamos con las palabras, los sonidos y las canciones."
+      },
+      {
+       "quien": "renglon",
+       "es": "¡Hola! Soy Renglón. Me encanta escuchar, hablar y cantar.",
+       "en": "¡Hola! Soy Renglón. Me encanta escuchar, hablar y cantar."
+      },
+      {
+       "quien": "goma",
+       "es": "La página está a lápiz: cada misión que terminas la llena de color. ¿Empezamos?",
+       "en": "La página está a lápiz: cada misión que terminas la llena de color. ¿Empezamos?",
+       "opciones": [
+        {
+         "es": "¡Sí, vamos!",
+         "en": "¡Sí, vamos!",
+         "ir": "elegir"
+        },
+        {
+         "es": "¿Cómo me muevo?",
+         "en": "¿Cómo me muevo?",
+         "ir": "ayuda"
+        }
+       ]
+      }
+     ]
+    },
+    "ayuda": {
+     "lineas": [
+      {
+       "quien": "goma",
+       "es": "Toca la pantalla y caminas hasta tu dedo. ¡Puedes ir a donde quieras!",
+       "en": "Toca la pantalla y caminas hasta tu dedo. ¡Puedes ir a donde quieras!"
+      },
+      {
+       "quien": "goma",
+       "es": "Cada lugar tiene su camino de color. Los letreros te muestran qué color seguir.",
+       "en": "Cada lugar tiene su camino de color. Los letreros te muestran qué color seguir."
+      },
+      {
+       "quien": "goma",
+       "es": "Los vecinos de esta página perdieron algo. ¡Ayúdalos a encontrarlo!",
+       "en": "Los vecinos de esta página perdieron algo. ¡Ayúdalos a encontrarlo!"
+      }
+     ],
+     "luego": "elegir"
+    },
+    "elegir": {
+     "lineas": [
+      {
+       "quien": "goma",
+       "es": "¿A dónde vamos primero? Tú decides.",
+       "en": "¿A dónde vamos primero? Tú decides.",
+       "opciones": [
+        {
+         "es": "Los saludos: camino rosado",
+         "en": "Los saludos: camino rosado",
+         "destino": "renglon-saludos",
+         "icono": "iconos/1f44b.svg"
+        },
+        {
+         "es": "Los animales que suenan: camino amarillo",
+         "en": "Los animales que suenan: camino amarillo",
+         "destino": "renglon-animales",
+         "icono": "iconos/1f415.svg"
+        },
+        {
+         "es": "Las cosas que suenan: camino rojo",
+         "en": "Las cosas que suenan: camino rojo",
+         "destino": "renglon-cosas",
+         "icono": "iconos/1f514.svg"
+        }
+       ]
+      }
+     ]
+    },
+    "despues": {
+     "lineas": [
+      {
+       "quien": "goma",
+       "es": "¡Mira! Tu misión coloreó la página y llegó un amigo nuevo. ¿A dónde vamos ahora?",
+       "en": "¡Mira! Tu misión coloreó la página y llegó un amigo nuevo. ¿A dónde vamos ahora?"
+      }
+     ]
+    },
+    "puente-cerrado": {
+     "lineas": [
+      {
+       "quien": "renglon",
+       "es": "¡Hola! ¡Pronto, la página siguiente!",
+       "en": "¡Hola! ¡Pronto, la página siguiente!"
+      },
+      {
+       "quien": "goma",
+       "es": "Cuando termines todas las misiones de esta página, Renglón la voltea y aparece la siguiente.",
+       "en": "Cuando termines todas las misiones de esta página, Renglón la voltea y aparece la siguiente."
+      }
+     ]
+    },
+    "puente-abierto": {
+     "lineas": [
+      {
+       "quien": "renglon",
+       "es": "¡Lo lograste! ¡Escuchaste, hablaste y cantaste muy bien!",
+       "en": "¡Lo lograste! ¡Escuchaste, hablaste y cantaste muy bien!"
+      },
+      {
+       "quien": "goma",
+       "es": "¡La página está llena! La página 2 se abre muy pronto. ¡Te esperamos!",
+       "en": "¡La página está llena! La página 2 se abre muy pronto. ¡Te esperamos!"
+      }
+     ]
+    },
+    "dormida": {
+     "lineas": [
+      {
+       "quien": "goma",
+       "es": "Este dibujo todavía está en blanco. Se dibuja cuando termines el que está antes en este camino.",
+       "en": "Este dibujo todavía está en blanco. Se dibuja cuando termines el que está antes en este camino."
+      }
+     ]
+    },
+    "pozo-dormido": {
+     "lineas": [
+      {
+       "quien": "goma",
+       "es": "Termina cualquier misión de un camino y el pozo despertará.",
+       "en": "Termina cualquier misión de un camino y el pozo despertará."
+      }
+     ]
+    },
+    "rayo": {
+     "lineas": [
+      {
+       "quien": "rayo",
+       "es": "¡Correo, correo! Soy Rayo. Llevo cartas a la página siguiente...",
+       "en": "¡Correo, correo! Soy Rayo. Llevo cartas a la página siguiente..."
+      },
+      {
+       "quien": "rayo",
+       "es": "...y siempre saludo a todos: ¡hola, hola, hola!",
+       "en": "...y siempre saludo a todos: ¡hola, hola, hola!"
+      },
+      {
+       "quien": "rayo",
+       "es": "Termina todas las misiones de la página y Renglón la voltea.",
+       "en": "Termina todas las misiones de la página y Renglón la voltea."
+      }
+     ]
+    },
+    "caro-pide": {
+     "lineas": [
+      {
+       "quien": "caro",
+       "es": "Hooola... Soy Caro. Voy despacito, despacito... y se me perdió una palabra muy importante.",
+       "en": "Hooola... Soy Caro. Voy despacito, despacito... y se me perdió una palabra muy importante."
+      },
+      {
+       "quien": "caro",
+       "es": "Es la que digo al llegar, cuando saludo. Está más adelante, en este camino. ¿Me la traes?",
+       "en": "Es la que digo al llegar, cuando saludo. Está más adelante, en este camino. ¿Me la traes?"
+      }
+     ]
+    },
+    "caro-otra": {
+     "lineas": [
+      {
+       "quien": "caro",
+       "es": "Mmm... esa no es. ¡No pasa nada! Yo también me equivoco. ¿Qué digo cuando llego?",
+       "en": "Mmm... esa no es. ¡No pasa nada! Yo también me equivoco. ¿Qué digo cuando llego?"
+      }
+     ]
+    },
+    "caro-gracias": {
+     "lineas": [
+      {
+       "quien": "caro",
+       "es": "¡Esa es! ¡Hola! Ya puedo saludar a todos.",
+       "en": "¡Esa es! ¡Hola! Ya puedo saludar a todos."
+      },
+      {
+       "quien": "caro",
+       "es": "La guardé en tu álbum. ¡Gracias por tomarte tu tiempo conmigo!",
+       "en": "La guardé en tu álbum. ¡Gracias por tomarte tu tiempo conmigo!"
+      }
+     ]
+    },
+    "caro-listo": {
+     "lineas": [
+      {
+       "quien": "caro",
+       "es": "Hola, hola... ¿me saludas tú también?",
+       "en": "Hola, hola... ¿me saludas tú también?"
+      }
+     ]
+    },
+    "tito-pide": {
+     "lineas": [
+      {
+       "quien": "tito",
+       "es": "¡Hola, hola! Soy Tito. Mi perro se escondió y no lo encuentro.",
+       "en": "¡Hola, hola! Soy Tito. Mi perro se escondió y no lo encuentro."
+      },
+      {
+       "quien": "tito",
+       "es": "Hace guau guau. Búscalo por este camino, ¿sí?",
+       "en": "Hace guau guau. Búscalo por este camino, ¿sí?"
+      }
+     ]
+    },
+    "tito-otra": {
+     "lineas": [
+      {
+       "quien": "tito",
+       "es": "¡Uy, ese no hace guau guau! Escucha otra vez, sin afán.",
+       "en": "¡Uy, ese no hace guau guau! Escucha otra vez, sin afán."
+      }
+     ]
+    },
+    "tito-gracias": {
+     "lineas": [
+      {
+       "quien": "tito",
+       "es": "¡Guau guau! ¡Ahí estaba mi perro! ¡Gracias, amigo!",
+       "en": "¡Guau guau! ¡Ahí estaba mi perro! ¡Gracias, amigo!"
+      },
+      {
+       "quien": "tito",
+       "es": "Lo guardé en tu álbum.",
+       "en": "Lo guardé en tu álbum."
+      }
+     ]
+    },
+    "tito-listo": {
+     "lineas": [
+      {
+       "quien": "tito",
+       "es": "Guau guau... ¿tú sabes cómo hace el gato?",
+       "en": "Guau guau... ¿tú sabes cómo hace el gato?"
+      }
+     ]
+    },
+    "abu-pide": {
+     "lineas": [
+      {
+       "quien": "abu",
+       "es": "Buenas, amigo. Soy Abu. Llevo cien años escuchando los sonidos de esta página...",
+       "en": "Buenas, amigo. Soy Abu. Llevo cien años escuchando los sonidos de esta página..."
+      },
+      {
+       "quien": "abu",
+       "es": "...y hoy se me perdió mi reloj. Hace tic tac. Está más adelante. Escucha con calma.",
+       "en": "...y hoy se me perdió mi reloj. Hace tic tac. Está más adelante. Escucha con calma."
+      }
+     ]
+    },
+    "abu-otra": {
+     "lineas": [
+      {
+       "quien": "abu",
+       "es": "Mmm, eso suena distinto. Los sabios también se equivocan. Busca el que hace tic tac.",
+       "en": "Mmm, eso suena distinto. Los sabios también se equivocan. Busca el que hace tic tac."
+      }
+     ]
+    },
+    "abu-gracias": {
+     "lineas": [
+      {
+       "quien": "abu",
+       "es": "¡Tic tac, tic tac! Mi reloj otra vez.",
+       "en": "¡Tic tac, tic tac! Mi reloj otra vez."
+      },
+      {
+       "quien": "abu",
+       "es": "Guárdalo en tu álbum. Escuchar con calma es un tesoro.",
+       "en": "Guárdalo en tu álbum. Escuchar con calma es un tesoro."
+      }
+     ]
+    },
+    "abu-listo": {
+     "lineas": [
+      {
+       "quien": "abu",
+       "es": "Tic tac, tic tac... ¿oyes qué más suena por aquí?",
+       "en": "Tic tac, tic tac... ¿oyes qué más suena por aquí?"
+      }
+     ]
+    },
+    "pua-pide": {
+     "lineas": [
+      {
+       "quien": "pua",
+       "es": "¡Hola! Soy Púa. Me encanta cantar rondas, pero se me olvidó una...",
+       "en": "¡Hola! Soy Púa. Me encanta cantar rondas, pero se me olvidó una..."
+      },
+      {
+       "quien": "pua",
+       "es": "Es la de los pollitos que dicen pío, pío, pío. Está por este camino. ¿Me la traes?",
+       "en": "Es la de los pollitos que dicen pío, pío, pío. Está por este camino. ¿Me la traes?"
+      }
+     ]
+    },
+    "pua-otra": {
+     "lineas": [
+      {
+       "quien": "pua",
+       "es": "Esa es otra ronda, ¡también es bonita! Pero busco la de los pollitos.",
+       "en": "Esa es otra ronda, ¡también es bonita! Pero busco la de los pollitos."
+      }
+     ]
+    },
+    "pua-gracias": {
+     "lineas": [
+      {
+       "quien": "pua",
+       "es": "¡Los pollitos dicen pío, pío, pío! ¡Gracias!",
+       "en": "¡Los pollitos dicen pío, pío, pío! ¡Gracias!"
+      },
+      {
+       "quien": "pua",
+       "es": "La guardé en tu álbum. ¿La cantamos juntos?",
+       "en": "La guardé en tu álbum. ¿La cantamos juntos?"
+      }
+     ]
+    },
+    "pua-listo": {
+     "lineas": [
+      {
+       "quien": "pua",
+       "es": "Pío, pío, pío... ¡qué bonito es cantar!",
+       "en": "Pío, pío, pío... ¡qué bonito es cantar!"
+      }
+     ]
+    },
+    "nuez-pide": {
+     "lineas": [
+      {
+       "quien": "nuez",
+       "es": "¡Hola! Soy Nuez. Estoy buscando a mi amigo para jugar...",
+       "en": "¡Hola! Soy Nuez. Estoy buscando a mi amigo para jugar..."
+      },
+      {
+       "quien": "nuez",
+       "es": "...se llama Rayo. ¿Me ayudas a encontrarlo? Está más adelante.",
+       "en": "...se llama Rayo. ¿Me ayudas a encontrarlo? Está más adelante."
+      }
+     ]
+    },
+    "nuez-otra": {
+     "lineas": [
+      {
+       "quien": "nuez",
+       "es": "Ese es otro vecino, ¡qué bueno conocerlo! Pero busco a Rayo.",
+       "en": "Ese es otro vecino, ¡qué bueno conocerlo! Pero busco a Rayo."
+      }
+     ]
+    },
+    "nuez-gracias": {
+     "lineas": [
+      {
+       "quien": "nuez",
+       "es": "¡Rayo! ¡Ahí está! Gracias por ayudarme.",
+       "en": "¡Rayo! ¡Ahí está! Gracias por ayudarme."
+      },
+      {
+       "quien": "nuez",
+       "es": "Lo guardé en tu álbum. ¡Ahora todos somos amigos!",
+       "en": "Lo guardé en tu álbum. ¡Ahora todos somos amigos!"
+      }
+     ]
+    },
+    "nuez-listo": {
+     "lineas": [
+      {
+       "quien": "nuez",
+       "es": "Yo soy Nuez. ¿Y tú cómo te llamas?",
+       "en": "Yo soy Nuez. ¿Y tú cómo te llamas?"
+      }
+     ]
+    },
+    "goma": {
+     "lineas": [
+      {
+       "quien": "goma",
+       "es": "¿Te equivocaste? ¡No pasa nada! Soy un borrador: borrar no es perder, es mejorar.",
+       "en": "¿Te equivocaste? ¡No pasa nada! Soy un borrador: borrar no es perder, es mejorar."
+      },
+      {
+       "quien": "goma",
+       "es": "Equivocarse es parte de aprender. Dilo conmigo.",
+       "en": "Equivocarse es parte de aprender. Dilo conmigo.",
+       "opciones": [
+        {
+         "es": "¡Yo puedo!",
+         "en": "¡Yo puedo!"
+        },
+        {
+         "es": "¡Lo intento otra vez!",
+         "en": "¡Lo intento otra vez!"
+        }
+       ]
+      },
+      {
+       "quien": "goma",
+       "es": "¡Así se dice! Sigue explorando.",
+       "en": "¡Así se dice! Sigue explorando."
+      }
+     ]
+    },
+    "renglon": {
+     "lineas": [
+      {
+       "quien": "renglon",
+       "es": "¡Hola! ¡Qué bueno verte! Escucha: esta página está llena de sonidos.",
+       "en": "¡Hola! ¡Qué bueno verte! Escucha: esta página está llena de sonidos."
+      },
+      {
+       "quien": "goma",
+       "es": "Hay misiones por dibujar y vecinos que necesitan ayuda.",
+       "en": "Hay misiones por dibujar y vecinos que necesitan ayuda."
+      }
+     ],
+     "luego": "elegir"
+    },
+    "atajo": {
+     "lineas": [
+      {
+       "quien": "goma",
+       "es": "¡Mira! Se coloreó un camino nuevo. ¡Ahora es más corto llegar!",
+       "en": "¡Mira! Se coloreó un camino nuevo. ¡Ahora es más corto llegar!"
+      }
+     ]
+    }
+   }
+  }
+ ],
+ "idiomaHistoria": "es-US",
+ "heroes": [
+  {
+   "id": "tavi",
+   "nombre": "Coco",
+   "imagen": "personajes/heroe-1.webp",
+   "ancho": 76,
+   "saludo": {
+    "es": "¡Hola! Soy Coco.",
+    "en": "¡Hola! Soy Coco."
+   },
+   "anclas": {
+    "cabeza": {
+     "x": 0.5,
+     "y": 0.16,
+     "escala": 1
+    },
+    "cara": {
+     "x": 0.5,
+     "y": 0.47,
+     "escala": 0.95
+    },
+    "cuello": {
+     "x": 0.5,
+     "y": 0.88,
+     "escala": 0.85
+    },
+    "espalda": {
+     "x": 0.5,
+     "y": 0.6,
+     "escala": 1
+    }
+   },
+   "alto": 92
+  },
+  {
+   "id": "mika",
+   "nombre": "Nube",
+   "imagen": "personajes/heroe-2.webp",
+   "ancho": 96,
+   "saludo": {
+    "es": "¡Hola! Soy Nube.",
+    "en": "¡Hola! Soy Nube."
+   },
+   "anclas": {
+    "cabeza": {
+     "x": 0.58,
+     "y": 0.04,
+     "escala": 0.85
+    },
+    "cara": {
+     "x": 0.56,
+     "y": 0.36,
+     "escala": 0.85
+    },
+    "cuello": {
+     "x": 0.56,
+     "y": 0.84,
+     "escala": 0.8
+    },
+    "espalda": {
+     "x": 0.5,
+     "y": 0.58,
+     "escala": 1
+    }
+   },
+   "alto": 73
+  },
+  {
+   "id": "bruno",
+   "nombre": "Rulo",
+   "imagen": "personajes/heroe-3.webp",
+   "ancho": 64,
+   "saludo": {
+    "es": "¡Hola! Soy Rulo.",
+    "en": "¡Hola! Soy Rulo."
+   },
+   "anclas": {
+    "cabeza": {
+     "x": 0.52,
+     "y": 0.2,
+     "escala": 1
+    },
+    "cara": {
+     "x": 0.52,
+     "y": 0.46,
+     "escala": 0.95
+    },
+    "cuello": {
+     "x": 0.52,
+     "y": 0.74,
+     "escala": 0.9
+    },
+    "espalda": {
+     "x": 0.5,
+     "y": 0.6,
+     "escala": 1
+    }
+   },
+   "alto": 109
+  }
+ ],
+ "estelas": [
+  {
+   "id": "oro",
+   "estrellas": 0,
+   "colores": [
+    "#fff3a6",
+    "#ffd95a"
+   ]
+  },
+  {
+   "id": "menta",
+   "estrellas": 8,
+   "colores": [
+    "#b6fff0",
+    "#19c6b1"
+   ]
+  },
+  {
+   "id": "rosa",
+   "estrellas": 18,
+   "colores": [
+    "#ffd0e6",
+    "#ff5fa2"
+   ]
+  },
+  {
+   "id": "arcoiris",
+   "estrellas": 28,
+   "colores": [
+    "#ff5f6d",
+    "#ffc371",
+    "#fff36b",
+    "#6bffb0",
+    "#6bc5ff",
+    "#c58bff"
+   ]
+  }
+ ],
+ "ayudas": {
+  "memoria-tutorial": {
+   "es": "¡Iguales! Ahora tú.",
+   "en": "¡Iguales! Ahora tú."
+  },
+  "memoria-pista1": {
+   "es": "Escucha bien: cada dibujo tiene su sonido.",
+   "en": "Escucha bien: cada dibujo tiene su sonido."
+  },
+  "memoria-pista2": {
+   "es": "Mira, por aquí.",
+   "en": "Mira, por aquí."
+  },
+  "atrapa-inicio": {
+   "es": "Atrapa el dibujo que te digo.",
+   "en": "Atrapa el dibujo que te digo."
+  },
+  "vestidor-pronto": {
+   "es": "¡Pronto! Sigue llenando la página.",
+   "en": "¡Pronto! Sigue llenando la página."
+  },
+  "entrada-quien": {
+   "es": "¿Quién va a jugar?",
+   "en": "¿Quién va a jugar?"
+  },
+  "entrada-busca": {
+   "es": "Busca tu cara",
+   "en": "Busca tu cara"
+  },
+  "entrada-clave": {
+   "es": "Toca tus tres dibujos",
+   "en": "Toca tus tres dibujos"
+  },
+  "entrada-errado": {
+   "es": "Esas no son. Prueba otra vez con calma",
+   "en": "Esas no son. Prueba otra vez con calma"
+  },
+  "entrada-descanso": {
+   "es": "Goma necesita un descanso. Busca tu tarjeta o pídele ayuda a un adulto",
+   "en": "Goma necesita un descanso. Busca tu tarjeta o pídele ayuda a un adulto"
+  },
+  "entrada-ayuda": {
+   "es": "Goma necesita un descanso. Pídele ayuda a tu profe",
+   "en": "Goma necesita un descanso. Pídele ayuda a tu profe"
+  },
+  "entrada-hola": {
+   "es": "¡Hola! Vamos al cuaderno",
+   "en": "¡Hola! Vamos al cuaderno"
+  },
+  "entrada-unir": {
+   "es": "¿Este camino lo recorriste tú?",
+   "en": "¿Este camino lo recorriste tú?"
+  },
+  "entrada-contadas": {
+   "es": "Goma sumó tu avance",
+   "en": "Goma sumó tu avance"
+  },
+  "entrada-sin-red": {
+   "es": "Para usar tu tarjeta hace falta internet una vez. Mientras tanto, ¡a jugar!",
+   "en": "Para usar tu tarjeta hace falta internet una vez. Mientras tanto, ¡a jugar!"
+  },
+  "cuento-preguntas": {
+   "es": "Ahora cuéntame qué recuerdas del cuento.",
+   "en": "Ahora cuéntame qué recuerdas del cuento."
+  },
+  "cuento-otra-vez": {
+   "es": "Casi. Si quieres, toca el libro para ver el cuento otra vez.",
+   "en": "Casi. Si quieres, toca el libro para ver el cuento otra vez."
+  }
+ },
+ "imagenes": {
+  "portada": "personajes/renglon-saludar.webp",
+  "fiesta": "personajes/renglon-celebrar.webp"
+ },
+ "accesorios": [
+  {
+   "id": "bufanda",
+   "nombre": {
+    "es": "Bufanda de rayas",
+    "en": "Bufanda de rayas"
+   },
+   "ranura": "cuello",
+   "estrellas": 1,
+   "imagen": "accesorios/bufanda.webp",
+   "punto": [
+    0.5,
+    0.2
+   ],
+   "ancho": 0.6
+  },
+  {
+   "id": "gafas-estrella",
+   "nombre": {
+    "es": "Gafas de estrella",
+    "en": "Gafas de estrella"
+   },
+   "ranura": "cara",
+   "estrellas": 6,
+   "imagen": "accesorios/gafas-estrella.webp",
+   "punto": [
+    0.43,
+    0.5
+   ],
+   "ancho": 0.66
+  },
+  {
+   "id": "antena-luciernaga",
+   "nombre": {
+    "es": "Antena con luciérnaga",
+    "en": "Antena con luciérnaga"
+   },
+   "ranura": "cabeza",
+   "estrellas": 12,
+   "imagen": "accesorios/antena-luciernaga.webp",
+   "punto": [
+    0.37,
+    0.4
+   ],
+   "ancho": 1.05
+  },
+  {
+   "id": "capa-hojas",
+   "nombre": {
+    "es": "Capa de hojas",
+    "en": "Capa de hojas"
+   },
+   "ranura": "espalda",
+   "estrellas": 20,
+   "imagen": "accesorios/capa-hojas.webp",
+   "punto": [
+    0.5,
+    0.2
+   ],
+   "ancho": 1.1
+  },
+  {
+   "id": "corona-flores",
+   "nombre": {
+    "es": "Corona de flores",
+    "en": "Corona de flores"
+   },
+   "ranura": "cabeza",
+   "estrellas": 24,
+   "imagen": "accesorios/corona-flores.webp",
+   "punto": [
+    0.5,
+    0.5
+   ],
+   "ancho": 0.8
+  },
+  {
+   "id": "mochila-cohete",
+   "nombre": {
+    "es": "Mochila cohete",
+    "en": "Mochila cohete"
+   },
+   "ranura": "espalda",
+   "estrellas": 30,
+   "imagen": "accesorios/mochila-cohete.webp",
+   "punto": [
+    0.5,
+    0.45
+   ],
+   "ancho": 1.05
+  }
+ ],
+ "voz": {},
+ "vista": {
+  "tipo": "biblioteca",
+  "etapas": [
+   "Yo hablo, yo escucho",
+   "Juego con las palabras",
+   "Leo imágenes y cuentos",
+   "Lo escrito dice algo"
+  ]
+ }
+}

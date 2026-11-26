@@ -6,9 +6,11 @@ import { Fragment, useEffect, useRef, useState, type ReactNode } from 'react';
 import './material.css';
 import { Boton, Encabezado, Enlace, Hueco, Panel, Fila } from '../adultos/base';
 import { Icono } from '../adultos/Icono';
-import { base, TIPO_NOMBRE, type Bloque, type Impresion, type ItemImagen, type Material, type Palabra, type TipoCatalogo } from './datos';
+import { base, TIPO_NOMBRE, type Bloque, type EntradaTema, type Impresion, type ItemImagen, type Material, type Palabra, type TipoCatalogo } from './datos';
 import { sonar } from './sonido';
+import { NOMBRE } from '../marca';
 import { CancionPantalla, LetraImpresa } from './Cancion';
+import { FormatoPlaneador } from './Planeador';
 
 // ---------------------------------------------------------------- Piezas de imagen
 
@@ -487,7 +489,8 @@ export function Bloques({ bloques, ctx }: { bloques: Bloque[]; ctx: Ctx }) {
 }
 
 /** Bloques de un material en pantalla, sin cabecera (los usa Planear para mostrar los dos planeadores). */
-export function CuerpoMaterial({ material, rutaMaterial, abrirMomentos }: { material: Material; rutaMaterial?: (id: string) => string; abrirMomentos?: boolean }) {
+export function CuerpoMaterial({ material, rutaMaterial, abrirMomentos, nombreTema, otros, temaId }: { material: Material; rutaMaterial?: (id: string) => string; abrirMomentos?: boolean; nombreTema?: string; otros?: EntradaTema['materiales']; temaId?: string }) {
+  if (material.tipo === 'planeador') return <FormatoPlaneador material={material} nombreTema={nombreTema ?? ''} rutaMaterial={rutaMaterial} otros={otros} temaId={temaId} />;
   return (
     <div className="mat-cuerpo">
       <Bloques bloques={material.bloques} ctx={{ modo: 'pantalla', material, oculta: new Set(), rutaMaterial, abrirMomentos }} />
@@ -504,13 +507,13 @@ function Hoja({ material, impresion, nombreTema, copia, bloques }: { material: M
   return (
     <section className="mat-hoja" data-copia={copia}>
       <header className="mat-hoja__cab">
-        <span>El Cuaderno de Goma · {nombreTema}</span>
+        <span>{NOMBRE} · {nombreTema}</span>
         {nino && <span className="mat-hoja__nombre">Nombre:</span>}
       </header>
-      {material.tipo !== 'ficha' && material.tipo !== 'laminas' && <h1 className="mat-hoja__titulo">{material.titulo}</h1>}
+      {material.tipo !== 'planeador' && material.tipo !== 'ficha' && material.tipo !== 'laminas' && <h1 className="mat-hoja__titulo">{material.titulo}</h1>}
       {material.avisoColor && <p className="mat-hoja__aviso">{material.avisoColor}</p>}
       <div className="mat-hoja__cuerpo">
-        <Bloques bloques={bloques} ctx={ctx} />
+        {material.tipo === 'planeador' ? <FormatoPlaneador material={material} nombreTema={nombreTema} impreso /> : <Bloques bloques={bloques} ctx={ctx} />}
       </div>
       <footer className="mat-hoja__pie">
         <span>
@@ -605,7 +608,7 @@ export function MaterialPantalla({ material, nombreTema, volver, rutaProyectar, 
           </Panel>
         )}
         {material.avisoColor && <p className="nota">{material.avisoColor}</p>}
-        <CuerpoMaterial material={material} rutaMaterial={rutaMaterial} />
+        <CuerpoMaterial material={material} rutaMaterial={rutaMaterial} nombreTema={nombreTema} temaId={material.tema} />
       </div>
       <Impreso material={material} indice={hoja} nombreTema={nombreTema} />
     </article>

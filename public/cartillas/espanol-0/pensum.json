@@ -1,0 +1,306 @@
+{
+ "cartilla": "espanol-0",
+ "materia": "Español",
+ "grado": 0,
+ "gradoNombre": "Transición",
+ "guia": "Renglón",
+ "titulo": "El cuaderno de Renglón · Transición",
+ "fuente": "Contenidos programáticos de Español · Versión 1 · 24 de noviembre de 2026",
+ "proposito": "Que el niño disfrute el lenguaje oral y la literatura, juegue con los sonidos de las palabras y descubra que lo escrito dice algo. Como las Bases Curriculares proponen un currículo por experiencias y no por asignaturas, la cartilla no busca \"enseñar a leer\" en transición: no hay planas ni copia (decisión pedagógica de la cartilla); se escribe con grafías propias, como pide el DBA 10, y se celebra cada intento.",
+ "dba": [
+  {
+   "id": "7",
+   "texto": "Expresa y representa lo que observa, siente, piensa e imagina, a través del juego, la música, el dibujo y la expresión corporal."
+  },
+  {
+   "id": "8",
+   "texto": "Identifica las relaciones sonoras en el lenguaje oral."
+  },
+  {
+   "id": "9",
+   "texto": "Establece relaciones e interpreta imágenes, letras, objetos, personajes que encuentra en distintos tipos de textos."
+  },
+  {
+   "id": "10",
+   "texto": "Expresa ideas, intereses y emociones a través de sus propias grafías y formas semejantes a las letras convencionales en formatos con diferentes intenciones comunicativas."
+  },
+  {
+   "id": "3",
+   "texto": "Propósito 1 de los DBA de transición: reconoce sus emociones (apoyo; ver el texto en el documento del MEN)."
+  },
+  {
+   "id": "6",
+   "texto": "Propósito 1 de los DBA de transición: escucha a los otros (apoyo; ver el texto en el documento del MEN)."
+  }
+ ],
+ "ebc": "",
+ "periodos": {
+  "1": "Yo hablo, yo escucho",
+  "2": "Juego con las palabras",
+  "3": "Leo imágenes y cuentos",
+  "4": "Lo escrito dice algo"
+ },
+ "unidades": [
+  {
+   "id": "u1",
+   "numero": 1,
+   "titulo": "Mi nombre y yo",
+   "periodo": {
+    "4": 1,
+    "3": 1
+   },
+   "temas": [
+    "Decir su nombre, el de compañeros",
+    "saludar y despedirse",
+    "mi nombre escrito como \"dibujo\" que me representa"
+   ],
+   "dba": [
+    "7",
+    "10"
+   ],
+   "factores": [],
+   "desempenos": [
+    "Se presenta en voz alta.",
+    "Reconoce su nombre escrito entre otros."
+   ],
+   "juegos": "di-brilla, memoria (foto y nombre), en el aula"
+  },
+  {
+   "id": "u2",
+   "numero": 2,
+   "titulo": "Sonidos de mi mundo",
+   "periodo": {
+    "4": 1,
+    "3": 1
+   },
+   "temas": [
+    "Sonidos del entorno, animales y objetos",
+    "onomatopeyas",
+    "escuchar en silencio"
+   ],
+   "dba": [
+    "8"
+   ],
+   "factores": [],
+   "desempenos": [
+    "Asocia un sonido onomatopéyico con el objeto o animal que lo produce."
+   ],
+   "juegos": "escucha-toca, escucha-atrapa, memoria (sonido y dibujo)"
+  },
+  {
+   "id": "u3",
+   "numero": 3,
+   "titulo": "Rondas, arrullos y canciones",
+   "periodo": {
+    "4": 1,
+    "3": 1
+   },
+   "temas": [
+    "Tradición oral colombiana",
+    "seguir el ritmo con el cuerpo",
+    "repetir estribillos"
+   ],
+   "dba": [
+    "7",
+    "8"
+   ],
+   "factores": [],
+   "desempenos": [
+    "Participa en rondas y aporta gestos o palabras propias."
+   ],
+   "juegos": "di-brilla, en el aula (proyectar canciones)"
+  },
+  {
+   "id": "u4",
+   "numero": 4,
+   "titulo": "Palabras que riman",
+   "periodo": {
+    "4": 2,
+    "3": 1
+   },
+   "temas": [
+    "Rimas, retahílas, adivinanzas sencillas"
+   ],
+   "dba": [
+    "8"
+   ],
+   "factores": [],
+   "desempenos": [
+    "Identifica dos palabras que riman.",
+    "Completa una rima con una palabra."
+   ],
+   "juegos": "escucha-atrapa, memoria (parejas que riman), di-brilla"
+  },
+  {
+   "id": "u5",
+   "numero": 5,
+   "titulo": "Palmas y sílabas",
+   "periodo": {
+    "4": 2,
+    "3": 2
+   },
+   "temas": [
+    "Segmentar palabras con palmas o zapateo",
+    "palabras largas y cortas"
+   ],
+   "dba": [
+    "8"
+   ],
+   "factores": [],
+   "desempenos": [
+    "Separa con palmas palabras de 1 a 4 sílabas."
+   ],
+   "juegos": "contar-toca, ordenar (sílabas en dibujo), en el aula"
+  },
+  {
+   "id": "u6",
+   "numero": 6,
+   "titulo": "¿Con qué empieza?",
+   "periodo": {
+    "4": 2,
+    "3": 2
+   },
+   "temas": [
+    "Sonido inicial de palabras",
+    "vocales como sonidos (a, e, i, o, u) en juegos orales"
+   ],
+   "dba": [
+    "8",
+    "9"
+   ],
+   "factores": [],
+   "desempenos": [
+    "Reconoce palabras que empiezan con el mismo sonido."
+   ],
+   "juegos": "escucha-toca, escucha-atrapa"
+  },
+  {
+   "id": "u7",
+   "numero": 7,
+   "titulo": "El libro álbum",
+   "periodo": {
+    "4": 3,
+    "3": 2
+   },
+   "temas": [
+    "Portada, ilustraciones, pasar páginas",
+    "predecir qué pasará a partir de la imagen"
+   ],
+   "dba": [
+    "9"
+   ],
+   "factores": [],
+   "desempenos": [
+    "Cuenta lo que pasa mirando las imágenes y hace preguntas."
+   ],
+   "juegos": "en el aula (proyectar cuento), escucha-toca (¿quién es?)"
+  },
+  {
+   "id": "u8",
+   "numero": 8,
+   "titulo": "Personajes y lugares de los cuentos",
+   "periodo": {
+    "4": 3,
+    "3": 2
+   },
+   "temas": [
+    "Quién, dónde, qué pasó",
+    "inicio, nudo y final con imágenes"
+   ],
+   "dba": [
+    "7",
+    "9"
+   ],
+   "factores": [],
+   "desempenos": [
+    "Ordena 3 escenas de un cuento conocido y lo vuelve a contar."
+   ],
+   "juegos": "ordenar, escucha-toca"
+  },
+  {
+   "id": "u9",
+   "numero": 9,
+   "titulo": "Mis emociones en los cuentos",
+   "periodo": {
+    "4": 3,
+    "3": 3
+   },
+   "temas": [
+    "Alegría, tristeza, miedo, rabia",
+    "gestos y cuerpo que comunican"
+   ],
+   "dba": [
+    "7",
+    "3"
+   ],
+   "factores": [],
+   "desempenos": [
+    "Nombra la emoción de un personaje y la representa con el cuerpo."
+   ],
+   "juegos": "escucha-toca (emoción y cara), memoria, en el aula (dramatizar)"
+  },
+  {
+   "id": "u10",
+   "numero": 10,
+   "titulo": "Letras a mi alrededor",
+   "periodo": {
+    "4": 4,
+    "3": 3
+   },
+   "temas": [
+    "Avisos, etiquetas, marcas, pancartas del barrio",
+    "letras de mi nombre en otras palabras"
+   ],
+   "dba": [
+    "9"
+   ],
+   "factores": [],
+   "desempenos": [
+    "Identifica letras de su nombre en textos del entorno."
+   ],
+   "juegos": "escucha-toca (letra de mi nombre), memoria"
+  },
+  {
+   "id": "u11",
+   "numero": 11,
+   "titulo": "Para qué sirve lo escrito",
+   "periodo": {
+    "4": 4,
+    "3": 3
+   },
+   "temas": [
+    "Recetas, cartas, invitaciones, listas, cancioneros: propósito de cada texto"
+   ],
+   "dba": [
+    "9"
+   ],
+   "factores": [],
+   "desempenos": [
+    "Dice para qué sirve un texto mostrado (una receta sirve para cocinar)."
+   ],
+   "juegos": "escucha-toca, en el aula"
+  },
+  {
+   "id": "u12",
+   "numero": 12,
+   "titulo": "Yo escribo a mi manera",
+   "periodo": {
+    "4": 4,
+    "3": 3
+   },
+   "temas": [
+    "Escritura con grafías propias: una invitación, una lista, un mensaje",
+    "escribe su nombre con las letras que conoce"
+   ],
+   "dba": [
+    "10"
+   ],
+   "factores": [],
+   "desempenos": [
+    "Produce un mensaje con grafías propias y lo \"lee\" a otros.",
+    "Escribe su nombre."
+   ],
+   "juegos": "en el aula (ficha imprimible), di-brilla"
+  }
+ ]
+}

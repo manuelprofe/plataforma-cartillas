@@ -1,39 +1,46 @@
 {
  "niveles": {
-  "n1": {
-   "titulo": "Nivel 1 · English Explorer",
-   "territorio": "Bosque de los Sonidos",
-   "importancia": "Este nivel inicia el contacto seguro con el inglés: el estudiante reconoce vocabulario cercano, lo relaciona con objetos reales e imágenes, y participa sin miedo al error.",
-   "pensum": "School objects, colors, numbers 1-20, body parts, time, greetings y primeras expresiones de aula.",
-   "evidencia": "Vocabulario reconocido mediante imagen, palabra, gesto y repetición oral."
+  "entrada": {
+   "titulo": "Ruta de entrada · Bienvenida a las Postales",
+   "territorio": "Cuaderno Verde, sección Postales · 2 a 3 semanas antes del periodo 1",
+   "importancia": "Muchos niños llegan a 3.° sin haber visto inglés. Estos temas, que el MEN ubica en transición y 1.°, nivelan al grupo con vocabulario cercano del salón antes de entrar a los módulos de 3.°.",
+   "pensum": "School objects, colors, numbers 1-20, clothes, saludos y expresiones de aula.",
+   "evidencia": "Reconoce y nombra vocabulario del salón con apoyo de imagen, gesto y voz."
   },
-  "n2": {
-   "titulo": "Nivel 2 · Word Builder",
-   "territorio": "Valle de las Palabras",
-   "importancia": "Este nivel fortalece la asociación palabra-imagen-significado. Los temas se agrupan en campos semánticos cercanos para que el estudiante clasifique, recuerde y use vocabulario con más autonomía.",
-   "pensum": "Emotions, food, clothes, animals, likes/dislikes y categorías semánticas de uso cotidiano.",
-   "evidencia": "Asociaciones palabra-significado y uso oral de vocabulario en juegos guiados."
+  "p1": {
+   "titulo": "Periodo 1 · Cuido mi salud y la de mi familia",
+   "territorio": "Salud y vida · DBA 1 y 4 · MEN 2016b, pp. 153-155",
+   "importancia": "Reconocer y expresar con lenguaje sencillo normas y responsabilidades para prevenir problemas de salud en su contexto local.",
+   "pensum": "Repaso del cuerpo y hábitos sanos; cold, flu, fever, cough, headache, stomachache, sore throat, dengue; sick, tired; números 100-1000; should / shouldn't; a / an; I have a…",
+   "evidencia": "Describe con frases sencillas cómo se siente y da un consejo con should. Tarea final: campaña contra el dengue con carteles en inglés."
   },
-  "n3": {
-   "titulo": "Nivel 3 · Sentence Hero",
-   "territorio": "Ciudad de las Frases",
-   "importancia": "Este nivel transforma vocabulario aislado en frases. El estudiante pasa de reconocer palabras a organizar estructuras simples para hablar de rutinas, acciones y habilidades.",
-   "pensum": "Daily routine, action verbs, present simple, days of the week, can/can't, Wh- y Yes/No questions.",
-   "evidencia": "Frases producidas oralmente o por escrito con apoyo visual y modelos."
+  "p2": {
+   "titulo": "Periodo 2 · Cumplo mis deberes",
+   "territorio": "Convivencia y paz · DBA 3 y 2 · MEN 2016b, pp. 153 y 163",
+   "importancia": "Mencionar en inglés sus deberes como miembro de una comunidad, usando un lenguaje sencillo.",
+   "pensum": "Duties y normas del salón (raise your hand, do your homework, respect others, tell the truth, don't litter); la hora en punto; rutina del día; our, their; What do you do at 7 o'clock? Where…? When…?",
+   "evidencia": "Dice tres deberes y a qué hora hace sus actividades. Tarea final: acuerdo de normas del curso en inglés."
   },
-  "n4": {
-   "titulo": "Nivel 4 · English Communicator",
-   "territorio": "Plaza del Encuentro",
-   "importancia": "Este nivel orienta el aprendizaje hacia la comunicación funcional. Los temas permiten describir lugares, personas, objetos y sostener intercambios breves en contexto.",
-   "pensum": "Places in town, there is / there are, prepositions of place, adjectives y dialogue structures.",
-   "evidencia": "Intercambio comunicativo breve en inglés y descripción de escenas o comunidad."
+  "p3": {
+   "titulo": "Periodo 3 · Cuido mi ciudad",
+   "territorio": "Medioambiente y sociedad · DBA 4 y 1 · MEN 2016a, p. 21; 2016b, pp. 153 y 171",
+   "importancia": "Identificar y expresar en inglés los efectos de sus acciones en su barrio y su municipio, usando frases sencillas.",
+   "pensum": "Park, river, tree, street, school, church, market; repaso de animales y hábitats; littering, polluting, recycling, planting trees; there is / there are; have to / must; imperativos de advertencia.",
+   "evidencia": "Describe su barrio en tres o cuatro oraciones y dice una consecuencia. Tarea final: mapa ilustrado del barrio con frases."
+  },
+  "p4": {
+   "titulo": "Periodo 4 · Uso apropiadamente la tecnología",
+   "territorio": "Una aldea global · DBA 3, 2 y 1 · MEN 2016a, p. 20; 2016b, pp. 153 y 177",
+   "importancia": "Reconocer y presentar en inglés algunas buenas prácticas para el uso responsable de la tecnología.",
+   "pensum": "TV, computer, tablet, cell phone, video game; How often…?; every day, twice a day; never, sometimes, often, always; can de posibilidad; diálogos cortos para dar una opinión.",
+   "evidencia": "Responde preguntas sobre un texto corto y dice cuánto usa la pantalla. Tarea final: encuesta del curso How often do you…? con gráfica."
   }
  },
  "recursos": [
   {
    "id": "school-objects",
    "tema": "School Objects",
-   "nivel": "n1",
+   "nivel": "entrada",
    "nota": "Objetos del aula para reconocer, señalar, nombrar y usar en instrucciones reales.",
    "imagen": "biblioteca/temas/school-objects-set.webp",
    "descargables": [
@@ -48,7 +55,7 @@
   {
    "id": "colors",
    "tema": "Colors",
-   "nivel": "n1",
+   "nivel": "entrada",
    "nota": "Colores para describir objetos cercanos y responder a comandos visuales.",
    "imagen": null,
    "descargables": [
@@ -63,7 +70,7 @@
   {
    "id": "numbers-1-20",
    "tema": "Numbers 1-20",
-   "nivel": "n1",
+   "nivel": "entrada",
    "nota": null,
    "imagen": null,
    "descargables": [
@@ -78,68 +85,9 @@
    "juego_en_linea": "https://create.kahoot.it/details/english-numbers-1-20/af99d052-6e8c-4061-892f-af8ade4e7fec"
   },
   {
-   "id": "body-parts",
-   "tema": "Body Parts",
-   "nivel": "n1",
-   "nota": "Partes del cuerpo para responder con movimiento y comprensión auditiva.",
-   "imagen": "biblioteca/temas/action-touch-head.webp",
-   "descargables": [
-    "https://learnenglishteens.britishcouncil.org/sites/teens/files/body_parts_-_exercises.pdf",
-    "https://learnenglishkids.britishcouncil.org/sites/kids/files/attachment/flashcards-body.pdf"
-   ],
-   "videos": [
-    "https://www.youtube.com/watch?v=6z35B40Gxhw"
-   ],
-   "juego_en_linea": "https://create.kahoot.it/details/body-parts-english/f375b2c0-3df0-49d4-8885-81124dfe6755"
-  },
-  {
-   "id": "time",
-   "tema": "What time is it?",
-   "nivel": "n1",
-   "nota": "Hora para representar rutinas usando cuerpo, reloj e imagen.",
-   "imagen": "biblioteca/temas/school-number-pin.webp",
-   "descargables": [
-    "https://learnenglishkids.britishcouncil.org/sites/kids/files/attachment/how-to-tell-the-time-worksheet.pdf"
-   ],
-   "videos": [
-    "https://www.youtube.com/watch?v=3cwzRNZf0w0"
-   ],
-   "juego_en_linea": "https://create.kahoot.it/details/esl-telling-the-time-what-time-is-it-what-s-the-time/dffa2e29-7625-4cb9-b0df-5b642940bc67"
-  },
-  {
-   "id": "emotions",
-   "tema": "Emotions",
-   "nivel": "n2",
-   "nota": "Emociones para leer expresiones, dibujar y nombrar estados de ánimo.",
-   "imagen": "biblioteca/temas/feeling-happy.webp",
-   "descargables": [
-    "https://www.theenglishhubforrefugees.com/wp-content/uploads/2023/09/A1-Feelings-and-emotions-2-students-worksheet.pdf",
-    "https://learnenglishkids.britishcouncil.org/sites/kids/files/attachment/flashcards-feelings.pdf"
-   ],
-   "videos": [
-    "https://www.youtube.com/watch?v=aT9CKFC9D2c"
-   ],
-   "juego_en_linea": "https://create.kahoot.it/details/easy-grade-3-feelings-and-emotions-vocabulary/3af15707-50c6-459d-b616-c06f3dde37d2"
-  },
-  {
-   "id": "food",
-   "tema": "Food",
-   "nivel": "n2",
-   "nota": "Alimentos para asociar imagen-palabra y hablar de gustos cotidianos.",
-   "imagen": "biblioteca/temas/food-apple.webp",
-   "descargables": [
-    "https://learnenglishteens.britishcouncil.org/sites/teens/files/food_-_exercises.pdf",
-    "https://learnenglishkids.britishcouncil.org/sites/kids/files/attachment/flashcards-food-set-1.pdf"
-   ],
-   "videos": [
-    "https://www.youtube.com/watch?v=qDu0ZX-V8zc"
-   ],
-   "juego_en_linea": "https://create.kahoot.it/details/food-vocabulary/8f8b6db8-5083-4cc2-b342-24b0e7ef6eb1"
-  },
-  {
    "id": "clothes",
    "tema": "Clothes",
-   "nivel": "n2",
+   "nivel": "entrada",
    "nota": "Prendas de vestir para describir color, pertenencia y preferencias.",
    "imagen": "biblioteca/temas/action-stand-up.webp",
    "descargables": [
@@ -153,25 +101,82 @@
    "juego_en_linea": "https://create.kahoot.it/details/clothes-in-english/a432fdca-efeb-4309-97e2-b3e527c2acd5"
   },
   {
-   "id": "animals",
-   "tema": "Animals",
-   "nivel": "n2",
-   "nota": "Animales para conectar sonido, imagen y vocabulario oral.",
-   "imagen": "biblioteca/temas/place-park.webp",
+   "id": "body-parts",
+   "tema": "Body Parts",
+   "nivel": "p1",
+   "nota": "Partes del cuerpo para responder con movimiento y comprensión auditiva.",
+   "imagen": "biblioteca/temas/action-touch-head.webp",
    "descargables": [
-    "https://learnenglishteens.britishcouncil.org/sites/teens/files/animals_-_exercises.pdf",
-    "https://learnenglishkids.britishcouncil.org/sites/kids/files/attachment/flashcards-wild-animals-set-1.pdf",
-    "https://learnenglishkids.britishcouncil.org/sites/kids/files/attachment/flashcards-pets.pdf"
+    "https://learnenglishteens.britishcouncil.org/sites/teens/files/body_parts_-_exercises.pdf",
+    "https://learnenglishkids.britishcouncil.org/sites/kids/files/attachment/flashcards-body.pdf"
    ],
    "videos": [
-    "https://www.youtube.com/watch?v=UmaLkXBOLzE"
+    "https://www.youtube.com/watch?v=6z35B40Gxhw"
    ],
-   "juego_en_linea": "https://create.kahoot.it/details/animals-in-english/e8c5efb6-4b13-451a-8aec-9361a8af1cb6"
+   "juego_en_linea": "https://create.kahoot.it/details/body-parts-english/f375b2c0-3df0-49d4-8885-81124dfe6755"
+  },
+  {
+   "id": "food",
+   "tema": "Food",
+   "nivel": "p1",
+   "nota": "Alimentos para asociar imagen-palabra y hablar de gustos cotidianos.",
+   "imagen": "biblioteca/temas/food-apple.webp",
+   "descargables": [
+    "https://learnenglishteens.britishcouncil.org/sites/teens/files/food_-_exercises.pdf",
+    "https://learnenglishkids.britishcouncil.org/sites/kids/files/attachment/flashcards-food-set-1.pdf"
+   ],
+   "videos": [
+    "https://www.youtube.com/watch?v=qDu0ZX-V8zc"
+   ],
+   "juego_en_linea": "https://create.kahoot.it/details/food-vocabulary/8f8b6db8-5083-4cc2-b342-24b0e7ef6eb1"
+  },
+  {
+   "id": "present-simple",
+   "tema": "Verb To Be",
+   "nivel": "p1",
+   "nota": "Verbo to be para reconocer estructuras básicas y leer en voz alta.",
+   "imagen": "biblioteca/temas/school-notebook.webp",
+   "descargables": [
+    "https://www.theenglishhubforrefugees.com/wp-content/uploads/2021/05/Present-Simple-A1-Students-worksheet.pdf"
+   ],
+   "videos": [
+    "https://www.youtube.com/watch?v=KRyK79yP0oA"
+   ],
+   "juego_en_linea": "https://create.kahoot.it/details/present-simple-esl/e0dc1235-a45b-4f33-9537-86db886b1898"
+  },
+  {
+   "id": "time",
+   "tema": "What time is it?",
+   "nivel": "p2",
+   "nota": "Hora para representar rutinas usando cuerpo, reloj e imagen.",
+   "imagen": "biblioteca/temas/school-number-pin.webp",
+   "descargables": [
+    "https://learnenglishkids.britishcouncil.org/sites/kids/files/attachment/how-to-tell-the-time-worksheet.pdf"
+   ],
+   "videos": [
+    "https://www.youtube.com/watch?v=3cwzRNZf0w0"
+   ],
+   "juego_en_linea": "https://create.kahoot.it/details/esl-telling-the-time-what-time-is-it-what-s-the-time/dffa2e29-7625-4cb9-b0df-5b642940bc67"
+  },
+  {
+   "id": "emotions",
+   "tema": "Emotions",
+   "nivel": "p2",
+   "nota": "Emociones para leer expresiones, dibujar y nombrar estados de ánimo.",
+   "imagen": "biblioteca/temas/feeling-happy.webp",
+   "descargables": [
+    "https://www.theenglishhubforrefugees.com/wp-content/uploads/2023/09/A1-Feelings-and-emotions-2-students-worksheet.pdf",
+    "https://learnenglishkids.britishcouncil.org/sites/kids/files/attachment/flashcards-feelings.pdf"
+   ],
+   "videos": [
+    "https://www.youtube.com/watch?v=aT9CKFC9D2c"
+   ],
+   "juego_en_linea": "https://create.kahoot.it/details/easy-grade-3-feelings-and-emotions-vocabulary/3af15707-50c6-459d-b616-c06f3dde37d2"
   },
   {
    "id": "daily-routine",
    "tema": "Daily Routine",
-   "nivel": "n3",
+   "nivel": "p2",
    "nota": "Rutinas diarias para ordenar acciones y construir frases simples.",
    "imagen": "biblioteca/temas/action-wake-up.webp",
    "descargables": [
@@ -186,7 +191,7 @@
   {
    "id": "action-verbs",
    "tema": "Action Verbs",
-   "nivel": "n3",
+   "nivel": "p2",
    "nota": null,
    "imagen": null,
    "descargables": [
@@ -200,23 +205,9 @@
    "juego_en_linea": "https://create.kahoot.it/details/action-verbs-esl/29dc7350-3b4e-4fdc-aef1-57c747e3843c"
   },
   {
-   "id": "present-simple",
-   "tema": "Verb To Be",
-   "nivel": "n3",
-   "nota": "Verbo to be para reconocer estructuras básicas y leer en voz alta.",
-   "imagen": "biblioteca/temas/school-notebook.webp",
-   "descargables": [
-    "https://www.theenglishhubforrefugees.com/wp-content/uploads/2021/05/Present-Simple-A1-Students-worksheet.pdf"
-   ],
-   "videos": [
-    "https://www.youtube.com/watch?v=KRyK79yP0oA"
-   ],
-   "juego_en_linea": "https://create.kahoot.it/details/present-simple-esl/e0dc1235-a45b-4f33-9537-86db886b1898"
-  },
-  {
    "id": "questions",
    "tema": "WH Questions",
-   "nivel": "n3",
+   "nivel": "p2",
    "nota": "Preguntas WH para recuperar vocabulario en un tablero colaborativo.",
    "imagen": null,
    "descargables": [
@@ -228,9 +219,25 @@
    "juego_en_linea": "https://create.kahoot.it/details/asking-questions-in-english-esl/cc8caa7b-8169-4110-bf4c-db236ee5b048"
   },
   {
+   "id": "animals",
+   "tema": "Animals",
+   "nivel": "p3",
+   "nota": "Animales para conectar sonido, imagen y vocabulario oral.",
+   "imagen": "biblioteca/temas/place-park.webp",
+   "descargables": [
+    "https://learnenglishteens.britishcouncil.org/sites/teens/files/animals_-_exercises.pdf",
+    "https://learnenglishkids.britishcouncil.org/sites/kids/files/attachment/flashcards-wild-animals-set-1.pdf",
+    "https://learnenglishkids.britishcouncil.org/sites/kids/files/attachment/flashcards-pets.pdf"
+   ],
+   "videos": [
+    "https://www.youtube.com/watch?v=UmaLkXBOLzE"
+   ],
+   "juego_en_linea": "https://create.kahoot.it/details/animals-in-english/e8c5efb6-4b13-451a-8aec-9361a8af1cb6"
+  },
+  {
    "id": "places-in-town",
    "tema": "Places in Town",
-   "nivel": "n4",
+   "nivel": "p3",
    "nota": "Lugares de la comunidad para ubicar, describir y construir mapas.",
    "imagen": "biblioteca/temas/place-school.webp",
    "descargables": [
@@ -247,7 +254,7 @@
   {
    "id": "there-is-there-are",
    "tema": "There is / There are",
-   "nivel": "n4",
+   "nivel": "p3",
    "nota": "Existencia y cantidad para describir escenas, mapas y objetos reales.",
    "imagen": "biblioteca/temas/place-house.webp",
    "descargables": [
@@ -262,7 +269,7 @@
   {
    "id": "adjectives",
    "tema": "Adjectives",
-   "nivel": "n4",
+   "nivel": "p3",
    "nota": "Adjetivos para describir personas, lugares y objetos con intención comunicativa.",
    "imagen": "biblioteca/temas/feeling-happy.webp",
    "descargables": [
@@ -279,7 +286,7 @@
   {
    "id": "dialogue-structures",
    "tema": "Dialogue Structures",
-   "nivel": "n4",
+   "nivel": "p4",
    "nota": null,
    "imagen": null,
    "descargables": [

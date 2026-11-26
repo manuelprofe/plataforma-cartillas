@@ -1,0 +1,414 @@
+{
+ "cartilla": "espanol-1",
+ "materia": "Español",
+ "grado": 1,
+ "gradoNombre": "1.°",
+ "guia": "Renglón",
+ "titulo": "El cuaderno de Renglón · 1.°",
+ "fuente": "Contenidos programáticos de Español · Versión 1 · 24 de noviembre de 2026",
+ "proposito": "Alfabetización inicial: que el niño lea y escriba palabras y oraciones sencillas con sentido, a partir del sonido, la imagen y textos que le importan.",
+ "dba": [
+  {
+   "id": "1",
+   "texto": "Identifica los diferentes medios de comunicación como una posibilidad para informarse, participar y acceder al universo cultural que lo rodea."
+  },
+  {
+   "id": "2",
+   "texto": "Relaciona códigos no verbales, como los movimientos corporales y los gestos de las manos o del rostro, con el significado que pueden tomar de acuerdo con el contexto."
+  },
+  {
+   "id": "3",
+   "texto": "Reconoce en los textos literarios la posibilidad de desarrollar su capacidad creativa y lúdica."
+  },
+  {
+   "id": "4",
+   "texto": "Interpreta textos literarios como parte de su iniciación en la comprensión de textos."
+  },
+  {
+   "id": "5",
+   "texto": "Reconoce las temáticas presentes en los mensajes que escucha, a partir de la diferenciación de los sonidos que componen las palabras."
+  },
+  {
+   "id": "6",
+   "texto": "Interpreta diversos textos a partir de la lectura de palabras sencillas y de las imágenes que contienen."
+  },
+  {
+   "id": "7",
+   "texto": "Enuncia textos orales de diferente índole sobre temas de su interés o sugeridos por otros."
+  },
+  {
+   "id": "8",
+   "texto": "Escribe palabras que le permiten comunicar sus ideas, preferencias y aprendizajes."
+  }
+ ],
+ "ebc": "Estándares Básicos de Competencias del Lenguaje (MEN, 2006), metas al terminar 3.°.",
+ "periodos": {
+  "1": "Los sonidos y las vocales",
+  "2": "Mis primeras letras y palabras",
+  "3": "Leo y escribo oraciones",
+  "4": "Leo el mundo"
+ },
+ "unidades": [
+  {
+   "id": "u1",
+   "numero": 1,
+   "titulo": "Conversamos",
+   "periodo": {
+    "4": 1,
+    "3": 1
+   },
+   "temas": [
+    "Turnos para hablar, volumen de la voz, presentarse, contar lo que le gusta"
+   ],
+   "dba": [
+    "7"
+   ],
+   "factores": [
+    {
+     "id": "F1",
+     "nombre": "Producción textual",
+     "texto": "Produzco textos orales que responden a distintos propósitos comunicativos. Produzco textos escritos que responden a diversas necesidades comunicativas."
+    },
+    {
+     "id": "F5",
+     "nombre": "Ética de la comunicación",
+     "texto": "Identifico los principales elementos y roles de la comunicación para enriquecer procesos comunicativos auténticos."
+    }
+   ],
+   "desempenos": [
+    "Habla de un tema de su interés respetando turnos."
+   ],
+   "juegos": "di-brilla, en el aula"
+  },
+  {
+   "id": "u2",
+   "numero": 2,
+   "titulo": "Las vocales",
+   "periodo": {
+    "4": 1,
+    "3": 1
+   },
+   "temas": [
+    "Sonido y grafía de a, e, i, o, u",
+    "vocal inicial",
+    "mayúscula y minúscula"
+   ],
+   "dba": [
+    "5",
+    "6"
+   ],
+   "factores": [
+    {
+     "id": "F2",
+     "nombre": "Comprensión e interpretación textual",
+     "texto": "Comprendo textos que tienen diferentes formatos y finalidades."
+    }
+   ],
+   "desempenos": [
+    "Asocia cada vocal con su sonido y con palabras que la contienen."
+   ],
+   "juegos": "escucha-toca, escucha-atrapa, memoria (vocal y dibujo), di-brilla"
+  },
+  {
+   "id": "u3",
+   "numero": 3,
+   "titulo": "Rimas, retahílas y adivinanzas",
+   "periodo": {
+    "4": 1,
+    "3": 1
+   },
+   "temas": [
+    "Juego sonoro de la tradición oral",
+    "sonidos que se repiten al final de los versos"
+   ],
+   "dba": [
+    "3",
+    "4"
+   ],
+   "factores": [
+    {
+     "id": "F3",
+     "nombre": "Literatura",
+     "texto": "Comprendo textos literarios para propiciar el desarrollo de mi capacidad creativa y lúdica."
+    }
+   ],
+   "desempenos": [
+    "Identifica la rima y dice o inventa una adivinanza."
+   ],
+   "juegos": "escucha-atrapa, memoria, di-brilla"
+  },
+  {
+   "id": "u4",
+   "numero": 4,
+   "titulo": "m, p, s, l",
+   "periodo": {
+    "4": 2,
+    "3": 1
+   },
+   "temas": [
+    "Sílabas directas (ma, pe, si...), palabras de dos sílabas (mamá, sopa, pala)"
+   ],
+   "dba": [
+    "5",
+    "6",
+    "8"
+   ],
+   "factores": [
+    {
+     "id": "F1",
+     "nombre": "Producción textual",
+     "texto": "Produzco textos orales que responden a distintos propósitos comunicativos. Produzco textos escritos que responden a diversas necesidades comunicativas."
+    },
+    {
+     "id": "F2",
+     "nombre": "Comprensión e interpretación textual",
+     "texto": "Comprendo textos que tienen diferentes formatos y finalidades."
+    }
+   ],
+   "desempenos": [
+    "Lee y escribe palabras con m, p, s y l."
+   ],
+   "juegos": "escucha-toca, contar-toca (sílabas), ordenar o armar sílaba o palabra, di-brilla"
+  },
+  {
+   "id": "u5",
+   "numero": 5,
+   "titulo": "t, n, d",
+   "periodo": {
+    "4": 2,
+    "3": 2
+   },
+   "temas": [
+    "Nuevas sílabas directas",
+    "palabras parecidas (pato, dato, nato)"
+   ],
+   "dba": [
+    "6",
+    "8"
+   ],
+   "factores": [
+    {
+     "id": "F1",
+     "nombre": "Producción textual",
+     "texto": "Produzco textos orales que responden a distintos propósitos comunicativos. Produzco textos escritos que responden a diversas necesidades comunicativas."
+    },
+    {
+     "id": "F2",
+     "nombre": "Comprensión e interpretación textual",
+     "texto": "Comprendo textos que tienen diferentes formatos y finalidades."
+    }
+   ],
+   "desempenos": [
+    "Lee palabras sencillas y distingue palabras que cambian un solo sonido."
+   ],
+   "juegos": "escucha-toca, memoria (palabra y dibujo), ordenar o armar sílaba o palabra"
+  },
+  {
+   "id": "u6",
+   "numero": 6,
+   "titulo": "Cuentos para leer juntos",
+   "periodo": {
+    "4": 2,
+    "3": 2
+   },
+   "temas": [
+    "Personajes, lugares, qué pasó",
+    "título e ilustraciones",
+    "opinar si le gustó"
+   ],
+   "dba": [
+    "4"
+   ],
+   "factores": [
+    {
+     "id": "F3",
+     "nombre": "Literatura",
+     "texto": "Comprendo textos literarios para propiciar el desarrollo de mi capacidad creativa y lúdica."
+    }
+   ],
+   "desempenos": [
+    "Responde quién, dónde y qué pasó de un cuento escuchado."
+   ],
+   "juegos": "ordenar (escenas), escucha-toca, en el aula"
+  },
+  {
+   "id": "u7",
+   "numero": 7,
+   "titulo": "r, c, b, v, f",
+   "periodo": {
+    "4": 3,
+    "3": 2
+   },
+   "temas": [
+    "Sílabas directas",
+    "palabras de tres sílabas (camisa, paloma)"
+   ],
+   "dba": [
+    "6",
+    "8"
+   ],
+   "factores": [
+    {
+     "id": "F1",
+     "nombre": "Producción textual",
+     "texto": "Produzco textos orales que responden a distintos propósitos comunicativos. Produzco textos escritos que responden a diversas necesidades comunicativas."
+    },
+    {
+     "id": "F2",
+     "nombre": "Comprensión e interpretación textual",
+     "texto": "Comprendo textos que tienen diferentes formatos y finalidades."
+    }
+   ],
+   "desempenos": [
+    "Lee y escribe palabras de tres sílabas con las letras vistas."
+   ],
+   "juegos": "escucha-toca, contar-toca, ordenar o armar sílaba o palabra, di-brilla"
+  },
+  {
+   "id": "u8",
+   "numero": 8,
+   "titulo": "La oración",
+   "periodo": {
+    "4": 3,
+    "3": 2
+   },
+   "temas": [
+    "Palabras que forman una idea",
+    "mayúscula al inicio y punto final",
+    "separación entre palabras"
+   ],
+   "dba": [
+    "6",
+    "8"
+   ],
+   "factores": [
+    {
+     "id": "F1",
+     "nombre": "Producción textual",
+     "texto": "Produzco textos orales que responden a distintos propósitos comunicativos. Produzco textos escritos que responden a diversas necesidades comunicativas."
+    }
+   ],
+   "desempenos": [
+    "Escribe una oración sencilla separando las palabras."
+   ],
+   "juegos": "ordenar (palabras de una oración), contar-toca (cuántas palabras)"
+  },
+  {
+   "id": "u9",
+   "numero": 9,
+   "titulo": "Gestos, señales e imágenes",
+   "periodo": {
+    "4": 3,
+    "3": 3
+   },
+   "temas": [
+    "Gestos y cara que comunican",
+    "imágenes y colores que dicen algo",
+    "señales de la escuela"
+   ],
+   "dba": [
+    "2"
+   ],
+   "factores": [
+    {
+     "id": "F4",
+     "nombre": "Medios de comunicación y otros sistemas simbólicos",
+     "texto": "Reconozco los medios de comunicación masiva y caracterizo la información que difunden. Comprendo la información que circula a través de algunos sistemas de comunicación no verbal."
+    }
+   ],
+   "desempenos": [
+    "Interpreta lo que comunican un gesto, una imagen o una señal."
+   ],
+   "juegos": "escucha-toca, memoria (gesto y significado)"
+  },
+  {
+   "id": "u10",
+   "numero": 10,
+   "titulo": "g, j, ñ, ll, y, ch, h, qu",
+   "periodo": {
+    "4": 4,
+    "3": 3
+   },
+   "temas": [
+    "Sílabas directas restantes",
+    "lectura de palabras con todas las letras"
+   ],
+   "dba": [
+    "5",
+    "6",
+    "8"
+   ],
+   "factores": [
+    {
+     "id": "F2",
+     "nombre": "Comprensión e interpretación textual",
+     "texto": "Comprendo textos que tienen diferentes formatos y finalidades."
+    }
+   ],
+   "desempenos": [
+    "Lee en voz alta palabras y frases cortas con fluidez inicial."
+   ],
+   "juegos": "escucha-toca, escucha-atrapa, di-brilla (leer en voz alta), ordenar o armar sílaba o palabra"
+  },
+  {
+   "id": "u11",
+   "numero": 11,
+   "titulo": "Medios de comunicación",
+   "periodo": {
+    "4": 4,
+    "3": 3
+   },
+   "temas": [
+    "Radio, televisión, periódico, afiches e internet",
+    "para qué sirve cada uno",
+    "voces de la radio"
+   ],
+   "dba": [
+    "1"
+   ],
+   "factores": [
+    {
+     "id": "F4",
+     "nombre": "Medios de comunicación y otros sistemas simbólicos",
+     "texto": "Reconozco los medios de comunicación masiva y caracterizo la información que difunden. Comprendo la información que circula a través de algunos sistemas de comunicación no verbal."
+    }
+   ],
+   "desempenos": [
+    "Distingue los medios y dice para qué sirve cada uno."
+   ],
+   "juegos": "escucha-toca, memoria (medio y uso), en el aula"
+  },
+  {
+   "id": "u12",
+   "numero": 12,
+   "titulo": "Escribo para otros",
+   "periodo": {
+    "4": 4,
+    "3": 3
+   },
+   "temas": [
+    "Listas, invitaciones, tarjetas y mensajes cortos",
+    "palabras de la invitación (fiesta, fecha, lugar)"
+   ],
+   "dba": [
+    "8"
+   ],
+   "factores": [
+    {
+     "id": "F1",
+     "nombre": "Producción textual",
+     "texto": "Produzco textos orales que responden a distintos propósitos comunicativos. Produzco textos escritos que responden a diversas necesidades comunicativas."
+    },
+    {
+     "id": "F5",
+     "nombre": "Ética de la comunicación",
+     "texto": "Identifico los principales elementos y roles de la comunicación para enriquecer procesos comunicativos auténticos."
+    }
+   ],
+   "desempenos": [
+    "Escribe una invitación o un mensaje corto con palabras y oraciones sencillas."
+   ],
+   "juegos": "en el aula (ficha imprimible), ordenar (partes de la invitación)"
+  }
+ ]
+}

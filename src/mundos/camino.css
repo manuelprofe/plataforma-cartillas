@@ -1,0 +1,277 @@
+/* Camino de Cuadrito (Camino.tsx): el mismo papel, colinas y tierra del juego de plataformas,
+   para que el niño reconozca de inmediato el mundo de matemáticas. Se recorre deslizando de lado. */
+
+.camino {
+  --suelo: max(120px, 30dvh);
+  --ca-tinta: #3a3a3a;
+  --ca-tierra: #e9d3b0;
+  --ca-tierra-honda: #c9a878;
+  --ca-pasto: #8fcf6a;
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 50'%3E%3Cpath d='M18 42c-10 0-14-12-5-17 0-10 13-14 20-7 4-12 24-14 30-2 8-6 22-1 21 9 11 0 15 15 3 17z' fill='%23fff' stroke='%23b9b3a6' stroke-width='2.5' stroke-linejoin='round'/%3E%3C/svg%3E") 40px 16% / 120px 50px repeat-x,
+    repeating-linear-gradient(to bottom, transparent 0 33px, #dde6f0 33px 35px),
+    #fbf7ee;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.camino__lienzo {
+  position: absolute;
+  inset: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.camino__lienzo::-webkit-scrollbar {
+  display: none;
+}
+
+.camino__mundo {
+  position: relative;
+  height: 100%;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 120'%3E%3Cpath d='M0 120V80C40 40 90 30 140 60s90 10 130-25 100-10 130 20v65z' fill='%23e3ecd6' stroke='%23b8c9a3' stroke-width='3'/%3E%3Cpath d='M60 70l6-14 6 14zM300 52l7-16 7 16z' fill='%23c4d9ae'/%3E%3C/svg%3E") 0 calc(100% - var(--suelo) + 4px) / 400px 120px repeat-x;
+}
+
+.camino__suelo {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: var(--suelo);
+  background:
+    linear-gradient(var(--ca-pasto) 0 12px, #5fa548 12px 14px, transparent 14px),
+    repeating-linear-gradient(135deg, transparent 0 7px, rgb(120 84 40 / 0.16) 7px 8px),
+    var(--ca-tierra);
+  border-top: 2px solid var(--ca-tinta);
+}
+
+.camino__sendero {
+  position: absolute;
+  left: 0;
+  bottom: calc(var(--suelo) - 30px);
+  overflow: visible;
+  pointer-events: none;
+}
+
+.camino__sendero polyline {
+  fill: none;
+  stroke: #9b7a4a;
+  stroke-width: 5;
+  stroke-dasharray: 2 12;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.camino__parada {
+  position: absolute;
+  width: 0;
+}
+
+.camino__pilar {
+  position: absolute;
+  left: -30px;
+  bottom: 0;
+  width: 60px;
+  background:
+    repeating-linear-gradient(135deg, transparent 0 7px, rgb(120 84 40 / 0.16) 7px 8px),
+    var(--ca-tierra);
+  border: 2px solid var(--ca-tinta);
+  border-bottom: 0;
+  box-shadow: 7px -7px 0 var(--ca-tierra-honda);
+}
+
+.camino__nodo,
+.nodo.camino__nodo {
+  position: absolute;
+  margin: 0;
+  left: -40px;
+  width: 80px;
+  height: 80px;
+  display: grid;
+  place-items: center;
+  border-radius: 20px;
+  background: #fff;
+  border: 3px solid var(--ca-tinta);
+  box-shadow: 7px -7px 0 #d9cdb3, 0 6px 0 rgb(44 42 49 / 0.18);
+  transform: translateY(-4px);
+}
+
+.camino__nodo img {
+  width: 52px;
+  height: 52px;
+}
+
+.camino__nodo--hecha {
+  background: #fff6d2;
+  border-color: var(--oro-hondo);
+}
+
+.camino__nodo--dormida img {
+  filter: grayscale(1);
+  opacity: 0.45;
+}
+
+.camino__nodo--ahora {
+  animation: ca-brilla 1.6s ease-in-out infinite;
+}
+
+@keyframes ca-brilla {
+  50% {
+    box-shadow: 7px -7px 0 #d9cdb3, 0 0 0 7px var(--oro), 0 6px 0 rgb(44 42 49 / 0.18);
+  }
+}
+
+.camino__hecha,
+.camino__candado {
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--oro);
+  border: 2px solid var(--ca-tinta);
+  font-weight: 900;
+  font-size: 1rem;
+}
+
+.camino__candado {
+  background: #fff;
+  font-size: 0.9rem;
+}
+
+.camino__titulo {
+  position: absolute;
+  left: -66px;
+  width: 132px;
+  text-align: center;
+  font-size: 0.82rem;
+  font-weight: 800;
+  line-height: 1.1;
+  color: var(--ca-tinta);
+  transform: translateY(100%);
+  pointer-events: none;
+  display: none;
+}
+
+.camino__letrero {
+  position: absolute;
+  width: 116px;
+  padding: 6px 8px;
+  text-align: center;
+  font-size: 0.78rem;
+  font-weight: 800;
+  line-height: 1.15;
+  background: #fff;
+  border: 2px solid var(--ca-tinta);
+  border-radius: 10px;
+  box-shadow: 0 4px 0 rgb(44 42 49 / 0.14);
+  pointer-events: none;
+}
+
+.camino__etapa,
+.camino__cerrada {
+  position: absolute;
+  bottom: calc(var(--suelo) + 6px);
+  display: grid;
+  justify-items: center;
+  gap: 2px;
+  width: 96px;
+  padding: 8px 6px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-align: center;
+  background: #fff;
+  border: 2px solid var(--ca-tinta);
+  border-radius: 12px 12px 4px 4px;
+}
+
+.camino__etapa {
+  bottom: auto;
+  top: calc(max(12px, env(safe-area-inset-top)) + 64px);
+  background: var(--oro);
+}
+
+.camino__cerrada {
+  height: 170px;
+  align-content: center;
+  background: repeating-linear-gradient(90deg, #efe7d6 0 14px, #e2d6bd 14px 16px);
+  color: rgb(58 58 58 / 0.7);
+}
+
+.camino__cerrada span {
+  font-size: 1.6rem;
+}
+
+.camino__cerrada small {
+  font-weight: 900;
+  color: var(--ca-tinta);
+}
+
+.camino__heroe {
+  position: absolute;
+  width: 64px;
+  height: 72px;
+  margin-left: -32px;
+  transition: left 0.9s ease-in-out, bottom 0.9s ease-in-out;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.camino__heroe img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: bottom;
+  filter: drop-shadow(0 3px 0 rgb(0 0 0 / 0.18));
+}
+
+.camino__heroe--anda img {
+  animation: ca-salta 0.26s ease-in-out infinite alternate;
+}
+
+@keyframes ca-salta {
+  to {
+    transform: translateY(-10px);
+  }
+}
+
+.camino__cabeza {
+  position: absolute;
+  top: max(10px, env(safe-area-inset-top));
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 14px 4px 4px;
+  background: #fff;
+  border: 2px solid var(--ca-tinta);
+  border-radius: 999px;
+  font-weight: 800;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.camino__cabeza img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .camino__nodo--ahora,
+  .camino__heroe--anda img {
+    animation: none;
+  }
+  .camino__heroe {
+    transition: none;
+  }
+}

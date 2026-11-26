@@ -1,0 +1,294 @@
+{
+ "cartilla": "matematicas-1",
+ "materia": "Matemáticas",
+ "grado": 1,
+ "gradoNombre": "1.°",
+ "guia": "Cuadrito",
+ "titulo": "El cuaderno de Cuadrito · 1.°",
+ "fuente": "Contenidos programáticos de Matemáticas · Versión 1 · 24 de noviembre de 2026",
+ "proposito": "usar los números hasta 99 en la vida, sumar y restar para resolver problemas de juntar, quitar y completar, ubicarse en el espacio y organizar datos sencillos.",
+ "dba": [
+  {
+   "id": "1",
+   "texto": "Identifica los usos de los números (como código, cardinal, medida, ordinal) y las operaciones (suma y resta) en contextos de juego, familiares, económicos, entre otros."
+  },
+  {
+   "id": "2",
+   "texto": "Utiliza diferentes estrategias para contar, realizar operaciones (suma y resta) y resolver problemas aditivos."
+  },
+  {
+   "id": "3",
+   "texto": "Utiliza las características posicionales del Sistema de Numeración Decimal (SND) para establecer relaciones entre cantidades y comparar números."
+  },
+  {
+   "id": "4",
+   "texto": "Reconoce y compara atributos que pueden ser medidos en objetos y eventos (longitud, duración, rapidez, masa, peso, capacidad, cantidad de elementos de una colección, entre otros)."
+  },
+  {
+   "id": "5",
+   "texto": "Realiza medición de longitudes, capacidades, peso, masa, entre otros, para ello utiliza instrumentos y unidades no estandarizadas y estandarizadas."
+  },
+  {
+   "id": "6",
+   "texto": "Compara objetos del entorno y establece semejanzas y diferencias empleando características geométricas de las formas bidimensionales y tridimensionales (curvo o recto, abierto o cerrado, plano o sólido, número de lados, número de caras, entre otros)."
+  },
+  {
+   "id": "7",
+   "texto": "Describe y representa trayectorias y posiciones de objetos y personas para orientar a otros o a sí mismo en el espacio circundante."
+  },
+  {
+   "id": "8",
+   "texto": "Describe cualitativamente situaciones para identificar el cambio y la variación usando gestos, dibujos, diagramas, medios gráficos y simbólicos."
+  },
+  {
+   "id": "9",
+   "texto": "Reconoce el signo igual como una equivalencia entre expresiones con sumas y restas."
+  },
+  {
+   "id": "10",
+   "texto": "Clasifica y organiza datos, los representa utilizando tablas de conteo y pictogramas sin escalas, y comunica los resultados obtenidos para responder preguntas sencillas."
+  }
+ ],
+ "ebc": "Estándares Básicos de Competencias en Matemáticas (MEN, 2006), por pensamiento.",
+ "unidades": [
+  {
+   "id": "u1",
+   "numero": 1,
+   "titulo": "Números hasta 20",
+   "periodo": {
+    "4": 1,
+    "3": 1
+   },
+   "temas": [
+    "conteo, lectura y escritura hasta 20",
+    "usos del número (cuántos, en qué puesto, código, medida)",
+    "antes y después",
+    "comparar con mayor, menor, igual",
+    "contar de 2 en 2"
+   ],
+   "dba": [
+    "1",
+    "2",
+    "3"
+   ],
+   "pensamientos": [
+    "Numérico"
+   ],
+   "desempenos": [
+    "cuenta hasta 20 desde cualquier número",
+    "reconoce para qué sirve un número en una etiqueta, una camiseta o una casa",
+    "compara dos números y dice cuál es mayor"
+   ],
+   "juegos": "contar-toca; ordenar (números); escucha-atrapa (el número dicho).",
+   "analogo": "recta numérica en el piso; cartas del 0 al 20."
+  },
+  {
+   "id": "u2",
+   "numero": 2,
+   "titulo": "Juntar, quitar y completar",
+   "periodo": {
+    "4": 1,
+    "3": 1
+   },
+   "temas": [
+    "suma como juntar y agregar",
+    "resta como quitar y separar",
+    "completar (\"tengo 6, ¿cuántos faltan para 10?\")",
+    "parejas que suman 10",
+    "trayectorias y posiciones (derecha, izquierda) en el salón"
+   ],
+   "dba": [
+    "1",
+    "2",
+    "7"
+   ],
+   "pensamientos": [
+    "Numérico",
+    "Espacial"
+   ],
+   "desempenos": [
+    "resuelve problemas de juntar, quitar y completar hasta 20 con objetos y dibujos",
+    "encuentra parejas que suman 10",
+    "da indicaciones para llegar a un lugar del salón"
+   ],
+   "juegos": "contar-toca (agregar y quitar); memoria (3 + 7 ↔ 10); escucha-toca (derecha/izquierda).",
+   "analogo": "marco de 10, tapas, mapa del salón."
+  },
+  {
+   "id": "u3",
+   "numero": 3,
+   "titulo": "Decenas y unidades hasta 99",
+   "periodo": {
+    "4": 2,
+    "3": 1
+   },
+   "temas": [
+    "agrupar de a 10",
+    "decenas y unidades",
+    "valor posicional en dos cifras",
+    "conteo de 5 en 5 y de 10 en 10",
+    "ordenar y comparar hasta 99"
+   ],
+   "dba": [
+    "2",
+    "3"
+   ],
+   "pensamientos": [
+    "Numérico"
+   ],
+   "desempenos": [
+    "compone y descompone números de dos cifras en \"dieces\" y \"unos\"",
+    "ordena números hasta 99",
+    "cuenta de 10 en 10"
+   ],
+   "juegos": "contar-toca (armar decenas); ordenar (de menor a mayor); di-brilla (leer el número).",
+   "analogo": "paquetes de 10 palitos con caucho; ábaco."
+  },
+  {
+   "id": "u4",
+   "numero": 4,
+   "titulo": "Formas y cuerpos",
+   "periodo": {
+    "4": 2,
+    "3": 2
+   },
+   "temas": [
+    "figuras planas y sólidos del entorno (cubo, esfera, cilindro, cono)",
+    "curvo o recto, abierto o cerrado, plano o sólido",
+    "número de lados",
+    "componer figuras"
+   ],
+   "dba": [
+    "6"
+   ],
+   "pensamientos": [
+    "Espacial"
+   ],
+   "desempenos": [
+    "clasifica objetos según su forma y explica el criterio",
+    "cuenta lados y caras",
+    "arma y desarma formas con material"
+   ],
+   "juegos": "escucha-toca (la figura dicha); memoria (sólido ↔ objeto real).",
+   "analogo": "cajas y envases para reconocer sólidos; plastilina y palitos."
+  },
+  {
+   "id": "u5",
+   "numero": 5,
+   "titulo": "Sumas y restas con dos cifras",
+   "periodo": {
+    "4": 3,
+    "3": 2
+   },
+   "temas": [
+    "suma y resta hasta 99 sin reagrupar y luego con reagrupación sencilla, con apoyo en material",
+    "estrategias de cálculo mental (dobles, completar a la decena)",
+    "problemas de la tienda"
+   ],
+   "dba": [
+    "1",
+    "2"
+   ],
+   "pensamientos": [
+    "Numérico"
+   ],
+   "desempenos": [
+    "suma y resta números de dos cifras usando material o dibujos",
+    "explica su estrategia",
+    "inventa un problema a partir de un dibujo"
+   ],
+   "juegos": "escucha-atrapa (el resultado); memoria (operación ↔ resultado); [plantilla nueva: completar la operación].",
+   "analogo": "dinero didáctico, la tienda del salón."
+  },
+  {
+   "id": "u6",
+   "numero": 6,
+   "titulo": "El signo igual",
+   "periodo": {
+    "4": 3,
+    "3": 2
+   },
+   "temas": [
+    "el signo igual como \"vale lo mismo que\"",
+    "expresiones equivalentes (5 + 3 = 4 + 4)",
+    "la balanza en equilibrio",
+    "números que faltan"
+   ],
+   "dba": [
+    "9",
+    "8"
+   ],
+   "pensamientos": [
+    "Variacional",
+    "Numérico"
+   ],
+   "desempenos": [
+    "reconoce que 5 + 3 y 4 + 4 valen lo mismo",
+    "propone números que cumplen una igualdad",
+    "explica con la balanza por qué una igualdad es cierta"
+   ],
+   "juegos": "memoria (expresiones equivalentes); [plantilla nueva: completar la operación].",
+   "analogo": "balanza de ganchos, tarjetas de igualdades."
+  },
+  {
+   "id": "u7",
+   "numero": 7,
+   "titulo": "Medir y el tiempo",
+   "periodo": {
+    "4": 4,
+    "3": 3
+   },
+   "temas": [
+    "longitud, peso y capacidad con unidades no estándar y primer encuentro con el centímetro",
+    "duración (más rápido, más lento)",
+    "días de la semana y meses",
+    "hora en punto"
+   ],
+   "dba": [
+    "4",
+    "5"
+   ],
+   "pensamientos": [
+    "Métrico"
+   ],
+   "desempenos": [
+    "mide con unidades no estándar y estándar y compara resultados",
+    "ordena objetos por longitud o peso",
+    "reconoce la hora en punto y los días de la semana"
+   ],
+   "juegos": "ordenar (del más corto al más largo; días); escucha-toca (el reloj de la hora dicha); [plantilla nueva: reloj].",
+   "analogo": "regla, cuerdas, recipientes, calendario del aula."
+  },
+  {
+   "id": "u8",
+   "numero": 8,
+   "titulo": "Datos y cambios",
+   "periodo": {
+    "4": 4,
+    "3": 3
+   },
+   "temas": [
+    "preguntas del curso",
+    "tablas de conteo",
+    "pictogramas sin escala (un dibujo = uno)",
+    "cambio en una situación (la planta crece, el vaso se llena)",
+    "números hasta 100"
+   ],
+   "dba": [
+    "10",
+    "8"
+   ],
+   "pensamientos": [
+    "Aleatorio",
+    "Variacional"
+   ],
+   "desempenos": [
+    "organiza datos en una tabla de conteo y un pictograma",
+    "responde cuántos hay, cuál se repite más y cuál menos",
+    "describe con dibujos cómo cambia algo"
+   ],
+   "juegos": "escucha-toca (\"¿cuál tiene más?\"); contar-toca (contar marcas de la tabla); [plantilla nueva: gráfico vivo].",
+   "analogo": "encuesta del curso en cartelera."
+  }
+ ]
+}

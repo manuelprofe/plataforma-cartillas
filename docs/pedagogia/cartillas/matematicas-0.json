@@ -1,0 +1,458 @@
+{
+  "_nota": "Contenido del territorio 1 (periodo 1) de El cuaderno de Cuadrito · Transición. Malla: U1 Mi cuerpo en el espacio y U2 Mirar, comparar y agrupar (DBA T-3a, T-3b, T-3c). Se arma sobre la página 1 de la cartilla molde con herramientas/cartilla_desde_molde.py. Todo se juega con voz e imagen, sin leer.",
+  "id": "matematicas-0",
+  "molde": "ingles-3",
+  "titulo": "El cuaderno de Cuadrito · Transición",
+  "materia": "Matemáticas",
+  "grado": "0",
+  "idiomaVoz": "es-CO",
+  "guia": { "id": "cuadrito", "nombre": "Cuadrito", "imagen": "personajes/cuadrito-saludar.webp", "fiesta": "personajes/cuadrito-celebrar.webp" },
+  "territorio": "Cuadrito · Página 1",
+  "vista": { "tipo": "camino", "etapas": ["El jardín", "El pueblo", "La montaña", "El castillo"] },
+
+  "iconos": {
+    "arriba": [{ "e": "1f333", "x": 7, "y": 9, "t": 22 }, { "e": "1f426", "x": 12, "y": 0, "t": 11 }],
+    "abajo": [{ "e": "1f333", "x": 7, "y": 2, "t": 22 }, { "e": "1f426", "x": 13, "y": 25, "t": 10 }],
+    "encima": [{ "e": "1fa91", "x": 6, "y": 11, "t": 24 }, { "e": "1f408", "x": 11, "y": 1, "t": 14 }],
+    "debajo": [{ "e": "1f408", "x": 12, "y": 21, "t": 12 }, { "e": "1fa91", "x": 6, "y": 4, "t": 24 }],
+    "dentro": [{ "rect": [5, 12, 26, 20], "fill": "#f3d9a4", "stroke": "#8a5a2b" }, { "e": "26bd", "x": 13, "y": 17, "t": 10 }],
+    "fuera": [{ "rect": [1, 12, 22, 20], "fill": "#f3d9a4", "stroke": "#8a5a2b" }, { "e": "26bd", "x": 25, "y": 23, "t": 10 }],
+    "delante": [{ "e": "1f333", "x": 4, "y": 1, "t": 26 }, { "e": "1f415", "x": 11, "y": 17, "t": 18 }],
+    "detras": [{ "e": "1f415", "x": 12, "y": 13, "t": 15 }, { "e": "1f333", "x": 3, "y": 1, "t": 26 }],
+    "cerca": [{ "e": "1f3e0", "x": 3, "y": 9, "t": 19 }, { "e": "1f415", "x": 21, "y": 15, "t": 13 }],
+    "lejos": [{ "e": "1f3e0", "x": 0, "y": 2, "t": 13 }, { "linea": [12, 16, 27, 28], "stroke": "#b9a27a" }, { "e": "1f415", "x": 27, "y": 27, "t": 8 }],
+    "grande": [{ "e": "1f34e", "x": 2, "y": 2, "t": 32 }],
+    "pequeno": [{ "e": "1f34e", "x": 13, "y": 13, "t": 10 }],
+    "iguales": [{ "e": "1f34e", "x": 1, "y": 10, "t": 16 }, { "e": "1f34e", "x": 19, "y": 10, "t": 16 }],
+    "diferentes": [{ "e": "1f34e", "x": 1, "y": 10, "t": 16 }, { "e": "1f34c", "x": 19, "y": 10, "t": 16 }],
+    "uno": [{ "e": "2b50", "x": 10, "y": 10, "t": 16 }],
+    "dos": [{ "e": "2b50", "x": 2, "y": 10, "t": 15 }, { "e": "2b50", "x": 19, "y": 10, "t": 15 }],
+    "tres": [{ "e": "2b50", "x": 10, "y": 2, "t": 15 }, { "e": "2b50", "x": 2, "y": 19, "t": 15 }, { "e": "2b50", "x": 19, "y": 19, "t": 15 }],
+    "circulo": [{ "circulo": [18, 18, 14], "fill": "#e25c54" }],
+    "cuadrado": [{ "rect": [5, 5, 26, 26], "fill": "#5696de" }],
+    "triangulo": [{ "poligono": [18, 3, 33, 31, 3, 31], "fill": "#f5b83d" }],
+    "rectangulo": [{ "rect": [2, 10, 32, 16], "fill": "#4caf7a" }],
+    "manzana": [{ "e": "1f34e", "x": 2, "y": 2, "t": 32 }],
+    "estrella": [{ "e": "2b50", "x": 2, "y": 2, "t": 32 }],
+    "pez": [{ "e": "1f41f", "x": 2, "y": 2, "t": 32 }],
+    "flor": [{ "e": "1f338", "x": 2, "y": 2, "t": 32 }]
+  },
+
+  "palabras": {
+    "arriba": { "es": "arriba", "icono": "iconos/arriba.svg", "frase": "El pájaro está arriba." },
+    "abajo": { "es": "abajo", "icono": "iconos/abajo.svg", "frase": "El pájaro está abajo." },
+    "encima": { "es": "encima", "icono": "iconos/encima.svg", "frase": "El gato está encima de la silla." },
+    "debajo": { "es": "debajo", "icono": "iconos/debajo.svg", "frase": "El gato está debajo de la silla." },
+    "dentro": { "es": "dentro", "icono": "iconos/dentro.svg", "frase": "La pelota está dentro de la caja." },
+    "fuera": { "es": "fuera", "icono": "iconos/fuera.svg", "frase": "La pelota está fuera de la caja." },
+    "delante": { "es": "delante", "icono": "iconos/delante.svg", "frase": "El perro está delante del árbol." },
+    "detras": { "es": "detrás", "icono": "iconos/detras.svg", "frase": "El perro está detrás del árbol.", "aceptar": ["detras"] },
+    "cerca": { "es": "cerca", "icono": "iconos/cerca.svg", "frase": "El perro está cerca de la casa." },
+    "lejos": { "es": "lejos", "icono": "iconos/lejos.svg", "frase": "El perro está lejos de la casa." },
+    "rojo": { "es": "rojo", "icono": "iconos/1f534.svg" },
+    "azul": { "es": "azul", "icono": "iconos/1f535.svg" },
+    "amarillo": { "es": "amarillo", "icono": "iconos/1f7e1.svg" },
+    "verde": { "es": "verde", "icono": "iconos/1f7e2.svg" },
+    "morado": { "es": "morado", "icono": "iconos/1f7e3.svg" },
+    "naranja": { "es": "naranja", "icono": "iconos/1f7e0.svg", "aceptar": ["anaranjado"] },
+    "grande": { "es": "grande", "icono": "iconos/grande.svg", "frase": "La manzana grande." },
+    "pequeno": { "es": "pequeño", "icono": "iconos/pequeno.svg", "frase": "La manzana pequeña.", "aceptar": ["pequeno", "pequeña", "chiquito", "chiquita"] },
+    "iguales": { "es": "iguales", "icono": "iconos/iguales.svg", "frase": "Dos frutas iguales.", "aceptar": ["igual"] },
+    "diferentes": { "es": "diferentes", "icono": "iconos/diferentes.svg", "frase": "Dos frutas diferentes.", "aceptar": ["diferente", "distintas", "distinto"] },
+    "uno": { "es": "uno", "icono": "iconos/uno.svg", "frase": "Una estrella.", "aceptar": ["1", "una"] },
+    "dos": { "es": "dos", "icono": "iconos/dos.svg", "frase": "Dos estrellas.", "aceptar": ["2"] },
+    "tres": { "es": "tres", "icono": "iconos/tres.svg", "frase": "Tres estrellas.", "aceptar": ["3"] },
+    "circulo": { "es": "círculo", "icono": "iconos/circulo.svg", "aceptar": ["circulo"] },
+    "cuadrado": { "es": "cuadrado", "icono": "iconos/cuadrado.svg" },
+    "triangulo": { "es": "triángulo", "icono": "iconos/triangulo.svg", "aceptar": ["triangulo"] },
+    "rectangulo": { "es": "rectángulo", "icono": "iconos/rectangulo.svg", "aceptar": ["rectangulo"] }
+  },
+
+  "zonas": {
+    "bosque-school": {
+      "id": "cuadrito-arriba",
+      "familia": {"tema": "arriba, abajo, encima y debajo", "idea": "En casa, esconda un juguete y dele pistas: está encima de la cama, debajo de la mesa. Que lo busque y diga dónde estaba."},
+      "misiones": [
+        {"titulo": "Cuadrito salta", "plantilla": "plataformas", "icono": "iconos/arriba.svg", "palabras": ["arriba", "abajo"], "antes": "Vamos a saltar por el cuaderno. Las puertas se abren si cuentas bien.",
+          "plataformas": [
+            { "dice": "Toca las flechas para caminar. Toca el botón amarillo para saltar. Llega a la bandera.",
+              "mapa": [
+                "..............",
+                "..............",
+                "..........#...",
+                "P....#...##..M",
+                "#######~######"
+              ]
+            },
+            { "dice": "Esta puerta tiene una pregunta. Camina hasta ella.",
+              "mapa": [
+                "...............",
+                "...............",
+                "P....G.....G..M",
+                "###############"
+              ],
+              "retos": [
+                {"dice": "¿Cuántas manzanas hay?", "ver": {"imagen": "iconos/manzana.svg", "cantidad": 2}, "opciones": [{"texto": "1"}, {"texto": "2"}, {"texto": "3"}], "correcta": 1, "bien": "¡Dos manzanas!"},
+                {"dice": "¿Cuántas estrellas hay?", "ver": {"imagen": "iconos/estrella.svg", "cantidad": 3}, "opciones": [{"texto": "2"}, {"texto": "3"}, {"texto": "1"}], "correcta": 1, "bien": "¡Tres estrellas!"}
+              ]
+            },
+            { "dice": "La pared es muy alta. ¿Qué te puede ayudar a subir?",
+              "mapa": [
+                ".............M",
+                "..........####",
+                "P...C.....####",
+                "##############"
+              ]
+            },
+            { "dice": "Sube arriba y busca la puerta.",
+              "mapa": [
+                "..............",
+                "..........G..M",
+                ".....#.=======",
+                "P...##........",
+                "##############"
+              ],
+              "retos": [
+                {"dice": "Toca el dibujo donde el pájaro está arriba.", "opciones": [{"imagen": "iconos/abajo.svg"}, {"imagen": "iconos/arriba.svg"}], "correcta": 1, "bien": "¡Arriba!"}
+              ]
+            },
+            { "dice": "Hay agua. Empuja la caja al agua y úsala de puente.",
+              "mapa": [
+                "................",
+                "................",
+                "P.C.........G..M",
+                "#####~~#########"
+              ],
+              "retos": [
+                {"dice": "¿Cuál manzana es la grande?", "opciones": [{"imagen": "iconos/manzana.svg", "tam": "pequeno"}, {"imagen": "iconos/manzana.svg", "tam": "grande"}], "correcta": 1, "bien": "¡La grande!"}
+              ]
+            }
+          ] }
+      ]
+    },
+    "bosque-colors": {
+      "id": "cuadrito-dentro",
+      "familia": {"tema": "dentro, fuera, delante, detrás, cerca y lejos", "idea": "Jueguen a las estatuas: usted dice «dentro del cuarto», «detrás de la puerta», «cerca de mí», y su hijo se ubica. Luego cambian de turno."},
+      "misiones": [
+        {"titulo": "Dentro y fuera", "plantilla": "plataformas", "icono": "iconos/dentro.svg", "palabras": ["dentro", "fuera", "delante", "detras", "cerca", "lejos"], "antes": "Cada puerta te pregunta dónde están las cosas. ¡Mira bien!",
+          "plataformas": [
+            { "dice": "Camina hasta la puerta y mira dónde está la pelota.",
+              "mapa": [
+                "..............",
+                "..............",
+                "P...#....G...M",
+                "##############"
+              ],
+              "retos": [
+                {"dice": "Toca donde la pelota está dentro de la caja.", "opciones": [{"imagen": "iconos/fuera.svg"}, {"imagen": "iconos/dentro.svg"}], "correcta": 1, "bien": "¡Dentro!"}
+              ]
+            },
+            { "dice": "El puente está apagado. Párate en la palanca y toca el botón.",
+              "mapa": [
+                "................",
+                "................",
+                "P.L........G...M",
+                "####XXX#########"
+              ],
+              "retos": [
+                {"dice": "Toca donde el perro está delante del árbol.", "opciones": [{"imagen": "iconos/detras.svg"}, {"imagen": "iconos/delante.svg"}], "correcta": 1, "bien": "¡Delante!"}
+              ]
+            },
+            { "dice": "La pared es alta. Primero abre la puerta; después usa la caja.",
+              "mapa": [
+                "..............M.",
+                "...........#####",
+                "P..G..C....#####",
+                "################"
+              ],
+              "retos": [
+                {"dice": "Toca donde el perro está cerca de la casa.", "opciones": [{"imagen": "iconos/lejos.svg"}, {"imagen": "iconos/cerca.svg"}], "correcta": 1, "bien": "¡Cerca!"}
+              ]
+            }
+          ] }
+      ]
+    },
+    "bosque-numbers": {
+      "id": "cuadrito-colores",
+      "familia": {"tema": "los colores para agrupar", "idea": "Al guardar la ropa o los juguetes, pídale que haga montones por color y le diga por qué van juntos."},
+      "misiones": [
+        {"titulo": "El camino de colores", "plantilla": "plataformas", "icono": "iconos/1f534.svg", "palabras": ["rojo", "azul", "amarillo", "verde"], "antes": "Las puertas de colores se abren si tocas el color que te digo.",
+          "plataformas": [
+            { "dice": "Escucha bien el color de cada puerta.",
+              "mapa": [
+                "...............",
+                "...............",
+                "P...G.#....G..M",
+                "###############"
+              ],
+              "retos": [
+                {"dice": "Toca el rojo.", "opciones": [{"imagen": "iconos/1f535.svg"}, {"imagen": "iconos/1f534.svg"}, {"imagen": "iconos/1f7e1.svg"}], "correcta": 1, "bien": "¡Rojo!"},
+                {"dice": "Toca el amarillo.", "opciones": [{"imagen": "iconos/1f7e1.svg"}, {"imagen": "iconos/1f7e2.svg"}], "correcta": 0, "bien": "¡Amarillo!"}
+              ]
+            },
+            { "dice": "Hay agua. ¿Qué puedes usar de puente?",
+              "mapa": [
+                "................",
+                "................",
+                "P..C.........G.M",
+                "######~~########"
+              ],
+              "retos": [
+                {"dice": "Toca el azul.", "opciones": [{"imagen": "iconos/1f7e2.svg"}, {"imagen": "iconos/1f7e3.svg"}, {"imagen": "iconos/1f535.svg"}], "correcta": 2, "bien": "¡Azul!"}
+              ]
+            },
+            { "dice": "Abre la puerta y después enciende el puente.",
+              "mapa": [
+                "................",
+                "................",
+                "P...G..L.......M",
+                "########XXX#####"
+              ],
+              "retos": [
+                {"dice": "Toca el verde.", "opciones": [{"imagen": "iconos/1f7e2.svg"}, {"imagen": "iconos/1f534.svg"}], "correcta": 0, "bien": "¡Verde!"}
+              ]
+            }
+          ] }
+      ]
+    },
+    "bosque-body": {
+      "id": "cuadrito-tamano",
+      "familia": {"tema": "grande y pequeño, igual y diferente", "idea": "En la cocina, muestre dos frutas y pregunte: ¿cuál es la grande?, ¿son iguales o diferentes? Que le explique cómo se dio cuenta."},
+      "misiones": [
+        {"titulo": "Grande y pequeño", "plantilla": "plataformas", "icono": "iconos/grande.svg", "palabras": ["grande", "pequeno", "iguales", "diferentes"], "antes": "Para abrir estas puertas hay que mirar bien: grande, pequeño, igual o diferente.",
+          "plataformas": [
+            { "dice": "Sube los escalones y llega a la puerta.",
+              "mapa": [
+                "...............",
+                "..........#....",
+                "P....G...##...M",
+                "###############"
+              ],
+              "retos": [
+                {"dice": "¿Cuál manzana es la pequeña?", "opciones": [{"imagen": "iconos/manzana.svg", "tam": "grande"}, {"imagen": "iconos/manzana.svg", "tam": "pequeno"}], "correcta": 1, "bien": "¡La pequeña!"}
+              ]
+            },
+            { "dice": "La puerta está arriba. ¿Cómo subes?",
+              "mapa": [
+                "...............",
+                "...........G..M",
+                "........#######",
+                "P..C....#######",
+                "###############"
+              ],
+              "retos": [
+                {"dice": "Toca las que son iguales.", "opciones": [{"imagen": "iconos/iguales.svg"}, {"imagen": "iconos/diferentes.svg"}], "correcta": 0, "bien": "¡Iguales!"}
+              ]
+            },
+            { "dice": "Enciende el puente con la palanca y lleva la caja hasta la pared.",
+              "mapa": [
+                "..............M.",
+                "............####",
+                "PLC.........####",
+                "#####XXX########"
+              ]
+            }
+          ] }
+      ]
+    },
+    "bosque-family": {
+      "id": "cuadrito-cuantos",
+      "familia": {"tema": "cuántos hay: uno, dos y tres", "idea": "Ponga en la mesa una, dos o tres cucharas y pregúntele cuántas hay, sin contar con el dedo: ¡de un vistazo! Luego cambien de turno."},
+      "misiones": [
+        {"titulo": "Toca uno, dos o tres", "plantilla": "contar-toca", "icono": "iconos/tres.svg", "palabras": ["uno", "dos", "tres"], "antes": "Escucha cuántos te pido y toca esa cantidad.",
+          "contar": {
+            "numeros": ["uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve", "diez"],
+            "rondas": [
+              {"objeto": "iconos/manzana.svg", "cantidad": 1, "total": 3, "dice": "Toca una manzana"},
+              {"objeto": "iconos/estrella.svg", "cantidad": 2, "total": 4, "dice": "Toca dos estrellas"},
+              {"objeto": "iconos/pez.svg", "cantidad": 3, "total": 4, "dice": "Toca tres peces"},
+              {"objeto": "iconos/flor.svg", "cantidad": 2, "total": 5, "dice": "Toca dos flores"},
+              {"objeto": "iconos/manzana.svg", "cantidad": 3, "total": 5, "dice": "Toca tres manzanas"}
+            ]
+          } },
+        {"titulo": "La puerta de los números", "plantilla": "plataformas", "icono": "iconos/tres.svg", "palabras": ["uno", "dos", "tres"], "antes": "Estas puertas te preguntan cuántos hay. Cuenta despacito.",
+          "plataformas": [
+            { "dice": "Cuenta lo que te muestra cada puerta.",
+              "mapa": [
+                "................",
+                "................",
+                "P...G....#..G..M",
+                "################"
+              ],
+              "retos": [
+                {"dice": "¿Cuántos peces hay?", "ver": {"imagen": "iconos/pez.svg", "cantidad": 1}, "opciones": [{"texto": "1"}, {"texto": "2"}, {"texto": "3"}], "correcta": 0, "bien": "¡Uno!"},
+                {"dice": "¿Cuántas flores hay?", "ver": {"imagen": "iconos/flor.svg", "cantidad": 3}, "opciones": [{"texto": "3"}, {"texto": "1"}, {"texto": "2"}], "correcta": 0, "bien": "¡Tres flores!"}
+              ]
+            },
+            { "dice": "Sube la escalera, baja y busca la puerta.",
+              "mapa": [
+                "................",
+                "......##........",
+                ".....###........",
+                "P...####....G..M",
+                "################"
+              ],
+              "retos": [
+                {"dice": "¿Cuántas estrellas hay?", "ver": {"imagen": "iconos/estrella.svg", "cantidad": 2}, "opciones": [{"texto": "3"}, {"texto": "2"}, {"texto": "1"}], "correcta": 1, "bien": "¡Dos estrellas!"}
+              ]
+            },
+            { "dice": "Usa la caja para cruzar el agua.",
+              "mapa": [
+                "................",
+                "................",
+                "P...C......G...M",
+                "#######~~#######"
+              ],
+              "retos": [
+                {"dice": "¿Cuántos peces hay?", "ver": {"imagen": "iconos/pez.svg", "cantidad": 3}, "opciones": [{"texto": "2"}, {"texto": "1"}, {"texto": "3"}], "correcta": 2, "bien": "¡Tres peces!"}
+              ]
+            }
+          ] }
+      ]
+    },
+    "bosque-time": {
+      "id": "cuadrito-formas",
+      "familia": {"tema": "las formas: círculo, cuadrado, triángulo y rectángulo", "idea": "Salgan a buscar formas en la casa o en la calle: la tapa es un círculo, la ventana un cuadrado. Gana quien encuentre más."},
+      "misiones": [
+        {"titulo": "Formas en el camino", "plantilla": "plataformas", "icono": "iconos/triangulo.svg", "palabras": ["circulo", "cuadrado", "triangulo", "rectangulo"], "antes": "Cada puerta tiene una forma escondida. Toca la que te digo.",
+          "plataformas": [
+            { "dice": "Escucha el nombre de la forma.",
+              "mapa": [
+                "................",
+                "................",
+                "P..G...#...G...M",
+                "################"
+              ],
+              "retos": [
+                {"dice": "Toca el círculo.", "opciones": [{"imagen": "iconos/cuadrado.svg"}, {"imagen": "iconos/circulo.svg"}, {"imagen": "iconos/triangulo.svg"}], "correcta": 1, "bien": "¡El círculo!"},
+                {"dice": "Toca el triángulo.", "opciones": [{"imagen": "iconos/triangulo.svg"}, {"imagen": "iconos/rectangulo.svg"}], "correcta": 0, "bien": "¡El triángulo!"}
+              ]
+            },
+            { "dice": "Enciende el puente y sigue.",
+              "mapa": [
+                "................",
+                "................",
+                "P.L.....G......M",
+                "###XXX##########"
+              ],
+              "retos": [
+                {"dice": "Toca el cuadrado.", "opciones": [{"imagen": "iconos/circulo.svg"}, {"imagen": "iconos/cuadrado.svg"}], "correcta": 1, "bien": "¡El cuadrado!"}
+              ]
+            },
+            { "dice": "Abre la puerta y usa la caja para subir.",
+              "mapa": [
+                "..............M.",
+                "...........#####",
+                "P..G...C...#####",
+                "################"
+              ],
+              "retos": [
+                {"dice": "Toca el rectángulo.", "opciones": [{"imagen": "iconos/rectangulo.svg"}, {"imagen": "iconos/triangulo.svg"}, {"imagen": "iconos/circulo.svg"}], "correcta": 0, "bien": "¡El rectángulo!"}
+              ]
+            }
+          ] }
+      ]
+    }
+  },
+
+  "ayudas": {
+    "memoria-pista1": "Escucha bien: cada dibujo tiene su nombre.",
+    "atrapa-inicio": "Atrapa el dibujo que te digo.",
+    "contar-otra-vez": "Casi. Contemos otra vez, despacito.",
+    "plataformas-agua": "¡Uy, al agua! Goma te saca. Prueba otra vez.",
+    "plataformas-alto": "Muy alto para un salto. Mira qué hay cerca que te ayude.",
+    "plataformas-reto": "Casi. Mira otra vez y cuenta despacito.",
+    "plataformas-meta": "¡Llegaste!"
+  },
+
+  "pozo": { "id": "cuadrito-pozo", "titulo": "El pozo de las parejas", "antes": "Este es el pozo de los recuerdos. Gira dos cartas y busca las que van juntas." },
+
+  "encargos": {
+    "caro": { "pide": "arriba", "opciones": ["abajo", "arriba", "debajo"] },
+    "tito": { "pide": "dentro", "opciones": ["fuera", "dentro", "lejos"] },
+    "abu": { "pide": "rojo", "opciones": ["azul", "rojo", "amarillo"] },
+    "pua": { "pide": "grande", "opciones": ["pequeno", "grande", "iguales"] },
+    "nuez": { "pide": "tres", "opciones": ["uno", "tres", "dos"] }
+  },
+
+  "escenas": {
+    "intro": [
+      ["goma", "¡Hola! Soy Goma. Este cuaderno es mágico: lo que aprendes aquí cobra vida."],
+      ["goma", "Esta es la primera página de Cuadrito. Aquí jugamos con los números, las formas y los lugares."],
+      ["cuadrito", "¡Hola! Soy Cuadrito. Me encanta contar, mirar y comparar."],
+      ["goma", "La página está a lápiz: cada misión que terminas la llena de color. ¿Empezamos?", [["¡Sí, vamos!", "elegir"], ["¿Cómo me muevo?", "ayuda"]]]
+    ],
+    "ayuda": [
+      ["goma", "Toca la pantalla y caminas hasta tu dedo. ¡Puedes ir a donde quieras!"],
+      ["goma", "Cada lugar tiene su camino de color. Los letreros te muestran qué color seguir."],
+      ["goma", "Los vecinos de esta página perdieron algo. ¡Ayúdalos a encontrarlo!"]
+    ],
+    "elegir": [
+      ["goma", "¿A dónde vamos primero? Tú decides.", [["Arriba y abajo: camino rosado", "@bosque-school", "iconos/arriba.svg"], ["Dentro y fuera: camino amarillo", "@bosque-colors", "iconos/dentro.svg"], ["Los colores: camino rojo", "@bosque-numbers", "iconos/1f534.svg"]]]
+    ],
+    "despues": [["goma", "¡Mira! Tu misión coloreó la página y llegó un amigo nuevo. ¿A dónde vamos ahora?"]],
+    "puente-cerrado": [
+      ["cuadrito", "¡Hola! ¡Pronto, la página siguiente!"],
+      ["goma", "Cuando termines todas las misiones de esta página, Cuadrito la voltea y aparece la siguiente."]
+    ],
+    "puente-abierto": [
+      ["cuadrito", "¡Lo lograste! ¡Contaste, miraste y comparaste muy bien!"],
+      ["goma", "¡La página está llena! La página 2 se abre muy pronto. ¡Te esperamos!"]
+    ],
+    "dormida": [["goma", "Este dibujo todavía está en blanco. Se dibuja cuando termines el que está antes en este camino."]],
+    "pozo-dormido": [["goma", "Termina cualquier misión de un camino y el pozo despertará."]],
+    "rayo": [
+      ["rayo", "¡Correo, correo! Soy Rayo. Llevo cartas a la página siguiente..."],
+      ["rayo", "...pero siempre llego tarde: ¡nunca sé si voy cerca o lejos!"],
+      ["rayo", "Termina todas las misiones de la página y Cuadrito la voltea."]
+    ],
+    "caro-pide": [
+      ["caro", "Hooola... Soy Caro. Voy despacito, despacito... y se me perdió un dibujo de mi cuaderno."],
+      ["caro", "Era el pájaro que está arriba del árbol. Está más adelante, en este camino. ¿Me lo traes?"]
+    ],
+    "caro-otra": [["caro", "Mmm... ese no es. ¡No pasa nada! Yo también me equivoco. Mira dónde está el pájaro."]],
+    "caro-gracias": [["caro", "¡Ese es! El pájaro está arriba. ¡Gracias!"], ["caro", "Lo guardé en tu álbum. ¡Gracias por tomarte tu tiempo conmigo!"]],
+    "caro-listo": [["caro", "Arriba, abajo... arriba, abajo. ¿Lo dices conmigo?"]],
+    "tito-pide": [
+      ["tito", "¡Hola, hola! Soy Tito. Estaba jugando a la pelota y ya no sé dónde la dejé."],
+      ["tito", "Creo que la guardé dentro de la caja. Búscala por este camino, ¿sí?"]
+    ],
+    "tito-otra": [["tito", "¡Uy, esa no! Ahí la pelota no está dentro. Mira otra vez, sin afán."]],
+    "tito-gracias": [["tito", "¡Ahí estaba! Dentro de la caja. ¡Gracias, amigo!"], ["tito", "La guardé en tu álbum, bien adentro."]],
+    "tito-listo": [["tito", "Dentro, fuera, dentro, fuera... ¡qué divertido!"]],
+    "abu-pide": [
+      ["abu", "Buenas, amigo. Soy Abu. Llevo cien años ordenando mis piedras por colores..."],
+      ["abu", "...y hoy se me perdió el color rojo. Está más adelante. Búscalo con calma."]
+    ],
+    "abu-otra": [["abu", "Mmm, ese es otro color. Los sabios también se equivocan. Busca el rojo, con calma."]],
+    "abu-gracias": [["abu", "¡Rojo! Ya puedo poner juntas todas mis piedras rojas."], ["abu", "Guárdalo en tu álbum. Un color nunca sobra."]],
+    "abu-listo": [["abu", "Las rojas con las rojas, las azules con las azules... ¿me ayudas a separarlas?"]],
+    "pua-pide": [
+      ["pua", "¡Hola! Soy Púa. Tenía dos manzanas, una grande y una pequeña..."],
+      ["pua", "...y se me rodó la grande por este camino. ¿Me la traes?"]
+    ],
+    "pua-otra": [["pua", "Esa no es la grande. ¡Tranquilo! Mira bien cuál es más grande."]],
+    "pua-gracias": [["pua", "¡La grande! Ahora tengo las dos otra vez."], ["pua", "La guardé en tu álbum. ¡Gracias!"]],
+    "pua-listo": [["pua", "Una grande y una pequeña... ¿cuál te comerías tú?"]],
+    "nuez-pide": [
+      ["nuez", "¡Hola! Soy Nuez. Dibujé tres estrellas para regalarles a mis amigos..."],
+      ["nuez", "...y se me cayó el dibujo de las tres estrellas. Está más adelante. ¿Me ayudas a encontrarlo?"]
+    ],
+    "nuez-otra": [["nuez", "Mmm, ahí no hay tres. ¡No pasa nada! Mira cuántas hay, de un vistazo."]],
+    "nuez-gracias": [["nuez", "¡Tres! Una, dos, tres. ¡Una estrella para cada amigo!"], ["nuez", "Lo guardé en tu álbum. ¡Gracias por compartir!"]],
+    "nuez-listo": [["nuez", "Uno, dos, tres... ¿cuentas conmigo?"]],
+    "goma": [
+      ["goma", "¿Te equivocaste? ¡No pasa nada! Soy un borrador: borrar no es perder, es mejorar."],
+      ["goma", "Equivocarse es parte de aprender. Dilo conmigo.", [["¡Yo puedo!"], ["¡Lo intento otra vez!"]]],
+      ["goma", "¡Así se dice! Sigue explorando."]
+    ],
+    "cuadrito": {
+      "lineas": [
+        ["cuadrito", "¡Hola! ¡Qué bueno verte! Mira cuántas cosas hay para contar en esta página."],
+        ["goma", "Hay misiones por dibujar y vecinos que necesitan ayuda."]
+      ],
+      "luego": "elegir"
+    },
+    "atajo": [["goma", "¡Mira! Se coloreó un camino nuevo. ¡Ahora es más corto llegar!"]]
+  }
+}

@@ -1,10 +1,13 @@
 // Docente: Planear y Materiales del tema (esqueleto §2.2). Todo sale del paquete de la cartilla
 // (src/materiales); no hay datos de niños, así que estas pantallas no llevan cortina.
-// El plan por grupo (fechas, estado) es de la tanda 6: aquí el planeador sugerido ya se ve y se imprime.
+// El plan por grupo (fechas de la clase 1 y 2 y su estado) vive en FechasPlan.tsx.
 import { Boton, Encabezado, Fila, Hueco, Panel, Vacio } from './base';
 import { Cargado, useCarga, useTitulo } from './comun';
 import { ElegirCartilla } from './ElegirCartilla';
 import { cargarIndice, cargarMaterial, cargarTema, RANURAS, type EntradaTema, type Indice, type Material } from '../materiales/datos';
+import { useDuracion } from '../materiales/duracion';
+import { MisPlaneaciones, RUTA_ARMAR } from '../armador/Armador';
+import { FechasDelTema, PlanDeGrupos } from './FechasPlan';
 import { CuerpoMaterial, MaterialHueco, MaterialPantalla } from '../materiales/Material';
 
 const rutaTema = (t: string, id = '') => `/docente/temas/${encodeURIComponent(t)}${id ? `/${encodeURIComponent(id)}` : ''}`;
@@ -17,6 +20,7 @@ const nombreClase = (m: Material) => m.titulo;
 
 export function Planear() {
   useTitulo('Planear');
+  const duracion = useDuracion();
   const carga = useCarga(cargarIndice, 'indice');
   return (
     <>
@@ -25,9 +29,17 @@ export function Planear() {
       <Cargado carga={carga}>
         {(indice) => (
           <>
+            <Panel titulo="Mi planeación">
+              <p className="sec">Elija la duración, cuántas actividades, el tema y las actividades; sale en el formato del colegio, para imprimir o bajar en Word.</p>
+              <Boton variante="primario" icono="planear" ruta={RUTA_ARMAR}>
+                Armar mi planeación
+              </Boton>
+            </Panel>
+            <PlanDeGrupos indice={indice} />
+            <MisPlaneaciones />
             <Panel titulo="Plan y planeador de cada tema" filas>
               {indice.temas.map((t) => (
-                <Fila key={t.id} ruta={rutaPlan(t.id)} icono="planear" tenue={t.estado === 'pendiente'} titulo={t.nombre} detalle={t.estado === 'listo' ? `${t.titulo} · 2 clases de 55 minutos` : 'Aquí irá'} />
+                <Fila key={t.id} ruta={rutaPlan(t.id)} icono="planear" tenue={t.estado === 'pendiente'} titulo={t.nombre} detalle={t.estado === 'listo' ? `${t.titulo} · 2 clases de ${duracion} minutos` : 'Aquí irá'} />
               ))}
             </Panel>
             <Panel titulo="Materiales por tema" filas>
@@ -35,7 +47,6 @@ export function Planear() {
                 <Fila key={t.id} ruta={rutaTema(t.id)} icono="documento" tenue={t.estado === 'pendiente'} titulo={t.nombre} detalle={t.estado === 'listo' ? `${t.materiales.length} materiales listos` : 'Aquí irá'} />
               ))}
             </Panel>
-            <Hueco titulo="Aquí irá el plan de cada grupo" texto="Elija el tema de cada grupo y las fechas de sus dos clases, y el coordinador verá en qué tema va cada uno." />
           </>
         )}
       </Cargado>
@@ -70,10 +81,11 @@ export function PlanTema({ tema }: { tema: string }) {
                     Materiales del tema
                   </Boton>
                 </div>
+                <FechasDelTema tema={entrada.id} nombre={entrada.nombre} />
                 {planeadores.map((m) => (
                   <section key={m.id} className="plan-clase">
                     <h2 className="h3">{m.titulo}</h2>
-                    <CuerpoMaterial material={m} rutaMaterial={(id) => rutaTema(entrada.id, id)} />
+                    <CuerpoMaterial material={m} nombreTema={entrada.nombre} otros={entrada.materiales} temaId={entrada.id} rutaMaterial={(id) => rutaTema(entrada.id, id)} />
                     <div className="mat-acciones">
                       <Boton icono="imprimir" ruta={rutaTema(entrada.id, m.id)}>
                         Abrir para imprimir
@@ -81,7 +93,6 @@ export function PlanTema({ tema }: { tema: string }) {
                     </div>
                   </section>
                 ))}
-                <Hueco titulo="Aquí irán las fechas de sus clases" texto="Cuando elija el tema de un grupo, la clase 1 y la clase 2 llevarán su fecha y su farol." />
               </>
             ) : (
               <Hueco titulo={`Aquí irá el plan de ${entrada.nombre.toLowerCase()}`} texto="Llega con la próxima versión de la cartilla. Traerá:" trae={indice.tipos.planeador?.trae} />

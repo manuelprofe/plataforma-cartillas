@@ -83,22 +83,30 @@ try {
 
     await p.goto(url('/docente/planear'));
     await p.waitForSelector('text=Plan y planeador de cada tema');
-    const filas = await p.$$eval('.panel:nth-of-type(1) .fila', (f) => f.length);
+    const filas = await p.locator('.panel', { hasText: 'Plan y planeador de cada tema' }).locator('.fila').count();
     comprobar(filas === 6, `Planear lista los 6 temas (${filas})`);
     comprobar((await p.locator('.pestanas [aria-current="page"]').innerText()) === 'Planear', 'en Planear y Materiales la pestaña activa es Planear');
     await foto(p, 'planear-390');
 
     await p.goto(url('/docente/planear/colores'));
-    await p.waitForSelector('.mat-momento__det');
-    const momentos = await p.locator('.mat-momento__det').count();
-    comprobar(momentos === 12, `Plan de colores: 6 + 6 momentos de los dos planeadores (${momentos})`);
-    comprobar((await p.locator('a.mat-chip').count()) >= 8, 'los momentos enlazan a sus materiales (láminas, fichas, prueba, canción)');
-    const chipCancion = p.locator('a.mat-chip', { hasText: 'Canción' }).first();
-    comprobar((await chipCancion.getAttribute('href')) === '/docente/temas/colores/colores-cancion', 'el momento de la canción enlaza a colores-cancion');
-    comprobar((await menorToque(p, 'a.mat-chip')) >= 48, 'enlaces del planeador de 48 px o más');
+    await p.waitForSelector('.plan-formato');
+    const pasos = await p.locator('.plan-fila').count();
+    comprobar(pasos === 10, `Plan de colores: 5 + 5 pasos en cuadrícula, las transiciones van en la duración (${pasos})`);
+    const momentosClase = await p.locator('.plan-fase').allTextContents();
+    comprobar(momentosClase.join(',') === 'Inicio,Desarrollo,Cierre,Inicio,Desarrollo,Cierre', `cada clase separa inicio, desarrollo y cierre (${momentosClase.join(', ')})`);
+    const cab = await p.locator('.plan-cab').first().innerText();
+    comprobar(['Institución', 'Docente', 'Área', 'Grado', 'Grupo', 'Fecha', 'Tema', 'Duración', 'Clase'].every((x) => cab.includes(x)) && cab.includes('Colores') && cab.includes('55 min'), 'encabezado del formato con tema y duración');
+    comprobar((await p.locator('.plan-ref th', { hasText: 'DBA' }).count()) >= 2, 'filas de DBA y estándares en cada planeador');
+    comprobar((await p.locator('a.plan-recurso').count()) >= 8, 'cada paso abre sus recursos (láminas, fichas, prueba, canción)');
+    const cancion = p.locator('a.plan-recurso', { hasText: 'canción' }).first();
+    comprobar((await cancion.getAttribute('href')) === '/proyectar/colores/colores-cancion', `la canción se proyecta de una vez desde su paso (${await cancion.getAttribute('href')})`);
+    const laminas = p.locator('a.plan-recurso', { hasText: 'láminas' }).first();
+    comprobar((await laminas.getAttribute('href')) === '/proyectar/colores/colores-laminas', 'las láminas se proyectan de una vez desde su paso');
+    const ficha = p.locator('a.plan-recurso', { hasText: 'Imprimir ficha 1' }).first();
+    comprobar((await ficha.getAttribute('href')) === '/docente/temas/colores/colores-ficha-1', 'la ficha abre su hoja para imprimir');
+    comprobar((await menorToque(p, 'a.plan-recurso')) >= 48, 'botones de recurso de 48 px o más');
     comprobar(await sinDesborde(p), 'plan de colores sin desborde horizontal a 390');
-    await p.locator('.mat-momento__det summary').first().click();
-    await foto(p, 'plan-colores-390');
+    await p.screenshot({ path: `${CAPTURAS}/plan-colores-390.png`, fullPage: true });
 
     // Materiales por tema
     await p.goto(url('/docente/temas/colores'));
@@ -199,7 +207,7 @@ try {
     await p.emulateMedia({ media: 'screen' });
 
     // Guía y planeador (carta, varias páginas posibles) y nota para la casa (media carta ×2)
-    for (const [id, max] of [['colores-guia', 4], ['colores-planeador-1', 2], ['numeros-planeador-2', 2], ['escuela-casa', 1], ['colores-decir', 1]]) {
+    for (const [id, max] of [['colores-guia', 4], ['colores-planeador-1', 1], ['numeros-planeador-2', 1], ['escuela-casa', 1], ['colores-decir', 1]]) {
       await p.goto(url(`/docente/temas/${id.split('-')[0]}/${id}`));
       await p.waitForSelector('.mat-pantalla h1');
       await p.getByRole('button', { name: 'Imprimir' }).click();

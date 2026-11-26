@@ -48,7 +48,7 @@ export const guardado = (pagina) => pagina.evaluate((k) => JSON.parse(localStora
 /** De la portada al mapa (con héroe ya elegido y la intro ya vista en el progreso sembrado). */
 export async function alMapa(pagina) {
   await pagina.click('.jugar-invitado');
-  await pagina.waitForSelector('.mundo', { timeout: 8000 });
+  await pagina.waitForSelector('.mundo, .camino, .biblioteca', { timeout: 8000 });
   await pagina.waitForTimeout(900);
   await cerrarCharla(pagina);
 }

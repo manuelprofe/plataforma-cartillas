@@ -29,7 +29,7 @@ Convención de campos: **Imagen** = archivo del paquete (carpeta `iconos/`); **A
 | crayon | `iconos/1f58d` | palabra x2 | kréi-on | crayola | B |
 | chair | `iconos/1fa91` | palabra x2 | cher | silla | B |
 
-**Frases modelo** (solo vocabulario del Bosque; la instrucción siempre va en español):
+**Frases modelo** (solo vocabulario del tema; la instrucción siempre va en español):
 - La palabra sola, clara y una vez: "pencil".
 - Un trozo completo: "a pencil", "a book".
 - Con el objeto en la mano, sin traducir enseguida: levanta el lápiz y dice "pencil". El objeto da el sentido; no diga "pencil, o sea lápiz".
@@ -70,7 +70,7 @@ Habitante del camino: Caro. Marco: Bruner (de lo concreto a la palabra), Ausubel
 ## 2. Planeador
 
 Hora tipo (§0 de la ronda 2): 5 saludo y repaso · 15 juego de aula · 15 ficha o prueba · 10 decir · 5 cierre · 5 transiciones. Suman 55.
-Las estrellas del docente (participar 10, colaborar 15) se marcan **en la lista impresa del grupo**, no en el celular mientras proyecta. Nunca se quitan.
+Las calcomanías del docente (participar y trabajar con otros) se marcan **en la lista impresa del grupo**, no en el celular mientras proyecta. Nunca se quitan.
 
 ### Clase 1: mirar y jugar
 
@@ -149,7 +149,7 @@ Formato horizontal para proyectar y media carta para imprimir. Cada lámina: ima
 - **Consigna (se proyecta):** "Uno dice, el otro señala la lámina." Ícono: dos globos de diálogo.
 - **Frases modelo:** la palabra sola ("pencil") y "a pencil".
 - **Cómo se turnan:** cada pareja tiene 5 láminas pequeñas boca arriba (pencil, eraser, notebook, book, chair). El niño A dice una palabra; el B la señala. Luego cambian. Si A no quiere decir, señala y B dice. Si dudan, miran la lámina; la palabra está debajo.
-- **Qué hace el docente al pasar:** escucha a medio metro, sin interrumpir; repite bien lo que oyó mal, sin nombrar el error; marca en la lista de cotejo las conductas (participa, pide repetir, ayuda a un compañero); da la estrella de colaborar (15) a la pareja que se ayuda. No pide hablar a quien no quiere.
+- **Qué hace el docente al pasar:** escucha a medio metro, sin interrumpir; repite bien lo que oyó mal, sin nombrar el error; marca en la lista de cotejo las conductas (participa, pide repetir, ayuda a un compañero); da la calcomanía de trabajar con otros a la pareja que se ayuda. No pide hablar a quien no quiere.
 - **Marco:** Vygotsky (el compañero es la ayuda) y Ryan y Deci (relación: no juega solo).
 
 ---

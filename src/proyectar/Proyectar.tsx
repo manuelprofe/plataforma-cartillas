@@ -6,6 +6,7 @@ import { StrictMode, useCallback, useEffect, useMemo, useRef, useState, type Rea
 import { createRoot } from 'react-dom/client';
 import { navegar, useRuta } from '../navegacion';
 import { marcarProyectando } from '../proyectando';
+import { NOMBRE } from '../marca';
 import { Boton, Enlace, Hueco } from '../adultos/base';
 import { Icono, type NombreIcono } from '../adultos/Icono';
 import { base, cargarIndice, cargarMaterial, type EntradaTema, type Indice, type Material, type Opcion, type Palabra } from '../materiales/datos';
@@ -26,7 +27,7 @@ function Proyectar() {
   const ruta = useRuta().replace(/\/+$/, '') || '/proyectar';
   const [, , tema, material] = ruta.split('/');
   useEffect(() => {
-    document.title = 'Proyectar · El Cuaderno de Goma';
+    document.title = `Proyectar · ${NOMBRE}`;
   }, []);
   if (tema === 'fin') return <Fin />;
   if (!tema) return <Temas />;
@@ -151,14 +152,14 @@ function SinRed({ alReintentar }: { alReintentar?: () => void }) {
 function Temas() {
   const { indice, error } = useIndice();
   return (
-    <Telon titulo="Elegir tema" sub="El Cuaderno de Goma">
+    <Telon titulo="Elegir tema" sub={NOMBRE}>
       {error ? (
         <SinRed />
       ) : !indice ? (
         <Cargando />
       ) : (
         <main className="telon__cuerpo">
-          <p className="telon__lead">Bosque de los Sonidos</p>
+          {indice.temas[0]?.territorio && <p className="telon__lead">{indice.temas[0].territorio.split(",")[0]}</p>}
           <div className="tarjetas">
             {indice.temas.map((t) => {
               const abre = t.estado === 'listo' || t.materiales.length > 0;

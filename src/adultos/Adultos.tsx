@@ -1,6 +1,8 @@
 // Paquete de adultos: entrada, docente, coordinador y dueño (esqueleto §1.5, §2 y §3).
 // Tanda 2: entrada con cuenta (correo y contraseña, recuperar, invitación) y redirección por rol.
 // Las secciones siguen con sus huecos hasta las tandas 4 a 7.
+import { IdentidadColegio } from './Identidad';
+import { dibujo, NOMBRE } from '../marca';
 import { StrictMode, useEffect, useState, useSyncExternalStore, type FormEvent, type ReactNode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { navegar, useRuta } from '../navegacion';
@@ -12,6 +14,7 @@ import { Campo, correoValido, useTitulo } from './comun';
 import { PaginaDueno } from './Plataforma';
 import { DocenteInicio, MisGrupos, PaginaGrupo } from './Docente';
 import { MaterialPagina, Planear, PlanTema, TemaMateriales } from './Materiales';
+import { Armador, PlaneacionArmada } from '../armador/Armador';
 import { Biblioteca } from './Biblioteca';
 import { useCartillaMateriales } from '../materiales/datos';
 import { olvidarLecturas } from './docente';
@@ -120,7 +123,8 @@ function CajaEntrada({ titulo, texto, alEnviar, children }: { titulo: string; te
   useTitulo(titulo);
   const cabeza = (
     <div className="encabezado">
-      <p className="entrada__marca">El Cuaderno de Goma</p>
+      <img className="entrada__dibujo" src={dibujo('goma-saludar')} alt="" width="88" height="113" />
+      <p className="entrada__marca">{NOMBRE}</p>
       <h1>{titulo}</h1>
       {texto && <p className="sec">{texto}</p>}
     </div>
@@ -138,6 +142,11 @@ function CajaEntrada({ titulo, texto, alEnviar, children }: { titulo: string; te
           {children}
         </div>
       )}
+      <div className="entrada__amigos" aria-hidden="true">
+        <img src={dibujo('cuadrito-saludar')} alt="" width="52" height="52" />
+        <img src={dibujo('renglon-saludar')} alt="" width="52" height="46" />
+        <img src={dibujo('postal-saludar')} alt="" width="52" height="57" />
+      </div>
     </main>
   );
 }
@@ -504,6 +513,7 @@ function PaginaDocente({ seccion, mas, cuenta, sinRed }: { seccion: string; mas:
     case 'grupos':
       return mas[0] ? <PaginaGrupo resto={mas} sinRed={sinRed} /> : <MisGrupos sinRed={sinRed} />;
     case 'planear':
+      if (mas[0] === 'armar') return mas[1] ? <PlaneacionArmada id={mas[1]} /> : <Armador />;
       return mas[0] ? <PlanTema tema={mas[0]} /> : <Planear />;
     case 'temas':
       return mas[1] ? <MaterialPagina tema={mas[0]} id={mas[1]} /> : mas[0] ? <TemaMateriales tema={mas[0]} /> : <AlInicio ruta="/docente/planear" />;
@@ -585,7 +595,12 @@ function Colegio({ resto, cuenta, sinRed }: { resto: string[]; cuenta: Dentro; s
       pagina = <SeccionVacia titulo="Cierre del año" hueco="Aquí irá el cierre del año escolar" texto="Explicará qué se borra al cerrar el año y pedirá escribir el año para confirmar." />;
       break;
     case 'cuenta':
-      pagina = <MiCuenta cuenta={cuenta} />;
+      pagina = (
+        <>
+          <MiCuenta cuenta={cuenta} />
+          {cuenta.perfil.colegio_id && <IdentidadColegio colegioId={cuenta.perfil.colegio_id} sinRed={sinRed} />}
+        </>
+      );
       break;
     default:
       pagina = <AlInicio ruta="/colegio" />;

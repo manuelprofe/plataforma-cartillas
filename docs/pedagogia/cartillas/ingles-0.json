@@ -1,0 +1,156 @@
+{
+  "_nota": "Contenido del territorio 1 (periodo 1: Juego y aprendo sobre mi cuerpo, eje Salud y vida, MEN 2016b pp. 46-47) de El cuaderno de Postal · Transición. DBA de transición 1, 3 y 4. Todo es oral y visual: el niño escucha y toca, repite y empareja; no lee ni escribe. Las escenas son las de la página 1 de inglés 3.° salvo las que cambian aquí. Se arma con herramientas/cartilla_desde_molde.py.",
+  "id": "ingles-0",
+  "molde": "ingles-3",
+  "titulo": "El cuaderno de Postal · Transición",
+  "materia": "Inglés",
+  "grado": "0",
+  "idiomaVoz": "en-US",
+  "guia": { "id": "postal", "nombre": "Postal", "imagen": "personajes/postal-saludar.webp", "fiesta": "personajes/postal-celebrar.webp", "idioma": "en" },
+  "territorio": "Postales · Página 1",
+  "conservarEscenas": true,
+
+  "iconos": {
+    "goodbye": [{ "e": "1f44b", "x": 1, "y": 3, "t": 19 }, { "e": "1f6b6", "x": 17, "y": 11, "t": 19 }],
+    "good-morning": [{ "e": "1f305", "x": 2, "y": 2, "t": 32 }],
+    "good-night": [{ "e": "1f319", "x": 2, "y": 2, "t": 32 }],
+    "one": [{ "e": "2b50", "x": 10, "y": 10, "t": 16 }],
+    "two": [{ "e": "2b50", "x": 2, "y": 10, "t": 15 }, { "e": "2b50", "x": 19, "y": 10, "t": 15 }],
+    "three": [{ "e": "2b50", "x": 10, "y": 2, "t": 15 }, { "e": "2b50", "x": 2, "y": 19, "t": 15 }, { "e": "2b50", "x": 19, "y": 19, "t": 15 }],
+    "ball": [{ "e": "26bd", "x": 2, "y": 2, "t": 32 }],
+    "circle": [{ "circulo": [18, 18, 14], "fill": "#e25c54" }],
+    "square": [{ "rect": [5, 5, 26, 26], "fill": "#5696de" }],
+    "triangle": [{ "poligono": [18, 3, 33, 31, 3, 31], "fill": "#f5b83d" }],
+    "big": [{ "e": "26bd", "x": 2, "y": 2, "t": 32 }],
+    "small": [{ "e": "26bd", "x": 13, "y": 13, "t": 10 }]
+  },
+
+  "palabras": {
+    "hello": { "en": "hello", "es": "hola", "icono": "iconos/1f44b.svg", "pronuncia": "je-lóu", "frase": "Hello!" },
+    "goodbye": { "en": "goodbye", "es": "adiós", "icono": "iconos/goodbye.svg", "pronuncia": "gud-bái", "aceptar": ["good bye", "bye", "bye bye"] },
+    "goodmorning": { "en": "good morning", "es": "buenos días", "icono": "iconos/good-morning.svg", "pronuncia": "gud mór-ning" },
+    "goodnight": { "en": "good night", "es": "buenas noches", "icono": "iconos/good-night.svg", "pronuncia": "gud náit", "aceptar": ["goodnight"] },
+
+    "red": { "en": "red", "es": "rojo", "icono": "iconos/1f534.svg", "pronuncia": "red" },
+    "yellow": { "en": "yellow", "es": "amarillo", "icono": "iconos/1f7e1.svg", "pronuncia": "yé-lou" },
+    "blue": { "en": "blue", "es": "azul", "icono": "iconos/1f535.svg", "pronuncia": "blu" },
+
+    "one": { "en": "one", "es": "uno", "icono": "iconos/one.svg", "pronuncia": "uan", "aceptar": ["1", "won"] },
+    "two": { "en": "two", "es": "dos", "icono": "iconos/two.svg", "pronuncia": "tu", "aceptar": ["2", "to", "too"] },
+    "three": { "en": "three", "es": "tres", "icono": "iconos/three.svg", "pronuncia": "zri", "aceptar": ["3", "tree"] },
+
+    "eyes": { "en": "eyes", "es": "ojos", "icono": "iconos/1f440.svg", "pronuncia": "ais" },
+    "nose": { "en": "nose", "es": "nariz", "icono": "iconos/1f443.svg", "pronuncia": "nous", "aceptar": ["knows"] },
+    "mouth": { "en": "mouth", "es": "boca", "icono": "iconos/1f444.svg", "pronuncia": "mauz" },
+    "ears": { "en": "ears", "es": "orejas", "icono": "iconos/1f442.svg", "pronuncia": "irs" },
+    "head": { "en": "head", "es": "cabeza", "icono": "iconos/head.webp", "pronuncia": "jed" },
+
+    "ball": { "en": "ball", "es": "pelota", "icono": "iconos/ball.svg", "pronuncia": "bol" },
+    "teddy": { "en": "teddy bear", "es": "osito de peluche", "icono": "iconos/1f9f8.svg", "pronuncia": "té-di ber", "aceptar": ["teddy"] },
+    "bike": { "en": "bike", "es": "bicicleta", "icono": "iconos/1f6b2.svg", "pronuncia": "báik" },
+    "car": { "en": "car", "es": "carro", "icono": "iconos/1f697.svg", "pronuncia": "car" },
+    "kite": { "en": "kite", "es": "cometa", "icono": "iconos/1fa81.svg", "pronuncia": "káit" },
+
+    "circle": { "en": "circle", "es": "círculo", "icono": "iconos/circle.svg", "pronuncia": "sér-kol" },
+    "square": { "en": "square", "es": "cuadrado", "icono": "iconos/square.svg", "pronuncia": "skuér" },
+    "triangle": { "en": "triangle", "es": "triángulo", "icono": "iconos/triangle.svg", "pronuncia": "trái-an-gol" },
+    "big": { "en": "big", "es": "grande", "icono": "iconos/big.svg", "pronuncia": "big" },
+    "small": { "en": "small", "es": "pequeño", "icono": "iconos/small.svg", "pronuncia": "smol" }
+  },
+
+  "zonas": {
+    "bosque-school": {
+      "id": "postal-hello",
+      "familia": { "tema": "saludar en inglés", "idea": "Al levantarse y al acostarse, salúdense en inglés: good morning y good night. Al salir de casa, goodbye." },
+      "misiones": [
+        { "titulo": "Hello!", "plantilla": "escucha-toca", "icono": "iconos/1f44b.svg", "palabras": ["hello", "goodbye", "goodmorning", "goodnight"], "antes": ["Escucha el saludo y toca el dibujo.", "Listen and tap the picture."] },
+        { "titulo": "Say hello", "plantilla": "di-brilla", "icono": "iconos/good-morning.svg", "palabras": ["hello", "goodbye", "goodmorning", "goodnight"], "antes": ["Escucha y dilo tú, como Postal. ¡Cada intento cuenta!", "Listen and say it, like Postal. Every try counts!"] },
+        { "titulo": "Hello pairs", "plantilla": "memoria", "icono": "iconos/good-night.svg", "palabras": ["hello", "goodbye", "goodmorning", "goodnight"], "formas": ["imagen-sonido"], "parejas": 4, "antes": ["Gira dos cartas: busca el dibujo y su saludo.", "Flip two cards: find the picture and its greeting."] }
+      ]
+    },
+    "bosque-colors": {
+      "id": "postal-colors",
+      "familia": { "tema": "los colores red, yellow y blue", "idea": "Busquen en la casa cosas red, yellow y blue. Usted dice el color en inglés y su hijo lo trae." },
+      "misiones": [
+        { "titulo": "Colors", "plantilla": "escucha-toca", "icono": "iconos/1f534.svg", "palabras": ["red", "yellow", "blue"], "antes": ["Escucha el color y tócalo.", "Listen to the color and tap it."] },
+        { "titulo": "Catch the color", "plantilla": "escucha-atrapa", "icono": "iconos/1f7e1.svg", "palabras": ["red", "yellow", "blue"], "antes": ["Los colores pasan volando. Atrapa el que escuchas.", "The colors fly by. Catch the one you hear."] },
+        { "titulo": "Say the color", "plantilla": "di-brilla", "icono": "iconos/1f535.svg", "palabras": ["red", "yellow", "blue"], "antes": ["Mira el color y dilo en inglés. ¡Cada intento cuenta!", "Look at the color and say it. Every try counts!"] }
+      ]
+    },
+    "bosque-numbers": {
+      "id": "postal-numbers",
+      "familia": { "tema": "contar one, two, three", "idea": "Al subir escalones o repartir galletas, cuenten juntos en inglés: one, two, three." },
+      "misiones": [
+        { "titulo": "Touch and count", "plantilla": "contar-toca", "icono": "iconos/three.svg", "palabras": ["one", "two", "three"], "antes": ["Escucha cuántos te pido y tócalos. Postal cuenta contigo.", "Listen and tap how many. Postal counts with you."],
+          "contar": {
+            "numeros": ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"],
+            "rondas": [
+              { "objeto": "iconos/ball.svg", "cantidad": 1, "total": 3, "dice": "Touch one ball" },
+              { "objeto": "iconos/2b50.svg", "cantidad": 2, "total": 4, "dice": "Touch two stars" },
+              { "objeto": "iconos/1f697.svg", "cantidad": 3, "total": 4, "dice": "Touch three cars" },
+              { "objeto": "iconos/1f9f8.svg", "cantidad": 2, "total": 5, "dice": "Touch two teddy bears" }
+            ]
+          } },
+        { "titulo": "How many?", "plantilla": "escucha-toca", "icono": "iconos/two.svg", "palabras": ["one", "two", "three"], "antes": ["Escucha el número y toca el dibujo con esas estrellas.", "Listen to the number and tap the picture."] },
+        { "titulo": "Say the number", "plantilla": "di-brilla", "icono": "iconos/one.svg", "palabras": ["one", "two", "three"], "antes": ["Cuenta las estrellas y dilo en inglés. ¡Cada intento cuenta!", "Count the stars and say it. Every try counts!"] }
+      ]
+    },
+    "bosque-body": {
+      "id": "postal-face",
+      "familia": { "tema": "mi cara y mi cuerpo", "idea": "Jueguen a Simón dice en inglés: touch your nose, touch your head. Luego su hijo da las órdenes." },
+      "misiones": [
+        { "titulo": "My face", "plantilla": "escucha-toca", "icono": "iconos/1f443.svg", "palabras": ["eyes", "nose", "mouth", "ears", "head"], "antes": ["Escucha y toca la parte de la cara.", "Listen and tap the part of the face."] },
+        { "titulo": "Catch my face", "plantilla": "escucha-atrapa", "icono": "iconos/1f440.svg", "palabras": ["eyes", "nose", "mouth", "ears", "head"], "antes": ["Atrapa la parte de la cara que escuchas.", "Catch the part you hear."] },
+        { "titulo": "Say my face", "plantilla": "di-brilla", "icono": "iconos/1f444.svg", "palabras": ["eyes", "nose", "mouth", "ears", "head"], "antes": ["Toca tu cara y dilo en inglés. ¡Cada intento cuenta!", "Touch your face and say it. Every try counts!"] }
+      ]
+    },
+    "bosque-family": {
+      "id": "postal-toys",
+      "familia": { "tema": "los juguetes", "idea": "Al recoger los juguetes, nómbrenlos en inglés: ball, car, bike. ¿Cuál es su favorito? My favorite toy is..." },
+      "misiones": [
+        { "titulo": "My toys", "plantilla": "escucha-toca", "icono": "iconos/ball.svg", "palabras": ["ball", "teddy", "bike", "car", "kite"], "antes": ["Escucha y toca el juguete.", "Listen and tap the toy."] },
+        { "titulo": "Toy pairs", "plantilla": "memoria", "icono": "iconos/1f9f8.svg", "palabras": ["ball", "teddy", "bike", "car"], "formas": ["imagen-sonido"], "parejas": 4, "antes": ["Gira dos cartas: busca el juguete y su nombre.", "Flip two cards: find the toy and its name."] },
+        { "titulo": "Say my toys", "plantilla": "di-brilla", "icono": "iconos/1f6b2.svg", "palabras": ["ball", "teddy", "bike", "car", "kite"], "antes": ["Mira el juguete y dilo en inglés. ¡Cada intento cuenta!", "Look at the toy and say it. Every try counts!"] }
+      ]
+    },
+    "bosque-time": {
+      "id": "postal-shapes",
+      "familia": { "tema": "formas y tamaños", "idea": "Busquen un plato (circle), una ventana (square) y un pedazo de sándwich (triangle). ¿Es big o small?" },
+      "misiones": [
+        { "titulo": "Shapes", "plantilla": "escucha-toca", "icono": "iconos/triangle.svg", "palabras": ["circle", "square", "triangle", "big", "small"], "antes": ["Escucha y toca la forma o el tamaño.", "Listen and tap the shape or the size."] },
+        { "titulo": "Say the shape", "plantilla": "di-brilla", "icono": "iconos/circle.svg", "palabras": ["circle", "square", "triangle", "big", "small"], "antes": ["Mira y dilo en inglés. ¡Cada intento cuenta!", "Look and say it. Every try counts!"] }
+      ]
+    }
+  },
+
+  "pozo": { "id": "postal-pozo", "titulo": "Memory well", "antes": "Este es el pozo de los recuerdos. Gira dos cartas y busca las que van juntas." },
+
+  "encargos": {
+    "caro": { "pide": "goodmorning", "opciones": ["goodnight", "goodmorning", "goodbye"] },
+    "tito": { "pide": "red", "opciones": ["blue", "red", "yellow"] },
+    "abu": { "pide": "three", "opciones": ["one", "three", "two"] },
+    "pua": { "pide": "nose", "opciones": ["eyes", "nose", "ears"] },
+    "nuez": { "pide": "ball", "opciones": ["car", "ball", "bike"] }
+  },
+
+  "escenas": {
+    "elegir": [
+      ["goma", "¿A dónde vamos primero? Tú decides.", "Where do we go first? You decide.", [["A los saludos: camino rosado", "@bosque-school", "iconos/1f44b.svg", "To the greetings: pink path"], ["A los colores: camino amarillo", "@bosque-colors", "iconos/1f534.svg", "To the colors: yellow path"], ["A los números: camino rojo", "@bosque-numbers", "iconos/three.svg", "To the numbers: red path"]]]
+    ],
+    "caro-pide": [
+      ["caro", "Hooola... Soy Caro. Voy despacito, despacito... y me levanté tan tarde que olvidé cómo se saluda en la mañana.", "Hellooo... I'm Caro. I go slowly, slowly... and I woke up so late I forgot how to say hello in the morning."],
+      ["caro", "La palabra está más adelante, en este camino. Escucha cuál es y tráemela, ¿sí?", "The word is up ahead on this path. Listen and bring it to me, okay?"]
+    ],
+    "caro-otra": [["caro", "Mmm... esa no es. ¡No pasa nada! Yo también me equivoco. Escucha otra vez.", "Hmm... that's not it. That's okay! I make mistakes too. Listen again."]],
+    "caro-gracias": [["caro", "¡Esa es! ¡Good morning! Ya puedo saludar al sol.", "That's it! Good morning! Now I can say hello to the sun."], ["caro", "La guardé en tu álbum. ¡Gracias por tomarte tu tiempo conmigo!", "I put it in your album. Thanks for taking your time with me!"]],
+    "caro-listo": [["caro", "Good morning, good morning... la digo despacito para que no se me olvide.", "Good morning, good morning... I say it slowly so I don't forget."]],
+    "abu-gracias": [["abu", "¡Three! One, two, three... ¡ya puedo seguir contando!", "Three! One, two, three... now I can keep counting!"], ["abu", "Guárdalo en tu álbum. Un número nunca sobra.", "Keep it in your album. A number is always useful."]],
+    "nuez-pide": [
+      ["nuez", "¡Pan calientito! Soy Nuez, la panadera. Quiero jugar en el recreo...", "Warm bread! I'm Nuez, the baker. I want to play at break time..."],
+      ["nuez", "...pero se me fue rodando la palabra de mi juguete redondo. ¿Me la traes?", "...but the word for my round toy rolled away. Can you bring it?"]
+    ],
+    "nuez-otra": [["nuez", "Ese es otro juguete, ¡también es bonito! Pero busco el redondo que rebota.", "That's another toy, it's nice too! But I'm looking for the round one that bounces."]],
+    "nuez-gracias": [["nuez", "¡Ball! ¡Mi ball! Ya podemos jugar.", "Ball! My ball! Now we can play."], ["nuez", "Queda en tu álbum. ¡Gracias, amigo!", "It's in your album. Thank you, friend!"]],
+    "nuez-listo": [["nuez", "Ball, ball... ¿jugamos?", "Ball, ball... shall we play?"]]
+  }
+}

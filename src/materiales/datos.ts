@@ -100,7 +100,7 @@ export type Bloque = Comun &
     | { tipo: 'tabla'; columnas: string[]; filas: string[][] }
     | { tipo: 'consigna'; iconos: string[]; texto: string; audio?: string }
     | Palabra
-    | { tipo: 'momento'; minutos: number; momento: string; ritmo: string; material: string; observar: string; sinProyector: string; enlaces?: Enlace[] }
+    | { tipo: 'momento'; minutos: number; momento: string; ritmo: string; material: string; observar: string; sinProyector: string; enlaces?: Enlace[]; fase?: Fase }
     | { tipo: 'item-prueba'; numero: number; fila: string; objetivo: string; audio: string; opciones: Opcion[]; respuesta: number }
     | { tipo: 'imagenes'; titulo?: string; columnas: number; items: ItemImagen[]; etiquetas: boolean; recortable?: boolean }
     | { tipo: 'guion'; texto: string }
@@ -110,6 +110,22 @@ export type Bloque = Comun &
     | { tipo: 'hueco'; titulo: string; trae: string[]; imprime?: boolean }
     | { tipo: 'cancion'; audio: string; ingles: string[]; lineas: LineaLetra[] }
   );
+
+/** Momento de la clase en el formato del planeador. Si el contenido no lo dice, se deduce. */
+export type Fase = 'inicio' | 'desarrollo' | 'cierre';
+
+/**
+ * Referentes de un planeador (los pone el contenido, con su fuente): área y grado para el
+ * encabezado, DBA y estándares (EBC) citados del MEN, y los desempeños de la clase.
+ */
+export interface Referentes {
+  area?: string;
+  grado?: string;
+  dba?: string[];
+  ebc?: string[];
+  desempenos?: string[];
+  fuente?: string;
+}
 
 export interface Impresion {
   nombre: string;
@@ -132,6 +148,10 @@ export interface Material {
   impresiones?: Impresion[];
   editable?: string[];
   avisoColor?: string;
+  /** Solo planeadores: lo que va en las filas de referentes del formato. */
+  referentes?: Referentes;
+  /** Planeación armada por el docente: ya trae su duración; no se reparte ni se elige otra. */
+  duracionFija?: boolean;
   bloques: Bloque[];
 }
 

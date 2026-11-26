@@ -1,0 +1,119 @@
+/* Formato del planeador (Planeador.tsx): cuadrícula institucional. En pantalla ancha y en papel,
+   tablas con bordes; en celular, el encabezado en dos columnas y cada paso como una ficha con su
+   momento (inicio, desarrollo, cierre) marcado al lado. */
+
+.plan-formato { display: flex; flex-direction: column; gap: var(--e-4); --plan-borde: 1px solid var(--a-linea-fuerte); }
+.plan-acciones { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--e-3); }
+.plan-duracion { display: flex; flex-wrap: wrap; align-items: center; gap: var(--e-2); }
+.plan-duracion__et { font-weight: 600; color: var(--a-texto-2); margin-right: var(--e-1); }
+.plan-duracion .boton { min-width: 0; padding-inline: var(--e-3); }
+
+/* Membrete con la identidad del colegio: escudo, nombre y sus dos colores. */
+.plan-membrete { display: grid; grid-template-columns: 56px 1fr; gap: var(--e-3); align-items: center; padding: var(--e-3); border: 2px solid var(--plan-color-1); border-bottom-width: 6px; border-bottom-color: var(--plan-color-2); border-radius: var(--r-tarjeta); background: var(--a-superficie); }
+.plan-membrete__escudo { width: 56px; height: 56px; object-fit: contain; }
+.plan-membrete__escudo--hueco { display: grid; place-items: center; border: 1px dashed var(--a-linea-fuerte); border-radius: 8px; font-size: 12px; color: var(--a-texto-3); }
+.plan-membrete__texto { display: flex; flex-direction: column; min-width: 0; overflow-wrap: anywhere; }
+.plan-membrete__colegio { font: 600 var(--t-h3) / var(--l-h3) var(--f-marca); color: var(--plan-color-1); }
+.plan-membrete__titulo { font-weight: 600; color: var(--a-texto-2); }
+
+/* Encabezado: celdas etiqueta + valor. */
+.plan-cab { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border: var(--plan-borde); border-radius: var(--r-tarjeta); overflow: hidden; background: var(--a-superficie); }
+.plan-celda { display: flex; flex-direction: column; gap: 2px; padding: var(--e-2) var(--e-3); border-right: var(--plan-borde); border-bottom: var(--plan-borde); min-width: 0; overflow-wrap: anywhere; }
+.plan-celda:nth-child(2n) { border-right: 0; }
+.plan-celda--ancha { grid-column: 1 / -1; border-right: 0; border-bottom: 0; }
+.plan-celda__et { font-size: 12px; line-height: 16px; font-weight: 600; letter-spacing: 0.02em; color: var(--a-texto-3); }
+.plan-celda__val { font-weight: 500; min-height: 22px; }
+.plan-raya { display: block; height: 22px; border-bottom: 1px dashed var(--a-linea-fuerte); }
+
+@media (min-width: 720px) {
+  .plan-cab { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .plan-celda:nth-child(2n) { border-right: var(--plan-borde); }
+  .plan-celda:nth-child(4n) { border-right: 0; }
+}
+
+/* Referentes y pie: dos columnas (rótulo | contenido). */
+.plan-ref { width: 100%; border-collapse: collapse; background: var(--a-superficie); border: var(--plan-borde); border-radius: var(--r-tarjeta); overflow: hidden; }
+.plan-ref th, .plan-ref td { border-bottom: var(--plan-borde); padding: var(--e-2) var(--e-3); text-align: left; vertical-align: top; }
+.plan-ref tr:last-child th, .plan-ref tr:last-child td { border-bottom: 0; }
+.plan-ref th { width: 34%; max-width: 180px; font-size: var(--t-meta); line-height: var(--l-meta); font-weight: 600; color: var(--a-texto-2); background: var(--a-hundido); border-right: var(--plan-borde); }
+.plan-ref ul { margin: 0; padding-left: 1.1em; display: flex; flex-direction: column; gap: var(--e-1); }
+.plan-ref p { margin: 0 0 var(--e-2); }
+.plan-ref p:last-child { margin: 0; }
+.plan-falta { color: var(--a-texto-3); font-style: italic; }
+.plan-fuente { margin: calc(var(--e-2) * -1) 0 0; font-size: 12px; color: var(--a-texto-3); }
+
+/* Momentos de la clase. */
+.plan-clase { width: 100%; border-collapse: collapse; background: var(--a-superficie); border: var(--plan-borde); }
+.plan-clase caption { text-align: left; font: 600 var(--t-h3) / var(--l-h3) var(--f-marca); padding-bottom: var(--e-2); }
+.plan-clase th, .plan-clase td { border: var(--plan-borde); padding: var(--e-2) var(--e-3); text-align: left; vertical-align: top; }
+.plan-clase thead th { font-size: var(--t-meta); font-weight: 600; color: var(--plan-tinta-1, #fff); background: var(--plan-color-1); }
+.plan-fase { font: 600 15px / 20px var(--f-marca); color: var(--a-tinta); background: var(--a-goma-suave, #fbe3ea); width: 92px; }
+.plan-fila--inicio .plan-fase { background: #e3eefb; }
+.plan-fila--cierre .plan-fase { background: #e4f3e8; }
+.plan-min { white-space: nowrap; font-variant-numeric: tabular-nums; font-weight: 600; width: 64px; }
+.plan-material { display: block; color: var(--a-texto-2); }
+td.plan-sin { font-size: var(--t-meta); line-height: var(--l-meta); color: var(--a-texto-2); }
+
+/* Botones de recurso: abren la lámina, la prueba o la hoja al instante. */
+.plan-recursos { display: flex; flex-wrap: wrap; gap: var(--e-2); margin-bottom: var(--e-2); }
+.plan-recurso { display: inline-flex; align-items: center; gap: var(--e-2); min-height: var(--toque); padding: 0 var(--e-4); border: 1px solid var(--a-linea-fuerte); border-radius: var(--r-control); background: var(--a-superficie); color: var(--a-tinta); font-weight: 600; text-decoration: none; }
+.plan-recurso .icono { width: 20px; height: 20px; flex: none; }
+a.plan-recurso:hover { background: var(--a-hundido); }
+.plan-recurso--proyectar { background: var(--a-tinta); border-color: var(--a-tinta); color: #fff; }
+a.plan-recurso--proyectar:hover { background: var(--a-tinta-activa); }
+.plan-recurso--falta { color: var(--a-texto-3); border-style: dashed; font-weight: 500; }
+
+/* Celular: cada paso es una ficha; el momento va como una franja arriba. */
+@media (max-width: 719px) {
+  .plan-clase, .plan-clase tbody, .plan-clase tr, .plan-clase td, .plan-clase th { display: block; }
+  .plan-clase { border: 0; background: none; }
+  .plan-clase thead { display: none; }
+  .plan-clase caption { display: block; }
+  .plan-fila { position: relative; margin-bottom: var(--e-3); border: var(--plan-borde); border-radius: var(--r-tarjeta); background: var(--a-superficie); overflow: hidden; }
+  .plan-clase th.plan-fase { width: auto; border: 0; border-bottom: var(--plan-borde); padding: var(--e-1) var(--e-3); font-size: 14px; }
+  .plan-clase td { border: 0; padding: var(--e-1) var(--e-3); }
+  .plan-clase td::before { content: attr(data-etiqueta); display: block; font-size: 12px; line-height: 16px; font-weight: 600; color: var(--a-texto-3); }
+  .plan-clase td.plan-min { position: absolute; right: 0; top: 0; padding: var(--e-1) var(--e-3); width: auto; }
+  .plan-clase td.plan-min::before { display: none; }
+  .plan-fila:not(.plan-fila--abre) { padding-top: var(--e-2); }
+  .plan-fila:not(.plan-fila--abre) td.plan-min { top: var(--e-1); }
+  .plan-clase td:last-child { padding-bottom: var(--e-3); }
+  .plan-ref, .plan-ref tbody, .plan-ref tr, .plan-ref th, .plan-ref td { display: block; width: auto; }
+  .plan-ref th { max-width: none; border-right: 0; border-bottom: var(--plan-borde); padding: var(--e-1) var(--e-3); }
+  .plan-ref tr:last-child th { border-bottom: var(--plan-borde); }
+  .plan-ref tr:not(:last-child) td { border-bottom: var(--plan-borde); }
+}
+
+@media print {
+  .plan-membrete { grid-template-columns: 12mm 1fr; gap: 3mm; padding: 1.2mm 3mm; border-radius: 0; border-width: 0.5mm; border-bottom-width: 1.5mm; }
+  .plan-membrete__escudo { width: 12mm; height: 12mm; }
+  .plan-membrete__escudo--hueco { font-size: 6.5pt; }
+  .plan-membrete__colegio { font-size: 11pt; line-height: 1.15; }
+  .plan-membrete__titulo { font-size: 9pt; color: #333; }
+  .plan-clase thead th { background: var(--plan-color-1) !important; color: var(--plan-tinta-1, #fff) !important; }
+  td.plan-sin { font-size: 7.5pt; color: #333; }
+  .plan-formato { gap: 2.5mm; --plan-borde: 0.25mm solid #444; font-size: 8pt; line-height: 1.25; }
+  .plan-cab { grid-template-columns: repeat(4, minmax(0, 1fr)); border-radius: 0; background: none; }
+  .plan-celda { padding: 1mm 1.5mm; }
+  .plan-celda:nth-child(2n) { border-right: var(--plan-borde); }
+  .plan-celda:nth-child(4n) { border-right: 0; }
+  .plan-celda__et { font-size: 6.5pt; line-height: 1.2; color: #333; }
+  .plan-celda__val { min-height: 4mm; }
+  .plan-raya { height: 4mm; border-bottom: 0.2mm solid #888; }
+  .plan-ref { border-radius: 0; background: none; }
+  .plan-ref th, .plan-ref td, .plan-clase th, .plan-clase td { padding: 0.8mm 1.5mm; }
+  .plan-ref th { background: #eee; color: #000; font-size: 8pt; width: 30mm; }
+  .plan-clase { background: none; }
+  .plan-clase caption { font-size: 10pt; padding-bottom: 1mm; }
+  .plan-clase thead th { font-size: 7.5pt; }
+  .plan-clase tr { break-inside: avoid; }
+  .plan-fase { width: 18mm; background: #f3f3f3 !important; color: #000; font-size: 8.5pt; }
+  .plan-min { width: 11mm; }
+  .plan-fuente { font-size: 7pt; color: #333; margin: 0; }
+  .plan-pie .plan-raya { height: 3.5mm; }
+  .plan-pie th { font-size: 7.5pt; line-height: 1.15; }
+  .plan-formato { gap: 2mm; }
+  .plan-cab .plan-celda__val { font-size: 8pt; }
+  .plan-formato .mat-chip { min-height: 0; padding: 0 1.5mm; border: 0.2mm solid #666; font-size: 7.5pt; color: #000; }
+  .plan-formato .mat-chips { margin-top: 1mm; gap: 1mm; }
+}

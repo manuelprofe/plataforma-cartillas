@@ -5,4 +5,5 @@ dist-artefacto
 .claude/worktrees/
 .netlify/
 !.env.example
+!.env.production
 __pycache__/

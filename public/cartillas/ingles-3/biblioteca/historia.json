@@ -1,204 +1,194 @@
 {
- "titulo": "El cuaderno que abrió Englishland",
- "en_titulo": "The notebook that opened Englishland",
- "intro": "Lee la historia con tus estudiantes antes de iniciar la aventura. Es el portal narrativo que explica por qué escuchar, leer, pronunciar, intentar, corregir y comunicarse en inglés hace brillar a Englishland.",
+ "titulo": "El cuaderno que se dibuja solo",
+ "en_titulo": "The Notebook That Draws Itself",
+ "intro": "La historia del Cuaderno Verde de 3.°, para presentarlo en clase. Se lee en español o en inglés, se proyecta o se imprime. Las palabras resaltadas son las que Postal enseña en el año.",
  "escenas": [
   {
    "n": 1,
-   "imagen": "biblioteca/historia/his-book-1.webp",
+   "imagen": "personajes/goma-saludar.webp",
    "es": {
-    "titulo": "Un día común en clase",
+    "titulo": "Un cuaderno en blanco",
     "parrafos": [
-     "Era un día común en el salón. Los lápices estaban sobre las mesas, los cuadernos esperaban ser abiertos y el tablero parecía listo para una nueva lección.",
-     "Mientras el docente preparaba la clase, apareció un cuaderno azul sobre el escritorio. Nadie recordaba haberlo puesto allí. Tenía estrellas doradas y una palabra escrita con brillo suave: Englishland.",
-     "El cuaderno hizo un sonido pequeño: plip. Luego otro: plip, plip."
+     "El primer día de clase, cada niño de tercero recibe un cuaderno verde. Lo abre y… nada. Las páginas están en blanco.",
+     "De pronto, en la esquina de una hoja, algo se mueve. Es una goma de borrar rosada, con ojos grandes y una sonrisa. —¡Hola! Soy Goma. Este cuaderno tiene un secreto: lo que aprendes aquí se dibuja solo y cobra vida."
     ]
    },
    "en": {
-    "titulo": "A common day in class",
+    "titulo": "A blank notebook",
     "parrafos": [
-     "It was a common day in the classroom. Pencils were on the desks, notebooks were waiting to be opened, and the board was ready for a new lesson.",
-     "While the teacher prepared the class, a blue notebook appeared on the desk. It had golden stars and one glowing word: Englishland.",
-     "The notebook made a tiny sound: plip. Then another one: plip, plip."
+     "On the first day of school, every third grader gets a green notebook. They open it and… nothing. The pages are blank.",
+     "Suddenly, in the corner of a page, something moves. It is a pink eraser with big eyes and a smile. “Hello! I'm Goma. This notebook has a secret: what you learn here draws itself and comes to life.”"
     ]
    },
    "palabras": [
-    "Englishland",
-    "plip",
-    "plip, plip"
+    "Hello",
+    "notebook"
    ]
   },
   {
    "n": 2,
-   "imagen": null,
+   "imagen": "personajes/heroe-1.webp",
    "es": {
-    "titulo": "Pixie aparece",
+    "titulo": "Tu Garabato",
     "parrafos": [
-     "Las páginas comenzaron a moverse solas, como si respiraran. Primero se abrieron despacio. Después brillaron.",
-     "De pronto, una pequeña luz rosada salió volando entre las hojas. Tenía ojos curiosos, casco de exploradora y una voz rápida, como si trajera una noticia importante.",
-     "Antes de que alguien pudiera responder, el cuaderno mostró un cielo morado, caminos de estrellas, árboles luminosos y palabras flotando en el aire."
+     "—Primero, dibuja a tu Garabato —dice Goma—. Será tu compañero en todo el cuaderno.",
+     "El niño traza unas líneas torcidas, un par de ojos y una sonrisa. El dibujo parpadea, se estira y salta de la hoja. ¡El Garabato está vivo! Puede ser Coco, Nube o Rulo, y cada niño lo viste a su manera."
     ]
    },
    "en": {
-    "titulo": "Pixie appears",
+    "titulo": "Your Garabato",
     "parrafos": [
-     "The pages began to move by themselves, as if they were breathing. First they opened slowly. Then they glowed.",
-     "Suddenly, a small pink light flew out. It had curious eyes, an explorer helmet and a quick voice.",
-     "Before anyone could answer, the notebook showed a purple sky, star paths, glowing trees and words floating in the air."
+     "“First, draw your Garabato,” says Goma. “It will be your partner in the whole notebook.”",
+     "The child draws some wobbly lines, two eyes and a smile. The drawing blinks, stretches and jumps off the page. The Garabato is alive! It can be Coco, Nube or Rulo, and every child dresses it their own way."
     ]
    },
    "palabras": []
   },
   {
    "n": 3,
-   "imagen": null,
+   "imagen": "personajes/postal-saludar.webp",
    "es": {
-    "titulo": "Englishland se apaga",
+    "titulo": "La sección de las Postales",
     "parrafos": [
-     "Pixie señaló el cuaderno. Algo estaba mal en ese mundo mágico.",
-     "Pero algo estaba mal. Algunas palabras parpadeaban. Otras estaban borrosas. Otras casi no se podían leer.",
-     "hello se veía débil. book temblaba. friend estaba perdiendo color. I can apenas brillaba."
+     "El cuaderno tiene tres secciones: la Cuadrícula de Cuadrito, para matemáticas; los Renglones de Renglón, para español; y las Postales, para inglés.",
+     "Al abrir las Postales, sale volando una postal amarilla con estampilla. —Hello, friend! —dice. Postal solo habla inglés, pero señala, canta y hace gestos, así que todos le entienden. Empieza por lo del salón: pencil, eraser, red, blue, one, two, three."
     ]
    },
    "en": {
-    "titulo": "Englishland is fading",
+    "titulo": "The Postcards section",
     "parrafos": [
-     "Pixie pointed at the notebook. Something was wrong in that magical world.",
-     "But something was wrong. Some words were flickering. Others were blurry. Others could barely be read.",
-     "hello looked weak. book was trembling. friend was losing color. I can barely glowed."
+     "The notebook has three sections: Cuadrito's Grid, for math; Renglón's Lines, for Spanish; and the Postcards, for English.",
+     "When the Postcards open, a yellow postcard with a stamp flies out. “Hello, friend!” it says. Postal only speaks English, but it points, sings and makes gestures, so everyone understands. It starts with the classroom: pencil, eraser, red, blue, one, two, three."
     ]
    },
    "palabras": [
-    "hello",
-    "book",
-    "friend",
-    "I can"
+    "Hello, friend!",
+    "pencil",
+    "eraser",
+    "red",
+    "blue",
+    "one, two, three"
    ]
   },
   {
    "n": 4,
-   "imagen": "biblioteca/historia/lumi-wave.webp",
+   "imagen": "personajes/postal-senalar.webp",
    "es": {
-    "titulo": "Lumi explica el reto",
+    "titulo": "Postal se enferma",
     "parrafos": [
-     "Antes de que pudieras responder, una estrella amarilla apareció entre las páginas. Tenía una sonrisa amable, casco de exploradora y una mochila llena de luces.",
-     "Pero muchos niños les tienen miedo. Algunos creen que equivocarse es perder. Otros prefieren quedarse callados. Y cuando nadie se atreve a usar las palabras, las palabras empiezan a apagarse.",
-     "Englishland se apaga cuando el inglés se convierte en silencio, miedo al error o repetición sin sentido; vuelve a brillar cuando los estudiantes exploran, juegan, escuchan, leen, hablan, ayudan, se equivocan, corrigen y usan el idioma para comunicarse."
+     "Un día Postal llega arrugada y estornuda: —I'm sick. I have a cold and a headache.",
+     "El Garabato sabe qué hacer: —You should rest. You should wash your hands! En cada página nueva se dibuja algo: un vaso de agua, un jabón, un mosquito que hay que espantar para cuidarse del dengue."
     ]
    },
    "en": {
-    "titulo": "Lumi explains the challenge",
+    "titulo": "Postal gets sick",
     "parrafos": [
-     "Before you could answer, a yellow star appeared between the pages. It had a kind smile, an explorer's helmet and a backpack full of lights.",
-     "But many children are afraid of them. Some think that making mistakes means losing. Others prefer to stay quiet. And when no one dares to use the words, the words begin to fade.",
-     "Englishland fades when English turns into silence, fear of mistakes or meaningless repetition; it shines again when students explore, play, listen, read, speak, help, make mistakes, correct themselves and use the language to communicate."
-    ]
-   },
-   "palabras": []
-  },
-  {
-   "n": 5,
-   "imagen": null,
-   "es": {
-    "titulo": "Los cuatro territorios",
-    "parrafos": [
-     "Miraste otra vez el cuaderno. Una palabra pequeña flotó frente a ti: star. Brilló un segundo y luego casi desapareció.",
-     "En Englishland se aprende explorando. Primero escucharás sonidos. Luego descubrirás palabras. Después construirás frases. Y, al final, podrás comunicar tus ideas.",
-     "Pixie dio una vuelta en el aire: —Hay cuatro territorios que debemos encender.",
-     "Cosmo te ayudará a escuchar, repetir y reconocer tus primeras palabras sin miedo al error. Nova te enseñará a unir imágenes, palabras y significados. Astro te guiará para construir frases, responder preguntas y decir pequeñas ideas en inglés. Nebu te invitará a usar el inglés para hablar de lugares, personas y situaciones de tu vida."
-    ]
-   },
-   "en": {
-    "titulo": "The four territories",
-    "parrafos": [
-     "You looked at the notebook again. A small word floated before you: star. It glowed for a second and then almost disappeared.",
-     "In Englishland, learning happens through exploring. First you'll listen to sounds. Then you'll discover words. After that you'll build sentences. And, at the end, you'll be able to communicate your ideas.",
-     "Pixie spun in the air: —There are four territories we need to light up.",
-     "Cosmo will help you listen, repeat and recognize your first words without fear of mistakes. Nova will teach you to connect images, words and meanings. Astro will guide you to build sentences, answer questions and say small ideas in English. Nebu will invite you to use English to talk about places, people and situations in your life."
+     "One day Postal arrives all crumpled and sneezes: “I'm sick. I have a cold and a headache.”",
+     "The Garabato knows what to do: “You should rest. You should wash your hands!” On every new page something draws itself: a glass of water, a bar of soap, a mosquito to shoo away to stay safe from dengue."
     ]
    },
    "palabras": [
-    "star"
+    "I'm sick",
+    "I have a cold",
+    "headache",
+    "You should rest",
+    "wash your hands"
+   ]
+  },
+  {
+   "n": 5,
+   "imagen": "personajes/goma-senalar.webp",
+   "es": {
+    "titulo": "Borrar no es perder",
+    "parrafos": [
+     "A veces el Garabato se equivoca: dibuja el reloj a las siete cuando eran las ocho. Se pone triste y quiere arrancar la hoja.",
+     "Goma se acerca, borra con cuidado y sonríe: —Borrar no es perder, es mejorar. Inténtalo otra vez. El Garabato lo vuelve a intentar: It's eight o'clock! Y en el álbum aparece una calcomanía nueva: Goma con brillo."
+    ]
+   },
+   "en": {
+    "titulo": "Erasing is not losing",
+    "parrafos": [
+     "Sometimes the Garabato makes a mistake: it draws the clock at seven when it was eight. It feels sad and wants to tear out the page.",
+     "Goma comes closer, erases gently and smiles: “Erasing is not losing, it's getting better. Try again.” The Garabato tries again: “It's eight o'clock!” And a new sticker appears in the album: a shiny Goma."
+    ]
+   },
+   "palabras": [
+    "It's eight o'clock!",
+    "seven"
    ]
   },
   {
    "n": 6,
-   "imagen": null,
+   "imagen": "personajes/postal-celebrar.webp",
    "es": {
-    "titulo": "Mission Stars",
+    "titulo": "El barrio en el cuaderno",
     "parrafos": [
-     "Entonces el cuaderno brilló con fuerza. En el centro apareció una constelación vacía.",
-     "—¿Aunque me equivoque? —preguntaste.",
-     "Cosmo apareció desde el Bosque de los Sonidos y respondió: Especially when you try.",
-     "Nova levantó una tarjeta que decía try again. Astro dibujó una frase en el aire: I can learn. Nebu señaló la plaza y añadió: We can speak together."
+     "Página a página, el cuaderno se llena de dibujos. Aparece el barrio: There is a park. There is a river. El Garabato recoge una botella del río y Postal grita: —We must recycle!",
+     "Más adelante se dibujan una tableta y un televisor. Postal pregunta: —How often do you play video games? Y el Garabato responde con calma: —Sometimes."
     ]
    },
    "en": {
-    "titulo": "Mission Stars",
+    "titulo": "The neighborhood in the notebook",
     "parrafos": [
-     "Then the notebook glowed brightly. In the center, an empty constellation appeared.",
-     "—Even when I make mistakes? —you asked.",
-     "Cosmo appeared from the Forest of Sounds and answered: Especially when you try.",
-     "Nova held up a card that said try again. Astro drew a sentence in the air: I can learn. Nebu pointed to the square and added: We can speak together."
+     "Page by page, the notebook fills with drawings. The neighborhood appears: “There is a park. There is a river.” The Garabato picks up a bottle from the river and Postal shouts: “We must recycle!”",
+     "Later a tablet and a TV draw themselves. Postal asks: “How often do you play video games?” And the Garabato answers calmly: “Sometimes.”"
     ]
    },
    "palabras": [
-    "Especially when you try.",
-    "try again",
-    "I can learn",
-    "We can speak together"
+    "There is a park",
+    "There is a river",
+    "We must recycle!",
+    "How often",
+    "Sometimes"
    ]
   },
   {
    "n": 7,
-   "imagen": null,
+   "imagen": "personajes/goma-celebrar.webp",
    "es": {
-    "titulo": "La aventura comienza",
+    "titulo": "Un cuaderno nuevo",
     "parrafos": [
-     "Lumi se acercó y puso una pequeña estrella en tu mano.",
-     "El cuaderno abrió sus páginas como una puerta. Pixie extendió la mano.",
-     "Respiraste hondo. Miraste las palabras que todavía parpadeaban. Y dijiste: Yes. I am ready.",
-     "La estrella en tu mano brilló. Tu primera Mission Star acababa de encenderse."
+     "Al final del año, el Cuaderno Verde está lleno: cada página tiene sus dibujos y el álbum tiene sus calcomanías. Nada se borró para siempre; todo se mejoró.",
+     "Goma cierra el cuaderno con cariño y lo pone en la repisa. Luego saca otro, de color azul. —Este es el de cuarto —dice—. Está en blanco… por ahora. Postal guiña un ojo: —See you soon, friend!"
     ]
    },
    "en": {
-    "titulo": "The adventure begins",
+    "titulo": "A new notebook",
     "parrafos": [
-     "Lumi came closer and placed a small star in your hand.",
-     "The notebook opened its pages like a door. Pixie reached out her hand.",
-     "You took a deep breath. You looked at the words that were still flickering. And you said: Yes. I am ready.",
-     "The star in your hand glowed. Your first Mission Star had just lit up."
+     "At the end of the year, the Green Notebook is full: every page has its drawings and the album has its stickers. Nothing was erased forever; everything got better.",
+     "Goma closes the notebook gently and puts it on the shelf. Then she takes out another one, a blue one. “This is the one for fourth grade,” she says. “It's blank… for now.” Postal winks: “See you soon, friend!”"
     ]
    },
    "palabras": [
-    "Yes. I am ready."
+    "See you soon, friend!"
    ]
   }
  ],
  "personajes": [
   {
-   "nombre": "Pixie",
-   "funcion": "Abre el portal y despierta la aventura. Activa curiosidad, sorpresa y disposición inicial."
+   "nombre": "Goma",
+   "imagen": "personajes/goma-saludar.webp",
+   "funcion": "Guía de todo el cuaderno. Normaliza el error: borrar no es perder, es mejorar. Baja el filtro afectivo (Krashen) para que el niño se atreva a intentar."
   },
   {
-   "nombre": "Lumi",
-   "funcion": "Acompaña, anima y celebra avances. Fortalece motivación, confianza y regulación emocional."
+   "nombre": "Postal",
+   "imagen": "personajes/postal-saludar.webp",
+   "funcion": "Guía de la sección de inglés. Solo habla inglés, con gestos, imágenes y canciones: es la entrada comprensible (Krashen) y el modelo que el niño imita con apoyo (Vygotsky, Bruner)."
   },
   {
-   "nombre": "Cosmo",
-   "funcion": "Guardián del Bosque de los Sonidos. Media escucha, pronunciación, sonidos y vocabulario inicial."
+   "nombre": "Garabato",
+   "imagen": "personajes/heroe-1.webp",
+   "funcion": "El personaje que dibuja cada niño (Coco, Nube o Rulo). Le da autonomía y sentido de pertenencia (Ryan y Deci): el cuaderno es suyo."
   },
   {
-   "nombre": "Nova",
-   "funcion": "Guía del Valle de las Palabras. Favorece asociación visual, vocabulario y significado."
+   "nombre": "Cuadrito",
+   "imagen": "personajes/cuadrito-saludar.webp",
+   "funcion": "Guía de la Cuadrícula (matemáticas). Aparece en inglés cuando se cuenta, se mide o se hace una encuesta."
   },
   {
-   "nombre": "Astro",
-   "funcion": "Guía de la Ciudad de las Frases. Acompaña construcción de frases, preguntas y respuestas."
-  },
-  {
-   "nombre": "Nebu",
-   "funcion": "Guía de la Plaza del Encuentro. Impulsa comunicación cotidiana, interacción y autonomía."
+   "nombre": "Renglón",
+   "imagen": "personajes/renglon-saludar.webp",
+   "funcion": "Guía de los Renglones (español). Conecta las palabras nuevas en inglés con las que el niño ya sabe en su lengua."
   }
  ]
 }

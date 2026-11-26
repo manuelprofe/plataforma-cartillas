@@ -1,0 +1,178 @@
+{
+ "cartilla": "ingles-1",
+ "materia": "Inglés",
+ "grado": 1,
+ "gradoNombre": "1.°",
+ "guia": "Postal",
+ "titulo": "El cuaderno de Postal · 1.°",
+ "fuente": "Contenidos programáticos de Inglés · Versión 1 · 24 de noviembre de 2026",
+ "proposito": "Nivel preparatorio pre-A1.",
+ "dba": [
+  {
+   "id": "1",
+   "texto": "Comprende y responde a instrucciones sobre tareas escolares básicas, de manera verbal y no verbal."
+  },
+  {
+   "id": "2",
+   "texto": "Comprende y realiza declaraciones sencillas, usando expresiones ensayadas, sobre su entorno inmediato (casa y escuela)."
+  },
+  {
+   "id": "3",
+   "texto": "Organiza la secuencia de eventos principales en una historia corta y sencilla, sobre temas familiares, usando imágenes, después de haberla leído o escuchado."
+  },
+  {
+   "id": "4",
+   "texto": "Responde preguntas sencillas sobre información personal básica, como su nombre, edad, familia y compañeros de clase."
+  },
+  {
+   "id": "5",
+   "texto": "Menciona algunas cualidades físicas propias y de las personas que le rodean a través de palabras y frases previamente estudiadas."
+  }
+ ],
+ "ebc": "Estándares Básicos de Competencias en Lenguas Extranjeras: Inglés (MEN, 2006).",
+ "unidades": [
+  {
+   "id": "p1",
+   "numero": 1,
+   "titulo": "Cuido mi cuerpo",
+   "eje": "Salud y vida",
+   "periodo": {
+    "4": 1,
+    "3": 1
+   },
+   "meta": "identificar visual y oralmente en inglés algunas actividades para el cuidado de la salud y el aseo personal.",
+   "funciones": [
+    "contar su rutina de aseo en orden",
+    "dar información personal",
+    "preguntar what, who, how old"
+   ],
+   "temas": [
+    "repaso del cuerpo y la familia (transición)",
+    "rutina take a shower, brush my teeth, wash my hands, have breakfast, get dressed",
+    "in the morning, at night, before bedtime",
+    "secuencia first, then, next, last",
+    "números 1-20."
+   ],
+   "gramatica": "pronombres I, you, he, she, it, they; my, your; to be (I am, you are, she is). I brush my teeth before bedtime. My sister is 8 years old. This is my father.",
+   "dba": [
+    "4",
+    "3",
+    "1"
+   ],
+   "desempenos": [
+    "saber reconoce palabras de rutinas de higiene y de secuencia",
+    "saber hacer ordena imágenes de su rutina y la cuenta con first, then",
+    "saber ser se preocupa por su aseo personal."
+   ],
+   "juegos": "ordenar (rutina de la mañana con first, then, last); escucha-toca (objetos de aseo, acciones); di-brilla (I brush my teeth); contar-toca (11 a 20); memoria imagen-palabra (primeras palabras escritas, como pre-lectura).",
+   "analogo": "cartel \"mi rutina\" con dibujos; cuento corto ordenado con imágenes (DBA 3).",
+   "fuente": "MEN, 2016b, pp. 90-91."
+  },
+  {
+   "id": "p2",
+   "numero": 2,
+   "titulo": "Valoro nuestras diferencias",
+   "eje": "Convivencia y paz",
+   "periodo": {
+    "4": 2,
+    "3": 2
+   },
+   "meta": "describir en inglés las diferencias físicas propias y de sus compañeros y mostrar respeto hacia ellas.",
+   "funciones": [
+    "describir a alguien con palabras sencillas",
+    "decir lo que le gusta y no",
+    "dar y seguir instrucciones de respeto"
+   ],
+   "temas": [
+    "repaso de emociones (transición) y cuerpo",
+    "boy, girl, tall, short, long hair, short hair, curly, straight, black, brown, blonde, red hair, glasses (sin fat, ver ajuste 1)",
+    "verbos respect, laugh, help, share, be kind",
+    "números 20-30."
+   ],
+   "gramatica": "his, her; I like / I don't like; imperativo positivo y negativo. She's a girl. Her hair is curly. I like her hair. Be kind to your friends. Don't laugh at your friends. We are different, but we respect others.",
+   "dba": [
+    "5",
+    "2"
+   ],
+   "desempenos": [
+    "saber reconoce his/her y adjetivos de apariencia",
+    "saber hacer presenta a un compañero con This is my friend. He is tall",
+    "saber ser respeta a los demás sin importar sus diferencias físicas o de género."
+   ],
+   "juegos": "escucha-toca (\"¿quién es?\": tocar al personaje descrito); memoria (adjetivo-dibujo); di-brilla (Be kind); contar-toca (20 a 30).",
+   "analogo": "\"adivina quién\" con dibujos de los niños; cartel del curso \"We are different\". Imprimible: fichas de personajes para describir.",
+   "fuente": "MEN, 2016b, pp. 96-97, 251."
+  },
+  {
+   "id": "p3",
+   "numero": 3,
+   "titulo": "Cuido mi escuela",
+   "eje": "Medioambiente y sociedad",
+   "periodo": {
+    "4": 3,
+    "3": 3
+   },
+   "meta": "reconocer visual y oralmente en inglés, y poner en práctica, estrategias de cuidado del medio ambiente en la escuela.",
+   "funciones": [
+    "describir el salón con there is / there are",
+    "preguntar y decir dónde está algo",
+    "dar normas de cuidado"
+   ],
+   "temas": [
+    "objetos desk, chair, table, board",
+    "útiles notebook, book, pencil, colored pencil, eraser, pen, pencil case, paint",
+    "lugares classroom, office, library, patio, restroom",
+    "cuidado garbage, garbage can, paper, pick up, throw; reduce, reuse, recycle",
+    "números 30-50."
+   ],
+   "gramatica": "There is / there are; in, on, under; Is the book under the chair? Yes, it is / No, it's not. Órdenes Keep your classroom clean. Raise your hand. Don't throw garbage on the floor.",
+   "dba": [
+    "1",
+    "2"
+   ],
+   "desempenos": [
+    "saber reconoce objetos y lugares del colegio",
+    "saber hacer dice dónde está un objeto y cuántos hay",
+    "saber ser cuida y limpia su salón."
+   ],
+   "juegos": "escucha-toca (útiles y lugares); escucha-atrapa (útiles); contar-toca (There are 15 pencils); memoria (útil-palabra); di-brilla (There is a book on the desk).",
+   "analogo": "campaña de aseo con carteles en inglés y rótulos en inglés para las dependencias del colegio (tarea del MEN). Imprimible: rótulos y cartel de normas.",
+   "fuente": "MEN, 2016b, pp. 104-105, 108."
+  },
+  {
+   "id": "p4",
+   "numero": 4,
+   "titulo": "Colaboro en mi casa",
+   "eje": "Una aldea global",
+   "periodo": {
+    "4": 4,
+    "3": 3
+   },
+   "meta": "expresar y promover en inglés hábitos de colaboración en su familia.",
+   "funciones": [
+    "nombrar objetos de la casa y decir dónde están",
+    "dar consejos de ahorro de agua y energía"
+   ],
+   "temas": [
+    "repaso de partes de la casa (transición)",
+    "objetos lights, tap, TV, radio, fridge, fan, lamp, bed, table, shower, sofa",
+    "verbos turn on, turn off, save, waste, close",
+    "números 50-70."
+   ],
+   "gramatica": "There is / there are (repaso); imperativos. There is a bed in my bedroom. Turn off the TV. Close the tap. Don't leave the lights on. Save water!",
+   "dba": [
+    "2",
+    "1",
+    "3"
+   ],
+   "desempenos": [
+    "saber reconoce objetos de la casa y acciones de ahorro",
+    "saber hacer dice una lista de cosas para ahorrar en casa",
+    "saber ser practica hábitos de ahorro con su familia."
+   ],
+   "juegos": "escucha-toca (objetos de la casa); ordenar (pasos para ahorrar agua al cepillarse); di-brilla (Turn off the lights); contar-toca (50 a 70, con decenas); escucha-atrapa (objetos).",
+   "analogo": "\"detectives del ahorro\" en casa con una ficha para la familia. Imprimible: ficha de casa con objetos para señalar.",
+   "fuente": "MEN, 2016b, pp. 109-110."
+  }
+ ]
+}

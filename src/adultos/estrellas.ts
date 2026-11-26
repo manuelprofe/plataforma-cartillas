@@ -147,9 +147,9 @@ export async function subir(): Promise<void> {
         // del servidor (5xx), el límite de peticiones o cualquier falla sin código se reintenta.
         const rechazada = e instanceof ErrorCuenta && e.status >= 400 && e.status < 500 && e.status !== 401 && e.status !== 429 && Boolean(e.codigo);
         if (!rechazada) break;
-        console.warn('La base rechazó una estrella', (e as ErrorCuenta).status, (e as ErrorCuenta).codigo, (e as ErrorCuenta).message);
+        console.warn('La base rechazó una calcomanía', (e as ErrorCuenta).status, (e as ErrorCuenta).codigo, (e as ErrorCuenta).message);
         if (uid !== uidActual) break;
-        poner(estado.acciones.filter((x) => x.accion !== a.accion), 'No se pudo guardar una estrella. Si le pasa de nuevo, avise a su coordinador.');
+        poner(estado.acciones.filter((x) => x.accion !== a.accion), 'No se pudo guardar una calcomanía. Si le pasa de nuevo, avise a su coordinador.');
       }
     }
   } finally {
@@ -207,7 +207,7 @@ export async function prepararSalida(): Promise<void> {
   if (navigator.onLine) await subir();
   const quedan = estado.porSubir;
   if (quedan > 0) {
-    avisoSalida = `Tiene ${quedan} ${quedan === 1 ? 'estrella' : 'estrellas'} sin subir; entre de nuevo con su cuenta para subirlas.`;
+    avisoSalida = `Tiene ${quedan} ${quedan === 1 ? 'calcomanía' : 'calcomanías'} sin subir; entre de nuevo con su cuenta para subirlas.`;
     oyentesAviso.forEach((o) => o());
   }
 }

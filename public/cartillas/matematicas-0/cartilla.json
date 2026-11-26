@@ -42,8 +42,8 @@
      "antes": [
       {
        "quien": "cuadrito",
-       "es": "Vamos a saltar por el cuaderno. Las puertas se abren si cuentas bien.",
-       "en": "Vamos a saltar por el cuaderno. Las puertas se abren si cuentas bien."
+       "es": "Vamos a saltar por el cuaderno. Recoge frutas y abre las puertas contando.",
+       "en": "Vamos a saltar por el cuaderno. Recoge frutas y abre las puertas contando."
       }
      ],
      "familia": {
@@ -59,6 +59,16 @@
         "..........#...",
         "P....#...##..M",
         "#######~######"
+       ]
+      },
+      {
+       "dice": "Recoge las tres manzanas. La cesta se abre cuando las tengas todas.",
+       "fruta": "iconos/manzana.svg",
+       "mapa": [
+        "................",
+        "...o......o.....",
+        "P.....#o.....B.M",
+        "################"
        ]
       },
       {
@@ -122,31 +132,6 @@
        ]
       },
       {
-       "dice": "Sube arriba y busca la puerta.",
-       "mapa": [
-        "..............",
-        "..........G..M",
-        ".....#.=======",
-        "P...##........",
-        "##############"
-       ],
-       "retos": [
-        {
-         "dice": "Toca el dibujo donde el pájaro está arriba.",
-         "opciones": [
-          {
-           "imagen": "iconos/abajo.svg"
-          },
-          {
-           "imagen": "iconos/arriba.svg"
-          }
-         ],
-         "correcta": 1,
-         "bien": "¡Arriba!"
-        }
-       ]
-      },
-      {
        "dice": "Hay agua. Empuja la caja al agua y úsala de puente.",
        "mapa": [
         "................",
@@ -172,6 +157,18 @@
         }
        ]
       }
+     ],
+     "numeros": [
+      "uno",
+      "dos",
+      "tres",
+      "cuatro",
+      "cinco",
+      "seis",
+      "siete",
+      "ocho",
+      "nueve",
+      "diez"
      ]
     },
     {
@@ -305,7 +302,28 @@
          "bien": "¡Cerca!"
         }
        ]
+      },
+      {
+       "dice": "Pisa los números en orden: uno, dos y tres. Así se abre el muro.",
+       "mapa": [
+        "................",
+        "........N.......",
+        "P.......N.....M.",
+        "##2#3##1########"
+       ]
       }
+     ],
+     "numeros": [
+      "uno",
+      "dos",
+      "tres",
+      "cuatro",
+      "cinco",
+      "seis",
+      "siete",
+      "ocho",
+      "nueve",
+      "diez"
      ]
     },
     {
@@ -439,7 +457,46 @@
          "bien": "¡Verde!"
         }
        ]
+      },
+      {
+       "dice": "Recoge las flores, abre la cesta y responde la pregunta de la puerta.",
+       "fruta": "iconos/flor.svg",
+       "mapa": [
+        "..................",
+        "....o.....o.......",
+        "P.o.....#.o..B.G.M",
+        "##################"
+       ],
+       "retos": [
+        {
+         "dice": "¿Dónde hay más flores?",
+         "opciones": [
+          {
+           "imagen": "iconos/flor.svg",
+           "cantidad": 2
+          },
+          {
+           "imagen": "iconos/flor.svg",
+           "cantidad": 4
+          }
+         ],
+         "correcta": 1,
+         "bien": "¡Aquí hay más!"
+        }
+       ]
       }
+     ],
+     "numeros": [
+      "uno",
+      "dos",
+      "tres",
+      "cuatro",
+      "cinco",
+      "seis",
+      "siete",
+      "ocho",
+      "nueve",
+      "diez"
      ]
     },
     {
@@ -560,7 +617,28 @@
         "PLC.........####",
         "#####XXX########"
        ]
+      },
+      {
+       "dice": "Dos paredes y dos cajas. ¡Piensa cuál usar en cada una!",
+       "mapa": [
+        "......................",
+        ".......#.........##...",
+        "P..C...#....C....##.M.",
+        "######################"
+       ]
       }
+     ],
+     "numeros": [
+      "uno",
+      "dos",
+      "tres",
+      "cuatro",
+      "cinco",
+      "seis",
+      "siete",
+      "ocho",
+      "nueve",
+      "diez"
      ]
     },
     {
@@ -821,7 +899,46 @@
          "bien": "¡Tres peces!"
         }
        ]
+      },
+      {
+       "dice": "Las placas están revueltas. Písalas en orden: uno, dos, tres, cuatro, cinco.",
+       "mapa": [
+        "...................",
+        "..........N........",
+        "P.........N....G..M",
+        "#3#1#52#4##########"
+       ],
+       "retos": [
+        {
+         "dice": "Uno, dos, tres, cuatro... ¿qué número sigue?",
+         "opciones": [
+          {
+           "texto": "5"
+          },
+          {
+           "texto": "2"
+          },
+          {
+           "texto": "4"
+          }
+         ],
+         "correcta": 0,
+         "bien": "¡Cinco!"
+        }
+       ]
       }
+     ],
+     "numeros": [
+      "uno",
+      "dos",
+      "tres",
+      "cuatro",
+      "cinco",
+      "seis",
+      "siete",
+      "ocho",
+      "nueve",
+      "diez"
      ]
     },
     {
@@ -964,7 +1081,46 @@
          "bien": "¡El rectángulo!"
         }
        ]
+      },
+      {
+       "dice": "El último reto: usa la palanca, la puerta y la caja para llegar arriba.",
+       "mapa": [
+        "...................M.",
+        "................#####",
+        "PL.G.C..........#####",
+        "#######XXX###########"
+       ],
+       "retos": [
+        {
+         "dice": "¿Cuál forma tiene tres lados?",
+         "opciones": [
+          {
+           "imagen": "iconos/cuadrado.svg"
+          },
+          {
+           "imagen": "iconos/triangulo.svg"
+          },
+          {
+           "imagen": "iconos/circulo.svg"
+          }
+         ],
+         "correcta": 1,
+         "bien": "¡El triángulo tiene tres lados!"
+        }
+       ]
       }
+     ],
+     "numeros": [
+      "uno",
+      "dos",
+      "tres",
+      "cuatro",
+      "cinco",
+      "seis",
+      "siete",
+      "ocho",
+      "nueve",
+      "diez"
      ]
     },
     {
@@ -4535,6 +4691,18 @@
   "plataformas-meta": {
    "es": "¡Llegaste!",
    "en": "¡Llegaste!"
+  },
+  "plataformas-cesta": {
+   "es": "La cesta sigue cerrada: faltan frutas. ¡Búscalas!",
+   "en": "La cesta sigue cerrada: faltan frutas. ¡Búscalas!"
+  },
+  "plataformas-placa-orden": {
+   "es": "Todavía no. Busca el {n}.",
+   "en": "Todavía no. Busca el {n}."
+  },
+  "plataformas-placas": {
+   "es": "¡Muy bien! Se abrió el camino.",
+   "en": "¡Muy bien! Se abrió el camino."
   }
  },
  "imagenes": {

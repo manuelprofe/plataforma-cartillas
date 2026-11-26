@@ -73,7 +73,7 @@
       "id": "cuadrito-arriba",
       "familia": {"tema": "arriba, abajo, encima y debajo", "idea": "En casa, esconda un juguete y dele pistas: está encima de la cama, debajo de la mesa. Que lo busque y diga dónde estaba."},
       "misiones": [
-        {"titulo": "Cuadrito salta", "plantilla": "plataformas", "icono": "iconos/arriba.svg", "palabras": ["arriba", "abajo"], "antes": "Vamos a saltar por el cuaderno. Las puertas se abren si cuentas bien.",
+        {"titulo": "Cuadrito salta", "plantilla": "plataformas", "icono": "iconos/arriba.svg", "palabras": ["arriba", "abajo"], "antes": "Vamos a saltar por el cuaderno. Recoge frutas y abre las puertas contando.", "numeros": ["uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve", "diez"],
           "plataformas": [
             { "dice": "Toca las flechas para caminar. Toca el botón amarillo para saltar. Llega a la bandera.",
               "mapa": [
@@ -82,6 +82,14 @@
                 "..........#...",
                 "P....#...##..M",
                 "#######~######"
+              ]
+            },
+            { "dice": "Recoge las tres manzanas. La cesta se abre cuando las tengas todas.", "fruta": "iconos/manzana.svg",
+              "mapa": [
+                "................",
+                "...o......o.....",
+                "P.....#o.....B.M",
+                "################"
               ]
             },
             { "dice": "Esta puerta tiene una pregunta. Camina hasta ella.",
@@ -104,18 +112,6 @@
                 "##############"
               ]
             },
-            { "dice": "Sube arriba y busca la puerta.",
-              "mapa": [
-                "..............",
-                "..........G..M",
-                ".....#.=======",
-                "P...##........",
-                "##############"
-              ],
-              "retos": [
-                {"dice": "Toca el dibujo donde el pájaro está arriba.", "opciones": [{"imagen": "iconos/abajo.svg"}, {"imagen": "iconos/arriba.svg"}], "correcta": 1, "bien": "¡Arriba!"}
-              ]
-            },
             { "dice": "Hay agua. Empuja la caja al agua y úsala de puente.",
               "mapa": [
                 "................",
@@ -134,7 +130,7 @@
       "id": "cuadrito-dentro",
       "familia": {"tema": "dentro, fuera, delante, detrás, cerca y lejos", "idea": "Jueguen a las estatuas: usted dice «dentro del cuarto», «detrás de la puerta», «cerca de mí», y su hijo se ubica. Luego cambian de turno."},
       "misiones": [
-        {"titulo": "Dentro y fuera", "plantilla": "plataformas", "icono": "iconos/dentro.svg", "palabras": ["dentro", "fuera", "delante", "detras", "cerca", "lejos"], "antes": "Cada puerta te pregunta dónde están las cosas. ¡Mira bien!",
+        {"titulo": "Dentro y fuera", "plantilla": "plataformas", "icono": "iconos/dentro.svg", "palabras": ["dentro", "fuera", "delante", "detras", "cerca", "lejos"], "antes": "Cada puerta te pregunta dónde están las cosas. ¡Mira bien!", "numeros": ["uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve", "diez"],
           "plataformas": [
             { "dice": "Camina hasta la puerta y mira dónde está la pelota.",
               "mapa": [
@@ -168,6 +164,14 @@
               "retos": [
                 {"dice": "Toca donde el perro está cerca de la casa.", "opciones": [{"imagen": "iconos/lejos.svg"}, {"imagen": "iconos/cerca.svg"}], "correcta": 1, "bien": "¡Cerca!"}
               ]
+            },
+            { "dice": "Pisa los números en orden: uno, dos y tres. Así se abre el muro.",
+              "mapa": [
+                "................",
+                "........N.......",
+                "P.......N.....M.",
+                "##2#3##1########"
+              ]
             }
           ] }
       ]
@@ -176,7 +180,7 @@
       "id": "cuadrito-colores",
       "familia": {"tema": "los colores para agrupar", "idea": "Al guardar la ropa o los juguetes, pídale que haga montones por color y le diga por qué van juntos."},
       "misiones": [
-        {"titulo": "El camino de colores", "plantilla": "plataformas", "icono": "iconos/1f534.svg", "palabras": ["rojo", "azul", "amarillo", "verde"], "antes": "Las puertas de colores se abren si tocas el color que te digo.",
+        {"titulo": "El camino de colores", "plantilla": "plataformas", "icono": "iconos/1f534.svg", "palabras": ["rojo", "azul", "amarillo", "verde"], "antes": "Las puertas de colores se abren si tocas el color que te digo.", "numeros": ["uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve", "diez"],
           "plataformas": [
             { "dice": "Escucha bien el color de cada puerta.",
               "mapa": [
@@ -211,6 +215,17 @@
               "retos": [
                 {"dice": "Toca el verde.", "opciones": [{"imagen": "iconos/1f7e2.svg"}, {"imagen": "iconos/1f534.svg"}], "correcta": 0, "bien": "¡Verde!"}
               ]
+            },
+            { "dice": "Recoge las flores, abre la cesta y responde la pregunta de la puerta.", "fruta": "iconos/flor.svg",
+              "mapa": [
+                "..................",
+                "....o.....o.......",
+                "P.o.....#.o..B.G.M",
+                "##################"
+              ],
+              "retos": [
+                {"dice": "¿Dónde hay más flores?", "opciones": [{"imagen": "iconos/flor.svg", "cantidad": 2}, {"imagen": "iconos/flor.svg", "cantidad": 4}], "correcta": 1, "bien": "¡Aquí hay más!"}
+              ]
             }
           ] }
       ]
@@ -219,7 +234,7 @@
       "id": "cuadrito-tamano",
       "familia": {"tema": "grande y pequeño, igual y diferente", "idea": "En la cocina, muestre dos frutas y pregunte: ¿cuál es la grande?, ¿son iguales o diferentes? Que le explique cómo se dio cuenta."},
       "misiones": [
-        {"titulo": "Grande y pequeño", "plantilla": "plataformas", "icono": "iconos/grande.svg", "palabras": ["grande", "pequeno", "iguales", "diferentes"], "antes": "Para abrir estas puertas hay que mirar bien: grande, pequeño, igual o diferente.",
+        {"titulo": "Grande y pequeño", "plantilla": "plataformas", "icono": "iconos/grande.svg", "palabras": ["grande", "pequeno", "iguales", "diferentes"], "antes": "Para abrir estas puertas hay que mirar bien: grande, pequeño, igual o diferente.", "numeros": ["uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve", "diez"],
           "plataformas": [
             { "dice": "Sube los escalones y llega a la puerta.",
               "mapa": [
@@ -251,6 +266,14 @@
                 "PLC.........####",
                 "#####XXX########"
               ]
+            },
+            { "dice": "Dos paredes y dos cajas. ¡Piensa cuál usar en cada una!",
+              "mapa": [
+                "......................",
+                ".......#.........##...",
+                "P..C...#....C....##.M.",
+                "######################"
+              ]
             }
           ] }
       ]
@@ -270,7 +293,7 @@
               {"objeto": "iconos/manzana.svg", "cantidad": 3, "total": 5, "dice": "Toca tres manzanas"}
             ]
           } },
-        {"titulo": "La puerta de los números", "plantilla": "plataformas", "icono": "iconos/tres.svg", "palabras": ["uno", "dos", "tres"], "antes": "Estas puertas te preguntan cuántos hay. Cuenta despacito.",
+        {"titulo": "La puerta de los números", "plantilla": "plataformas", "icono": "iconos/tres.svg", "palabras": ["uno", "dos", "tres"], "antes": "Estas puertas te preguntan cuántos hay. Cuenta despacito.", "numeros": ["uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve", "diez"],
           "plataformas": [
             { "dice": "Cuenta lo que te muestra cada puerta.",
               "mapa": [
@@ -306,6 +329,17 @@
               "retos": [
                 {"dice": "¿Cuántos peces hay?", "ver": {"imagen": "iconos/pez.svg", "cantidad": 3}, "opciones": [{"texto": "2"}, {"texto": "1"}, {"texto": "3"}], "correcta": 2, "bien": "¡Tres peces!"}
               ]
+            },
+            { "dice": "Las placas están revueltas. Písalas en orden: uno, dos, tres, cuatro, cinco.",
+              "mapa": [
+                "...................",
+                "..........N........",
+                "P.........N....G..M",
+                "#3#1#52#4##########"
+              ],
+              "retos": [
+                {"dice": "Uno, dos, tres, cuatro... ¿qué número sigue?", "opciones": [{"texto": "5"}, {"texto": "2"}, {"texto": "4"}], "correcta": 0, "bien": "¡Cinco!"}
+              ]
             }
           ] }
       ]
@@ -314,7 +348,7 @@
       "id": "cuadrito-formas",
       "familia": {"tema": "las formas: círculo, cuadrado, triángulo y rectángulo", "idea": "Salgan a buscar formas en la casa o en la calle: la tapa es un círculo, la ventana un cuadrado. Gana quien encuentre más."},
       "misiones": [
-        {"titulo": "Formas en el camino", "plantilla": "plataformas", "icono": "iconos/triangulo.svg", "palabras": ["circulo", "cuadrado", "triangulo", "rectangulo"], "antes": "Cada puerta tiene una forma escondida. Toca la que te digo.",
+        {"titulo": "Formas en el camino", "plantilla": "plataformas", "icono": "iconos/triangulo.svg", "palabras": ["circulo", "cuadrado", "triangulo", "rectangulo"], "antes": "Cada puerta tiene una forma escondida. Toca la que te digo.", "numeros": ["uno", "dos", "tres", "cuatro", "cinco", "seis", "siete", "ocho", "nueve", "diez"],
           "plataformas": [
             { "dice": "Escucha el nombre de la forma.",
               "mapa": [
@@ -349,6 +383,17 @@
               "retos": [
                 {"dice": "Toca el rectángulo.", "opciones": [{"imagen": "iconos/rectangulo.svg"}, {"imagen": "iconos/triangulo.svg"}, {"imagen": "iconos/circulo.svg"}], "correcta": 0, "bien": "¡El rectángulo!"}
               ]
+            },
+            { "dice": "El último reto: usa la palanca, la puerta y la caja para llegar arriba.",
+              "mapa": [
+                "...................M.",
+                "................#####",
+                "PL.G.C..........#####",
+                "#######XXX###########"
+              ],
+              "retos": [
+                {"dice": "¿Cuál forma tiene tres lados?", "opciones": [{"imagen": "iconos/cuadrado.svg"}, {"imagen": "iconos/triangulo.svg"}, {"imagen": "iconos/circulo.svg"}], "correcta": 1, "bien": "¡El triángulo tiene tres lados!"}
+              ]
             }
           ] }
       ]
@@ -362,7 +407,10 @@
     "plataformas-agua": "¡Uy, al agua! Goma te saca. Prueba otra vez.",
     "plataformas-alto": "Muy alto para un salto. Mira qué hay cerca que te ayude.",
     "plataformas-reto": "Casi. Mira otra vez y cuenta despacito.",
-    "plataformas-meta": "¡Llegaste!"
+    "plataformas-meta": "¡Llegaste!",
+    "plataformas-cesta": "La cesta sigue cerrada: faltan frutas. ¡Búscalas!",
+    "plataformas-placa-orden": "Todavía no. Busca el {n}.",
+    "plataformas-placas": "¡Muy bien! Se abrió el camino."
   },
 
   "pozo": { "id": "cuadrito-pozo", "titulo": "El pozo de las parejas", "antes": "Este es el pozo de los recuerdos. Gira dos cartas y busca las que van juntas." },

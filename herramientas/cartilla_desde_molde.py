@@ -180,7 +180,7 @@ def main() -> int:
                 mision['requiere'] = nombres[lugares[i - 1]]
             if m['plantilla'] == 'escucha-atrapa':
                 mision['atrapa'] = base.get('atrapa') or next(x['atrapa'] for x in t['misiones'] if 'atrapa' in x)
-            for extra in ('contar', 'ordenar', 'operacion', 'silabas', 'formas', 'parejas', 'leer', 'plataformas', 'cuento'):
+            for extra in ('contar', 'ordenar', 'operacion', 'silabas', 'formas', 'parejas', 'leer', 'plataformas', 'cuento', 'numeros'):
                 if extra in m:
                     mision[extra] = m[extra]
             nuevas.append(mision)

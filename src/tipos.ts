@@ -88,6 +88,8 @@ export interface Mision {
   silabas?: RondaSilabas[];
   /** Plataformas: los niveles de la misión, cada uno con su mapa y los retos de sus puertas. */
   plataformas?: NivelPlataformas[];
+  /** Cómo se dicen los números en voz alta (uno, dos…), para contar lo que se recoge o se pisa. */
+  numeros?: string[];
   /** Cuento vivo: las páginas del cuento y las preguntas que se hacen al terminarlo. */
   cuento?: AjustesCuento;
   /**
@@ -179,12 +181,15 @@ export interface AjustesAtrapa {
 /** Lo que recibe toda plantilla de juego. */
 /**
  * Un nivel del juego de plataformas. El mapa es un dibujo de letras (ver juegos/plataformas/motor.ts):
- * # tierra, = repisa, C caja, P inicio, M meta, G puerta con reto, ~ agua, L palanca, X bloque de palanca.
+ * # tierra, = repisa, C caja, P inicio, M meta, G puerta con reto, ~ agua, L palanca, X bloque de palanca,
+ * o fruta, B cesta (se abre con todas las frutas), 1…9 placas que se pisan en orden, N bloque de las placas.
  */
 export interface NivelPlataformas {
   mapa: string[];
   /** Lo que dice el guía al empezar el nivel. */
   dice?: string;
+  /** Imagen de las frutas (o) que se recogen y se cuentan en voz alta. */
+  fruta?: string;
   /** Retos de las puertas, en el orden en que aparecen de izquierda a derecha. */
   retos?: RetoPuerta[];
 }
@@ -208,7 +213,8 @@ export interface RetoPuerta {
   dice: string;
   /** Objetos que se muestran para contar o comparar. */
   ver?: { imagen: string; cantidad: number };
-  opciones: { texto?: string; imagen?: string; tam?: 'grande' | 'pequeno' }[];
+  /** Una opción puede ser un grupo: la imagen repetida `cantidad` veces (¿dónde hay más?). */
+  opciones: { texto?: string; imagen?: string; tam?: 'grande' | 'pequeno'; cantidad?: number }[];
   /** Posición de la opción correcta, desde 0. */
   correcta: number;
   /** Lo que dice la voz al acertar. */

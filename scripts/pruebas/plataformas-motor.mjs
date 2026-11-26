@@ -2,9 +2,9 @@
 // Busca en anchura con las acciones del niño (izquierda, derecha, saltar), abriendo puertas
 // como si el reto se resolviera. Uso: node --experimental-strip-types scripts/pruebas/plataformas-motor.mjs <id>
 import { readFileSync } from 'node:fs';
-const { leerMapa, mover, saltar, usarPalanca, abrirPuerta } = await import('../../src/juegos/plataformas/motor.ts');
+const { leerMapa, mover, saltar, usarPalanca, palancaCerca, abrirPuerta } = await import('../../src/juegos/plataformas/motor.ts');
 
-const huella = (e) => JSON.stringify([e.heroe, e.mira, e.cajas, e.abiertas, e.palanca]);
+const huella = (e) => JSON.stringify([e.heroe, e.mira, e.cajas, e.abiertas, e.palanca, e.frutas, e.placa]);
 
 export function resolver(mapa) {
   const inicio = leerMapa(mapa);
@@ -13,7 +13,8 @@ export function resolver(mapa) {
   for (let prof = 0; prof < 200 && frontera.length; prof++) {
     const sig = [];
     for (const [e, camino] of frontera) {
-      for (const [nombre, f] of [['←', (s) => mover(s, -1)], ['→', (s) => mover(s, 1)], ['⤴', saltar], ['⇅', usarPalanca]]) {
+      // El botón amarillo hace lo mismo que en la pantalla: mueve la palanca si está cerca; si no, salta.
+      for (const [nombre, f] of [['←', (s) => mover(s, -1)], ['→', (s) => mover(s, 1)], ['⤴', (s) => (palancaCerca(s) ? usarPalanca(s) : saltar(s))]]) {
         const paso = f(e);
         if (paso.suceso === 'meta') return [...camino, nombre];
         let fin = paso.cuadros[paso.cuadros.length - 1];

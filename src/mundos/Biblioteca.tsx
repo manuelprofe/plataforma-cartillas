@@ -49,7 +49,6 @@ export function Biblioteca({ territorio, heroe, etapas, estelas, accesorios, bas
   }, []);
 
   const tocar = (i: number) => {
-    if (hablando) return;
     if (estado[i] === 'dormida') {
       sonar('intenta');
       decirGuia('Este libro todavía duerme. Primero lee el que está antes en el estante.');

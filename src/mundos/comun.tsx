@@ -51,6 +51,13 @@ export function useEntrada({ territorio, base, voz, onEntrar }: PropsEntrada) {
   const abrir = (indice: number) => {
     sonar('toque');
     callar();
+    // Tocar otra vez el mismo libro o parada mientras el guía habla también entra: el niño no
+    // tiene que encontrar el botón de seguir.
+    if (charla?.indice === indice) {
+      setCharla(null);
+      onEntrar(indice);
+      return;
+    }
     const m = territorio.misiones[indice];
     if (m.antes.length) setCharla({ lineas: m.antes, indice });
     else onEntrar(indice);

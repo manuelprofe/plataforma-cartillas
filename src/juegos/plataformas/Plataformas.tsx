@@ -11,10 +11,9 @@ import { callar, decir, sonar } from '../../audio';
 import { abrirPuerta, casilla, leerMapa, mover, palancaCerca, puertas, saltar, usarPalanca, type Estado, type Paso, type Punto } from './motor';
 import './plataformas.css';
 
-const MS_CUADRO = 120;
-/** Cada cuánto se repite el paso mientras el dedo sigue en la flecha. */
-const MS_REPETIR = 260;
-const SOLIDAS = new Set(['#', '=']);
+const MS_CUADRO = 110;
+const SOLIDAS = new Set(['#', '=', '1', '2', '3', '4', '5', '6', '7', '8', '9']);
+type Gesto = '' | 'anda' | 'salta' | 'aterriza' | 'choca' | 'fiesta';
 
 export function Plataformas(props: PropsJuego) {
   const { mision, base, idiomaVoz, imagenGuia, imagenFiesta, imagenHeroe, onTerminar, onSalir } = props;
@@ -31,6 +30,11 @@ export function Plataformas(props: PropsJuego) {
   const [llego, setLlego] = useState(false);
   const [cierre, setCierre] = useState(false);
   const [tam, setTam] = useState({ casilla: 48, ancho: 390, alto: 500 });
+  // Gesto del héroe (camina, salta, aterriza, choca, celebra) y destellos de lo que pasa.
+  const [gesto, setGesto] = useState<{ tipo: Gesto; n: number }>({ tipo: '', n: 0 });
+  const [destellos, setDestellos] = useState<{ id: number; x: number; y: number; texto?: string }[]>([]);
+  const sostenido = useRef<'izq' | 'der' | null>(null);
+  const numeros = mision.numeros ?? [];
   const escenario = useRef<HTMLDivElement>(null);
   const esperas = useRef<number[]>([]);
   const choques = useRef(0);
@@ -85,12 +89,55 @@ export function Plataformas(props: PropsJuego) {
     return () => obs.disconnect();
   }, [estado?.alto, estado?.ancho, cierre]); // eslint-disable-line react-hooks/exhaustive-deps
 
+  const hacerGesto = (tipo: Gesto) => setGesto((g) => ({ tipo, n: g.n + 1 }));
+  const destellar = (x: number, y: number, texto?: string) => {
+    const id = Date.now() + Math.random();
+    setDestellos((d) => [...d, { id, x, y, texto }]);
+    luego(() => setDestellos((d) => d.filter((v) => v.id !== id)), 900);
+  };
+
   /** Pasa los cuadros de un paso uno por uno y luego cuenta lo que pasó. */
   const jugar = useCallback(
     (paso: Paso) => {
       setOcupado(true);
       paso.cuadros.forEach((c, i) => luego(() => setEstado(c), i * MS_CUADRO));
       const fin = paso.cuadros.length * MS_CUADRO;
+      const ultimo = paso.cuadros[paso.cuadros.length - 1];
+      const primero = paso.cuadros[0];
+      if (paso.suceso === 'camina' || paso.suceso === 'empuja') hacerGesto('anda');
+      if (paso.suceso === 'salta') hacerGesto('salta');
+      if (paso.suceso === 'choca') hacerGesto('choca');
+      // Al caer desde lo alto se aplasta un poquito al tocar el piso.
+      if ((paso.suceso === 'salta' || paso.suceso === 'cae') && ultimo.heroe.y >= primero.heroe.y) luego(() => hacerGesto('aterriza'), fin - MS_CUADRO);
+      if (paso.recogio) {
+        const llevas = ultimo.totalFrutas - ultimo.frutas.length;
+        luego(() => {
+          sonar('estrella');
+          destellar(ultimo.heroe.x, ultimo.heroe.y, String(llevas));
+          if (numeros[llevas - 1]) decir(numeros[llevas - 1], idiomaVoz);
+        }, fin - MS_CUADRO);
+      }
+      if (paso.placa) {
+        const { numero, como } = paso.placa;
+        luego(() => {
+          if (como === 'otra vez') {
+            sonar('intenta');
+            // La ayuda dice cuál sigue: {n} se cambia por ese número dicho en palabras.
+            const sigue = ultimo.placa;
+            const frase = props.ayudas['plataformas-placa-orden'];
+            if (frase) decir(frase.es.replace('{n}', numeros[sigue - 1] ?? String(sigue)), props.vozHistoria);
+          } else {
+            sonar(como === 'todas' ? 'acierto' : 'toque');
+            destellar(ultimo.heroe.x, ultimo.heroe.y + 1, String(numero));
+            const dicho = numeros[numero - 1] ?? String(numero);
+            decir(dicho, idiomaVoz, como === 'todas' ? () => decirAyuda(props, 'plataformas-placas') : undefined);
+          }
+        }, fin - MS_CUADRO);
+      }
+      if (paso.suceso === 'cesta') {
+        sonar('intenta');
+        decirAyuda(props, 'plataformas-cesta');
+      }
       if (paso.suceso === 'salta') sonar('salto');
       if (paso.suceso === 'empuja' || paso.suceso === 'palanca') sonar('toque');
       if (paso.suceso === 'choca') {
@@ -121,6 +168,8 @@ export function Plataformas(props: PropsJuego) {
         luego(() => {
           setLlego(true);
           sonar('acierto');
+          hacerGesto('fiesta');
+          destellar(ultimo.heroe.x, ultimo.heroe.y - 1);
           decirAyuda(props, 'plataformas-meta');
         }, fin);
         luego(() => {
@@ -132,7 +181,12 @@ export function Plataformas(props: PropsJuego) {
         }, fin + 1600);
         return;
       }
-      luego(() => setOcupado(false), fin + (paso.suceso === 'agua' ? 500 : 0));
+      luego(() => {
+        setOcupado(false);
+        ocupadoRef.current = false;
+        // Con la flecha sostenida sigue caminando sin pausa.
+        if (sostenido.current && paso.suceso !== 'puerta' && paso.suceso !== 'cesta' && paso.suceso !== 'agua') accionRef.current(sostenido.current);
+      }, fin + (paso.suceso === 'agua' ? 500 : 0));
     },
     // props entra entero por decirAyuda; nada de esto cambia dentro de un nivel.
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -149,18 +203,16 @@ export function Plataformas(props: PropsJuego) {
     },
     [jugar, reto, llego],
   );
-  // Flecha sostenida: sigue caminando.
-  const sostener = useRef<number | null>(null);
+  const accionRef = useRef(accion);
+  accionRef.current = accion;
+  // Flecha sostenida: al terminar cada paso se da el siguiente.
   const soltar = () => {
-    if (sostener.current) clearInterval(sostener.current);
-    sostener.current = null;
+    sostenido.current = null;
   };
   const apretar = (que: 'izq' | 'der') => {
-    soltar();
+    sostenido.current = que;
     accion(que);
-    sostener.current = window.setInterval(() => accion(que), MS_REPETIR);
   };
-  useEffect(() => soltar, []);
 
   // Teclado en computador: flechas y espacio.
   useEffect(() => {
@@ -235,7 +287,23 @@ export function Plataformas(props: PropsJuego) {
             {!abierta && <span aria-hidden="true">?</span>}
           </div>,
         );
-      } else if (t === 'L') piezas.push(<div key={k} className={`pl-palanca${estado.palanca ? ' pl-palanca--on' : ''}`} style={pos} />);
+      } else if (t === 'B') {
+        const abierta = !estado.frutas.length;
+        piezas.push(
+          <div key={k} className={`pl-cesta${abierta ? ' pl-cesta--abierta' : ''}`} style={pos}>
+            {!abierta && <span aria-hidden="true">{estado.totalFrutas - estado.frutas.length}/{estado.totalFrutas}</span>}
+          </div>,
+        );
+      } else if (t >= '1' && t <= '9') {
+        const pisada = Number(t) < estado.placa;
+        sombras.push(<div key={k} className="pl-sombra pl-sombra--tierra" style={pos} />);
+        piezas.push(
+          <div key={k} className={`pl-placa${pisada ? ' pl-placa--pisada' : ''}`} style={pos}>
+            <span>{t}</span>
+          </div>,
+        );
+      } else if (t === 'N') piezas.push(<div key={k} className={`pl-bloque-numero${estado.placa > estado.totalPlacas ? ' pl-bloque-numero--abierto' : ''}`} style={pos} />);
+      else if (t === 'L') piezas.push(<div key={k} className={`pl-palanca${estado.palanca ? ' pl-palanca--on' : ''}`} style={pos} />);
       else if (t === 'X') piezas.push(<div key={k} className={`pl-bloque${estado.palanca ? ' pl-bloque--on' : ''}`} style={pos} />);
     }
   }
@@ -252,6 +320,12 @@ export function Plataformas(props: PropsJuego) {
               <span key={i} className={`punto${i < indice ? ' punto--hecho' : i === indice ? ' punto--ahora' : ''}`} />
             ))}
           </div>
+        )}
+        {!cierre && estado.totalFrutas > 0 && nivel.fruta && (
+          <span className="pl-contador" aria-label={`Frutas: ${estado.totalFrutas - estado.frutas.length} de ${estado.totalFrutas}`}>
+            <img src={base + nivel.fruta} alt="" />
+            {estado.totalFrutas - estado.frutas.length}/{estado.totalFrutas}
+          </span>
         )}
         {!cierre && (
           <button type="button" className="pl-reiniciar" onClick={reiniciar} aria-label="Empezar el nivel otra vez">
@@ -270,9 +344,20 @@ export function Plataformas(props: PropsJuego) {
               {estado.cajas.map((caja, i) => (
                 <div key={`caja${i}`} className="pl-caja" style={{ width: c, height: c, transform: `translate3d(${caja.x * c}px, ${caja.y * c}px, 0)` }} />
               ))}
+              {nivel.fruta &&
+                estado.frutas.map((f) => (
+                  <img key={`f${f.x},${f.y}`} className="pl-fruta" src={base + nivel.fruta} alt="" draggable={false} style={{ width: c * 0.7, height: c * 0.7, left: f.x * c + c * 0.15, top: f.y * c + c * 0.15 }} />
+                ))}
               <div className={`pl-heroe${splash ? ' pl-heroe--agua' : ''}`} style={{ width: c, height: c, transform: `translate3d(${estado.heroe.x * c}px, ${estado.heroe.y * c}px, 0)` }}>
-                <img src={base + (imagenHeroe ?? imagenGuia)} alt="" draggable={false} style={{ transform: `scaleX(${estado.mira})` }} />
+                <div className="pl-heroe__mira" style={{ transform: `scaleX(${estado.mira})` }}>
+                  <img key={gesto.n} className={gesto.tipo ? `pl-gesto--${gesto.tipo}` : undefined} src={base + (imagenHeroe ?? imagenGuia)} alt="" draggable={false} />
+                </div>
               </div>
+              {destellos.map((d) => (
+                <div key={d.id} className="pl-destello" style={{ left: d.x * c, top: d.y * c, width: c, height: c }}>
+                  {d.texto && <b>{d.texto}</b>}
+                </div>
+              ))}
             </div>
             <div className="pl-suelo" style={{ top: arriba + altoMundo - 2, backgroundPositionX: `${-camara}px` }} />
             {splash && <div className="pl-rescate" aria-hidden="true" />}
@@ -334,7 +419,14 @@ export function Plataformas(props: PropsJuego) {
                     onClick={() => elegir(i)}
                     aria-label={o.texto ?? `Opción ${i + 1}`}
                   >
-                    {o.imagen && <img src={base + o.imagen} alt="" draggable={false} className={o.tam ? `pl-opcion--${o.tam}` : undefined} />}
+                    {o.imagen && !o.cantidad && <img src={base + o.imagen} alt="" draggable={false} className={o.tam ? `pl-opcion--${o.tam}` : undefined} />}
+                    {o.imagen && o.cantidad && (
+                      <span className="pl-grupo">
+                        {Array.from({ length: o.cantidad }, (_, k) => (
+                          <img key={k} src={base + o.imagen} alt="" draggable={false} />
+                        ))}
+                      </span>
+                    )}
                     {o.texto && <span>{o.texto}</span>}
                   </button>
                 ))}

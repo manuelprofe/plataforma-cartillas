@@ -61,7 +61,7 @@ export function Camino({ territorio, heroe, etapas, estelas, accesorios, base, v
   }, []);
 
   const tocar = (i: number) => {
-    if (caminando || hablando) return;
+    if (caminando) return;
     if (estado[i] === 'dormida') {
       sonar('intenta');
       decirGuia('Esta parada todavía duerme. Primero juega la que brilla.');

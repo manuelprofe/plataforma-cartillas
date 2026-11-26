@@ -81,8 +81,12 @@ Plan completo: `docs/plan/calendario-diciembre.md` (también en Google Calendar,
   termina y las cajas hacen falta) y `.../plataformas.mjs <id>` (navegador). Español (transición a 2.°):
   plantilla `cuento` (`src/juegos/cuento/`: páginas narradas con dibujo y texto, luego preguntas
   elegir/ordenar; se puede volver a ver el cuento). Prototipo: misión 1 de `espanol-0` ("El pollito
-  perdido"). Prueba: `node scripts/pruebas/cuento.mjs <id>`. Siguiente: mundo propio por materia
-  (Cuadrito = camino de lado; Renglón = biblioteca; inglés conserva su mapa), propuesto a Manuel.
+  perdido"). Prueba: `node scripts/pruebas/cuento.mjs <id>`. Mundo propio por materia
+  (pedido de Manuel, 26 nov): `cartilla.vista` = `{tipo: 'camino' | 'biblioteca', etapas}` (una etapa
+  por periodo) elige `src/mundos/Camino.tsx` (matemáticas: paradas de lado, en orden) o
+  `src/mundos/Biblioteca.tsx` (español: un estante por tema, un libro por misión); sin `vista`, el mapa
+  de siempre (inglés). `matematicas-0` quedó con 7 misiones de plataformas/contar + repaso; `espanol-0`
+  con dos cuentos. Prueba: `node scripts/pruebas/mundos.mjs`.
 - **Herramientas de contenido:** `herramientas/` (voces, letras sincronizadas,
   `materiales_a_json.py`, `importar/`).
 - **Documentos de diseño y pedagogía:** `docs/diseno/esqueleto.md` (tandas 5 y 6 en §8),

@@ -40,9 +40,11 @@ for (const m of cartilla.territorios.flatMap((t) => t.misiones).filter((m) => m.
     const camino = resolver(n.mapa);
     // Un nivel con cajas es para pensar con ellas: sin las cajas no se debe poder terminar.
     const sinCajas = n.mapa.some((f) => f.includes('C')) ? resolver(n.mapa.map((f) => f.replaceAll('C', '.'))) : null;
-    const ok = camino && puertasMapa === retos && !sinCajas;
+    // Y uno con palanca, para usarla: sin ella (el puente apagado) no se debe poder terminar.
+    const sinPalanca = n.mapa.some((f) => f.includes('L')) ? resolver(n.mapa.map((f) => f.replaceAll('L', '.'))) : null;
+    const ok = camino && puertasMapa === retos && !sinCajas && !sinPalanca;
     if (!ok) fallas++;
-    console.log(ok ? 'bien ' : 'FALLA', `${m.id} nivel ${i + 1}: ${camino ? `${camino.length} pasos (${camino.join('')})` : 'no se puede terminar'}${puertasMapa !== retos ? ` · ${puertasMapa} puertas y ${retos} retos` : ''}${sinCajas ? ' · se termina sin usar la caja' : ''}`);
+    console.log(ok ? 'bien ' : 'FALLA', `${m.id} nivel ${i + 1}: ${camino ? `${camino.length} pasos (${camino.join('')})` : 'no se puede terminar'}${puertasMapa !== retos ? ` · ${puertasMapa} puertas y ${retos} retos` : ''}${sinCajas ? ' · se termina sin usar la caja' : ''}${sinPalanca ? ' · se termina sin la palanca' : ''}`);
   });
 }
 console.log(fallas ? `\n${fallas} fallas` : '\ntodo bien');

@@ -12,6 +12,11 @@ const ID = process.argv[2] ?? 'matematicas-0';
 const foto = (p, n) => p.screenshot({ path: `${CAPTURAS}/${ID}-${n}.png` });
 const cartilla = JSON.parse(readFileSync(`public/cartillas/${ID}/cartilla.json`, 'utf8'));
 const misiones = cartilla.territorios[0].misiones;
+// Las cartillas con mundo propio (camino, biblioteca) se prueban con mundos.mjs, plataformas.mjs y cuento.mjs.
+if (cartilla.vista) {
+  console.log(`${ID} tiene mundo propio (${cartilla.vista.tipo}): ver mundos.mjs, plataformas.mjs y cuento.mjs`);
+  process.exit(0);
+}
 const primera = (plantilla) => misiones.find((m) => m.plantilla === plantilla && !m.requiere && !m.opcional) ?? misiones.find((m) => m.plantilla === plantilla && !m.opcional);
 const ES_INGLES = String(cartilla.idiomaVoz ?? '').startsWith('en');
 const INGLES = /\b(the|you|listen|catch|hello|tap|say|word|words|let's|English)\b/i;
@@ -41,7 +46,7 @@ async function cerrarMision(p) {
   await p.click('.carita');
   await p.waitForTimeout(400);
   await p.click('.boton-seguir');
-  await p.waitForSelector('.mundo', { timeout: 15000 });
+  await p.waitForSelector('.mundo, .camino, .biblioteca', { timeout: 15000 });
   await p.waitForTimeout(600);
   await cerrarCharla(p);
 }
@@ -68,7 +73,7 @@ try {
   // 2. Ya jugado: el mapa y una misión de cada plantilla.
   let { c, p, errores } = await abrir(navegador, { ...BASE_JUGADO, heroe: cartilla.heroes[0].id });
   await p.click('.jugar-invitado');
-  await p.waitForSelector('.mundo', { timeout: 15000 });
+  await p.waitForSelector('.mundo, .camino, .biblioteca', { timeout: 15000 });
   await p.waitForTimeout(900);
   await cerrarCharla(p);
   await foto(p, '02-mapa');
@@ -93,7 +98,7 @@ try {
   ({ c, p } = await abrir(navegador, { ...BASE_JUGADO, heroe: cartilla.heroes[0].id, misiones: hechas }));
   p.on('pageerror', (e) => errores.push(String(e)));
   await p.click('.jugar-invitado');
-  await p.waitForSelector('.mundo', { timeout: 15000 });
+  await p.waitForSelector('.mundo, .camino, .biblioteca', { timeout: 15000 });
   await p.waitForTimeout(900);
   await cerrarCharla(p);
   for (const m of otras) {
@@ -103,7 +108,7 @@ try {
     comprobar(await sinDesborde(p), `${m.plantilla} (${m.titulo}): sin desborde a 390`);
     comprobar((await menorToque(p, '.mision button')) >= 44, `${m.plantilla}: toques de 44 px o más (${Math.round(await menorToque(p, '.mision button'))})`);
     await p.click('.boton-salir');
-    await p.waitForSelector('.mundo', { timeout: 15000 });
+    await p.waitForSelector('.mundo, .camino, .biblioteca', { timeout: 15000 });
     await p.waitForTimeout(800);
     await cerrarCharla(p);
   }

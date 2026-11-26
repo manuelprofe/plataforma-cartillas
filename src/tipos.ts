@@ -398,6 +398,11 @@ export interface Cartilla {
   ayudas?: Record<string, Frase>;
   /** Cinemáticas en video ('inicio'...). */
   cinematicas?: Record<string, Cinematica>;
+  /**
+   * Mundo propio de la materia: el camino de lado de Cuadrito (matemáticas) o la biblioteca de
+   * Renglón (español). Sin esto, el mapa visto desde arriba (inglés). Etapas: un nombre por periodo.
+   */
+  vista?: { tipo: 'camino' | 'biblioteca'; etapas: string[] };
 }
 
 export interface Frase {

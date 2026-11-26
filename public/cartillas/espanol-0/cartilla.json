@@ -346,9 +346,9 @@
     },
     {
      "id": "renglon-animales-2",
-     "titulo": "Atrapa el animal",
-     "plantilla": "escucha-atrapa",
-     "icono": "iconos/1f986.svg",
+     "titulo": "¿Quién hace ese ruido?",
+     "plantilla": "cuento",
+     "icono": "iconos/ruido-4.svg",
      "palabras": [
       {
        "es": "guau guau",
@@ -370,47 +370,6 @@
         "mia"
        ],
        "en": "miau"
-      },
-      {
-       "es": "muu",
-       "icono": "iconos/1f404.svg",
-       "frase": "La vaca hace muu.",
-       "aceptar": [
-        "mu",
-        "muuu"
-       ],
-       "en": "muu"
-      },
-      {
-       "es": "cuac cuac",
-       "icono": "iconos/1f986.svg",
-       "frase": "El pato hace cuac cuac.",
-       "aceptar": [
-        "cuac",
-        "cuá cuá",
-        "quack"
-       ],
-       "en": "cuac cuac"
-      },
-      {
-       "es": "pío pío",
-       "icono": "iconos/1f424.svg",
-       "frase": "El pollito hace pío pío.",
-       "aceptar": [
-        "pio pio",
-        "pío"
-       ],
-       "en": "pío pío"
-      },
-      {
-       "es": "quiquiriquí",
-       "icono": "iconos/1f413.svg",
-       "frase": "El gallo hace quiquiriquí.",
-       "aceptar": [
-        "quiquiriqui",
-        "kikiriki"
-       ],
-       "en": "quiquiriquí"
       }
      ],
      "x": 1215,
@@ -418,8 +377,8 @@
      "antes": [
       {
        "quien": "renglon",
-       "es": "Los animales pasan volando. Atrapa el que hace el sonido que escuchas.",
-       "en": "Los animales pasan volando. Atrapa el que hace el sonido que escuchas."
+       "es": "Este cuento pasa de noche. Escucha bien los sonidos.",
+       "en": "Este cuento pasa de noche. Escucha bien los sonidos."
       }
      ],
      "familia": {
@@ -427,13 +386,96 @@
       "idea": "Jueguen a adivinar: uno hace el sonido de un animal y el otro dice cuál es. Si tienen un perro o un gato cerca, escúchenlo juntos en silencio."
      },
      "requiere": "renglon-animales",
-     "atrapa": {
-      "cruceInicio": 6,
-      "cruceFinal": 4.5,
-      "distractores": [
-       2,
-       2,
-       3
+     "cuento": {
+      "paginas": [
+       {
+        "imagen": "iconos/ruido-1.svg",
+        "texto": "Es de noche. Lola no puede dormir: algo hace ruido."
+       },
+       {
+        "imagen": "iconos/ruido-2.svg",
+        "texto": "¿Será el perro? No, el perro está dormido."
+       },
+       {
+        "imagen": "iconos/ruido-3.svg",
+        "texto": "¿Será el gato? No, el gato toma leche."
+       },
+       {
+        "imagen": "iconos/ruido-4.svg",
+        "texto": "¡Cri, cri! Era un grillo en la ventana."
+       },
+       {
+        "imagen": "iconos/ruido-5.svg",
+        "texto": "Lola sonríe y le dice: buenas noches, grillo."
+       }
+      ],
+      "preguntas": [
+       {
+        "tipo": "elegir",
+        "dice": "¿Quién hacía el ruido?",
+        "opciones": [
+         {
+          "imagen": "iconos/1f415.svg",
+          "texto": "el perro"
+         },
+         {
+          "imagen": "iconos/1f997.svg",
+          "texto": "el grillo"
+         },
+         {
+          "imagen": "iconos/1f408.svg",
+          "texto": "el gato"
+         }
+        ],
+        "correcta": 1,
+        "bien": "¡El grillo! Cri, cri."
+       },
+       {
+        "tipo": "elegir",
+        "dice": "¿Qué hacía el gato?",
+        "opciones": [
+         {
+          "imagen": "iconos/1f4a4.svg",
+          "texto": "dormía"
+         },
+         {
+          "imagen": "iconos/1f95b.svg",
+          "texto": "tomaba leche"
+         },
+         {
+          "imagen": "iconos/1f3b6.svg",
+          "texto": "cantaba"
+         }
+        ],
+        "correcta": 1,
+        "bien": "¡Tomaba leche!"
+       },
+       {
+        "tipo": "ordenar",
+        "dice": "Toca los dibujos en orden: ¿qué pasó primero, después y al final?",
+        "imagenes": [
+         "iconos/ruido-1.svg",
+         "iconos/ruido-4.svg",
+         "iconos/ruido-5.svg"
+        ],
+        "bien": "¡Así pasó el cuento!"
+       },
+       {
+        "tipo": "elegir",
+        "dice": "¿Cuándo pasó el cuento: de día o de noche?",
+        "opciones": [
+         {
+          "imagen": "iconos/2600.svg",
+          "texto": "de día"
+         },
+         {
+          "imagen": "iconos/1f319.svg",
+          "texto": "de noche"
+         }
+        ],
+        "correcta": 1,
+        "bien": "¡De noche! Por eso Lola quería dormir."
+       }
       ]
      }
     },
@@ -4941,5 +4983,14 @@
    "ancho": 1.05
   }
  ],
- "voz": {}
+ "voz": {},
+ "vista": {
+  "tipo": "biblioteca",
+  "etapas": [
+   "Yo hablo, yo escucho",
+   "Juego con las palabras",
+   "Leo imágenes y cuentos",
+   "Lo escrito dice algo"
+  ]
+ }
 }

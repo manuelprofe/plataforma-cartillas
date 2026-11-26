@@ -138,6 +138,9 @@ def main() -> int:
         'idiomaVoz': contenido['idiomaVoz'], 'voz': {},
     })
     cartilla['imagenes'] = {'portada': guia['imagen'], 'fiesta': guia['fiesta']}
+    # Mundo propio de la materia (camino de Cuadrito, biblioteca de Renglón); sin él, el mapa del molde.
+    if 'vista' in contenido:
+        cartilla['vista'] = contenido['vista']
     cartilla['territorios'] = cartilla['territorios'][:1]
     t = cartilla['territorios'][0]
     t['nombre'] = contenido['territorio']

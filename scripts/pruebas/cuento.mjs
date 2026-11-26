@@ -24,7 +24,7 @@ try {
   p.on('console', (m) => m.type() === 'error' && !/mp4|ERR_FAILED|Failed to load resource/.test(m.text()) && errores.push(m.text()));
   await p.goto(`${URL_APP}?cartilla=${ID}`);
   await p.click('.jugar-invitado');
-  await p.waitForSelector('.mundo', { timeout: 15000 });
+  await p.waitForSelector('.mundo, .camino, .biblioteca', { timeout: 15000 });
   await p.waitForTimeout(900);
   await cerrarCharla(p);
   await entrarAMision(p, mision.titulo);

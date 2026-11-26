@@ -163,6 +163,8 @@ export function mover(e: Estado, dir: 1 | -1): Paso {
   const x = s.heroe.x + dir;
   const y = s.heroe.y;
   if (casilla(s, x, y) === 'G' && firme(s, x, y)) return { cuadros: [s], suceso: 'puerta', puerta: { x, y } };
+  // La parte de arriba de una puerta cerrada también la abre.
+  if (casilla(s, x, y + 1) === 'G' && firme(s, x, y)) return { cuadros: [s], suceso: 'puerta', puerta: { x, y: y + 1 } };
   const caja = hayCaja(s, x, y);
   if (caja >= 0) {
     const mas = x + dir;

@@ -175,110 +175,9 @@
      ]
     },
     {
-     "id": "cuadrito-arriba-2",
-     "titulo": "Atrapa arriba y abajo",
-     "plantilla": "escucha-atrapa",
-     "icono": "iconos/encima.svg",
-     "palabras": [
-      {
-       "es": "arriba",
-       "icono": "iconos/arriba.svg",
-       "frase": "El pájaro está arriba.",
-       "en": "arriba"
-      },
-      {
-       "es": "abajo",
-       "icono": "iconos/abajo.svg",
-       "frase": "El pájaro está abajo.",
-       "en": "abajo"
-      },
-      {
-       "es": "encima",
-       "icono": "iconos/encima.svg",
-       "frase": "El gato está encima de la silla.",
-       "en": "encima"
-      },
-      {
-       "es": "debajo",
-       "icono": "iconos/debajo.svg",
-       "frase": "El gato está debajo de la silla.",
-       "en": "debajo"
-      }
-     ],
-     "x": 573,
-     "y": 731,
-     "antes": [
-      {
-       "quien": "cuadrito",
-       "es": "Los dibujos están volando. Atrapa el que te digo.",
-       "en": "Los dibujos están volando. Atrapa el que te digo."
-      }
-     ],
-     "familia": {
-      "tema": "arriba, abajo, encima y debajo",
-      "idea": "En casa, esconda un juguete y dele pistas: está encima de la cama, debajo de la mesa. Que lo busque y diga dónde estaba."
-     },
-     "requiere": "cuadrito-arriba",
-     "atrapa": {
-      "cruceInicio": 6,
-      "cruceFinal": 4.5,
-      "distractores": [
-       2,
-       2,
-       3
-      ]
-     }
-    },
-    {
-     "id": "cuadrito-arriba-3",
-     "titulo": "Di dónde está",
-     "plantilla": "di-brilla",
-     "icono": "iconos/debajo.svg",
-     "palabras": [
-      {
-       "es": "arriba",
-       "icono": "iconos/arriba.svg",
-       "frase": "El pájaro está arriba.",
-       "en": "arriba"
-      },
-      {
-       "es": "abajo",
-       "icono": "iconos/abajo.svg",
-       "frase": "El pájaro está abajo.",
-       "en": "abajo"
-      },
-      {
-       "es": "encima",
-       "icono": "iconos/encima.svg",
-       "frase": "El gato está encima de la silla.",
-       "en": "encima"
-      },
-      {
-       "es": "debajo",
-       "icono": "iconos/debajo.svg",
-       "frase": "El gato está debajo de la silla.",
-       "en": "debajo"
-      }
-     ],
-     "x": 470,
-     "y": 817,
-     "antes": [
-      {
-       "quien": "cuadrito",
-       "es": "Ahora tú lo dices. Escucha, mira el dibujo y dilo cuando quieras. ¡Cada intento cuenta!",
-       "en": "Ahora tú lo dices. Escucha, mira el dibujo y dilo cuando quieras. ¡Cada intento cuenta!"
-      }
-     ],
-     "familia": {
-      "tema": "arriba, abajo, encima y debajo",
-      "idea": "En casa, esconda un juguete y dele pistas: está encima de la cama, debajo de la mesa. Que lo busque y diga dónde estaba."
-     },
-     "requiere": "cuadrito-arriba-2"
-    },
-    {
      "id": "cuadrito-dentro",
-     "titulo": "¿Dentro o fuera?",
-     "plantilla": "escucha-toca",
+     "titulo": "Dentro y fuera",
+     "plantilla": "plataformas",
      "icono": "iconos/dentro.svg",
      "palabras": [
       {
@@ -326,150 +225,93 @@
      "antes": [
       {
        "quien": "cuadrito",
-       "es": "Escucha dónde está y toca el dibujo.",
-       "en": "Escucha dónde está y toca el dibujo."
-      }
-     ],
-     "familia": {
-      "tema": "dentro, fuera, delante, detrás, cerca y lejos",
-      "idea": "Jueguen a las estatuas: usted dice «dentro del cuarto», «detrás de la puerta», «cerca de mí», y su hijo se ubica. Luego cambian de turno."
-     }
-    },
-    {
-     "id": "cuadrito-dentro-2",
-     "titulo": "Atrapa dónde está",
-     "plantilla": "escucha-atrapa",
-     "icono": "iconos/delante.svg",
-     "palabras": [
-      {
-       "es": "dentro",
-       "icono": "iconos/dentro.svg",
-       "frase": "La pelota está dentro de la caja.",
-       "en": "dentro"
-      },
-      {
-       "es": "fuera",
-       "icono": "iconos/fuera.svg",
-       "frase": "La pelota está fuera de la caja.",
-       "en": "fuera"
-      },
-      {
-       "es": "delante",
-       "icono": "iconos/delante.svg",
-       "frase": "El perro está delante del árbol.",
-       "en": "delante"
-      },
-      {
-       "es": "detrás",
-       "icono": "iconos/detras.svg",
-       "frase": "El perro está detrás del árbol.",
-       "aceptar": [
-        "detras"
-       ],
-       "en": "detrás"
-      },
-      {
-       "es": "cerca",
-       "icono": "iconos/cerca.svg",
-       "frase": "El perro está cerca de la casa.",
-       "en": "cerca"
-      },
-      {
-       "es": "lejos",
-       "icono": "iconos/lejos.svg",
-       "frase": "El perro está lejos de la casa.",
-       "en": "lejos"
-      }
-     ],
-     "x": 1215,
-     "y": 665,
-     "antes": [
-      {
-       "quien": "cuadrito",
-       "es": "Atrapa el dibujo que te digo.",
-       "en": "Atrapa el dibujo que te digo."
+       "es": "Cada puerta te pregunta dónde están las cosas. ¡Mira bien!",
+       "en": "Cada puerta te pregunta dónde están las cosas. ¡Mira bien!"
       }
      ],
      "familia": {
       "tema": "dentro, fuera, delante, detrás, cerca y lejos",
       "idea": "Jueguen a las estatuas: usted dice «dentro del cuarto», «detrás de la puerta», «cerca de mí», y su hijo se ubica. Luego cambian de turno."
      },
-     "requiere": "cuadrito-dentro",
-     "atrapa": {
-      "cruceInicio": 6,
-      "cruceFinal": 4.5,
-      "distractores": [
-       2,
-       2,
-       3
-      ]
-     }
-    },
-    {
-     "id": "cuadrito-dentro-3",
-     "titulo": "Di cerca o lejos",
-     "plantilla": "di-brilla",
-     "icono": "iconos/cerca.svg",
-     "palabras": [
+     "plataformas": [
       {
-       "es": "dentro",
-       "icono": "iconos/dentro.svg",
-       "frase": "La pelota está dentro de la caja.",
-       "en": "dentro"
-      },
-      {
-       "es": "fuera",
-       "icono": "iconos/fuera.svg",
-       "frase": "La pelota está fuera de la caja.",
-       "en": "fuera"
-      },
-      {
-       "es": "delante",
-       "icono": "iconos/delante.svg",
-       "frase": "El perro está delante del árbol.",
-       "en": "delante"
-      },
-      {
-       "es": "detrás",
-       "icono": "iconos/detras.svg",
-       "frase": "El perro está detrás del árbol.",
-       "aceptar": [
-        "detras"
+       "dice": "Camina hasta la puerta y mira dónde está la pelota.",
+       "mapa": [
+        "..............",
+        "..............",
+        "P...#....G...M",
+        "##############"
        ],
-       "en": "detrás"
+       "retos": [
+        {
+         "dice": "Toca donde la pelota está dentro de la caja.",
+         "opciones": [
+          {
+           "imagen": "iconos/fuera.svg"
+          },
+          {
+           "imagen": "iconos/dentro.svg"
+          }
+         ],
+         "correcta": 1,
+         "bien": "¡Dentro!"
+        }
+       ]
       },
       {
-       "es": "cerca",
-       "icono": "iconos/cerca.svg",
-       "frase": "El perro está cerca de la casa.",
-       "en": "cerca"
+       "dice": "El puente está apagado. Párate en la palanca y toca el botón.",
+       "mapa": [
+        "................",
+        "................",
+        "P.L........G...M",
+        "####XXX#########"
+       ],
+       "retos": [
+        {
+         "dice": "Toca donde el perro está delante del árbol.",
+         "opciones": [
+          {
+           "imagen": "iconos/detras.svg"
+          },
+          {
+           "imagen": "iconos/delante.svg"
+          }
+         ],
+         "correcta": 1,
+         "bien": "¡Delante!"
+        }
+       ]
       },
       {
-       "es": "lejos",
-       "icono": "iconos/lejos.svg",
-       "frase": "El perro está lejos de la casa.",
-       "en": "lejos"
+       "dice": "La pared es alta. Primero abre la puerta; después usa la caja.",
+       "mapa": [
+        "..............M.",
+        "...........#####",
+        "P..G..C....#####",
+        "################"
+       ],
+       "retos": [
+        {
+         "dice": "Toca donde el perro está cerca de la casa.",
+         "opciones": [
+          {
+           "imagen": "iconos/lejos.svg"
+          },
+          {
+           "imagen": "iconos/cerca.svg"
+          }
+         ],
+         "correcta": 1,
+         "bien": "¡Cerca!"
+        }
+       ]
       }
-     ],
-     "x": 1341,
-     "y": 616,
-     "antes": [
-      {
-       "quien": "cuadrito",
-       "es": "Mira el dibujo y di dónde está. ¡Cada intento cuenta!",
-       "en": "Mira el dibujo y di dónde está. ¡Cada intento cuenta!"
-      }
-     ],
-     "familia": {
-      "tema": "dentro, fuera, delante, detrás, cerca y lejos",
-      "idea": "Jueguen a las estatuas: usted dice «dentro del cuarto», «detrás de la puerta», «cerca de mí», y su hijo se ubica. Luego cambian de turno."
-     },
-     "requiere": "cuadrito-dentro-2"
+     ]
     },
     {
      "id": "cuadrito-colores",
-     "titulo": "Toca el color",
-     "plantilla": "escucha-toca",
+     "titulo": "El camino de colores",
+     "plantilla": "plataformas",
      "icono": "iconos/1f534.svg",
      "palabras": [
       {
@@ -491,19 +333,6 @@
        "es": "verde",
        "icono": "iconos/1f7e2.svg",
        "en": "verde"
-      },
-      {
-       "es": "morado",
-       "icono": "iconos/1f7e3.svg",
-       "en": "morado"
-      },
-      {
-       "es": "naranja",
-       "icono": "iconos/1f7e0.svg",
-       "aceptar": [
-        "anaranjado"
-       ],
-       "en": "naranja"
       }
      ],
      "x": 1697,
@@ -511,129 +340,112 @@
      "antes": [
       {
        "quien": "cuadrito",
-       "es": "Escucha el color y tócalo.",
-       "en": "Escucha el color y tócalo."
-      }
-     ],
-     "familia": {
-      "tema": "los colores para agrupar",
-      "idea": "Al guardar la ropa o los juguetes, pídale que haga montones por color y le diga por qué van juntos."
-     }
-    },
-    {
-     "id": "cuadrito-colores-2",
-     "titulo": "Parejas de colores",
-     "plantilla": "memoria",
-     "icono": "iconos/1f7e2.svg",
-     "palabras": [
-      {
-       "es": "rojo",
-       "icono": "iconos/1f534.svg",
-       "en": "rojo"
-      },
-      {
-       "es": "azul",
-       "icono": "iconos/1f535.svg",
-       "en": "azul"
-      },
-      {
-       "es": "amarillo",
-       "icono": "iconos/1f7e1.svg",
-       "en": "amarillo"
-      },
-      {
-       "es": "verde",
-       "icono": "iconos/1f7e2.svg",
-       "en": "verde"
-      }
-     ],
-     "x": 1903,
-     "y": 688,
-     "antes": [
-      {
-       "quien": "cuadrito",
-       "es": "Gira dos cartas y busca las que van juntas: el color y su nombre.",
-       "en": "Gira dos cartas y busca las que van juntas: el color y su nombre."
+       "es": "Las puertas de colores se abren si tocas el color que te digo.",
+       "en": "Las puertas de colores se abren si tocas el color que te digo."
       }
      ],
      "familia": {
       "tema": "los colores para agrupar",
       "idea": "Al guardar la ropa o los juguetes, pídale que haga montones por color y le diga por qué van juntos."
      },
-     "requiere": "cuadrito-colores",
-     "formas": [
-      "imagen-sonido"
-     ],
-     "parejas": 4
-    },
-    {
-     "id": "cuadrito-colores-3",
-     "titulo": "Atrapa el color",
-     "plantilla": "escucha-atrapa",
-     "icono": "iconos/1f7e1.svg",
-     "palabras": [
+     "plataformas": [
       {
-       "es": "rojo",
-       "icono": "iconos/1f534.svg",
-       "en": "rojo"
-      },
-      {
-       "es": "azul",
-       "icono": "iconos/1f535.svg",
-       "en": "azul"
-      },
-      {
-       "es": "amarillo",
-       "icono": "iconos/1f7e1.svg",
-       "en": "amarillo"
-      },
-      {
-       "es": "verde",
-       "icono": "iconos/1f7e2.svg",
-       "en": "verde"
-      },
-      {
-       "es": "morado",
-       "icono": "iconos/1f7e3.svg",
-       "en": "morado"
-      },
-      {
-       "es": "naranja",
-       "icono": "iconos/1f7e0.svg",
-       "aceptar": [
-        "anaranjado"
+       "dice": "Escucha bien el color de cada puerta.",
+       "mapa": [
+        "...............",
+        "...............",
+        "P...G.#....G..M",
+        "###############"
        ],
-       "en": "naranja"
-      }
-     ],
-     "x": 2041,
-     "y": 645,
-     "antes": [
+       "retos": [
+        {
+         "dice": "Toca el rojo.",
+         "opciones": [
+          {
+           "imagen": "iconos/1f535.svg"
+          },
+          {
+           "imagen": "iconos/1f534.svg"
+          },
+          {
+           "imagen": "iconos/1f7e1.svg"
+          }
+         ],
+         "correcta": 1,
+         "bien": "¡Rojo!"
+        },
+        {
+         "dice": "Toca el amarillo.",
+         "opciones": [
+          {
+           "imagen": "iconos/1f7e1.svg"
+          },
+          {
+           "imagen": "iconos/1f7e2.svg"
+          }
+         ],
+         "correcta": 0,
+         "bien": "¡Amarillo!"
+        }
+       ]
+      },
       {
-       "quien": "cuadrito",
-       "es": "Los colores caen. Atrapa el que te digo.",
-       "en": "Los colores caen. Atrapa el que te digo."
+       "dice": "Hay agua. ¿Qué puedes usar de puente?",
+       "mapa": [
+        "................",
+        "................",
+        "P..C.........G.M",
+        "######~~########"
+       ],
+       "retos": [
+        {
+         "dice": "Toca el azul.",
+         "opciones": [
+          {
+           "imagen": "iconos/1f7e2.svg"
+          },
+          {
+           "imagen": "iconos/1f7e3.svg"
+          },
+          {
+           "imagen": "iconos/1f535.svg"
+          }
+         ],
+         "correcta": 2,
+         "bien": "¡Azul!"
+        }
+       ]
+      },
+      {
+       "dice": "Abre la puerta y después enciende el puente.",
+       "mapa": [
+        "................",
+        "................",
+        "P...G..L.......M",
+        "########XXX#####"
+       ],
+       "retos": [
+        {
+         "dice": "Toca el verde.",
+         "opciones": [
+          {
+           "imagen": "iconos/1f7e2.svg"
+          },
+          {
+           "imagen": "iconos/1f534.svg"
+          }
+         ],
+         "correcta": 0,
+         "bien": "¡Verde!"
+        }
+       ]
       }
-     ],
-     "familia": {
-      "tema": "los colores para agrupar",
-      "idea": "Al guardar la ropa o los juguetes, pídale que haga montones por color y le diga por qué van juntos."
-     },
-     "requiere": "cuadrito-colores-2",
-     "atrapa": {
-      "cruceInicio": 6,
-      "cruceFinal": 4.5,
-      "distractores": [
-       2,
-       2,
-       3
-      ]
-     }
+     ]
     },
     {
      "id": "cuadrito-tamano",
-     "titulo": "¿Grande o pequeño?",
-     "plantilla": "escucha-toca",
+     "titulo": "Grande y pequeño",
+     "plantilla": "plataformas",
      "icono": "iconos/grande.svg",
      "palabras": [
       {
@@ -680,143 +492,76 @@
      "antes": [
       {
        "quien": "cuadrito",
-       "es": "Mira bien: escucha y toca el dibujo.",
-       "en": "Mira bien: escucha y toca el dibujo."
-      }
-     ],
-     "familia": {
-      "tema": "grande y pequeño, igual y diferente",
-      "idea": "En la cocina, muestre dos frutas y pregunte: ¿cuál es la grande?, ¿son iguales o diferentes? Que le explique cómo se dio cuenta."
-     }
-    },
-    {
-     "id": "cuadrito-tamano-2",
-     "titulo": "Atrapa grande y pequeño",
-     "plantilla": "escucha-atrapa",
-     "icono": "iconos/pequeno.svg",
-     "palabras": [
-      {
-       "es": "grande",
-       "icono": "iconos/grande.svg",
-       "frase": "La manzana grande.",
-       "en": "grande"
-      },
-      {
-       "es": "pequeño",
-       "icono": "iconos/pequeno.svg",
-       "frase": "La manzana pequeña.",
-       "aceptar": [
-        "pequeno",
-        "pequeña",
-        "chiquito",
-        "chiquita"
-       ],
-       "en": "pequeño"
-      },
-      {
-       "es": "iguales",
-       "icono": "iconos/iguales.svg",
-       "frase": "Dos frutas iguales.",
-       "aceptar": [
-        "igual"
-       ],
-       "en": "iguales"
-      },
-      {
-       "es": "diferentes",
-       "icono": "iconos/diferentes.svg",
-       "frase": "Dos frutas diferentes.",
-       "aceptar": [
-        "diferente",
-        "distintas",
-        "distinto"
-       ],
-       "en": "diferentes"
-      }
-     ],
-     "x": 1834,
-     "y": 1477,
-     "antes": [
-      {
-       "quien": "cuadrito",
-       "es": "Atrapa el dibujo que te digo.",
-       "en": "Atrapa el dibujo que te digo."
+       "es": "Para abrir estas puertas hay que mirar bien: grande, pequeño, igual o diferente.",
+       "en": "Para abrir estas puertas hay que mirar bien: grande, pequeño, igual o diferente."
       }
      ],
      "familia": {
       "tema": "grande y pequeño, igual y diferente",
       "idea": "En la cocina, muestre dos frutas y pregunte: ¿cuál es la grande?, ¿son iguales o diferentes? Que le explique cómo se dio cuenta."
      },
-     "requiere": "cuadrito-tamano",
-     "atrapa": {
-      "cruceInicio": 6,
-      "cruceFinal": 4.5,
-      "distractores": [
-       2,
-       2,
-       3
-      ]
-     }
-    },
-    {
-     "id": "cuadrito-tamano-3",
-     "titulo": "Di iguales o diferentes",
-     "plantilla": "di-brilla",
-     "icono": "iconos/iguales.svg",
-     "palabras": [
+     "plataformas": [
       {
-       "es": "grande",
-       "icono": "iconos/grande.svg",
-       "frase": "La manzana grande.",
-       "en": "grande"
+       "dice": "Sube los escalones y llega a la puerta.",
+       "mapa": [
+        "...............",
+        "..........#....",
+        "P....G...##...M",
+        "###############"
+       ],
+       "retos": [
+        {
+         "dice": "¿Cuál manzana es la pequeña?",
+         "opciones": [
+          {
+           "imagen": "iconos/manzana.svg",
+           "tam": "grande"
+          },
+          {
+           "imagen": "iconos/manzana.svg",
+           "tam": "pequeno"
+          }
+         ],
+         "correcta": 1,
+         "bien": "¡La pequeña!"
+        }
+       ]
       },
       {
-       "es": "pequeño",
-       "icono": "iconos/pequeno.svg",
-       "frase": "La manzana pequeña.",
-       "aceptar": [
-        "pequeno",
-        "pequeña",
-        "chiquito",
-        "chiquita"
+       "dice": "La puerta está arriba. ¿Cómo subes?",
+       "mapa": [
+        "...............",
+        "...........G..M",
+        "........#######",
+        "P..C....#######",
+        "###############"
        ],
-       "en": "pequeño"
+       "retos": [
+        {
+         "dice": "Toca las que son iguales.",
+         "opciones": [
+          {
+           "imagen": "iconos/iguales.svg"
+          },
+          {
+           "imagen": "iconos/diferentes.svg"
+          }
+         ],
+         "correcta": 0,
+         "bien": "¡Iguales!"
+        }
+       ]
       },
       {
-       "es": "iguales",
-       "icono": "iconos/iguales.svg",
-       "frase": "Dos frutas iguales.",
-       "aceptar": [
-        "igual"
-       ],
-       "en": "iguales"
-      },
-      {
-       "es": "diferentes",
-       "icono": "iconos/diferentes.svg",
-       "frase": "Dos frutas diferentes.",
-       "aceptar": [
-        "diferente",
-        "distintas",
-        "distinto"
-       ],
-       "en": "diferentes"
+       "dice": "Enciende el puente con la palanca y lleva la caja hasta la pared.",
+       "mapa": [
+        "..............M.",
+        "............####",
+        "PLC.........####",
+        "#####XXX########"
+       ]
       }
-     ],
-     "x": 2006,
-     "y": 1347,
-     "antes": [
-      {
-       "quien": "cuadrito",
-       "es": "Mira y dilo tú. ¡Cada intento cuenta!",
-       "en": "Mira y dilo tú. ¡Cada intento cuenta!"
-      }
-     ],
-     "familia": {
-      "tema": "grande y pequeño, igual y diferente",
-      "idea": "En la cocina, muestre dos frutas y pregunte: ¿cuál es la grande?, ¿son iguales o diferentes? Que le explique cómo se dio cuenta."
-     },
-     "requiere": "cuadrito-tamano-2"
+     ]
     },
     {
      "id": "cuadrito-cuantos",
@@ -915,9 +660,9 @@
     },
     {
      "id": "cuadrito-cuantos-2",
-     "titulo": "¿Cuántas ves?",
-     "plantilla": "escucha-toca",
-     "icono": "iconos/dos.svg",
+     "titulo": "La puerta de los números",
+     "plantilla": "plataformas",
+     "icono": "iconos/tres.svg",
      "palabras": [
       {
        "es": "uno",
@@ -953,70 +698,136 @@
      "antes": [
       {
        "quien": "cuadrito",
-       "es": "Escucha el número y toca el dibujo que tiene esa cantidad.",
-       "en": "Escucha el número y toca el dibujo que tiene esa cantidad."
+       "es": "Estas puertas te preguntan cuántos hay. Cuenta despacito.",
+       "en": "Estas puertas te preguntan cuántos hay. Cuenta despacito."
       }
      ],
      "familia": {
       "tema": "cuántos hay: uno, dos y tres",
       "idea": "Ponga en la mesa una, dos o tres cucharas y pregúntele cuántas hay, sin contar con el dedo: ¡de un vistazo! Luego cambien de turno."
      },
-     "requiere": "cuadrito-cuantos"
-    },
-    {
-     "id": "cuadrito-cuantos-3",
-     "titulo": "Di cuántas hay",
-     "plantilla": "di-brilla",
-     "icono": "iconos/uno.svg",
-     "palabras": [
+     "requiere": "cuadrito-cuantos",
+     "plataformas": [
       {
-       "es": "uno",
-       "icono": "iconos/uno.svg",
-       "frase": "Una estrella.",
-       "aceptar": [
-        "1",
-        "una"
+       "dice": "Cuenta lo que te muestra cada puerta.",
+       "mapa": [
+        "................",
+        "................",
+        "P...G....#..G..M",
+        "################"
        ],
-       "en": "uno"
+       "retos": [
+        {
+         "dice": "¿Cuántos peces hay?",
+         "ver": {
+          "imagen": "iconos/pez.svg",
+          "cantidad": 1
+         },
+         "opciones": [
+          {
+           "texto": "1"
+          },
+          {
+           "texto": "2"
+          },
+          {
+           "texto": "3"
+          }
+         ],
+         "correcta": 0,
+         "bien": "¡Uno!"
+        },
+        {
+         "dice": "¿Cuántas flores hay?",
+         "ver": {
+          "imagen": "iconos/flor.svg",
+          "cantidad": 3
+         },
+         "opciones": [
+          {
+           "texto": "3"
+          },
+          {
+           "texto": "1"
+          },
+          {
+           "texto": "2"
+          }
+         ],
+         "correcta": 0,
+         "bien": "¡Tres flores!"
+        }
+       ]
       },
       {
-       "es": "dos",
-       "icono": "iconos/dos.svg",
-       "frase": "Dos estrellas.",
-       "aceptar": [
-        "2"
+       "dice": "Sube la escalera, baja y busca la puerta.",
+       "mapa": [
+        "................",
+        "......##........",
+        ".....###........",
+        "P...####....G..M",
+        "################"
        ],
-       "en": "dos"
+       "retos": [
+        {
+         "dice": "¿Cuántas estrellas hay?",
+         "ver": {
+          "imagen": "iconos/estrella.svg",
+          "cantidad": 2
+         },
+         "opciones": [
+          {
+           "texto": "3"
+          },
+          {
+           "texto": "2"
+          },
+          {
+           "texto": "1"
+          }
+         ],
+         "correcta": 1,
+         "bien": "¡Dos estrellas!"
+        }
+       ]
       },
       {
-       "es": "tres",
-       "icono": "iconos/tres.svg",
-       "frase": "Tres estrellas.",
-       "aceptar": [
-        "3"
+       "dice": "Usa la caja para cruzar el agua.",
+       "mapa": [
+        "................",
+        "................",
+        "P...C......G...M",
+        "#######~~#######"
        ],
-       "en": "tres"
+       "retos": [
+        {
+         "dice": "¿Cuántos peces hay?",
+         "ver": {
+          "imagen": "iconos/pez.svg",
+          "cantidad": 3
+         },
+         "opciones": [
+          {
+           "texto": "2"
+          },
+          {
+           "texto": "1"
+          },
+          {
+           "texto": "3"
+          }
+         ],
+         "correcta": 2,
+         "bien": "¡Tres peces!"
+        }
+       ]
       }
-     ],
-     "x": 871,
-     "y": 2064,
-     "antes": [
-      {
-       "quien": "cuadrito",
-       "es": "Mira cuántas estrellas hay y dilo. ¡Cada intento cuenta!",
-       "en": "Mira cuántas estrellas hay y dilo. ¡Cada intento cuenta!"
-      }
-     ],
-     "familia": {
-      "tema": "cuántos hay: uno, dos y tres",
-      "idea": "Ponga en la mesa una, dos o tres cucharas y pregúntele cuántas hay, sin contar con el dedo: ¡de un vistazo! Luego cambien de turno."
-     },
-     "requiere": "cuadrito-cuantos-2"
+     ]
     },
     {
      "id": "cuadrito-formas",
-     "titulo": "Toca la forma",
-     "plantilla": "escucha-toca",
+     "titulo": "Formas en el camino",
+     "plantilla": "plataformas",
      "icono": "iconos/triangulo.svg",
      "palabras": [
       {
@@ -1054,65 +865,107 @@
      "antes": [
       {
        "quien": "cuadrito",
-       "es": "Escucha el nombre de la forma y tócala.",
-       "en": "Escucha el nombre de la forma y tócala."
-      }
-     ],
-     "familia": {
-      "tema": "las formas: círculo, cuadrado, triángulo y rectángulo",
-      "idea": "Salgan a buscar formas en la casa o en la calle: la tapa es un círculo, la ventana un cuadrado. Gana quien encuentre más."
-     }
-    },
-    {
-     "id": "cuadrito-formas-2",
-     "titulo": "Di la forma",
-     "plantilla": "di-brilla",
-     "icono": "iconos/circulo.svg",
-     "palabras": [
-      {
-       "es": "círculo",
-       "icono": "iconos/circulo.svg",
-       "aceptar": [
-        "circulo"
-       ],
-       "en": "círculo"
-      },
-      {
-       "es": "cuadrado",
-       "icono": "iconos/cuadrado.svg",
-       "en": "cuadrado"
-      },
-      {
-       "es": "triángulo",
-       "icono": "iconos/triangulo.svg",
-       "aceptar": [
-        "triangulo"
-       ],
-       "en": "triángulo"
-      },
-      {
-       "es": "rectángulo",
-       "icono": "iconos/rectangulo.svg",
-       "aceptar": [
-        "rectangulo"
-       ],
-       "en": "rectángulo"
-      }
-     ],
-     "x": 1708,
-     "y": 2208,
-     "antes": [
-      {
-       "quien": "cuadrito",
-       "es": "Mira la forma y di cómo se llama. ¡Cada intento cuenta!",
-       "en": "Mira la forma y di cómo se llama. ¡Cada intento cuenta!"
+       "es": "Cada puerta tiene una forma escondida. Toca la que te digo.",
+       "en": "Cada puerta tiene una forma escondida. Toca la que te digo."
       }
      ],
      "familia": {
       "tema": "las formas: círculo, cuadrado, triángulo y rectángulo",
       "idea": "Salgan a buscar formas en la casa o en la calle: la tapa es un círculo, la ventana un cuadrado. Gana quien encuentre más."
      },
-     "requiere": "cuadrito-formas"
+     "plataformas": [
+      {
+       "dice": "Escucha el nombre de la forma.",
+       "mapa": [
+        "................",
+        "................",
+        "P..G...#...G...M",
+        "################"
+       ],
+       "retos": [
+        {
+         "dice": "Toca el círculo.",
+         "opciones": [
+          {
+           "imagen": "iconos/cuadrado.svg"
+          },
+          {
+           "imagen": "iconos/circulo.svg"
+          },
+          {
+           "imagen": "iconos/triangulo.svg"
+          }
+         ],
+         "correcta": 1,
+         "bien": "¡El círculo!"
+        },
+        {
+         "dice": "Toca el triángulo.",
+         "opciones": [
+          {
+           "imagen": "iconos/triangulo.svg"
+          },
+          {
+           "imagen": "iconos/rectangulo.svg"
+          }
+         ],
+         "correcta": 0,
+         "bien": "¡El triángulo!"
+        }
+       ]
+      },
+      {
+       "dice": "Enciende el puente y sigue.",
+       "mapa": [
+        "................",
+        "................",
+        "P.L.....G......M",
+        "###XXX##########"
+       ],
+       "retos": [
+        {
+         "dice": "Toca el cuadrado.",
+         "opciones": [
+          {
+           "imagen": "iconos/circulo.svg"
+          },
+          {
+           "imagen": "iconos/cuadrado.svg"
+          }
+         ],
+         "correcta": 1,
+         "bien": "¡El cuadrado!"
+        }
+       ]
+      },
+      {
+       "dice": "Abre la puerta y usa la caja para subir.",
+       "mapa": [
+        "..............M.",
+        "...........#####",
+        "P..G...C...#####",
+        "################"
+       ],
+       "retos": [
+        {
+         "dice": "Toca el rectángulo.",
+         "opciones": [
+          {
+           "imagen": "iconos/rectangulo.svg"
+          },
+          {
+           "imagen": "iconos/triangulo.svg"
+          },
+          {
+           "imagen": "iconos/circulo.svg"
+          }
+         ],
+         "correcta": 0,
+         "bien": "¡El rectángulo!"
+        }
+       ]
+      }
+     ]
     },
     {
      "id": "cuadrito-pozo",
@@ -1122,13 +975,9 @@
      "palabras": [],
      "palabrasDe": [
       "cuadrito-arriba",
-      "cuadrito-arriba-2",
       "cuadrito-dentro",
-      "cuadrito-dentro-2",
       "cuadrito-colores",
-      "cuadrito-colores-2",
       "cuadrito-tamano",
-      "cuadrito-tamano-2",
       "cuadrito-cuantos",
       "cuadrito-cuantos-2",
       "cuadrito-formas"
@@ -1533,7 +1382,7 @@
        "icono": "mundo/animal-2.webp",
        "pronuncia": "bá-ter-flai"
       },
-      "aparece": "cuadrito-arriba-2"
+      "aparece": "cuadrito-arriba"
      },
      {
       "imagen": "mundo/animal-1.webp",
@@ -1549,7 +1398,7 @@
        "icono": "mundo/animal-1.webp",
        "pronuncia": "bá-ter-flai"
       },
-      "aparece": "cuadrito-arriba-3"
+      "aparece": "cuadrito-arriba"
      },
      {
       "imagen": "mundo/animal-3.webp",
@@ -1581,7 +1430,7 @@
        "icono": "mundo/animal-3.webp",
        "pronuncia": "bi"
       },
-      "aparece": "cuadrito-dentro-2"
+      "aparece": "cuadrito-dentro"
      },
      {
       "imagen": "mundo/animal-3.webp",
@@ -1597,7 +1446,7 @@
        "icono": "mundo/animal-3.webp",
        "pronuncia": "bi"
       },
-      "aparece": "cuadrito-dentro-3"
+      "aparece": "cuadrito-dentro"
      },
      {
       "imagen": "mundo/animal-5.webp",
@@ -1629,7 +1478,7 @@
        "icono": "mundo/animal-5.webp",
        "pronuncia": "frog"
       },
-      "aparece": "cuadrito-colores-2"
+      "aparece": "cuadrito-colores"
      },
      {
       "imagen": "mundo/animal-5.webp",
@@ -1645,7 +1494,7 @@
        "icono": "mundo/animal-5.webp",
        "pronuncia": "frog"
       },
-      "aparece": "cuadrito-colores-3"
+      "aparece": "cuadrito-colores"
      },
      {
       "imagen": "mundo/animal-6.webp",
@@ -1677,7 +1526,7 @@
        "icono": "mundo/animal-6.webp",
        "pronuncia": "berd"
       },
-      "aparece": "cuadrito-tamano-2"
+      "aparece": "cuadrito-tamano"
      },
      {
       "imagen": "mundo/animal-4.webp",
@@ -1693,7 +1542,7 @@
        "icono": "mundo/animal-4.webp",
        "pronuncia": "aul"
       },
-      "aparece": "cuadrito-tamano-3"
+      "aparece": "cuadrito-tamano"
      },
      {
       "imagen": "mundo/animal-4.webp",
@@ -1741,7 +1590,7 @@
        "icono": "mundo/animal-3.webp",
        "pronuncia": "bi"
       },
-      "aparece": "cuadrito-cuantos-3"
+      "aparece": "cuadrito-cuantos-2"
      },
      {
       "imagen": "mundo/animal-5.webp",
@@ -1773,7 +1622,7 @@
        "icono": "mundo/animal-1.webp",
        "pronuncia": "bá-ter-flai"
       },
-      "aparece": "cuadrito-formas-2"
+      "aparece": "cuadrito-formas"
      },
      {
       "imagen": "mundo/animal-2.webp",
@@ -1879,7 +1728,7 @@
       "x": 2178,
       "y": 1606,
       "choque": 0,
-      "zona": "cuadrito-tamano-3"
+      "zona": "cuadrito-tamano"
      },
      {
       "imagen": "pagina/arbol-1.webp",
@@ -1895,7 +1744,7 @@
       "x": 2190,
       "y": 272,
       "choque": 18,
-      "zona": "cuadrito-colores-3"
+      "zona": "cuadrito-colores"
      },
      {
       "imagen": "pagina/arbol-3.webp",
@@ -1911,7 +1760,7 @@
       "x": 1536,
       "y": 315,
       "choque": 22,
-      "zona": "cuadrito-dentro-3"
+      "zona": "cuadrito-dentro"
      },
      {
       "imagen": "pagina/arbol-2.webp",
@@ -1919,7 +1768,7 @@
       "x": 138,
       "y": 1290,
       "choque": 18,
-      "zona": "cuadrito-arriba-3"
+      "zona": "cuadrito-arriba"
      },
      {
       "imagen": "pagina/arbol-3.webp",
@@ -1927,7 +1776,7 @@
       "x": 2190,
       "y": 1104,
       "choque": 22,
-      "zona": "cuadrito-tamano-3"
+      "zona": "cuadrito-tamano"
      },
      {
       "imagen": "pagina/arbol-1.webp",
@@ -1935,7 +1784,7 @@
       "x": 573,
       "y": 1347,
       "choque": 22,
-      "zona": "cuadrito-arriba-3"
+      "zona": "cuadrito-arriba"
      },
      {
       "imagen": "pagina/arbol-2.webp",
@@ -1959,7 +1808,7 @@
       "x": 1055,
       "y": 2709,
       "choque": 22,
-      "zona": "cuadrito-cuantos-3"
+      "zona": "cuadrito-cuantos-2"
      },
      {
       "imagen": "pagina/arbol-2.webp",
@@ -1967,7 +1816,7 @@
       "x": 2201,
       "y": 2351,
       "choque": 18,
-      "zona": "cuadrito-formas-2"
+      "zona": "cuadrito-formas"
      },
      {
       "imagen": "pagina/arbol-3.webp",
@@ -1983,7 +1832,7 @@
       "x": 1582,
       "y": 1720,
       "choque": 18,
-      "zona": "cuadrito-tamano-2"
+      "zona": "cuadrito-tamano"
      },
      {
       "imagen": "pagina/arbusto.webp",
@@ -1999,7 +1848,7 @@
       "x": 1353,
       "y": 459,
       "choque": 0,
-      "zona": "cuadrito-dentro-3"
+      "zona": "cuadrito-dentro"
      },
      {
       "imagen": "pagina/arbusto.webp",
@@ -2007,7 +1856,7 @@
       "x": 894,
       "y": 1978,
       "choque": 0,
-      "zona": "cuadrito-cuantos-3"
+      "zona": "cuadrito-cuantos-2"
      },
      {
       "imagen": "pagina/arbusto.webp",
@@ -2015,7 +1864,7 @@
       "x": 2064,
       "y": 1390,
       "choque": 0,
-      "zona": "cuadrito-tamano-3"
+      "zona": "cuadrito-tamano"
      },
      {
       "imagen": "pagina/tulipanes.webp",
@@ -2023,7 +1872,7 @@
       "x": 757,
       "y": 573,
       "choque": 0,
-      "zona": "cuadrito-arriba-2"
+      "zona": "cuadrito-arriba"
      },
      {
       "imagen": "pagina/tulipanes.webp",
@@ -2071,7 +1920,7 @@
       "x": 1430,
       "y": 163,
       "choque": 0,
-      "zona": "cuadrito-dentro-3"
+      "zona": "cuadrito-dentro"
      },
      {
       "imagen": "pagina/arbol-3.webp",
@@ -2079,7 +1928,7 @@
       "x": 1945,
       "y": 148,
       "choque": 0,
-      "zona": "cuadrito-colores-3"
+      "zona": "cuadrito-colores"
      },
      {
       "imagen": "pagina/arbol-3.webp",
@@ -2087,7 +1936,7 @@
       "x": 679,
       "y": 289,
       "choque": 0,
-      "zona": "cuadrito-arriba-2"
+      "zona": "cuadrito-arriba"
      },
      {
       "imagen": "pagina/arbol-1.webp",
@@ -2095,7 +1944,7 @@
       "x": 1188,
       "y": 274,
       "choque": 0,
-      "zona": "cuadrito-dentro-3"
+      "zona": "cuadrito-dentro"
      },
      {
       "imagen": "pagina/arbusto.webp",
@@ -2103,7 +1952,7 @@
       "x": 1348,
       "y": 273,
       "choque": 0,
-      "zona": "cuadrito-dentro-3"
+      "zona": "cuadrito-dentro"
      },
      {
       "imagen": "pagina/arbusto.webp",
@@ -2127,7 +1976,7 @@
       "x": 2059,
       "y": 279,
       "choque": 0,
-      "zona": "cuadrito-colores-3"
+      "zona": "cuadrito-colores"
      },
      {
       "imagen": "pagina/arbol-1.webp",
@@ -2143,7 +1992,7 @@
       "x": 703,
       "y": 470,
       "choque": 0,
-      "zona": "cuadrito-arriba-2"
+      "zona": "cuadrito-arriba"
      },
      {
       "imagen": "pagina/arbol-3.webp",
@@ -2151,7 +2000,7 @@
       "x": 2088,
       "y": 473,
       "choque": 0,
-      "zona": "cuadrito-colores-3"
+      "zona": "cuadrito-colores"
      },
      {
       "imagen": "pagina/arbol-1.webp",
@@ -2175,7 +2024,7 @@
       "x": 2199,
       "y": 805,
       "choque": 0,
-      "zona": "cuadrito-colores-3"
+      "zona": "cuadrito-colores"
      },
      {
       "imagen": "pagina/arbol-1.webp",
@@ -2191,7 +2040,7 @@
       "x": 2230,
       "y": 966,
       "choque": 0,
-      "zona": "cuadrito-colores-3"
+      "zona": "cuadrito-colores"
      },
      {
       "imagen": "pagina/arbol-2.webp",
@@ -2199,7 +2048,7 @@
       "x": 78,
       "y": 1172,
       "choque": 0,
-      "zona": "cuadrito-arriba-3"
+      "zona": "cuadrito-arriba"
      },
      {
       "imagen": "pagina/arbol-1.webp",
@@ -2207,7 +2056,7 @@
       "x": 439,
       "y": 1194,
       "choque": 0,
-      "zona": "cuadrito-arriba-3"
+      "zona": "cuadrito-arriba"
      },
      {
       "imagen": "pagina/arbol-2.webp",
@@ -2271,7 +2120,7 @@
       "x": 1724,
       "y": 1744,
       "choque": 0,
-      "zona": "cuadrito-tamano-2"
+      "zona": "cuadrito-tamano"
      },
      {
       "imagen": "pagina/arbol-2.webp",
@@ -2279,7 +2128,7 @@
       "x": 976,
       "y": 1853,
       "choque": 0,
-      "zona": "cuadrito-cuantos-3"
+      "zona": "cuadrito-cuantos-2"
      },
      {
       "imagen": "pagina/arbol-3.webp",
@@ -2295,7 +2144,7 @@
       "x": 1685,
       "y": 1869,
       "choque": 0,
-      "zona": "cuadrito-formas-2"
+      "zona": "cuadrito-formas"
      },
      {
       "imagen": "pagina/arbol-1.webp",
@@ -2311,7 +2160,7 @@
       "x": 950,
       "y": 2091,
       "choque": 0,
-      "zona": "cuadrito-cuantos-3"
+      "zona": "cuadrito-cuantos-2"
      },
      {
       "imagen": "pagina/arbol-1.webp",
@@ -2351,7 +2200,7 @@
       "x": 977,
       "y": 2554,
       "choque": 0,
-      "zona": "cuadrito-cuantos-3"
+      "zona": "cuadrito-cuantos-2"
      },
      {
       "imagen": "pagina/arbol-2.webp",
@@ -2367,7 +2216,7 @@
       "x": 1719,
       "y": 2555,
       "choque": 0,
-      "zona": "cuadrito-formas-2"
+      "zona": "cuadrito-formas"
      },
      {
       "imagen": "pagina/arbol-1.webp",
@@ -2415,7 +2264,7 @@
       "x": 1707,
       "y": 2802,
       "choque": 0,
-      "zona": "cuadrito-formas-2"
+      "zona": "cuadrito-formas"
      },
      {
       "imagen": "pagina/tulipanes.webp",
@@ -2423,7 +2272,7 @@
       "x": 608,
       "y": 588,
       "choque": 0,
-      "aparece": "cuadrito-arriba-2"
+      "aparece": "cuadrito-arriba"
      },
      {
       "imagen": "pagina/arbusto.webp",
@@ -2431,7 +2280,7 @@
       "x": 321,
       "y": 774,
       "choque": 0,
-      "aparece": "cuadrito-arriba-3"
+      "aparece": "cuadrito-arriba"
      },
      {
       "imagen": "pagina/tulipanes.webp",
@@ -2439,7 +2288,7 @@
       "x": 1032,
       "y": 545,
       "choque": 0,
-      "aparece": "cuadrito-dentro-2"
+      "aparece": "cuadrito-dentro"
      },
      {
       "imagen": "pagina/arbusto.webp",
@@ -2447,7 +2296,7 @@
       "x": 1284,
       "y": 731,
       "choque": 0,
-      "aparece": "cuadrito-dentro-3"
+      "aparece": "cuadrito-dentro"
      },
      {
       "imagen": "pagina/tulipanes.webp",
@@ -2455,7 +2304,7 @@
       "x": 1995,
       "y": 545,
       "choque": 0,
-      "aparece": "cuadrito-colores-2"
+      "aparece": "cuadrito-colores"
      },
      {
       "imagen": "pagina/arbol-2.webp",
@@ -2463,7 +2312,7 @@
       "x": 1766,
       "y": 459,
       "choque": 0,
-      "aparece": "cuadrito-colores-3"
+      "aparece": "cuadrito-colores"
      },
      {
       "imagen": "pagina/banca.webp",
@@ -2471,7 +2320,7 @@
       "x": 1697,
       "y": 1491,
       "choque": 0,
-      "aparece": "cuadrito-tamano-2"
+      "aparece": "cuadrito-tamano"
      },
      {
       "imagen": "pagina/tulipanes.webp",
@@ -2479,7 +2328,7 @@
       "x": 1972,
       "y": 1233,
       "choque": 0,
-      "aparece": "cuadrito-tamano-3"
+      "aparece": "cuadrito-tamano"
      },
      {
       "imagen": "pagina/tulipanes.webp",
@@ -2495,7 +2344,7 @@
       "x": 803,
       "y": 2179,
       "choque": 0,
-      "aparece": "cuadrito-cuantos-3"
+      "aparece": "cuadrito-cuantos-2"
      },
      {
       "imagen": "pagina/tulipanes.webp",
@@ -2503,7 +2352,7 @@
       "x": 1743,
       "y": 2064,
       "choque": 0,
-      "aparece": "cuadrito-formas-2"
+      "aparece": "cuadrito-formas"
      },
      {
       "imagen": "pagina/tulipanes.webp",
@@ -2928,7 +2777,7 @@
     "mapaLapiz": "fondos/pagina-1-lapiz.webp",
     "atajos": [
      {
-      "zona": "cuadrito-cuantos-3",
+      "zona": "cuadrito-cuantos-2",
       "bloqueos": [
        {
         "x": 440,
@@ -2943,7 +2792,7 @@
       ]
      },
      {
-      "zona": "cuadrito-tamano-3",
+      "zona": "cuadrito-tamano",
       "bloqueos": [
        {
         "x": 2102,
@@ -2958,7 +2807,7 @@
       ]
      },
      {
-      "zona": "cuadrito-dentro-3",
+      "zona": "cuadrito-dentro",
       "bloqueos": [
        {
         "x": 1574,
@@ -2992,7 +2841,7 @@
       "x": 600,
       "y": 0,
       "r": 300,
-      "zona": "cuadrito-arriba-2",
+      "zona": "cuadrito-arriba",
       "retraso": 0.52
      },
      {
@@ -3006,14 +2855,14 @@
       "x": 1200,
       "y": 0,
       "r": 300,
-      "zona": "cuadrito-dentro-3",
+      "zona": "cuadrito-dentro",
       "retraso": 0.45
      },
      {
       "x": 1500,
       "y": 0,
       "r": 300,
-      "zona": "cuadrito-dentro-3",
+      "zona": "cuadrito-dentro",
       "retraso": 0.45
      },
      {
@@ -3027,14 +2876,14 @@
       "x": 2100,
       "y": 0,
       "r": 300,
-      "zona": "cuadrito-colores-3",
+      "zona": "cuadrito-colores",
       "retraso": 0.46
      },
      {
       "x": 2400,
       "y": 0,
       "r": 300,
-      "zona": "cuadrito-colores-3",
+      "zona": "cuadrito-colores",
       "retraso": 0.53
      },
      {
@@ -3055,7 +2904,7 @@
       "x": 600,
       "y": 300,
       "r": 300,
-      "zona": "cuadrito-arriba-2",
+      "zona": "cuadrito-arriba",
       "retraso": 0.31
      },
      {
@@ -3069,14 +2918,14 @@
       "x": 1200,
       "y": 300,
       "r": 300,
-      "zona": "cuadrito-dentro-3",
+      "zona": "cuadrito-dentro",
       "retraso": 0.25
      },
      {
       "x": 1500,
       "y": 300,
       "r": 300,
-      "zona": "cuadrito-dentro-3",
+      "zona": "cuadrito-dentro",
       "retraso": 0.4
      },
      {
@@ -3090,14 +2939,14 @@
       "x": 2100,
       "y": 300,
       "r": 300,
-      "zona": "cuadrito-colores-3",
+      "zona": "cuadrito-colores",
       "retraso": 0.25
      },
      {
       "x": 2400,
       "y": 300,
       "r": 300,
-      "zona": "cuadrito-colores-3",
+      "zona": "cuadrito-colores",
       "retraso": 0.36
      },
      {
@@ -3118,7 +2967,7 @@
       "x": 600,
       "y": 600,
       "r": 300,
-      "zona": "cuadrito-arriba-2",
+      "zona": "cuadrito-arriba",
       "retraso": 0.1
      },
      {
@@ -3132,35 +2981,35 @@
       "x": 1200,
       "y": 600,
       "r": 300,
-      "zona": "cuadrito-dentro-3",
+      "zona": "cuadrito-dentro",
       "retraso": 0.4
      },
      {
       "x": 1500,
       "y": 600,
       "r": 300,
-      "zona": "cuadrito-dentro-3",
+      "zona": "cuadrito-dentro",
       "retraso": 0.4
      },
      {
       "x": 1800,
       "y": 600,
       "r": 300,
-      "zona": "cuadrito-dentro-3",
+      "zona": "cuadrito-dentro",
       "retraso": 0.4
      },
      {
       "x": 2100,
       "y": 600,
       "r": 300,
-      "zona": "cuadrito-colores-3",
+      "zona": "cuadrito-colores",
       "retraso": 0.05
      },
      {
       "x": 2400,
       "y": 600,
       "r": 300,
-      "zona": "cuadrito-colores-3",
+      "zona": "cuadrito-colores",
       "retraso": 0.26
      },
      {
@@ -3174,14 +3023,14 @@
       "x": 300,
       "y": 900,
       "r": 300,
-      "zona": "cuadrito-cuantos-3",
+      "zona": "cuadrito-cuantos-2",
       "retraso": 0.4
      },
      {
       "x": 600,
       "y": 900,
       "r": 300,
-      "zona": "cuadrito-arriba-3",
+      "zona": "cuadrito-arriba",
       "retraso": 0.11
      },
      {
@@ -3195,7 +3044,7 @@
       "x": 1200,
       "y": 900,
       "r": 300,
-      "zona": "cuadrito-dentro-2",
+      "zona": "cuadrito-dentro",
       "retraso": 0.17
      },
      {
@@ -3209,42 +3058,42 @@
       "x": 1800,
       "y": 900,
       "r": 300,
-      "zona": "cuadrito-colores-2",
+      "zona": "cuadrito-colores",
       "retraso": 0.17
      },
      {
       "x": 2100,
       "y": 900,
       "r": 300,
-      "zona": "cuadrito-colores-3",
+      "zona": "cuadrito-colores",
       "retraso": 0.19
      },
      {
       "x": 2400,
       "y": 900,
       "r": 300,
-      "zona": "cuadrito-colores-3",
+      "zona": "cuadrito-colores",
       "retraso": 0.31
      },
      {
       "x": 0,
       "y": 1200,
       "r": 300,
-      "zona": "cuadrito-arriba-3",
+      "zona": "cuadrito-arriba",
       "retraso": 0.43
      },
      {
       "x": 300,
       "y": 1200,
       "r": 300,
-      "zona": "cuadrito-cuantos-3",
+      "zona": "cuadrito-cuantos-2",
       "retraso": 0.4
      },
      {
       "x": 600,
       "y": 1200,
       "r": 300,
-      "zona": "cuadrito-arriba-3",
+      "zona": "cuadrito-arriba",
       "retraso": 0.29
      },
      {
@@ -3279,14 +3128,14 @@
       "x": 2100,
       "y": 1200,
       "r": 300,
-      "zona": "cuadrito-tamano-3",
+      "zona": "cuadrito-tamano",
       "retraso": 0.12
      },
      {
       "x": 2400,
       "y": 1200,
       "r": 300,
-      "zona": "cuadrito-tamano-3",
+      "zona": "cuadrito-tamano",
       "retraso": 0.3
      },
      {
@@ -3300,7 +3149,7 @@
       "x": 300,
       "y": 1500,
       "r": 300,
-      "zona": "cuadrito-cuantos-3",
+      "zona": "cuadrito-cuantos-2",
       "retraso": 0.4
      },
      {
@@ -3335,21 +3184,21 @@
       "x": 1800,
       "y": 1500,
       "r": 300,
-      "zona": "cuadrito-tamano-3",
+      "zona": "cuadrito-tamano",
       "retraso": 0.4
      },
      {
       "x": 2100,
       "y": 1500,
       "r": 300,
-      "zona": "cuadrito-tamano-3",
+      "zona": "cuadrito-tamano",
       "retraso": 0.4
      },
      {
       "x": 2400,
       "y": 1500,
       "r": 300,
-      "zona": "cuadrito-tamano-3",
+      "zona": "cuadrito-tamano",
       "retraso": 0.3
      },
      {
@@ -3363,28 +3212,28 @@
       "x": 300,
       "y": 1800,
       "r": 300,
-      "zona": "cuadrito-cuantos-3",
+      "zona": "cuadrito-cuantos-2",
       "retraso": 0.4
      },
      {
       "x": 600,
       "y": 1800,
       "r": 300,
-      "zona": "cuadrito-cuantos-3",
+      "zona": "cuadrito-cuantos-2",
       "retraso": 0.4
      },
      {
       "x": 900,
       "y": 1800,
       "r": 300,
-      "zona": "cuadrito-cuantos-3",
+      "zona": "cuadrito-cuantos-2",
       "retraso": 0.19
      },
      {
       "x": 1200,
       "y": 1800,
       "r": 300,
-      "zona": "cuadrito-cuantos-3",
+      "zona": "cuadrito-cuantos-2",
       "retraso": 0.3
      },
      {
@@ -3398,21 +3247,21 @@
       "x": 1800,
       "y": 1800,
       "r": 300,
-      "zona": "cuadrito-tamano-2",
+      "zona": "cuadrito-tamano",
       "retraso": 0.23
      },
      {
       "x": 2100,
       "y": 1800,
       "r": 300,
-      "zona": "cuadrito-tamano-3",
+      "zona": "cuadrito-tamano",
       "retraso": 0.4
      },
      {
       "x": 2400,
       "y": 1800,
       "r": 300,
-      "zona": "cuadrito-tamano-3",
+      "zona": "cuadrito-tamano",
       "retraso": 0.43
      },
      {
@@ -3433,21 +3282,21 @@
       "x": 600,
       "y": 2100,
       "r": 300,
-      "zona": "cuadrito-cuantos-3",
+      "zona": "cuadrito-cuantos-2",
       "retraso": 0.4
      },
      {
       "x": 900,
       "y": 2100,
       "r": 300,
-      "zona": "cuadrito-cuantos-3",
+      "zona": "cuadrito-cuantos-2",
       "retraso": 0.03
      },
      {
       "x": 1200,
       "y": 2100,
       "r": 300,
-      "zona": "cuadrito-cuantos-3",
+      "zona": "cuadrito-cuantos-2",
       "retraso": 0.24
      },
      {
@@ -3461,21 +3310,21 @@
       "x": 1800,
       "y": 2100,
       "r": 300,
-      "zona": "cuadrito-formas-2",
+      "zona": "cuadrito-formas",
       "retraso": 0.1
      },
      {
       "x": 2100,
       "y": 2100,
       "r": 300,
-      "zona": "cuadrito-tamano-3",
+      "zona": "cuadrito-tamano",
       "retraso": 0.4
      },
      {
       "x": 2400,
       "y": 2100,
       "r": 300,
-      "zona": "cuadrito-formas-2",
+      "zona": "cuadrito-formas",
       "retraso": 0.5
      },
      {
@@ -3503,7 +3352,7 @@
       "x": 900,
       "y": 2400,
       "r": 300,
-      "zona": "cuadrito-cuantos-3",
+      "zona": "cuadrito-cuantos-2",
       "retraso": 0.24
      },
      {
@@ -3524,21 +3373,21 @@
       "x": 1800,
       "y": 2400,
       "r": 300,
-      "zona": "cuadrito-formas-2",
+      "zona": "cuadrito-formas",
       "retraso": 0.15
      },
      {
       "x": 2100,
       "y": 2400,
       "r": 300,
-      "zona": "cuadrito-tamano-3",
+      "zona": "cuadrito-tamano",
       "retraso": 0.4
      },
      {
       "x": 2400,
       "y": 2400,
       "r": 300,
-      "zona": "cuadrito-formas-2",
+      "zona": "cuadrito-formas",
       "retraso": 0.51
      },
      {
@@ -3566,7 +3415,7 @@
       "x": 900,
       "y": 2700,
       "r": 300,
-      "zona": "cuadrito-cuantos-3",
+      "zona": "cuadrito-cuantos-2",
       "retraso": 0.45
      },
      {
@@ -3587,21 +3436,21 @@
       "x": 1800,
       "y": 2700,
       "r": 300,
-      "zona": "cuadrito-formas-2",
+      "zona": "cuadrito-formas",
       "retraso": 0.36
      },
      {
       "x": 2100,
       "y": 2700,
       "r": 300,
-      "zona": "cuadrito-tamano-3",
+      "zona": "cuadrito-tamano",
       "retraso": 0.4
      },
      {
       "x": 2400,
       "y": 2700,
       "r": 300,
-      "zona": "cuadrito-formas-2",
+      "zona": "cuadrito-formas",
       "retraso": 0.61
      },
      {
@@ -3650,21 +3499,21 @@
       "x": 1800,
       "y": 3000,
       "r": 300,
-      "zona": "cuadrito-formas-2",
+      "zona": "cuadrito-formas",
       "retraso": 0.57
      },
      {
       "x": 2100,
       "y": 3000,
       "r": 300,
-      "zona": "cuadrito-formas-2",
+      "zona": "cuadrito-formas",
       "retraso": 0.63
      },
      {
       "x": 2400,
       "y": 3000,
       "r": 300,
-      "zona": "cuadrito-formas-2",
+      "zona": "cuadrito-formas",
       "retraso": 0.75
      }
     ],
@@ -3966,7 +3815,7 @@
         860
        ]
       ],
-      "zona": "cuadrito-cuantos-3"
+      "zona": "cuadrito-cuantos-2"
      },
      {
       "nombre": "café",
@@ -3997,7 +3846,7 @@
         2523
        ]
       ],
-      "zona": "cuadrito-tamano-3"
+      "zona": "cuadrito-tamano"
      },
      {
       "nombre": "rojo",
@@ -4016,7 +3865,7 @@
         573
        ]
       ],
-      "zona": "cuadrito-dentro-3"
+      "zona": "cuadrito-dentro"
      }
     ]
    },
@@ -4784,5 +4633,14 @@
    "ancho": 1.05
   }
  ],
- "voz": {}
+ "voz": {},
+ "vista": {
+  "tipo": "camino",
+  "etapas": [
+   "El jardín",
+   "El pueblo",
+   "La montaña",
+   "El castillo"
+  ]
+ }
 }

@@ -36,6 +36,8 @@ const IMAGEN_FIESTA = 'personajes/goma-celebrar.webp';
 // Los de plataformas y cuento van aparte: el trabajador sin conexión lo guarda al instalar
 // (todo assets/ del niño entra al armazón), así que también abre sin red.
 const Plataformas = lazy(() => import('./juegos/plataformas/Plataformas').then((m) => ({ default: m.Plataformas })));
+const Camino = lazy(() => import('./mundos/Camino').then((m) => ({ default: m.Camino })));
+const Biblioteca = lazy(() => import('./mundos/Biblioteca').then((m) => ({ default: m.Biblioteca })));
 const Cuento = lazy(() => import('./juegos/cuento/Cuento').then((m) => ({ default: m.Cuento })));
 
 const JUEGOS: Record<Mision['plantilla'], ComponentType<PropsJuego>> = {
@@ -440,7 +442,26 @@ export function App() {
           <Disco paquete={paquete} avatar={activo === INVITADO ? progreso.heroe : (perfilDe(activo)?.avatar ?? progreso.heroe)} />
         </button>
       )}
-      {pantalla.tipo === 'mapa' && heroe && (
+      {pantalla.tipo === 'mapa' && heroe && cartilla.vista && (
+        <Suspense fallback={null}>
+          {(() => {
+            const Vista = cartilla.vista.tipo === 'camino' ? Camino : Biblioteca;
+            return (
+              <Vista
+                territorio={territorio}
+                heroe={heroe}
+                etapas={cartilla.vista.etapas}
+                estelas={cartilla.estelas}
+                accesorios={cartilla.accesorios ?? []}
+                base={BASE}
+                voz={cartilla.idiomaVoz}
+                onEntrar={(indice) => irA({ tipo: 'mision', indice })}
+              />
+            );
+          })()}
+        </Suspense>
+      )}
+      {pantalla.tipo === 'mapa' && heroe && !cartilla.vista && (
         <Mundo territorio={territorio} heroe={heroe} estelas={cartilla.estelas} accesorios={cartilla.accesorios ?? []} cinematicas={cartilla.cinematicas ?? {}} ayudas={cartilla.ayudas ?? {}} base={BASE} vozIngles={cartilla.idiomaVoz} vozEspanol={cartilla.idiomaHistoria} onEntrar={(indice) => irA({ tipo: 'mision', indice })} />
       )}
 

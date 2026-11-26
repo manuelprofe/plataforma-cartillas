@@ -14,16 +14,29 @@ import { Calcomania } from '../Calcomania';
 import { Icono } from './Icono';
 import { Tarjetas, ListaEstrellas } from './Imprimibles';
 import { cargarIndice, cargarTema } from '../materiales/datos';
+import { cargarPlan, diaDeClase, farolClase, proximaClase, type PlanTema } from './planGrupo';
 
 const SIN_INTERNET = 'Necesita internet';
 
-/** El primer tema con materiales y cómo se llaman sus dos clases (texto del paquete). */
-async function primerTema() {
-  const indice = await cargarIndice();
-  const e = indice.temas.find((t) => t.estado === 'listo');
+/**
+ * La próxima clase del primer grupo según su plan (tema, clase 1 o 2 y fecha). Sin plan, el primer
+ * tema con materiales, para invitar a planearlo.
+ */
+async function proximaDelGrupo(g: GrupoDoc) {
+  const [indice, plan] = await Promise.all([cargarIndice(), cargarPlan(g.id, cartillaDeGrupo(g)).catch(() => [] as PlanTema[])]);
+  const proxima = proximaClase(plan);
+  const e = (proxima && indice.temas.find((t) => t.id === proxima.tema)) || indice.temas.find((t) => t.estado === 'listo');
   if (!e) throw new Error('sin temas');
-  const doc = await cargarTema(e);
-  return { id: e.id, nombre: e.nombre, titulo: e.titulo, clases: doc.materiales.filter((m) => m.tipo === 'planeador').map((m) => m.titulo).join('. ') };
+  const doc = e.estado === 'listo' ? await cargarTema(e) : undefined;
+  const clases = doc?.materiales.filter((m) => m.tipo === 'planeador').map((m) => m.titulo) ?? [];
+  return {
+    id: e.id,
+    nombre: e.nombre,
+    titulo: e.titulo,
+    proxima: proxima && proxima.tema === e.id ? proxima : null,
+    fila: plan.find((p) => p.tema_id === e.id),
+    clases,
+  };
 }
 
 const hoyEscrito = () => {
@@ -40,7 +53,10 @@ export function DocenteInicio({ colegioId }: { colegioId: string | null }) {
   const grupos = useCarga(cargarGrupos, 'grupos');
   const colegio = useCarga(() => nombreColegio(colegioId).catch(() => null), 'colegio');
   const cola = useCola();
-  const primero = useCarga(primerTema, 'primer-tema');
+  const primero = useCarga(async () => {
+    const lista = await cargarGrupos();
+    return lista[0] ? proximaDelGrupo(lista[0]) : null;
+  }, 'proxima-clase');
   return (
     <>
       <Encabezado titulo="Inicio" meta={colegio.datos ? `${hoyEscrito()} · ${colegio.datos}` : hoyEscrito()} />
@@ -70,26 +86,37 @@ export function DocenteInicio({ colegioId }: { colegioId: string | null }) {
                 titulo={`Próxima clase · ${lista[0].nombre}`}
                 fin={
                   <span className="faroles">
-                    <Farol estado="apagado" de="Clase 1" />
-                    <Farol estado="apagado" de="Clase 2" />
+                    <Farol estado={farolClase(primero.datos?.fila, 1)} de="Clase 1" />
+                    <Farol estado={farolClase(primero.datos?.fila, 2)} de="Clase 2" />
                   </span>
                 }
               >
                 {primero.datos ? (
                   <>
+                    {primero.datos.proxima ? (
+                      <p className="proxima-clase">
+                        <strong>
+                          {diaDeClase(primero.datos.proxima.fecha)} · Clase {primero.datos.proxima.clase}
+                        </strong>
+                        {primero.datos.proxima.atrasada && <span className="meta"> · aún sin marcar como dada</span>}
+                      </p>
+                    ) : (
+                      <p className="sec">Su grupo {lista[0].nombre} no tiene tema planeado. Empiece por el primero:</p>
+                    )}
                     <p>
                       <strong>{primero.datos.nombre}</strong> <span className="meta">· {primero.datos.titulo}</span>
                     </p>
-                    <p className="sec">{primero.datos.clases}</p>
+                    {primero.datos.clases.length > 0 && (
+                      <p className="sec">{primero.datos.proxima ? primero.datos.clases[primero.datos.proxima.clase - 1] ?? primero.datos.clases.join('. ') : primero.datos.clases.join('. ')}</p>
+                    )}
                     <div className="atajos">
                       <Boton variante="primario" icono="proyectar" ruta={`/proyectar/${primero.datos.id}`}>
                         Proyectar {primero.datos.nombre.toLowerCase()}
                       </Boton>
                       <Boton icono="planear" ruta={`/docente/planear/${primero.datos.id}`}>
-                        Ver el planeador
+                        {primero.datos.proxima ? 'Ver el planeador' : 'Planear el primer tema'}
                       </Boton>
                     </div>
-                    <p className="meta">Empiece por el primer tema. Las fechas por grupo llegan con el plan de cada grupo.</p>
                   </>
                 ) : (
                   <Hueco titulo="Aquí irá su próxima clase" texto="El tema, si es la clase 1 o la 2, y el planeador." />

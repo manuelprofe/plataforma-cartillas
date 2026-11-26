@@ -72,7 +72,61 @@
       "id": "cuadrito-arriba",
       "familia": { "tema": "arriba, abajo, encima y debajo", "idea": "En casa, esconda un juguete y dele pistas: está encima de la cama, debajo de la mesa. Que lo busque y diga dónde estaba." },
       "misiones": [
-        { "titulo": "¿Arriba o abajo?", "plantilla": "escucha-toca", "icono": "iconos/arriba.svg", "palabras": ["arriba", "abajo", "encima", "debajo"], "antes": "Escucha dónde está y toca el dibujo que va." },
+        { "titulo": "Cuadrito salta", "plantilla": "plataformas", "icono": "iconos/arriba.svg", "palabras": ["arriba", "abajo"], "antes": "Vamos a saltar por el cuaderno. Las puertas se abren si cuentas bien.",
+          "plataformas": [
+            { "dice": "Toca las flechas para caminar. Toca el botón amarillo para saltar. Llega a la bandera.",
+              "mapa": [
+                "..............",
+                "..............",
+                "..........#...",
+                "P....#...##..M",
+                "#######~######"
+              ]
+            },
+            { "dice": "Esta puerta tiene una pregunta. Camina hasta ella.",
+              "mapa": [
+                "...............",
+                "...............",
+                "P....G.....G..M",
+                "###############"
+              ],
+              "retos": [
+                {"dice": "¿Cuántas manzanas hay?", "ver": {"imagen": "iconos/manzana.svg", "cantidad": 2}, "opciones": [{"texto": "1"}, {"texto": "2"}, {"texto": "3"}], "correcta": 1, "bien": "¡Dos manzanas!"},
+                {"dice": "¿Cuántas estrellas hay?", "ver": {"imagen": "iconos/estrella.svg", "cantidad": 3}, "opciones": [{"texto": "2"}, {"texto": "3"}, {"texto": "1"}], "correcta": 1, "bien": "¡Tres estrellas!"}
+              ]
+            },
+            { "dice": "La pared es muy alta. ¿Qué te puede ayudar a subir?",
+              "mapa": [
+                ".............M",
+                "..........####",
+                "P...C.....####",
+                "##############"
+              ]
+            },
+            { "dice": "Sube arriba y busca la puerta.",
+              "mapa": [
+                "..............",
+                "..........G..M",
+                ".....#.=======",
+                "P...##........",
+                "##############"
+              ],
+              "retos": [
+                {"dice": "Toca el dibujo donde el pájaro está arriba.", "opciones": [{"imagen": "iconos/abajo.svg"}, {"imagen": "iconos/arriba.svg"}], "correcta": 1, "bien": "¡Arriba!"}
+              ]
+            },
+            { "dice": "Hay agua. Empuja la caja al agua y úsala de puente.",
+              "mapa": [
+                "................",
+                "................",
+                "P.C.........G..M",
+                "#####~~#########"
+              ],
+              "retos": [
+                {"dice": "¿Cuál manzana es la grande?", "opciones": [{"imagen": "iconos/manzana.svg", "tam": "pequeno"}, {"imagen": "iconos/manzana.svg", "tam": "grande"}], "correcta": 1, "bien": "¡La grande!"}
+              ]
+            }
+          ] },
         { "titulo": "Atrapa arriba y abajo", "plantilla": "escucha-atrapa", "icono": "iconos/encima.svg", "palabras": ["arriba", "abajo", "encima", "debajo"], "antes": "Los dibujos están volando. Atrapa el que te digo." },
         { "titulo": "Di dónde está", "plantilla": "di-brilla", "icono": "iconos/debajo.svg", "palabras": ["arriba", "abajo", "encima", "debajo"], "antes": "Ahora tú lo dices. Escucha, mira el dibujo y dilo cuando quieras. ¡Cada intento cuenta!" }
       ]
@@ -136,7 +190,11 @@
   "ayudas": {
     "memoria-pista1": "Escucha bien: cada dibujo tiene su nombre.",
     "atrapa-inicio": "Atrapa el dibujo que te digo.",
-    "contar-otra-vez": "Casi. Contemos otra vez, despacito."
+    "contar-otra-vez": "Casi. Contemos otra vez, despacito.",
+    "plataformas-agua": "¡Uy, al agua! Goma te saca. Prueba otra vez.",
+    "plataformas-alto": "Muy alto para un salto. Mira qué hay cerca que te ayude.",
+    "plataformas-reto": "Casi. Mira otra vez y cuenta despacito.",
+    "plataformas-meta": "¡Llegaste!"
   },
 
   "pozo": { "id": "cuadrito-pozo", "titulo": "El pozo de las parejas", "antes": "Este es el pozo de los recuerdos. Gira dos cartas y busca las que van juntas." },

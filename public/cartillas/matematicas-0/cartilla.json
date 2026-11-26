@@ -20,8 +20,8 @@
    "misiones": [
     {
      "id": "cuadrito-arriba",
-     "titulo": "¿Arriba o abajo?",
-     "plantilla": "escucha-toca",
+     "titulo": "Cuadrito salta",
+     "plantilla": "plataformas",
      "icono": "iconos/arriba.svg",
      "palabras": [
       {
@@ -35,18 +35,6 @@
        "icono": "iconos/abajo.svg",
        "frase": "El pájaro está abajo.",
        "en": "abajo"
-      },
-      {
-       "es": "encima",
-       "icono": "iconos/encima.svg",
-       "frase": "El gato está encima de la silla.",
-       "en": "encima"
-      },
-      {
-       "es": "debajo",
-       "icono": "iconos/debajo.svg",
-       "frase": "El gato está debajo de la silla.",
-       "en": "debajo"
       }
      ],
      "x": 367,
@@ -54,14 +42,137 @@
      "antes": [
       {
        "quien": "cuadrito",
-       "es": "Escucha dónde está y toca el dibujo que va.",
-       "en": "Escucha dónde está y toca el dibujo que va."
+       "es": "Vamos a saltar por el cuaderno. Las puertas se abren si cuentas bien.",
+       "en": "Vamos a saltar por el cuaderno. Las puertas se abren si cuentas bien."
       }
      ],
      "familia": {
       "tema": "arriba, abajo, encima y debajo",
       "idea": "En casa, esconda un juguete y dele pistas: está encima de la cama, debajo de la mesa. Que lo busque y diga dónde estaba."
-     }
+     },
+     "plataformas": [
+      {
+       "dice": "Toca las flechas para caminar. Toca el botón amarillo para saltar. Llega a la bandera.",
+       "mapa": [
+        "..............",
+        "..............",
+        "..........#...",
+        "P....#...##..M",
+        "#######~######"
+       ]
+      },
+      {
+       "dice": "Esta puerta tiene una pregunta. Camina hasta ella.",
+       "mapa": [
+        "...............",
+        "...............",
+        "P....G.....G..M",
+        "###############"
+       ],
+       "retos": [
+        {
+         "dice": "¿Cuántas manzanas hay?",
+         "ver": {
+          "imagen": "iconos/manzana.svg",
+          "cantidad": 2
+         },
+         "opciones": [
+          {
+           "texto": "1"
+          },
+          {
+           "texto": "2"
+          },
+          {
+           "texto": "3"
+          }
+         ],
+         "correcta": 1,
+         "bien": "¡Dos manzanas!"
+        },
+        {
+         "dice": "¿Cuántas estrellas hay?",
+         "ver": {
+          "imagen": "iconos/estrella.svg",
+          "cantidad": 3
+         },
+         "opciones": [
+          {
+           "texto": "2"
+          },
+          {
+           "texto": "3"
+          },
+          {
+           "texto": "1"
+          }
+         ],
+         "correcta": 1,
+         "bien": "¡Tres estrellas!"
+        }
+       ]
+      },
+      {
+       "dice": "La pared es muy alta. ¿Qué te puede ayudar a subir?",
+       "mapa": [
+        ".............M",
+        "..........####",
+        "P...C.....####",
+        "##############"
+       ]
+      },
+      {
+       "dice": "Sube arriba y busca la puerta.",
+       "mapa": [
+        "..............",
+        "..........G..M",
+        ".....#.=======",
+        "P...##........",
+        "##############"
+       ],
+       "retos": [
+        {
+         "dice": "Toca el dibujo donde el pájaro está arriba.",
+         "opciones": [
+          {
+           "imagen": "iconos/abajo.svg"
+          },
+          {
+           "imagen": "iconos/arriba.svg"
+          }
+         ],
+         "correcta": 1,
+         "bien": "¡Arriba!"
+        }
+       ]
+      },
+      {
+       "dice": "Hay agua. Empuja la caja al agua y úsala de puente.",
+       "mapa": [
+        "................",
+        "................",
+        "P.C.........G..M",
+        "#####~~#########"
+       ],
+       "retos": [
+        {
+         "dice": "¿Cuál manzana es la grande?",
+         "opciones": [
+          {
+           "imagen": "iconos/manzana.svg",
+           "tam": "pequeno"
+          },
+          {
+           "imagen": "iconos/manzana.svg",
+           "tam": "grande"
+          }
+         ],
+         "correcta": 1,
+         "bien": "¡La grande!"
+        }
+       ]
+      }
+     ]
     },
     {
      "id": "cuadrito-arriba-2",
@@ -4559,6 +4670,22 @@
   "contar-otra-vez": {
    "es": "Casi. Contemos otra vez, despacito.",
    "en": "Casi. Contemos otra vez, despacito."
+  },
+  "plataformas-agua": {
+   "es": "¡Uy, al agua! Goma te saca. Prueba otra vez.",
+   "en": "¡Uy, al agua! Goma te saca. Prueba otra vez."
+  },
+  "plataformas-alto": {
+   "es": "Muy alto para un salto. Mira qué hay cerca que te ayude.",
+   "en": "Muy alto para un salto. Mira qué hay cerca que te ayude."
+  },
+  "plataformas-reto": {
+   "es": "Casi. Mira otra vez y cuenta despacito.",
+   "en": "Casi. Mira otra vez y cuenta despacito."
+  },
+  "plataformas-meta": {
+   "es": "¡Llegaste!",
+   "en": "¡Llegaste!"
   }
  },
  "imagenes": {

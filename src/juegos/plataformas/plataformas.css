@@ -1,0 +1,442 @@
+/* Juego de plataformas (Plataformas.tsx): visto de lado, dibujado a lápiz sobre papel, con
+   profundidad. Cada bloque tiene cara, tope y un costado corrido hacia atrás (capa de sombras),
+   así el nivel se ve con volumen sin 3D real. Mandos de 72 px; nada se anima más de lo que
+   hace falta para que se mueva fluido en un celular barato. */
+
+.plataformas {
+  --pl-tinta: #3a3a3a;
+  --pl-tierra: #e9d3b0;
+  --pl-tierra-honda: #c9a878;
+  --pl-pasto: #8fcf6a;
+  --pl-pasto-hondo: #5fa548;
+  --pl-madera: #d9a066;
+  --pl-madera-honda: #a8703f;
+  --pl-agua: #7cc4ef;
+  --pl-fondo: 7px;
+  grid-template-rows: auto 1fr;
+  background: #f6f1e4;
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.pl-reiniciar {
+  margin-left: auto;
+  flex: none;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgb(255 255 255 / 0.75);
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+.pl-juego {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  min-height: 0;
+  position: relative;
+}
+
+.pl-escenario {
+  position: relative;
+  overflow: hidden;
+  min-height: 0;
+}
+
+/* Cielo de papel con dos filas de colinas a lápiz que se corren más despacio que el nivel. */
+.pl-cielo {
+  position: absolute;
+  inset: 0;
+  background:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 50'%3E%3Cpath d='M18 42c-10 0-14-12-5-17 0-10 13-14 20-7 4-12 24-14 30-2 8-6 22-1 21 9 11 0 15 15 3 17z' fill='%23fff' stroke='%23b9b3a6' stroke-width='2.5' stroke-linejoin='round'/%3E%3C/svg%3E") 30px 12% / 120px 50px repeat-x,
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 120'%3E%3Cpath d='M0 120V80C40 40 90 30 140 60s90 10 130-25 100-10 130 20v65z' fill='%23e3ecd6' stroke='%23b8c9a3' stroke-width='3'/%3E%3Cpath d='M60 70l6-14 6 14zM300 52l7-16 7 16z' fill='%23c4d9ae'/%3E%3C/svg%3E") 0 58% / 400px 120px repeat-x,
+    repeating-linear-gradient(to bottom, transparent 0 33px, #dde6f0 33px 35px),
+    #fbf7ee;
+}
+
+.pl-suelo {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background:
+    repeating-linear-gradient(135deg, transparent 0 7px, rgb(120 84 40 / 0.16) 7px 8px),
+    var(--pl-tierra-honda);
+  border-top: 2px solid var(--pl-tinta);
+}
+
+.pl-mundo {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: transform 0.18s ease-out;
+  will-change: transform;
+}
+
+.pl-capa {
+  position: absolute;
+  inset: 0;
+}
+
+.pl-capa > div {
+  position: absolute;
+}
+
+/* Costado y fondo del bloque: la misma forma, corrida hacia arriba a la derecha. */
+.pl-sombra {
+  transform: translate(var(--pl-fondo), calc(var(--pl-fondo) * -1));
+  background: var(--pl-tierra-honda);
+  border: 2px solid var(--pl-tinta);
+}
+
+.pl-sombra--repisa {
+  height: calc(var(--c) * 0.45) !important;
+  background: var(--pl-madera-honda);
+}
+
+.pl-tierra {
+  background:
+    repeating-linear-gradient(135deg, transparent 0 7px, rgb(120 84 40 / 0.16) 7px 8px),
+    var(--pl-tierra);
+  border: 2px solid var(--pl-tinta);
+  margin: 0 -1px;
+}
+
+.pl-tierra.pl--tope {
+  border-top-width: 0;
+  box-shadow: inset 0 9px 0 var(--pl-pasto), inset 0 11px 0 var(--pl-pasto-hondo);
+  border-top: 2px solid var(--pl-tinta);
+}
+
+.pl-repisa {
+  height: calc(var(--c) * 0.45) !important;
+  background:
+    repeating-linear-gradient(90deg, transparent 0 15px, rgb(90 50 20 / 0.25) 15px 16px),
+    var(--pl-madera);
+  border: 2px solid var(--pl-tinta);
+  border-radius: 4px;
+}
+
+.pl-agua {
+  background: linear-gradient(to bottom, rgb(124 196 239 / 0.75), rgb(70 150 210 / 0.85));
+}
+
+.pl-agua.pl--tope {
+  top: auto;
+  background:
+    radial-gradient(10px 5px at 25% 22%, #fff 70%, transparent 75%),
+    linear-gradient(to bottom, transparent 18%, rgb(124 196 239 / 0.8) 18%, rgb(70 150 210 / 0.9));
+  animation: pl-olas 1.6s ease-in-out infinite alternate;
+}
+
+@keyframes pl-olas {
+  to {
+    background-position: 6px 0, 0 0;
+  }
+}
+
+.pl-caja {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: transform 0.12s linear;
+  padding: 3%;
+}
+
+.pl-caja::before {
+  content: '';
+  position: absolute;
+  inset: 3%;
+  background:
+    linear-gradient(45deg, transparent 46%, var(--pl-madera-honda) 46% 54%, transparent 54%),
+    linear-gradient(-45deg, transparent 46%, var(--pl-madera-honda) 46% 54%, transparent 54%),
+    var(--pl-madera);
+  border: 3px solid var(--pl-tinta);
+  border-radius: 6px;
+  box-shadow: inset 0 0 0 5px rgb(255 255 255 / 0.25), var(--pl-fondo) calc(var(--pl-fondo) * -1) 0 -1px var(--pl-madera-honda);
+}
+
+.pl-heroe {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: transform 0.12s linear;
+  z-index: 2;
+}
+
+.pl-heroe img {
+  position: absolute;
+  left: -15%;
+  bottom: 0;
+  width: 130%;
+  height: 130%;
+  object-fit: contain;
+  object-position: bottom;
+  filter: drop-shadow(0 3px 0 rgb(0 0 0 / 0.18));
+}
+
+.pl-heroe--agua img {
+  animation: pl-rescate 0.6s ease-in-out;
+}
+
+@keyframes pl-rescate {
+  50% {
+    transform: translateY(-40%) rotate(-12deg);
+  }
+}
+
+.pl-rescate {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 60%, rgb(124 196 239 / 0.35), transparent 60%);
+  pointer-events: none;
+}
+
+/* Puerta con reto: tablones y un signo de pregunta grande. */
+.pl-puerta {
+  display: grid;
+  place-items: center;
+  background:
+    repeating-linear-gradient(90deg, transparent 0 11px, rgb(60 30 10 / 0.3) 11px 13px),
+    #c0784a;
+  border: 3px solid var(--pl-tinta);
+  border-radius: 40% 40% 4px 4px / 22% 22% 4px 4px;
+  margin-top: calc(var(--c) * -1);
+  height: calc(var(--c) * 2) !important;
+}
+
+.pl-puerta span {
+  display: grid;
+  place-items: center;
+  width: 62%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--oro);
+  border: 2px solid var(--pl-tinta);
+  font-weight: 900;
+  font-size: 1.35rem;
+  animation: latir 1.6s ease-in-out infinite;
+}
+
+.pl-puerta--abierta {
+  background: rgb(58 58 58 / 0.12);
+  border-style: dashed;
+}
+
+/* Meta: un banderín de lápiz sobre su asta. */
+.pl-meta::before {
+  content: '';
+  position: absolute;
+  left: 42%;
+  bottom: 0;
+  width: 6%;
+  height: 120%;
+  background: var(--pl-tinta);
+  border-radius: 2px;
+}
+
+.pl-meta::after {
+  content: '';
+  position: absolute;
+  left: 48%;
+  bottom: 70%;
+  width: 46%;
+  height: 40%;
+  background: var(--rosa);
+  border: 2px solid var(--pl-tinta);
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
+  animation: pl-banderin 1.2s ease-in-out infinite alternate;
+  transform-origin: left center;
+}
+
+@keyframes pl-banderin {
+  to {
+    transform: scaleX(0.85);
+  }
+}
+
+.pl-meta--llego::after {
+  background: var(--oro);
+}
+
+.pl-palanca::before {
+  content: '';
+  position: absolute;
+  left: 46%;
+  bottom: 8%;
+  width: 9%;
+  height: 62%;
+  background: var(--pl-tinta);
+  border-radius: 4px;
+  transform-origin: bottom center;
+  transform: rotate(-35deg);
+  transition: transform 0.2s;
+}
+
+.pl-palanca::after {
+  content: '';
+  position: absolute;
+  left: 25%;
+  bottom: 0;
+  width: 50%;
+  height: 16%;
+  background: var(--menta);
+  border: 2px solid var(--pl-tinta);
+  border-radius: 8px 8px 0 0;
+}
+
+.pl-palanca--on::before {
+  transform: rotate(35deg);
+}
+
+.pl-bloque {
+  border: 3px dashed rgb(58 58 58 / 0.35);
+  border-radius: 6px;
+  margin: calc(var(--c) * 0.03);
+  width: calc(var(--c) * 0.94) !important;
+  height: calc(var(--c) * 0.94) !important;
+}
+
+.pl-bloque--on {
+  border: 3px solid var(--pl-tinta);
+  background: var(--menta);
+  box-shadow: var(--pl-fondo) calc(var(--pl-fondo) * -1) 0 -1px #10988a;
+}
+
+/* Mandos: dos flechas a la izquierda y saltar a la derecha, al alcance de los pulgares. */
+.pl-mandos {
+  display: grid;
+  grid-template-columns: auto auto 1fr auto;
+  gap: 14px;
+  padding: 12px 16px max(16px, env(safe-area-inset-bottom));
+  background: linear-gradient(to bottom, rgb(246 241 228 / 0), #f6f1e4 30%);
+}
+
+.pl-mandos .pl-mando--saltar {
+  grid-column: 4;
+}
+
+.pl-mando {
+  width: 72px;
+  height: 72px;
+  border-radius: 22px;
+  background: #fff;
+  border: 3px solid var(--pl-tinta);
+  box-shadow: 0 6px 0 rgb(44 42 49 / 0.28);
+  font-size: 1.9rem;
+  font-weight: 900;
+  color: var(--pl-tinta);
+  touch-action: none;
+}
+
+.pl-mando:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 rgb(44 42 49 / 0.28);
+}
+
+.pl-mando--saltar {
+  width: 88px;
+  border-radius: 50%;
+  background: var(--oro);
+}
+
+.pl-mando--palanca {
+  background: var(--menta);
+}
+
+/* Reto de la puerta: tarjeta sobre el nivel. */
+.pl-reto {
+  position: absolute;
+  inset: 8px 12px auto;
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+  padding: 16px 12px 20px;
+  background: var(--crema);
+  border: 3px solid var(--pl-tinta);
+  border-radius: 24px;
+  box-shadow: 0 10px 0 rgb(44 42 49 / 0.22);
+  z-index: 5;
+  animation: pl-entra 0.25s ease-out;
+}
+
+@keyframes pl-entra {
+  from {
+    transform: translateY(-16px);
+    opacity: 0;
+  }
+}
+
+.pl-reto__ver {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  max-width: 320px;
+}
+
+.pl-reto__ver img {
+  width: 52px;
+  height: 52px;
+}
+
+.pl-reto__opciones {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.pl-opcion {
+  min-width: 80px;
+  min-height: 80px;
+  padding: 8px;
+  display: grid;
+  place-items: center;
+  border-radius: 20px;
+  background: #fff;
+  border: 3px solid var(--pl-tinta);
+  box-shadow: 0 6px 0 rgb(44 42 49 / 0.22);
+  font-size: 2rem;
+  font-weight: 900;
+}
+
+.pl-opcion img {
+  width: 56px;
+  height: 56px;
+}
+
+.pl-opcion img.pl-opcion--grande {
+  width: 72px;
+  height: 72px;
+}
+
+.pl-opcion img.pl-opcion--pequeno {
+  width: 30px;
+  height: 30px;
+}
+
+.pl-opcion--bien {
+  background: var(--menta);
+  color: #fff;
+}
+
+.pl-opcion--pista {
+  animation: latir 1s ease-in-out infinite;
+  box-shadow: 0 0 0 5px var(--oro), 0 6px 0 rgb(44 42 49 / 0.22);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pl-mundo,
+  .pl-caja,
+  .pl-heroe {
+    transition: none;
+  }
+  .pl-agua.pl--tope,
+  .pl-meta::after,
+  .pl-puerta span {
+    animation: none;
+  }
+}

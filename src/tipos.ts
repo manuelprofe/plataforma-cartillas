@@ -51,9 +51,10 @@ export interface Mision {
   /**
    * Juego con que se practica: escuchar y tocar, atrapar lo que se oye, decir la palabra,
    * Memory, contar y tocar (cantidades), ordenar (números, secuencias, sucesos de un cuento),
-   * completar la operación (sumas y restas) o armar la palabra con sus sílabas.
+   * completar la operación (sumas y restas), armar la palabra con sus sílabas o el juego de
+   * plataformas de matemáticas (saltar, empujar cajas y abrir puertas razonando).
    */
-  plantilla: 'escucha-toca' | 'escucha-atrapa' | 'di-brilla' | 'memoria' | 'contar-toca' | 'ordenar' | 'operacion' | 'silabas';
+  plantilla: 'escucha-toca' | 'escucha-atrapa' | 'di-brilla' | 'memoria' | 'contar-toca' | 'ordenar' | 'operacion' | 'silabas' | 'plataformas';
   icono: string;
   x: number;
   y: number;
@@ -84,6 +85,8 @@ export interface Mision {
   operacion?: AjustesOperacion;
   /** Armar la palabra: cada ronda es una palabra con su imagen, partida en sílabas. */
   silabas?: RondaSilabas[];
+  /** Plataformas: los niveles de la misión, cada uno con su mapa y los retos de sus puertas. */
+  plataformas?: NivelPlataformas[];
   /**
    * Di y brilla para leer en voz alta: la palabra se ve escrita desde el principio y la voz no
    * la dice antes; el niño la lee y puede tocarla para oírla. Sin esto, se escucha y se repite.
@@ -171,6 +174,30 @@ export interface AjustesAtrapa {
 }
 
 /** Lo que recibe toda plantilla de juego. */
+/**
+ * Un nivel del juego de plataformas. El mapa es un dibujo de letras (ver juegos/plataformas/motor.ts):
+ * # tierra, = repisa, C caja, P inicio, M meta, G puerta con reto, ~ agua, L palanca, X bloque de palanca.
+ */
+export interface NivelPlataformas {
+  mapa: string[];
+  /** Lo que dice el guía al empezar el nivel. */
+  dice?: string;
+  /** Retos de las puertas, en el orden en que aparecen de izquierda a derecha. */
+  retos?: RetoPuerta[];
+}
+
+/** Reto que abre una puerta: la voz pregunta, se pueden mostrar objetos y el niño elige. */
+export interface RetoPuerta {
+  dice: string;
+  /** Objetos que se muestran para contar o comparar. */
+  ver?: { imagen: string; cantidad: number };
+  opciones: { texto?: string; imagen?: string; tam?: 'grande' | 'pequeno' }[];
+  /** Posición de la opción correcta, desde 0. */
+  correcta: number;
+  /** Lo que dice la voz al acertar. */
+  bien?: string;
+}
+
 export interface PropsJuego {
   mision: Mision;
   base: string;
@@ -182,6 +209,8 @@ export interface PropsJuego {
   ayudas: Record<string, Frase>;
   modo: ModoIdioma;
   vozHistoria: string;
+  /** Héroe que eligió el niño, para los juegos donde él mismo se mueve. */
+  imagenHeroe?: string;
   onTerminar: () => void;
   onSalir: () => void;
 }

@@ -67,6 +67,14 @@ Plan completo: `docs/plan/calendario-diciembre.md` (también en Google Calendar,
   `/?cartilla=<id>` (invitado). Falta para publicarla: su `materiales/indice.json` y `biblioteca/` (el docente
   de un grupo con esa cartilla los pide) y la migración de misiones (010, 011 y 012, pendientes de Manuel).
   Siguen: 1.° (matemáticas, español, inglés), luego 2.° y así hasta 5.°.
+- **Un juego propio por materia (26 nov, Manuel):** inglés conserva el mapa con misiones; matemáticas y
+  español tienen juego propio, uno para transición a 2.° y otro más exigente para 3.° a 5.°; todo juego
+  lleva 4 niveles (uno por periodo). Matemáticas (transición a 2.°): plantilla `plataformas`
+  (`src/juegos/plataformas/`: `motor.ts` por casillas y turnos, mapa de letras en el contenido; carga
+  aparte y el trabajador sin conexión la guarda). Prototipo: misión 1 de `matematicas-0` (5 niveles).
+  Pruebas: `node --experimental-strip-types scripts/pruebas/plataformas-motor.mjs <id>` (cada nivel se
+  termina y las cajas hacen falta) y `.../plataformas.mjs <id>` (navegador). Español: propuesta
+  "Cuento vivo" + "Detective Renglón", pendiente.
 - **Herramientas de contenido:** `herramientas/` (voces, letras sincronizadas,
   `materiales_a_json.py`, `importar/`).
 - **Documentos de diseño y pedagogía:** `docs/diseno/esqueleto.md` (tandas 5 y 6 en §8),

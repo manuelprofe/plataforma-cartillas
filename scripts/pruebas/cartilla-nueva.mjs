@@ -1,4 +1,4 @@
-// Una cartilla nueva en español (armada con cartilla_desde_molde.py), en la vista previa
+// Una cartilla nueva (en español, o de inglés con voz en inglés) (armada con cartilla_desde_molde.py), en la vista previa
 // (`/?cartilla=<id>`) a 390 × 844, como invitado: la página carga con su guía, todo se oye en
 // español, una misión de cada plantilla abre (la primera de escuchar se juega entera) y los
 // toques miden 48 px o más.
@@ -13,6 +13,7 @@ const foto = (p, n) => p.screenshot({ path: `${CAPTURAS}/${ID}-${n}.png` });
 const cartilla = JSON.parse(readFileSync(`public/cartillas/${ID}/cartilla.json`, 'utf8'));
 const misiones = cartilla.territorios[0].misiones;
 const primera = (plantilla) => misiones.find((m) => m.plantilla === plantilla && !m.requiere && !m.opcional) ?? misiones.find((m) => m.plantilla === plantilla && !m.opcional);
+const ES_INGLES = String(cartilla.idiomaVoz ?? '').startsWith('en');
 const INGLES = /\b(the|you|listen|catch|hello|tap|say|word|words|let's|English)\b/i;
 
 async function abrir(navegador, progreso) {
@@ -77,7 +78,8 @@ try {
   await entrarAMision(p, toca.titulo);
   await foto(p, '03-escucha-toca');
   comprobar((await menorToque(p, '.mision button')) >= 48, `escucha y toca: toques de 48 px o más (${Math.round(await menorToque(p, '.mision button'))})`);
-  comprobar(!(await p.locator('.carta-grande small').count()), 'la palabra no se repite debajo (ya está en español)');
+  if (ES_INGLES) comprobar((await p.locator('.carta-grande small').count()) > 0, 'debajo de la palabra en inglés sale su traducción');
+  else comprobar(!(await p.locator('.carta-grande small').count()), 'la palabra no se repite debajo (ya está en español)');
   await jugarEscuchaToca(p);
   await cerrarMision(p);
   const guardado = await p.evaluate((k) => JSON.parse(localStorage.getItem(k)), CLAVE);
@@ -108,9 +110,13 @@ try {
 
   const todo = await dicho(p);
   const lenguas = [...new Set(todo.map((d) => d.split('|')[0]))];
-  comprobar(lenguas.every((l) => l.startsWith('es')), `todo se dice con voz en español (${lenguas.join(', ')})`);
-  const enIngles = todo.filter((d) => INGLES.test(d.split('|')[1]));
-  comprobar(enIngles.length === 0, `nada se dice en inglés (${enIngles.slice(0, 3).join(' · ')})`);
+  if (ES_INGLES) {
+    comprobar(todo.some((d) => d.startsWith('en') && INGLES.test(d.split('|')[1])), `las palabras se dicen con voz en inglés (${lenguas.join(', ')})`);
+  } else {
+    comprobar(lenguas.every((l) => l.startsWith('es')), `todo se dice con voz en español (${lenguas.join(', ')})`);
+    const enIngles = todo.filter((d) => INGLES.test(d.split('|')[1]));
+    comprobar(enIngles.length === 0, `nada se dice en inglés (${enIngles.slice(0, 3).join(' · ')})`);
+  }
   comprobar(errores.length === 0, `sin errores (${errores.join(' | ')})`);
   await c.close();
 } finally {

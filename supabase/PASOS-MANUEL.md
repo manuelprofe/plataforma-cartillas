@@ -68,4 +68,9 @@ Proyecto: https://supabase.com/dashboard → proyecto `jpwwmzfhbdnzsvwuciqa`. Ha
 17. **SQL Editor** → New query → pegar todo `supabase/migraciones/011-misiones-espanol-0.sql` → Run.
     Igual que la 010, para la página 1 de Renglón (transición). No la publica.
 
+## Migración 012 (misiones de inglés de transición)
+
+18. **SQL Editor** → New query → pegar todo `supabase/migraciones/012-misiones-ingles-0.sql` → Run.
+    Igual que la 010, para la página 1 de Postal (inglés de transición). No la publica.
+
 Al terminar, avisar en el chat qué pasos quedaron hechos y si alguno dio error (copiar el mensaje).

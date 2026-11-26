@@ -1,0 +1,4618 @@
+{
+ "id": "ingles-0",
+ "titulo": "El cuaderno de Postal · Transición",
+ "materia": "Inglés",
+ "grado": "0",
+ "idiomaVoz": "en-US",
+ "territorios": [
+  {
+   "id": "bosque",
+   "nombre": "Postales · Página 1",
+   "guia": "postal",
+   "puerta": {
+    "destino": "la página 2",
+    "x": 2018,
+    "y": 2566,
+    "personaje": "postal",
+    "escenaCerrada": "puente-cerrado",
+    "escenaAbierta": "puente-abierto"
+   },
+   "misiones": [
+    {
+     "id": "postal-hello",
+     "titulo": "Hello!",
+     "plantilla": "escucha-toca",
+     "icono": "iconos/1f44b.svg",
+     "palabras": [
+      {
+       "en": "hello",
+       "es": "hola",
+       "icono": "iconos/1f44b.svg",
+       "pronuncia": "je-lóu",
+       "frase": "Hello!"
+      },
+      {
+       "en": "goodbye",
+       "es": "adiós",
+       "icono": "iconos/goodbye.svg",
+       "pronuncia": "gud-bái",
+       "aceptar": [
+        "good bye",
+        "bye",
+        "bye bye"
+       ]
+      },
+      {
+       "en": "good morning",
+       "es": "buenos días",
+       "icono": "iconos/good-morning.svg",
+       "pronuncia": "gud mór-ning"
+      },
+      {
+       "en": "good night",
+       "es": "buenas noches",
+       "icono": "iconos/good-night.svg",
+       "pronuncia": "gud náit",
+       "aceptar": [
+        "goodnight"
+       ]
+      }
+     ],
+     "x": 367,
+     "y": 717,
+     "antes": [
+      {
+       "quien": "postal",
+       "es": "Escucha el saludo y toca el dibujo.",
+       "en": "Listen and tap the picture."
+      }
+     ],
+     "familia": {
+      "tema": "saludar en inglés",
+      "idea": "Al levantarse y al acostarse, salúdense en inglés: good morning y good night. Al salir de casa, goodbye."
+     }
+    },
+    {
+     "id": "postal-hello-2",
+     "titulo": "Say hello",
+     "plantilla": "di-brilla",
+     "icono": "iconos/good-morning.svg",
+     "palabras": [
+      {
+       "en": "hello",
+       "es": "hola",
+       "icono": "iconos/1f44b.svg",
+       "pronuncia": "je-lóu",
+       "frase": "Hello!"
+      },
+      {
+       "en": "goodbye",
+       "es": "adiós",
+       "icono": "iconos/goodbye.svg",
+       "pronuncia": "gud-bái",
+       "aceptar": [
+        "good bye",
+        "bye",
+        "bye bye"
+       ]
+      },
+      {
+       "en": "good morning",
+       "es": "buenos días",
+       "icono": "iconos/good-morning.svg",
+       "pronuncia": "gud mór-ning"
+      },
+      {
+       "en": "good night",
+       "es": "buenas noches",
+       "icono": "iconos/good-night.svg",
+       "pronuncia": "gud náit",
+       "aceptar": [
+        "goodnight"
+       ]
+      }
+     ],
+     "x": 573,
+     "y": 731,
+     "antes": [
+      {
+       "quien": "postal",
+       "es": "Escucha y dilo tú, como Postal. ¡Cada intento cuenta!",
+       "en": "Listen and say it, like Postal. Every try counts!"
+      }
+     ],
+     "familia": {
+      "tema": "saludar en inglés",
+      "idea": "Al levantarse y al acostarse, salúdense en inglés: good morning y good night. Al salir de casa, goodbye."
+     },
+     "requiere": "postal-hello"
+    },
+    {
+     "id": "postal-hello-3",
+     "titulo": "Hello pairs",
+     "plantilla": "memoria",
+     "icono": "iconos/good-night.svg",
+     "palabras": [
+      {
+       "en": "hello",
+       "es": "hola",
+       "icono": "iconos/1f44b.svg",
+       "pronuncia": "je-lóu",
+       "frase": "Hello!"
+      },
+      {
+       "en": "goodbye",
+       "es": "adiós",
+       "icono": "iconos/goodbye.svg",
+       "pronuncia": "gud-bái",
+       "aceptar": [
+        "good bye",
+        "bye",
+        "bye bye"
+       ]
+      },
+      {
+       "en": "good morning",
+       "es": "buenos días",
+       "icono": "iconos/good-morning.svg",
+       "pronuncia": "gud mór-ning"
+      },
+      {
+       "en": "good night",
+       "es": "buenas noches",
+       "icono": "iconos/good-night.svg",
+       "pronuncia": "gud náit",
+       "aceptar": [
+        "goodnight"
+       ]
+      }
+     ],
+     "x": 470,
+     "y": 817,
+     "antes": [
+      {
+       "quien": "postal",
+       "es": "Gira dos cartas: busca el dibujo y su saludo.",
+       "en": "Flip two cards: find the picture and its greeting."
+      }
+     ],
+     "familia": {
+      "tema": "saludar en inglés",
+      "idea": "Al levantarse y al acostarse, salúdense en inglés: good morning y good night. Al salir de casa, goodbye."
+     },
+     "requiere": "postal-hello-2",
+     "formas": [
+      "imagen-sonido"
+     ],
+     "parejas": 4
+    },
+    {
+     "id": "postal-colors",
+     "titulo": "Colors",
+     "plantilla": "escucha-toca",
+     "icono": "iconos/1f534.svg",
+     "palabras": [
+      {
+       "en": "red",
+       "es": "rojo",
+       "icono": "iconos/1f534.svg",
+       "pronuncia": "red"
+      },
+      {
+       "en": "yellow",
+       "es": "amarillo",
+       "icono": "iconos/1f7e1.svg",
+       "pronuncia": "yé-lou"
+      },
+      {
+       "en": "blue",
+       "es": "azul",
+       "icono": "iconos/1f535.svg",
+       "pronuncia": "blu"
+      }
+     ],
+     "x": 1009,
+     "y": 645,
+     "antes": [
+      {
+       "quien": "postal",
+       "es": "Escucha el color y tócalo.",
+       "en": "Listen to the color and tap it."
+      }
+     ],
+     "familia": {
+      "tema": "los colores red, yellow y blue",
+      "idea": "Busquen en la casa cosas red, yellow y blue. Usted dice el color en inglés y su hijo lo trae."
+     }
+    },
+    {
+     "id": "postal-colors-2",
+     "titulo": "Catch the color",
+     "plantilla": "escucha-atrapa",
+     "icono": "iconos/1f7e1.svg",
+     "palabras": [
+      {
+       "en": "red",
+       "es": "rojo",
+       "icono": "iconos/1f534.svg",
+       "pronuncia": "red"
+      },
+      {
+       "en": "yellow",
+       "es": "amarillo",
+       "icono": "iconos/1f7e1.svg",
+       "pronuncia": "yé-lou"
+      },
+      {
+       "en": "blue",
+       "es": "azul",
+       "icono": "iconos/1f535.svg",
+       "pronuncia": "blu"
+      }
+     ],
+     "x": 1215,
+     "y": 665,
+     "antes": [
+      {
+       "quien": "postal",
+       "es": "Los colores pasan volando. Atrapa el que escuchas.",
+       "en": "The colors fly by. Catch the one you hear."
+      }
+     ],
+     "familia": {
+      "tema": "los colores red, yellow y blue",
+      "idea": "Busquen en la casa cosas red, yellow y blue. Usted dice el color en inglés y su hijo lo trae."
+     },
+     "requiere": "postal-colors",
+     "atrapa": {
+      "cruceInicio": 6,
+      "cruceFinal": 4.5,
+      "distractores": [
+       2,
+       2,
+       3
+      ]
+     }
+    },
+    {
+     "id": "postal-colors-3",
+     "titulo": "Say the color",
+     "plantilla": "di-brilla",
+     "icono": "iconos/1f535.svg",
+     "palabras": [
+      {
+       "en": "red",
+       "es": "rojo",
+       "icono": "iconos/1f534.svg",
+       "pronuncia": "red"
+      },
+      {
+       "en": "yellow",
+       "es": "amarillo",
+       "icono": "iconos/1f7e1.svg",
+       "pronuncia": "yé-lou"
+      },
+      {
+       "en": "blue",
+       "es": "azul",
+       "icono": "iconos/1f535.svg",
+       "pronuncia": "blu"
+      }
+     ],
+     "x": 1341,
+     "y": 616,
+     "antes": [
+      {
+       "quien": "postal",
+       "es": "Mira el color y dilo en inglés. ¡Cada intento cuenta!",
+       "en": "Look at the color and say it. Every try counts!"
+      }
+     ],
+     "familia": {
+      "tema": "los colores red, yellow y blue",
+      "idea": "Busquen en la casa cosas red, yellow y blue. Usted dice el color en inglés y su hijo lo trae."
+     },
+     "requiere": "postal-colors-2"
+    },
+    {
+     "id": "postal-numbers",
+     "titulo": "Touch and count",
+     "plantilla": "contar-toca",
+     "icono": "iconos/three.svg",
+     "palabras": [
+      {
+       "en": "one",
+       "es": "uno",
+       "icono": "iconos/one.svg",
+       "pronuncia": "uan",
+       "aceptar": [
+        "1",
+        "won"
+       ]
+      },
+      {
+       "en": "two",
+       "es": "dos",
+       "icono": "iconos/two.svg",
+       "pronuncia": "tu",
+       "aceptar": [
+        "2",
+        "to",
+        "too"
+       ]
+      },
+      {
+       "en": "three",
+       "es": "tres",
+       "icono": "iconos/three.svg",
+       "pronuncia": "zri",
+       "aceptar": [
+        "3",
+        "tree"
+       ]
+      }
+     ],
+     "x": 1697,
+     "y": 645,
+     "antes": [
+      {
+       "quien": "postal",
+       "es": "Escucha cuántos te pido y tócalos. Postal cuenta contigo.",
+       "en": "Listen and tap how many. Postal counts with you."
+      }
+     ],
+     "familia": {
+      "tema": "contar one, two, three",
+      "idea": "Al subir escalones o repartir galletas, cuenten juntos en inglés: one, two, three."
+     },
+     "contar": {
+      "numeros": [
+       "one",
+       "two",
+       "three",
+       "four",
+       "five",
+       "six",
+       "seven",
+       "eight",
+       "nine",
+       "ten"
+      ],
+      "rondas": [
+       {
+        "objeto": "iconos/ball.svg",
+        "cantidad": 1,
+        "total": 3,
+        "dice": "Touch one ball"
+       },
+       {
+        "objeto": "iconos/2b50.svg",
+        "cantidad": 2,
+        "total": 4,
+        "dice": "Touch two stars"
+       },
+       {
+        "objeto": "iconos/1f697.svg",
+        "cantidad": 3,
+        "total": 4,
+        "dice": "Touch three cars"
+       },
+       {
+        "objeto": "iconos/1f9f8.svg",
+        "cantidad": 2,
+        "total": 5,
+        "dice": "Touch two teddy bears"
+       }
+      ]
+     }
+    },
+    {
+     "id": "postal-numbers-2",
+     "titulo": "How many?",
+     "plantilla": "escucha-toca",
+     "icono": "iconos/two.svg",
+     "palabras": [
+      {
+       "en": "one",
+       "es": "uno",
+       "icono": "iconos/one.svg",
+       "pronuncia": "uan",
+       "aceptar": [
+        "1",
+        "won"
+       ]
+      },
+      {
+       "en": "two",
+       "es": "dos",
+       "icono": "iconos/two.svg",
+       "pronuncia": "tu",
+       "aceptar": [
+        "2",
+        "to",
+        "too"
+       ]
+      },
+      {
+       "en": "three",
+       "es": "tres",
+       "icono": "iconos/three.svg",
+       "pronuncia": "zri",
+       "aceptar": [
+        "3",
+        "tree"
+       ]
+      }
+     ],
+     "x": 1903,
+     "y": 688,
+     "antes": [
+      {
+       "quien": "postal",
+       "es": "Escucha el número y toca el dibujo con esas estrellas.",
+       "en": "Listen to the number and tap the picture."
+      }
+     ],
+     "familia": {
+      "tema": "contar one, two, three",
+      "idea": "Al subir escalones o repartir galletas, cuenten juntos en inglés: one, two, three."
+     },
+     "requiere": "postal-numbers"
+    },
+    {
+     "id": "postal-numbers-3",
+     "titulo": "Say the number",
+     "plantilla": "di-brilla",
+     "icono": "iconos/one.svg",
+     "palabras": [
+      {
+       "en": "one",
+       "es": "uno",
+       "icono": "iconos/one.svg",
+       "pronuncia": "uan",
+       "aceptar": [
+        "1",
+        "won"
+       ]
+      },
+      {
+       "en": "two",
+       "es": "dos",
+       "icono": "iconos/two.svg",
+       "pronuncia": "tu",
+       "aceptar": [
+        "2",
+        "to",
+        "too"
+       ]
+      },
+      {
+       "en": "three",
+       "es": "tres",
+       "icono": "iconos/three.svg",
+       "pronuncia": "zri",
+       "aceptar": [
+        "3",
+        "tree"
+       ]
+      }
+     ],
+     "x": 2041,
+     "y": 645,
+     "antes": [
+      {
+       "quien": "postal",
+       "es": "Cuenta las estrellas y dilo en inglés. ¡Cada intento cuenta!",
+       "en": "Count the stars and say it. Every try counts!"
+      }
+     ],
+     "familia": {
+      "tema": "contar one, two, three",
+      "idea": "Al subir escalones o repartir galletas, cuenten juntos en inglés: one, two, three."
+     },
+     "requiere": "postal-numbers-2"
+    },
+    {
+     "id": "postal-face",
+     "titulo": "My face",
+     "plantilla": "escucha-toca",
+     "icono": "iconos/1f443.svg",
+     "palabras": [
+      {
+       "en": "eyes",
+       "es": "ojos",
+       "icono": "iconos/1f440.svg",
+       "pronuncia": "ais"
+      },
+      {
+       "en": "nose",
+       "es": "nariz",
+       "icono": "iconos/1f443.svg",
+       "pronuncia": "nous",
+       "aceptar": [
+        "knows"
+       ]
+      },
+      {
+       "en": "mouth",
+       "es": "boca",
+       "icono": "iconos/1f444.svg",
+       "pronuncia": "mauz"
+      },
+      {
+       "en": "ears",
+       "es": "orejas",
+       "icono": "iconos/1f442.svg",
+       "pronuncia": "irs"
+      },
+      {
+       "en": "head",
+       "es": "cabeza",
+       "icono": "iconos/head.webp",
+       "pronuncia": "jed"
+      }
+     ],
+     "x": 1662,
+     "y": 1347,
+     "antes": [
+      {
+       "quien": "postal",
+       "es": "Escucha y toca la parte de la cara.",
+       "en": "Listen and tap the part of the face."
+      }
+     ],
+     "familia": {
+      "tema": "mi cara y mi cuerpo",
+      "idea": "Jueguen a Simón dice en inglés: touch your nose, touch your head. Luego su hijo da las órdenes."
+     }
+    },
+    {
+     "id": "postal-face-2",
+     "titulo": "Catch my face",
+     "plantilla": "escucha-atrapa",
+     "icono": "iconos/1f440.svg",
+     "palabras": [
+      {
+       "en": "eyes",
+       "es": "ojos",
+       "icono": "iconos/1f440.svg",
+       "pronuncia": "ais"
+      },
+      {
+       "en": "nose",
+       "es": "nariz",
+       "icono": "iconos/1f443.svg",
+       "pronuncia": "nous",
+       "aceptar": [
+        "knows"
+       ]
+      },
+      {
+       "en": "mouth",
+       "es": "boca",
+       "icono": "iconos/1f444.svg",
+       "pronuncia": "mauz"
+      },
+      {
+       "en": "ears",
+       "es": "orejas",
+       "icono": "iconos/1f442.svg",
+       "pronuncia": "irs"
+      },
+      {
+       "en": "head",
+       "es": "cabeza",
+       "icono": "iconos/head.webp",
+       "pronuncia": "jed"
+      }
+     ],
+     "x": 1834,
+     "y": 1477,
+     "antes": [
+      {
+       "quien": "postal",
+       "es": "Atrapa la parte de la cara que escuchas.",
+       "en": "Catch the part you hear."
+      }
+     ],
+     "familia": {
+      "tema": "mi cara y mi cuerpo",
+      "idea": "Jueguen a Simón dice en inglés: touch your nose, touch your head. Luego su hijo da las órdenes."
+     },
+     "requiere": "postal-face",
+     "atrapa": {
+      "cruceInicio": 6,
+      "cruceFinal": 4.5,
+      "distractores": [
+       2,
+       2,
+       3
+      ]
+     }
+    },
+    {
+     "id": "postal-face-3",
+     "titulo": "Say my face",
+     "plantilla": "di-brilla",
+     "icono": "iconos/1f444.svg",
+     "palabras": [
+      {
+       "en": "eyes",
+       "es": "ojos",
+       "icono": "iconos/1f440.svg",
+       "pronuncia": "ais"
+      },
+      {
+       "en": "nose",
+       "es": "nariz",
+       "icono": "iconos/1f443.svg",
+       "pronuncia": "nous",
+       "aceptar": [
+        "knows"
+       ]
+      },
+      {
+       "en": "mouth",
+       "es": "boca",
+       "icono": "iconos/1f444.svg",
+       "pronuncia": "mauz"
+      },
+      {
+       "en": "ears",
+       "es": "orejas",
+       "icono": "iconos/1f442.svg",
+       "pronuncia": "irs"
+      },
+      {
+       "en": "head",
+       "es": "cabeza",
+       "icono": "iconos/head.webp",
+       "pronuncia": "jed"
+      }
+     ],
+     "x": 2006,
+     "y": 1347,
+     "antes": [
+      {
+       "quien": "postal",
+       "es": "Toca tu cara y dilo en inglés. ¡Cada intento cuenta!",
+       "en": "Touch your face and say it. Every try counts!"
+      }
+     ],
+     "familia": {
+      "tema": "mi cara y mi cuerpo",
+      "idea": "Jueguen a Simón dice en inglés: touch your nose, touch your head. Luego su hijo da las órdenes."
+     },
+     "requiere": "postal-face-2"
+    },
+    {
+     "id": "postal-toys",
+     "titulo": "My toys",
+     "plantilla": "escucha-toca",
+     "icono": "iconos/ball.svg",
+     "palabras": [
+      {
+       "en": "ball",
+       "es": "pelota",
+       "icono": "iconos/ball.svg",
+       "pronuncia": "bol"
+      },
+      {
+       "en": "teddy bear",
+       "es": "osito de peluche",
+       "icono": "iconos/1f9f8.svg",
+       "pronuncia": "té-di ber",
+       "aceptar": [
+        "teddy"
+       ]
+      },
+      {
+       "en": "bike",
+       "es": "bicicleta",
+       "icono": "iconos/1f6b2.svg",
+       "pronuncia": "báik"
+      },
+      {
+       "en": "car",
+       "es": "carro",
+       "icono": "iconos/1f697.svg",
+       "pronuncia": "car"
+      },
+      {
+       "en": "kite",
+       "es": "cometa",
+       "icono": "iconos/1fa81.svg",
+       "pronuncia": "káit"
+      }
+     ],
+     "x": 459,
+     "y": 2064,
+     "antes": [
+      {
+       "quien": "postal",
+       "es": "Escucha y toca el juguete.",
+       "en": "Listen and tap the toy."
+      }
+     ],
+     "familia": {
+      "tema": "los juguetes",
+      "idea": "Al recoger los juguetes, nómbrenlos en inglés: ball, car, bike. ¿Cuál es su favorito? My favorite toy is..."
+     }
+    },
+    {
+     "id": "postal-toys-2",
+     "titulo": "Toy pairs",
+     "plantilla": "memoria",
+     "icono": "iconos/1f9f8.svg",
+     "palabras": [
+      {
+       "en": "ball",
+       "es": "pelota",
+       "icono": "iconos/ball.svg",
+       "pronuncia": "bol"
+      },
+      {
+       "en": "teddy bear",
+       "es": "osito de peluche",
+       "icono": "iconos/1f9f8.svg",
+       "pronuncia": "té-di ber",
+       "aceptar": [
+        "teddy"
+       ]
+      },
+      {
+       "en": "bike",
+       "es": "bicicleta",
+       "icono": "iconos/1f6b2.svg",
+       "pronuncia": "báik"
+      },
+      {
+       "en": "car",
+       "es": "carro",
+       "icono": "iconos/1f697.svg",
+       "pronuncia": "car"
+      }
+     ],
+     "x": 665,
+     "y": 2107,
+     "antes": [
+      {
+       "quien": "postal",
+       "es": "Gira dos cartas: busca el juguete y su nombre.",
+       "en": "Flip two cards: find the toy and its name."
+      }
+     ],
+     "familia": {
+      "tema": "los juguetes",
+      "idea": "Al recoger los juguetes, nómbrenlos en inglés: ball, car, bike. ¿Cuál es su favorito? My favorite toy is..."
+     },
+     "requiere": "postal-toys",
+     "formas": [
+      "imagen-sonido"
+     ],
+     "parejas": 4
+    },
+    {
+     "id": "postal-toys-3",
+     "titulo": "Say my toys",
+     "plantilla": "di-brilla",
+     "icono": "iconos/1f6b2.svg",
+     "palabras": [
+      {
+       "en": "ball",
+       "es": "pelota",
+       "icono": "iconos/ball.svg",
+       "pronuncia": "bol"
+      },
+      {
+       "en": "teddy bear",
+       "es": "osito de peluche",
+       "icono": "iconos/1f9f8.svg",
+       "pronuncia": "té-di ber",
+       "aceptar": [
+        "teddy"
+       ]
+      },
+      {
+       "en": "bike",
+       "es": "bicicleta",
+       "icono": "iconos/1f6b2.svg",
+       "pronuncia": "báik"
+      },
+      {
+       "en": "car",
+       "es": "carro",
+       "icono": "iconos/1f697.svg",
+       "pronuncia": "car"
+      },
+      {
+       "en": "kite",
+       "es": "cometa",
+       "icono": "iconos/1fa81.svg",
+       "pronuncia": "káit"
+      }
+     ],
+     "x": 871,
+     "y": 2064,
+     "antes": [
+      {
+       "quien": "postal",
+       "es": "Mira el juguete y dilo en inglés. ¡Cada intento cuenta!",
+       "en": "Look at the toy and say it. Every try counts!"
+      }
+     ],
+     "familia": {
+      "tema": "los juguetes",
+      "idea": "Al recoger los juguetes, nómbrenlos en inglés: ball, car, bike. ¿Cuál es su favorito? My favorite toy is..."
+     },
+     "requiere": "postal-toys-2"
+    },
+    {
+     "id": "postal-shapes",
+     "titulo": "Shapes",
+     "plantilla": "escucha-toca",
+     "icono": "iconos/triangle.svg",
+     "palabras": [
+      {
+       "en": "circle",
+       "es": "círculo",
+       "icono": "iconos/circle.svg",
+       "pronuncia": "sér-kol"
+      },
+      {
+       "en": "square",
+       "es": "cuadrado",
+       "icono": "iconos/square.svg",
+       "pronuncia": "skuér"
+      },
+      {
+       "en": "triangle",
+       "es": "triángulo",
+       "icono": "iconos/triangle.svg",
+       "pronuncia": "trái-an-gol"
+      },
+      {
+       "en": "big",
+       "es": "grande",
+       "icono": "iconos/big.svg",
+       "pronuncia": "big"
+      },
+      {
+       "en": "small",
+       "es": "pequeño",
+       "icono": "iconos/small.svg",
+       "pronuncia": "smol"
+      }
+     ],
+     "x": 1513,
+     "y": 2208,
+     "antes": [
+      {
+       "quien": "postal",
+       "es": "Escucha y toca la forma o el tamaño.",
+       "en": "Listen and tap the shape or the size."
+      }
+     ],
+     "familia": {
+      "tema": "formas y tamaños",
+      "idea": "Busquen un plato (circle), una ventana (square) y un pedazo de sándwich (triangle). ¿Es big o small?"
+     }
+    },
+    {
+     "id": "postal-shapes-2",
+     "titulo": "Say the shape",
+     "plantilla": "di-brilla",
+     "icono": "iconos/circle.svg",
+     "palabras": [
+      {
+       "en": "circle",
+       "es": "círculo",
+       "icono": "iconos/circle.svg",
+       "pronuncia": "sér-kol"
+      },
+      {
+       "en": "square",
+       "es": "cuadrado",
+       "icono": "iconos/square.svg",
+       "pronuncia": "skuér"
+      },
+      {
+       "en": "triangle",
+       "es": "triángulo",
+       "icono": "iconos/triangle.svg",
+       "pronuncia": "trái-an-gol"
+      },
+      {
+       "en": "big",
+       "es": "grande",
+       "icono": "iconos/big.svg",
+       "pronuncia": "big"
+      },
+      {
+       "en": "small",
+       "es": "pequeño",
+       "icono": "iconos/small.svg",
+       "pronuncia": "smol"
+      }
+     ],
+     "x": 1708,
+     "y": 2208,
+     "antes": [
+      {
+       "quien": "postal",
+       "es": "Mira y dilo en inglés. ¡Cada intento cuenta!",
+       "en": "Look and say it. Every try counts!"
+      }
+     ],
+     "familia": {
+      "tema": "formas y tamaños",
+      "idea": "Busquen un plato (circle), una ventana (square) y un pedazo de sándwich (triangle). ¿Es big o small?"
+     },
+     "requiere": "postal-shapes"
+    },
+    {
+     "id": "postal-pozo",
+     "titulo": "Memory well",
+     "plantilla": "memoria",
+     "icono": "mundo/objeto-6.webp",
+     "palabras": [],
+     "palabrasDe": [
+      "postal-hello",
+      "postal-hello-2",
+      "postal-colors",
+      "postal-colors-2",
+      "postal-numbers",
+      "postal-numbers-2",
+      "postal-face",
+      "postal-face-2",
+      "postal-toys",
+      "postal-toys-2",
+      "postal-shapes"
+     ],
+     "requiereAlguna": [
+      "postal-hello",
+      "postal-colors",
+      "postal-numbers",
+      "postal-face",
+      "postal-toys"
+     ],
+     "escenaDormida": "pozo-dormido",
+     "formas": [
+      "imagen-sonido"
+     ],
+     "parejas": 4,
+     "antes": [
+      {
+       "quien": "goma",
+       "es": "Este es el pozo de los recuerdos. Gira dos cartas y busca las que van juntas.",
+       "en": "Este es el pozo de los recuerdos. Gira dos cartas y busca las que van juntas."
+      }
+     ],
+     "opcional": true,
+     "x": 1146,
+     "y": 1347
+    }
+   ],
+   "personajes": {
+    "goma": {
+     "nombre": "Goma",
+     "imagen": "personajes/goma-saludar.webp",
+     "ancho": 96
+    },
+    "tito": {
+     "nombre": "Tito",
+     "imagen": "personajes/vecino-1.webp",
+     "ancho": 78
+    },
+    "pua": {
+     "nombre": "Púa",
+     "imagen": "personajes/vecino-2.webp",
+     "ancho": 78
+    },
+    "abu": {
+     "nombre": "Abu",
+     "imagen": "personajes/vecino-3.webp",
+     "ancho": 82
+    },
+    "nuez": {
+     "nombre": "Nuez",
+     "imagen": "personajes/vecino-4.webp",
+     "ancho": 82
+    },
+    "caro": {
+     "nombre": "Caro",
+     "imagen": "personajes/vecino-5.webp",
+     "ancho": 88
+    },
+    "rayo": {
+     "nombre": "Rayo",
+     "imagen": "personajes/vecino-6.webp",
+     "ancho": 84
+    },
+    "postal": {
+     "nombre": "Postal",
+     "imagen": "personajes/postal-saludar.webp",
+     "ancho": 96,
+     "idioma": "en"
+    }
+   },
+   "idiomaPorAvance": [
+    "es"
+   ],
+   "mundo": {
+    "ancho": 2293,
+    "inicio": {
+     "x": 470,
+     "y": 2595
+    },
+    "habitantes": [
+     {
+      "id": "goma",
+      "personaje": "goma",
+      "x": 539,
+      "y": 2494,
+      "escena": "goma"
+     },
+     {
+      "id": "postal",
+      "personaje": "postal",
+      "x": 1284,
+      "y": 1347,
+      "escena": "postal"
+     },
+     {
+      "id": "caro",
+      "personaje": "caro",
+      "x": 275,
+      "y": 912,
+      "escena": "caro-listo",
+      "zona": "postal-hello",
+      "encargo": {
+       "pide": {
+        "en": "good morning",
+        "es": "buenos días",
+        "icono": "iconos/good-morning.svg",
+        "pronuncia": "gud mór-ning"
+       },
+       "opciones": [
+        {
+         "en": "good night",
+         "es": "buenas noches",
+         "icono": "iconos/good-night.svg",
+         "pronuncia": "gud náit",
+         "aceptar": [
+          "goodnight"
+         ]
+        },
+        {
+         "en": "good morning",
+         "es": "buenos días",
+         "icono": "iconos/good-morning.svg",
+         "pronuncia": "gud mór-ning"
+        },
+        {
+         "en": "goodbye",
+         "es": "adiós",
+         "icono": "iconos/goodbye.svg",
+         "pronuncia": "gud-bái",
+         "aceptar": [
+          "good bye",
+          "bye",
+          "bye bye"
+         ]
+        }
+       ],
+       "x": 688,
+       "y": 946,
+       "escenaPide": "caro-pide",
+       "escenaOtra": "caro-otra",
+       "escenaGracias": "caro-gracias",
+       "escenaListo": "caro-listo"
+      }
+     },
+     {
+      "id": "tito",
+      "personaje": "tito",
+      "x": 986,
+      "y": 831,
+      "escena": "tito-listo",
+      "zona": "postal-colors",
+      "encargo": {
+       "pide": {
+        "en": "red",
+        "es": "rojo",
+        "icono": "iconos/1f534.svg",
+        "pronuncia": "red"
+       },
+       "opciones": [
+        {
+         "en": "blue",
+         "es": "azul",
+         "icono": "iconos/1f535.svg",
+         "pronuncia": "blu"
+        },
+        {
+         "en": "red",
+         "es": "rojo",
+         "icono": "iconos/1f534.svg",
+         "pronuncia": "red"
+        },
+        {
+         "en": "yellow",
+         "es": "amarillo",
+         "icono": "iconos/1f7e1.svg",
+         "pronuncia": "yé-lou"
+        }
+       ],
+       "x": 1284,
+       "y": 912,
+       "escenaPide": "tito-pide",
+       "escenaOtra": "tito-otra",
+       "escenaGracias": "tito-gracias",
+       "escenaListo": "tito-listo"
+      }
+     },
+     {
+      "id": "abu",
+      "personaje": "abu",
+      "x": 2121,
+      "y": 745,
+      "escena": "abu-listo",
+      "zona": "postal-numbers",
+      "encargo": {
+       "pide": {
+        "en": "three",
+        "es": "tres",
+        "icono": "iconos/three.svg",
+        "pronuncia": "zri",
+        "aceptar": [
+         "3",
+         "tree"
+        ]
+       },
+       "opciones": [
+        {
+         "en": "one",
+         "es": "uno",
+         "icono": "iconos/one.svg",
+         "pronuncia": "uan",
+         "aceptar": [
+          "1",
+          "won"
+         ]
+        },
+        {
+         "en": "three",
+         "es": "tres",
+         "icono": "iconos/three.svg",
+         "pronuncia": "zri",
+         "aceptar": [
+          "3",
+          "tree"
+         ]
+        },
+        {
+         "en": "two",
+         "es": "dos",
+         "icono": "iconos/two.svg",
+         "pronuncia": "tu",
+         "aceptar": [
+          "2",
+          "to",
+          "too"
+         ]
+        }
+       ],
+       "x": 1903,
+       "y": 860,
+       "escenaPide": "abu-pide",
+       "escenaOtra": "abu-otra",
+       "escenaGracias": "abu-gracias",
+       "escenaListo": "abu-listo"
+      }
+     },
+     {
+      "id": "pua",
+      "personaje": "pua",
+      "x": 2064,
+      "y": 1491,
+      "escena": "pua-listo",
+      "zona": "postal-face",
+      "encargo": {
+       "pide": {
+        "en": "nose",
+        "es": "nariz",
+        "icono": "iconos/1f443.svg",
+        "pronuncia": "nous",
+        "aceptar": [
+         "knows"
+        ]
+       },
+       "opciones": [
+        {
+         "en": "eyes",
+         "es": "ojos",
+         "icono": "iconos/1f440.svg",
+         "pronuncia": "ais"
+        },
+        {
+         "en": "nose",
+         "es": "nariz",
+         "icono": "iconos/1f443.svg",
+         "pronuncia": "nous",
+         "aceptar": [
+          "knows"
+         ]
+        },
+        {
+         "en": "ears",
+         "es": "orejas",
+         "icono": "iconos/1f442.svg",
+         "pronuncia": "irs"
+        }
+       ],
+       "x": 1811,
+       "y": 1204,
+       "escenaPide": "pua-pide",
+       "escenaOtra": "pua-otra",
+       "escenaGracias": "pua-gracias",
+       "escenaListo": "pua-listo"
+      }
+     },
+     {
+      "id": "nuez",
+      "personaje": "nuez",
+      "x": 367,
+      "y": 1978,
+      "escena": "nuez-listo",
+      "zona": "postal-toys",
+      "encargo": {
+       "pide": {
+        "en": "ball",
+        "es": "pelota",
+        "icono": "iconos/ball.svg",
+        "pronuncia": "bol"
+       },
+       "opciones": [
+        {
+         "en": "car",
+         "es": "carro",
+         "icono": "iconos/1f697.svg",
+         "pronuncia": "car"
+        },
+        {
+         "en": "ball",
+         "es": "pelota",
+         "icono": "iconos/ball.svg",
+         "pronuncia": "bol"
+        },
+        {
+         "en": "bike",
+         "es": "bicicleta",
+         "icono": "iconos/1f6b2.svg",
+         "pronuncia": "báik"
+        }
+       ],
+       "x": 738,
+       "y": 2294,
+       "escenaPide": "nuez-pide",
+       "escenaOtra": "nuez-otra",
+       "escenaGracias": "nuez-gracias",
+       "escenaListo": "nuez-listo"
+      }
+     },
+     {
+      "id": "rayo",
+      "personaje": "rayo",
+      "x": 1811,
+      "y": 2294,
+      "escena": "rayo"
+     }
+    ],
+    "luciernagas": [],
+    "mapa": "fondos/pagina-1.webp",
+    "alto": 2867,
+    "tiposArbol": [],
+    "arboles": [],
+    "luces": [
+     {
+      "x": 1146,
+      "y": 1433,
+      "radio": 5160
+     }
+    ],
+    "radioLuzMision": 420,
+    "criaturas": [
+     {
+      "imagen": "mundo/animal-1.webp",
+      "ancho": 46,
+      "x": 688,
+      "y": 2695,
+      "radio": 90,
+      "movimiento": "revolotea",
+      "rapidez": 0.8,
+      "palabra": {
+       "en": "butterfly",
+       "es": "mariposa",
+       "icono": "mundo/animal-1.webp",
+       "pronuncia": "bá-ter-flai"
+      }
+     },
+     {
+      "imagen": "mundo/animal-2.webp",
+      "ancho": 46,
+      "x": 963,
+      "y": 2523,
+      "radio": 90,
+      "movimiento": "revolotea",
+      "rapidez": 0.9,
+      "palabra": {
+       "en": "butterfly",
+       "es": "mariposa",
+       "icono": "mundo/animal-2.webp",
+       "pronuncia": "bá-ter-flai"
+      }
+     },
+     {
+      "imagen": "mundo/animal-1.webp",
+      "ancho": 46,
+      "x": 307,
+      "y": 627,
+      "radio": 90,
+      "movimiento": "revolotea",
+      "rapidez": 1.0,
+      "palabra": {
+       "en": "butterfly",
+       "es": "mariposa",
+       "icono": "mundo/animal-1.webp",
+       "pronuncia": "bá-ter-flai"
+      },
+      "aparece": "postal-hello"
+     },
+     {
+      "imagen": "mundo/animal-2.webp",
+      "ancho": 46,
+      "x": 633,
+      "y": 641,
+      "radio": 90,
+      "movimiento": "revolotea",
+      "rapidez": 1.1,
+      "palabra": {
+       "en": "butterfly",
+       "es": "mariposa",
+       "icono": "mundo/animal-2.webp",
+       "pronuncia": "bá-ter-flai"
+      },
+      "aparece": "postal-hello-2"
+     },
+     {
+      "imagen": "mundo/animal-1.webp",
+      "ancho": 46,
+      "x": 410,
+      "y": 727,
+      "radio": 90,
+      "movimiento": "revolotea",
+      "rapidez": 1.2000000000000002,
+      "palabra": {
+       "en": "butterfly",
+       "es": "mariposa",
+       "icono": "mundo/animal-1.webp",
+       "pronuncia": "bá-ter-flai"
+      },
+      "aparece": "postal-hello-3"
+     },
+     {
+      "imagen": "mundo/animal-3.webp",
+      "ancho": 44,
+      "x": 1069,
+      "y": 555,
+      "radio": 70,
+      "movimiento": "zumba",
+      "rapidez": 1.4,
+      "palabra": {
+       "en": "bee",
+       "es": "abeja",
+       "icono": "mundo/animal-3.webp",
+       "pronuncia": "bi"
+      },
+      "aparece": "postal-colors"
+     },
+     {
+      "imagen": "mundo/animal-3.webp",
+      "ancho": 44,
+      "x": 1155,
+      "y": 575,
+      "radio": 70,
+      "movimiento": "zumba",
+      "rapidez": 1.5,
+      "palabra": {
+       "en": "bee",
+       "es": "abeja",
+       "icono": "mundo/animal-3.webp",
+       "pronuncia": "bi"
+      },
+      "aparece": "postal-colors-2"
+     },
+     {
+      "imagen": "mundo/animal-3.webp",
+      "ancho": 44,
+      "x": 1401,
+      "y": 526,
+      "radio": 70,
+      "movimiento": "zumba",
+      "rapidez": 1.5999999999999999,
+      "palabra": {
+       "en": "bee",
+       "es": "abeja",
+       "icono": "mundo/animal-3.webp",
+       "pronuncia": "bi"
+      },
+      "aparece": "postal-colors-3"
+     },
+     {
+      "imagen": "mundo/animal-5.webp",
+      "ancho": 50,
+      "x": 1637,
+      "y": 555,
+      "radio": 0,
+      "movimiento": "salta",
+      "rapidez": 1,
+      "palabra": {
+       "en": "frog",
+       "es": "rana",
+       "icono": "mundo/animal-5.webp",
+       "pronuncia": "frog"
+      },
+      "aparece": "postal-numbers"
+     },
+     {
+      "imagen": "mundo/animal-5.webp",
+      "ancho": 50,
+      "x": 1963,
+      "y": 598,
+      "radio": 0,
+      "movimiento": "salta",
+      "rapidez": 1,
+      "palabra": {
+       "en": "frog",
+       "es": "rana",
+       "icono": "mundo/animal-5.webp",
+       "pronuncia": "frog"
+      },
+      "aparece": "postal-numbers-2"
+     },
+     {
+      "imagen": "mundo/animal-5.webp",
+      "ancho": 50,
+      "x": 1981,
+      "y": 555,
+      "radio": 0,
+      "movimiento": "salta",
+      "rapidez": 1,
+      "palabra": {
+       "en": "frog",
+       "es": "rana",
+       "icono": "mundo/animal-5.webp",
+       "pronuncia": "frog"
+      },
+      "aparece": "postal-numbers-3"
+     },
+     {
+      "imagen": "mundo/animal-6.webp",
+      "ancho": 58,
+      "x": 1722,
+      "y": 1257,
+      "radio": 260,
+      "movimiento": "planea",
+      "rapidez": 0.3,
+      "palabra": {
+       "en": "bird",
+       "es": "pájaro",
+       "icono": "mundo/animal-6.webp",
+       "pronuncia": "berd"
+      },
+      "aparece": "postal-face"
+     },
+     {
+      "imagen": "mundo/animal-6.webp",
+      "ancho": 58,
+      "x": 1774,
+      "y": 1387,
+      "radio": 260,
+      "movimiento": "planea",
+      "rapidez": 0.26,
+      "palabra": {
+       "en": "bird",
+       "es": "pájaro",
+       "icono": "mundo/animal-6.webp",
+       "pronuncia": "berd"
+      },
+      "aparece": "postal-face-2"
+     },
+     {
+      "imagen": "mundo/animal-4.webp",
+      "ancho": 84,
+      "x": 2066,
+      "y": 1257,
+      "radio": 240,
+      "movimiento": "planea",
+      "rapidez": 0.2,
+      "palabra": {
+       "en": "owl",
+       "es": "búho",
+       "icono": "mundo/animal-4.webp",
+       "pronuncia": "aul"
+      },
+      "aparece": "postal-face-3"
+     },
+     {
+      "imagen": "mundo/animal-4.webp",
+      "ancho": 84,
+      "x": 399,
+      "y": 1974,
+      "radio": 220,
+      "movimiento": "planea",
+      "rapidez": 0.18,
+      "palabra": {
+       "en": "owl",
+       "es": "búho",
+       "icono": "mundo/animal-4.webp",
+       "pronuncia": "aul"
+      },
+      "aparece": "postal-toys"
+     },
+     {
+      "imagen": "mundo/animal-3.webp",
+      "ancho": 44,
+      "x": 725,
+      "y": 2017,
+      "radio": 70,
+      "movimiento": "zumba",
+      "rapidez": 1.5,
+      "palabra": {
+       "en": "bee",
+       "es": "abeja",
+       "icono": "mundo/animal-3.webp",
+       "pronuncia": "bi"
+      },
+      "aparece": "postal-toys-2"
+     },
+     {
+      "imagen": "mundo/animal-3.webp",
+      "ancho": 44,
+      "x": 811,
+      "y": 1974,
+      "radio": 70,
+      "movimiento": "zumba",
+      "rapidez": 1.5999999999999999,
+      "palabra": {
+       "en": "bee",
+       "es": "abeja",
+       "icono": "mundo/animal-3.webp",
+       "pronuncia": "bi"
+      },
+      "aparece": "postal-toys-3"
+     },
+     {
+      "imagen": "mundo/animal-5.webp",
+      "ancho": 50,
+      "x": 1573,
+      "y": 2118,
+      "radio": 0,
+      "movimiento": "salta",
+      "rapidez": 1,
+      "palabra": {
+       "en": "frog",
+       "es": "rana",
+       "icono": "mundo/animal-5.webp",
+       "pronuncia": "frog"
+      },
+      "aparece": "postal-shapes"
+     },
+     {
+      "imagen": "mundo/animal-1.webp",
+      "ancho": 46,
+      "x": 1648,
+      "y": 2118,
+      "radio": 90,
+      "movimiento": "revolotea",
+      "rapidez": 0.8,
+      "palabra": {
+       "en": "butterfly",
+       "es": "mariposa",
+       "icono": "mundo/animal-1.webp",
+       "pronuncia": "bá-ter-flai"
+      },
+      "aparece": "postal-shapes-2"
+     },
+     {
+      "imagen": "mundo/animal-2.webp",
+      "ancho": 46,
+      "x": 1206,
+      "y": 1257,
+      "radio": 90,
+      "movimiento": "revolotea",
+      "rapidez": 0.9,
+      "palabra": {
+       "en": "butterfly",
+       "es": "mariposa",
+       "icono": "mundo/animal-2.webp",
+       "pronuncia": "bá-ter-flai"
+      },
+      "aparece": "postal-pozo"
+     }
+    ],
+    "objetos": [
+     {
+      "imagen": "pagina/escuela.webp",
+      "ancho": 280,
+      "x": 470,
+      "y": 573,
+      "choque": 90,
+      "zona": "postal-hello"
+     },
+     {
+      "imagen": "pagina/jardin.webp",
+      "ancho": 280,
+      "x": 1158,
+      "y": 545,
+      "choque": 90,
+      "zona": "postal-colors"
+     },
+     {
+      "imagen": "pagina/piedras.webp",
+      "ancho": 270,
+      "x": 1857,
+      "y": 559,
+      "choque": 80,
+      "zona": "postal-numbers"
+     },
+     {
+      "imagen": "pagina/parque.webp",
+      "ancho": 300,
+      "x": 1846,
+      "y": 1276,
+      "choque": 80,
+      "zona": "postal-face"
+     },
+     {
+      "imagen": "pagina/casas.webp",
+      "ancho": 330,
+      "x": 665,
+      "y": 1927,
+      "choque": 100,
+      "zona": "postal-toys"
+     },
+     {
+      "imagen": "pagina/torre.webp",
+      "ancho": 150,
+      "x": 1605,
+      "y": 2107,
+      "choque": 50,
+      "zona": "postal-shapes"
+     },
+     {
+      "imagen": "pagina/pozo.webp",
+      "ancho": 150,
+      "x": 1146,
+      "y": 1284,
+      "choque": 45,
+      "zona": "postal-pozo"
+     },
+     {
+      "imagen": "pagina/buzon.webp",
+      "ancho": 90,
+      "x": 321,
+      "y": 2537,
+      "choque": 20,
+      "zona": "postal-toys"
+     },
+     {
+      "imagen": "pagina/estanque.webp",
+      "ancho": 160,
+      "x": 195,
+      "y": 1749,
+      "choque": 60,
+      "zona": "postal-toys"
+     },
+     {
+      "imagen": "pagina/banca.webp",
+      "ancho": 110,
+      "x": 1284,
+      "y": 2595,
+      "choque": 30,
+      "zona": "postal-shapes"
+     },
+     {
+      "imagen": "pagina/puente.webp",
+      "ancho": 180,
+      "x": 2178,
+      "y": 1606,
+      "choque": 0,
+      "zona": "postal-face-3"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 150,
+      "x": 126,
+      "y": 373,
+      "choque": 22,
+      "zona": "postal-hello"
+     },
+     {
+      "imagen": "pagina/arbol-2.webp",
+      "ancho": 110,
+      "x": 2190,
+      "y": 272,
+      "choque": 18,
+      "zona": "postal-numbers-3"
+     },
+     {
+      "imagen": "pagina/arbol-3.webp",
+      "ancho": 150,
+      "x": 871,
+      "y": 344,
+      "choque": 22,
+      "zona": "postal-colors"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 150,
+      "x": 1536,
+      "y": 315,
+      "choque": 22,
+      "zona": "postal-colors-3"
+     },
+     {
+      "imagen": "pagina/arbol-2.webp",
+      "ancho": 110,
+      "x": 138,
+      "y": 1290,
+      "choque": 18,
+      "zona": "postal-hello-3"
+     },
+     {
+      "imagen": "pagina/arbol-3.webp",
+      "ancho": 150,
+      "x": 2190,
+      "y": 1104,
+      "choque": 22,
+      "zona": "postal-face-3"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 150,
+      "x": 573,
+      "y": 1347,
+      "choque": 22,
+      "zona": "postal-hello-3"
+     },
+     {
+      "imagen": "pagina/arbol-2.webp",
+      "ancho": 110,
+      "x": 1513,
+      "y": 1491,
+      "choque": 18,
+      "zona": "postal-face"
+     },
+     {
+      "imagen": "pagina/arbol-2.webp",
+      "ancho": 110,
+      "x": 138,
+      "y": 2179,
+      "choque": 18,
+      "zona": "postal-toys"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 150,
+      "x": 1055,
+      "y": 2709,
+      "choque": 22,
+      "zona": "postal-toys-3"
+     },
+     {
+      "imagen": "pagina/arbol-2.webp",
+      "ancho": 110,
+      "x": 2201,
+      "y": 2351,
+      "choque": 18,
+      "zona": "postal-shapes-2"
+     },
+     {
+      "imagen": "pagina/arbol-3.webp",
+      "ancho": 150,
+      "x": 573,
+      "y": 1692,
+      "choque": 22,
+      "zona": "postal-toys"
+     },
+     {
+      "imagen": "pagina/arbol-2.webp",
+      "ancho": 110,
+      "x": 1582,
+      "y": 1720,
+      "choque": 18,
+      "zona": "postal-face-2"
+     },
+     {
+      "imagen": "pagina/arbusto.webp",
+      "ancho": 110,
+      "x": 275,
+      "y": 602,
+      "choque": 0,
+      "zona": "postal-hello"
+     },
+     {
+      "imagen": "pagina/arbusto.webp",
+      "ancho": 110,
+      "x": 1353,
+      "y": 459,
+      "choque": 0,
+      "zona": "postal-colors-3"
+     },
+     {
+      "imagen": "pagina/arbusto.webp",
+      "ancho": 110,
+      "x": 894,
+      "y": 1978,
+      "choque": 0,
+      "zona": "postal-toys-3"
+     },
+     {
+      "imagen": "pagina/arbusto.webp",
+      "ancho": 110,
+      "x": 2064,
+      "y": 1390,
+      "choque": 0,
+      "zona": "postal-face-3"
+     },
+     {
+      "imagen": "pagina/tulipanes.webp",
+      "ancho": 80,
+      "x": 757,
+      "y": 573,
+      "choque": 0,
+      "zona": "postal-hello-2"
+     },
+     {
+      "imagen": "pagina/tulipanes.webp",
+      "ancho": 80,
+      "x": 1651,
+      "y": 545,
+      "choque": 0,
+      "zona": "postal-numbers"
+     },
+     {
+      "imagen": "pagina/tulipanes.webp",
+      "ancho": 80,
+      "x": 1422,
+      "y": 2136,
+      "choque": 0,
+      "zona": "postal-shapes"
+     },
+     {
+      "imagen": "pagina/tulipanes.webp",
+      "ancho": 80,
+      "x": 550,
+      "y": 2595,
+      "choque": 0,
+      "zona": "postal-toys-2"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 149,
+      "x": 459,
+      "y": 156,
+      "choque": 0,
+      "zona": "postal-hello"
+     },
+     {
+      "imagen": "pagina/arbol-2.webp",
+      "ancho": 114,
+      "x": 1047,
+      "y": 163,
+      "choque": 0,
+      "zona": "postal-colors"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 129,
+      "x": 1430,
+      "y": 163,
+      "choque": 0,
+      "zona": "postal-colors-3"
+     },
+     {
+      "imagen": "pagina/arbol-3.webp",
+      "ancho": 125,
+      "x": 1945,
+      "y": 148,
+      "choque": 0,
+      "zona": "postal-numbers-3"
+     },
+     {
+      "imagen": "pagina/arbol-3.webp",
+      "ancho": 149,
+      "x": 679,
+      "y": 289,
+      "choque": 0,
+      "zona": "postal-hello-2"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 141,
+      "x": 1188,
+      "y": 274,
+      "choque": 0,
+      "zona": "postal-colors-3"
+     },
+     {
+      "imagen": "pagina/arbusto.webp",
+      "ancho": 82,
+      "x": 1348,
+      "y": 273,
+      "choque": 0,
+      "zona": "postal-colors-3"
+     },
+     {
+      "imagen": "pagina/arbusto.webp",
+      "ancho": 82,
+      "x": 1705,
+      "y": 284,
+      "choque": 0,
+      "zona": "postal-numbers"
+     },
+     {
+      "imagen": "pagina/arbusto.webp",
+      "ancho": 94,
+      "x": 1834,
+      "y": 327,
+      "choque": 0,
+      "zona": "postal-numbers"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 129,
+      "x": 2059,
+      "y": 279,
+      "choque": 0,
+      "zona": "postal-numbers-3"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 151,
+      "x": 214,
+      "y": 468,
+      "choque": 0,
+      "zona": "postal-hello"
+     },
+     {
+      "imagen": "pagina/arbol-3.webp",
+      "ancho": 143,
+      "x": 703,
+      "y": 470,
+      "choque": 0,
+      "zona": "postal-hello-2"
+     },
+     {
+      "imagen": "pagina/arbol-3.webp",
+      "ancho": 152,
+      "x": 2088,
+      "y": 473,
+      "choque": 0,
+      "zona": "postal-numbers-3"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 138,
+      "x": 1550,
+      "y": 682,
+      "choque": 0,
+      "zona": "postal-numbers"
+     },
+     {
+      "imagen": "pagina/arbol-3.webp",
+      "ancho": 136,
+      "x": 935,
+      "y": 800,
+      "choque": 0,
+      "zona": "postal-colors"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 131,
+      "x": 2199,
+      "y": 805,
+      "choque": 0,
+      "zona": "postal-numbers-3"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 128,
+      "x": 84,
+      "y": 1036,
+      "choque": 0,
+      "zona": "postal-hello"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 124,
+      "x": 2230,
+      "y": 966,
+      "choque": 0,
+      "zona": "postal-numbers-3"
+     },
+     {
+      "imagen": "pagina/arbol-2.webp",
+      "ancho": 95,
+      "x": 78,
+      "y": 1172,
+      "choque": 0,
+      "zona": "postal-hello-3"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 130,
+      "x": 439,
+      "y": 1194,
+      "choque": 0,
+      "zona": "postal-hello-3"
+     },
+     {
+      "imagen": "pagina/arbol-2.webp",
+      "ancho": 104,
+      "x": 797,
+      "y": 1195,
+      "choque": 0,
+      "zona": "postal-pozo"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 137,
+      "x": 1443,
+      "y": 1189,
+      "choque": 0,
+      "zona": "postal-face"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 150,
+      "x": 787,
+      "y": 1327,
+      "choque": 0,
+      "zona": "postal-pozo"
+     },
+     {
+      "imagen": "pagina/arbol-3.webp",
+      "ancho": 143,
+      "x": 1562,
+      "y": 1336,
+      "choque": 0,
+      "zona": "postal-face"
+     },
+     {
+      "imagen": "pagina/arbol-2.webp",
+      "ancho": 114,
+      "x": 571,
+      "y": 1565,
+      "choque": 0,
+      "zona": "postal-toys"
+     },
+     {
+      "imagen": "pagina/arbol-2.webp",
+      "ancho": 106,
+      "x": 1329,
+      "y": 1582,
+      "choque": 0,
+      "zona": "postal-pozo"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 137,
+      "x": 64,
+      "y": 1700,
+      "choque": 0,
+      "zona": "postal-toys"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 144,
+      "x": 1724,
+      "y": 1744,
+      "choque": 0,
+      "zona": "postal-face-2"
+     },
+     {
+      "imagen": "pagina/arbol-2.webp",
+      "ancho": 101,
+      "x": 976,
+      "y": 1853,
+      "choque": 0,
+      "zona": "postal-toys-3"
+     },
+     {
+      "imagen": "pagina/arbol-3.webp",
+      "ancho": 133,
+      "x": 1544,
+      "y": 1900,
+      "choque": 0,
+      "zona": "postal-shapes"
+     },
+     {
+      "imagen": "pagina/arbol-2.webp",
+      "ancho": 103,
+      "x": 1685,
+      "y": 1869,
+      "choque": 0,
+      "zona": "postal-shapes-2"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 149,
+      "x": 345,
+      "y": 2096,
+      "choque": 0,
+      "zona": "postal-toys"
+     },
+     {
+      "imagen": "pagina/arbol-2.webp",
+      "ancho": 114,
+      "x": 950,
+      "y": 2091,
+      "choque": 0,
+      "zona": "postal-toys-3"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 130,
+      "x": 480,
+      "y": 2290,
+      "choque": 0,
+      "zona": "postal-toys"
+     },
+     {
+      "imagen": "pagina/arbusto.webp",
+      "ancho": 104,
+      "x": 1179,
+      "y": 2407,
+      "choque": 0,
+      "zona": "postal-shapes"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 131,
+      "x": 91,
+      "y": 2561,
+      "choque": 0,
+      "zona": "postal-toys"
+     },
+     {
+      "imagen": "pagina/arbol-3.webp",
+      "ancho": 124,
+      "x": 690,
+      "y": 2648,
+      "choque": 0,
+      "zona": "postal-toys-2"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 149,
+      "x": 977,
+      "y": 2554,
+      "choque": 0,
+      "zona": "postal-toys-3"
+     },
+     {
+      "imagen": "pagina/arbol-2.webp",
+      "ancho": 101,
+      "x": 1454,
+      "y": 2554,
+      "choque": 0,
+      "zona": "postal-shapes"
+     },
+     {
+      "imagen": "pagina/arbusto.webp",
+      "ancho": 91,
+      "x": 1719,
+      "y": 2555,
+      "choque": 0,
+      "zona": "postal-shapes-2"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 153,
+      "x": 605,
+      "y": 2750,
+      "choque": 0,
+      "zona": "postal-toys-2"
+     },
+     {
+      "imagen": "pagina/arbol-2.webp",
+      "ancho": 111,
+      "x": 860,
+      "y": 2826,
+      "choque": 0,
+      "zona": "postal-toys-2"
+     },
+     {
+      "imagen": "pagina/arbol-3.webp",
+      "ancho": 123,
+      "x": 1237,
+      "y": 2821,
+      "choque": 0,
+      "zona": "postal-shapes"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 138,
+      "x": 1342,
+      "y": 2768,
+      "choque": 0,
+      "zona": "postal-shapes"
+     },
+     {
+      "imagen": "pagina/arbol-1.webp",
+      "ancho": 124,
+      "x": 1552,
+      "y": 2731,
+      "choque": 0,
+      "zona": "postal-shapes"
+     },
+     {
+      "imagen": "pagina/arbol-2.webp",
+      "ancho": 100,
+      "x": 1707,
+      "y": 2802,
+      "choque": 0,
+      "zona": "postal-shapes-2"
+     },
+     {
+      "imagen": "pagina/tulipanes.webp",
+      "ancho": 80,
+      "x": 608,
+      "y": 588,
+      "choque": 0,
+      "aparece": "postal-hello-2"
+     },
+     {
+      "imagen": "pagina/arbusto.webp",
+      "ancho": 100,
+      "x": 321,
+      "y": 774,
+      "choque": 0,
+      "aparece": "postal-hello-3"
+     },
+     {
+      "imagen": "pagina/tulipanes.webp",
+      "ancho": 80,
+      "x": 1032,
+      "y": 545,
+      "choque": 0,
+      "aparece": "postal-colors-2"
+     },
+     {
+      "imagen": "pagina/arbusto.webp",
+      "ancho": 100,
+      "x": 1284,
+      "y": 731,
+      "choque": 0,
+      "aparece": "postal-colors-3"
+     },
+     {
+      "imagen": "pagina/tulipanes.webp",
+      "ancho": 80,
+      "x": 1995,
+      "y": 545,
+      "choque": 0,
+      "aparece": "postal-numbers-2"
+     },
+     {
+      "imagen": "pagina/arbol-2.webp",
+      "ancho": 110,
+      "x": 1766,
+      "y": 459,
+      "choque": 0,
+      "aparece": "postal-numbers-3"
+     },
+     {
+      "imagen": "pagina/banca.webp",
+      "ancho": 100,
+      "x": 1697,
+      "y": 1491,
+      "choque": 0,
+      "aparece": "postal-face-2"
+     },
+     {
+      "imagen": "pagina/tulipanes.webp",
+      "ancho": 80,
+      "x": 1972,
+      "y": 1233,
+      "choque": 0,
+      "aparece": "postal-face-3"
+     },
+     {
+      "imagen": "pagina/tulipanes.webp",
+      "ancho": 80,
+      "x": 504,
+      "y": 2179,
+      "choque": 0,
+      "aparece": "postal-toys-2"
+     },
+     {
+      "imagen": "pagina/banca.webp",
+      "ancho": 100,
+      "x": 803,
+      "y": 2179,
+      "choque": 0,
+      "aparece": "postal-toys-3"
+     },
+     {
+      "imagen": "pagina/tulipanes.webp",
+      "ancho": 80,
+      "x": 1743,
+      "y": 2064,
+      "choque": 0,
+      "aparece": "postal-shapes-2"
+     },
+     {
+      "imagen": "pagina/tulipanes.webp",
+      "ancho": 80,
+      "x": 1250,
+      "y": 1233,
+      "choque": 0,
+      "aparece": "postal-pozo"
+     }
+    ],
+    "colorPenumbra": "rgb(0 0 0 / 0)",
+    "celda": 20,
+    "agua": [],
+    "frente": [],
+    "huellas": [
+     {
+      "x": 533,
+      "y": 823,
+      "icono": "iconos/1f44b.svg",
+      "mision": "postal-hello"
+     },
+     {
+      "x": 482,
+      "y": 698,
+      "icono": "iconos/1f44b.svg",
+      "mision": "postal-hello"
+     },
+     {
+      "x": 482,
+      "y": 698,
+      "icono": "iconos/1f44b.svg",
+      "mision": "postal-hello"
+     },
+     {
+      "x": 1221,
+      "y": 831,
+      "icono": "iconos/1f534.svg",
+      "mision": "postal-colors"
+     },
+     {
+      "x": 1347,
+      "y": 731,
+      "icono": "iconos/1f534.svg",
+      "mision": "postal-colors"
+     },
+     {
+      "x": 1404,
+      "y": 616,
+      "icono": "iconos/1f534.svg",
+      "mision": "postal-colors"
+     },
+     {
+      "x": 1697,
+      "y": 903,
+      "icono": "iconos/three.svg",
+      "mision": "postal-numbers"
+     },
+     {
+      "x": 1949,
+      "y": 810,
+      "icono": "iconos/three.svg",
+      "mision": "postal-numbers"
+     },
+     {
+      "x": 2100,
+      "y": 688,
+      "icono": "iconos/three.svg",
+      "mision": "postal-numbers"
+     },
+     {
+      "x": 1651,
+      "y": 1046,
+      "icono": "iconos/1f443.svg",
+      "mision": "postal-face"
+     },
+     {
+      "x": 1789,
+      "y": 1247,
+      "icono": "iconos/1f443.svg",
+      "mision": "postal-face"
+     },
+     {
+      "x": 1829,
+      "y": 1477,
+      "icono": "iconos/1f443.svg",
+      "mision": "postal-face"
+     },
+     {
+      "x": 745,
+      "y": 2329,
+      "icono": "iconos/ball.svg",
+      "mision": "postal-toys"
+     },
+     {
+      "x": 711,
+      "y": 2165,
+      "icono": "iconos/ball.svg",
+      "mision": "postal-toys"
+     },
+     {
+      "x": 711,
+      "y": 2165,
+      "icono": "iconos/ball.svg",
+      "mision": "postal-toys"
+     },
+     {
+      "x": 1204,
+      "y": 2225,
+      "icono": "iconos/triangle.svg",
+      "mision": "postal-shapes"
+     },
+     {
+      "x": 1376,
+      "y": 2275,
+      "icono": "iconos/triangle.svg",
+      "mision": "postal-shapes"
+     },
+     {
+      "x": 1536,
+      "y": 2255,
+      "icono": "iconos/triangle.svg",
+      "mision": "postal-shapes"
+     }
+    ],
+    "caminable": {
+     "celda": 20,
+     "ancho": 115,
+     "alto": 144,
+     "filas": [
+      "115",
+      "115",
+      "115",
+      "115",
+      "115",
+      "115",
+      "115",
+      "115",
+      "115",
+      "115",
+      "115",
+      "115",
+      "115",
+      "115",
+      "115",
+      "115",
+      "115",
+      "115",
+      "115",
+      "56,3,56",
+      "53,9,53",
+      "52,12,27,4,20",
+      "51,14,9,3,11,9,18",
+      "23,1,26,16,6,8,7,12,16",
+      "19,9,21,18,2,14,3,14,15",
+      "18,11,20,52,14",
+      "17,13,18,53,14",
+      "16,15,17,54,4,2,7",
+      "15,17,16,54,2,5,6",
+      "15,17,16,54,2,6,5",
+      "14,19,15,26,5,23,1,7,5",
+      "14,19,15,26,8,20,1,7,5",
+      "14,19,15,26,10,26,5",
+      "14,19,16,24,11,25,6",
+      "14,19,16,24,11,25,6",
+      "14,19,17,23,12,23,7",
+      "15,17,19,21,13,23,7",
+      "15,17,20,19,15,21,8",
+      "16,15,23,16,17,20,8",
+      "17,13,28,11,20,17,9",
+      "10,20,26,13,19,18,9",
+      "9,22,22,15,17,19,11",
+      "9,23,19,15,16,20,13",
+      "9,26,13,17,13,21,16",
+      "9,28,5,25,9,21,18",
+      "9,59,6,21,20",
+      "10,59,4,19,23",
+      "10,7,5,48,1,18,26",
+      "10,7,12,26,4,27,29",
+      "10,7,14,21,10,23,30",
+      "10,7,17,16,13,23,29",
+      "10,7,19,14,14,23,28",
+      "10,7,26,8,14,12,1,9,28",
+      "10,7,26,9,14,9,4,9,27",
+      "10,8,26,9,14,7,6,9,26",
+      "11,7,27,8,15,4,9,9,25",
+      "11,7,27,9,28,9,24",
+      "11,7,28,9,28,13,19",
+      "11,7,29,14,22,15,17",
+      "11,7,29,15,22,15,16",
+      "11,7,28,17,21,16,15",
+      "11,7,28,18,20,17,14",
+      "12,7,26,19,19,19,13",
+      "12,7,25,21,18,19,13",
+      "12,7,25,21,17,20,13",
+      "12,8,23,22,17,21,12",
+      "13,7,23,22,17,21,12",
+      "13,7,23,21,18,21,12",
+      "13,7,22,8,1,13,18,21,12",
+      "13,8,21,8,1,12,19,21,12",
+      "14,7,21,7,3,11,19,22,11",
+      "14,7,20,8,4,8,22,22,10",
+      "14,7,20,8,7,3,24,23,9",
+      "14,8,19,7,36,23,8",
+      "15,7,19,8,36,23,7",
+      "15,7,19,9,36,23,6",
+      "15,7,19,10,36,10,3,10,5",
+      "15,7,20,10,36,7,6,9,5",
+      "15,7,21,12,33,7,7,8,5",
+      "15,7,22,14,30,7,8,8,4",
+      "15,7,23,16,27,7,9,7,4",
+      "16,7,23,16,26,8,8,7,4",
+      "16,7,24,16,25,8,8,8,3",
+      "16,7,25,16,25,7,9,7,3",
+      "16,7,28,14,24,8,8,7,3",
+      "16,7,31,12,24,7,8,7,3",
+      "16,8,33,10,23,8,7,7,3",
+      "16,9,33,10,23,7,7,7,3",
+      "17,9,33,10,22,8,6,7,3",
+      "18,8,34,10,21,8,6,7,3",
+      "18,9,3,7,24,10,20,7,7,7,3",
+      "19,20,23,9,20,7,6,8,3",
+      "20,20,23,8,20,7,6,7,4",
+      "21,20,23,7,20,7,6,7,4",
+      "21,21,21,8,20,7,6,7,4",
+      "22,21,20,7,20,8,6,7,4",
+      "23,20,20,7,20,7,7,7,4",
+      "23,20,20,7,20,7,7,7,4",
+      "23,21,19,7,8,4,6,9,6,7,5",
+      "23,21,18,8,6,9,2,10,6,7,5",
+      "23,21,18,7,6,22,6,7,5",
+      "23,21,17,8,5,22,7,7,5",
+      "23,21,15,10,4,22,7,8,5",
+      "23,20,15,11,3,21,9,7,6",
+      "24,19,13,12,4,20,10,7,6",
+      "24,18,13,12,5,19,11,7,6",
+      "25,17,12,12,6,18,12,7,6",
+      "26,15,11,12,8,17,12,8,6",
+      "27,13,11,12,9,17,12,7,7",
+      "28,11,10,15,8,16,13,7,7",
+      "31,9,8,40,13,7,7",
+      "33,7,7,40,13,8,7",
+      "33,7,5,42,13,7,8",
+      "33,7,3,13,1,32,11,7,8",
+      "33,7,1,13,5,31,10,7,8",
+      "34,19,8,30,8,8,8",
+      "34,18,10,15,4,11,7,7,9",
+      "34,16,32,11,6,7,9",
+      "33,15,36,10,5,7,9",
+      "31,15,39,10,3,8,9",
+      "29,15,42,10,2,7,10",
+      "16,8,3,15,45,10,1,7,10",
+      "15,25,48,17,10",
+      "14,24,51,17,9",
+      "13,23,54,17,8",
+      "12,23,56,17,7",
+      "12,21,59,16,7",
+      "12,19,61,16,7",
+      "12,17,63,17,6",
+      "12,17,63,17,6",
+      "12,16,64,17,6",
+      "12,16,64,17,6",
+      "12,16,64,16,7",
+      "13,14,66,15,7",
+      "14,13,66,14,8",
+      "15,11,68,13,8",
+      "16,8,71,10,10",
+      "97,7,11",
+      "115",
+      "115",
+      "115",
+      "115",
+      "115",
+      "115"
+     ]
+    },
+    "letreros": [
+     {
+      "x": 608,
+      "y": 2423,
+      "lleva": [
+       {
+        "mision": "postal-toys",
+        "color": "#f5a050",
+        "nombre": "naranja",
+        "giro": -85
+       },
+       {
+        "mision": "postal-shapes",
+        "color": "#a078cd",
+        "nombre": "morado",
+        "giro": -30
+       },
+       {
+        "mision": "postal-hello",
+        "color": "#f08ca0",
+        "nombre": "rosado",
+        "giro": -30
+       }
+      ]
+     },
+     {
+      "x": 1101,
+      "y": 2365,
+      "lleva": [
+       {
+        "mision": "postal-shapes",
+        "color": "#a078cd",
+        "nombre": "morado",
+        "giro": -23
+       },
+       {
+        "mision": "puente",
+        "color": "#a078cd",
+        "nombre": "morado",
+        "giro": -23
+       },
+       {
+        "mision": "postal-pozo",
+        "color": "#5696de",
+        "nombre": "azul",
+        "giro": -60
+       }
+      ]
+     },
+     {
+      "x": 1009,
+      "y": 1132,
+      "lleva": [
+       {
+        "mision": "postal-hello",
+        "color": "#f08ca0",
+        "nombre": "rosado",
+        "giro": -137
+       },
+       {
+        "mision": "postal-colors",
+        "color": "#f6c744",
+        "nombre": "amarillo",
+        "giro": -76
+       },
+       {
+        "mision": "postal-numbers",
+        "color": "#e25c54",
+        "nombre": "rojo",
+        "giro": -67
+       }
+      ]
+     },
+     {
+      "x": 573,
+      "y": 989,
+      "lleva": [
+       {
+        "mision": "postal-hello",
+        "color": "#f08ca0",
+        "nombre": "rosado",
+        "giro": -135
+       }
+      ]
+     },
+     {
+      "x": 1215,
+      "y": 989,
+      "lleva": [
+       {
+        "mision": "postal-colors",
+        "color": "#f6c744",
+        "nombre": "amarillo",
+        "giro": -113
+       },
+       {
+        "mision": "postal-numbers",
+        "color": "#e25c54",
+        "nombre": "rojo",
+        "giro": -5
+       },
+       {
+        "mision": "postal-face",
+        "color": "#6ebe78",
+        "nombre": "verde",
+        "giro": -5
+       }
+      ]
+     },
+     {
+      "x": 1582,
+      "y": 1046,
+      "lleva": [
+       {
+        "mision": "postal-numbers",
+        "color": "#e25c54",
+        "nombre": "rojo",
+        "giro": -53
+       },
+       {
+        "mision": "postal-face",
+        "color": "#6ebe78",
+        "nombre": "verde",
+        "giro": 76
+       }
+      ]
+     },
+     {
+      "x": 1846,
+      "y": 2150,
+      "lleva": [
+       {
+        "mision": "postal-face",
+        "color": "#6ebe78",
+        "nombre": "verde",
+        "giro": -85
+       },
+       {
+        "mision": "puente",
+        "color": "#a078cd",
+        "nombre": "morado",
+        "giro": 95
+       }
+      ]
+     }
+    ],
+    "mapaLapiz": "fondos/pagina-1-lapiz.webp",
+    "atajos": [
+     {
+      "zona": "postal-toys-3",
+      "bloqueos": [
+       {
+        "x": 440,
+        "y": 1789,
+        "r": 85
+       },
+       {
+        "x": 275,
+        "y": 1046,
+        "r": 85
+       }
+      ]
+     },
+     {
+      "zona": "postal-face-3",
+      "bloqueos": [
+       {
+        "x": 2102,
+        "y": 1534,
+        "r": 85
+       },
+       {
+        "x": 2059,
+        "y": 2315,
+        "r": 85
+       }
+      ]
+     },
+     {
+      "zona": "postal-colors-3",
+      "bloqueos": [
+       {
+        "x": 1574,
+        "y": 535,
+        "r": 85
+       },
+       {
+        "x": 1574,
+        "y": 535,
+        "r": 85
+       }
+      ]
+     }
+    ],
+    "manchas": [
+     {
+      "x": 0,
+      "y": 0,
+      "r": 300,
+      "zona": "postal-hello",
+      "retraso": 0.58
+     },
+     {
+      "x": 300,
+      "y": 0,
+      "r": 300,
+      "zona": "postal-hello",
+      "retraso": 0.51
+     },
+     {
+      "x": 600,
+      "y": 0,
+      "r": 300,
+      "zona": "postal-hello-2",
+      "retraso": 0.52
+     },
+     {
+      "x": 900,
+      "y": 0,
+      "r": 300,
+      "zona": "postal-colors",
+      "retraso": 0.47
+     },
+     {
+      "x": 1200,
+      "y": 0,
+      "r": 300,
+      "zona": "postal-colors-3",
+      "retraso": 0.45
+     },
+     {
+      "x": 1500,
+      "y": 0,
+      "r": 300,
+      "zona": "postal-colors-3",
+      "retraso": 0.45
+     },
+     {
+      "x": 1800,
+      "y": 0,
+      "r": 300,
+      "zona": "postal-numbers",
+      "retraso": 0.47
+     },
+     {
+      "x": 2100,
+      "y": 0,
+      "r": 300,
+      "zona": "postal-numbers-3",
+      "retraso": 0.46
+     },
+     {
+      "x": 2400,
+      "y": 0,
+      "r": 300,
+      "zona": "postal-numbers-3",
+      "retraso": 0.53
+     },
+     {
+      "x": 0,
+      "y": 300,
+      "r": 300,
+      "zona": "postal-hello",
+      "retraso": 0.4
+     },
+     {
+      "x": 300,
+      "y": 300,
+      "r": 300,
+      "zona": "postal-hello",
+      "retraso": 0.3
+     },
+     {
+      "x": 600,
+      "y": 300,
+      "r": 300,
+      "zona": "postal-hello-2",
+      "retraso": 0.31
+     },
+     {
+      "x": 900,
+      "y": 300,
+      "r": 300,
+      "zona": "postal-colors",
+      "retraso": 0.26
+     },
+     {
+      "x": 1200,
+      "y": 300,
+      "r": 300,
+      "zona": "postal-colors-3",
+      "retraso": 0.25
+     },
+     {
+      "x": 1500,
+      "y": 300,
+      "r": 300,
+      "zona": "postal-colors-3",
+      "retraso": 0.4
+     },
+     {
+      "x": 1800,
+      "y": 300,
+      "r": 300,
+      "zona": "postal-numbers",
+      "retraso": 0.26
+     },
+     {
+      "x": 2100,
+      "y": 300,
+      "r": 300,
+      "zona": "postal-numbers-3",
+      "retraso": 0.25
+     },
+     {
+      "x": 2400,
+      "y": 300,
+      "r": 300,
+      "zona": "postal-numbers-3",
+      "retraso": 0.36
+     },
+     {
+      "x": 0,
+      "y": 600,
+      "r": 300,
+      "zona": "postal-hello",
+      "retraso": 0.28
+     },
+     {
+      "x": 300,
+      "y": 600,
+      "r": 300,
+      "zona": "postal-hello",
+      "retraso": 0.1
+     },
+     {
+      "x": 600,
+      "y": 600,
+      "r": 300,
+      "zona": "postal-hello-2",
+      "retraso": 0.1
+     },
+     {
+      "x": 900,
+      "y": 600,
+      "r": 300,
+      "zona": "postal-colors",
+      "retraso": 0.08
+     },
+     {
+      "x": 1200,
+      "y": 600,
+      "r": 300,
+      "zona": "postal-colors-3",
+      "retraso": 0.4
+     },
+     {
+      "x": 1500,
+      "y": 600,
+      "r": 300,
+      "zona": "postal-colors-3",
+      "retraso": 0.4
+     },
+     {
+      "x": 1800,
+      "y": 600,
+      "r": 300,
+      "zona": "postal-colors-3",
+      "retraso": 0.4
+     },
+     {
+      "x": 2100,
+      "y": 600,
+      "r": 300,
+      "zona": "postal-numbers-3",
+      "retraso": 0.05
+     },
+     {
+      "x": 2400,
+      "y": 600,
+      "r": 300,
+      "zona": "postal-numbers-3",
+      "retraso": 0.26
+     },
+     {
+      "x": 0,
+      "y": 900,
+      "r": 300,
+      "zona": "postal-hello",
+      "retraso": 0.29
+     },
+     {
+      "x": 300,
+      "y": 900,
+      "r": 300,
+      "zona": "postal-toys-3",
+      "retraso": 0.4
+     },
+     {
+      "x": 600,
+      "y": 900,
+      "r": 300,
+      "zona": "postal-hello-3",
+      "retraso": 0.11
+     },
+     {
+      "x": 900,
+      "y": 900,
+      "r": 300,
+      "zona": "postal-colors",
+      "retraso": 0.2
+     },
+     {
+      "x": 1200,
+      "y": 900,
+      "r": 300,
+      "zona": "postal-colors-2",
+      "retraso": 0.17
+     },
+     {
+      "x": 1500,
+      "y": 900,
+      "r": 300,
+      "zona": "postal-numbers",
+      "retraso": 0.23
+     },
+     {
+      "x": 1800,
+      "y": 900,
+      "r": 300,
+      "zona": "postal-numbers-2",
+      "retraso": 0.17
+     },
+     {
+      "x": 2100,
+      "y": 900,
+      "r": 300,
+      "zona": "postal-numbers-3",
+      "retraso": 0.19
+     },
+     {
+      "x": 2400,
+      "y": 900,
+      "r": 300,
+      "zona": "postal-numbers-3",
+      "retraso": 0.31
+     },
+     {
+      "x": 0,
+      "y": 1200,
+      "r": 300,
+      "zona": "postal-hello-3",
+      "retraso": 0.43
+     },
+     {
+      "x": 300,
+      "y": 1200,
+      "r": 300,
+      "zona": "postal-toys-3",
+      "retraso": 0.4
+     },
+     {
+      "x": 600,
+      "y": 1200,
+      "r": 300,
+      "zona": "postal-hello-3",
+      "retraso": 0.29
+     },
+     {
+      "x": 900,
+      "y": 1200,
+      "r": 300,
+      "zona": "postal-pozo",
+      "retraso": 0.2
+     },
+     {
+      "x": 1200,
+      "y": 1200,
+      "r": 300,
+      "zona": "postal-pozo",
+      "retraso": 0.11
+     },
+     {
+      "x": 1500,
+      "y": 1200,
+      "r": 300,
+      "zona": "postal-face",
+      "retraso": 0.16
+     },
+     {
+      "x": 1800,
+      "y": 1200,
+      "r": 300,
+      "zona": "postal-face",
+      "retraso": 0.14
+     },
+     {
+      "x": 2100,
+      "y": 1200,
+      "r": 300,
+      "zona": "postal-face-3",
+      "retraso": 0.12
+     },
+     {
+      "x": 2400,
+      "y": 1200,
+      "r": 300,
+      "zona": "postal-face-3",
+      "retraso": 0.3
+     },
+     {
+      "x": 0,
+      "y": 1500,
+      "r": 300,
+      "zona": "postal-toys",
+      "retraso": 0.52
+     },
+     {
+      "x": 300,
+      "y": 1500,
+      "r": 300,
+      "zona": "postal-toys-3",
+      "retraso": 0.4
+     },
+     {
+      "x": 600,
+      "y": 1500,
+      "r": 300,
+      "zona": "postal-pozo",
+      "retraso": 0.41
+     },
+     {
+      "x": 900,
+      "y": 1500,
+      "r": 300,
+      "zona": "postal-pozo",
+      "retraso": 0.21
+     },
+     {
+      "x": 1200,
+      "y": 1500,
+      "r": 300,
+      "zona": "postal-pozo",
+      "retraso": 0.12
+     },
+     {
+      "x": 1500,
+      "y": 1500,
+      "r": 300,
+      "zona": "postal-face",
+      "retraso": 0.16
+     },
+     {
+      "x": 1800,
+      "y": 1500,
+      "r": 300,
+      "zona": "postal-face-3",
+      "retraso": 0.4
+     },
+     {
+      "x": 2100,
+      "y": 1500,
+      "r": 300,
+      "zona": "postal-face-3",
+      "retraso": 0.4
+     },
+     {
+      "x": 2400,
+      "y": 1500,
+      "r": 300,
+      "zona": "postal-face-3",
+      "retraso": 0.3
+     },
+     {
+      "x": 0,
+      "y": 1800,
+      "r": 300,
+      "zona": "postal-toys",
+      "retraso": 0.38
+     },
+     {
+      "x": 300,
+      "y": 1800,
+      "r": 300,
+      "zona": "postal-toys-3",
+      "retraso": 0.4
+     },
+     {
+      "x": 600,
+      "y": 1800,
+      "r": 300,
+      "zona": "postal-toys-3",
+      "retraso": 0.4
+     },
+     {
+      "x": 900,
+      "y": 1800,
+      "r": 300,
+      "zona": "postal-toys-3",
+      "retraso": 0.19
+     },
+     {
+      "x": 1200,
+      "y": 1800,
+      "r": 300,
+      "zona": "postal-toys-3",
+      "retraso": 0.3
+     },
+     {
+      "x": 1500,
+      "y": 1800,
+      "r": 300,
+      "zona": "postal-shapes",
+      "retraso": 0.29
+     },
+     {
+      "x": 1800,
+      "y": 1800,
+      "r": 300,
+      "zona": "postal-face-2",
+      "retraso": 0.23
+     },
+     {
+      "x": 2100,
+      "y": 1800,
+      "r": 300,
+      "zona": "postal-face-3",
+      "retraso": 0.4
+     },
+     {
+      "x": 2400,
+      "y": 1800,
+      "r": 300,
+      "zona": "postal-face-3",
+      "retraso": 0.43
+     },
+     {
+      "x": 0,
+      "y": 2100,
+      "r": 300,
+      "zona": "postal-toys",
+      "retraso": 0.33
+     },
+     {
+      "x": 300,
+      "y": 2100,
+      "r": 300,
+      "zona": "postal-toys",
+      "retraso": 0.12
+     },
+     {
+      "x": 600,
+      "y": 2100,
+      "r": 300,
+      "zona": "postal-toys-3",
+      "retraso": 0.4
+     },
+     {
+      "x": 900,
+      "y": 2100,
+      "r": 300,
+      "zona": "postal-toys-3",
+      "retraso": 0.03
+     },
+     {
+      "x": 1200,
+      "y": 2100,
+      "r": 300,
+      "zona": "postal-toys-3",
+      "retraso": 0.24
+     },
+     {
+      "x": 1500,
+      "y": 2100,
+      "r": 300,
+      "zona": "postal-shapes",
+      "retraso": 0.08
+     },
+     {
+      "x": 1800,
+      "y": 2100,
+      "r": 300,
+      "zona": "postal-shapes-2",
+      "retraso": 0.1
+     },
+     {
+      "x": 2100,
+      "y": 2100,
+      "r": 300,
+      "zona": "postal-face-3",
+      "retraso": 0.4
+     },
+     {
+      "x": 2400,
+      "y": 2100,
+      "r": 300,
+      "zona": "postal-shapes-2",
+      "retraso": 0.5
+     },
+     {
+      "x": 0,
+      "y": 2400,
+      "r": 300,
+      "zona": "postal-toys",
+      "retraso": 0.41
+     },
+     {
+      "x": 300,
+      "y": 2400,
+      "r": 300,
+      "zona": "postal-toys",
+      "retraso": 0.27
+     },
+     {
+      "x": 600,
+      "y": 2400,
+      "r": 300,
+      "zona": "postal-toys-2",
+      "retraso": 0.21
+     },
+     {
+      "x": 900,
+      "y": 2400,
+      "r": 300,
+      "zona": "postal-toys-3",
+      "retraso": 0.24
+     },
+     {
+      "x": 1200,
+      "y": 2400,
+      "r": 300,
+      "zona": "postal-shapes",
+      "retraso": 0.26
+     },
+     {
+      "x": 1500,
+      "y": 2400,
+      "r": 300,
+      "zona": "postal-shapes",
+      "retraso": 0.14
+     },
+     {
+      "x": 1800,
+      "y": 2400,
+      "r": 300,
+      "zona": "postal-shapes-2",
+      "retraso": 0.15
+     },
+     {
+      "x": 2100,
+      "y": 2400,
+      "r": 300,
+      "zona": "postal-face-3",
+      "retraso": 0.4
+     },
+     {
+      "x": 2400,
+      "y": 2400,
+      "r": 300,
+      "zona": "postal-shapes-2",
+      "retraso": 0.51
+     },
+     {
+      "x": 0,
+      "y": 2700,
+      "r": 300,
+      "zona": "postal-toys",
+      "retraso": 0.56
+     },
+     {
+      "x": 300,
+      "y": 2700,
+      "r": 300,
+      "zona": "postal-toys",
+      "retraso": 0.47
+     },
+     {
+      "x": 600,
+      "y": 2700,
+      "r": 300,
+      "zona": "postal-toys-2",
+      "retraso": 0.43
+     },
+     {
+      "x": 900,
+      "y": 2700,
+      "r": 300,
+      "zona": "postal-toys-3",
+      "retraso": 0.45
+     },
+     {
+      "x": 1200,
+      "y": 2700,
+      "r": 300,
+      "zona": "postal-shapes",
+      "retraso": 0.42
+     },
+     {
+      "x": 1500,
+      "y": 2700,
+      "r": 300,
+      "zona": "postal-shapes",
+      "retraso": 0.35
+     },
+     {
+      "x": 1800,
+      "y": 2700,
+      "r": 300,
+      "zona": "postal-shapes-2",
+      "retraso": 0.36
+     },
+     {
+      "x": 2100,
+      "y": 2700,
+      "r": 300,
+      "zona": "postal-face-3",
+      "retraso": 0.4
+     },
+     {
+      "x": 2400,
+      "y": 2700,
+      "r": 300,
+      "zona": "postal-shapes-2",
+      "retraso": 0.61
+     },
+     {
+      "x": 0,
+      "y": 3000,
+      "r": 300,
+      "zona": "postal-toys",
+      "retraso": 0.74
+     },
+     {
+      "x": 300,
+      "y": 3000,
+      "r": 300,
+      "zona": "postal-toys",
+      "retraso": 0.68
+     },
+     {
+      "x": 600,
+      "y": 3000,
+      "r": 300,
+      "zona": "postal-toys-2",
+      "retraso": 0.64
+     },
+     {
+      "x": 900,
+      "y": 3000,
+      "r": 300,
+      "zona": "postal-toys-2",
+      "retraso": 0.66
+     },
+     {
+      "x": 1200,
+      "y": 3000,
+      "r": 300,
+      "zona": "postal-shapes",
+      "retraso": 0.61
+     },
+     {
+      "x": 1500,
+      "y": 3000,
+      "r": 300,
+      "zona": "postal-shapes",
+      "retraso": 0.57
+     },
+     {
+      "x": 1800,
+      "y": 3000,
+      "r": 300,
+      "zona": "postal-shapes-2",
+      "retraso": 0.57
+     },
+     {
+      "x": 2100,
+      "y": 3000,
+      "r": 300,
+      "zona": "postal-shapes-2",
+      "retraso": 0.63
+     },
+     {
+      "x": 2400,
+      "y": 3000,
+      "r": 300,
+      "zona": "postal-shapes-2",
+      "retraso": 0.75
+     }
+    ],
+    "tramos": [
+     {
+      "nombre": "azul",
+      "color": "#5696de",
+      "puntos": [
+       [
+        252,
+        860
+       ],
+       [
+        573,
+        895
+       ],
+       [
+        757,
+        969
+       ],
+       [
+        963,
+        946
+       ],
+       [
+        1146,
+        874
+       ],
+       [
+        1307,
+        946
+       ],
+       [
+        1399,
+        1055
+       ],
+       [
+        1559,
+        946
+       ]
+      ]
+     },
+     {
+      "nombre": "rojo",
+      "color": "#e25c54",
+      "puntos": [
+       [
+        1559,
+        946
+       ],
+       [
+        1834,
+        860
+       ],
+       [
+        2064,
+        760
+       ],
+       [
+        2137,
+        616
+       ]
+      ]
+     },
+     {
+      "nombre": "azul",
+      "color": "#5696de",
+      "puntos": [
+       [
+        894,
+        989
+       ],
+       [
+        1032,
+        1181
+       ],
+       [
+        940,
+        1319
+       ],
+       [
+        883,
+        1491
+       ],
+       [
+        986,
+        1606
+       ],
+       [
+        1192,
+        1677
+       ],
+       [
+        1353,
+        1835
+       ],
+       [
+        1307,
+        2050
+       ],
+       [
+        1124,
+        2179
+       ],
+       [
+        963,
+        2294
+       ],
+       [
+        757,
+        2394
+       ],
+       [
+        527,
+        2523
+       ],
+       [
+        355,
+        2615
+       ]
+      ]
+     },
+     {
+      "nombre": "morado",
+      "color": "#a078cd",
+      "puntos": [
+       [
+        1124,
+        2179
+       ],
+       [
+        1284,
+        2271
+       ],
+       [
+        1468,
+        2279
+       ],
+       [
+        1605,
+        2231
+       ]
+      ]
+     },
+     {
+      "nombre": "morado",
+      "color": "#a078cd",
+      "puntos": [
+       [
+        1605,
+        2231
+       ],
+       [
+        1743,
+        2337
+       ],
+       [
+        1880,
+        2466
+       ],
+       [
+        1972,
+        2615
+       ]
+      ]
+     },
+     {
+      "nombre": "amarillo",
+      "color": "#f6c744",
+      "puntos": [
+       [
+        1146,
+        874
+       ],
+       [
+        1296,
+        788
+       ],
+       [
+        1399,
+        674
+       ],
+       [
+        1410,
+        559
+       ]
+      ]
+     },
+     {
+      "nombre": "rosado",
+      "color": "#f08ca0",
+      "puntos": [
+       [
+        573,
+        895
+       ],
+       [
+        493,
+        751
+       ],
+       [
+        470,
+        645
+       ]
+      ]
+     },
+     {
+      "nombre": "naranja",
+      "color": "#f5a050",
+      "puntos": [
+       [
+        757,
+        2394
+       ],
+       [
+        734,
+        2265
+       ],
+       [
+        688,
+        2064
+       ]
+      ]
+     },
+     {
+      "nombre": "verde",
+      "color": "#6ebe78",
+      "puntos": [
+       [
+        1559,
+        946
+       ],
+       [
+        1743,
+        1147
+       ],
+       [
+        1834,
+        1347
+       ],
+       [
+        1823,
+        1606
+       ],
+       [
+        1903,
+        1778
+       ],
+       [
+        1869,
+        1978
+       ],
+       [
+        1743,
+        2079
+       ],
+       [
+        1639,
+        2136
+       ]
+      ]
+     },
+     {
+      "nombre": "azul",
+      "color": "#5696de",
+      "puntos": [
+       [
+        1032,
+        1181
+       ],
+       [
+        1146,
+        1276
+       ]
+      ]
+     },
+     {
+      "nombre": "celeste",
+      "color": "#78cdeb",
+      "puntos": [
+       [
+        516,
+        1892
+       ],
+       [
+        390,
+        1720
+       ],
+       [
+        367,
+        1491
+       ],
+       [
+        298,
+        1233
+       ],
+       [
+        252,
+        860
+       ]
+      ],
+      "zona": "postal-toys-3"
+     },
+     {
+      "nombre": "café",
+      "color": "#b07a4c",
+      "puntos": [
+       [
+        1995,
+        1434
+       ],
+       [
+        2132,
+        1563
+       ],
+       [
+        2178,
+        1720
+       ],
+       [
+        2132,
+        2007
+       ],
+       [
+        2064,
+        2294
+       ],
+       [
+        2006,
+        2523
+       ]
+      ],
+      "zona": "postal-face-3"
+     },
+     {
+      "nombre": "rojo",
+      "color": "#e25c54",
+      "puntos": [
+       [
+        1330,
+        588
+       ],
+       [
+        1513,
+        516
+       ],
+       [
+        1697,
+        573
+       ]
+      ],
+      "zona": "postal-colors-3"
+     }
+    ]
+   },
+   "escenas": {
+    "intro": {
+     "lineas": [
+      {
+       "quien": "goma",
+       "es": "¡Hola! Soy Goma. Este cuaderno es mágico: lo que aprendes aquí cobra vida.",
+       "en": "Hi! I'm Goma. This notebook is magic: what you learn here comes to life."
+      },
+      {
+       "quien": "goma",
+       "es": "Esta es la primera página de Postales. Aquí aprendemos inglés.",
+       "en": "This is the first page of Postcards. Here we learn English."
+      },
+      {
+       "quien": "postal",
+       "es": "¡Hola, amigo! Soy Postal.",
+       "en": "Hello, friend! I'm Postal."
+      },
+      {
+       "quien": "goma",
+       "es": "Postal habla en inglés. La página está a lápiz: cada misión que terminas la llena de color. ¿Empezamos?",
+       "en": "Postal speaks English. The page is in pencil: every mission you finish fills it with color. Shall we start?",
+       "opciones": [
+        {
+         "es": "¡Sí, vamos!",
+         "en": "Yes, let's go!",
+         "ir": "elegir"
+        },
+        {
+         "es": "¿Cómo me muevo?",
+         "en": "How do I move?",
+         "ir": "ayuda"
+        }
+       ]
+      }
+     ]
+    },
+    "ayuda": {
+     "lineas": [
+      {
+       "quien": "goma",
+       "es": "Toca la pantalla y caminas hasta tu dedo. ¡Puedes ir a donde quieras!",
+       "en": "Touch the screen and you walk to your finger. You can go anywhere!"
+      },
+      {
+       "quien": "goma",
+       "es": "Cada lugar tiene su camino de color. Los letreros te muestran qué color seguir.",
+       "en": "Each place has its own colored path. The signs show you which color to follow."
+      },
+      {
+       "quien": "goma",
+       "es": "Los vecinos de esta página perdieron sus palabras. ¡Ayúdalos a encontrarlas!",
+       "en": "The neighbors on this page lost their words. Help them find them!"
+      }
+     ],
+     "luego": "elegir"
+    },
+    "elegir": {
+     "lineas": [
+      {
+       "quien": "goma",
+       "es": "¿A dónde vamos primero? Tú decides.",
+       "en": "Where do we go first? You decide.",
+       "opciones": [
+        {
+         "es": "A los saludos: camino rosado",
+         "en": "To the greetings: pink path",
+         "destino": "postal-hello",
+         "icono": "iconos/1f44b.svg"
+        },
+        {
+         "es": "A los colores: camino amarillo",
+         "en": "To the colors: yellow path",
+         "destino": "postal-colors",
+         "icono": "iconos/1f534.svg"
+        },
+        {
+         "es": "A los números: camino rojo",
+         "en": "To the numbers: red path",
+         "destino": "postal-numbers",
+         "icono": "iconos/three.svg"
+        }
+       ]
+      }
+     ]
+    },
+    "despues": {
+     "lineas": [
+      {
+       "quien": "goma",
+       "es": "¡Mira! Tu misión coloreó la página y llegó un amigo nuevo. ¿A dónde vamos ahora?",
+       "en": "Look! Your mission colored the page and a new friend arrived. Where do we go now?"
+      }
+     ]
+    },
+    "puente-cerrado": {
+     "lineas": [
+      {
+       "quien": "postal",
+       "es": "¡Hola, amigo! ¡Pronto, la página siguiente!",
+       "en": "Hello, friend! Next page, soon!"
+      },
+      {
+       "quien": "goma",
+       "es": "Cuando termines todas las misiones de esta página, Postal la voltea y aparece la siguiente.",
+       "en": "When you finish all the missions on this page, Postal turns it and the next one appears."
+      }
+     ]
+    },
+    "puente-abierto": {
+     "lineas": [
+      {
+       "quien": "postal",
+       "es": "¡Lo lograste! ¡Muy bien, amigo!",
+       "en": "You did it! Great job, friend!"
+      },
+      {
+       "quien": "goma",
+       "es": "¡La página está llena! La página 2 se abre muy pronto. ¡Te esperamos!",
+       "en": "The page is full! Page 2 opens very soon. We'll wait for you!"
+      }
+     ]
+    },
+    "dormida": {
+     "lineas": [
+      {
+       "quien": "goma",
+       "es": "Este dibujo todavía está en blanco. Se dibuja cuando termines el que está antes en este camino.",
+       "en": "This drawing is still blank. It gets drawn when you finish the one before it on this path."
+      }
+     ]
+    },
+    "pozo-dormido": {
+     "lineas": [
+      {
+       "quien": "goma",
+       "es": "Termina cualquier misión de un camino y el pozo despertará.",
+       "en": "Finish any mission on a path and the well will wake up."
+      }
+     ]
+    },
+    "rayo": {
+     "lineas": [
+      {
+       "quien": "rayo",
+       "es": "¡Correo, correo! Soy Rayo. Llevo cartas a la página siguiente...",
+       "en": "Mail, mail! I'm Rayo. I carry letters to the next page..."
+      },
+      {
+       "quien": "rayo",
+       "es": "...pero siempre llego tarde: el reloj de la página se detuvo.",
+       "en": "...but I'm always late: the clock on this page stopped."
+      },
+      {
+       "quien": "rayo",
+       "es": "Termina todas las misiones de la página y Postal la voltea.",
+       "en": "Finish all the missions on the page and Postal will turn it."
+      }
+     ]
+    },
+    "caro-pide": {
+     "lineas": [
+      {
+       "quien": "caro",
+       "es": "Hooola... Soy Caro. Voy despacito, despacito... y me levanté tan tarde que olvidé cómo se saluda en la mañana.",
+       "en": "Hellooo... I'm Caro. I go slowly, slowly... and I woke up so late I forgot how to say hello in the morning."
+      },
+      {
+       "quien": "caro",
+       "es": "La palabra está más adelante, en este camino. Escucha cuál es y tráemela, ¿sí?",
+       "en": "The word is up ahead on this path. Listen and bring it to me, okay?"
+      }
+     ]
+    },
+    "caro-otra": {
+     "lineas": [
+      {
+       "quien": "caro",
+       "es": "Mmm... esa no es. ¡No pasa nada! Yo también me equivoco. Escucha otra vez.",
+       "en": "Hmm... that's not it. That's okay! I make mistakes too. Listen again."
+      }
+     ]
+    },
+    "caro-gracias": {
+     "lineas": [
+      {
+       "quien": "caro",
+       "es": "¡Esa es! ¡Good morning! Ya puedo saludar al sol.",
+       "en": "That's it! Good morning! Now I can say hello to the sun."
+      },
+      {
+       "quien": "caro",
+       "es": "La guardé en tu álbum. ¡Gracias por tomarte tu tiempo conmigo!",
+       "en": "I put it in your album. Thanks for taking your time with me!"
+      }
+     ]
+    },
+    "caro-listo": {
+     "lineas": [
+      {
+       "quien": "caro",
+       "es": "Good morning, good morning... la digo despacito para que no se me olvide.",
+       "en": "Good morning, good morning... I say it slowly so I don't forget."
+      }
+     ]
+    },
+    "tito-pide": {
+     "lineas": [
+      {
+       "quien": "tito",
+       "es": "¡Hola! Soy Tito. Mi sombrero tenía un color muy bonito... ¡y olvidé cómo se llama!",
+       "en": "Hello! I'm Tito. My hat had a beautiful color... and I forgot its name!"
+      },
+      {
+       "quien": "tito",
+       "es": "La palabra rodó por este camino. Escúchala y tráemela, por favor.",
+       "en": "The word rolled down this path. Listen to it and bring it to me, please."
+      }
+     ]
+    },
+    "tito-otra": {
+     "lineas": [
+      {
+       "quien": "tito",
+       "es": "¡Uy! Ese no es el color de mi sombrero. ¡No pasa nada! Escucha otra vez y prueba otro.",
+       "en": "Oops! That's not the color of my hat. That's okay! Listen again and try another one."
+      }
+     ]
+    },
+    "tito-gracias": {
+     "lineas": [
+      {
+       "quien": "tito",
+       "es": "¡Red! ¡Mi sombrero es red! ¡Qué bonito se ve!",
+       "en": "Red! My hat is red! It looks so nice!"
+      },
+      {
+       "quien": "tito",
+       "es": "Ya está en tu álbum. ¡Escuchaste con mucha atención!",
+       "en": "It's in your album now. You listened very carefully!"
+      }
+     ]
+    },
+    "tito-listo": {
+     "lineas": [
+      {
+       "quien": "tito",
+       "es": "¡Red como mi sombrero! Cuando lo veas, acuérdate de mí.",
+       "en": "Red like my hat! When you see it, think of me."
+      }
+     ]
+    },
+    "abu-pide": {
+     "lineas": [
+      {
+       "quien": "abu",
+       "es": "Buenas, amigo. Soy Abu. Llevo cien años contando las piedras del camino...",
+       "en": "Good day, friend. I'm Abu. I've counted the stones on this path for a hundred years..."
+      },
+      {
+       "quien": "abu",
+       "es": "...y hoy se me perdió un número. Está más adelante. Escucha bien cuál es.",
+       "en": "...and today I lost a number. It's up ahead. Listen carefully."
+      }
+     ]
+    },
+    "abu-otra": {
+     "lineas": [
+      {
+       "quien": "abu",
+       "es": "Mmm, ese es otro número. Los sabios también se equivocan. Escucha de nuevo, con calma.",
+       "en": "Hmm, that's a different number. Wise ones make mistakes too. Listen again, calmly."
+      }
+     ]
+    },
+    "abu-gracias": {
+     "lineas": [
+      {
+       "quien": "abu",
+       "es": "¡Three! One, two, three... ¡ya puedo seguir contando!",
+       "en": "Three! One, two, three... now I can keep counting!"
+      },
+      {
+       "quien": "abu",
+       "es": "Guárdalo en tu álbum. Un número nunca sobra.",
+       "en": "Keep it in your album. A number is always useful."
+      }
+     ]
+    },
+    "abu-listo": {
+     "lineas": [
+      {
+       "quien": "abu",
+       "es": "One, two, three... ¿cuentas conmigo?",
+       "en": "One, two, three... will you count with me?"
+      }
+     ]
+    },
+    "pua-pide": {
+     "lineas": [
+      {
+       "quien": "pua",
+       "es": "¡Frutas, frutas frescas! Soy Púa... pero hoy no huelo nada. ¡Nada de nada!",
+       "en": "Fruit, fresh fruit! I'm Púa... but today I can't smell a thing. Nothing at all!"
+      },
+      {
+       "quien": "pua",
+       "es": "Se me perdió la palabra de lo que uso para oler. ¿Me la buscas en este camino?",
+       "en": "I lost the word for what I smell with. Can you find it on this path?"
+      }
+     ]
+    },
+    "pua-otra": {
+     "lineas": [
+      {
+       "quien": "pua",
+       "es": "¡Uy, con eso no huelo! No importa: escucha otra vez y prueba con otra.",
+       "en": "Oops, I can't smell with that! Never mind. Listen again and try another one."
+      }
+     ]
+    },
+    "pua-gracias": {
+     "lineas": [
+      {
+       "quien": "pua",
+       "es": "¡Nose! ¡Esa es! Mmm... ¡qué rico huelen mis frutas!",
+       "en": "Nose! That's it! Mmm... my fruit smells so good!"
+      },
+      {
+       "quien": "pua",
+       "es": "Toma, va para tu álbum. ¡Y gracias por ayudarme!",
+       "en": "Here, it goes in your album. And thank you for helping me!"
+      }
+     ]
+    },
+    "pua-listo": {
+     "lineas": [
+      {
+       "quien": "pua",
+       "es": "Con mi nose huelo las frutas. ¿Y tú, qué hueles?",
+       "en": "With my nose I smell the fruit. And you, what can you smell?"
+      }
+     ]
+    },
+    "nuez-pide": {
+     "lineas": [
+      {
+       "quien": "nuez",
+       "es": "¡Pan calientito! Soy Nuez, la panadera. Quiero jugar en el recreo...",
+       "en": "Warm bread! I'm Nuez, the baker. I want to play at break time..."
+      },
+      {
+       "quien": "nuez",
+       "es": "...pero se me fue rodando la palabra de mi juguete redondo. ¿Me la traes?",
+       "en": "...but the word for my round toy rolled away. Can you bring it?"
+      }
+     ]
+    },
+    "nuez-otra": {
+     "lineas": [
+      {
+       "quien": "nuez",
+       "es": "Ese es otro juguete, ¡también es bonito! Pero busco el redondo que rebota.",
+       "en": "That's another toy, it's nice too! But I'm looking for the round one that bounces."
+      }
+     ]
+    },
+    "nuez-gracias": {
+     "lineas": [
+      {
+       "quien": "nuez",
+       "es": "¡Ball! ¡Mi ball! Ya podemos jugar.",
+       "en": "Ball! My ball! Now we can play."
+      },
+      {
+       "quien": "nuez",
+       "es": "Queda en tu álbum. ¡Gracias, amigo!",
+       "en": "It's in your album. Thank you, friend!"
+      }
+     ]
+    },
+    "nuez-listo": {
+     "lineas": [
+      {
+       "quien": "nuez",
+       "es": "Ball, ball... ¿jugamos?",
+       "en": "Ball, ball... shall we play?"
+      }
+     ]
+    },
+    "goma": {
+     "lineas": [
+      {
+       "quien": "goma",
+       "es": "¿Te equivocaste? ¡No pasa nada! Soy un borrador: borrar no es perder, es mejorar.",
+       "en": "Did you make a mistake? That's okay! I'm an eraser: erasing isn't losing, it's getting better."
+      },
+      {
+       "quien": "goma",
+       "es": "Equivocarse es parte de aprender. Dilo conmigo.",
+       "en": "Mistakes help us learn. Say it with me.",
+       "opciones": [
+        {
+         "es": "I can do it!",
+         "en": "I can do it!"
+        },
+        {
+         "es": "I try again!",
+         "en": "I try again!"
+        }
+       ]
+      },
+      {
+       "quien": "goma",
+       "es": "¡Así se dice! Sigue explorando.",
+       "en": "That's right! Keep exploring."
+      }
+     ]
+    },
+    "postal": {
+     "lineas": [
+      {
+       "quien": "postal",
+       "es": "¡Hola, amigo! ¡Qué bueno verte!",
+       "en": "Hello, friend! Good to see you!"
+      },
+      {
+       "quien": "goma",
+       "es": "Hay misiones por dibujar y vecinos que necesitan ayuda.",
+       "en": "There are missions to draw and neighbors who need help."
+      }
+     ],
+     "luego": "elegir"
+    },
+    "atajo": {
+     "lineas": [
+      {
+       "quien": "goma",
+       "es": "¡Mira! Se coloreó un camino nuevo. ¡Ahora es más corto llegar!",
+       "en": "Look! A new path got colored. Now it's quicker to get there!"
+      }
+     ]
+    }
+   }
+  }
+ ],
+ "idiomaHistoria": "es-US",
+ "heroes": [
+  {
+   "id": "tavi",
+   "nombre": "Coco",
+   "imagen": "personajes/heroe-1.webp",
+   "ancho": 76,
+   "saludo": {
+    "es": "¡Hola! Soy Coco.",
+    "en": "Hello! I'm Coco."
+   },
+   "anclas": {
+    "cabeza": {
+     "x": 0.5,
+     "y": 0.16,
+     "escala": 1
+    },
+    "cara": {
+     "x": 0.5,
+     "y": 0.47,
+     "escala": 0.95
+    },
+    "cuello": {
+     "x": 0.5,
+     "y": 0.88,
+     "escala": 0.85
+    },
+    "espalda": {
+     "x": 0.5,
+     "y": 0.6,
+     "escala": 1
+    }
+   },
+   "alto": 92
+  },
+  {
+   "id": "mika",
+   "nombre": "Nube",
+   "imagen": "personajes/heroe-2.webp",
+   "ancho": 96,
+   "saludo": {
+    "es": "¡Hola! Soy Nube.",
+    "en": "Hello! I'm Nube."
+   },
+   "anclas": {
+    "cabeza": {
+     "x": 0.58,
+     "y": 0.04,
+     "escala": 0.85
+    },
+    "cara": {
+     "x": 0.56,
+     "y": 0.36,
+     "escala": 0.85
+    },
+    "cuello": {
+     "x": 0.56,
+     "y": 0.84,
+     "escala": 0.8
+    },
+    "espalda": {
+     "x": 0.5,
+     "y": 0.58,
+     "escala": 1
+    }
+   },
+   "alto": 73
+  },
+  {
+   "id": "bruno",
+   "nombre": "Rulo",
+   "imagen": "personajes/heroe-3.webp",
+   "ancho": 64,
+   "saludo": {
+    "es": "¡Hola! Soy Rulo.",
+    "en": "Hello! I'm Rulo."
+   },
+   "anclas": {
+    "cabeza": {
+     "x": 0.52,
+     "y": 0.2,
+     "escala": 1
+    },
+    "cara": {
+     "x": 0.52,
+     "y": 0.46,
+     "escala": 0.95
+    },
+    "cuello": {
+     "x": 0.52,
+     "y": 0.74,
+     "escala": 0.9
+    },
+    "espalda": {
+     "x": 0.5,
+     "y": 0.6,
+     "escala": 1
+    }
+   },
+   "alto": 109
+  }
+ ],
+ "estelas": [
+  {
+   "id": "oro",
+   "estrellas": 0,
+   "colores": [
+    "#fff3a6",
+    "#ffd95a"
+   ]
+  },
+  {
+   "id": "menta",
+   "estrellas": 8,
+   "colores": [
+    "#b6fff0",
+    "#19c6b1"
+   ]
+  },
+  {
+   "id": "rosa",
+   "estrellas": 18,
+   "colores": [
+    "#ffd0e6",
+    "#ff5fa2"
+   ]
+  },
+  {
+   "id": "arcoiris",
+   "estrellas": 28,
+   "colores": [
+    "#ff5f6d",
+    "#ffc371",
+    "#fff36b",
+    "#6bffb0",
+    "#6bc5ff",
+    "#c58bff"
+   ]
+  }
+ ],
+ "ayudas": {
+  "memoria-tutorial": {
+   "es": "¡Iguales! Ahora tú.",
+   "en": "They match! Your turn."
+  },
+  "memoria-pista1": {
+   "es": "Escucha bien: cada dibujo tiene su palabra.",
+   "en": "Listen: every picture has its word."
+  },
+  "memoria-pista2": {
+   "es": "Mira, por aquí.",
+   "en": "Look, over here."
+  },
+  "atrapa-inicio": {
+   "es": "Atrapa la palabra que te digo.",
+   "en": "Catch the word I say."
+  },
+  "vestidor-pronto": {
+   "es": "¡Pronto! Sigue llenando la página.",
+   "en": "Soon! Keep filling the page."
+  },
+  "entrada-quien": {
+   "es": "¿Quién va a jugar?",
+   "en": "Who is going to play?"
+  },
+  "entrada-busca": {
+   "es": "Busca tu cara",
+   "en": "Find your face"
+  },
+  "entrada-clave": {
+   "es": "Toca tus tres dibujos",
+   "en": "Touch your three pictures"
+  },
+  "entrada-errado": {
+   "es": "Esas no son. Prueba otra vez con calma",
+   "en": "Not those. Try again, calmly"
+  },
+  "entrada-descanso": {
+   "es": "Goma necesita un descanso. Busca tu tarjeta o pídele ayuda a un adulto",
+   "en": "Goma needs a rest. Find your card or ask a grown-up for help"
+  },
+  "entrada-ayuda": {
+   "es": "Goma necesita un descanso. Pídele ayuda a tu profe",
+   "en": "Goma needs a rest. Ask your teacher for help"
+  },
+  "entrada-hola": {
+   "es": "¡Hola! Vamos al cuaderno",
+   "en": "Hello! Let's go to the notebook"
+  },
+  "entrada-unir": {
+   "es": "¿Este camino lo recorriste tú?",
+   "en": "Did you walk this path?"
+  },
+  "entrada-contadas": {
+   "es": "Goma sumó tu avance",
+   "en": "Goma added up your progress"
+  },
+  "entrada-sin-red": {
+   "es": "Para usar tu tarjeta hace falta internet una vez. Mientras tanto, ¡a jugar!",
+   "en": "To use your card you need internet once. Meanwhile, let's play!"
+  }
+ },
+ "imagenes": {
+  "portada": "personajes/postal-saludar.webp",
+  "fiesta": "personajes/postal-celebrar.webp"
+ },
+ "accesorios": [
+  {
+   "id": "bufanda",
+   "nombre": {
+    "es": "Bufanda de rayas",
+    "en": "Striped scarf"
+   },
+   "ranura": "cuello",
+   "estrellas": 1,
+   "imagen": "accesorios/bufanda.webp",
+   "punto": [
+    0.5,
+    0.2
+   ],
+   "ancho": 0.6
+  },
+  {
+   "id": "gafas-estrella",
+   "nombre": {
+    "es": "Gafas de estrella",
+    "en": "Star glasses"
+   },
+   "ranura": "cara",
+   "estrellas": 6,
+   "imagen": "accesorios/gafas-estrella.webp",
+   "punto": [
+    0.43,
+    0.5
+   ],
+   "ancho": 0.66
+  },
+  {
+   "id": "antena-luciernaga",
+   "nombre": {
+    "es": "Antena con luciérnaga",
+    "en": "Firefly antenna"
+   },
+   "ranura": "cabeza",
+   "estrellas": 12,
+   "imagen": "accesorios/antena-luciernaga.webp",
+   "punto": [
+    0.37,
+    0.4
+   ],
+   "ancho": 1.05
+  },
+  {
+   "id": "capa-hojas",
+   "nombre": {
+    "es": "Capa de hojas",
+    "en": "Leaf cape"
+   },
+   "ranura": "espalda",
+   "estrellas": 20,
+   "imagen": "accesorios/capa-hojas.webp",
+   "punto": [
+    0.5,
+    0.2
+   ],
+   "ancho": 1.1
+  },
+  {
+   "id": "corona-flores",
+   "nombre": {
+    "es": "Corona de flores",
+    "en": "Flower crown"
+   },
+   "ranura": "cabeza",
+   "estrellas": 24,
+   "imagen": "accesorios/corona-flores.webp",
+   "punto": [
+    0.5,
+    0.5
+   ],
+   "ancho": 0.8
+  },
+  {
+   "id": "mochila-cohete",
+   "nombre": {
+    "es": "Mochila cohete",
+    "en": "Rocket backpack"
+   },
+   "ranura": "espalda",
+   "estrellas": 30,
+   "imagen": "accesorios/mochila-cohete.webp",
+   "punto": [
+    0.5,
+    0.45
+   ],
+   "ancho": 1.05
+  }
+ ],
+ "voz": {}
+}

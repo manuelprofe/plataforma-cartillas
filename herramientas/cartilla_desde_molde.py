@@ -110,21 +110,24 @@ def main() -> int:
 
     def palabra(clave: str) -> dict:
         p = dict(palabras[clave])
-        p['en'] = p['es']
+        p.setdefault('en', p['es'])
         return p
 
-    def linea(quien: str, texto: str, opciones=None) -> dict:
-        l = {'quien': quien, 'es': texto, 'en': texto}
+    def linea(quien: str, texto: str, *resto) -> dict:
+        """[quien, es] o [quien, es, en], y al final, si hay, la lista de opciones [es, ir, icono, en]."""
+        en = next((r for r in resto if isinstance(r, str)), texto)
+        opciones = next((r for r in resto if isinstance(r, list)), None)
+        l = {'quien': quien, 'es': texto, 'en': en}
         if opciones:
             l['opciones'] = []
             for o in opciones:
-                op = {'es': o[0], 'en': o[0]}
+                op = {'es': o[0], 'en': o[3] if len(o) > 3 else o[0]}
                 if len(o) > 1 and o[1]:
                     if o[1].startswith('@'):
                         op['destino'] = o[1][1:]
                     else:
                         op['ir'] = o[1]
-                if len(o) > 2:
+                if len(o) > 2 and o[2]:
                     op['icono'] = o[2]
                 l['opciones'].append(op)
         return l
@@ -143,7 +146,7 @@ def main() -> int:
     # El guía de la materia toma el lugar del guía del molde (Postal) en la página.
     anterior = t['puerta']['personaje']
     t['personajes'].pop(anterior, None)
-    t['personajes'][guia['id']] = {'nombre': guia['nombre'], 'imagen': guia['imagen'], 'ancho': 96}
+    t['personajes'][guia['id']] = {'nombre': guia['nombre'], 'imagen': guia['imagen'], 'ancho': 96, **({'idioma': guia['idioma']} if 'idioma' in guia else {})}
     t['puerta']['personaje'] = guia['id']
     # El guía de la materia acompaña también los juegos.
     t['guia'] = guia['id']
@@ -167,7 +170,7 @@ def main() -> int:
                 'id': nuevo, 'titulo': m['titulo'], 'plantilla': m['plantilla'], 'icono': m['icono'],
                 'palabras': [palabra(p) for p in m['palabras']],
                 'x': base['x'], 'y': base['y'],
-                'antes': [linea(guia['id'], m['antes'])],
+                'antes': [linea(guia['id'], *m['antes']) if isinstance(m['antes'], list) else linea(guia['id'], m['antes'])],
                 'familia': z['familia'],
             }
             if i:
@@ -200,7 +203,8 @@ def main() -> int:
             h['encargo']['opciones'] = [palabra(o) for o in e['opciones']]
 
     # Escenas: todas las del contenido; ninguna del molde queda (hablaban de otra materia).
-    escenas = {}
+    # Con `conservarEscenas` quedan las del molde (misma materia) y el contenido cambia solo las que trae.
+    escenas = renombrar(copy.deepcopy(t['escenas']), nombres) if contenido.get('conservarEscenas') else {}
     for clave, valor in contenido['escenas'].items():
         if isinstance(valor, dict):
             escenas[clave] = {'lineas': [linea(*l) for l in valor['lineas']], **({'luego': valor['luego']} if 'luego' in valor else {})}
@@ -223,7 +227,8 @@ def main() -> int:
     t.pop('cinematicas', None)
     cartilla.pop('cinematicas', None)
 
-    en_espanol(cartilla)
+    if contenido['idiomaVoz'].startswith('es'):
+        en_espanol(cartilla)
 
     # Iconos compuestos y archivos del paquete.
     destino.mkdir(parents=True, exist_ok=True)

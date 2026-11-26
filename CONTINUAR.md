@@ -63,10 +63,10 @@ Plan completo: `docs/plan/calendario-diciembre.md` (también en Google Calendar,
 - **Cartillas nuevas jugables (paso 2):** el contenido de cada una vive en `docs/pedagogia/cartillas/<id>.json`
   y `python3 -I herramientas/cartilla_desde_molde.py <ese json>` la arma sobre la página 1 de `ingles-3`
   (misma geometría, ids nuevos, escenas propias, iconos SVG compuestos con Twemoji). Listas: `matematicas-0`
-  (periodo 1, U1 y U2) y `espanol-0` (periodo 1, U1 a U3); prueba: `node scripts/pruebas/cartilla-nueva.mjs <id>`. Voz del navegador hasta correr `generar_voz.py`. Vista previa sin publicar:
+  (periodo 1, U1 y U2), `espanol-0` (periodo 1, U1 a U3) e `ingles-0` (Postal, periodo 1, voz en-US, escenas bilingües; `"conservarEscenas": true`); prueba: `node scripts/pruebas/cartilla-nueva.mjs <id>`. Voz del navegador hasta correr `generar_voz.py`. Vista previa sin publicar:
   `/?cartilla=<id>` (invitado). Falta para publicarla: su `materiales/indice.json` y `biblioteca/` (el docente
-  de un grupo con esa cartilla los pide) y la migración de misiones (010 y 011, pendientes de Manuel).
-  Siguen: inglés transición, luego 1.°.
+  de un grupo con esa cartilla los pide) y la migración de misiones (010, 011 y 012, pendientes de Manuel).
+  Siguen: 1.° (matemáticas, español, inglés), luego 2.° y así hasta 5.°.
 - **Herramientas de contenido:** `herramientas/` (voces, letras sincronizadas,
   `materiales_a_json.py`, `importar/`).
 - **Documentos de diseño y pedagogía:** `docs/diseno/esqueleto.md` (tandas 5 y 6 en §8),

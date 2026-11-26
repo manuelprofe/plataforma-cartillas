@@ -537,3 +537,9 @@ a.fila:hover, button.fila:hover { background: var(--a-fondo); }
 .identidad-subir input { position: absolute; inset: -1px; opacity: 0; cursor: pointer; }
 .identidad-color { display: inline-flex; align-items: center; gap: var(--e-2); min-height: var(--toque); font-weight: 500; cursor: pointer; }
 .identidad-color input { width: 48px; height: 48px; padding: 2px; border: 1px solid var(--a-linea-fuerte); border-radius: 10px; background: var(--a-superficie); cursor: pointer; }
+
+/* Plan por grupo: fechas de la clase 1 y la clase 2 */
+.plan-grupo { display: flex; flex-direction: column; gap: var(--e-4); }
+.plan-grupo__fechas { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: var(--e-3); }
+.plan-grupo__fechas input { min-height: 48px; }
+.plan-grupo__nota { padding: var(--e-3) var(--e-4) 0; margin: 0; }

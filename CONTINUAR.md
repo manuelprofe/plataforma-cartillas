@@ -28,7 +28,8 @@ Plan completo: `docs/plan/calendario-diciembre.md` (también en Google Calendar,
 - Agentes en `.claude/agents/` (Sonnet/Haiku); Opus orquesta. Si no tienen cupo, Opus lo hace.
 - Pruebas: copiar `.env.example` a `.env` (sin él fallan las de adultos), `npm run build`, luego
   `node scripts/pruebas/<nombre>.mjs` (estudiante, docente, biblioteca, materiales, rutas, adultos,
-  multicartilla, docente-cartillas…).
+  multicartilla, docente-cartillas, plan-grupo…). `gama-baja.mjs` mide las plantillas en un celular
+  barato emulado (CPU 4x, 4G lenta): el 27 nov todas por debajo de 50 ms por toque y la portada en 206 KB.
 - Calendario: `herramientas/calendario.py` genera el plan y los archivos de cada día
   (`--sin-pisar` no sobrescribe los días ya editados). Los detalles de cada bloque están en
   `herramientas/calendario_detalle.py`.
@@ -53,6 +54,10 @@ Plan completo: `docs/plan/calendario-diciembre.md` (también en Google Calendar,
   (Planear), `Biblioteca.tsx`, `Colegio.tsx` (coordinador; Uso y avance es un tablero por grado
   con cifras de `cifras_grupos`, imprimible en una hoja), `Plataforma.tsx` (dueño),
   componentes base en `base.tsx` y `comun.tsx`.
+- **Plan por grupo (27 nov):** fechas de la clase 1 y 2 de cada tema en `planes_tema` (migración 002, sin
+  migración nueva). Datos en `src/adultos/planGrupo.ts` (`proximaClase`, `farolClase`), pantallas en
+  `src/adultos/FechasPlan.tsx` (plan del grupo en Planear y fechas en el plan del tema). Inicio del docente
+  muestra la próxima clase del primer grupo. Falta: que el coordinador vea el tema de cada grupo en Uso y avance.
 - **Proyectar:** `src/proyectar/Proyectar.tsx`.
 - **Base de datos:** `supabase/migraciones/` (002 esqueleto, 003 ajustes),
   `supabase/funciones/invitar/`. `registrar_mision` está en 002 (línea ~854).

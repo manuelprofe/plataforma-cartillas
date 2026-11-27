@@ -103,6 +103,12 @@ const CAMBIO_V3 = 8.75;
 /** Perfil que juega sin tarjeta. Su progreso vive solo en el aparato. */
 export const INVITADO = 'invitado';
 const CLAVE_ACTIVO = 'pc_activo_v1';
+/**
+ * Sala de juegos del docente (/jugar/…): el adulto prueba o proyecta un juego sin tocar el
+ * progreso de ningún niño. Juega un perfil que vive solo en memoria y nunca sube a la nube.
+ */
+export const PRUEBA = 'prueba-docente';
+const enSala = typeof location !== 'undefined' && location.pathname.startsWith('/jugar/');
 const claveDe = (perfil: string) => (perfil === INVITADO ? CLAVE : `${CLAVE}:${perfil}`);
 
 /**
@@ -162,6 +168,7 @@ function leer(perfil: string): Progreso {
 }
 
 function leerActivo(): { perfil: string; actividad: number } {
+  if (enSala) return { perfil: PRUEBA, actividad: 0 };
   try {
     const a = JSON.parse(localStorage.getItem(CLAVE_ACTIVO) ?? 'null') as { perfil?: unknown; actividad?: unknown } | null;
     if (a && typeof a.perfil === 'string') return { perfil: a.perfil, actividad: Number(a.actividad) || 0 };
@@ -176,6 +183,7 @@ let estado = leer(activo);
 const oyentes = new Set<() => void>();
 
 function guardarActivo() {
+  if (enSala) return;
   try {
     localStorage.setItem(CLAVE_ACTIVO, JSON.stringify({ perfil: activo, actividad }));
   } catch {
@@ -186,10 +194,12 @@ function guardarActivo() {
 /** Escribe el progreso de un perfil; si es el activo, también lo pinta. */
 function escribir(perfil: string, nuevo: Progreso) {
   if (perfil === activo) estado = nuevo;
-  try {
-    localStorage.setItem(claveDe(perfil), JSON.stringify(nuevo));
-  } catch {
-    // Sin almacenamiento el progreso vive solo en memoria durante la sesión.
+  if (perfil !== PRUEBA) {
+    try {
+      localStorage.setItem(claveDe(perfil), JSON.stringify(nuevo));
+    } catch {
+      // Sin almacenamiento el progreso vive solo en memoria durante la sesión.
+    }
   }
   if (perfil === activo) oyentes.forEach((f) => f());
 }
@@ -288,7 +298,7 @@ function guardarCola(cola: Envio[]) {
 const nuevoId = () => (typeof crypto.randomUUID === 'function' ? crypto.randomUUID() : `${Date.now()}-${Math.random().toString(36).slice(2)}`);
 
 function encolar(envio: Omit<Envio, 'id' | 'cartilla' | 'estudiante'>, estudiante = activo) {
-  if (estudiante === INVITADO || !cartillaId) return;
+  if (estudiante === INVITADO || estudiante === PRUEBA || !cartillaId) return;
   guardarCola([...leerCola(), { id: nuevoId(), estudiante, cartilla: cartillaId, ...envio }]);
 }
 

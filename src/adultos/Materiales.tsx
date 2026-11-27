@@ -4,9 +4,12 @@
 import { Boton, Encabezado, Fila, Hueco, Panel, Vacio } from './base';
 import { Cargado, useCarga, useTitulo } from './comun';
 import { ElegirCartilla } from './ElegirCartilla';
-import { cargarIndice, cargarMaterial, cargarTema, RANURAS, type EntradaTema, type Indice, type Material } from '../materiales/datos';
+import { cargarIndice, cargarMaterial, cargarTema, cartillaMateriales, RANURAS, type EntradaTema, type Indice, type Material } from '../materiales/datos';
 import { useDuracion } from '../materiales/duracion';
-import { MisPlaneaciones, RUTA_ARMAR } from '../armador/Armador';
+import { armarConTema, MisPlaneaciones, RUTA_ARMAR } from '../armador/Armador';
+import { cargarCatalogo, cargarPensum, elegirPensum, nombreCartilla, nombreUnidad, porPeriodo, usePensumElegido } from '../pensum/datos';
+import { ElegirPensum } from '../pensum/ElegirPensum';
+import { UnidadVista } from '../pensum/PaginaPensum';
 import { FechasDelTema, PlanDeGrupos } from './FechasPlan';
 import { CuerpoMaterial, MaterialHueco, MaterialPantalla } from '../materiales/Material';
 
@@ -21,36 +24,98 @@ const nombreClase = (m: Material) => m.titulo;
 export function Planear() {
   useTitulo('Planear');
   const duracion = useDuracion();
-  const carga = useCarga(cargarIndice, 'indice');
+  // Solo algunas cartillas traen láminas y planeadores listos: sin ellos, Planear sigue con el pensum.
+  const carga = useCarga(() => cargarIndice().catch(() => null), 'indice-planear');
   return (
     <>
-      <Encabezado titulo="Planear" meta="Los temas de la cartilla, en orden" />
+      <Encabezado titulo="Planear" meta="Todos los temas del año, de transición a 5.°" />
       <ElegirCartilla />
+      <Panel titulo="Mi planeación">
+        <p className="sec">Elija la duración, cuántas actividades, el tema y las actividades; sale en el formato del colegio, para imprimir o bajar en Word.</p>
+        <Boton variante="primario" icono="planear" ruta={RUTA_ARMAR}>
+          Armar mi planeación
+        </Boton>
+      </Panel>
+      <MisPlaneaciones />
       <Cargado carga={carga}>
-        {(indice) => (
-          <>
-            <Panel titulo="Mi planeación">
-              <p className="sec">Elija la duración, cuántas actividades, el tema y las actividades; sale en el formato del colegio, para imprimir o bajar en Word.</p>
-              <Boton variante="primario" icono="planear" ruta={RUTA_ARMAR}>
-                Armar mi planeación
-              </Boton>
-            </Panel>
-            <PlanDeGrupos indice={indice} />
-            <MisPlaneaciones />
-            <Panel titulo="Plan y planeador de cada tema" filas>
-              {indice.temas.map((t) => (
-                <Fila key={t.id} ruta={rutaPlan(t.id)} icono="planear" tenue={t.estado === 'pendiente'} titulo={t.nombre} detalle={t.estado === 'listo' ? `${t.titulo} · 2 clases de ${duracion} minutos` : 'Aquí irá'} />
-              ))}
-            </Panel>
-            <Panel titulo="Materiales por tema" filas>
-              {indice.temas.map((t) => (
-                <Fila key={t.id} ruta={rutaTema(t.id)} icono="documento" tenue={t.estado === 'pendiente'} titulo={t.nombre} detalle={t.estado === 'listo' ? `${t.materiales.length} materiales listos` : 'Aquí irá'} />
-              ))}
-            </Panel>
-          </>
-        )}
+        {(indice) =>
+          indice && (
+            <>
+              <PlanDeGrupos indice={indice} />
+              <Panel titulo="Temas con láminas de la cartilla" filas>
+                {indice.temas.map((t) => (
+                  <Fila key={t.id} ruta={t.estado === 'listo' ? rutaPlan(t.id) : rutaTema(t.id)} icono="planear" tenue={t.estado === 'pendiente'} titulo={t.nombre} detalle={t.estado === 'listo' ? `${t.titulo} · 2 clases de ${duracion} minutos · ${t.materiales.length} materiales` : 'Láminas en camino'} />
+                ))}
+              </Panel>
+            </>
+          )
+        }
       </Cargado>
+      <TemasDelAno />
     </>
+  );
+}
+
+/** Todos los temas del pensum, por materia, grado y periodo. Cada uno abre su ficha. */
+function TemasDelAno() {
+  const cartilla = usePensumElegido(cartillaMateriales());
+  const carga = useCarga(() => Promise.all([cargarCatalogo(), cargarPensum(cartilla)]), `temas-${cartilla}`);
+  return (
+    <Cargado carga={carga}>
+      {([catalogo, p]) => (
+        <>
+          <Panel titulo="Temas del año">
+            <p className="sec">Matemáticas, español e inglés de transición a 5.°, con sus DBA y desempeños. Toque un tema para verlo y armar su clase.</p>
+            <ElegirPensum catalogo={catalogo} valor={cartilla} elegir={elegirPensum} />
+          </Panel>
+          {porPeriodo(p).map((per) => (
+            <Panel key={per.numero} titulo={`${nombreCartilla(p)} · Periodo ${per.numero}${per.titulo ? ` · ${per.titulo}` : ''}`} filas>
+              {per.unidades.map((u) => (
+                <Fila key={u.id} ruta={rutaTemaPensum(p.cartilla, u.id)} icono="documento" titulo={u.eje ? u.titulo : nombreUnidad(u)} detalle={resumen(u.temas)} />
+              ))}
+            </Panel>
+          ))}
+        </>
+      )}
+    </Cargado>
+  );
+}
+
+const rutaTemaPensum = (cartilla: string, unidad: string) => `/docente/planear/tema/${encodeURIComponent(cartilla)}/${encodeURIComponent(unidad)}`;
+const resumen = (temas: string[]) => {
+  const t = temas.join('; ');
+  return t.length > 110 ? `${t.slice(0, 107).trimEnd()}…` : t;
+};
+
+/** Ficha de un tema del pensum: qué se ve, DBA y desempeños, y el atajo para armar su clase. */
+export function TemaPensum({ cartilla, unidad }: { cartilla: string; unidad: string }) {
+  const carga = useCarga(() => cargarPensum(cartilla), `pensum-${cartilla}`);
+  const u = carga.datos?.unidades.find((x) => x.id === unidad);
+  useTitulo(u ? u.titulo : 'Tema');
+  return (
+    <Cargado carga={carga}>
+      {(p) => {
+        const un = p.unidades.find((x) => x.id === unidad);
+        if (!un) return <NoHay volver="/docente/planear" etiqueta="Planear" />;
+        const dba = (id: string) => p.dba.find((d) => d.id === id)?.texto;
+        return (
+          <div className="pensum">
+            <Encabezado titulo={un.titulo} meta={`${nombreCartilla(p)} · Periodo ${un.periodo['4']}`} volver={{ ruta: '/docente/planear', etiqueta: 'Planear' }} />
+            <div className="mat-acciones">
+              <Boton variante="primario" icono="planear" onClick={() => armarConTema(p.cartilla, un.id)}>
+                Armar la clase de este tema
+              </Boton>
+              <Boton icono="juegos" ruta={`/docente/juegos?materia=${encodeURIComponent(p.materia)}&grado=${p.grado}`}>
+                Juegos de {p.materia.toLowerCase()} {p.gradoNombre}
+              </Boton>
+            </div>
+            <article className="pensum__doc">
+              <UnidadVista u={un} dba={dba} />
+            </article>
+          </div>
+        );
+      }}
+    </Cargado>
   );
 }
 

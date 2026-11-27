@@ -1,7 +1,7 @@
 // Pantalla del armador: el docente elige duración, cuántas actividades, el tema y las actividades;
 // el armador sugiere sin obligar. Al armar, la planeación queda en "Mis planeaciones" (este aparato)
 // y se abre en el formato único, lista para imprimir o bajar en Word.
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Boton, Encabezado, Fila, Panel, Vacio } from '../adultos/base';
 import { Cargado, useCarga, useTitulo } from '../adultos/comun';
 import { cargarIndice, cargarTema, cartillaMateriales, type EntradaTema, type TemaDoc } from '../materiales/datos';
@@ -59,18 +59,35 @@ async function cargarArmador(id: string) {
   return { catalogo, pensum, listos };
 }
 
+/** Tema que se eligió desde su ficha (Planear → tema → Armar la clase): el armador llega con él puesto. */
+let temaPendiente: string | null = null;
+export function armarConTema(cartilla: string, unidad: string) {
+  elegirPensum(cartilla);
+  temaPendiente = `p:${unidad}`;
+  navegar(RUTA_ARMAR);
+}
+
 export function Armador() {
   useTitulo('Armar mi planeación');
   const cartilla = usePensumElegido(cartillaMateriales());
   const carga = useCarga(() => cargarArmador(cartilla), `armador-${cartilla}`);
   const [duracion, setDuracion] = useState<Duracion>(55);
   const [cuantas, setCuantas] = useState(SUGERIDAS[55]);
-  const [tema, setTema] = useState<string | null>(null);
+  const [tema, setTema] = useState<string | null>(() => {
+    const t = temaPendiente;
+    temaPendiente = null;
+    return t;
+  });
   const [elegidas, setElegidas] = useState<string[]>([]);
   const [error, setError] = useState('');
   // Cualquier cambio borra el aviso anterior; cambiar de cartilla borra el tema.
   useEffect(() => setError(''), [duracion, cuantas, tema, elegidas, cartilla]);
-  useEffect(() => setTema(null), [cartilla]);
+  const cartillaPrevia = useRef(cartilla);
+  useEffect(() => {
+    if (cartillaPrevia.current === cartilla) return;
+    cartillaPrevia.current = cartilla;
+    setTema(null);
+  }, [cartilla]);
   const grado = carga.datos?.pensum.grado ?? 0;
   const disponibles = ACTIVIDADES.filter((a) => (a.desdeGrado ?? 0) <= grado);
   const sugerencia = sugeridas(cuantas, grado);

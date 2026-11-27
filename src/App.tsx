@@ -27,7 +27,7 @@ import { fijarCartillasEnUso, fijarMomentoSeguro } from './sinConexion';
 const MS_CORTINA = 420;
 /** Celular quieto este rato con más de un niño: al volver se pregunta otra vez quién juega. */
 const MS_QUIETO = 10 * 60_000;
-const IMAGEN_FIESTA = 'personajes/goma-celebrar.webp';
+export const IMAGEN_FIESTA = 'personajes/goma-celebrar.webp';
 
 /**
  * Qué componente juega cada plantilla del contenido. Van en la carga inicial (unos 10 kB
@@ -40,7 +40,7 @@ const Camino = lazy(() => import('./mundos/Camino').then((m) => ({ default: m.Ca
 const Biblioteca = lazy(() => import('./mundos/Biblioteca').then((m) => ({ default: m.Biblioteca })));
 const Cuento = lazy(() => import('./juegos/cuento/Cuento').then((m) => ({ default: m.Cuento })));
 
-const JUEGOS: Record<Mision['plantilla'], ComponentType<PropsJuego>> = {
+export const JUEGOS: Record<Mision['plantilla'], ComponentType<PropsJuego>> = {
   'escucha-toca': EscuchaToca,
   'escucha-atrapa': EscuchaAtrapa,
   'di-brilla': DiBrilla,

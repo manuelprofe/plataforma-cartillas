@@ -72,7 +72,7 @@ function Documento({ p }: { p: Pensum }) {
   );
 }
 
-function UnidadVista({ u, dba }: { u: Unidad; dba: (id: string) => string | undefined }) {
+export function UnidadVista({ u, dba }: { u: Unidad; dba: (id: string) => string | undefined }) {
   return (
     <div className="pensum__unidad">
       <h4>{u.eje ? u.titulo : nombreUnidad(u)}</h4>

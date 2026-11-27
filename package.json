@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc --noEmit && vite build",
+    "build": "node herramientas/indice_juegos.mjs && tsc --noEmit && vite build",
     "build:cloudflare": "npm run build && node herramientas/cloudflare.mjs",
     "preview": "vite preview"
   },

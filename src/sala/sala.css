@@ -1,0 +1,58 @@
+/* Sala de juegos y armador de juegos del docente. Tokens de adultos (adultos/base.css). */
+.sala-filtros { display: flex; flex-direction: column; gap: var(--e-3); }
+.sala-chips { display: flex; gap: var(--e-2); overflow-x: auto; padding: 2px 2px var(--e-1); margin: 0 -2px; scrollbar-width: none; }
+.sala-chips::-webkit-scrollbar { display: none; }
+@media (min-width: 720px) { .sala-chips { flex-wrap: wrap; overflow: visible; } }
+.sala-chip {
+  flex: none; min-height: 40px; padding: 0 var(--e-4); border-radius: 999px; font: 500 15px/1 var(--f-texto);
+  color: var(--a-texto-2); background: var(--a-superficie); border: 1px solid var(--a-linea-fuerte); cursor: pointer;
+  transition: background var(--m-rapido) var(--m-curva), color var(--m-rapido) var(--m-curva), border-color var(--m-rapido) var(--m-curva);
+}
+/* El chip mide 40 px a la vista y 48 de toque. */
+.sala-chip { position: relative; }
+.sala-chip::after { content: ''; position: absolute; inset: -4px 0; }
+.sala-chip[aria-pressed='true'] { color: #fff; background: var(--a-tinta); border-color: var(--a-tinta); }
+.sala-chip:not([aria-pressed='true']):hover { border-color: var(--a-tinta); color: var(--a-tinta); }
+
+.sala-cartilla { display: flex; flex-direction: column; gap: var(--e-3); }
+.sala-cartilla__titulo { font-size: var(--t-h3); line-height: var(--l-h3); color: var(--a-tinta); margin: 0; }
+.sala-rejilla, .sala-mios { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--e-3); grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); }
+
+.sala-juego {
+  display: grid; grid-template-columns: 64px 1fr auto; align-items: center; gap: var(--e-3);
+  min-height: 88px; padding: var(--e-3); text-decoration: none; color: var(--a-texto);
+  background: var(--a-superficie); border: 1px solid var(--a-linea); border-radius: var(--r-tarjeta);
+  box-shadow: 0 1px 0 var(--a-linea), 0 6px 16px -12px rgb(31 56 102 / 0.35);
+  transition: transform var(--m-medio) var(--m-curva), box-shadow var(--m-medio) var(--m-curva), border-color var(--m-medio) var(--m-curva);
+}
+.sala-juego:hover { transform: translateY(-2px); border-color: var(--a-linea-fuerte); box-shadow: 0 1px 0 var(--a-linea), 0 14px 24px -14px rgb(31 56 102 / 0.45); }
+.sala-juego:active { transform: translateY(0) scale(0.99); }
+.sala-juego__dibujo { width: 64px; height: 64px; display: grid; place-items: center; border-radius: 12px; background: var(--a-hundido); }
+.sala-juego__dibujo img { width: 48px; height: 48px; object-fit: contain; }
+.sala-juego__texto { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.sala-juego__titulo { font: 600 17px/22px var(--f-marca); color: var(--a-tinta); }
+.sala-juego__tipo { font-size: var(--t-meta); line-height: var(--l-meta); color: var(--a-goma); font-weight: 600; }
+.sala-juego__detalle { overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+.sala-juego__jugar { display: flex; flex-direction: column; align-items: center; gap: 2px; min-width: 48px; font-size: 12px; font-weight: 600; color: var(--a-tinta); }
+.sala-mio { display: flex; flex-direction: column; gap: var(--e-1); }
+.sala-mio__acciones { display: flex; gap: var(--e-2); flex-wrap: wrap; }
+.sala-pie { text-align: center; }
+.sala-listo { display: flex; flex-wrap: wrap; align-items: center; gap: var(--e-3); padding: var(--e-4); border-radius: var(--r-tarjeta); background: var(--a-goma-suave); animation: sala-entra var(--m-entrada) var(--m-curva) both; }
+.sala-listo p { margin: 0; flex: 1 1 220px; }
+@keyframes sala-entra { from { opacity: 0; transform: translateY(6px); } }
+
+.armar-juego { display: flex; flex-direction: column; gap: var(--e-5); }
+.armar-juego__tipos { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--e-2); grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr)); }
+.armar-juego__grupo + .armar-juego__grupo { margin-top: var(--e-3); }
+.armar-juego__palabras { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--e-2); grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); }
+.palabra-chip {
+  width: 100%; min-height: 88px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+  padding: var(--e-2); font: 500 14px/18px var(--f-texto); color: var(--a-texto); text-align: center;
+  background: var(--a-superficie); border: 1px solid var(--a-linea-fuerte); border-radius: var(--r-control); cursor: pointer;
+  transition: transform var(--m-rapido) var(--m-curva), background var(--m-rapido) var(--m-curva);
+}
+.palabra-chip img { width: 40px; height: 40px; object-fit: contain; }
+.palabra-chip[aria-pressed='true'] { background: var(--a-hundido); border-color: var(--a-tinta); box-shadow: inset 0 0 0 1px var(--a-tinta); }
+.palabra-chip[aria-pressed='true']:active, .palabra-chip:active { transform: scale(0.97); }
+.palabra-chip:disabled { opacity: 0.45; cursor: not-allowed; }
+@media (prefers-reduced-motion: reduce) { .sala-juego, .sala-chip, .palabra-chip { transition: none; } .sala-listo { animation: none; } }

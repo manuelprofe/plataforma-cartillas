@@ -82,8 +82,8 @@ try {
     comprobar(hrefs.includes('/proyectar/escuela') && hrefs.includes('/docente/planear/escuela'), 'Inicio enlaza a /proyectar/escuela y al plan');
 
     await p.goto(url('/docente/planear'));
-    await p.waitForSelector('text=Plan y planeador de cada tema');
-    const filas = await p.locator('.panel', { hasText: 'Plan y planeador de cada tema' }).locator('.fila').count();
+    await p.waitForSelector('text=Temas con láminas de la cartilla');
+    const filas = await p.locator('.panel', { hasText: 'Temas con láminas de la cartilla' }).locator('.fila').count();
     comprobar(filas === 6, `Planear lista los 6 temas (${filas})`);
     comprobar((await p.locator('.pestanas [aria-current="page"]').innerText()) === 'Planear', 'en Planear y Materiales la pestaña activa es Planear');
     await foto(p, 'planear-390');

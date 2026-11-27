@@ -13,7 +13,9 @@ import { DocentesYGrupos, UsoYAvance } from './Colegio';
 import { Campo, correoValido, useTitulo } from './comun';
 import { PaginaDueno } from './Plataforma';
 import { DocenteInicio, MisGrupos, PaginaGrupo } from './Docente';
-import { MaterialPagina, Planear, PlanTema, TemaMateriales } from './Materiales';
+import { Sala } from '../sala/Sala';
+import { ArmarJuego } from '../sala/ArmarJuego';
+import { MaterialPagina, Planear, PlanTema, TemaMateriales, TemaPensum } from './Materiales';
 import { Armador, PlaneacionArmada } from '../armador/Armador';
 import { Biblioteca } from './Biblioteca';
 import { useCartillaMateriales } from '../materiales/datos';
@@ -471,6 +473,7 @@ const DOCENTE: Seccion[] = [
   { ruta: '/docente', etiqueta: 'Inicio', icono: 'inicio' },
   { ruta: '/docente/grupos', etiqueta: 'Grupos', icono: 'grupos' },
   { ruta: '/docente/planear', etiqueta: 'Planear', icono: 'planear' },
+  { ruta: '/docente/juegos', etiqueta: 'Juegos', icono: 'juegos' },
   { ruta: '/proyectar', etiqueta: 'Proyectar', icono: 'proyectar' },
   { ruta: '/docente/mas', etiqueta: 'Más', icono: 'mas' },
 ];
@@ -513,10 +516,13 @@ function PaginaDocente({ seccion, mas, cuenta, sinRed }: { seccion: string; mas:
     case 'grupos':
       return mas[0] ? <PaginaGrupo resto={mas} sinRed={sinRed} /> : <MisGrupos sinRed={sinRed} />;
     case 'planear':
+      if (mas[0] === 'tema') return <TemaPensum cartilla={mas[1] ?? ''} unidad={mas[2] ?? ''} />;
       if (mas[0] === 'armar') return mas[1] ? <PlaneacionArmada id={mas[1]} /> : <Armador />;
       return mas[0] ? <PlanTema tema={mas[0]} /> : <Planear />;
     case 'temas':
       return mas[1] ? <MaterialPagina tema={mas[0]} id={mas[1]} /> : mas[0] ? <TemaMateriales tema={mas[0]} /> : <AlInicio ruta="/docente/planear" />;
+    case 'juegos':
+      return mas[0] === 'armar' ? <ArmarJuego id={mas[1]} /> : <Sala />;
     case 'biblioteca':
       return <Biblioteca resto={mas} />;
     case 'registro':

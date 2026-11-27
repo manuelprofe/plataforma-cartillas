@@ -15,6 +15,7 @@ import { Icono } from './Icono';
 import { Tarjetas, ListaEstrellas } from './Imprimibles';
 import { AvanceGrupo } from './tablero/AvanceGrupo';
 import { HoyEnMiMes } from './calendario/MiMes';
+import { FraseDelDia } from './goma/Goma';
 import { cargarIndice, cargarTema } from '../materiales/datos';
 import { cargarPlan, diaDeClase, farolClase, proximaClase, type PlanTema } from './planGrupo';
 
@@ -62,6 +63,7 @@ export function DocenteInicio({ colegioId }: { colegioId: string | null }) {
   return (
     <>
       <Encabezado titulo="Inicio" meta={colegio.datos ? `${hoyEscrito()} · ${colegio.datos}` : hoyEscrito()} />
+      <FraseDelDia />
       <Cargado carga={grupos}>
         {(lista) =>
           lista.length === 0 ? (

@@ -14,6 +14,7 @@ import { Campo, correoValido, useTitulo } from './comun';
 import { PaginaDueno } from './Plataforma';
 import { DocenteInicio, MisGrupos, PaginaGrupo } from './Docente';
 import { MiMes } from './calendario/MiMes';
+import { GomaGuia } from './goma/Goma';
 import { fuenteJuegos, Sala } from '../sala/Sala';
 import { PlaneacionesColegio } from './Entregas';
 import { sincronizarCreaciones } from './nubeCreaciones';
@@ -515,6 +516,7 @@ function Docente({ resto, cuenta, sinRed }: { resto: string[]; cuenta: Dentro; s
     <Cascaron inicio="/docente" estado={estado} aviso={sinRed && <AvisoSinRed texto={SIN_RED_DOCENTE} />} secciones={DOCENTE} activa={activa} nombre="Secciones del docente">
       {/* Al cambiar de cartilla, Planear y Biblioteca se vuelven a cargar con la nueva. */}
       <PaginaDocente key={cartilla} seccion={seccion} mas={mas} cuenta={cuenta} sinRed={sinRed} />
+      <GomaGuia />
     </Cascaron>
   );
 }

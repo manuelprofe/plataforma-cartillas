@@ -1,0 +1,42 @@
+/* Goma acompaña: frase del día y "Pregúntale a Goma". Tokens de adultos/base.css. */
+.frase-goma { display: flex; gap: var(--e-3); align-items: center; margin: 0; padding: var(--e-3) var(--e-4); border-radius: var(--r-tarjeta); background: #fdf3f6; border: 1px solid #f3d6df; }
+.frase-goma img { flex: none; }
+.frase-goma p { margin: 0; display: flex; flex-direction: column; gap: 2px; color: var(--a-texto); font-size: 16px; line-height: 24px; }
+.frase-goma__tipo { font-size: 13px; line-height: 18px; font-weight: 700; color: var(--a-goma); }
+
+.goma-boton { position: fixed; z-index: 30; right: 16px; bottom: calc(var(--alto-pestanas) + 12px + env(safe-area-inset-bottom)); display: inline-flex; align-items: center; gap: 8px; min-height: 52px; padding: 4px 16px 4px 8px; border: 1px solid var(--a-linea); border-radius: 999px; background: var(--a-superficie); box-shadow: var(--capa-3); font: inherit; font-weight: 700; color: var(--a-tinta); cursor: pointer; }
+.goma-boton:hover { transform: translateY(-1px); }
+.goma-boton[aria-expanded='true'] { background: var(--a-tinta); color: #fff; }
+@media (max-width: 719px) { .goma-boton span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); } .goma-boton { padding: 4px 8px; } }
+@media (min-width: 1024px) { .goma-boton { bottom: 24px; right: 24px; } }
+
+.goma-guia { position: fixed; z-index: 31; left: 8px; right: 8px; bottom: calc(var(--alto-pestanas) + 72px + env(safe-area-inset-bottom)); max-height: min(70vh, 620px); display: flex; flex-direction: column; border-radius: var(--r-tarjeta); background: var(--a-superficie); border: 1px solid var(--a-linea); box-shadow: var(--capa-3); outline: none; animation: goma-sube var(--m-entrada) var(--m-curva); }
+@keyframes goma-sube { from { opacity: 0; transform: translateY(12px); } }
+@media (min-width: 720px) { .goma-guia { left: auto; right: 16px; width: 400px; } }
+@media (min-width: 1024px) { .goma-guia { right: 24px; bottom: 92px; } }
+@media (prefers-reduced-motion: reduce) { .goma-guia { animation: none; } }
+.goma-guia__cabeza { display: flex; gap: var(--e-3); align-items: center; padding: var(--e-3) var(--e-3) var(--e-2) var(--e-4); }
+.goma-guia__cabeza > div { flex: 1; min-width: 0; }
+.goma-guia__cabeza p { margin: 0; }
+.goma-guia__titulo { font: 700 18px/24px var(--f-titulo, inherit); color: var(--a-tinta); }
+.goma-guia__cerrar { min-width: var(--toque); font-size: 18px; }
+.goma-guia__buscar { padding: 0 var(--e-4) var(--e-3); border-bottom: 1px solid var(--a-linea); }
+.goma-guia__buscar input { width: 100%; min-height: var(--toque); padding: 0 12px; border: 1px solid var(--a-linea-fuerte); border-radius: var(--r-control); font: inherit; background: var(--a-hundido); }
+.goma-guia__cuerpo { overflow: auto; padding: var(--e-3) var(--e-4) var(--e-4); display: flex; flex-direction: column; gap: var(--e-2); }
+.goma-guia__sub { margin: var(--e-2) 0 0; font-size: 13px; font-weight: 700; color: var(--a-texto-2); }
+.goma-preguntas { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 6px; }
+.goma-preguntas button { width: 100%; min-height: var(--toque); padding: 8px 12px; text-align: left; border: 1px solid var(--a-linea); border-radius: var(--r-control); background: var(--a-superficie); font: inherit; font-weight: 600; color: var(--a-tinta); cursor: pointer; }
+.goma-preguntas button:hover { background: var(--a-hundido); }
+.goma-temas { display: flex; flex-wrap: wrap; gap: var(--e-2); }
+.goma-temas button { min-height: 44px; padding: 0 14px; border-radius: 999px; border: 1px solid var(--a-linea-fuerte); background: var(--a-superficie); font: inherit; font-weight: 600; color: var(--a-texto); cursor: pointer; }
+.goma-respuesta { display: flex; flex-direction: column; gap: var(--e-2); }
+.goma-respuesta h3 { margin: 0; font-size: 18px; line-height: 24px; color: var(--a-tinta); }
+.goma-respuesta p { margin: 0; line-height: 24px; }
+.goma-respuesta > .boton--primario { align-self: flex-start; }
+.goma-volver { align-self: flex-start; padding-left: 0; }
+/* Espacio para que el botón de Goma no tape lo último de la página. */
+@media screen { .contenido:has(> .goma-boton) { padding-bottom: calc(var(--alto-pestanas) + 88px + env(safe-area-inset-bottom)); } }
+@media screen and (min-width: 1024px) { .contenido:has(> .goma-boton) { padding-bottom: 104px; } }
+@media print { .goma-guia, .goma-boton, .frase-goma { display: none !important; } }
+/* En Dar calcomanías los avisos de abajo (Deshacer) van primero: Goma se aparta. */
+.contenido:has(.avisos) > .goma-boton { display: none; }

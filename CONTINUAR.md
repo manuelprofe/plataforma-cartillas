@@ -133,3 +133,7 @@ piloto; confirmar el estándar MEN citado en `docs/pedagogia/canciones-bosque.md
 - Las planeaciones guardan `fecha` dentro de sus datos (`ponerFechaPlan` en armar.ts). nubeCreaciones sube un cambio local sin `nube` aunque ya exista en la nube.
 - Prueba: scripts/pruebas/calendario.mjs. No usar `@page` en CSS de adultos: se aplica a todo lo que se imprime.
 - Sigue (elegido por Manuel): frase diaria de Goma en Inicio y "Goma guía" (árbol de diálogos en JSON, sin IA).
+
+## Goma acompaña (27 nov)
+- `public/goma/guia.json`: frases y tips del día (`frases`), temas y árbol de preguntas (`nodos`: pregunta, respuesta, siguientes 1-3, palabras, pantallas, ir). Se amplía sin programar; scripts/pruebas/goma.mjs revisa que no haya ramas rotas.
+- `src/adultos/goma/Goma.tsx`: `FraseDelDia` (Inicio del docente) y `GomaGuia` (botón flotante "Pregúntale a Goma" en todo el panel del docente; buscador sin tildes con raíz simple; sugerencias según la ruta). Sin IA (Manuel: IA solo si hay ingresos).

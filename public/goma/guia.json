@@ -1,0 +1,842 @@
+{
+ "frases": [
+  {
+   "tipo": "frase",
+   "texto": "Enseñar es dejar huella en alguien que todavía no sabe que la lleva."
+  },
+  {
+   "tipo": "tip",
+   "texto": "Antes de explicar, pregunte qué saben. Lo que el niño ya trae es el gancho para lo nuevo (Ausubel)."
+  },
+  {
+   "tipo": "frase",
+   "texto": "Un error en voz alta es una clase que se regala a todo el salón."
+  },
+  {
+   "tipo": "tip",
+   "texto": "Deje 5 segundos de silencio después de preguntar. Más manos se levantan cuando el tiempo alcanza para pensar."
+  },
+  {
+   "tipo": "frase",
+   "texto": "Hoy alguien va a entender algo por primera vez gracias a usted."
+  },
+  {
+   "tipo": "tip",
+   "texto": "Cierre la clase con las caritas: ¿cómo me fue? Pensar en lo aprendido también es aprender."
+  },
+  {
+   "tipo": "frase",
+   "texto": "La paciencia también es una estrategia pedagógica."
+  },
+  {
+   "tipo": "tip",
+   "texto": "Trabajo en parejas: el que ya sabe explica, y al explicar aprende el doble (Vygotsky)."
+  },
+  {
+   "tipo": "frase",
+   "texto": "No todos llegan al mismo tiempo, pero todos pueden llegar."
+  },
+  {
+   "tipo": "tip",
+   "texto": "Primero imagen y sonido, después la palabra escrita. Así entran también los que aún no leen."
+  },
+  {
+   "tipo": "frase",
+   "texto": "Una calcomanía a tiempo dice: te vi intentarlo."
+  },
+  {
+   "tipo": "tip",
+   "texto": "Reconozca la conducta, no solo el acierto: participar, colaborar y corregir valen tanto como acertar."
+  },
+  {
+   "tipo": "frase",
+   "texto": "Su clase de hoy puede ser el recuerdo favorito de alguien."
+  },
+  {
+   "tipo": "tip",
+   "texto": "Misiones cortas de 3 a 5 minutos: la atención de un niño de 7 años es breve, y está bien."
+  },
+  {
+   "tipo": "frase",
+   "texto": "Planear bien es regalarse tranquilidad para el resto de la semana."
+  },
+  {
+   "tipo": "tip",
+   "texto": "Use Mi mes un domingo por la tarde: 10 minutos ordenan todo el mes."
+  },
+  {
+   "tipo": "frase",
+   "texto": "Los niños no recuerdan todo lo que dijo, pero sí cómo los hizo sentir."
+  },
+  {
+   "tipo": "tip",
+   "texto": "Mire \"A quién apoyar\" en el avance del grupo antes de clase: un saludo al que no practica cambia mucho."
+  },
+  {
+   "tipo": "frase",
+   "texto": "Equivocarse es parte del juego. También para los profes."
+  },
+  {
+   "tipo": "tip",
+   "texto": "Proyecte un juego al empezar: cinco minutos de juego despiertan al salón entero."
+  },
+  {
+   "tipo": "frase",
+   "texto": "Cada pregunta de un niño es una puerta abierta."
+  },
+  {
+   "tipo": "tip",
+   "texto": "Repita lo nuevo en tres momentos: al inicio, en el juego y en el cierre. La repetición con variación fija lo aprendido."
+  },
+  {
+   "tipo": "frase",
+   "texto": "Lo que hoy parece poco, en un año se nota."
+  },
+  {
+   "tipo": "tip",
+   "texto": "Si un tema costó, no avance todavía: arme una planeación de repaso con otro juego de la misma plantilla."
+  },
+  {
+   "tipo": "frase",
+   "texto": "Enseñar con alegría también es enseñar."
+  },
+  {
+   "tipo": "tip",
+   "texto": "Dé opciones: elegir entre dos actividades aumenta las ganas de hacerlas (Ryan y Deci)."
+  },
+  {
+   "tipo": "frase",
+   "texto": "Usted no está sola ni solo: la planeación ya tiene un punto de partida."
+  },
+  {
+   "tipo": "tip",
+   "texto": "Imprima el material cuando falle la conexión. Todo en la plataforma tiene versión en papel."
+  },
+  {
+   "tipo": "frase",
+   "texto": "El niño que va despacio también va."
+  },
+  {
+   "tipo": "tip",
+   "texto": "Sin tablas de posiciones: compare a cada niño con él mismo, no con los demás."
+  }
+ ],
+ "temas": [
+  {
+   "id": "app",
+   "nombre": "Usar la plataforma",
+   "inicio": [
+    "app-empezar",
+    "app-tarjetas",
+    "app-sin-internet",
+    "app-proyectar"
+   ]
+  },
+  {
+   "id": "planear",
+   "nombre": "Planear",
+   "inicio": [
+    "planear-armar",
+    "calendario-armar",
+    "planear-entregar",
+    "planear-temas"
+   ]
+  },
+  {
+   "id": "juegos",
+   "nombre": "Juegos",
+   "inicio": [
+    "juegos-sala",
+    "juegos-armar",
+    "juegos-error"
+   ]
+  },
+  {
+   "id": "grupo",
+   "nombre": "Manejo de grupo",
+   "inicio": [
+    "grupo-participar",
+    "grupo-disciplina",
+    "grupo-colaborar",
+    "grupo-calcomanias"
+   ]
+  },
+  {
+   "id": "evaluacion",
+   "nombre": "Evaluación",
+   "inicio": [
+    "eval-avance",
+    "eval-dominio",
+    "eval-nota"
+   ]
+  },
+  {
+   "id": "inclusion",
+   "nombre": "Inclusión",
+   "inicio": [
+    "inclusion-ritmos",
+    "inclusion-leer",
+    "inclusion-nee"
+   ]
+  }
+ ],
+ "nodos": {
+  "app-empezar": {
+   "pregunta": "¿Por dónde empiezo?",
+   "respuesta": [
+    "Cree su grupo en Grupos, agregue los apodos de los niños y marque las autorizaciones. Después imprima las tarjetas: cada una trae el código del grupo y el PIN del niño.",
+    "Con eso, los niños entran desde cualquier celular y usted ve su avance."
+   ],
+   "siguientes": [
+    "app-grupo",
+    "app-tarjetas",
+    "planear-armar"
+   ],
+   "palabras": [
+    "empezar",
+    "inicio",
+    "primeros pasos",
+    "comenzar",
+    "nuevo"
+   ],
+   "pantallas": [
+    "/docente"
+   ],
+   "ir": {
+    "ruta": "/docente/grupos",
+    "etiqueta": "Ir a Grupos"
+   }
+  },
+  "app-grupo": {
+   "pregunta": "¿Cómo creo un grupo y agrego niños?",
+   "respuesta": [
+    "En Grupos escriba el nombre (por ejemplo 3B) y el grado. Luego pegue la lista de apodos, uno por línea. Use solo apodo o primer nombre, sin apellidos: la plataforma guarda lo mínimo de cada niño."
+   ],
+   "siguientes": [
+    "app-autorizacion",
+    "app-tarjetas"
+   ],
+   "palabras": [
+    "grupo",
+    "niños",
+    "estudiantes",
+    "lista",
+    "agregar",
+    "apodos"
+   ],
+   "pantallas": [
+    "/docente/grupos"
+   ],
+   "ir": {
+    "ruta": "/docente/grupos",
+    "etiqueta": "Ir a Grupos"
+   }
+  },
+  "app-autorizacion": {
+   "pregunta": "¿Para qué es la autorización?",
+   "respuesta": [
+    "Es el permiso de la familia para que el niño use la plataforma con cuenta (Ley 1581 de 2012). Márquela cuando la reciba firmada.",
+    "Sin autorización el niño puede jugar en clase, proyectado, pero no entra con su tarjeta y no se guarda su avance."
+   ],
+   "siguientes": [
+    "app-tarjetas",
+    "app-datos"
+   ],
+   "palabras": [
+    "autorización",
+    "permiso",
+    "padres",
+    "familia",
+    "ley",
+    "consentimiento"
+   ],
+   "pantallas": [
+    "/docente/grupos"
+   ]
+  },
+  "app-tarjetas": {
+   "pregunta": "¿Cómo entran los niños?",
+   "respuesta": [
+    "Cada niño tiene una tarjeta impresa con un QR, el código del grupo y su PIN de tres dibujos. Escanea el QR o escribe el código, toca su personaje y pone el PIN. Si olvida el PIN, en Grupos puede cambiarlo e imprimir una tarjeta nueva."
+   ],
+   "siguientes": [
+    "app-grupo",
+    "app-sin-internet"
+   ],
+   "palabras": [
+    "entrar",
+    "tarjeta",
+    "pin",
+    "qr",
+    "código",
+    "contraseña",
+    "olvidó"
+   ],
+   "pantallas": [
+    "/docente/grupos"
+   ]
+  },
+  "app-sin-internet": {
+   "pregunta": "¿Qué pasa si no hay internet?",
+   "respuesta": [
+    "Lo que ya se cargó sigue funcionando. Las calcomanías que dé sin señal quedan guardadas en el celular y suben solas cuando vuelve la conexión.",
+    "Todo material de clase tiene versión imprimible, para cuando no haya equipos."
+   ],
+   "siguientes": [
+    "app-imprimir",
+    "grupo-calcomanias"
+   ],
+   "palabras": [
+    "internet",
+    "conexión",
+    "señal",
+    "datos",
+    "offline",
+    "sin red"
+   ]
+  },
+  "app-imprimir": {
+   "pregunta": "¿Qué puedo imprimir?",
+   "respuesta": [
+    "Las tarjetas de los niños, la lista del grupo, sus planeaciones (también en Word), las láminas de cada tema, el calendario del mes y los informes de avance. Busque el botón Imprimir en cada pantalla."
+   ],
+   "siguientes": [
+    "planear-word",
+    "calendario-imprimir"
+   ],
+   "palabras": [
+    "imprimir",
+    "papel",
+    "pdf",
+    "word",
+    "descargar"
+   ]
+  },
+  "app-datos": {
+   "pregunta": "¿Qué datos de los niños se guardan?",
+   "respuesta": [
+    "Solo el apodo, su personaje y su progreso en los juegos. No se guarda correo del niño ni grabaciones de voz. El coordinador ve cifras por grupo, nunca nombres."
+   ],
+   "siguientes": [
+    "app-autorizacion"
+   ],
+   "palabras": [
+    "datos",
+    "privacidad",
+    "seguridad",
+    "menores",
+    "grabación",
+    "voz"
+   ]
+  },
+  "app-proyectar": {
+   "pregunta": "¿Cómo proyecto un juego en clase?",
+   "respuesta": [
+    "Abra Proyectar desde el computador conectado al televisor o video beam. Elija el tema y el juego; todo el salón juega a la vez y usted dirige. No necesita grupo ni cuenta."
+   ],
+   "siguientes": [
+    "juegos-sala",
+    "grupo-participar"
+   ],
+   "palabras": [
+    "proyectar",
+    "televisor",
+    "video beam",
+    "tablero",
+    "pantalla",
+    "clase"
+   ],
+   "pantallas": [
+    "/proyectar",
+    "/docente"
+   ],
+   "ir": {
+    "ruta": "/proyectar",
+    "etiqueta": "Abrir Proyectar"
+   }
+  },
+  "planear-armar": {
+   "pregunta": "¿Cómo armo una planeación?",
+   "respuesta": [
+    "En Planear toque \"Armar mi planeación\". Elija la duración, el tema y las actividades: sale en el formato del colegio, con inicio, desarrollo y cierre, y botones directos a cada lámina, juego o video.",
+    "Queda guardada en su cuenta: la ve igual en el celular y en el computador."
+   ],
+   "siguientes": [
+    "planear-word",
+    "planear-entregar",
+    "calendario-armar"
+   ],
+   "palabras": [
+    "planeación",
+    "planear",
+    "armar",
+    "clase",
+    "formato",
+    "plan de clase"
+   ],
+   "pantallas": [
+    "/docente/planear"
+   ],
+   "ir": {
+    "ruta": "/docente/planear/armar",
+    "etiqueta": "Armar mi planeación"
+   }
+  },
+  "planear-word": {
+   "pregunta": "¿Puedo bajar la planeación en Word?",
+   "respuesta": [
+    "Sí. Abra la planeación y toque \"Descargar en Word\". También puede imprimirla directo."
+   ],
+   "siguientes": [
+    "planear-entregar"
+   ],
+   "palabras": [
+    "word",
+    "descargar",
+    "docx",
+    "editar"
+   ],
+   "pantallas": [
+    "/docente/planear"
+   ]
+  },
+  "planear-entregar": {
+   "pregunta": "¿Cómo entrego la planeación al coordinador?",
+   "respuesta": [
+    "Abra la planeación y toque \"Entregar\". El coordinador la ve en el formato del colegio, puede marcarla como revisada o pedirle ajustes con un comentario, y usted ve el estado ahí mismo."
+   ],
+   "siguientes": [
+    "calendario-entregar"
+   ],
+   "palabras": [
+    "entregar",
+    "coordinador",
+    "rector",
+    "revisar",
+    "ajustes"
+   ],
+   "pantallas": [
+    "/docente/planear"
+   ]
+  },
+  "planear-temas": {
+   "pregunta": "¿Dónde veo todos los temas del año?",
+   "respuesta": [
+    "En Planear, \"Temas del año\": matemáticas, español e inglés de transición a 5.°, por periodo, con sus DBA y desempeños. Toque un tema y luego \"Armar la clase de este tema\"."
+   ],
+   "siguientes": [
+    "planear-armar",
+    "calendario-armar"
+   ],
+   "palabras": [
+    "temas",
+    "pensum",
+    "malla",
+    "dba",
+    "desempeños",
+    "periodo",
+    "currículo"
+   ],
+   "pantallas": [
+    "/docente/planear"
+   ]
+  },
+  "calendario-armar": {
+   "pregunta": "¿Cómo planeo todo el mes de una vez?",
+   "respuesta": [
+    "En Mi mes toque \"Armar el mes\": elija el grupo, desde qué fecha y qué días tiene clase. La plataforma reparte los temas que siguen del pensum, dos clases por tema, y salta los festivos. Revise la vista previa y guarde."
+   ],
+   "siguientes": [
+    "calendario-mover",
+    "calendario-imprimir"
+   ],
+   "palabras": [
+    "mes",
+    "calendario",
+    "fechas",
+    "organizar",
+    "semana",
+    "cronograma"
+   ],
+   "pantallas": [
+    "/docente/calendario",
+    "/docente/planear"
+   ],
+   "ir": {
+    "ruta": "/docente/calendario",
+    "etiqueta": "Abrir Mi mes"
+   }
+  },
+  "calendario-mover": {
+   "pregunta": "¿Cómo cambio una clase de día?",
+   "respuesta": [
+    "En el computador, arrástrela al día nuevo. En el celular, toque el día y use \"Mover a\". Sus planeaciones sin fecha están en la bandeja \"Sin fecha\"."
+   ],
+   "siguientes": [
+    "calendario-imprimir"
+   ],
+   "palabras": [
+    "mover",
+    "cambiar día",
+    "arrastrar",
+    "fecha",
+    "reprogramar"
+   ],
+   "pantallas": [
+    "/docente/calendario"
+   ]
+  },
+  "calendario-imprimir": {
+   "pregunta": "¿Puedo imprimir el mes?",
+   "respuesta": [
+    "Sí, con el botón Imprimir de Mi mes sale el calendario sin menús, listo para pegar en el cuaderno o en la cartelera."
+   ],
+   "siguientes": [
+    "calendario-entregar"
+   ],
+   "palabras": [
+    "imprimir mes",
+    "cartelera"
+   ],
+   "pantallas": [
+    "/docente/calendario"
+   ]
+  },
+  "calendario-entregar": {
+   "pregunta": "¿Cómo entrego el mes al coordinador?",
+   "respuesta": [
+    "En Mi mes toque \"Entregar al coordinador\": se entregan todas sus planeaciones con fecha en ese mes, de una vez."
+   ],
+   "siguientes": [
+    "planear-entregar"
+   ],
+   "palabras": [
+    "entregar mes"
+   ],
+   "pantallas": [
+    "/docente/calendario"
+   ]
+  },
+  "juegos-sala": {
+   "pregunta": "¿Dónde están todos los juegos?",
+   "respuesta": [
+    "En Juegos están los de todas las materias y grados, con filtros. Toque uno para probarlo: sus intentos no cuentan como avance de ningún niño."
+   ],
+   "siguientes": [
+    "juegos-armar",
+    "app-proyectar"
+   ],
+   "palabras": [
+    "juegos",
+    "sala",
+    "misiones",
+    "jugar"
+   ],
+   "pantallas": [
+    "/docente/juegos"
+   ],
+   "ir": {
+    "ruta": "/docente/juegos",
+    "etiqueta": "Ir a Juegos"
+   }
+  },
+  "juegos-armar": {
+   "pregunta": "¿Puedo crear mis propios juegos?",
+   "respuesta": [
+    "Sí. En Juegos toque \"Armar un juego\": elija la cartilla, el tipo (escucha y toca, memoria, di y brilla...), escoja de 3 a 12 palabras y póngale nombre. Queda en \"Mis juegos\" y lo puede proyectar."
+   ],
+   "siguientes": [
+    "juegos-sala",
+    "grupo-repaso"
+   ],
+   "palabras": [
+    "crear juego",
+    "armar juego",
+    "plantilla",
+    "mis juegos",
+    "palabras"
+   ],
+   "pantallas": [
+    "/docente/juegos"
+   ]
+  },
+  "juegos-error": {
+   "pregunta": "¿Qué pasa cuando un niño se equivoca?",
+   "respuesta": [
+    "No hay pantallas de \"perdiste\". Goma y los personajes animan a intentar otra vez, y corregir da su propia calcomanía. El error es parte del juego."
+   ],
+   "siguientes": [
+    "grupo-calcomanias",
+    "eval-dominio"
+   ],
+   "palabras": [
+    "error",
+    "equivoca",
+    "perder",
+    "frustración",
+    "falla"
+   ]
+  },
+  "grupo-calcomanias": {
+   "pregunta": "¿Cómo funcionan las calcomanías?",
+   "respuesta": [
+    "Reconocen conductas, no solo aciertos: participar, completar una misión, pronunciar, colaborar, corregir y mejorar, y autoevaluarse. Usted da las de participar y colaborar en \"Dar calcomanías\". Nunca se quitan."
+   ],
+   "siguientes": [
+    "grupo-participar",
+    "eval-nota"
+   ],
+   "palabras": [
+    "calcomanías",
+    "estrellas",
+    "premios",
+    "puntos",
+    "recompensa",
+    "motivación"
+   ],
+   "pantallas": [
+    "/docente/grupos",
+    "/docente"
+   ]
+  },
+  "grupo-participar": {
+   "pregunta": "¿Cómo logro que participen todos?",
+   "respuesta": [
+    "Algunas ideas que funcionan: preguntar y esperar 5 segundos, responder en parejas antes de hacerlo en voz alta, usar tarjetas de sí/no para que todos respondan a la vez, y reconocer el intento con una calcomanía de participar.",
+    "Rote quién responde con palitos con nombres, así nadie queda por fuera."
+   ],
+   "siguientes": [
+    "grupo-timidos",
+    "grupo-colaborar"
+   ],
+   "palabras": [
+    "participar",
+    "participación",
+    "tímidos",
+    "atención",
+    "silencio",
+    "levantar la mano"
+   ]
+  },
+  "grupo-timidos": {
+   "pregunta": "¿Y con los niños tímidos?",
+   "respuesta": [
+    "Deles primero roles seguros: repetir en coro, señalar la imagen, ayudar a un compañero. La práctica de voz de la plataforma es privada y premia el intento: pueden ensayar en casa antes de hablar frente al grupo."
+   ],
+   "siguientes": [
+    "grupo-participar",
+    "inclusion-ritmos"
+   ],
+   "palabras": [
+    "tímido",
+    "pena",
+    "miedo",
+    "hablar",
+    "vergüenza"
+   ]
+  },
+  "grupo-colaborar": {
+   "pregunta": "¿Cómo organizo el trabajo en equipo?",
+   "respuesta": [
+    "Grupos de 3 con roles claros: quien lee o escucha, quien señala o escribe, y quien revisa. Cambie los roles cada ronda. El que ya sabe ayuda al que va empezando (zona de desarrollo próximo, Vygotsky)."
+   ],
+   "siguientes": [
+    "grupo-participar",
+    "inclusion-ritmos"
+   ],
+   "palabras": [
+    "equipo",
+    "grupos",
+    "colaborar",
+    "parejas",
+    "cooperativo"
+   ]
+  },
+  "grupo-disciplina": {
+   "pregunta": "¿Qué hago si el grupo está muy inquieto?",
+   "respuesta": [
+    "Cambie de actividad cada 10 o 15 minutos y empiece con algo de movimiento (un juego proyectado, una canción con gestos). Acuerde señales claras para silencio y reconozca en voz alta a quien está haciendo lo pedido, más que corregir al que no."
+   ],
+   "siguientes": [
+    "grupo-participar",
+    "app-proyectar"
+   ],
+   "palabras": [
+    "disciplina",
+    "inquietos",
+    "indisciplina",
+    "desorden",
+    "ruido",
+    "comportamiento",
+    "convivencia"
+   ]
+  },
+  "grupo-repaso": {
+   "pregunta": "¿Cómo hago un repaso que no aburra?",
+   "respuesta": [
+    "Use el mismo vocabulario con otra plantilla: si lo vieron en escucha y toca, repáselo en memoria o en atrapa lo que oyes. Puede armar ese juego en 2 minutos en Juegos."
+   ],
+   "siguientes": [
+    "juegos-armar",
+    "eval-dominio"
+   ],
+   "palabras": [
+    "repaso",
+    "repasar",
+    "aburrido",
+    "refuerzo"
+   ]
+  },
+  "eval-avance": {
+   "pregunta": "¿Cómo veo el avance de mis estudiantes?",
+   "respuesta": [
+    "En cada grupo toque \"Ver avance\" (también está en Inicio). Ve quiénes practicaron cada semana, el avance por tema, las calcomanías, cómo se sintieron y una lista de a quién apoyar."
+   ],
+   "siguientes": [
+    "eval-apoyar",
+    "eval-dominio",
+    "eval-nota"
+   ],
+   "palabras": [
+    "avance",
+    "progreso",
+    "seguimiento",
+    "resultados",
+    "tablero",
+    "dashboard",
+    "gráficos"
+   ],
+   "pantallas": [
+    "/docente/grupos",
+    "/docente"
+   ]
+  },
+  "eval-apoyar": {
+   "pregunta": "¿Qué significa \"A quién apoyar\"?",
+   "respuesta": [
+    "Nombra a los niños que no practican hace 7 días o más, o a los que dos misiones o más les costaron (3 errores o más en su mejor intento). Solo lo ve usted. Es una invitación a acompañar, no una calificación."
+   ],
+   "siguientes": [
+    "eval-dominio",
+    "inclusion-ritmos"
+   ],
+   "palabras": [
+    "apoyar",
+    "rezagados",
+    "refuerzo",
+    "alerta",
+    "dificultad"
+   ],
+   "pantallas": [
+    "/docente/grupos"
+   ]
+  },
+  "eval-dominio": {
+   "pregunta": "¿Cómo sé si ya dominan un tema?",
+   "respuesta": [
+    "En el avance por tema, la parte oscura de la barra son los niños que completaron con 0 o 1 error; la clara, los que les costó más. Si la parte clara es grande, vale la pena un repaso antes de seguir."
+   ],
+   "siguientes": [
+    "grupo-repaso",
+    "eval-nota"
+   ],
+   "palabras": [
+    "dominio",
+    "aprendieron",
+    "dominan",
+    "errores",
+    "logro"
+   ],
+   "pantallas": [
+    "/docente/grupos"
+   ]
+  },
+  "eval-nota": {
+   "pregunta": "¿Las calcomanías reemplazan la nota?",
+   "respuesta": [
+    "No. Complementan la nota institucional: muestran participación, esfuerzo y conductas. La nota la sigue poniendo usted con los criterios del colegio."
+   ],
+   "siguientes": [
+    "eval-autoeval"
+   ],
+   "palabras": [
+    "nota",
+    "calificación",
+    "evaluar",
+    "evaluación",
+    "calificar"
+   ]
+  },
+  "eval-autoeval": {
+   "pregunta": "¿Para qué sirven las caritas al final?",
+   "respuesta": [
+    "Son la autoevaluación del niño: ¿cómo me fue? Pensar en lo aprendido ayuda a aprender (metacognición). En el avance del grupo ve cuántos se sintieron bien o con dificultad."
+   ],
+   "siguientes": [
+    "eval-avance"
+   ],
+   "palabras": [
+    "caritas",
+    "autoevaluación",
+    "emociones",
+    "sentir"
+   ]
+  },
+  "inclusion-ritmos": {
+   "pregunta": "¿Qué hago con los que van a otro ritmo?",
+   "respuesta": [
+    "Cada niño avanza por su camino y nunca se compara con otros: no hay tablas de posiciones. Para los que van despacio, misiones cortas y repetidas; para los que van rápido, que expliquen a un compañero o armen el reto en pareja."
+   ],
+   "siguientes": [
+    "inclusion-leer",
+    "grupo-colaborar"
+   ],
+   "palabras": [
+    "ritmo",
+    "lento",
+    "rápido",
+    "diferencias",
+    "nivelar",
+    "inclusión",
+    "diversidad"
+   ]
+  },
+  "inclusion-leer": {
+   "pregunta": "¿Y si todavía no saben leer?",
+   "respuesta": [
+    "Todo funciona primero con audio e imagen: las instrucciones se escuchan y las respuestas se tocan. El texto acompaña, no es requisito. Por eso sirve desde transición."
+   ],
+   "siguientes": [
+    "inclusion-ritmos",
+    "inclusion-nee"
+   ],
+   "palabras": [
+    "leer",
+    "lectura",
+    "preescolar",
+    "transición",
+    "analfabeta",
+    "no lee"
+   ]
+  },
+  "inclusion-nee": {
+   "pregunta": "¿Sirve para niños con discapacidad o necesidades especiales?",
+   "respuesta": [
+    "Ayuda: botones grandes, audio en todo, sin límite de tiempo que presione y sin castigo por error. Ajuste también en la clase: más tiempo, menos opciones por pregunta y un compañero de apoyo. Coordine con orientación escolar y el PIAR del niño."
+   ],
+   "siguientes": [
+    "inclusion-ritmos"
+   ],
+   "palabras": [
+    "discapacidad",
+    "necesidades",
+    "nee",
+    "piar",
+    "inclusión",
+    "autismo",
+    "tdah",
+    "especial"
+   ]
+  }
+ }
+}

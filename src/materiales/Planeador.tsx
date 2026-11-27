@@ -3,7 +3,7 @@
 // estándares y desempeños) y la clase por momentos (inicio, desarrollo, cierre) con su tiempo,
 // actividades, recursos y evaluación. En celular las filas se apilan; impreso cabe en carta.
 // El contenido sale del documento del material; aquí solo se acomoda.
-import { useEffect, useState, type CSSProperties, type ReactNode } from 'react';
+import { createContext, useContext, useEffect, useState, type CSSProperties, type ReactNode } from 'react';
 import { Enlace } from '../adultos/base';
 import { Icono } from '../adultos/Icono';
 import { leer, useCuenta } from '../adultos/cuenta';
@@ -40,8 +40,12 @@ export function fases(momentos: Momento[]): Fase[] {
   });
 }
 
+/** Docente de la planeación cuando la abre otra persona (el coordinador revisando una entrega). */
+export const DocenteDelPlan = createContext<string | undefined>(undefined);
+
 /** Nombre del docente y de su colegio, si hay sesión; si no, renglones para llenar a mano. */
 function useQuien() {
+  const ajeno = useContext(DocenteDelPlan);
   const cuenta = useCuenta();
   const perfil = cuenta.tipo === 'dentro' ? cuenta.perfil : undefined;
   const [identidad, setIdentidad] = useState<IdentidadColegio | null>(null);
@@ -68,7 +72,7 @@ function useQuien() {
       vigente = false;
     };
   }, [id, perfil]);
-  return { docente: perfil?.rol === 'docente' ? perfil.nombre : undefined, colegio: identidad?.nombre ?? null, identidad, area: cartilla.materia ?? undefined, grado: cartilla.grado ? `${cartilla.grado}.°` : undefined };
+  return { docente: ajeno ?? (perfil?.rol === 'docente' ? perfil.nombre : undefined), colegio: identidad?.nombre ?? null, identidad, area: cartilla.materia ?? undefined, grado: cartilla.grado ? `${cartilla.grado}.°` : undefined };
 }
 
 function Celda({ etiqueta, children, ancha }: { etiqueta: string; children?: ReactNode; ancha?: boolean }) {

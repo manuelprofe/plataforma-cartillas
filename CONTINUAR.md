@@ -64,7 +64,9 @@ Plan completo: `docs/plan/calendario-diciembre.md` (también en Google Calendar,
   Cada juego abre en `/jugar/<cartilla>/<juego>` con el paquete del niño (`src/sala/Jugar.tsx`) y el perfil
   `PRUEBA` de `progreso.ts`, que no guarda ni sube nada. Juegos propios: plantillas de palabras
   (`src/sala/propios.ts`). Planeaciones y juegos suben a la cuenta del docente con
-  `src/adultos/nubeCreaciones.ts` (tabla `creaciones_docente`, migración 014). Planear muestra todo el pensum
+  `src/adultos/nubeCreaciones.ts` (tabla `creaciones_docente`, migración 014). Entregas al coordinador (migración 015): `src/adultos/entregas.ts`, botón en la planeación
+  (`EntregarPlan` en `src/armador/Armador.tsx`) y pestaña Planeaciones del coordinador (`src/adultos/Entregas.tsx`);
+  prueba `scripts/pruebas/entregas.mjs`. Planear muestra todo el pensum
   (ficha del tema en `/docente/planear/tema/<cartilla>/<unidad>`). Prueba: `scripts/pruebas/sala.mjs`.
 - **Base de datos:** `supabase/migraciones/` (002 esqueleto, 003 ajustes),
   `supabase/funciones/invitar/`. `registrar_mision` está en 002 (línea ~854).

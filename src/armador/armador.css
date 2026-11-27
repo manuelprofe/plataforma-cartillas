@@ -16,3 +16,22 @@
 .armar-periodo:first-child { margin-top: 0; }
 .armar-temas { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); gap: var(--e-2); }
 .armar-temas .boton { justify-content: flex-start; text-align: left; height: auto; min-height: var(--toque); white-space: normal; }
+/* Entregar la planeación al coordinador (docente) y revisarla (coordinador). */
+.entrega {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--e-4);
+  margin-top: var(--e-5); padding: var(--e-4); border-radius: var(--r-panel);
+  background: var(--a-superficie); border: 1px solid var(--a-linea); border-left: 4px solid var(--a-tinta); box-shadow: var(--capa-2);
+}
+.entrega--revisada { border-left-color: var(--a-ok); }
+.entrega--ajustar { border-left-color: var(--a-aviso); }
+.entrega__texto { flex: 1 1 260px; display: flex; flex-direction: column; gap: var(--e-2); }
+.entrega__comentario { margin: 0; padding: var(--e-2) var(--e-3); border-radius: var(--r-control); background: var(--a-hundido); color: var(--a-texto); font-style: italic; }
+.revisar { display: flex; flex-direction: column; gap: var(--e-3); }
+.revisar textarea { min-height: 96px; padding: var(--e-3); border: 1px solid var(--a-linea-fuerte); border-radius: var(--r-control); font: inherit; color: inherit; background: var(--a-superficie); resize: vertical; }
+.revisar textarea:focus { border-color: var(--a-tinta); }
+.estado-entrega { font-size: 13px; line-height: 20px; padding: 0 var(--e-2); border-radius: 999px; font-weight: 700; white-space: nowrap; }
+.estado-entrega--por-revisar { background: var(--a-goma-suave); color: #8e2c4a; }
+.estado-entrega--revisada { background: #e2f1e9; color: var(--a-ok); }
+.estado-entrega--ajustar { background: #fbefd6; color: var(--a-aviso); }
+.revisar-atajo { display: flex; align-items: center; justify-content: space-between; gap: var(--e-3); padding: var(--e-2) var(--e-2) var(--e-2) var(--e-4); border-radius: var(--r-panel); background: var(--a-superficie); box-shadow: var(--capa-1); border: 1px solid var(--a-linea); }
+#revision { scroll-margin-top: calc(var(--alto-barra) + var(--e-4)); }

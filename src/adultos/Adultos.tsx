@@ -14,6 +14,7 @@ import { Campo, correoValido, useTitulo } from './comun';
 import { PaginaDueno } from './Plataforma';
 import { DocenteInicio, MisGrupos, PaginaGrupo } from './Docente';
 import { fuenteJuegos, Sala } from '../sala/Sala';
+import { PlaneacionesColegio } from './Entregas';
 import { sincronizarCreaciones } from './nubeCreaciones';
 import { fuentePlanes } from '../armador/armar';
 import { ArmarJuego } from '../sala/ArmarJuego';
@@ -576,7 +577,7 @@ function SeccionVacia({ titulo, hueco, texto, volver }: { titulo: string; hueco:
 const COLEGIO: Seccion[] = [
   { ruta: '/colegio', etiqueta: 'Uso y avance', icono: 'uso' },
   { ruta: '/colegio/docentes', etiqueta: 'Docentes', icono: 'grupos' },
-  { ruta: '/colegio/materiales', etiqueta: 'Materiales', icono: 'materiales' },
+  { ruta: '/colegio/planeaciones', etiqueta: 'Planeaciones', icono: 'planear' },
   { ruta: '/colegio/cierre', etiqueta: 'Cierre', icono: 'cierre' },
   { ruta: '/colegio/cuenta', etiqueta: 'Cuenta', icono: 'cuenta' },
 ];
@@ -589,7 +590,7 @@ const BOTON_SALIR = (
 );
 
 function Colegio({ resto, cuenta, sinRed }: { resto: string[]; cuenta: Dentro; sinRed: boolean }) {
-  const [seccion = ''] = resto;
+  const [seccion = '', ...mas] = resto;
   const activa = seccion === '' ? '/colegio' : `/colegio/${seccion === 'grupos' ? 'docentes' : seccion}`;
   let pagina;
   switch (seccion) {
@@ -599,6 +600,9 @@ function Colegio({ resto, cuenta, sinRed }: { resto: string[]; cuenta: Dentro; s
     case 'docentes':
     case 'grupos':
       pagina = <DocentesYGrupos sinRed={sinRed} />;
+      break;
+    case 'planeaciones':
+      pagina = <PlaneacionesColegio resto={mas} />;
       break;
     case 'materiales':
       pagina = <SeccionVacia titulo="Materiales" hueco="Aquí irán los materiales de la cartilla" texto="Solo para leer e imprimir." />;

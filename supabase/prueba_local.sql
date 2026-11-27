@@ -37,6 +37,8 @@ grant usage on schema public to anon, authenticated;
 \i supabase/migraciones/008-identidad-colegio.sql
 \i supabase/migraciones/014-mis-creaciones.sql
 \i supabase/migraciones/014-mis-creaciones.sql
+\i supabase/migraciones/015-entregas-planeacion.sql
+\i supabase/migraciones/015-entregas-planeacion.sql
 
 -- Datos: dos colegios; en el uno, dos docentes y un coordinador; en el dos, un docente y un
 -- coordinador; el dueño; tres aparatos anónimos; dos adultos que llegan por invitación.
@@ -423,5 +425,30 @@ select pg_temp.verificar((select count(*) from creaciones_docente) = 0, 'el coor
 select pg_temp.soy('00000000-0000-0000-0000-0000000000b1');
 select pg_temp.debe_fallar($$insert into creaciones_docente (id, tipo, datos) values ('n1', 'juego', '{}')$$, 'un aparato anónimo (niño) no guarda creaciones');
 select pg_temp.verificar((select count(*) from creaciones_docente) = 0, 'un aparato anónimo no ve creaciones');
+reset role;
+-- Entregas de planeación (015): el docente entrega, solo el coordinador de su colegio la ve y la revisa.
+set role authenticated;
+select pg_temp.soy('00000000-0000-0000-0000-0000000000a1');
+select entregar_planeacion('p1', 'Colores · 55 min', '{"nombreTema":"Colores"}');
+select pg_temp.verificar((select estado from entregas_planeacion where planeacion_id = 'p1') = 'por-revisar', 'el docente entrega su planeación');
+select pg_temp.debe_fallar($$insert into entregas_planeacion (docente_id, planeacion_id, colegio_id, docente_nombre, titulo, datos) values ('00000000-0000-0000-0000-0000000000a1', 'p9', '10000000-0000-0000-0000-000000000001', 'x', 'x', '{}')$$, 'la tabla no se escribe directo');
+select pg_temp.debe_fallar($$select revisar_planeacion('00000000-0000-0000-0000-0000000000a1', 'p1', 'revisada', 'yo mismo')$$, 'el docente no se revisa a sí mismo');
+select pg_temp.soy('00000000-0000-0000-0000-0000000000a4');
+select pg_temp.verificar((select count(*) from entregas_planeacion) = 0, 'el coordinador de otro colegio no la ve');
+select pg_temp.debe_fallar($$select revisar_planeacion('00000000-0000-0000-0000-0000000000a1', 'p1', 'revisada', null)$$, 'el coordinador de otro colegio no la revisa');
+select pg_temp.soy('00000000-0000-0000-0000-0000000000a3');
+select pg_temp.verificar((select docente_nombre from entregas_planeacion where planeacion_id = 'p1') = 'Docente Uno', 'el coordinador ve la entrega con el nombre del docente');
+select revisar_planeacion('00000000-0000-0000-0000-0000000000a1', 'p1', 'ajustar', 'Falta el cierre');
+select pg_temp.debe_fallar($$select entregar_planeacion('p2', 'x', '{}')$$, 'el coordinador no entrega planeaciones');
+select pg_temp.soy('00000000-0000-0000-0000-0000000000a2');
+select pg_temp.verificar((select count(*) from entregas_planeacion) = 0, 'otro docente no ve la entrega');
+select pg_temp.soy('00000000-0000-0000-0000-0000000000b1');
+select pg_temp.verificar((select count(*) from entregas_planeacion) = 0, 'un aparato anónimo no ve entregas');
+select pg_temp.soy('00000000-0000-0000-0000-0000000000a1');
+select pg_temp.verificar((select comentario from entregas_planeacion where planeacion_id = 'p1') = 'Falta el cierre', 'el docente lee el comentario');
+select entregar_planeacion('p1', 'Colores · 55 min', '{"nombreTema":"Colores"}');
+select pg_temp.verificar((select estado = 'por-revisar' and comentario is null from entregas_planeacion where planeacion_id = 'p1'), 'volver a entregar la deja por revisar');
+select retirar_entrega('p1');
+select pg_temp.verificar((select count(*) from entregas_planeacion) = 0, 'el docente retira su entrega');
 reset role;
 \echo TODAS LAS PRUEBAS PASARON

@@ -85,4 +85,10 @@ Proyecto: https://supabase.com/dashboard → proyecto `jpwwmzfhbdnzsvwuciqa`. Ha
     armador y los juegos que arma cada docente, para verlos en el celular y en el computador. Solo
     el docente ve las suyas. Sin ella todo sigue funcionando, pero solo en el aparato donde se crearon.
 
+## Migración 015 (entregar la planeación al coordinador)
+
+21. **SQL Editor** → New query → pegar todo `supabase/migraciones/015-entregas-planeacion.sql` → Run.
+    Debe terminar mostrando `entregas = 0`. Con ella el docente toca "Entregar" en su planeación y el
+    coordinador de su colegio la revisa en la pestaña Planeaciones (revisada o con ajustes y un comentario).
+
 Al terminar, avisar en el chat qué pasos quedaron hechos y si alguno dio error (copiar el mensaje).

@@ -1,10 +1,12 @@
 // Pantalla del armador: el docente elige duración, cuántas actividades, el tema y las actividades;
 // el armador sugiere sin obligar. Al armar, la planeación queda en "Mis planeaciones" (aparato y cuenta)
 // y se abre en el formato único, lista para imprimir o bajar en Word.
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { Boton, Encabezado, Fila, Panel, Vacio } from '../adultos/base';
-import { Cargado, useCarga, useTitulo } from '../adultos/comun';
-import { cargarIndice, cargarTema, cartillaMateriales, type EntradaTema, type TemaDoc } from '../materiales/datos';
+import { Cargado, textoAccion, useCarga, useTitulo } from '../adultos/comun';
+import { entregarPlan, miEntrega, NOMBRE_ESTADO, retirarEntrega } from '../adultos/entregas';
+import { DocenteDelPlan } from '../materiales/Planeador';
+import { cargarIndice, cargarTema, cartillaMateriales, elegirCartillaMateriales, type EntradaTema, type TemaDoc } from '../materiales/datos';
 import { DURACIONES, elegirDuracion, type Duracion } from '../materiales/duracion';
 import { MaterialPantalla } from '../materiales/Material';
 import { navegar } from '../navegacion';
@@ -205,53 +207,113 @@ function temaDeUnidad(p: Pensum, u: Unidad): { entrada: { id: string; nombre: st
   return { entrada: { id: tema.id, nombre: u.titulo }, tema, delPensum: { palabras, referentes: referentesDe(p, u) } };
 }
 
+/** Lo que hace falta para pintar una planeación: su tema (con láminas o del pensum). */
+async function cargarFormato(plan: Plan) {
+  if (plan.fuente === 'pensum') {
+    const p = await cargarPensum(plan.cartilla);
+    const u = p.unidades.find((x) => x.id === plan.tema);
+    return u ? temaDeUnidad(p, u) : null;
+  }
+  // Los temas con láminas se leen de la cartilla de la planeación (el coordinador puede no tenerla elegida).
+  elegirCartillaMateriales(plan.cartilla);
+  const indice = await cargarIndice();
+  const entrada = indice.temas.find((t) => t.id === plan.tema);
+  return entrada ? { entrada, tema: await cargarTema(entrada) } : null;
+}
+
 /** Una planeación guardada, en el formato único. */
 export function PlaneacionArmada({ id }: { id: string }) {
   const planes = useMisPlanes();
   const plan = planes.find((p) => p.id === id);
-  const carga = useCarga(async () => {
-    if (!plan) return null;
-    if (plan.fuente === 'pensum') {
-      const p = await cargarPensum(plan.cartilla);
-      const u = p.unidades.find((x) => x.id === plan.tema);
-      return u ? temaDeUnidad(p, u) : null;
-    }
-    const indice = await cargarIndice();
-    const entrada = indice.temas.find((t) => t.id === plan.tema);
-    return entrada ? { entrada, tema: await cargarTema(entrada) } : null;
-  }, `${id}-${plan?.tema}`);
   useTitulo('Mi planeación');
   if (!plan)
     return (
       <Panel>
-        <Vacio titulo="No encontramos esa planeación" texto="Las planeaciones quedan en el aparato donde se armaron.">
+        <Vacio titulo="No encontramos esa planeación" texto="Puede que la haya borrado. Si la armó en otro aparato, aparece aquí cuando ese aparato tenga señal.">
           <Boton ruta={RUTA_ARMAR}>Armar una nueva</Boton>
         </Vacio>
       </Panel>
     );
   return (
-    <Cargado carga={carga}>
-      {(d) => (d ? <Armada plan={plan} {...d} /> : <Vacio titulo="Ese tema ya no está en la cartilla" texto="Arme una planeación nueva." />)}
-    </Cargado>
-  );
-}
-
-function Armada({ plan, entrada, tema, delPensum }: { plan: Plan; entrada: { id: string; nombre: string }; tema: TemaDoc; delPensum?: DelPensum }) {
-  const material = armarMaterial(plan, tema, delPensum);
-  return (
-    <>
-      <MaterialPantalla material={material} nombreTema={entrada.nombre} volver={{ ruta: RUTA_ARMAR, etiqueta: 'Armar' }} rutaProyectar={`/proyectar/${entrada.id}`} rutaMaterial={(m) => `/docente/temas/${encodeURIComponent(entrada.id)}/${encodeURIComponent(m)}`} />
+    <PlanEnFormato plan={plan} volver={{ ruta: RUTA_ARMAR, etiqueta: 'Armar' }}>
+      <EntregarPlan plan={plan} />
       <div className="mat-acciones no-imprimir armar-borrar">
         <Boton
           variante="texto"
           onClick={() => {
             borrarPlan(plan.id);
+            void retirarEntrega(plan.id).catch(() => {});
             navegar(RUTA_ARMAR, true);
           }}
         >
           Borrar esta planeación
         </Boton>
       </div>
-    </>
+    </PlanEnFormato>
+  );
+}
+
+/** Pinta una planeación en el formato del colegio; `children` va debajo (entregar, revisar). */
+export function PlanEnFormato({ plan, volver, docente, antes, children }: { plan: Plan; volver: { ruta: string; etiqueta: string }; docente?: string; antes?: ReactNode; children?: ReactNode }) {
+  const carga = useCarga(() => cargarFormato(plan), `formato-${plan.id}-${plan.tema}-${plan.cartilla}`);
+  return (
+    <Cargado carga={carga}>
+      {(d) =>
+        d ? (
+          <DocenteDelPlan.Provider value={docente}>
+            {antes}
+            <MaterialPantalla material={armarMaterial(plan, d.tema, 'delPensum' in d ? d.delPensum : undefined)} nombreTema={d.entrada.nombre} volver={volver} rutaProyectar={`/proyectar/${d.entrada.id}`} rutaMaterial={(m) => `/docente/temas/${encodeURIComponent(d.entrada.id)}/${encodeURIComponent(m)}`} />
+            {children}
+          </DocenteDelPlan.Provider>
+        ) : (
+          <Vacio titulo="Ese tema ya no está en la cartilla" texto="Arme una planeación nueva." />
+        )
+      }
+    </Cargado>
+  );
+}
+
+/** Entregar la planeación al coordinador y ver cómo va la revisión. */
+function EntregarPlan({ plan }: { plan: Plan }) {
+  const [vuelta, setVuelta] = useState(0);
+  const carga = useCarga(() => miEntrega(plan.id).catch(() => undefined), `entrega-${plan.id}-${vuelta}`);
+  const [ocupado, setOcupado] = useState(false);
+  const [aviso, setAviso] = useState<{ ok: boolean; texto: string }>();
+  const entregar = async () => {
+    setOcupado(true);
+    setAviso(undefined);
+    try {
+      await entregarPlan(plan);
+      setAviso({ ok: true, texto: 'Entregada. Su coordinador ya la puede ver.' });
+      setVuelta((v) => v + 1);
+    } catch (e) {
+      setAviso({ ok: false, texto: textoAccion(e) });
+    } finally {
+      setOcupado(false);
+    }
+  };
+  const e = carga.datos;
+  // undefined: no se pudo leer (sin red o sin la migración); null: todavía no la ha entregado.
+  if (carga.datos === undefined && !carga.error && carga.cargando) return null;
+  return (
+    <section className={`entrega no-imprimir${e ? ` entrega--${e.estado}` : ''}`} aria-label="Entrega al coordinador">
+      <div className="entrega__texto">
+        <h2 className="h3">{e ? NOMBRE_ESTADO[e.estado] : 'Entregar al coordinador'}</h2>
+        <p className="sec">
+          {e
+            ? e.estado === 'por-revisar'
+              ? `La entregó el ${fecha(e.entregada)}. Su coordinador la verá en su panel.`
+              : `${e.estado === 'revisada' ? 'Revisada' : 'Su coordinador pidió ajustes'} el ${fecha(e.revisada ?? e.entregada)}.`
+            : 'Su coordinador la recibe en su panel, en el formato del colegio. No hace falta imprimirla ni enviarla por correo.'}
+        </p>
+        {e?.comentario && <blockquote className="entrega__comentario">{e.comentario}</blockquote>}
+        <p className={`mensaje${aviso ? (aviso.ok ? ' mensaje--ok' : ' mensaje--error') : ''}`} role="status">
+          {aviso?.texto}
+        </p>
+      </div>
+      <Boton variante={e ? 'secundario' : 'primario'} icono="subir" disabled={ocupado} onClick={() => void entregar()}>
+        {e ? 'Volver a entregar' : 'Entregar'}
+      </Boton>
+    </section>
   );
 }

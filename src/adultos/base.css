@@ -1,23 +1,26 @@
 /*
- * Sistema visual de adultos y del telón (esqueleto §5). Sereno y de aula, como un cuaderno bien
- * llevado: papel crema, tinta de lapicero para la acción principal y Goma solo para acompañar.
- * Baloo 2 en títulos y cifras; el texto, los botones y las tablas en la letra del sistema.
+ * Sistema visual de adultos y del telón (esqueleto §5). Serio y de aula, como el cuaderno de
+ * planeación de un buen maestro: hoja cuadriculada de fondo, hojas blancas encima (las capas),
+ * tinta de lapicero para la acción y el rosado de Goma solo en el margen del título.
+ * Letra: Atkinson Hyperlegible Next (hecha para leerse sin esfuerzo, también con baja visión) en
+ * todo; Baloo 2 queda solo para la marca y las cifras grandes. Renovación del 27 nov 2026.
  * Este archivo solo se carga en los paquetes de adultos y de proyectar, nunca en el del niño.
  */
 :root {
-  /* Papel de cuaderno: crema tibio, tinta de lapicero y el rosado de Goma solo como acento. */
-  --a-fondo: #f6f2e9;
-  --a-superficie: #fffdf9;
-  --a-hundido: #efe9dc;
-  --a-linea: rgb(40 34 24 / 0.11);
-  --a-linea-fuerte: rgb(40 34 24 / 0.22);
+  /* Papel cuadriculado frío, hojas blancas, tinta de lapicero; Goma marca el margen. */
+  --a-fondo: #eef1f5;
+  --a-superficie: #ffffff;
+  --a-hundido: #e8edf4;
+  --a-linea: rgb(31 56 102 / 0.1);
+  --a-linea-fuerte: rgb(31 56 102 / 0.24);
   --a-renglon: rgb(64 112 176 / 0.12);
-  --a-texto: #1f2330;
-  --a-texto-2: #474b58;
-  --a-texto-3: #646876;
+  --a-cuadricula: rgb(31 56 102 / 0.05);
+  --a-texto: #1b2233;
+  --a-texto-2: #434b5e;
+  --a-texto-3: #5d6577;
   --a-tinta: #1f3866;
   --a-tinta-activa: #2b4b83;
-  --a-goma: #d9577a;
+  --a-goma: #c94a6d;
   --a-goma-suave: #fbe3ea;
   --a-farol: #f4c443;
   --a-farol-tinta: #6e4f00;
@@ -26,25 +29,32 @@
   --a-error: #a1453a;
   --a-foco: #0f8a7b;
 
+  /* Capas: la hoja se apoya (línea fina) y proyecta una sombra amplia teñida de tinta. */
+  --capa-1: 0 1px 0 rgb(31 56 102 / 0.06), 0 1px 2px rgb(31 56 102 / 0.06);
+  --capa-2: 0 1px 0 rgb(31 56 102 / 0.05), 0 2px 4px rgb(31 56 102 / 0.05), 0 12px 28px -18px rgb(31 56 102 / 0.35);
+  --capa-3: 0 2px 6px rgb(31 56 102 / 0.08), 0 24px 48px -24px rgb(31 56 102 / 0.45);
+
   --p-fondo: #fff8ec;
   --p-texto: #1f2330;
   --p-marco: #1a2336;
   --p-control: #1f3866;
 
   --f-marca: 'Baloo 2 Variable', ui-rounded, system-ui, sans-serif;
-  --f-texto: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --f-texto: 'Atkinson Hyperlegible Next Variable', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --f-titulo: var(--f-texto);
 
+  /* Escala de cuarta menor aproximada (×1,2), redondeada a píxeles enteros. */
   --t-meta: 14px;  --l-meta: 20px;
   --t-texto: 16px; --l-texto: 24px;
-  --t-lead: 18px;  --l-lead: 26px;
-  --t-h3: 20px;    --l-h3: 26px;
-  --t-h2: 24px;    --l-h2: 30px;
-  --t-h1: 26px;    --l-h1: 32px;
+  --t-lead: 18px;  --l-lead: 27px;
+  --t-h3: 19px;    --l-h3: 25px;
+  --t-h2: 23px;    --l-h2: 29px;
+  --t-h1: 28px;    --l-h1: 34px;
 
   --e-1: 4px; --e-2: 8px; --e-3: 12px; --e-4: 16px; --e-5: 24px; --e-6: 32px; --e-7: 48px; --e-8: 64px;
   --r-control: 10px;
   --r-tarjeta: 14px;
-  --r-panel: 20px;
+  --r-panel: 16px;
   --toque: 48px;
   --toque-fila: 56px;
 
@@ -62,8 +72,8 @@
 
 @media (min-width: 1024px) {
   :root {
-    --t-h1: 30px;
-    --l-h1: 36px;
+    --t-h1: 34px;
+    --l-h1: 40px;
     --borde-pagina: 40px;
   }
 }
@@ -76,7 +86,12 @@
 
 body {
   margin: 0;
-  background: var(--a-fondo);
+  /* Hoja cuadriculada de 24 px, quieta al desplazar: el fondo de todo el cuaderno. */
+  background:
+    linear-gradient(var(--a-cuadricula) 1px, transparent 1px) 0 0 / 24px 24px,
+    linear-gradient(90deg, var(--a-cuadricula) 1px, transparent 1px) 0 0 / 24px 24px,
+    var(--a-fondo);
+  background-attachment: fixed;
   color: var(--a-texto);
   font: 400 var(--t-texto) / var(--l-texto) var(--f-texto);
   -webkit-text-size-adjust: 100%;
@@ -87,10 +102,13 @@ h1, h2, h3, p, ul, ol {
 }
 
 h1, h2, h3 {
-  font-family: var(--f-marca);
-  font-weight: 600;
+  font-family: var(--f-titulo);
+  font-weight: 700;
+  letter-spacing: -0.005em;
+  text-wrap: balance;
 }
-h1 { font-size: var(--t-h1); line-height: var(--l-h1); }
+h1 { font-size: var(--t-h1); line-height: var(--l-h1); letter-spacing: -0.015em; }
+.encabezado h1, .entrada h1 { color: var(--a-tinta); }
 h2 { font-size: var(--t-h2); line-height: var(--l-h2); }
 h3, .h3 { font-size: var(--t-h3); line-height: var(--l-h3); }
 
@@ -104,7 +122,7 @@ a {
 }
 
 .meta { font-size: var(--t-meta); line-height: var(--l-meta); color: var(--a-texto-3); }
-.sec { color: var(--a-texto-2); }
+.sec { color: var(--a-texto-2); max-width: 68ch; text-wrap: pretty; }
 .lead { font-size: var(--t-lead); line-height: var(--l-lead); color: var(--a-texto-2); }
 
 .icono {
@@ -133,7 +151,8 @@ a {
   align-items: center;
   gap: var(--e-3);
   padding: 0 var(--borde-pagina);
-  background: var(--a-superficie);
+  background: rgb(255 255 255 / 0.88);
+  backdrop-filter: saturate(1.4) blur(10px);
   border-bottom: 1px solid var(--a-linea);
 }
 .barra__marca {
@@ -170,10 +189,13 @@ a {
   display: grid;
   grid-auto-flow: column;
   grid-auto-columns: 1fr;
-  background: var(--a-superficie);
+  background: rgb(255 255 255 / 0.94);
+  backdrop-filter: saturate(1.4) blur(10px);
   border-top: 1px solid var(--a-linea);
+  box-shadow: 0 -8px 24px -20px rgb(31 56 102 / 0.4);
 }
 .pestanas__item {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -188,8 +210,22 @@ a {
 }
 .pestanas__item[aria-current='page'] {
   color: var(--a-tinta);
-  font-weight: 600;
+  font-weight: 700;
 }
+/* La pestaña abierta lleva un subrayado de tinta arriba, que entra al tocarla. */
+.pestanas__item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 28%;
+  right: 28%;
+  height: 3px;
+  border-radius: 0 0 3px 3px;
+  background: var(--a-tinta);
+  transform: scaleX(0);
+  transition: transform var(--m-medio) var(--m-curva);
+}
+.pestanas__item[aria-current='page']::before { transform: scaleX(1); }
 .pestanas__item:focus-visible { outline-offset: -3px; }
 
 .contenido {
@@ -230,14 +266,29 @@ a {
     line-height: var(--l-texto);
     color: var(--a-texto-2);
   }
+  .pestanas { background: rgb(255 255 255 / 0.6); box-shadow: none; }
   .pestanas__item:hover { background: var(--a-hundido); }
-  .pestanas__item[aria-current='page'] { background: var(--a-hundido); color: var(--a-tinta); }
+  .pestanas__item[aria-current='page'] { background: var(--a-superficie); color: var(--a-tinta); box-shadow: var(--capa-1); }
+  .pestanas__item::before { top: 12px; bottom: 12px; left: 0; right: auto; width: 3px; height: auto; border-radius: 0 3px 3px 0; transform: scaleY(0); }
+  .pestanas__item[aria-current='page']::before { transform: scaleY(1); }
   .contenido { padding-bottom: var(--e-7); }
 }
 
 /* ---------- Encabezado de página ---------- */
 
-.encabezado { display: flex; flex-direction: column; gap: var(--e-1); }
+.encabezado { display: flex; flex-direction: column; gap: var(--e-2); }
+/* El margen del cuaderno: la raya rosada de Goma a la izquierda del título de cada página. */
+.encabezado__margen {
+  display: flex;
+  flex-direction: column;
+  gap: var(--e-1);
+  padding: var(--e-1) 0 var(--e-1) var(--e-4);
+  border-left: 3px solid var(--a-goma);
+}
+.encabezado__margen .meta { color: var(--a-texto-2); max-width: 60ch; }
+/* Al cambiar de página, la página entra de una vez (no cada panel por su lado). */
+.contenido > * { animation: pagina-entra var(--m-entrada) var(--m-curva) backwards; }
+@keyframes pagina-entra { from { opacity: 0; transform: translateY(6px); } }
 .encabezado__volver { align-self: flex-start; margin-left: calc(-1 * var(--e-2)); }
 
 /* ---------- Panel y fila ---------- */
@@ -246,8 +297,10 @@ a {
   background: var(--a-superficie);
   border: 1px solid var(--a-linea);
   border-radius: var(--r-panel);
+  box-shadow: var(--capa-2);
   overflow: hidden;
 }
+.panel__cabeza h2 { color: var(--a-tinta); }
 .panel__cabeza {
   display: flex;
   align-items: center;
@@ -274,7 +327,11 @@ a {
 button.fila { border: 0; border-top: 1px solid var(--a-linea); cursor: pointer; }
 .fila:first-child { border-top: 0; }
 .fila--tenue, .fila--tenue > .icono:first-child { color: var(--a-texto-3); }
-a.fila:hover, button.fila:hover { background: var(--a-fondo); }
+a.fila, button.fila { transition: background-color var(--m-rapido) var(--m-curva); }
+a.fila:hover, button.fila:hover { background: var(--a-hundido); }
+a.fila:active, button.fila:active { background: var(--a-hundido); }
+a.fila .fila__fin > .icono:last-child { transition: transform var(--m-medio) var(--m-curva); }
+a.fila:hover .fila__fin > .icono:last-child { transform: translateX(2px); }
 .fila:focus-visible { outline-offset: -3px; }
 .fila__texto { display: flex; flex-direction: column; min-width: 0; }
 .fila__fin { margin-left: auto; color: var(--a-texto-3); display: flex; align-items: center; gap: var(--e-2); }
@@ -294,14 +351,16 @@ a.fila:hover, button.fila:hover { background: var(--a-fondo); }
   border: 1px solid var(--a-linea-fuerte);
   background: var(--a-superficie);
   color: var(--a-texto);
-  font: 500 16px/1.2 var(--f-texto);
+  font: 600 16px/1.2 var(--f-texto);
   text-decoration: none;
   cursor: pointer;
   touch-action: manipulation;
-  transition: transform var(--m-rapido) var(--m-curva), opacity var(--m-rapido) var(--m-curva);
+  transition: transform var(--m-rapido) var(--m-curva), opacity var(--m-rapido) var(--m-curva), background-color var(--m-rapido) var(--m-curva), box-shadow var(--m-rapido) var(--m-curva);
 }
+.boton--secundario { box-shadow: var(--capa-1); }
+.boton--secundario:hover { border-color: var(--a-tinta); color: var(--a-tinta); }
 .boton:active { transform: scale(0.98); }
-.boton--primario { background: var(--a-tinta); color: #fff; border-color: transparent; }
+.boton--primario { background: var(--a-tinta); color: #fff; border-color: transparent; box-shadow: 0 1px 0 rgb(255 255 255 / 0.12) inset, 0 6px 14px -8px rgb(31 56 102 / 0.7); }
 .boton--primario:hover { background: var(--a-tinta-activa); }
 .boton--texto { border-color: transparent; background: none; color: var(--a-texto-2); padding: 0 var(--e-2); }
 .boton--ancho { width: 100%; }
@@ -382,6 +441,7 @@ a.fila:hover, button.fila:hover { background: var(--a-fondo); }
 
 .campo { display: flex; flex-direction: column; gap: var(--e-2); }
 .campo label { font-weight: 500; }
+.campo input:focus, .campo select:focus { border-color: var(--a-tinta); }
 .campo input {
   min-height: var(--toque);
   padding: 0 var(--e-3);
@@ -405,7 +465,7 @@ a.fila:hover, button.fila:hover { background: var(--a-fondo); }
   linear-gradient(90deg, transparent 31px, rgb(217 87 122 / 0.28) 31px 32.5px, transparent 32.5px),
   repeating-linear-gradient(180deg, transparent 0 31px, var(--a-renglon) 31px 32px),
   var(--a-fondo); }
-.entrada__caja { width: 100%; max-width: 400px; display: flex; flex-direction: column; gap: var(--e-5); padding: var(--e-5); border-radius: var(--r-panel); background: var(--a-superficie); box-shadow: 0 1px 0 var(--a-linea), 0 12px 32px rgb(40 34 24 / 0.08); }
+.entrada__caja { width: 100%; max-width: 400px; display: flex; flex-direction: column; gap: var(--e-5); padding: var(--e-5); border-radius: var(--r-panel); background: var(--a-superficie); box-shadow: var(--capa-3); }
 .entrada__dibujo { width: 72px; height: auto; margin-bottom: var(--e-2); transform: rotate(-4deg); }
 .entrada__marca { font: 600 20px/1 var(--f-marca); color: var(--a-goma); }
 .entrada__amigos { display: flex; align-items: flex-end; gap: var(--e-4); opacity: 0.9; }
@@ -435,6 +495,7 @@ a.fila:hover, button.fila:hover { background: var(--a-fondo); }
     transition-duration: 0ms !important;
   }
   .boton:active { transform: none; }
+  .contenido > * { animation: none; }
   .cortina-a { animation-duration: var(--m-medio); }
 }
 

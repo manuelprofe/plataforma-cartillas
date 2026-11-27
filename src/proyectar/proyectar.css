@@ -10,6 +10,7 @@
   color: var(--p-texto);
   font-family: var(--f-marca);
 }
+.telon h1, .telon h2, .telon h3 { font-family: var(--f-marca); }
 
 .telon__cabeza {
   min-height: 88px;

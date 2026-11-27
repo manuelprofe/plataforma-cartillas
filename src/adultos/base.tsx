@@ -1,6 +1,7 @@
 // Componentes base de los modos de adultos (esqueleto §8, tanda 1): barra, pestañas, panel,
 // fila, botón, hueco, farol y cortina. Sin datos: cada pantalla les pasa lo que muestra.
 import type { MouseEvent, ReactNode } from 'react';
+import '@fontsource-variable/atkinson-hyperlegible-next';
 import './base.css';
 import { navegar } from '../navegacion';
 import { Icono, type NombreIcono } from './Icono';
@@ -82,8 +83,10 @@ export function Encabezado({ titulo, meta, volver }: { titulo: string; meta?: Re
           {volver.etiqueta}
         </Enlace>
       )}
-      <h1>{titulo}</h1>
-      {meta && <p className="meta">{meta}</p>}
+      <div className="encabezado__margen">
+        <h1>{titulo}</h1>
+        {meta && <p className="meta">{meta}</p>}
+      </div>
     </div>
   );
 }

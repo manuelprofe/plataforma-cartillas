@@ -73,4 +73,9 @@ Proyecto: https://supabase.com/dashboard → proyecto `jpwwmzfhbdnzsvwuciqa`. Ha
 18. **SQL Editor** → New query → pegar todo `supabase/migraciones/012-misiones-ingles-0.sql` → Run.
     Igual que la 010, para la página 1 de Postal (inglés de transición). No la publica.
 
+## Migración 013 (cuento nuevo de español de transición)
+
+19. **SQL Editor** → New query → pegar todo `supabase/migraciones/013-misiones-espanol-0-cuentos.sql` → Run.
+    Suma la misión del cuento "La lluvia llega" a la biblioteca de Renglón. No publica la cartilla.
+
 Al terminar, avisar en el chat qué pasos quedaron hechos y si alguno dio error (copiar el mensaje).

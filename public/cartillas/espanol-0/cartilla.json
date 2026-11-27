@@ -713,20 +713,10 @@
     },
     {
      "id": "renglon-cosas-3",
-     "titulo": "Atrapa lo que suena",
-     "plantilla": "escucha-atrapa",
-     "icono": "iconos/1f941.svg",
+     "titulo": "El reloj dormilón",
+     "plantilla": "cuento",
+     "icono": "iconos/reloj-1.svg",
      "palabras": [
-      {
-       "es": "rin rin",
-       "icono": "iconos/260e.svg",
-       "frase": "El teléfono hace rin rin.",
-       "aceptar": [
-        "ring ring",
-        "rin"
-       ],
-       "en": "rin rin"
-      },
       {
        "es": "tic tac",
        "icono": "iconos/23f0.svg",
@@ -746,37 +736,6 @@
         "din dón"
        ],
        "en": "din don"
-      },
-      {
-       "es": "pum pum",
-       "icono": "iconos/1f941.svg",
-       "frase": "El tambor hace pum pum.",
-       "aceptar": [
-        "pum",
-        "bum bum"
-       ],
-       "en": "pum pum"
-      },
-      {
-       "es": "plas plas",
-       "icono": "iconos/1f44f.svg",
-       "frase": "Las manos hacen plas plas.",
-       "aceptar": [
-        "plas",
-        "plaz plaz"
-       ],
-       "en": "plas plas"
-      },
-      {
-       "es": "pi pi",
-       "icono": "iconos/1f697.svg",
-       "frase": "El carro hace pi pi.",
-       "aceptar": [
-        "pipí",
-        "pii pii",
-        "bip bip"
-       ],
-       "en": "pi pi"
       }
      ],
      "x": 2041,
@@ -784,8 +743,8 @@
      "antes": [
       {
        "quien": "renglon",
-       "es": "Atrapa la cosa que hace el sonido que escuchas.",
-       "en": "Atrapa la cosa que hace el sonido que escuchas."
+       "es": "Este cuento tiene un reloj que hace tic, tac. Escucha bien.",
+       "en": "Este cuento tiene un reloj que hace tic, tac. Escucha bien."
       }
      ],
      "familia": {
@@ -793,13 +752,96 @@
       "idea": "Siéntense un minuto en silencio y cuenten qué cosas suenan en la casa: el reloj, la olla, un carro en la calle. Luego imítenlas."
      },
      "requiere": "renglon-cosas-2",
-     "atrapa": {
-      "cruceInicio": 6,
-      "cruceFinal": 4.5,
-      "distractores": [
-       2,
-       2,
-       3
+     "cuento": {
+      "paginas": [
+       {
+        "imagen": "iconos/reloj-1.svg",
+        "texto": "Tic, tac, hace el reloj de la abuela Rosa."
+       },
+       {
+        "imagen": "iconos/reloj-2.svg",
+        "texto": "Una mañana el reloj se queda callado. Está dormido."
+       },
+       {
+        "imagen": "iconos/reloj-3.svg",
+        "texto": "La abuela no oye el tic, tac y llega tarde al mercado."
+       },
+       {
+        "imagen": "iconos/reloj-4.svg",
+        "texto": "Teo, su nieto, le pone una pila nueva al reloj."
+       },
+       {
+        "imagen": "iconos/reloj-5.svg",
+        "texto": "¡Tic, tac! El reloj despierta y todos aplauden."
+       }
+      ],
+      "preguntas": [
+       {
+        "tipo": "elegir",
+        "dice": "¿Quién hace tic, tac?",
+        "opciones": [
+         {
+          "imagen": "iconos/1f514.svg",
+          "texto": "la campana"
+         },
+         {
+          "imagen": "iconos/1f570.svg",
+          "texto": "el reloj"
+         },
+         {
+          "imagen": "iconos/1f941.svg",
+          "texto": "el tambor"
+         }
+        ],
+        "correcta": 1,
+        "bien": "¡El reloj!"
+       },
+       {
+        "tipo": "elegir",
+        "dice": "¿Qué le puso Teo al reloj?",
+        "opciones": [
+         {
+          "imagen": "iconos/1f50b.svg",
+          "texto": "una pila"
+         },
+         {
+          "imagen": "iconos/1f34e.svg",
+          "texto": "una manzana"
+         },
+         {
+          "imagen": "iconos/1f380.svg",
+          "texto": "un moño"
+         }
+        ],
+        "correcta": 0,
+        "bien": "¡Una pila nueva!"
+       },
+       {
+        "tipo": "ordenar",
+        "dice": "Toca los dibujos en orden: ¿qué pasó primero, después y al final?",
+        "imagenes": [
+         "iconos/reloj-1.svg",
+         "iconos/reloj-2.svg",
+         "iconos/reloj-5.svg"
+        ],
+        "bien": "¡Así pasó el cuento!"
+       },
+       {
+        "tipo": "elegir",
+        "dice": "¿Por qué llegó tarde la abuela?",
+        "opciones": [
+         {
+          "imagen": "iconos/reloj-2.svg",
+          "texto": "el reloj se durmió"
+         },
+         {
+          "imagen": "iconos/1f327.svg",
+          "texto": "llovía mucho"
+         }
+        ],
+        "correcta": 0,
+        "bien": "¡Sí! Sin el tic, tac no supo la hora."
+       }
       ]
      }
     },
@@ -916,43 +958,15 @@
     },
     {
      "id": "renglon-rondas-3",
-     "titulo": "Atrapa la ronda",
-     "plantilla": "escucha-atrapa",
-     "icono": "iconos/1f35a.svg",
+     "titulo": "Los pollitos dicen",
+     "plantilla": "cuento",
+     "icono": "iconos/pollitos-1.svg",
      "palabras": [
       {
        "es": "los pollitos",
        "icono": "iconos/1f425.svg",
        "frase": "Los pollitos dicen pío, pío, pío.",
        "en": "los pollitos"
-      },
-      {
-       "es": "arroz con leche",
-       "icono": "iconos/1f35a.svg",
-       "frase": "Arroz con leche, me quiero casar.",
-       "en": "arroz con leche"
-      },
-      {
-       "es": "el patio de mi casa",
-       "icono": "iconos/1f3e1.svg",
-       "frase": "El patio de mi casa es particular.",
-       "en": "el patio de mi casa"
-      },
-      {
-       "es": "que llueva",
-       "icono": "iconos/2614.svg",
-       "frase": "Que llueva, que llueva, la vieja está en la cueva.",
-       "en": "que llueva"
-      },
-      {
-       "es": "aserrín, aserrán",
-       "icono": "iconos/1fab5.svg",
-       "frase": "Aserrín, aserrán, los maderos de San Juan.",
-       "aceptar": [
-        "aserrín aserrán",
-        "aserrin aserran"
-       ],
-       "en": "aserrín, aserrán"
       }
      ],
      "x": 2006,
@@ -960,8 +974,8 @@
      "antes": [
       {
        "quien": "renglon",
-       "es": "Atrapa el dibujo de la ronda que escuchas.",
-       "en": "Atrapa el dibujo de la ronda que escuchas."
+       "es": "Esta es una ronda de siempre, contada como un cuento. Escucha.",
+       "en": "Esta es una ronda de siempre, contada como un cuento. Escucha."
       }
      ],
      "familia": {
@@ -969,13 +983,92 @@
       "idea": "Canten juntos una ronda que usted cantaba de niño (Los pollitos, Arroz con leche, El patio de mi casa) y hagan los gestos con las manos."
      },
      "requiere": "renglon-rondas-2",
-     "atrapa": {
-      "cruceInicio": 6,
-      "cruceFinal": 4.5,
-      "distractores": [
-       2,
-       2,
-       3
+     "cuento": {
+      "paginas": [
+       {
+        "imagen": "iconos/pollitos-1.svg",
+        "texto": "Los pollitos dicen: pío, pío, pío."
+       },
+       {
+        "imagen": "iconos/pollitos-2.svg",
+        "texto": "Cuando tienen hambre, cuando tienen frío."
+       },
+       {
+        "imagen": "iconos/pollitos-3.svg",
+        "texto": "La gallina busca el maíz y el trigo."
+       },
+       {
+        "imagen": "iconos/pollitos-4.svg",
+        "texto": "Les da la comida y les presta abrigo."
+       },
+       {
+        "imagen": "iconos/pollitos-5.svg",
+        "texto": "Bajo sus dos alas, se duermen los pollitos."
+       }
+      ],
+      "preguntas": [
+       {
+        "tipo": "elegir",
+        "dice": "¿Qué busca la gallina?",
+        "opciones": [
+         {
+          "imagen": "iconos/1f33d.svg",
+          "texto": "maíz"
+         },
+         {
+          "imagen": "iconos/1f41f.svg",
+          "texto": "un pez"
+         },
+         {
+          "imagen": "iconos/1f36d.svg",
+          "texto": "un dulce"
+         }
+        ],
+        "correcta": 0,
+        "bien": "¡Maíz y trigo!"
+       },
+       {
+        "tipo": "elegir",
+        "dice": "¿Qué sentían los pollitos?",
+        "opciones": [
+         {
+          "imagen": "iconos/2600.svg",
+          "texto": "calor"
+         },
+         {
+          "imagen": "iconos/2744.svg",
+          "texto": "frío"
+         }
+        ],
+        "correcta": 1,
+        "bien": "¡Frío y hambre!"
+       },
+       {
+        "tipo": "ordenar",
+        "dice": "Toca los dibujos en orden: ¿qué pasó primero, después y al final?",
+        "imagenes": [
+         "iconos/pollitos-1.svg",
+         "iconos/pollitos-3.svg",
+         "iconos/pollitos-5.svg"
+        ],
+        "bien": "¡Así pasó el cuento!"
+       },
+       {
+        "tipo": "elegir",
+        "dice": "¿Dónde se duermen los pollitos?",
+        "opciones": [
+         {
+          "imagen": "iconos/1f333.svg",
+          "texto": "en un árbol"
+         },
+         {
+          "imagen": "iconos/1f414.svg",
+          "texto": "bajo las alas de la gallina"
+         }
+        ],
+        "correcta": 1,
+        "bien": "¡Bajo sus alas, calientitos!"
+       }
       ]
      }
     },
@@ -1097,9 +1190,9 @@
     },
     {
      "id": "renglon-nombres-3",
-     "titulo": "Saluda a cada vecino",
-     "plantilla": "di-brilla",
-     "icono": "personajes/vecino-3.webp",
+     "titulo": "Tito busca a Púa",
+     "plantilla": "cuento",
+     "icono": "personajes/vecino-1.webp",
      "palabras": [
       {
        "es": "Tito",
@@ -1115,33 +1208,6 @@
         "pua"
        ],
        "en": "Púa"
-      },
-      {
-       "es": "Abu",
-       "icono": "personajes/vecino-3.webp",
-       "frase": "Él es Abu.",
-       "en": "Abu"
-      },
-      {
-       "es": "Nuez",
-       "icono": "personajes/vecino-4.webp",
-       "frase": "Ella es Nuez.",
-       "aceptar": [
-        "nues"
-       ],
-       "en": "Nuez"
-      },
-      {
-       "es": "Caro",
-       "icono": "personajes/vecino-5.webp",
-       "frase": "Ella es Caro.",
-       "en": "Caro"
-      },
-      {
-       "es": "Rayo",
-       "icono": "personajes/vecino-6.webp",
-       "frase": "Él es Rayo.",
-       "en": "Rayo"
       }
      ],
      "x": 871,
@@ -1149,15 +1215,107 @@
      "antes": [
       {
        "quien": "renglon",
-       "es": "Saluda a cada vecino por su nombre. ¡Cada intento cuenta!",
-       "en": "Saluda a cada vecino por su nombre. ¡Cada intento cuenta!"
+       "es": "Este cuento es de dos vecinos de la página. Escucha sus nombres.",
+       "en": "Este cuento es de dos vecinos de la página. Escucha sus nombres."
       }
      ],
      "familia": {
       "tema": "mi nombre y el de mis compañeros",
       "idea": "Pregúntele los nombres de sus compañeros de clase y salúdenlos juntos en voz alta: «¡Hola, Sara!». Escriba su nombre en una hoja y que lo decore."
      },
-     "requiere": "renglon-nombres-2"
+     "requiere": "renglon-nombres-2",
+     "cuento": {
+      "paginas": [
+       {
+        "imagen": "personajes/vecino-1.webp",
+        "texto": "Tito quiere jugar a la pelota con su amiga Púa."
+       },
+       {
+        "imagen": "iconos/tito-2.svg",
+        "texto": "Toca la puerta: toc, toc. ¿Quién es? ¡Soy Tito!"
+       },
+       {
+        "imagen": "personajes/vecino-2.webp",
+        "texto": "Púa sale y dice: ¡Hola, Tito! ¿Jugamos?"
+       },
+       {
+        "imagen": "iconos/tito-4.svg",
+        "texto": "Juegan con la pelota hasta que llega la noche."
+       },
+       {
+        "imagen": "personajes/vecino-1.webp",
+        "texto": "Tito se despide: ¡Adiós, Púa! Mañana jugamos otra vez."
+       }
+      ],
+      "preguntas": [
+       {
+        "tipo": "elegir",
+        "dice": "¿Con quién quería jugar Tito?",
+        "opciones": [
+         {
+          "imagen": "personajes/vecino-3.webp",
+          "texto": "Abu"
+         },
+         {
+          "imagen": "personajes/vecino-2.webp",
+          "texto": "Púa"
+         },
+         {
+          "imagen": "personajes/vecino-4.webp",
+          "texto": "Nuez"
+         }
+        ],
+        "correcta": 1,
+        "bien": "¡Con Púa!"
+       },
+       {
+        "tipo": "elegir",
+        "dice": "¿A qué jugaron?",
+        "opciones": [
+         {
+          "imagen": "iconos/1fa81.svg",
+          "texto": "cometa"
+         },
+         {
+          "imagen": "iconos/1f9e9.svg",
+          "texto": "rompecabezas"
+         },
+         {
+          "imagen": "iconos/26bd.svg",
+          "texto": "pelota"
+         }
+        ],
+        "correcta": 2,
+        "bien": "¡A la pelota!"
+       },
+       {
+        "tipo": "ordenar",
+        "dice": "Toca los dibujos en orden: ¿qué pasó primero, después y al final?",
+        "imagenes": [
+         "iconos/tito-2.svg",
+         "personajes/vecino-2.webp",
+         "iconos/tito-4.svg"
+        ],
+        "bien": "¡Así pasó el cuento!"
+       },
+       {
+        "tipo": "elegir",
+        "dice": "¿Qué dijo Tito al irse?",
+        "opciones": [
+         {
+          "imagen": "iconos/buenos-dias.svg",
+          "texto": "¡Buenos días!"
+         },
+         {
+          "imagen": "iconos/adios.svg",
+          "texto": "¡Adiós!"
+         }
+        ],
+        "correcta": 1,
+        "bien": "¡Adiós, Púa!"
+       }
+      ]
+     }
     },
     {
      "id": "renglon-naturaleza",
@@ -1303,6 +1461,151 @@
       "idea": "Salgan al patio o a la ventana, cierren los ojos un ratico y cuenten lo que oyen: pájaros, lluvia, viento. Luego imiten los sonidos."
      },
      "requiere": "renglon-naturaleza"
+    },
+    {
+     "id": "renglon-naturaleza-3",
+     "titulo": "La lluvia llega",
+     "plantilla": "cuento",
+     "icono": "iconos/lluvia-2.svg",
+     "palabras": [
+      {
+       "es": "plic plic",
+       "icono": "iconos/1f327.svg",
+       "frase": "La lluvia hace plic plic.",
+       "aceptar": [
+        "plic",
+        "plip plip"
+       ],
+       "en": "plic plic"
+      },
+      {
+       "es": "croac",
+       "icono": "iconos/1f438.svg",
+       "frase": "La rana hace croac.",
+       "aceptar": [
+        "croac croac",
+        "croá"
+       ],
+       "en": "croac"
+      },
+      {
+       "es": "bzz",
+       "icono": "iconos/1f41d.svg",
+       "frase": "La abeja hace bzz.",
+       "aceptar": [
+        "bzzz",
+        "zzz",
+        "bss"
+       ],
+       "en": "bzz"
+      }
+     ],
+     "x": 1708,
+     "y": 2208,
+     "antes": [
+      {
+       "quien": "renglon",
+       "es": "Cierra los ojos un ratico e imagina el cuento. Escucha los sonidos.",
+       "en": "Cierra los ojos un ratico e imagina el cuento. Escucha los sonidos."
+      }
+     ],
+     "familia": {
+      "tema": "escuchar en silencio",
+      "idea": "Salgan al patio o a la ventana, cierren los ojos un ratico y cuenten lo que oyen: pájaros, lluvia, viento. Luego imiten los sonidos."
+     },
+     "requiere": "renglon-naturaleza-2",
+     "cuento": {
+      "paginas": [
+       {
+        "imagen": "iconos/lluvia-1.svg",
+        "texto": "El cielo se pone gris. ¡Fuuu!, sopla el viento."
+       },
+       {
+        "imagen": "iconos/lluvia-2.svg",
+        "texto": "Plic, plic, plic: empieza a llover."
+       },
+       {
+        "imagen": "iconos/lluvia-3.svg",
+        "texto": "La rana salta feliz: ¡croac, croac!"
+       },
+       {
+        "imagen": "iconos/lluvia-4.svg",
+        "texto": "La abeja se esconde dentro de una flor."
+       },
+       {
+        "imagen": "iconos/lluvia-5.svg",
+        "texto": "Sale el sol y aparece el arcoíris."
+       }
+      ],
+      "preguntas": [
+       {
+        "tipo": "elegir",
+        "dice": "¿Qué sonido hace la lluvia?",
+        "opciones": [
+         {
+          "imagen": "iconos/1f327.svg",
+          "texto": "plic, plic"
+         },
+         {
+          "imagen": "iconos/1f415.svg",
+          "texto": "guau, guau"
+         },
+         {
+          "imagen": "iconos/1f514.svg",
+          "texto": "din, don"
+         }
+        ],
+        "correcta": 0,
+        "bien": "¡Plic, plic, plic!"
+       },
+       {
+        "tipo": "elegir",
+        "dice": "¿Quién saltó feliz?",
+        "opciones": [
+         {
+          "imagen": "iconos/1f41d.svg",
+          "texto": "la abeja"
+         },
+         {
+          "imagen": "iconos/1f438.svg",
+          "texto": "la rana"
+         },
+         {
+          "imagen": "iconos/1f989.svg",
+          "texto": "el búho"
+         }
+        ],
+        "correcta": 1,
+        "bien": "¡La rana! Croac, croac."
+       },
+       {
+        "tipo": "ordenar",
+        "dice": "Toca los dibujos en orden: ¿qué pasó primero, después y al final?",
+        "imagenes": [
+         "iconos/lluvia-1.svg",
+         "iconos/lluvia-2.svg",
+         "iconos/lluvia-5.svg"
+        ],
+        "bien": "¡Así pasó el cuento!"
+       },
+       {
+        "tipo": "elegir",
+        "dice": "¿Qué apareció al final?",
+        "opciones": [
+         {
+          "imagen": "iconos/1f319.svg",
+          "texto": "la luna"
+         },
+         {
+          "imagen": "iconos/1f308.svg",
+          "texto": "el arcoíris"
+         }
+        ],
+        "correcta": 1,
+        "bien": "¡El arcoíris!"
+       }
+      ]
+     }
     },
     {
      "id": "renglon-pozo",
@@ -1984,7 +2287,7 @@
        "icono": "mundo/animal-1.webp",
        "pronuncia": "bá-ter-flai"
       },
-      "aparece": "renglon-naturaleza-2"
+      "aparece": "renglon-naturaleza-3"
      },
      {
       "imagen": "mundo/animal-2.webp",
@@ -2178,7 +2481,7 @@
       "x": 2201,
       "y": 2351,
       "choque": 18,
-      "zona": "renglon-naturaleza-2"
+      "zona": "renglon-naturaleza-3"
      },
      {
       "imagen": "pagina/arbol-3.webp",
@@ -2506,7 +2809,7 @@
       "x": 1685,
       "y": 1869,
       "choque": 0,
-      "zona": "renglon-naturaleza-2"
+      "zona": "renglon-naturaleza-3"
      },
      {
       "imagen": "pagina/arbol-1.webp",
@@ -2578,7 +2881,7 @@
       "x": 1719,
       "y": 2555,
       "choque": 0,
-      "zona": "renglon-naturaleza-2"
+      "zona": "renglon-naturaleza-3"
      },
      {
       "imagen": "pagina/arbol-1.webp",
@@ -2626,7 +2929,7 @@
       "x": 1707,
       "y": 2802,
       "choque": 0,
-      "zona": "renglon-naturaleza-2"
+      "zona": "renglon-naturaleza-3"
      },
      {
       "imagen": "pagina/tulipanes.webp",
@@ -2714,7 +3017,7 @@
       "x": 1743,
       "y": 2064,
       "choque": 0,
-      "aparece": "renglon-naturaleza-2"
+      "aparece": "renglon-naturaleza-3"
      },
      {
       "imagen": "pagina/tulipanes.webp",
@@ -3672,7 +3975,7 @@
       "x": 1800,
       "y": 2100,
       "r": 300,
-      "zona": "renglon-naturaleza-2",
+      "zona": "renglon-naturaleza-3",
       "retraso": 0.1
      },
      {
@@ -3686,7 +3989,7 @@
       "x": 2400,
       "y": 2100,
       "r": 300,
-      "zona": "renglon-naturaleza-2",
+      "zona": "renglon-naturaleza-3",
       "retraso": 0.5
      },
      {
@@ -3735,7 +4038,7 @@
       "x": 1800,
       "y": 2400,
       "r": 300,
-      "zona": "renglon-naturaleza-2",
+      "zona": "renglon-naturaleza-3",
       "retraso": 0.15
      },
      {
@@ -3749,7 +4052,7 @@
       "x": 2400,
       "y": 2400,
       "r": 300,
-      "zona": "renglon-naturaleza-2",
+      "zona": "renglon-naturaleza-3",
       "retraso": 0.51
      },
      {
@@ -3798,7 +4101,7 @@
       "x": 1800,
       "y": 2700,
       "r": 300,
-      "zona": "renglon-naturaleza-2",
+      "zona": "renglon-naturaleza-3",
       "retraso": 0.36
      },
      {
@@ -3812,7 +4115,7 @@
       "x": 2400,
       "y": 2700,
       "r": 300,
-      "zona": "renglon-naturaleza-2",
+      "zona": "renglon-naturaleza-3",
       "retraso": 0.61
      },
      {
@@ -3861,21 +4164,21 @@
       "x": 1800,
       "y": 3000,
       "r": 300,
-      "zona": "renglon-naturaleza-2",
+      "zona": "renglon-naturaleza-3",
       "retraso": 0.57
      },
      {
       "x": 2100,
       "y": 3000,
       "r": 300,
-      "zona": "renglon-naturaleza-2",
+      "zona": "renglon-naturaleza-3",
       "retraso": 0.63
      },
      {
       "x": 2400,
       "y": 3000,
       "r": 300,
-      "zona": "renglon-naturaleza-2",
+      "zona": "renglon-naturaleza-3",
       "retraso": 0.75
      }
     ],

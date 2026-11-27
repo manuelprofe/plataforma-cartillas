@@ -23,7 +23,24 @@
     "ruido-2": [{"rect": [0, 0, 36, 36], "fill": "#2f3a66"}, {"e": "1f415", "x": 6, "y": 16, "t": 15}, {"e": "1f4a4", "x": 22, "y": 7, "t": 9}],
     "ruido-3": [{"rect": [0, 0, 36, 36], "fill": "#2f3a66"}, {"e": "1f408", "x": 4, "y": 15, "t": 15}, {"e": "1f95b", "x": 22, "y": 20, "t": 9}],
     "ruido-4": [{"rect": [0, 0, 36, 36], "fill": "#2f3a66"}, {"e": "1fa9f", "x": 7, "y": 5, "t": 22}, {"e": "1f997", "x": 14, "y": 20, "t": 10}, {"e": "1f3b6", "x": 25, "y": 4, "t": 7}],
-    "ruido-5": [{"rect": [0, 0, 36, 36], "fill": "#2f3a66"}, {"e": "1f319", "x": 26, "y": 2, "t": 8}, {"e": "1f467", "x": 3, "y": 14, "t": 15}, {"e": "1f997", "x": 21, "y": 20, "t": 9}, {"e": "1f49b", "x": 19, "y": 8, "t": 6}]
+    "ruido-5": [{"rect": [0, 0, 36, 36], "fill": "#2f3a66"}, {"e": "1f319", "x": 26, "y": 2, "t": 8}, {"e": "1f467", "x": 3, "y": 14, "t": 15}, {"e": "1f997", "x": 21, "y": 20, "t": 9}, {"e": "1f49b", "x": 19, "y": 8, "t": 6}],
+    "reloj-1": [{"rect": [0, 27, 36, 9], "fill": "#ecd9b8"}, {"e": "1f475", "x": 2, "y": 12, "t": 15}, {"e": "1f570", "x": 19, "y": 8, "t": 15}],
+    "reloj-2": [{"rect": [0, 27, 36, 9], "fill": "#ecd9b8"}, {"e": "1f570", "x": 9, "y": 9, "t": 16}, {"e": "1f4a4", "x": 25, "y": 3, "t": 8}],
+    "reloj-3": [{"rect": [0, 27, 36, 9], "fill": "#cfe8b4"}, {"e": "1f475", "x": 3, "y": 13, "t": 14}, {"e": "1f3ea", "x": 19, "y": 7, "t": 16}],
+    "reloj-4": [{"rect": [0, 27, 36, 9], "fill": "#ecd9b8"}, {"e": "1f466", "x": 2, "y": 12, "t": 15}, {"e": "1f50b", "x": 17, "y": 17, "t": 7}, {"e": "1f570", "x": 23, "y": 10, "t": 11}],
+    "reloj-5": [{"rect": [0, 27, 36, 9], "fill": "#ecd9b8"}, {"e": "1f570", "x": 11, "y": 9, "t": 14}, {"e": "1f44f", "x": 1, "y": 4, "t": 8}, {"e": "1f44f", "x": 27, "y": 4, "t": 8}],
+    "pollitos-1": [{"rect": [0, 27, 36, 9], "fill": "#cfe8b4"}, {"e": "1f425", "x": 1, "y": 18, "t": 10}, {"e": "1f425", "x": 13, "y": 17, "t": 10}, {"e": "1f425", "x": 25, "y": 18, "t": 10}],
+    "pollitos-2": [{"rect": [0, 27, 36, 9], "fill": "#cfe8b4"}, {"e": "2744", "x": 3, "y": 3, "t": 8}, {"e": "2744", "x": 25, "y": 5, "t": 7}, {"e": "1f425", "x": 12, "y": 16, "t": 12}],
+    "pollitos-3": [{"rect": [0, 27, 36, 9], "fill": "#cfe8b4"}, {"e": "1f414", "x": 2, "y": 9, "t": 17}, {"e": "1f33d", "x": 22, "y": 15, "t": 11}],
+    "pollitos-4": [{"rect": [0, 27, 36, 9], "fill": "#cfe8b4"}, {"e": "1f414", "x": 1, "y": 9, "t": 17}, {"e": "1f425", "x": 19, "y": 18, "t": 9}, {"e": "1f33d", "x": 27, "y": 18, "t": 8}],
+    "pollitos-5": [{"rect": [0, 0, 36, 36], "fill": "#2f3a66"}, {"e": "1f319", "x": 26, "y": 2, "t": 8}, {"e": "1f414", "x": 7, "y": 11, "t": 18}, {"e": "1f4a4", "x": 23, "y": 14, "t": 7}],
+    "tito-2": [{"rect": [0, 27, 36, 9], "fill": "#cfe8b4"}, {"e": "1f6aa", "x": 13, "y": 4, "t": 23}, {"e": "2753", "x": 26, "y": 4, "t": 7}],
+    "tito-4": [{"rect": [0, 0, 36, 36], "fill": "#ffd9a8"}, {"rect": [0, 27, 36, 9], "fill": "#cfe8b4"}, {"e": "26bd", "x": 13, "y": 15, "t": 10}, {"e": "1f319", "x": 26, "y": 2, "t": 7}],
+    "lluvia-1": [{"rect": [0, 27, 36, 9], "fill": "#cfe8b4"}, {"e": "2601", "x": 3, "y": 2, "t": 16}, {"e": "1f32c", "x": 20, "y": 9, "t": 13}],
+    "lluvia-2": [{"rect": [0, 27, 36, 9], "fill": "#cfe8b4"}, {"e": "1f327", "x": 9, "y": 2, "t": 17}, {"e": "1f4a7", "x": 5, "y": 21, "t": 5}, {"e": "1f4a7", "x": 25, "y": 21, "t": 5}],
+    "lluvia-3": [{"rect": [0, 27, 36, 9], "fill": "#cfe8b4"}, {"e": "1f438", "x": 9, "y": 12, "t": 16}, {"e": "1f4a7", "x": 28, "y": 6, "t": 5}],
+    "lluvia-4": [{"rect": [0, 27, 36, 9], "fill": "#cfe8b4"}, {"e": "1f33c", "x": 8, "y": 12, "t": 16}, {"e": "1f41d", "x": 22, "y": 6, "t": 9}],
+    "lluvia-5": [{"rect": [0, 27, 36, 9], "fill": "#cfe8b4"}, {"e": "2600", "x": 2, "y": 1, "t": 10}, {"e": "1f308", "x": 13, "y": 6, "t": 20}]
   },
 
   "palabras": {
@@ -122,7 +139,22 @@
       "misiones": [
         { "titulo": "¿Qué suena?", "plantilla": "escucha-toca", "icono": "iconos/1f514.svg", "palabras": ["telefono", "reloj", "campana", "tambor", "aplausos", "carro"], "antes": "Escucha el sonido y toca la cosa que suena así." },
         { "titulo": "Parejas de sonidos", "plantilla": "memoria", "icono": "iconos/23f0.svg", "palabras": ["telefono", "reloj", "campana", "tambor"], "formas": ["imagen-sonido"], "parejas": 4, "antes": "Gira dos cartas: busca el dibujo y su sonido." },
-        { "titulo": "Atrapa lo que suena", "plantilla": "escucha-atrapa", "icono": "iconos/1f941.svg", "palabras": ["telefono", "reloj", "campana", "tambor", "aplausos", "carro"], "antes": "Atrapa la cosa que hace el sonido que escuchas." }
+        {"titulo": "El reloj dormilón", "plantilla": "cuento", "icono": "iconos/reloj-1.svg", "palabras": ["reloj", "campana"], "antes": "Este cuento tiene un reloj que hace tic, tac. Escucha bien.",
+          "cuento": {
+            "paginas": [
+              {"imagen": "iconos/reloj-1.svg", "texto": "Tic, tac, hace el reloj de la abuela Rosa."},
+              {"imagen": "iconos/reloj-2.svg", "texto": "Una mañana el reloj se queda callado. Está dormido."},
+              {"imagen": "iconos/reloj-3.svg", "texto": "La abuela no oye el tic, tac y llega tarde al mercado."},
+              {"imagen": "iconos/reloj-4.svg", "texto": "Teo, su nieto, le pone una pila nueva al reloj."},
+              {"imagen": "iconos/reloj-5.svg", "texto": "¡Tic, tac! El reloj despierta y todos aplauden."}
+            ],
+            "preguntas": [
+              {"tipo": "elegir", "dice": "¿Quién hace tic, tac?", "opciones": [{"imagen": "iconos/1f514.svg", "texto": "la campana"}, {"imagen": "iconos/1f570.svg", "texto": "el reloj"}, {"imagen": "iconos/1f941.svg", "texto": "el tambor"}], "correcta": 1, "bien": "¡El reloj!"},
+              {"tipo": "elegir", "dice": "¿Qué le puso Teo al reloj?", "opciones": [{"imagen": "iconos/1f50b.svg", "texto": "una pila"}, {"imagen": "iconos/1f34e.svg", "texto": "una manzana"}, {"imagen": "iconos/1f380.svg", "texto": "un moño"}], "correcta": 0, "bien": "¡Una pila nueva!"},
+              {"tipo": "ordenar", "dice": "Toca los dibujos en orden: ¿qué pasó primero, después y al final?", "imagenes": ["iconos/reloj-1.svg", "iconos/reloj-2.svg", "iconos/reloj-5.svg"], "bien": "¡Así pasó el cuento!"},
+              {"tipo": "elegir", "dice": "¿Por qué llegó tarde la abuela?", "opciones": [{"imagen": "iconos/reloj-2.svg", "texto": "el reloj se durmió"}, {"imagen": "iconos/1f327.svg", "texto": "llovía mucho"}], "correcta": 0, "bien": "¡Sí! Sin el tic, tac no supo la hora."}
+            ]
+          } }
       ]
     },
     "bosque-body": {
@@ -131,7 +163,22 @@
       "misiones": [
         { "titulo": "¿Qué ronda es?", "plantilla": "escucha-toca", "icono": "iconos/1f425.svg", "palabras": ["pollitos", "arroz", "patio", "lluvia", "aserrin"], "antes": "Escucha el nombre de la ronda y toca su dibujo." },
         { "titulo": "Canta conmigo", "plantilla": "di-brilla", "icono": "iconos/1f3e1.svg", "palabras": ["pollitos", "arroz", "patio", "lluvia", "aserrin"], "antes": "Escucha el nombre de la ronda y dilo tú. Si te la sabes, ¡cántala! Cada intento cuenta." },
-        { "titulo": "Atrapa la ronda", "plantilla": "escucha-atrapa", "icono": "iconos/1f35a.svg", "palabras": ["pollitos", "arroz", "patio", "lluvia", "aserrin"], "antes": "Atrapa el dibujo de la ronda que escuchas." }
+        {"titulo": "Los pollitos dicen", "plantilla": "cuento", "icono": "iconos/pollitos-1.svg", "palabras": ["pollitos"], "antes": "Esta es una ronda de siempre, contada como un cuento. Escucha.",
+          "cuento": {
+            "paginas": [
+              {"imagen": "iconos/pollitos-1.svg", "texto": "Los pollitos dicen: pío, pío, pío."},
+              {"imagen": "iconos/pollitos-2.svg", "texto": "Cuando tienen hambre, cuando tienen frío."},
+              {"imagen": "iconos/pollitos-3.svg", "texto": "La gallina busca el maíz y el trigo."},
+              {"imagen": "iconos/pollitos-4.svg", "texto": "Les da la comida y les presta abrigo."},
+              {"imagen": "iconos/pollitos-5.svg", "texto": "Bajo sus dos alas, se duermen los pollitos."}
+            ],
+            "preguntas": [
+              {"tipo": "elegir", "dice": "¿Qué busca la gallina?", "opciones": [{"imagen": "iconos/1f33d.svg", "texto": "maíz"}, {"imagen": "iconos/1f41f.svg", "texto": "un pez"}, {"imagen": "iconos/1f36d.svg", "texto": "un dulce"}], "correcta": 0, "bien": "¡Maíz y trigo!"},
+              {"tipo": "elegir", "dice": "¿Qué sentían los pollitos?", "opciones": [{"imagen": "iconos/2600.svg", "texto": "calor"}, {"imagen": "iconos/2744.svg", "texto": "frío"}], "correcta": 1, "bien": "¡Frío y hambre!"},
+              {"tipo": "ordenar", "dice": "Toca los dibujos en orden: ¿qué pasó primero, después y al final?", "imagenes": ["iconos/pollitos-1.svg", "iconos/pollitos-3.svg", "iconos/pollitos-5.svg"], "bien": "¡Así pasó el cuento!"},
+              {"tipo": "elegir", "dice": "¿Dónde se duermen los pollitos?", "opciones": [{"imagen": "iconos/1f333.svg", "texto": "en un árbol"}, {"imagen": "iconos/1f414.svg", "texto": "bajo las alas de la gallina"}], "correcta": 1, "bien": "¡Bajo sus alas, calientitos!"}
+            ]
+          } }
       ]
     },
     "bosque-family": {
@@ -140,7 +187,22 @@
       "misiones": [
         { "titulo": "¿Quién es?", "plantilla": "escucha-toca", "icono": "personajes/vecino-1.webp", "palabras": ["tito", "pua", "abu", "nuez", "caro", "rayo"], "antes": "Estos son los vecinos de la página. Escucha el nombre y toca a quien se llama así." },
         { "titulo": "Cara y nombre", "plantilla": "memoria", "icono": "personajes/vecino-5.webp", "palabras": ["tito", "pua", "abu", "caro"], "formas": ["imagen-sonido"], "parejas": 4, "antes": "Gira dos cartas: busca la cara y su nombre." },
-        { "titulo": "Saluda a cada vecino", "plantilla": "di-brilla", "icono": "personajes/vecino-3.webp", "palabras": ["tito", "pua", "abu", "nuez", "caro", "rayo"], "antes": "Saluda a cada vecino por su nombre. ¡Cada intento cuenta!" }
+        {"titulo": "Tito busca a Púa", "plantilla": "cuento", "icono": "personajes/vecino-1.webp", "palabras": ["tito", "pua"], "antes": "Este cuento es de dos vecinos de la página. Escucha sus nombres.",
+          "cuento": {
+            "paginas": [
+              {"imagen": "personajes/vecino-1.webp", "texto": "Tito quiere jugar a la pelota con su amiga Púa."},
+              {"imagen": "iconos/tito-2.svg", "texto": "Toca la puerta: toc, toc. ¿Quién es? ¡Soy Tito!"},
+              {"imagen": "personajes/vecino-2.webp", "texto": "Púa sale y dice: ¡Hola, Tito! ¿Jugamos?"},
+              {"imagen": "iconos/tito-4.svg", "texto": "Juegan con la pelota hasta que llega la noche."},
+              {"imagen": "personajes/vecino-1.webp", "texto": "Tito se despide: ¡Adiós, Púa! Mañana jugamos otra vez."}
+            ],
+            "preguntas": [
+              {"tipo": "elegir", "dice": "¿Con quién quería jugar Tito?", "opciones": [{"imagen": "personajes/vecino-3.webp", "texto": "Abu"}, {"imagen": "personajes/vecino-2.webp", "texto": "Púa"}, {"imagen": "personajes/vecino-4.webp", "texto": "Nuez"}], "correcta": 1, "bien": "¡Con Púa!"},
+              {"tipo": "elegir", "dice": "¿A qué jugaron?", "opciones": [{"imagen": "iconos/1fa81.svg", "texto": "cometa"}, {"imagen": "iconos/1f9e9.svg", "texto": "rompecabezas"}, {"imagen": "iconos/26bd.svg", "texto": "pelota"}], "correcta": 2, "bien": "¡A la pelota!"},
+              {"tipo": "ordenar", "dice": "Toca los dibujos en orden: ¿qué pasó primero, después y al final?", "imagenes": ["iconos/tito-2.svg", "personajes/vecino-2.webp", "iconos/tito-4.svg"], "bien": "¡Así pasó el cuento!"},
+              {"tipo": "elegir", "dice": "¿Qué dijo Tito al irse?", "opciones": [{"imagen": "iconos/buenos-dias.svg", "texto": "¡Buenos días!"}, {"imagen": "iconos/adios.svg", "texto": "¡Adiós!"}], "correcta": 1, "bien": "¡Adiós, Púa!"}
+            ]
+          } }
       ]
     },
     "bosque-time": {
@@ -148,7 +210,23 @@
       "familia": { "tema": "escuchar en silencio", "idea": "Salgan al patio o a la ventana, cierren los ojos un ratico y cuenten lo que oyen: pájaros, lluvia, viento. Luego imiten los sonidos." },
       "misiones": [
         { "titulo": "Escucha la naturaleza", "plantilla": "escucha-toca", "icono": "iconos/1f438.svg", "palabras": ["llover", "abeja", "rana", "buho", "viento"], "antes": "Cierra los ojos, escucha el sonido y toca el dibujo." },
-        { "titulo": "Suena como la naturaleza", "plantilla": "di-brilla", "icono": "iconos/1f989.svg", "palabras": ["llover", "abeja", "rana", "buho", "viento"], "antes": "Escucha y hazlo con tu voz. ¡Cada intento cuenta!" }
+        { "titulo": "Suena como la naturaleza", "plantilla": "di-brilla", "icono": "iconos/1f989.svg", "palabras": ["llover", "abeja", "rana", "buho", "viento"], "antes": "Escucha y hazlo con tu voz. ¡Cada intento cuenta!" },
+        {"titulo": "La lluvia llega", "plantilla": "cuento", "icono": "iconos/lluvia-2.svg", "palabras": ["llover", "rana", "abeja"], "antes": "Cierra los ojos un ratico e imagina el cuento. Escucha los sonidos.",
+          "cuento": {
+            "paginas": [
+              {"imagen": "iconos/lluvia-1.svg", "texto": "El cielo se pone gris. ¡Fuuu!, sopla el viento."},
+              {"imagen": "iconos/lluvia-2.svg", "texto": "Plic, plic, plic: empieza a llover."},
+              {"imagen": "iconos/lluvia-3.svg", "texto": "La rana salta feliz: ¡croac, croac!"},
+              {"imagen": "iconos/lluvia-4.svg", "texto": "La abeja se esconde dentro de una flor."},
+              {"imagen": "iconos/lluvia-5.svg", "texto": "Sale el sol y aparece el arcoíris."}
+            ],
+            "preguntas": [
+              {"tipo": "elegir", "dice": "¿Qué sonido hace la lluvia?", "opciones": [{"imagen": "iconos/1f327.svg", "texto": "plic, plic"}, {"imagen": "iconos/1f415.svg", "texto": "guau, guau"}, {"imagen": "iconos/1f514.svg", "texto": "din, don"}], "correcta": 0, "bien": "¡Plic, plic, plic!"},
+              {"tipo": "elegir", "dice": "¿Quién saltó feliz?", "opciones": [{"imagen": "iconos/1f41d.svg", "texto": "la abeja"}, {"imagen": "iconos/1f438.svg", "texto": "la rana"}, {"imagen": "iconos/1f989.svg", "texto": "el búho"}], "correcta": 1, "bien": "¡La rana! Croac, croac."},
+              {"tipo": "ordenar", "dice": "Toca los dibujos en orden: ¿qué pasó primero, después y al final?", "imagenes": ["iconos/lluvia-1.svg", "iconos/lluvia-2.svg", "iconos/lluvia-5.svg"], "bien": "¡Así pasó el cuento!"},
+              {"tipo": "elegir", "dice": "¿Qué apareció al final?", "opciones": [{"imagen": "iconos/1f319.svg", "texto": "la luna"}, {"imagen": "iconos/1f308.svg", "texto": "el arcoíris"}], "correcta": 1, "bien": "¡El arcoíris!"}
+            ]
+          } }
       ]
     }
   },

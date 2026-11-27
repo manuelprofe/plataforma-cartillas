@@ -164,7 +164,11 @@ def main() -> int:
     for zona, z in contenido['zonas'].items():
         lugares = [zona] + [f'{zona}-{i}' for i in range(2, 6) if f'{zona}-{i}' in por_id]
         if len(z['misiones']) > len(lugares):
-            raise SystemExit(f'{zona}: {len(z["misiones"])} misiones y solo {len(lugares)} lugares en el molde')
+            # Con mundo propio (camino, biblioteca) el lugar del molde no se ve: las misiones de más
+            # toman la posición del último lugar.
+            if 'vista' not in contenido:
+                raise SystemExit(f'{zona}: {len(z["misiones"])} misiones y solo {len(lugares)} lugares en el molde')
+            lugares = lugares + [lugares[-1]] * (len(z['misiones']) - len(lugares))
         for i, (lugar, m) in enumerate(zip(lugares, z['misiones'])):
             nuevo = z['id'] if i == 0 else f'{z["id"]}-{i + 1}'
             nombres[lugar] = nuevo
@@ -177,7 +181,7 @@ def main() -> int:
                 'familia': z['familia'],
             }
             if i:
-                mision['requiere'] = nombres[lugares[i - 1]]
+                mision['requiere'] = z['id'] if i == 1 else f'{z["id"]}-{i}'
             if m['plantilla'] == 'escucha-atrapa':
                 mision['atrapa'] = base.get('atrapa') or next(x['atrapa'] for x in t['misiones'] if 'atrapa' in x)
             for extra in ('contar', 'ordenar', 'operacion', 'silabas', 'formas', 'parejas', 'leer', 'plataformas', 'cuento', 'numeros'):

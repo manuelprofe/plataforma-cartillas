@@ -1002,32 +1002,32 @@
     "tito": {
      "nombre": "Tito",
      "imagen": "personajes/vecino-1.webp",
-     "ancho": 78
+     "ancho": 67
     },
     "pua": {
      "nombre": "Púa",
      "imagen": "personajes/vecino-2.webp",
-     "ancho": 78
+     "ancho": 66
     },
     "abu": {
      "nombre": "Abu",
      "imagen": "personajes/vecino-3.webp",
-     "ancho": 82
+     "ancho": 78
     },
     "nuez": {
      "nombre": "Nuez",
      "imagen": "personajes/vecino-4.webp",
-     "ancho": 82
+     "ancho": 67
     },
     "caro": {
      "nombre": "Caro",
      "imagen": "personajes/vecino-5.webp",
-     "ancho": 88
+     "ancho": 72
     },
     "rayo": {
      "nombre": "Rayo",
      "imagen": "personajes/vecino-6.webp",
-     "ancho": 84
+     "ancho": 68
     },
     "postal": {
      "nombre": "Postal",

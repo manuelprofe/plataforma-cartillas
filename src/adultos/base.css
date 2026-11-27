@@ -70,7 +70,10 @@
   color-scheme: light;
 }
 
+.pestanas .pestanas__item--computador { display: none; }
 @media (min-width: 1024px) {
+  .pestanas .pestanas__item--computador { display: flex; }
+  .pestanas .pestanas__item--celular { display: none; }
   :root {
     --t-h1: 34px;
     --l-h1: 40px;

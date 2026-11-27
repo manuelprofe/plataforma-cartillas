@@ -88,8 +88,9 @@ try {
     }
     await p.screenshot({ path: `${CAPTURAS}/bib-${ancho}-doc.png` });
 
-    await ir('/docente/mas');
-    comprobar(await p.getByRole('link', { name: /Biblioteca/ }).isVisible(), `${ancho}: Más tiene Biblioteca`);
+    await ir('/docente');
+    comprobar(await p.locator('nav.pestanas').getByRole('link', { name: /Biblioteca/ }).isVisible(), `${ancho}: Biblioteca está en las pestañas`);
+    comprobar((await p.locator('nav.pestanas a:visible').count()) <= 6 || ancho >= 1024, `${ancho}: no más de 6 pestañas en celular`);
     comprobar(errores.length === 0, `${ancho}: sin errores (${errores.join(' | ')})`);
     await c.close();
   }

@@ -6,6 +6,9 @@ import { Boton, Encabezado, Panel, Vacio } from './base';
 import { Campo, CampoOpciones, Cargado, Confirmar, FormInvitar, ListaInvitaciones, ListaPersonas, textoAccion, useCarga, useTitulo } from './comun';
 import { asignables, asignarDocente, cambiarCartillaGrupo, cifrasGrupos, crearGrupo, listarCartillas, listarGrupos, listarHabilitadas, listarInvitaciones, listarPersonas, nombreCartilla, renovarCodigo, type CartillaCat, type Cifra, type Grupo, type Habilitada, type Invitacion, type Persona } from './datos';
 import { CARTILLA_PREDETERMINADA } from '../cartillas';
+import { entregasColegio } from './entregas';
+import { ResumenColegio } from './tablero/ResumenColegio';
+import { useEnVivo } from './tablero/vivo';
 
 const GRADOS = ['Preescolar', '1°', '2°', '3°', '4°', '5°'].map((g) => ({ valor: g, etiqueta: g === 'Preescolar' ? g : `Grado ${g}` }));
 
@@ -25,18 +28,19 @@ const juntar = (cs: Cuenta[]): Cuenta => cs.reduce((a, c) => ({ activos: a.activ
  */
 export function UsoYAvance() {
   useTitulo('Uso y avance');
-  const carga = useCarga(cifrasGrupos, 'cifras');
+  const carga = useCarga(() => Promise.all([cifrasGrupos(), entregasColegio().catch(() => null)]), 'cifras');
+  const hora = useEnVivo(carga.recargar, Boolean(carga.datos));
   const hoy = new Date().toLocaleDateString('es-CO', { day: 'numeric', month: 'long', year: 'numeric' });
   return (
-    <div className="tablero-uso">
+    <div className="tablero-uso tablero">
       <div className="cabeza-pagina">
-        <Encabezado titulo="Uso y avance" meta={`Por grado y grupo · ${hoy}`} />
+        <Encabezado titulo="Uso y avance" meta={`${hoy} · se actualiza solo · ${hora}`} />
         <div className="no-imprimir">
           <Boton icono="imprimir" onClick={() => window.print()}>Imprimir</Boton>
         </div>
       </div>
       <Cargado carga={carga}>
-        {(grupos) => {
+        {([grupos, entregas]) => {
           if (grupos.length === 0)
             return (
               <Panel>
@@ -48,6 +52,8 @@ export function UsoYAvance() {
           const grados = [...new Set(grupos.map((g) => g.grado))].sort((a, b) => ordenGrado(a) - ordenGrado(b) || a.localeCompare(b));
           return (
             <>
+              <ResumenColegio grupos={grupos} entregas={entregas} orden={(a, b) => ordenGrado(a) - ordenGrado(b) || a.localeCompare(b)} />
+              <h2 className="tablero__seccion">Por grado y grupo</h2>
               {grados.map((grado) => {
                 const delGrado = grupos.filter((g) => g.grado === grado);
                 const conCifras = delGrado.filter((g) => g.con_cifras);

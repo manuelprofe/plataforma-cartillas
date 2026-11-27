@@ -477,19 +477,20 @@ const DOCENTE: Seccion[] = [
   { ruta: '/docente/grupos', etiqueta: 'Grupos', icono: 'grupos' },
   { ruta: '/docente/planear', etiqueta: 'Planear', icono: 'planear' },
   { ruta: '/docente/juegos', etiqueta: 'Juegos', icono: 'juegos' },
-  { ruta: '/proyectar', etiqueta: 'Proyectar', icono: 'proyectar' },
-  { ruta: '/docente/mas', etiqueta: 'Más', icono: 'mas' },
+  { ruta: '/docente/biblioteca', etiqueta: 'Biblioteca', icono: 'documento' },
+  { ruta: '/proyectar', etiqueta: 'Proyectar', icono: 'proyectar', solo: 'computador' },
+  { ruta: '/docente/registro', etiqueta: 'Registro del piloto', icono: 'registro', solo: 'computador' },
+  { ruta: '/docente/ayuda', etiqueta: 'Ayuda', icono: 'ayuda', solo: 'computador' },
+  { ruta: '/docente/cuenta', etiqueta: 'Cuenta', icono: 'cuenta', solo: 'computador' },
+  { ruta: '/docente/mas', etiqueta: 'Más', icono: 'mas', solo: 'celular', activaEn: ['/docente/registro', '/docente/ayuda', '/docente/cuenta'] },
 ];
-
-/** Lo que va bajo "Más" en celular; en el computador se llega igual desde esa pestaña. */
-const MAS = ['biblioteca', 'registro', 'ayuda', 'cuenta'];
 
 const SIN_RED_DOCENTE = 'Sin conexión. Lo que marque se guarda en este celular y sube solo cuando vuelva la señal.';
 const SIN_RED_LECTURA = 'Sin conexión. Ve lo último que se cargó; para cambiar algo hace falta internet.';
 
 function Docente({ resto, cuenta, sinRed }: { resto: string[]; cuenta: Dentro; sinRed: boolean }) {
   const [seccion = '', ...mas] = resto;
-  const activa = seccion === '' ? '/docente' : MAS.includes(seccion) || seccion === 'mas' ? '/docente/mas' : seccion === 'temas' ? '/docente/planear' : `/docente/${seccion}`;
+  const activa = seccion === '' ? '/docente' : seccion === 'temas' ? '/docente/planear' : `/docente/${seccion}`;
   const cola = useCola();
   const cartilla = useCartillaMateriales();
   useEffect(iniciarCola, []);
@@ -533,11 +534,11 @@ function PaginaDocente({ seccion, mas, cuenta, sinRed }: { seccion: string; mas:
     case 'biblioteca':
       return <Biblioteca resto={mas} />;
     case 'registro':
-      return <SeccionVacia titulo="Registro del piloto" hueco="Aquí irá el registro del piloto" texto="Cotejo, incidencias, encuesta de acceso y prueba de entrada y salida, cada parte con su plantilla imprimible." volver={{ ruta: '/docente/mas', etiqueta: 'Más' }} />;
+      return <SeccionVacia titulo="Registro del piloto" hueco="Aquí irá el registro del piloto" texto="Cotejo, incidencias, encuesta de acceso y prueba de entrada y salida, cada parte con su plantilla imprimible." />;
     case 'ayuda':
-      return <SeccionVacia titulo="Ayuda" hueco="Aquí irá la guía de uso de la plataforma" volver={{ ruta: '/docente/mas', etiqueta: 'Más' }} />;
+      return <SeccionVacia titulo="Ayuda" hueco="Aquí irá la guía de uso de la plataforma" />;
     case 'cuenta':
-      return <MiCuenta cuenta={cuenta} volver={{ ruta: '/docente/mas', etiqueta: 'Más' }} />;
+      return <MiCuenta cuenta={cuenta} />;
     case 'mas':
       return <DocenteMas />;
     default:
@@ -551,7 +552,7 @@ function DocenteMas() {
     <>
       <Encabezado titulo="Más" />
       <Panel filas>
-        <Fila ruta="/docente/biblioteca" icono="documento" titulo="Biblioteca" detalle="Historia, recursos por tema, actividades y fundamentos" />
+        <Fila ruta="/proyectar" icono="proyectar" titulo="Proyectar" detalle="Juegos y láminas en el tablero o el televisor" />
         <Fila ruta="/docente/registro" icono="registro" titulo="Registro del piloto" />
         <Fila ruta="/docente/ayuda" icono="ayuda" titulo="Ayuda" />
         <Fila ruta="/docente/cuenta" icono="cuenta" titulo="Cuenta" />
@@ -632,6 +633,7 @@ function Colegio({ resto, cuenta, sinRed }: { resto: string[]; cuenta: Dentro; s
 
 const PLATAFORMA: Seccion[] = [
   { ruta: '/plataforma', etiqueta: 'Colegios', icono: 'colegio' },
+  { ruta: '/plataforma/tablero', etiqueta: 'Tablero', icono: 'uso' },
   { ruta: '/plataforma/cartillas', etiqueta: 'Cartillas', icono: 'cartillas' },
   { ruta: '/plataforma/documentos', etiqueta: 'Documentos', icono: 'documento' },
   { ruta: '/plataforma/cuentas', etiqueta: 'Cuentas', icono: 'cuenta' },
@@ -648,7 +650,7 @@ function Plataforma({ resto, sinRed }: { resto: string[]; cuenta: Dentro; sinRed
   const datos = PAGINAS_PLATAFORMA[seccion];
   const activa = seccion === '' || seccion === 'colegios' ? '/plataforma' : `/plataforma/${seccion}`;
   const propia = datos ? null : <PaginaDueno seccion={seccion} id={id} sinRed={sinRed} />;
-  const valida = seccion === '' || seccion === 'cuentas' || seccion === 'cartillas' || (seccion === 'colegios' && id);
+  const valida = seccion === '' || seccion === 'tablero' || seccion === 'cuentas' || seccion === 'cartillas' || (seccion === 'colegios' && id);
   return (
     <Cascaron inicio="/plataforma" fin={BOTON_SALIR} aviso={sinRed && <AvisoSinRed texto={SIN_RED_LECTURA} />} secciones={PLATAFORMA} activa={activa} nombre="Secciones de la plataforma">
       {datos ? <SeccionVacia {...datos} /> : valida ? propia : <AlInicio ruta="/plataforma" />}

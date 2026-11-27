@@ -13,6 +13,7 @@ import { darEstrellas, deshacer, olvidarRechazo, useCola, type Motivo } from './
 import { Calcomania } from '../Calcomania';
 import { Icono } from './Icono';
 import { Tarjetas, ListaEstrellas } from './Imprimibles';
+import { AvanceGrupo } from './tablero/AvanceGrupo';
 import { cargarIndice, cargarTema } from '../materiales/datos';
 import { cargarPlan, diaDeClase, farolClase, proximaClase, type PlanTema } from './planGrupo';
 
@@ -134,6 +135,9 @@ export function DocenteInicio({ colegioId }: { colegioId: string | null }) {
                 </Boton>
                 <Boton icono="imprimir" ruta={rutaGrupo(lista[0].id, '/lista')}>
                   Imprimir lista
+                </Boton>
+                <Boton icono="uso" ruta={rutaGrupo(lista[0].id, '/avance')}>
+                  Avance de {lista[0].nombre} en los juegos
                 </Boton>
               </div>
               {cola.porSubir > 0 && (
@@ -279,6 +283,8 @@ export function PaginaGrupo({ resto, sinRed }: { resto: string[]; sinRed: boolea
         <Estrellas grupo={grupo} ninos={ninos.datos} paquete={paquete.datos} />
       ) : sub === 'tarjetas' ? (
         <Tarjetas grupo={grupo} ninos={ninos.datos} paquete={paquete.datos} solo={resto[2]} sinRed={sinRed} />
+      ) : sub === 'avance' ? (
+        <AvanceGrupo grupo={grupo} ninos={ninos.datos} />
       ) : sub === 'lista' ? (
         <ListaEstrellas grupo={grupo} ninos={ninos.datos} />
       ) : (
@@ -302,6 +308,9 @@ function Grupo({ grupo, ninos, paquete, sinRed, recargar }: { grupo: GrupoDoc; n
         <div className="acciones">
           <Boton variante="primario" icono="estrella" ruta={rutaGrupo(grupo.id, '/estrellas')}>
             Dar calcomanías
+          </Boton>
+          <Boton icono="uso" ruta={rutaGrupo(grupo.id, '/avance')}>
+            Ver avance
           </Boton>
           <Boton icono="imprimir" ruta={rutaGrupo(grupo.id, '/tarjetas')}>
             Imprimir tarjetas

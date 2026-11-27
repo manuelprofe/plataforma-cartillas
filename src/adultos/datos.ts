@@ -65,6 +65,9 @@ export interface Cifra {
   ninos: number | null;
   autorizaciones: number | null;
   practicaron_semana: number | null;
+  practicaron_mes?: number | null;
+  /** "cartilla/tema" → estado del tema en el plan del grupo (se ve aunque el grupo no tenga cifras). */
+  plan?: Record<string, { estado: 'por-hacer' | 'en-curso' | 'hecho'; clase1: string | null; clase2: string | null; actualizado: string }> | null;
   /** "cartilla/misión" → cuántos niños del grupo la completaron. */
   misiones?: Record<string, number> | null;
   /** Motivo → estrellas sumadas del grupo. */
@@ -94,7 +97,7 @@ export const listarPersonas = () => leer<Persona>('perfiles', 'select=id,colegio
 /** Migración 003: `lista_invitaciones()` trae lo que ve cada rol y si la invitó el dueño. */
 export const listarInvitaciones = () => rpc<Invitacion[]>('lista_invitaciones', {});
 export const listarGrupos = () => leer<Grupo>('grupos', 'select=id,colegio_id,docente_id,nombre,grado,cartilla_id&order=nombre.asc');
-export const cifrasGrupos = () => rpc<Cifra[]>('cifras_grupos', {});
+export const cifrasGrupos = (colegio?: string) => rpc<Cifra[]>('cifras_grupos', colegio ? { p_colegio: colegio } : {});
 
 // ---------------------------------------------------------------- Cambios
 

@@ -25,6 +25,10 @@ export interface Seccion {
   ruta: string;
   etiqueta: string;
   icono: NombreIcono;
+  /** Solo en las pestañas del celular o solo en la barra lateral del computador. */
+  solo?: 'celular' | 'computador';
+  /** Otras rutas activas que marcan esta pestaña (p. ej. "Más" en el celular). */
+  activaEn?: string[];
 }
 
 /** Barra superior de 56 px: nombre de la plataforma y, a la derecha, el estado de guardado y acciones. */
@@ -50,7 +54,7 @@ export function Pestanas({ secciones, activa, nombre }: { secciones: Seccion[]; 
   return (
     <nav className="pestanas" aria-label={nombre}>
       {secciones.map((s) => (
-        <Enlace key={s.ruta} ruta={s.ruta} className="pestanas__item" actual={s.ruta === activa}>
+        <Enlace key={s.ruta} ruta={s.ruta} className={`pestanas__item${s.solo ? ` pestanas__item--${s.solo}` : ''}`} actual={s.ruta === activa || Boolean(s.activaEn?.includes(activa))}>
           <Icono nombre={s.icono} />
           {s.etiqueta}
         </Enlace>

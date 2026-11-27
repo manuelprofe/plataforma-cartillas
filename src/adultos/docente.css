@@ -206,3 +206,4 @@ li:first-child > .estrella-fila { border-top: 0; }
   .lista-hoja tr { break-inside: avoid; }
   .lista-hoja thead { display: table-header-group; }
 }
+.atajos--cuatro > :nth-child(5):last-child { grid-column: 1 / -1; }

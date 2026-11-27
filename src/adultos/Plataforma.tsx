@@ -1,6 +1,7 @@
 // Dueño (/plataforma): colegios, cartillas (publicar, ocultar y habilitar por colegio), personas e
 // invitaciones (esqueleto §3.2).
 import { IdentidadColegio } from './Identidad';
+import { TableroDueno } from './tablero/TableroDueno';
 import { personajeDeMateria } from '../marca';
 import { useState, type FormEvent } from 'react';
 import { navegar } from '../navegacion';
@@ -11,6 +12,7 @@ import { crearColegio, habilitarCartilla, listarCartillas, listarColegios, lista
 /** Páginas del dueño que tienen datos. Devuelve null si la sección no es de este archivo. */
 export function PaginaDueno({ seccion, id, sinRed }: { seccion: string; id?: string; sinRed: boolean }) {
   if (seccion === '') return <Colegios />;
+  if (seccion === 'tablero') return <TableroDueno />;
   if (seccion === 'colegios' && id === 'nuevo') return <NuevoColegio sinRed={sinRed} />;
   if (seccion === 'colegios' && id) return <ColegioDueno id={id} sinRed={sinRed} />;
   if (seccion === 'cuentas') return <Cuentas sinRed={sinRed} />;

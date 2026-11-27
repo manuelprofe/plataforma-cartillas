@@ -301,12 +301,12 @@ try {
     // Tablero por grado: 3A con cifras, 3B sin (menos de 5 con autorización), 1A en otro grado.
     base.grupos.push({ id: 'gr-x', colegio_id: 'col-1', docente_id: 'u-1', nombre: '3A', grado: '3°' }, { id: 'gr-y', colegio_id: 'col-1', docente_id: 'u-2', nombre: '1A', grado: '1°' });
     await p.goto(url('/colegio'));
-    await p.waitForSelector('li:has-text("3A")');
-    const titulos = await p.locator('main h2').allTextContents();
+    await p.waitForSelector('.tablero-uso__grupo:has-text("3A")');
+    const titulos = (await p.locator('main h2').allTextContents()).filter((t) => /^(Grado|Preescolar)/.test(t));
     comprobar(titulos.join('|') === 'Grado 1°|Grado 3°', `un tablero por grado, en orden (${titulos.join(', ')})`);
-    const fila3A = await p.locator('li:has-text("3A")').textContent();
+    const fila3A = await p.locator('.tablero-uso__grupo:has-text("3A")').textContent();
     comprobar(fila3A.includes('Activos esta semana') && fila3A.includes('9 de 12') && fila3A.includes('18') && fila3A.includes('1.370'), `cifras del grupo: activos, misiones y estrellas (${fila3A})`);
-    comprobar((await p.locator('li:has-text("3B")').textContent()).includes('menos de 5 niños'), 'el grupo de menos de 5 no muestra cifras');
+    comprobar((await p.locator('.tablero-uso__grupo:has-text("3B")').textContent()).includes('menos de 5 niños'), 'el grupo de menos de 5 no muestra cifras');
     const total3 = await p.locator('section:has(h2:text-is("Grado 3°")) .tablero-uso__total').textContent();
     comprobar(total3.includes('solo grupos con cifras') && total3.includes('9 de 12'), 'el total del grado suma solo los grupos con cifras');
     const nombresNinos = /Sara|Pao|apodo/i.test(await p.locator('main').textContent());

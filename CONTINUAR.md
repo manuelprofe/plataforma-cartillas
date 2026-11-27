@@ -121,3 +121,9 @@ Plan completo: `docs/plan/calendario-diciembre.md` (también en Google Calendar,
 Territorios 2 a 4 de cada cartilla; cinemática C del puente (`docs/cinematicas/guiones.md`); mapa
 ronda 2 (`docs/diseno/ronda-2-mapa.md`); voces de vecinos y héroes; medición antes y después del
 piloto; confirmar el estándar MEN citado en `docs/pedagogia/canciones-bosque.md`.
+
+## Tableros con gráficos (27 nov)
+- `src/adultos/tablero/`: `graficos.tsx` (Cifra, Barras, Columnas, Alertas en HTML/CSS, una tinta #1f3866 y su paso claro #7590c2), `vivo.ts` (relee cada minuto con la pestaña visible), `AvanceGrupo.tsx` (docente, /docente/grupos/:g/avance), `ResumenColegio.tsx` (arriba de Uso y avance del coordinador), `TableroDueno.tsx` (/plataforma/tablero). Sin migración: usan progreso_misiones, estrellas, dias_practica, cifras_grupos y entregas_planeacion.
+- Menú del docente: en computador muestra todo (Biblioteca, Proyectar, Registro, Ayuda, Cuenta) y no "Más"; en celular: Inicio, Grupos, Planear, Juegos, Biblioteca, Más. `Seccion.solo` y `Seccion.activaEn` en base.tsx.
+- Prueba: scripts/pruebas/tableros.mjs.
+- Pendiente posible: tendencia de 8 semanas para el coordinador (necesita una función nueva en la base).

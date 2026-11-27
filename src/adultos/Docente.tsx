@@ -14,6 +14,7 @@ import { Calcomania } from '../Calcomania';
 import { Icono } from './Icono';
 import { Tarjetas, ListaEstrellas } from './Imprimibles';
 import { AvanceGrupo } from './tablero/AvanceGrupo';
+import { HoyEnMiMes } from './calendario/MiMes';
 import { cargarIndice, cargarTema } from '../materiales/datos';
 import { cargarPlan, diaDeClase, farolClase, proximaClase, type PlanTema } from './planGrupo';
 
@@ -123,6 +124,7 @@ export function DocenteInicio({ colegioId }: { colegioId: string | null }) {
                   <Hueco titulo="Aquí irá su próxima clase" texto="El tema, si es la clase 1 o la 2, y el planeador." />
                 )}
               </Panel>
+              <HoyEnMiMes />
               <div className="atajos atajos--cuatro">
                 <Boton variante="primario" icono="proyectar" ruta="/proyectar">
                   Proyectar

@@ -32,9 +32,14 @@ export function Planear() {
       <ElegirCartilla />
       <Panel titulo="Mi planeación">
         <p className="sec">Elija la duración, cuántas actividades, el tema y las actividades; sale en el formato del colegio, para imprimir o bajar en Word.</p>
-        <Boton variante="primario" icono="planear" ruta={RUTA_ARMAR}>
-          Armar mi planeación
-        </Boton>
+        <div className="acciones">
+          <Boton variante="primario" icono="planear" ruta={RUTA_ARMAR}>
+            Armar mi planeación
+          </Boton>
+          <Boton icono="calendario" ruta="/docente/calendario">
+            Mi mes
+          </Boton>
+        </div>
       </Panel>
       <MisPlaneaciones />
       <Cargado carga={carga}>

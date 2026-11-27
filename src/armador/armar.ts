@@ -45,6 +45,8 @@ export interface Plan extends Creacion {
   actividades: string[];
   /** `pensum`: el tema es una unidad del pensum de la cartilla (sin láminas propias todavía). */
   fuente?: 'pensum';
+  /** Día en que se dará (AAAA-MM-DD), puesto en "Mi mes". */
+  fecha?: string;
 }
 
 /** Lo que una unidad del pensum pone en la planeación cuando el tema no trae palabras ni láminas. */
@@ -178,6 +180,17 @@ export function guardarPlan(p: Omit<Plan, 'id' | 'creada'>): Plan {
   escribir([plan, ...planes]);
   void subirCreacion(fuentePlanes, plan);
   return plan;
+}
+
+/** Pone o quita la fecha de una planeación ("Mi mes") y la sube a la cuenta. */
+export function ponerFechaPlan(id: string, fecha: string | null) {
+  const plan = planes.find((p) => p.id === id);
+  if (!plan) return;
+  const nuevo: Plan = { ...plan, nube: undefined };
+  if (fecha) nuevo.fecha = fecha;
+  else delete nuevo.fecha;
+  escribir(planes.map((p) => (p.id === id ? nuevo : p)));
+  void subirCreacion(fuentePlanes, nuevo);
 }
 
 export function borrarPlan(id: string) {

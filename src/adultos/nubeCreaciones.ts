@@ -108,7 +108,18 @@ export async function sincronizarCreaciones<T extends Creacion>(f: FuenteCreacio
       resultado.push(l);
       continue;
     }
-    if (enNube.has(l.id)) continue;
+    if (enNube.has(l.id)) {
+      // Un cambio hecho aquí sin red (p. ej. la fecha en "Mi mes") sube y gana sobre la copia de la nube.
+      if (l.nube === undefined && l.uid) {
+        try {
+          await subirUna(f.tipo, l);
+          enNube.set(l.id, { ...l, uid, nube: true });
+        } catch {
+          enNube.set(l.id, l);
+        }
+      }
+      continue;
+    }
     if (l.nube || borradas.has(l.id)) continue; // se borró en otro aparato
     try {
       await subirUna(f.tipo, l);

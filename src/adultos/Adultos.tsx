@@ -13,6 +13,7 @@ import { DocentesYGrupos, UsoYAvance } from './Colegio';
 import { Campo, correoValido, useTitulo } from './comun';
 import { PaginaDueno } from './Plataforma';
 import { DocenteInicio, MisGrupos, PaginaGrupo } from './Docente';
+import { MiMes } from './calendario/MiMes';
 import { fuenteJuegos, Sala } from '../sala/Sala';
 import { PlaneacionesColegio } from './Entregas';
 import { sincronizarCreaciones } from './nubeCreaciones';
@@ -476,13 +477,14 @@ const DOCENTE: Seccion[] = [
   { ruta: '/docente', etiqueta: 'Inicio', icono: 'inicio' },
   { ruta: '/docente/grupos', etiqueta: 'Grupos', icono: 'grupos' },
   { ruta: '/docente/planear', etiqueta: 'Planear', icono: 'planear' },
+  { ruta: '/docente/calendario', etiqueta: 'Mi mes', icono: 'calendario', solo: 'computador' },
   { ruta: '/docente/juegos', etiqueta: 'Juegos', icono: 'juegos' },
   { ruta: '/docente/biblioteca', etiqueta: 'Biblioteca', icono: 'documento' },
   { ruta: '/proyectar', etiqueta: 'Proyectar', icono: 'proyectar', solo: 'computador' },
   { ruta: '/docente/registro', etiqueta: 'Registro del piloto', icono: 'registro', solo: 'computador' },
   { ruta: '/docente/ayuda', etiqueta: 'Ayuda', icono: 'ayuda', solo: 'computador' },
   { ruta: '/docente/cuenta', etiqueta: 'Cuenta', icono: 'cuenta', solo: 'computador' },
-  { ruta: '/docente/mas', etiqueta: 'Más', icono: 'mas', solo: 'celular', activaEn: ['/docente/registro', '/docente/ayuda', '/docente/cuenta'] },
+  { ruta: '/docente/mas', etiqueta: 'Más', icono: 'mas', solo: 'celular', activaEn: ['/docente/calendario', '/docente/registro', '/docente/ayuda', '/docente/cuenta'] },
 ];
 
 const SIN_RED_DOCENTE = 'Sin conexión. Lo que marque se guarda en este celular y sube solo cuando vuelva la señal.';
@@ -533,6 +535,8 @@ function PaginaDocente({ seccion, mas, cuenta, sinRed }: { seccion: string; mas:
       return mas[0] === 'armar' ? <ArmarJuego id={mas[1]} /> : <Sala />;
     case 'biblioteca':
       return <Biblioteca resto={mas} />;
+    case 'calendario':
+      return <MiMes mes={mas[0]} />;
     case 'registro':
       return <SeccionVacia titulo="Registro del piloto" hueco="Aquí irá el registro del piloto" texto="Cotejo, incidencias, encuesta de acceso y prueba de entrada y salida, cada parte con su plantilla imprimible." />;
     case 'ayuda':
@@ -552,6 +556,7 @@ function DocenteMas() {
     <>
       <Encabezado titulo="Más" />
       <Panel filas>
+        <Fila ruta="/docente/calendario" icono="calendario" titulo="Mi mes" detalle="Calendario con sus clases y planeaciones" />
         <Fila ruta="/proyectar" icono="proyectar" titulo="Proyectar" detalle="Juegos y láminas en el tablero o el televisor" />
         <Fila ruta="/docente/registro" icono="registro" titulo="Registro del piloto" />
         <Fila ruta="/docente/ayuda" icono="ayuda" titulo="Ayuda" />

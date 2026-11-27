@@ -127,3 +127,9 @@ piloto; confirmar el estándar MEN citado en `docs/pedagogia/canciones-bosque.md
 - Menú del docente: en computador muestra todo (Biblioteca, Proyectar, Registro, Ayuda, Cuenta) y no "Más"; en celular: Inicio, Grupos, Planear, Juegos, Biblioteca, Más. `Seccion.solo` y `Seccion.activaEn` en base.tsx.
 - Prueba: scripts/pruebas/tableros.mjs.
 - Pendiente posible: tendencia de 8 semanas para el coordinador (necesita una función nueva en la base).
+
+## Mi mes (27 nov)
+- `src/adultos/calendario/`: `MiMes.tsx` (/docente/calendario[/AAAA-MM], y `HoyEnMiMes` en Inicio), `datos.ts` (clases de planes_tema por grupo, armar el mes con temas del pensum "u<id>-<n>", mover clases), `festivos.ts` (festivos de Colombia, Ley Emiliani), `calendario.css`.
+- Las planeaciones guardan `fecha` dentro de sus datos (`ponerFechaPlan` en armar.ts). nubeCreaciones sube un cambio local sin `nube` aunque ya exista en la nube.
+- Prueba: scripts/pruebas/calendario.mjs. No usar `@page` en CSS de adultos: se aplica a todo lo que se imprime.
+- Sigue (elegido por Manuel): frase diaria de Goma en Inicio y "Goma guía" (árbol de diálogos en JSON, sin IA).

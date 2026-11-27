@@ -2,7 +2,8 @@
 // un planeador en el formato único (el mismo de los planeadores de la cartilla: pantalla,
 // impresión y Word). Las actividades son plantillas (actividades.json) que se llenan con las
 // palabras del tema. Las planeaciones se guardan en este aparato y solo las ve quien las hizo.
-import { useSyncExternalStore } from 'react';
+import { useMemo, useSyncExternalStore } from 'react';
+import { conDueno, esMia, quitarCreacion, subirCreacion, type Creacion, type FuenteCreaciones } from '../adultos/nubeCreaciones';
 import { repartir, type Duracion } from '../materiales/duracion';
 import type { Bloque, Material, Referentes, TemaDoc } from '../materiales/datos';
 import datos from './actividades.json';
@@ -34,7 +35,7 @@ export function sugeridas(n: number, grado: number): string[] {
   return ORDEN_SUGERIDO.filter((id) => (ACTIVIDADES.find((a) => a.id === id)?.desdeGrado ?? 0) <= grado).slice(0, n);
 }
 
-export interface Plan {
+export interface Plan extends Creacion {
   id: string;
   creada: string;
   cartilla: string;
@@ -165,18 +166,28 @@ function escribir(nuevos: Plan[]) {
   oyentes.forEach((f) => f());
 }
 
+/** Las planeaciones como creaciones del docente: se guardan aquí y suben a su cuenta. */
+export const fuentePlanes: FuenteCreaciones<Plan> = {
+  tipo: 'planeacion',
+  leer: () => planes,
+  poner: (lista) => escribir([...lista].sort((a, b) => b.creada.localeCompare(a.creada))),
+};
+
 export function guardarPlan(p: Omit<Plan, 'id' | 'creada'>): Plan {
-  const plan: Plan = { ...p, id: `p${Date.now().toString(36)}`, creada: new Date().toISOString() };
+  const plan: Plan = conDueno({ ...p, id: `p${Date.now().toString(36)}`, creada: new Date().toISOString() });
   escribir([plan, ...planes]);
+  void subirCreacion(fuentePlanes, plan);
   return plan;
 }
 
 export function borrarPlan(id: string) {
+  const plan = planes.find((p) => p.id === id);
   escribir(planes.filter((p) => p.id !== id));
+  if (plan) void quitarCreacion('planeacion', plan);
 }
 
 export function useMisPlanes(): Plan[] {
-  return useSyncExternalStore(
+  const todos = useSyncExternalStore(
     (f) => {
       oyentes.add(f);
       return () => oyentes.delete(f);
@@ -184,4 +195,6 @@ export function useMisPlanes(): Plan[] {
     () => planes,
     () => planes,
   );
+  // En un aparato compartido, cada docente ve solo las suyas.
+  return useMemo(() => todos.filter((p) => esMia(p)), [todos]);
 }

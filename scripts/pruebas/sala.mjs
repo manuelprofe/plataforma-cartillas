@@ -106,6 +106,40 @@ try {
   comprobar(true, 'español transición aparece en Planear');
 
   comprobar(errores.length === 0, `sin errores en consola${errores.length ? `: ${errores.join(' | ')}` : ''}`);
+
+  // 7. En la cuenta (migración 014): lo creado en otro aparato baja, lo nuevo sube y borrar lo quita.
+  const c2 = await navegador.newContext({ viewport: { width: 390, height: 844 }, reducedMotion: 'reduce', serviceWorkers: 'block', locale: 'es-CO' });
+  await c2.addInitScript(([k, v]) => { if (!sessionStorage.sembrado) { localStorage.setItem(k, v); sessionStorage.sembrado = '1'; } }, [LLAVE_ADULTO, JSON.stringify(sesionAdulto('docente', { perfil: { rol: 'docente', nombre: 'Profe Prueba', colegio_id: 'c1' } }))]);
+  const nube = { planeacion: [{ id: 'pnube1', datos: { cartilla: 'ingles-3', tema: 'colores', nombreTema: 'Plan hecho en el computador', duracion: 55, actividades: ['bingo', 'memoria'], creada: '2026-11-20T10:00:00.000Z' } }], juego: [] };
+  const envios = [];
+  await simularSupabase(c2, (u, q) => {
+    if (u.pathname !== '/rest/v1/creaciones_docente') return null;
+    if (q.method() === 'GET') return { json: nube[u.searchParams.get('tipo').slice(3)] };
+    const cuerpo = q.postData() ? JSON.parse(q.postData()) : null;
+    envios.push({ metodo: q.method(), cuerpo, consulta: u.search });
+    return { json: [{ id: cuerpo?.id ?? 'x' }] };
+  });
+  const p2 = await c2.newPage();
+  await p2.goto(url('/docente/planear'));
+  await p2.waitForSelector('text=Plan hecho en el computador');
+  comprobar(true, 'la planeación hecha en otro aparato aparece en Mis planeaciones');
+  await p2.goto(url('/docente/juegos/armar'));
+  await p2.click('.armar-juego .sala-chip >> text=Inglés · 3.°');
+  await p2.waitForSelector('.palabra-chip');
+  await p2.click('.armar-actividad >> text=Escucha y toca');
+  for (const i of [0, 1, 2]) await p2.locator('.palabra-chip').nth(i).click();
+  await p2.click('text=Guardar en Mis juegos');
+  await p2.waitForSelector('.sala-listo');
+  await p2.waitForTimeout(300);
+  const subido = envios.find((e) => e.metodo === 'POST' && e.cuerpo?.tipo === 'juego');
+  comprobar(subido && subido.cuerpo.datos.palabras.length === 3 && !('uid' in subido.cuerpo.datos) && subido.consulta.includes('on_conflict=docente_id,id'), 'el juego nuevo sube a la cuenta, sin datos internos');
+  p2.on('dialog', (d) => d.accept());
+  await p2.locator('.sala-mio').first().locator('text=Borrar').click();
+  const si = p2.locator('text=Sí, borrar');
+  if (await si.count()) await si.click();
+  await p2.waitForTimeout(300);
+  comprobar(envios.some((e) => e.metodo === 'DELETE' && e.consulta.includes(`id=eq.${subido?.cuerpo.id}`)), 'borrar el juego lo quita de la cuenta');
+  await c2.close();
 } finally {
   await navegador.close();
   servidor.kill();

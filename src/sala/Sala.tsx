@@ -8,7 +8,8 @@ import { Icono } from '../adultos/Icono';
 import { rutaCartilla } from '../cartillas';
 import { navegar } from '../navegacion';
 import { MATERIAS } from '../pensum/datos';
-import { alCambiarJuegosPropios, borrarJuegoPropio, leerJuegosPropios, type JuegoPropio } from './propios';
+import { alCambiarJuegosPropios, borrarJuegoPropio, leerJuegosPropios, ponerJuegosPropios, type JuegoPropio } from './propios';
+import { esMia, quitarCreacion, type FuenteCreaciones } from '../adultos/nubeCreaciones';
 import './sala.css';
 import '../armador/armador.css';
 
@@ -47,9 +48,13 @@ export function cargarSala(): Promise<CartillaJuegos[]> {
 
 export const rutaJugar = (cartilla: string, juego: string) => `/jugar/${encodeURIComponent(cartilla)}/${encodeURIComponent(juego)}`;
 
+/** Los juegos armados como creaciones del docente: se guardan aquí y suben a su cuenta. */
+export const fuenteJuegos: FuenteCreaciones<JuegoPropio> = { tipo: 'juego', leer: leerJuegosPropios, poner: ponerJuegosPropios };
+
 export function useJuegosPropios(): JuegoPropio[] {
   const crudo = useSyncExternalStore(alCambiarJuegosPropios, () => JSON.stringify(leerJuegosPropios()));
-  return useMemo(() => JSON.parse(crudo) as JuegoPropio[], [crudo]);
+  // En un aparato compartido, cada docente ve solo los suyos.
+  return useMemo(() => (JSON.parse(crudo) as JuegoPropio[]).filter((j) => esMia(j)), [crudo]);
 }
 
 const FILTRO = 'cuaderno.sala-filtro';
@@ -102,7 +107,7 @@ export function Sala() {
         {propios.length ? (
           <MisJuegos propios={propios} carga={carga.datos} />
         ) : (
-          <Vacio titulo="Arme su propio juego" texto="Elija un tipo de juego y las palabras e imágenes del tema; queda listo para proyectar o para pegar en su planeación." personaje="goma-senalar">
+          <Vacio titulo="Arme su propio juego" texto="Elija un tipo de juego y las palabras e imágenes del tema; queda listo para proyectar en clase." personaje="goma-senalar">
             <Boton variante="primario" icono="crear" ruta={RUTA_ARMAR_JUEGO}>
               Armar un juego
             </Boton>
@@ -200,7 +205,10 @@ function MisJuegos({ propios, carga }: { propios: JuegoPropio[]; carga?: Cartill
               <Boton variante="texto" icono="planear" ruta={`${RUTA_ARMAR_JUEGO}/${j.id}`}>
                 Cambiar
               </Boton>
-              <Confirmar etiqueta="Borrar" pregunta={`¿Borrar «${j.titulo}»? Se quita de este aparato.`} si="Sí, borrar" alConfirmar={() => borrarJuegoPropio(j.id)} />
+              <Confirmar etiqueta="Borrar" pregunta={`¿Borrar «${j.titulo}»? Se quita de su cuenta y de este aparato.`} si="Sí, borrar" alConfirmar={() => {
+                  borrarJuegoPropio(j.id);
+                  void quitarCreacion('juego', j);
+                }} />
             </div>
           </li>
         );

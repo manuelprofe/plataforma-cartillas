@@ -35,6 +35,8 @@ grant usage on schema public to anon, authenticated;
 \i supabase/migraciones/005-cartilla-del-grupo.sql
 \i supabase/migraciones/008-identidad-colegio.sql
 \i supabase/migraciones/008-identidad-colegio.sql
+\i supabase/migraciones/014-mis-creaciones.sql
+\i supabase/migraciones/014-mis-creaciones.sql
 
 -- Datos: dos colegios; en el uno, dos docentes y un coordinador; en el dos, un docente y un
 -- coordinador; el dueño; tres aparatos anónimos; dos adultos que llegan por invitación.
@@ -402,5 +404,24 @@ select pg_temp.soy('00000000-0000-0000-0000-0000000000d0');
 select pg_temp.debe_fallar($$select identidad_colegio('10000000-0000-0000-0000-000000000002', 'data:image/jpeg;base64,AAAA', '#000000', '#ffffff')$$, 'el escudo solo se guarda como PNG');
 select pg_temp.debe_fallar($$select identidad_colegio('10000000-0000-0000-0000-000000000002', null, 'rojo', '#ffffff')$$, 'los colores van en hexadecimal');
 select identidad_colegio('10000000-0000-0000-0000-000000000002', null, '#000000', '#ffffff');
+reset role;
+
+-- Mis creaciones (014): cada docente ve y cambia solo las suyas; nadie más, tampoco un aparato anónimo.
+set role authenticated;
+select pg_temp.soy('00000000-0000-0000-0000-0000000000a1');
+insert into creaciones_docente (id, tipo, datos) values ('p1', 'planeacion', '{"nombreTema":"Colores"}'), ('propio-a', 'juego', '{"titulo":"Memoria"}');
+select pg_temp.verificar((select count(*) from creaciones_docente) = 2, 'el docente guarda sus planeaciones y juegos');
+insert into creaciones_docente (id, tipo, datos) values ('p1', 'planeacion', '{"nombreTema":"Números"}')
+  on conflict (docente_id, id) do update set datos = excluded.datos, actualizado = now();
+select pg_temp.verificar((select datos->>'nombreTema' from creaciones_docente where id = 'p1') = 'Números', 'el docente cambia la suya');
+select pg_temp.debe_fallar($$insert into creaciones_docente (docente_id, id, tipo, datos) values ('00000000-0000-0000-0000-0000000000a2', 'x', 'juego', '{}')$$, 'no escribe a nombre de otro docente');
+select pg_temp.debe_fallar($$insert into creaciones_docente (id, tipo, datos) values ('X raro', 'juego', '{}')$$, 'el id va en minúsculas y guiones');
+select pg_temp.soy('00000000-0000-0000-0000-0000000000a2');
+select pg_temp.verificar((select count(*) from creaciones_docente) = 0, 'otro docente no ve las creaciones ajenas');
+select pg_temp.soy('00000000-0000-0000-0000-0000000000a3');
+select pg_temp.verificar((select count(*) from creaciones_docente) = 0, 'el coordinador no ve las creaciones del docente');
+select pg_temp.soy('00000000-0000-0000-0000-0000000000b1');
+select pg_temp.debe_fallar($$insert into creaciones_docente (id, tipo, datos) values ('n1', 'juego', '{}')$$, 'un aparato anónimo (niño) no guarda creaciones');
+select pg_temp.verificar((select count(*) from creaciones_docente) = 0, 'un aparato anónimo no ve creaciones');
 reset role;
 \echo TODAS LAS PRUEBAS PASARON

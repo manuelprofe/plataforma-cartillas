@@ -8,7 +8,9 @@ import { rutaCartilla } from '../cartillas';
 import { navegar } from '../navegacion';
 import type { Cartilla } from '../tipos';
 import { bancoDePalabras, guardarJuegoPropio, leerJuegosPropios, plantillasDe, type PlantillaPropia } from './propios';
-import { cargarSala, nombreTipo, RUTA_SALA, rutaJugar, TIPOS } from './Sala';
+import { cargarSala, fuenteJuegos, nombreTipo, RUTA_SALA, rutaJugar, TIPOS } from './Sala';
+import { miId } from '../adultos/cuenta';
+import { subirCreacion } from '../adultos/nubeCreaciones';
 
 const MINIMO = 3;
 const MAXIMO = 12;
@@ -82,7 +84,8 @@ function Pasos({ cartillaId, previo }: { cartillaId: string; previo?: ReturnType
           if (!plantilla) return setError('Elija el tipo de juego.');
           if (elegidas.length < MINIMO) return setError(`Elija al menos ${MINIMO} palabras.`);
           const nombre = titulo.trim() || `${nombreTipo(plantilla)}: ${elegidas.slice(0, 3).map(decirla).join(', ')}`;
-          const j = guardarJuegoPropio({ id: previo?.id, cartilla: c.id, plantilla, titulo: nombre.slice(0, 80), palabras: elegidas, icono: verPalabra(elegidas[0])?.icono });
+          const j = guardarJuegoPropio({ id: previo?.id, cartilla: c.id, plantilla, titulo: nombre.slice(0, 80), palabras: elegidas, icono: verPalabra(elegidas[0])?.icono, uid: previo?.uid ?? miId(), nube: previo?.nube });
+          void subirCreacion(fuenteJuegos, j);
           navegar(`${RUTA_SALA}?listo=${encodeURIComponent(j.id)}`);
         };
         if (!banco.length) return <Vacio texto="Esta cartilla todavía no tiene palabras con imagen para armar juegos." />;

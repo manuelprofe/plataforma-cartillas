@@ -19,6 +19,9 @@ export interface JuegoPropio {
   /** Imagen de la tarjeta en la sala (la de la primera palabra). */
   icono?: string;
   creado: string;
+  /** Cuenta del docente que lo creó y si ya está en su cuenta (ver adultos/nubeCreaciones.ts). */
+  uid?: string;
+  nube?: boolean;
 }
 
 const CLAVE = 'cuaderno.mis-juegos';
@@ -49,6 +52,11 @@ export function guardarJuegoPropio(j: Omit<JuegoPropio, 'id' | 'creado'> & { id?
   const nuevo: JuegoPropio = { ...j, id: previo?.id ?? `${PREFIJO}${Date.now().toString(36)}${Math.random().toString(36).slice(2, 6)}`, creado: previo?.creado ?? new Date().toISOString() };
   escribir([nuevo, ...lista.filter((x) => x.id !== nuevo.id)]);
   return nuevo;
+}
+
+/** Reemplaza la lista entera (al juntarla con la de la cuenta del docente). */
+export function ponerJuegosPropios(lista: JuegoPropio[]) {
+  escribir([...lista].sort((a, b) => b.creado.localeCompare(a.creado)));
 }
 
 export function borrarJuegoPropio(id: string) {

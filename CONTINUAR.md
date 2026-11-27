@@ -59,6 +59,13 @@ Plan completo: `docs/plan/calendario-diciembre.md` (también en Google Calendar,
   `src/adultos/FechasPlan.tsx` (plan del grupo en Planear y fechas en el plan del tema). Inicio del docente
   muestra la próxima clase del primer grupo. Falta: que el coordinador vea el tema de cada grupo en Uso y avance.
 - **Proyectar:** `src/proyectar/Proyectar.tsx`.
+- **Sala de juegos y armador de juegos (27 nov):** pestaña Juegos del docente (`src/sala/Sala.tsx`, `ArmarJuego.tsx`).
+  El índice `public/cartillas/juegos.json` lo escribe `herramientas/indice_juegos.mjs` en cada `npm run build`.
+  Cada juego abre en `/jugar/<cartilla>/<juego>` con el paquete del niño (`src/sala/Jugar.tsx`) y el perfil
+  `PRUEBA` de `progreso.ts`, que no guarda ni sube nada. Juegos propios: plantillas de palabras
+  (`src/sala/propios.ts`). Planeaciones y juegos suben a la cuenta del docente con
+  `src/adultos/nubeCreaciones.ts` (tabla `creaciones_docente`, migración 014). Planear muestra todo el pensum
+  (ficha del tema en `/docente/planear/tema/<cartilla>/<unidad>`). Prueba: `scripts/pruebas/sala.mjs`.
 - **Base de datos:** `supabase/migraciones/` (002 esqueleto, 003 ajustes),
   `supabase/funciones/invitar/`. `registrar_mision` está en 002 (línea ~854).
 - **Pensum (25 nov):** mallas fuente en `docs/pedagogia/pensum/*.md` (copia en la carpeta del proyecto,

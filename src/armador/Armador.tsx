@@ -1,5 +1,5 @@
 // Pantalla del armador: el docente elige duración, cuántas actividades, el tema y las actividades;
-// el armador sugiere sin obligar. Al armar, la planeación queda en "Mis planeaciones" (este aparato)
+// el armador sugiere sin obligar. Al armar, la planeación queda en "Mis planeaciones" (aparato y cuenta)
 // y se abre en el formato único, lista para imprimir o bajar en Word.
 import { useEffect, useRef, useState } from 'react';
 import { Boton, Encabezado, Fila, Panel, Vacio } from '../adultos/base';
@@ -34,7 +34,7 @@ export function MisPlaneaciones({ vacio }: { vacio?: boolean }) {
           />
         ))
       ) : (
-        <Vacio titulo="Aún no ha armado planeaciones" texto="Las que arme quedan aquí, en este aparato." />
+        <Vacio titulo="Aún no ha armado planeaciones" texto="Las que arme quedan aquí y en su cuenta, para verlas también en otro aparato." />
       )}
     </Panel>
   );

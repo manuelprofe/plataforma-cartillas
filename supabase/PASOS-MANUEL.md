@@ -78,4 +78,11 @@ Proyecto: https://supabase.com/dashboard → proyecto `jpwwmzfhbdnzsvwuciqa`. Ha
 19. **SQL Editor** → New query → pegar todo `supabase/migraciones/013-misiones-espanol-0-cuentos.sql` → Run.
     Suma la misión del cuento "La lluvia llega" a la biblioteca de Renglón. No publica la cartilla.
 
+## Migración 014 (planeaciones y juegos del docente en su cuenta)
+
+20. **SQL Editor** → New query → pegar todo `supabase/migraciones/014-mis-creaciones.sql` → Run.
+    Debe terminar mostrando `creaciones = 0`. Crea la tabla donde quedan las planeaciones del
+    armador y los juegos que arma cada docente, para verlos en el celular y en el computador. Solo
+    el docente ve las suyas. Sin ella todo sigue funcionando, pero solo en el aparato donde se crearon.
+
 Al terminar, avisar en el chat qué pasos quedaron hechos y si alguno dio error (copiar el mensaje).

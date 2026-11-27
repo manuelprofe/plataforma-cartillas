@@ -13,7 +13,9 @@ import { DocentesYGrupos, UsoYAvance } from './Colegio';
 import { Campo, correoValido, useTitulo } from './comun';
 import { PaginaDueno } from './Plataforma';
 import { DocenteInicio, MisGrupos, PaginaGrupo } from './Docente';
-import { Sala } from '../sala/Sala';
+import { fuenteJuegos, Sala } from '../sala/Sala';
+import { sincronizarCreaciones } from './nubeCreaciones';
+import { fuentePlanes } from '../armador/armar';
 import { ArmarJuego } from '../sala/ArmarJuego';
 import { MaterialPagina, Planear, PlanTema, TemaMateriales, TemaPensum } from './Materiales';
 import { Armador, PlaneacionArmada } from '../armador/Armador';
@@ -490,6 +492,10 @@ function Docente({ resto, cuenta, sinRed }: { resto: string[]; cuenta: Dentro; s
   const cola = useCola();
   const cartilla = useCartillaMateriales();
   useEffect(iniciarCola, []);
+  // Las planeaciones y juegos que armó en otro aparato bajan; lo de aquí sube (migración 014).
+  useEffect(() => {
+    void sincronizarCreaciones(fuentePlanes).then(() => sincronizarCreaciones(fuenteJuegos));
+  }, []);
   const estado = cola.porSubir > 0 ? (
     <>
       <Icono nombre="subir" />

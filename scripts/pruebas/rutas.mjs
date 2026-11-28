@@ -4,7 +4,7 @@ import { readFileSync, existsSync } from 'node:fs';
 import { gzipSync } from 'node:zlib';
 import { chromium, servir, URL_APP, CLAVE, CAPTURAS, BASE_JUGADO, abrir, alMapa, entrarAMision, adultoPorRuta } from './comun.mjs';
 
-const RUTAS = ['/', '/adultos', '/docente', '/docente/grupos', '/docente/grupos/3B', '/docente/planear', '/docente/mas', '/docente/registro', '/colegio', '/colegio/docentes', '/plataforma', '/plataforma/cartillas', '/proyectar', '/proyectar/fin', '/mapa'];
+const RUTAS = ['/', '/adultos', '/docente', '/docente/grupos', '/docente/grupos/3B', '/docente/planear', '/docente/mas', '/docente/ayuda', '/colegio', '/colegio/docentes', '/plataforma', '/plataforma/cartillas', '/proyectar', '/proyectar/fin', '/mapa'];
 const ANCHAS = ['/docente', '/colegio', '/plataforma', '/proyectar'];
 const url = (r) => new URL(r, URL_APP).href;
 const nombre = (r) => (r === '/' ? 'raiz' : r.slice(1).replaceAll('/', '-'));
